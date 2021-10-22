@@ -16,7 +16,7 @@ extension Attendance {
         return NSFetchRequest<Attendance>(entityName: "Attendance")
     }
 
-    @NSManaged public var date: Date?
+    @NSManaged public var dateString: String?
     @NSManaged public var type: String?
     @NSManaged public var persons: NSSet?
 

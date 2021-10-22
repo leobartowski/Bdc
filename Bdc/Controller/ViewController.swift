@@ -20,12 +20,16 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.createFakeData()
+        let persons = CoreDataService.shared.getAttendance(Date.now, type: .evening)
+        for person in persons {
+            print(person.name)
+        }
     }
     
     // MARK: Calendar
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print(date)
+        
+        let dateString = DateFormatter.basicFormatter.string(from: date)
     }
     
     // MARK: TableView
@@ -52,21 +56,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     }
     
     // MARK: Fake DAta CoreDAta
-    func createFakeData() {
-        let person = Person()
-        person.name = "Francesco"
-        let person1 = Person()
-        person.name = "Afj"
-        let person2 = Person()
-        person.name = "Ffes"
-        let person3 = Person()
-        person.name = "grtge"
-        
-        let persons = [person, person1, person2, person3]
-        let date = Date.now
-        CoreDataService.shared.saveAttendance(date, persons, .evening)
-        
-    }
+
 
 
 }

@@ -28,6 +28,8 @@
 		DDB292602721A8D400D96E67 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB2925F2721A8D400D96E67 /* SectionHeaderView.xib */; };
 		DDB292622721A90500D96E67 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB292612721A90500D96E67 /* SectionHeaderView.swift */; };
 		DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DDD5051B27220FB000508F60 /* Bdc.xcdatamodeld */; };
+		DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */; };
+		DDE3B1752722D3C200BFEFF0 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3B1742722D3C200BFEFF0 /* Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		DDB2925F2721A8D400D96E67 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		DDB292612721A90500D96E67 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		DDD5051C27220FB000508F60 /* Bdc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bdc.xcdatamodel; sourceTree = "<group>"; };
+		DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter - Ext.swift"; sourceTree = "<group>"; };
+		DDE3B1742722D3C200BFEFF0 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		E9119FA55433DC0831BDC2B0 /* Pods_Bdc_BdcUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bdc_BdcUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -198,14 +202,16 @@
 		DD8543ED27219D4A004D38F0 /* Bdc */ = {
 			isa = PBXGroup;
 			children = (
+				DDE3B1732722D3B000BFEFF0 /* Utility */,
+				DDE3B1702722CD3400BFEFF0 /* Ext */,
 				DD18C7F5272208920086BB6C /* Xib */,
 				DD18C7F4272207270086BB6C /* Storyboard */,
 				DD18C7F3272207050086BB6C /* Controller */,
+				DD18C80427220D0F0086BB6C /* CoreData */,
 				DD8543EE27219D4A004D38F0 /* AppDelegate.swift */,
 				DD8543FA27219D4C004D38F0 /* Assets.xcassets */,
 				DD8543FC27219D4C004D38F0 /* LaunchScreen.storyboard */,
 				DD8543FF27219D4C004D38F0 /* Info.plist */,
-				DD18C80427220D0F0086BB6C /* CoreData */,
 				DD8543F027219D4A004D38F0 /* SceneDelegate.swift */,
 			);
 			path = Bdc;
@@ -246,6 +252,22 @@
 				DD18C7FA27220B890086BB6C /* CoreDateContainer.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		DDE3B1702722CD3400BFEFF0 /* Ext */ = {
+			isa = PBXGroup;
+			children = (
+				DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */,
+			);
+			path = Ext;
+			sourceTree = "<group>";
+		};
+		DDE3B1732722D3B000BFEFF0 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				DDE3B1742722D3C200BFEFF0 /* Utility.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		F29ADA14CAED47AAAD651460 /* Frameworks */ = {
@@ -504,6 +526,8 @@
 				DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */,
 				DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */,
 				DD8543F327219D4A004D38F0 /* ViewController.swift in Sources */,
+				DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */,
+				DDE3B1752722D3C200BFEFF0 /* Utility.swift in Sources */,
 				DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */,
 				DDB292622721A90500D96E67 /* SectionHeaderView.swift in Sources */,
 				DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */,
