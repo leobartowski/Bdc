@@ -14,22 +14,22 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     let sectionTitles = ["Presenti", "Assenti"]
-    let dayType = DayType.morning
+    var dayType = DayType.evening
     var personsPresent: [Person] = []
     var personsNotPresent: [Person] = []
     
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkPresence()
+        updatePresences()
     }
     
     // MARK: Calendar
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        self.checkPresence()
+        self.updatePresences()
     }
     
     // MARK: TableView
@@ -62,7 +62,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         }
         tableView.reloadData()
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = SectionHeaderView()
         sectionHeaderView.setUp(title: self.sectionTitles[section])
@@ -70,14 +70,14 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 45
     }
-
+    
     /// Update Presence
-    func checkPresence() {
+    func updatePresences() {
         self.personsNotPresent = []
+        self.personsPresent = CoreDataService.shared.getAttendancePerson(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
         for person in Utility.persons {
-            self.personsPresent = CoreDataService.shared.getAttendancePerson(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
             if !self.personsPresent.contains(where: { $0.name == person.name }) && !self.personsNotPresent.contains(where: { $0.name == person.name })  {
                 self.personsNotPresent.append(person)
             }
@@ -85,5 +85,13 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         self.tableView.reloadData() // TODO: FIX THIS
     }
     
+    @IBAction func segmentedControlValueChanged(_ sender: Any) {
+        switch segmentedControl.selectedSegmentIndex {
+         case 0: self.dayType = .morning
+         case 1: self.dayType = .evening
+         default:break
+         }
+        self.updatePresences()
+    }
 }
 

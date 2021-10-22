@@ -33,8 +33,8 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="6Dr-km-DwV"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NDQ-DG-jQB">
-                                <rect key="frame" x="0.0" y="429" width="414" height="433"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="1" estimatedSectionHeaderHeight="1" sectionFooterHeight="1" estimatedSectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="NDQ-DG-jQB">
+                                <rect key="frame" x="0.0" y="444" width="414" height="418"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" id="cKy-CF-lh0" customClass="MainTableViewCell" customModule="Bdc" customModuleProvider="target">
@@ -69,21 +69,24 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IfQ-k3-apU">
-                                <rect key="frame" x="0.0" y="402" width="414" height="27"/>
+                                <rect key="frame" x="0.0" y="394" width="414" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knI-3m-fEE">
-                                        <rect key="frame" x="20" y="3" width="374" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="c0R-Hg-uRN">
+                                        <rect key="frame" x="20" y="10" width="374" height="31"/>
+                                        <segments>
+                                            <segment title="Mattina"/>
+                                            <segment title="Sera"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="segmentedControlValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="a8a-6s-Uwb"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
-                                    <constraint firstItem="knI-3m-fEE" firstAttribute="leading" secondItem="IfQ-k3-apU" secondAttribute="leading" constant="20" id="904-46-MrO"/>
-                                    <constraint firstAttribute="bottom" secondItem="knI-3m-fEE" secondAttribute="bottom" constant="3" id="fej-uz-DWP"/>
-                                    <constraint firstItem="knI-3m-fEE" firstAttribute="top" secondItem="IfQ-k3-apU" secondAttribute="top" constant="3" id="gTe-9j-UJX"/>
-                                    <constraint firstAttribute="trailing" secondItem="knI-3m-fEE" secondAttribute="trailing" constant="20" id="vfq-IV-RWk"/>
+                                    <constraint firstAttribute="bottom" secondItem="c0R-Hg-uRN" secondAttribute="bottom" constant="10" id="ABJ-s7-hNU"/>
+                                    <constraint firstItem="c0R-Hg-uRN" firstAttribute="top" secondItem="IfQ-k3-apU" secondAttribute="top" constant="10" id="oXY-7j-Bu2"/>
+                                    <constraint firstAttribute="trailing" secondItem="c0R-Hg-uRN" secondAttribute="trailing" constant="20" id="skg-V2-83V"/>
+                                    <constraint firstItem="c0R-Hg-uRN" firstAttribute="leading" secondItem="IfQ-k3-apU" secondAttribute="leading" constant="20" id="v12-Bx-jdY"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -97,14 +100,15 @@
                             <constraint firstItem="N8F-5I-ZFh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EsD-TG-k4c"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NDQ-DG-jQB" secondAttribute="trailing" id="FEQ-Ei-70Z"/>
                             <constraint firstItem="NDQ-DG-jQB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XMJ-83-ice"/>
-                            <constraint firstItem="NDQ-DG-jQB" firstAttribute="top" secondItem="N8F-5I-ZFh" secondAttribute="bottom" constant="35" id="e48-j0-O4r"/>
+                            <constraint firstItem="NDQ-DG-jQB" firstAttribute="top" secondItem="N8F-5I-ZFh" secondAttribute="bottom" constant="50" id="e48-j0-O4r"/>
                             <constraint firstItem="NDQ-DG-jQB" firstAttribute="top" secondItem="IfQ-k3-apU" secondAttribute="bottom" id="er7-jW-Rpi"/>
                             <constraint firstItem="IfQ-k3-apU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fpM-a6-x6q"/>
-                            <constraint firstItem="IfQ-k3-apU" firstAttribute="top" secondItem="N8F-5I-ZFh" secondAttribute="bottom" constant="8" symbolic="YES" id="qEK-Uc-Hqj"/>
+                            <constraint firstItem="IfQ-k3-apU" firstAttribute="top" secondItem="N8F-5I-ZFh" secondAttribute="bottom" id="qEK-Uc-Hqj"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="calendarView" destination="N8F-5I-ZFh" id="pdY-Fq-JxL"/>
+                        <outlet property="segmentedControl" destination="c0R-Hg-uRN" id="PO0-kP-lFZ"/>
                         <outlet property="tableView" destination="NDQ-DG-jQB" id="35f-SR-Yhl"/>
                     </connections>
                 </viewController>
@@ -114,9 +118,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
