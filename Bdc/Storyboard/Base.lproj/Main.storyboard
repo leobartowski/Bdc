@@ -33,9 +33,36 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="6Dr-km-DwV"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NDQ-DG-jQB">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NDQ-DG-jQB">
                                 <rect key="frame" x="0.0" y="429" width="414" height="433"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" id="cKy-CF-lh0" customClass="MainTableViewCell" customModule="Bdc" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cKy-CF-lh0" id="o96-Bu-YV9">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJO-71-8bK">
+                                                    <rect key="frame" x="20" y="5" width="374" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="aJO-71-8bK" firstAttribute="leading" secondItem="o96-Bu-YV9" secondAttribute="leading" constant="20" id="869-c0-EQY"/>
+                                                <constraint firstItem="aJO-71-8bK" firstAttribute="top" secondItem="o96-Bu-YV9" secondAttribute="top" constant="5" id="UKz-HA-cIH"/>
+                                                <constraint firstAttribute="trailing" secondItem="aJO-71-8bK" secondAttribute="trailing" constant="20" id="hpa-Ou-XHm"/>
+                                                <constraint firstAttribute="bottom" secondItem="aJO-71-8bK" secondAttribute="bottom" constant="5" id="wle-2b-eN9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="aJO-71-8bK" id="LFt-jW-iF3"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="tjg-cM-OYt"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fO9-Xv-dF9"/>

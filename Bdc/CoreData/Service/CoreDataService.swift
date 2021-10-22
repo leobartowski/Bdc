@@ -20,10 +20,14 @@ class CoreDataService {
     
     ///Save Attendence in Core Data
     func saveAttendance(_ date: Date, _ persons: [Person], _ type: DayType) {
-        let attendence = Attendance(context: context)
-        attendence.dateString = DateFormatter.basicFormatter.string(from: date)
-        attendence.type = type.rawValue
-        attendence.persons = NSSet(array: persons)
+        var attendence = getAttendace(date, type: type)
+        if attendence == nil {
+            // Se è vuoto ne creo uno nuovo
+            attendence = Attendance(context: context)
+            attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
+            attendence?.type = type.rawValue
+        }
+        attendence?.persons = NSSet(array: persons)
         
         do {
             try context.save()
@@ -32,18 +36,25 @@ class CoreDataService {
         }
     }
     
-    ///Get  Attendence from Core Data
-    func getAttendance(_ date: Date, type: DayType) -> [Person] {
+    func getAttendace(_ date: Date, type: DayType) -> Attendance? {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
         let dateString = DateFormatter.basicFormatter.string(from: date)
         do {
-            var attendances = try self.context.fetch(fetchRequest)
-            attendances = attendances.filter { element in
-                if element.dateString == dateString && element.type == type.rawValue {
-                    return true
-                }
-                return false
-            }
+            let attendances = try self.context.fetch(fetchRequest).filter({ $0.dateString == dateString && $0.type == type.rawValue })
+            return attendances.first
+            
+        } catch let error as NSError {
+            print("Could not list. \(error), \(error.userInfo)")
+        }
+        return nil
+    }
+    
+    ///Get  Attendence from Core Data
+    func getAttendancePerson(_ date: Date, type: DayType) -> [Person] {
+        let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
+        let dateString = DateFormatter.basicFormatter.string(from: date)
+        do {
+            let attendances = try self.context.fetch(fetchRequest).filter({ $0.dateString == dateString && $0.type == type.rawValue })
             return attendances.first?.persons?.allObjects as? [Person] ?? []
             
         } catch let error as NSError {
@@ -53,27 +64,23 @@ class CoreDataService {
         
     }
     
-    func getAttendanceAndCreatePersonListIfNedded(_ date: Date) -> [Person] {
-        let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
-        let dateString = DateFormatter.basicFormatter.string(from: date)
+    //MARK: WARNING
+    /// Use this method when you want to DELETE EVERYTHING from the Database
+    func cleanCoreDataDataBase() {
+
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Attendance")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        let fetchRequest2: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Person")
+        let deleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
+
         do {
-            var attendances = try self.context.fetch(fetchRequest)
-            attendances = attendances.filter { element in
-                if element.dateString == dateString {
-                    return true
-                } else {
-                    Utility.createStartingPerson(self.context)
-                }
-                return false
-            }
-            return attendances.first?.persons?.allObjects as? [Person] ?? []
-            
+            try self.context.execute(deleteRequest)
+            try self.context.execute(deleteRequest2)
         } catch let error as NSError {
-            print("Could not list. \(error), \(error.userInfo)")
+            print("Error:  \(error), \(error.userInfo)")
         }
-        return []
+
     }
-
-
-    
 }
+

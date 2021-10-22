@@ -10,6 +10,8 @@ import CoreData
 
 class Utility {
     
+    public static let persons = createStartingPerson(CoreDataContainer.context)
+    
     public static func createStartingPerson(_ context: NSManagedObjectContext) -> [Person] {
     
         let person1 = Person(context: context)

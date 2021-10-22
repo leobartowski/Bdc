@@ -11,25 +11,25 @@ import FSCalendar
 
 class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource {
     
-
+    
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
     
-    let sectionTitles = ["Mattina", "Pomeriggio"]
+    
+    let sectionTitles = ["Presenti", "Assenti"]
+    let dayType = DayType.morning
+    var personsPresent: [Person] = []
+    var personsNotPresent: [Person] = []
     
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let persons = CoreDataService.shared.getAttendance(Date.now, type: .evening)
-        for person in persons {
-            print(person.name)
-        }
+        checkPresence()
     }
     
     // MARK: Calendar
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
-        let dateString = DateFormatter.basicFormatter.string(from: date)
+        self.checkPresence()
     }
     
     // MARK: TableView
@@ -38,11 +38,29 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return section == 0 ? self.personsPresent.count : self.personsNotPresent.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID") as? MainTableViewCell
+        cell?.nameLabel.text = indexPath.section == 0 ? self.personsPresent[indexPath.row].name : self.personsNotPresent[indexPath.row].name
+        return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 { // Person Present
+            let personToRemove = self.personsPresent[indexPath.row]
+            self.personsPresent.remove(at: indexPath.row)
+            self.personsNotPresent.append(personToRemove)
+            // We pass always personsPresent because personToRemove override the person that are present
+            CoreDataService.shared.saveAttendance(calendarView.selectedDate ?? Date.now, self.personsPresent, self.dayType)
+        } else { // Person not present
+            let personToAdd = self.personsNotPresent[indexPath.row]
+            self.personsNotPresent.remove(at: indexPath.row)
+            self.personsPresent.append(personToAdd)
+            CoreDataService.shared.saveAttendance(calendarView.selectedDate ?? Date.now, self.personsPresent, self.dayType)
+        }
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -54,10 +72,18 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
+
+    /// Update Presence
+    func checkPresence() {
+        self.personsNotPresent = []
+        for person in Utility.persons {
+            self.personsPresent = CoreDataService.shared.getAttendancePerson(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
+            if !self.personsPresent.contains(where: { $0.name == person.name }) && !self.personsNotPresent.contains(where: { $0.name == person.name })  {
+                self.personsNotPresent.append(person)
+            }
+        }
+        self.tableView.reloadData() // TODO: FIX THIS
+    }
     
-    // MARK: Fake DAta CoreDAta
-
-
-
 }
 
