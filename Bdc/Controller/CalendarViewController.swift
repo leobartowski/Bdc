@@ -8,7 +8,6 @@
 import UIKit
 import FSCalendar
 
-
 class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource {
     
     
@@ -26,13 +25,17 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updatePresences()
-        self.calendarView.scope = .month
+        self.addCalendarGestureRecognizer()
     }
     
     func addCalendarGestureRecognizer() {
-        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
-        swipeGesture.direction = [.down, .up]
-        self.calendarView.addGestureRecognizer(swipeGesture)
+        let swipeGestureUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(gesture:)))
+        swipeGestureUp.direction = .up
+        self.calendarView.addGestureRecognizer(swipeGestureUp)
+        
+        let swipeGestureDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(gesture:)))
+        swipeGestureDown.direction = .down
+        self.calendarView.addGestureRecognizer(swipeGestureDown)
     }
 
     
@@ -100,11 +103,6 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         return 50
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return section == 0 ? 20 : 0
-    }
-    
-    
     /// Update Presence
     func updatePresences() {
         self.personsNotPresent = []
@@ -126,30 +124,34 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         self.updatePresences()
     }
     
-   @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
-        print("sono entrato calendar swipe")
-        switch sender.direction {
-        case .up:
-            self.handleMonthlyToWeeklyCalendar()
-        case .down:
-            self.handleWeeklyToMonthlyCalendar()
-        case .right:
-            print("sono entrato right")
-        case .left:
-            print("sono entrato left")
-        default:
-            break
+    @objc func handleSwipe(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case .up:
+                self.handleMonthlyToWeeklyCalendar()
+            case .down:
+                self.handleWeeklyToMonthlyCalendar()
+            default:
+                break
+            }
         }
     }
     
+    //TODO: Understand why with the animation does not work
     func handleWeeklyToMonthlyCalendar() {
-        self.calendarView.scope = .month
-        self.calendarViewHeightConstraint.constant = 350
+        if self.calendarView.scope == .week {
+//            self.calendarView.setScope(.month, animated: true)
+            self.calendarView.scope = .month
+            self.calendarViewHeightConstraint.constant = 350
+        }
     }
     
     func handleMonthlyToWeeklyCalendar() {
-        self.calendarView.scope = .week
-        self.calendarViewHeightConstraint.constant = 127
+        if self.calendarView.scope == .month {
+//            self.calendarView.setScope(.week, animated: true)
+            self.calendarView.scope = .week
+            self.calendarViewHeightConstraint.constant = 127
+        }
     }
     
 }
