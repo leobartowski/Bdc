@@ -9,28 +9,51 @@ import UIKit
 import FSCalendar
 
 
-class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource {
+class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     
     let sectionTitles = ["Presenti", "Assenti"]
-    var dayType = DayType.evening
+    var dayType = DayType.morning
     var personsPresent: [Person] = []
     var personsNotPresent: [Person] = []
     
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        updatePresences()
+        self.updatePresences()
+        self.calendarView.scope = .month
     }
+    
+    func addCalendarGestureRecognizer() {
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+        swipeGesture.direction = [.down, .up]
+        self.calendarView.addGestureRecognizer(swipeGesture)
+    }
+
     
     // MARK: Calendar
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.updatePresences()
     }
+    
+    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+        return (date.dayNumberOfWeek() == 1 || date.dayNumberOfWeek() == 7) ? false : true
+    }
+    
+    
+    
+    //    func minimumDate(for calendar: FSCalendar) -> Date {
+    //        return DateFormatter.basicFormatter.date(from: "18/10/2021") ?? Date.yesterday
+    //    }
+    //
+    //    func maximumDate(for calendar: FSCalendar) -> Date {
+    //        return Date.tomorrow
+    //    }
     
     // MARK: TableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -39,6 +62,10 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? self.personsPresent.count : self.personsNotPresent.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,7 +89,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         }
         tableView.reloadData()
     }
-
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = SectionHeaderView()
         sectionHeaderView.setUp(title: self.sectionTitles[section])
@@ -70,8 +97,13 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 45
+        return 50
     }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return section == 0 ? 20 : 0
+    }
+    
     
     /// Update Presence
     func updatePresences() {
@@ -87,11 +119,38 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     
     @IBAction func segmentedControlValueChanged(_ sender: Any) {
         switch segmentedControl.selectedSegmentIndex {
-         case 0: self.dayType = .morning
-         case 1: self.dayType = .evening
-         default:break
-         }
+        case 0: self.dayType = .morning
+        case 1: self.dayType = .evening
+        default:break
+        }
         self.updatePresences()
     }
+    
+   @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
+        print("sono entrato calendar swipe")
+        switch sender.direction {
+        case .up:
+            self.handleMonthlyToWeeklyCalendar()
+        case .down:
+            self.handleWeeklyToMonthlyCalendar()
+        case .right:
+            print("sono entrato right")
+        case .left:
+            print("sono entrato left")
+        default:
+            break
+        }
+    }
+    
+    func handleWeeklyToMonthlyCalendar() {
+        self.calendarView.scope = .month
+        self.calendarViewHeightConstraint.constant = 350
+    }
+    
+    func handleMonthlyToWeeklyCalendar() {
+        self.calendarView.scope = .week
+        self.calendarViewHeightConstraint.constant = 127
+    }
+    
 }
 

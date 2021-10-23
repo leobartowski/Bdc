@@ -18,7 +18,7 @@
 		DD64968727221A40009E455F /* Attendance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */; };
 		DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543EE27219D4A004D38F0 /* AppDelegate.swift */; };
 		DD8543F127219D4A004D38F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543F027219D4A004D38F0 /* SceneDelegate.swift */; };
-		DD8543F327219D4A004D38F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543F227219D4A004D38F0 /* ViewController.swift */; };
+		DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543F227219D4A004D38F0 /* CalendarViewController.swift */; };
 		DD8543F627219D4A004D38F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD8543F427219D4A004D38F0 /* Main.storyboard */; };
 		DD8543FB27219D4C004D38F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD8543FA27219D4C004D38F0 /* Assets.xcassets */; };
 		DD8543FE27219D4C004D38F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD8543FC27219D4C004D38F0 /* LaunchScreen.storyboard */; };
@@ -27,6 +27,8 @@
 		DD85441527219D4D004D38F0 /* BdcUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD85441427219D4D004D38F0 /* BdcUITestsLaunchTests.swift */; };
 		DDB292602721A8D400D96E67 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB2925F2721A8D400D96E67 /* SectionHeaderView.xib */; };
 		DDB292622721A90500D96E67 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB292612721A90500D96E67 /* SectionHeaderView.swift */; };
+		DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A32724065A0028E49B /* RankingViewController.swift */; };
+		DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A527240CAE0028E49B /* Date - Ext.swift */; };
 		DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DDD5051B27220FB000508F60 /* Bdc.xcdatamodeld */; };
 		DDDCAE81272302EA00B66C9B /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDCAE80272302EA00B66C9B /* MainTableViewCell.swift */; };
 		DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */; };
@@ -68,7 +70,7 @@
 		DD8543EB27219D4A004D38F0 /* Bdc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bdc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8543EE27219D4A004D38F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD8543F027219D4A004D38F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DD8543F227219D4A004D38F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DD8543F227219D4A004D38F0 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		DD8543F527219D4A004D38F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DD8543FA27219D4C004D38F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD8543FD27219D4C004D38F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -80,6 +82,8 @@
 		DD85441427219D4D004D38F0 /* BdcUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BdcUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DDB2925F2721A8D400D96E67 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		DDB292612721A90500D96E67 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		DDC337A32724065A0028E49B /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		DDC337A527240CAE0028E49B /* Date - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date - Ext.swift"; sourceTree = "<group>"; };
 		DDD5051C27220FB000508F60 /* Bdc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bdc.xcdatamodel; sourceTree = "<group>"; };
 		DDDCAE80272302EA00B66C9B /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter - Ext.swift"; sourceTree = "<group>"; };
@@ -131,7 +135,8 @@
 		DD18C7F3272207050086BB6C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				DD8543F227219D4A004D38F0 /* ViewController.swift */,
+				DD8543F227219D4A004D38F0 /* CalendarViewController.swift */,
+				DDC337A32724065A0028E49B /* RankingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */,
+				DDC337A527240CAE0028E49B /* Date - Ext.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -528,7 +534,9 @@
 				DD18C7FB27220B890086BB6C /* CoreDateContainer.swift in Sources */,
 				DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */,
 				DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */,
-				DD8543F327219D4A004D38F0 /* ViewController.swift in Sources */,
+				DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */,
+				DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */,
+				DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */,
 				DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */,
 				DDE3B1752722D3C200BFEFF0 /* Utility.swift in Sources */,
 				DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */,
