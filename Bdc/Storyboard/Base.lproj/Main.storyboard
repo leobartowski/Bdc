@@ -120,22 +120,6 @@
             </objects>
             <point key="canvasLocation" x="1857" y="2"/>
         </scene>
-        <!--Ranking-->
-        <scene sceneID="KWb-ll-JcC">
-            <objects>
-                <viewController id="WtF-AW-qYu" customClass="RankingViewController" customModule="Bdc" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Gh4-Vz-jh8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="3JN-mn-fVz"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Ranking" id="CtO-Mu-Srr"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="n86-bx-TCO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1857" y="679"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="oXS-hK-8vX">
             <objects>
@@ -147,12 +131,65 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="DzH-NR-MkT"/>
-                        <segue destination="WtF-AW-qYu" kind="relationship" relationship="viewControllers" id="pWY-7k-w7n"/>
+                        <segue destination="gzR-Cb-bnF" kind="relationship" relationship="viewControllers" id="Yro-2U-UeG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v9h-GT-iS6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="967" y="375"/>
+        </scene>
+        <!--Ranking-->
+        <scene sceneID="xah-xP-ZmZ">
+            <objects>
+                <viewController id="gzR-Cb-bnF" customClass="RankingViewController" customModule="Bdc" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HXZ-KA-YrZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYo-CZ-vwa" customClass="SpreadsheetView" customModule="SpreadsheetView">
+                                <rect key="frame" x="0.0" y="394" width="414" height="419"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZL-9L-OaS" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="44" width="414" height="350"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="lZO-hC-B6u"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="gzR-Cb-bnF" id="mYz-5P-VH0"/>
+                                    <outlet property="delegate" destination="gzR-Cb-bnF" id="PZf-wE-ane"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="C6Y-kX-hKN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="bottom" secondItem="C6Y-kX-hKN" secondAttribute="bottom" id="5B5-k1-y0E"/>
+                            <constraint firstItem="xZL-9L-OaS" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" id="8GI-NO-n1C"/>
+                            <constraint firstItem="xZL-9L-OaS" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" id="CjB-5b-YJj"/>
+                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="top" secondItem="xZL-9L-OaS" secondAttribute="bottom" id="Jd2-9V-lFs"/>
+                            <constraint firstItem="xZL-9L-OaS" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="LyG-y3-Ajy"/>
+                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="SBz-nW-hav"/>
+                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="top" secondItem="xZL-9L-OaS" secondAttribute="bottom" id="aMH-kH-E1m"/>
+                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" id="i1t-Wt-fIO"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Ranking" id="Shf-1z-or0"/>
+                    <connections>
+                        <outlet property="calendarView" destination="xZL-9L-OaS" id="xne-k8-w4e"/>
+                        <outlet property="calendarViewHeightConstraint" destination="lZO-hC-B6u" id="gGn-W3-Yby"/>
+                        <outlet property="spreadsheetView" destination="bYo-CZ-vwa" id="4o8-lJ-LXt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SHI-8h-Xui" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1946.376811594203" y="812.94642857142856"/>
         </scene>
     </scenes>
     <resources>

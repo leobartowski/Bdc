@@ -12,6 +12,10 @@
 		CFDB48D8A7E962B77C7B952B /* Pods_Bdc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3652EAF5B75E35B222818918 /* Pods_Bdc.framework */; };
 		DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD18C7F827220B0A0086BB6C /* CoreDataService.swift */; };
 		DD18C7FB27220B890086BB6C /* CoreDateContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD18C7FA27220B890086BB6C /* CoreDateContainer.swift */; };
+		DD41743027246BA500BE5BFD /* RankingViewController + FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41742F27246BA500BE5BFD /* RankingViewController + FSCalendar.swift */; };
+		DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */; };
+		DD5542E2272456B2000D9F48 /* CalendarViewController + TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542E1272456B2000D9F48 /* CalendarViewController + TableView.swift */; };
+		DD5542E52724589E000D9F48 /* RankingViewController + SpredSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542E42724589E000D9F48 /* RankingViewController + SpredSheet.swift */; };
 		DD64968427221A40009E455F /* Attendance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968027221A40009E455F /* Attendance+CoreDataProperties.swift */; };
 		DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968127221A40009E455F /* Person+CoreDataProperties.swift */; };
 		DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968227221A40009E455F /* Person+CoreDataClass.swift */; };
@@ -63,6 +67,10 @@
 		9BFA4AC8C666FA34A5B36127 /* Pods-BdcTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BdcTests.release.xcconfig"; path = "Target Support Files/Pods-BdcTests/Pods-BdcTests.release.xcconfig"; sourceTree = "<group>"; };
 		DD18C7F827220B0A0086BB6C /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		DD18C7FA27220B890086BB6C /* CoreDateContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateContainer.swift; sourceTree = "<group>"; };
+		DD41742F27246BA500BE5BFD /* RankingViewController + FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + FSCalendar.swift"; sourceTree = "<group>"; };
+		DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + FSCalendar.swift"; sourceTree = "<group>"; };
+		DD5542E1272456B2000D9F48 /* CalendarViewController + TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + TableView.swift"; sourceTree = "<group>"; };
+		DD5542E42724589E000D9F48 /* RankingViewController + SpredSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + SpredSheet.swift"; sourceTree = "<group>"; };
 		DD64968027221A40009E455F /* Attendance+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attendance+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DD64968127221A40009E455F /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DD64968227221A40009E455F /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -135,8 +143,8 @@
 		DD18C7F3272207050086BB6C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				DD8543F227219D4A004D38F0 /* CalendarViewController.swift */,
-				DDC337A32724065A0028E49B /* RankingViewController.swift */,
+				DD5542E327245875000D9F48 /* RankingViewController */,
+				DD5542DE2724563C000D9F48 /* CalendarViewController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -182,6 +190,26 @@
 				DDD5051127220E0300508F60 /* Class */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		DD5542DE2724563C000D9F48 /* CalendarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DD8543F227219D4A004D38F0 /* CalendarViewController.swift */,
+				DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */,
+				DD5542E1272456B2000D9F48 /* CalendarViewController + TableView.swift */,
+			);
+			path = CalendarViewController;
+			sourceTree = "<group>";
+		};
+		DD5542E327245875000D9F48 /* RankingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DDC337A32724065A0028E49B /* RankingViewController.swift */,
+				DD5542E42724589E000D9F48 /* RankingViewController + SpredSheet.swift */,
+				DD41742F27246BA500BE5BFD /* RankingViewController + FSCalendar.swift */,
+			);
+			path = RankingViewController;
 			sourceTree = "<group>";
 		};
 		DD8543E227219D4A004D38F0 = {
@@ -536,12 +564,16 @@
 				DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */,
 				DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */,
 				DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */,
+				DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */,
+				DD5542E52724589E000D9F48 /* RankingViewController + SpredSheet.swift in Sources */,
 				DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */,
 				DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */,
 				DDE3B1752722D3C200BFEFF0 /* Utility.swift in Sources */,
 				DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */,
 				DDB292622721A90500D96E67 /* SectionHeaderView.swift in Sources */,
+				DD41743027246BA500BE5BFD /* RankingViewController + FSCalendar.swift in Sources */,
 				DDDCAE81272302EA00B66C9B /* MainTableViewCell.swift in Sources */,
+				DD5542E2272456B2000D9F48 /* CalendarViewController + TableView.swift in Sources */,
 				DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */,
 				DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */,
 				DD8543F127219D4A004D38F0 /* SceneDelegate.swift in Sources */,
