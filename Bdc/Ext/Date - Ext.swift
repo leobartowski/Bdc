@@ -29,7 +29,24 @@ extension Date {
     }
     /// Returns an integer from 1 - 7, with 1 being Sunday and 7 being Saturday
     func dayNumberOfWeek() -> Int? {
-            return Calendar.current.dateComponents([.weekday], from: self).weekday
+        return Calendar.current.dateComponents([.weekday], from: self).weekday
+    }
+    
+    func getAllDateOfTheWeek() -> [Date] {
+        
+        var calendar = Calendar.autoupdatingCurrent
+        //TODO: Check!
+        calendar.firstWeekday = 2 // / Week start on Monday (or 1 for Sunday)
+        let today = calendar.startOfDay(for: self)
+        var week = [Date]()
+        if let weekInterval = calendar.dateInterval(of: .weekOfYear, for: today) {
+            for i in 0...6 {
+                if let day = calendar.date(byAdding: .day, value: i, to: weekInterval.start) {
+                    week += [day]
+                }
+            }
         }
+        return week
+    }
     
 }
