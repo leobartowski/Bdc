@@ -16,10 +16,14 @@ class RankingViewController: UIViewController {
     @IBOutlet weak var spreadsheetView: SpreadsheetView!
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     
+    var weeklyAttendance = Utility.personsWeeklyAttendance
+    let header = ["Nome", "Presenze", "Ammonizioni"]
+    var daysOfThisWeek = [Date]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewSetUp()
-        self.addExampleData()
+        self.populateWeeklyAttendance()
     }
     
     // TODO: CLEAN THIS MESS!
@@ -38,7 +42,6 @@ class RankingViewController: UIViewController {
         }
     }
     var sortedColumn = (column: 0, sorting: Sorting.ascending)
-    var header = [String]()
     var data = [[String]]()
     
     //--------------------------------------------
@@ -62,14 +65,30 @@ class RankingViewController: UIViewController {
         let data = try! String(contentsOf: Bundle.main.url(forResource: "data", withExtension: "tsv")!, encoding: .utf8)
             .components(separatedBy: "\r\n")
             .map { $0.components(separatedBy: "\t") }
-        header = ["Nome", "Presenze", "Ammonizioni"]
+
         self.data = Array(data.dropFirst())
     }
-    
-    func createData() {
-//        let persons = Utility.persons
-//        for ciro in self.data[0]
-        
-    }
 
+    
+    func populateWeeklyAttendance() {
+        for item in self.weeklyAttendance {
+            item.attendanceNumber = 0 // We need to clear all attendences
+        }
+        for day in self.daysOfThisWeek {
+            let morningPersons = CoreDataService.shared.getAttendancePerson(day, type: .morning)
+            let eveningPersons = CoreDataService.shared.getAttendancePerson(day, type: .evening)
+            for person in morningPersons {
+                if let index = self.weeklyAttendance.firstIndex(where: {$0.person.name == person.name}) {
+                    self.weeklyAttendance[index].attendanceNumber += 1
+                }
+            }
+            for person in eveningPersons {
+                if let index = self.weeklyAttendance.firstIndex(where: {$0.person.name == person.name}) {
+                    self.weeklyAttendance[index].attendanceNumber += 1
+                }
+            }
+        }
+        self.spreadsheetView.reloadData()
+    }
 }
+

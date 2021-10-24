@@ -15,7 +15,7 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
     }
 
     func numberOfRows(in spreadsheetView: SpreadsheetView) -> Int {
-        return Utility.persons.count + 1
+        return self.weeklyAttendance.count + 1 // The first row is for the labels
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
@@ -38,7 +38,7 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
     }
     
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
-        if indexPath.row == 0 {
+        if indexPath.row == 0 { // Header Row
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: HeaderCell.self), for: indexPath) as! HeaderCell
             cell.label.text = self.header[indexPath.column]
 
@@ -52,7 +52,12 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
             return cell
         } else {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: TextCell.self), for: indexPath) as! TextCell
-            cell.label.text = self.data[indexPath.row - 1][indexPath.column]
+            switch indexPath.column {
+            case 0: cell.label.text = self.weeklyAttendance[indexPath.row - 1].person.name
+            case 1: cell.label.text = String(self.weeklyAttendance[indexPath.row - 1].attendanceNumber)
+            case 2: cell.label.text = "-" // Should add ammonizioni
+            default: break
+            }
             return cell
         }
     }

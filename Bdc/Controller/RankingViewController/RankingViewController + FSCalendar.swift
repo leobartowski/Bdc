@@ -28,10 +28,12 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         self.deselectAllDates()
         self.selectedAllDateOfTheWeek(calendar.currentPage)
+        self.populateWeeklyAttendance()
     }
     
     func selectedAllDateOfTheWeek(_ date: Date) {
-        for day in date.getAllDateOfTheWeek() {
+        self.daysOfThisWeek = date.getAllDateOfTheWeek()
+        for day in self.daysOfThisWeek {
             self.calendarView.select(day)
         }
     }

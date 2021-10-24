@@ -11,8 +11,9 @@ import CoreData
 class Utility {
     
     public static let persons = createStartingPerson(CoreDataContainer.context)
+    public static var personsWeeklyAttendance = createEmptyWeeklyAttendance()
     
-    public static func createStartingPerson(_ context: NSManagedObjectContext) -> [Person] {
+    private static func createStartingPerson(_ context: NSManagedObjectContext) -> [Person] {
     
         let person1 = Person(context: context)
         person1.name = "Franco"
@@ -55,5 +56,28 @@ class Utility {
         
         let persons = [person1, person2, person3, person4, person5, person6, person7, person8, person9, person10, person11, person12, person13, person14, person15, person16, person17, person18, person19]
         return persons
+    }
+    
+    private static func createEmptyWeeklyAttendance() -> [PersonWeeklyAttendance] {
+        var personsWeeklyAttendance = [PersonWeeklyAttendance]()
+        for person in Utility.persons {
+            let personAttendece = PersonWeeklyAttendance(person, 0)
+            personsWeeklyAttendance.append(personAttendece)
+        }
+        return personsWeeklyAttendance
+    }
+    
+    
+}
+
+
+public class PersonWeeklyAttendance {
+    
+    var person: Person
+    var attendanceNumber: Int
+    
+    init(_ person: Person, _ attendanceNumber: Int ) {
+        self.person = person
+        self.attendanceNumber = attendanceNumber
     }
 }
