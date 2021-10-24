@@ -14,7 +14,6 @@
 		DD18C7FB27220B890086BB6C /* CoreDateContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD18C7FA27220B890086BB6C /* CoreDateContainer.swift */; };
 		DD41743027246BA500BE5BFD /* RankingViewController + FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41742F27246BA500BE5BFD /* RankingViewController + FSCalendar.swift */; };
 		DD5520452725629F006DB40C /* SpreadSheetCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5520442725629F006DB40C /* SpreadSheetCells.swift */; };
-		DD552047272563C6006DB40C /* data.tsv in Resources */ = {isa = PBXBuildFile; fileRef = DD552046272563C6006DB40C /* data.tsv */; };
 		DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */; };
 		DD5542E2272456B2000D9F48 /* CalendarViewController + TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542E1272456B2000D9F48 /* CalendarViewController + TableView.swift */; };
 		DD5542E52724589E000D9F48 /* RankingViewController + SpredSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542E42724589E000D9F48 /* RankingViewController + SpredSheet.swift */; };
@@ -71,7 +70,6 @@
 		DD18C7FA27220B890086BB6C /* CoreDateContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateContainer.swift; sourceTree = "<group>"; };
 		DD41742F27246BA500BE5BFD /* RankingViewController + FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + FSCalendar.swift"; sourceTree = "<group>"; };
 		DD5520442725629F006DB40C /* SpreadSheetCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetCells.swift; sourceTree = "<group>"; };
-		DD552046272563C6006DB40C /* data.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.tsv; sourceTree = "<group>"; };
 		DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + FSCalendar.swift"; sourceTree = "<group>"; };
 		DD5542E1272456B2000D9F48 /* CalendarViewController + TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + TableView.swift"; sourceTree = "<group>"; };
 		DD5542E42724589E000D9F48 /* RankingViewController + SpredSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + SpredSheet.swift"; sourceTree = "<group>"; };
@@ -262,7 +260,6 @@
 				DD8543FC27219D4C004D38F0 /* LaunchScreen.storyboard */,
 				DD8543FF27219D4C004D38F0 /* Info.plist */,
 				DD8543F027219D4A004D38F0 /* SceneDelegate.swift */,
-				DD552046272563C6006DB40C /* data.tsv */,
 			);
 			path = Bdc;
 			sourceTree = "<group>";
@@ -443,7 +440,6 @@
 				DDB292602721A8D400D96E67 /* SectionHeaderView.xib in Resources */,
 				DD8543FE27219D4C004D38F0 /* LaunchScreen.storyboard in Resources */,
 				DD8543FB27219D4C004D38F0 /* Assets.xcassets in Resources */,
-				DD552047272563C6006DB40C /* data.tsv in Resources */,
 				DD8543F627219D4A004D38F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

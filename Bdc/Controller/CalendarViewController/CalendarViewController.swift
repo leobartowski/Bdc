@@ -26,8 +26,20 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.calendarView.scope = .week // Needed to show the weekly at start! (BUG IN THE SYSTEM)
+        self.checkAndChangeWeekendSelectedDate()
         self.updatePresences()
         self.addCalendarGestureRecognizer()
+    }
+    
+    func checkAndChangeWeekendSelectedDate() {
+        
+        if Date.now.dayNumberOfWeek() == 1 { // Sunday
+            self.calendarView.select(Date.tomorrow) // select Monday
+            self.calendarView.today = nil // needed to avoid the red pointer!
+        } else if Date.now.dayNumberOfWeek() == 7 { // Saturday
+            self.calendarView.select(Date.yesterday) // select Friday
+            self.calendarView.today = nil
+        }
     }
     
     // MARK: General utils

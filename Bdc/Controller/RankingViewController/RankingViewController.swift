@@ -26,26 +26,6 @@ class RankingViewController: UIViewController {
         self.populateWeeklyAttendance()
     }
     
-    // TODO: CLEAN THIS MESS!
-    //-----------------------------------------------
-    enum Sorting {
-        case ascending
-        case descending
-
-        var symbol: String {
-            switch self {
-            case .ascending:
-                return "\u{25B2}"
-            case .descending:
-                return "\u{25BC}"
-            }
-        }
-    }
-    var sortedColumn = (column: 0, sorting: Sorting.ascending)
-    var data = [[String]]()
-    
-    //--------------------------------------------
-    
     func viewSetUp() {
         // Spreadsheet
         self.spreadsheetView.dataSource = self
@@ -53,6 +33,7 @@ class RankingViewController: UIViewController {
         self.spreadsheetView.bounces = false
         self.spreadsheetView.showsVerticalScrollIndicator = false
         self.spreadsheetView.showsHorizontalScrollIndicator = false
+        self.spreadsheetView.allowsSelection = false
         self.spreadsheetView.register(HeaderCell.self, forCellWithReuseIdentifier: String(describing: HeaderCell.self))
         self.spreadsheetView.register(TextCell.self, forCellWithReuseIdentifier: String(describing: TextCell.self))
         // Calendar
@@ -60,16 +41,7 @@ class RankingViewController: UIViewController {
         self.calendarView.allowsMultipleSelection = true
         self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Date.now)
     }
-    
-    func addExampleData() {
-        let data = try! String(contentsOf: Bundle.main.url(forResource: "data", withExtension: "tsv")!, encoding: .utf8)
-            .components(separatedBy: "\r\n")
-            .map { $0.components(separatedBy: "\t") }
 
-        self.data = Array(data.dropFirst())
-    }
-
-    
     func populateWeeklyAttendance() {
         for item in self.weeklyAttendance {
             item.attendanceNumber = 0 // We need to clear all attendences

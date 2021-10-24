@@ -42,11 +42,11 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: HeaderCell.self), for: indexPath) as! HeaderCell
             cell.label.text = self.header[indexPath.column]
 
-            if case indexPath.column = self.sortedColumn.column {
-                cell.sortArrow.text = self.sortedColumn.sorting.symbol
-            } else {
-                cell.sortArrow.text = ""
-            }
+//            if case indexPath.column = self.sortedColumn.column {
+//                cell.sortArrow.text = self.sortedColumn.sorting.symbol
+//            } else {
+//                cell.sortArrow.text = ""
+//            }
             cell.setNeedsLayout()
             
             return cell

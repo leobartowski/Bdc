@@ -108,7 +108,7 @@
                             <constraint firstItem="IfQ-k3-apU" firstAttribute="top" secondItem="N8F-5I-ZFh" secondAttribute="bottom" id="qEK-Uc-Hqj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calendario" id="cgt-sd-LiU"/>
+                    <tabBarItem key="tabBarItem" title="Calendario" image="calendar" catalog="system" id="cgt-sd-LiU"/>
                     <connections>
                         <outlet property="calendarView" destination="N8F-5I-ZFh" id="pdY-Fq-JxL"/>
                         <outlet property="calendarViewHeightConstraint" destination="T7g-n3-HVU" id="AtC-eF-16T"/>
@@ -180,7 +180,7 @@
                             <constraint firstItem="bYo-CZ-vwa" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" id="i1t-Wt-fIO"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Ranking" id="Shf-1z-or0"/>
+                    <tabBarItem key="tabBarItem" title="Ranking" image="person.3.fill" catalog="system" id="Shf-1z-or0"/>
                     <connections>
                         <outlet property="calendarView" destination="xZL-9L-OaS" id="xne-k8-w4e"/>
                         <outlet property="calendarViewHeightConstraint" destination="lZO-hC-B6u" id="gGn-W3-Yby"/>
@@ -193,6 +193,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
