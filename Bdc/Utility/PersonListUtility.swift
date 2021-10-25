@@ -72,7 +72,6 @@ class PersonListUtility {
         angelo.name = "Angelo"
         
         let persons = [franco, fiore, mary, raff, genny, gigi, giovannir, giannetta, enzo, cataldo, lisa, danieled, savio, nero, mattia, conte, raffaella, sossio, pacokh, moda, alessia, michelep, franzese, angelo]
-        print(persons.count)
         return persons
     }
     
