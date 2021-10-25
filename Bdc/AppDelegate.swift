@@ -14,7 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        CoreDataService.shared.cleanCoreDataDataBase()
+        // MARK: Uncomment to erase all CoreData Data!!!!!!
+        CoreDataService.shared.cleanCoreDataDataBase()
         self.disableDarkMode()
         self.fixTableViewBugGloabally()
         return true

@@ -34,33 +34,43 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="6Dr-km-DwV"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDQ-DG-jQB">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDQ-DG-jQB">
                                 <rect key="frame" x="0.0" y="444" width="414" height="369"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" id="cKy-CF-lh0" customClass="MainTableViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="40"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cKy-CF-lh0" id="o96-Bu-YV9">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJO-71-8bK">
-                                                    <rect key="frame" x="20" y="5" width="374" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="75" y="5" width="319" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wxm-Pu-8w5">
+                                                    <rect key="frame" x="20" y="10" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="5YC-UC-L1R"/>
+                                                        <constraint firstAttribute="width" constant="40" id="8mT-mh-aOc"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="aJO-71-8bK" firstAttribute="leading" secondItem="o96-Bu-YV9" secondAttribute="leading" constant="20" id="869-c0-EQY"/>
                                                 <constraint firstItem="aJO-71-8bK" firstAttribute="top" secondItem="o96-Bu-YV9" secondAttribute="top" constant="5" id="UKz-HA-cIH"/>
+                                                <constraint firstItem="Wxm-Pu-8w5" firstAttribute="leading" secondItem="o96-Bu-YV9" secondAttribute="leading" constant="20" id="Wgo-ej-Er6"/>
+                                                <constraint firstItem="Wxm-Pu-8w5" firstAttribute="centerY" secondItem="o96-Bu-YV9" secondAttribute="centerY" id="eqW-qK-G4U"/>
                                                 <constraint firstAttribute="trailing" secondItem="aJO-71-8bK" secondAttribute="trailing" constant="20" id="hpa-Ou-XHm"/>
+                                                <constraint firstItem="aJO-71-8bK" firstAttribute="leading" secondItem="Wxm-Pu-8w5" secondAttribute="trailing" constant="15" id="sMh-GA-xm7"/>
                                                 <constraint firstAttribute="bottom" secondItem="aJO-71-8bK" secondAttribute="bottom" constant="5" id="wle-2b-eN9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="mainImageView" destination="Wxm-Pu-8w5" id="dZo-9Z-3ZC"/>
                                             <outlet property="nameLabel" destination="aJO-71-8bK" id="LFt-jW-iF3"/>
                                         </connections>
                                     </tableViewCell>
@@ -118,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="2"/>
+            <point key="canvasLocation" x="1856.521739130435" y="1.3392857142857142"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="oXS-hK-8vX">

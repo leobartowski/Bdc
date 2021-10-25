@@ -48,7 +48,7 @@ class CalendarViewController: UIViewController {
     func updatePresences() {
         self.personsNotPresent = []
         self.personsPresent = CoreDataService.shared.getAttendancePerson(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
-        for person in Utility.persons {
+        for person in PersonListUtility.persons {
             if !self.personsPresent.contains(where: { $0.name == person.name }) && !self.personsNotPresent.contains(where: { $0.name == person.name })  {
                 self.personsNotPresent.append(person)
             }

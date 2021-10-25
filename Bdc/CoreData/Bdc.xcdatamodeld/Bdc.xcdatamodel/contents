@@ -6,11 +6,12 @@
         <relationship name="persons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="attendance" inverseEntity="Person"/>
     </entity>
     <entity name="Person" representedClassName="Person" syncable="YES">
+        <attribute name="iconString" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="attendance" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attendance" inverseName="persons" inverseEntity="Attendance"/>
     </entity>
     <elements>
         <element name="Attendance" positionX="-54" positionY="0" width="128" height="74"/>
-        <element name="Person" positionX="-413.9989013671875" positionY="47.3211669921875" width="128" height="73"/>
+        <element name="Person" positionX="-413.9989013671875" positionY="47.3211669921875" width="128" height="88"/>
     </elements>
 </model>
