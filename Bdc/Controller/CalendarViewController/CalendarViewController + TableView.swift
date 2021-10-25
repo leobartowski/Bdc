@@ -19,13 +19,17 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         return section == 0 ? self.personsPresent.count : self.personsNotPresent.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID") as? MainTableViewCell
-        cell?.nameLabel.text = indexPath.section == 0 ? self.personsPresent[indexPath.row].name : self.personsNotPresent[indexPath.row].name
+        if indexPath.section == 0 {
+            cell?.nameLabel.text = self.personsPresent[indexPath.row].name
+            let imageString = CommonUtility.getProfileImageString(self.personsPresent[indexPath.row])
+            cell?.mainImageView.image = UIImage(named: imageString)
+        } else {
+            cell?.nameLabel.text = self.personsNotPresent[indexPath.row].name
+            let imageString = CommonUtility.getProfileImageString(self.personsNotPresent[indexPath.row])
+            cell?.mainImageView.image = UIImage(named: imageString)
+        }
         return cell ?? UITableViewCell()
     }
     

@@ -17,6 +17,7 @@ extension Person {
     }
 
     @NSManaged public var name: String?
+    @NSManaged public var iconString: String?
     @NSManaged public var attendance: NSSet?
 
 }

@@ -16,7 +16,7 @@ class RankingViewController: UIViewController {
     @IBOutlet weak var spreadsheetView: SpreadsheetView!
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     
-    var weeklyAttendance = Utility.personsWeeklyAttendance
+    var weeklyAttendance = PersonListUtility.personsWeeklyAttendance
     let header = ["Nome", "Presenze", "Ammonizioni"]
     var daysOfThisWeek = [Date]()
     
