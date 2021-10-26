@@ -20,10 +20,18 @@ class RankingViewController: UIViewController {
     let header = ["Nome", "Presenze", "Ammonizioni"]
     var daysOfThisWeek = [Date]()
     
+    //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewSetUp()
         self.populateWeeklyAttendance()
+    }
+    
+    // Needed to update the Maximum Date when the app remains in RAM
+    override func viewWillAppear(_ animated: Bool) {
+        if self.calendarView.maximumDate < Date.now {
+            self.calendarView.reloadData()
+        }
     }
     
     func viewSetUp() {
@@ -31,6 +39,7 @@ class RankingViewController: UIViewController {
         self.spreadsheetView.dataSource = self
         self.spreadsheetView.delegate = self
         self.spreadsheetView.bounces = false
+        self.calendarView.today = nil // Removed today but should let the user understand that this is the selected week!
         self.spreadsheetView.showsVerticalScrollIndicator = false
         self.spreadsheetView.showsHorizontalScrollIndicator = false
         self.spreadsheetView.allowsSelection = false
