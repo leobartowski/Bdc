@@ -28,10 +28,11 @@ extension Date {
         return Calendar.current.date(byAdding: .month, value: +1, to: self) ?? Date()
     }
     
-    func getSundayOfThisWeek() -> Date {
+    /// Get Specific day of the week of the given day (1: Sunday, 2: Monday, ..., 7: Saturday)
+    func getSpecificDayOfThisWeek(_ dayInt: Int) -> Date {
         let calendar = Calendar.current
         var components = calendar.dateComponents([.weekOfYear, .yearForWeekOfYear], from: self)
-        components.weekday = 1 // Sunday
+        components.weekday = dayInt
         let sundayInWeek = calendar.date(from: components)
         return sundayInWeek ?? Date()
     }

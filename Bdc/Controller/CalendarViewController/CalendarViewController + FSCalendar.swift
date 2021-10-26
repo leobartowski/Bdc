@@ -28,6 +28,11 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource {
         self.view.layoutIfNeeded()
     }
     
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        self.calendarView.select(calendar.currentPage.getSpecificDayOfThisWeek(2))
+        self.updatePresences()
+    }
+    
     //    func minimumDate(for calendar: FSCalendar) -> Date {
     //        return DateFormatter.basicFormatter.date(from: "18/10/2021") ?? Date.yesterday
     //    }
