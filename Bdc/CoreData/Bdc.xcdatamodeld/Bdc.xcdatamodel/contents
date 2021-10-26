@@ -4,6 +4,7 @@
         <attribute name="dateString" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="persons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="attendance" inverseEntity="Person"/>
+        <relationship name="warningPersons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person"/>
     </entity>
     <entity name="Person" representedClassName="Person" syncable="YES">
         <attribute name="iconString" optional="YES" attributeType="String"/>
@@ -11,7 +12,7 @@
         <relationship name="attendance" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attendance" inverseName="persons" inverseEntity="Attendance"/>
     </entity>
     <elements>
-        <element name="Attendance" positionX="-54" positionY="0" width="128" height="74"/>
+        <element name="Attendance" positionX="-54" positionY="0" width="128" height="103"/>
         <element name="Person" positionX="-413.9989013671875" positionY="47.3211669921875" width="128" height="88"/>
     </elements>
 </model>

@@ -10,6 +10,8 @@
 		54B938B869BE45021DEB0B10 /* Pods_BdcTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860C8EC55C5FE510EA8FC2AA /* Pods_BdcTests.framework */; };
 		CADC2548265E9B1D06ECF247 /* Pods_Bdc_BdcUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9119FA55433DC0831BDC2B0 /* Pods_Bdc_BdcUITests.framework */; };
 		CFDB48D8A7E962B77C7B952B /* Pods_Bdc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3652EAF5B75E35B222818918 /* Pods_Bdc.framework */; };
+		DD0CAB5027280FB200EA42B1 /* Attendance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB4F27280FB200EA42B1 /* Attendance+CoreDataProperties.swift */; };
+		DD0CAB532728108600EA42B1 /* DayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB522728108600EA42B1 /* DayType.swift */; };
 		DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD18C7F827220B0A0086BB6C /* CoreDataService.swift */; };
 		DD18C7FB27220B890086BB6C /* CoreDateContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD18C7FA27220B890086BB6C /* CoreDateContainer.swift */; };
 		DD1EAF3A2726DDD100EF1455 /* CommonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EAF392726DDD100EF1455 /* CommonUtility.swift */; };
@@ -18,7 +20,6 @@
 		DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */; };
 		DD5542E2272456B2000D9F48 /* CalendarViewController + TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542E1272456B2000D9F48 /* CalendarViewController + TableView.swift */; };
 		DD5542E52724589E000D9F48 /* RankingViewController + SpredSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542E42724589E000D9F48 /* RankingViewController + SpredSheet.swift */; };
-		DD64968427221A40009E455F /* Attendance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968027221A40009E455F /* Attendance+CoreDataProperties.swift */; };
 		DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968127221A40009E455F /* Person+CoreDataProperties.swift */; };
 		DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968227221A40009E455F /* Person+CoreDataClass.swift */; };
 		DD64968727221A40009E455F /* Attendance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */; };
@@ -67,6 +68,8 @@
 		7B1B729BA1A3ABB32348512A /* Pods-Bdc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bdc.debug.xcconfig"; path = "Target Support Files/Pods-Bdc/Pods-Bdc.debug.xcconfig"; sourceTree = "<group>"; };
 		860C8EC55C5FE510EA8FC2AA /* Pods_BdcTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BdcTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BFA4AC8C666FA34A5B36127 /* Pods-BdcTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BdcTests.release.xcconfig"; path = "Target Support Files/Pods-BdcTests/Pods-BdcTests.release.xcconfig"; sourceTree = "<group>"; };
+		DD0CAB4F27280FB200EA42B1 /* Attendance+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attendance+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DD0CAB522728108600EA42B1 /* DayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayType.swift; sourceTree = "<group>"; };
 		DD18C7F827220B0A0086BB6C /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		DD18C7FA27220B890086BB6C /* CoreDateContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateContainer.swift; sourceTree = "<group>"; };
 		DD1EAF392726DDD100EF1455 /* CommonUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtility.swift; sourceTree = "<group>"; };
@@ -75,7 +78,6 @@
 		DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + FSCalendar.swift"; sourceTree = "<group>"; };
 		DD5542E1272456B2000D9F48 /* CalendarViewController + TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + TableView.swift"; sourceTree = "<group>"; };
 		DD5542E42724589E000D9F48 /* RankingViewController + SpredSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + SpredSheet.swift"; sourceTree = "<group>"; };
-		DD64968027221A40009E455F /* Attendance+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attendance+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DD64968127221A40009E455F /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DD64968227221A40009E455F /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attendance+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -142,6 +144,14 @@
 				9BFA4AC8C666FA34A5B36127 /* Pods-BdcTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DD0CAB512728107500EA42B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DD0CAB522728108600EA42B1 /* DayType.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		DD18C7F3272207050086BB6C /* Controller */ = {
@@ -251,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				DD8543EE27219D4A004D38F0 /* AppDelegate.swift */,
+				DD0CAB512728107500EA42B1 /* Model */,
 				DD55204327256283006DB40C /* Cells */,
 				DDE3B1732722D3B000BFEFF0 /* Utility */,
 				DDE3B1702722CD3400BFEFF0 /* Ext */,
@@ -286,8 +297,8 @@
 		DDD5051127220E0300508F60 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				DD0CAB4F27280FB200EA42B1 /* Attendance+CoreDataProperties.swift */,
 				DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */,
-				DD64968027221A40009E455F /* Attendance+CoreDataProperties.swift */,
 				DD64968227221A40009E455F /* Person+CoreDataClass.swift */,
 				DD64968127221A40009E455F /* Person+CoreDataProperties.swift */,
 			);
@@ -572,7 +583,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD64968727221A40009E455F /* Attendance+CoreDataClass.swift in Sources */,
-				DD64968427221A40009E455F /* Attendance+CoreDataProperties.swift in Sources */,
 				DD18C7FB27220B890086BB6C /* CoreDateContainer.swift in Sources */,
 				DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */,
 				DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */,
@@ -580,7 +590,9 @@
 				DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */,
 				DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */,
 				DD5542E52724589E000D9F48 /* RankingViewController + SpredSheet.swift in Sources */,
+				DD0CAB5027280FB200EA42B1 /* Attendance+CoreDataProperties.swift in Sources */,
 				DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */,
+				DD0CAB532728108600EA42B1 /* DayType.swift in Sources */,
 				DD5520452725629F006DB40C /* SpreadSheetCells.swift in Sources */,
 				DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */,
 				DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */,

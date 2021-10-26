@@ -2,7 +2,7 @@
 //  Attendance+CoreDataProperties.swift
 //  
 //
-//  Created by Francesco D'Angelo on 21/10/21.
+//  Created by Francesco D'Angelo on 26/10/21.
 //
 //
 
@@ -19,6 +19,7 @@ extension Attendance {
     @NSManaged public var dateString: String?
     @NSManaged public var type: String?
     @NSManaged public var persons: NSSet?
+    @NSManaged public var warningPersons: NSSet?
 
 }
 
@@ -39,7 +40,19 @@ extension Attendance {
 
 }
 
-public enum DayType: String {
-    case morning
-    case evening
+// MARK: Generated accessors for warningPersons
+extension Attendance {
+
+    @objc(addWarningPersonsObject:)
+    @NSManaged public func addToWarningPersons(_ value: Person)
+
+    @objc(removeWarningPersonsObject:)
+    @NSManaged public func removeFromWarningPersons(_ value: Person)
+
+    @objc(addWarningPersons:)
+    @NSManaged public func addToWarningPersons(_ values: NSSet)
+
+    @objc(removeWarningPersons:)
+    @NSManaged public func removeFromWarningPersons(_ values: NSSet)
+
 }
