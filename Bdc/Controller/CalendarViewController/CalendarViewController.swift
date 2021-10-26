@@ -31,6 +31,13 @@ class CalendarViewController: UIViewController {
         self.addCalendarGestureRecognizer()
     }
     
+    // Needed to update the Maximum Date when the app remains in RAM
+    override func viewWillAppear(_ animated: Bool) {
+        if self.calendarView.maximumDate < Date.now {
+            self.calendarView.reloadData()
+        }
+    }
+    
     func checkAndChangeWeekendSelectedDate() {
         
         if Date.now.dayNumberOfWeek() == 1 { // Sunday

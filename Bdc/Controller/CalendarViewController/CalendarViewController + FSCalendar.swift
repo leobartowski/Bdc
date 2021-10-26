@@ -28,14 +28,13 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource {
         self.view.layoutIfNeeded()
     }
     
-    
     //    func minimumDate(for calendar: FSCalendar) -> Date {
     //        return DateFormatter.basicFormatter.date(from: "18/10/2021") ?? Date.yesterday
     //    }
     //
-    //    func maximumDate(for calendar: FSCalendar) -> Date {
-    //        return Date.tomorrow
-    //    }
+        func maximumDate(for calendar: FSCalendar) -> Date {
+            return Date()
+        }
     
     // MARK: Utils
     func addCalendarGestureRecognizer() {

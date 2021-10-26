@@ -27,6 +27,15 @@ extension Date {
     var nextMonth: Date {
         return Calendar.current.date(byAdding: .month, value: +1, to: self) ?? Date()
     }
+    
+    func getSundayOfThisWeek() -> Date {
+        let calendar = Calendar.current
+        var components = calendar.dateComponents([.weekOfYear, .yearForWeekOfYear], from: self)
+        components.weekday = 1 // Sunday
+        let sundayInWeek = calendar.date(from: components)
+        return sundayInWeek ?? Date()
+    }
+    
     /// Returns an integer from 1 - 7, with 1 being Sunday and 7 being Saturday
     func dayNumberOfWeek() -> Int? {
         return Calendar.current.dateComponents([.weekday], from: self).weekday
