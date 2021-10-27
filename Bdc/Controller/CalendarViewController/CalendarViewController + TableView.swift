@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
-    
+extension CalendarViewController: UITableViewDelegate, UITableViewDataSource, MainTableViewCellDelegate {
+
     // MARK: Delegate e DataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -21,15 +21,9 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID") as? MainTableViewCell
-        if indexPath.section == 0 {
-            cell?.nameLabel.text = self.personsPresent[indexPath.row].name
-            let imageString = CommonUtility.getProfileImageString(self.personsPresent[indexPath.row])
-            cell?.mainImageView.image = UIImage(named: imageString)
-        } else {
-            cell?.nameLabel.text = self.personsNotPresent[indexPath.row].name
-            let imageString = CommonUtility.getProfileImageString(self.personsNotPresent[indexPath.row])
-            cell?.mainImageView.image = UIImage(named: imageString)
-        }
+        indexPath.section == 0
+        ? cell?.setUp(self.personsPresent[indexPath.row], indexPath, self)
+        : cell?.setUp(self.personsNotPresent[indexPath.row], indexPath, self)
         return cell ?? UITableViewCell()
     }
     
@@ -59,5 +53,8 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         return 50
     }
     
-    
+    //MARK: MainTableViewCellDelegate
+    func mainCell(_ cell: MainTableViewCell, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }
