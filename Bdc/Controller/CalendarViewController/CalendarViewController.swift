@@ -20,6 +20,7 @@ class CalendarViewController: UIViewController {
     var dayType = DayType.morning
     var personsPresent: [Person] = []
     var personsNotPresent: [Person] = []
+    var personsAdmonished: [Person] = []
     
     
     // MARK: LifeCycle
@@ -51,16 +52,21 @@ class CalendarViewController: UIViewController {
     
     // MARK: General utils
     
-    /// Update Presence
+    /// Update Presence reloading data from CoreData
     func updatePresences() {
         self.personsNotPresent = []
-        self.personsPresent = CoreDataService.shared.getAttendancePerson(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
+        let attendance =  CoreDataService.shared.getAttendace(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
+        self.personsPresent = attendance?.persons?.allObjects as? [Person] ?? []
         for person in PersonListUtility.persons {
             if !self.personsPresent.contains(where: { $0.name == person.name }) && !self.personsNotPresent.contains(where: { $0.name == person.name })  {
                 self.personsNotPresent.append(person)
             }
         }
-        self.tableView.reloadData() // TODO: FIX THIS
+        self.personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
+        DispatchQueue.main.async {
+            self.tableView.reloadData() // TODO: FIX THIS
+        }
+        
     }
     
     // MARK: IBActions
@@ -83,19 +89,6 @@ class CalendarViewController: UIViewController {
             default:
                 break
             }
-        }
-    }
-    
-    // The animation and the chande of constraints are performed in the delagate method: boundingRectWillChange
-    func handleWeeklyToMonthlyCalendar() {
-        if self.calendarView.scope == .week {
-            self.calendarView.setScope(.month, animated: true)
-        }
-    }
-    
-    func handleMonthlyToWeeklyCalendar() {
-        if self.calendarView.scope == .month {
-            self.calendarView.setScope(.week, animated: true)
         }
     }
     

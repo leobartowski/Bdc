@@ -56,8 +56,8 @@ class RankingViewController: UIViewController {
             item.attendanceNumber = 0 // We need to clear all attendences
         }
         for day in self.daysOfThisWeek {
-            let morningPersons = CoreDataService.shared.getAttendancePerson(day, type: .morning)
-            let eveningPersons = CoreDataService.shared.getAttendancePerson(day, type: .evening)
+            let morningPersons = CoreDataService.shared.getPersonsPresent(day, type: .morning)
+            let eveningPersons = CoreDataService.shared.getPersonsPresent(day, type: .evening)
             for person in morningPersons {
                 if let index = self.weeklyAttendance.firstIndex(where: {$0.person.name == person.name}) {
                     self.weeklyAttendance[index].attendanceNumber += 1

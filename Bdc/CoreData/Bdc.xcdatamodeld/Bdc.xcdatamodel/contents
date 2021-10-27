@@ -4,7 +4,7 @@
         <attribute name="dateString" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="persons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="attendance" inverseEntity="Person"/>
-        <relationship name="warningPersons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person"/>
+        <relationship name="personsAdmonished" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person"/>
     </entity>
     <entity name="Person" representedClassName="Person" syncable="YES">
         <attribute name="iconString" optional="YES" attributeType="String"/>

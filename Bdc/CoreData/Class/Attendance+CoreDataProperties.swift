@@ -19,7 +19,7 @@ extension Attendance {
     @NSManaged public var dateString: String?
     @NSManaged public var type: String?
     @NSManaged public var persons: NSSet?
-    @NSManaged public var warningPersons: NSSet?
+    @NSManaged public var personsAdmonished: NSSet?
 
 }
 
@@ -40,19 +40,19 @@ extension Attendance {
 
 }
 
-// MARK: Generated accessors for warningPersons
+// MARK: Generated accessors for personsAdmonished
 extension Attendance {
 
-    @objc(addWarningPersonsObject:)
-    @NSManaged public func addToWarningPersons(_ value: Person)
+    @objc(addPersonsAdmonishedObject:)
+    @NSManaged public func addToPersonsAdmonished(_ value: Person)
 
-    @objc(removeWarningPersonsObject:)
-    @NSManaged public func removeFromWarningPersons(_ value: Person)
+    @objc(removePersonsAdmonishedObject:)
+    @NSManaged public func removeFromPersonsAdmonished(_ value: Person)
 
-    @objc(addWarningPersons:)
-    @NSManaged public func addToWarningPersons(_ values: NSSet)
+    @objc(addPersonsAdmonished:)
+    @NSManaged public func addToPersonsAdmonished(_ values: NSSet)
 
-    @objc(removeWarningPersons:)
-    @NSManaged public func removeFromWarningPersons(_ values: NSSet)
+    @objc(removePersonsAdmonished:)
+    @NSManaged public func removeFromPersonsAdmonished(_ values: NSSet)
 
 }

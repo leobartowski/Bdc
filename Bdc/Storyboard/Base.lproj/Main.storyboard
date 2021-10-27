@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LfF-gr-tm8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LfF-gr-tm8">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -47,26 +47,28 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJO-71-8bK">
-                                                    <rect key="frame" x="75" y="5" width="319" height="50"/>
+                                                    <rect key="frame" x="85" y="5" width="309" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wxm-Pu-8w5">
-                                                    <rect key="frame" x="20" y="10" width="40" height="40"/>
+                                                    <rect key="frame" x="30" y="10" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="5YC-UC-L1R"/>
                                                         <constraint firstAttribute="width" constant="40" id="8mT-mh-aOc"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNy-c7-KSL">
-                                                    <rect key="frame" x="374" y="20" width="20" height="20"/>
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNy-c7-KSL">
+                                                    <rect key="frame" x="349" y="12.5" width="35" height="35"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="MvO-G2-QKL"/>
-                                                        <constraint firstAttribute="width" constant="20" id="SPU-ja-PVc"/>
+                                                        <constraint firstAttribute="height" constant="35" id="MvO-G2-QKL"/>
+                                                        <constraint firstAttribute="width" constant="35" id="SPU-ja-PVc"/>
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="globe.americas.fill" catalog="system"/>
+                                                    <buttonConfiguration key="configuration" style="plain">
+                                                        <backgroundConfiguration key="background" image="yellow-card"/>
+                                                    </buttonConfiguration>
                                                     <connections>
                                                         <action selector="buttonDidTap:" destination="cKy-CF-lh0" eventType="touchUpInside" id="lto-Iw-1mn"/>
                                                     </connections>
@@ -74,9 +76,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="bNy-c7-KSL" firstAttribute="centerY" secondItem="o96-Bu-YV9" secondAttribute="centerY" id="9mq-MP-XGf"/>
-                                                <constraint firstAttribute="trailing" secondItem="bNy-c7-KSL" secondAttribute="trailing" constant="20" id="L2u-qZ-e2g"/>
+                                                <constraint firstAttribute="trailing" secondItem="bNy-c7-KSL" secondAttribute="trailing" constant="30" id="L2u-qZ-e2g"/>
                                                 <constraint firstItem="aJO-71-8bK" firstAttribute="top" secondItem="o96-Bu-YV9" secondAttribute="top" constant="5" id="UKz-HA-cIH"/>
-                                                <constraint firstItem="Wxm-Pu-8w5" firstAttribute="leading" secondItem="o96-Bu-YV9" secondAttribute="leading" constant="20" id="Wgo-ej-Er6"/>
+                                                <constraint firstItem="Wxm-Pu-8w5" firstAttribute="leading" secondItem="o96-Bu-YV9" secondAttribute="leading" constant="30" id="Wgo-ej-Er6"/>
                                                 <constraint firstItem="Wxm-Pu-8w5" firstAttribute="centerY" secondItem="o96-Bu-YV9" secondAttribute="centerY" id="eqW-qK-G4U"/>
                                                 <constraint firstAttribute="trailing" secondItem="aJO-71-8bK" secondAttribute="trailing" constant="20" id="hpa-Ou-XHm"/>
                                                 <constraint firstItem="aJO-71-8bK" firstAttribute="leading" secondItem="Wxm-Pu-8w5" secondAttribute="trailing" constant="15" id="sMh-GA-xm7"/>
@@ -219,8 +221,8 @@
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
-        <image name="globe.americas.fill" catalog="system" width="128" height="121"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
+        <image name="yellow-card" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
