@@ -37,9 +37,9 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource {
     //        return DateFormatter.basicFormatter.date(from: "18/10/2021") ?? Date.yesterday
     //    }
     //
-        func maximumDate(for calendar: FSCalendar) -> Date {
-            return Date()
-        }
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return Date()
+    }
     
     // MARK: Utils
     func addCalendarGestureRecognizer() {
@@ -51,5 +51,18 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource {
         let swipeGestureDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(gesture:)))
         swipeGestureDown.direction = .down
         self.calendarView.addGestureRecognizer(swipeGestureDown)
+    }
+    
+    // The animation and the chande of constraints are performed in the delagate method: boundingRectWillChange
+    func handleWeeklyToMonthlyCalendar() {
+        if self.calendarView.scope == .week {
+            self.calendarView.setScope(.month, animated: true)
+        }
+    }
+    
+    func handleMonthlyToWeeklyCalendar() {
+        if self.calendarView.scope == .month {
+            self.calendarView.setScope(.week, animated: true)
+        }
     }
 }

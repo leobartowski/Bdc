@@ -18,8 +18,8 @@ class CoreDataService {
         self.context = CoreDataContainer.context
     }
     
-    ///Save Attendence in Core Data
-    func saveAttendance(_ date: Date, _ persons: [Person], _ type: DayType) {
+    ///Save  Persons Attendence in Core Data for a specif date and daytype
+    func savePersonsAttendance(_ date: Date, _ persons: [Person], _ type: DayType) {
         var attendence = getAttendace(date, type: type)
         if attendence == nil {
             // Se è vuoto ne creo uno nuovo
@@ -28,7 +28,6 @@ class CoreDataService {
             attendence?.type = type.rawValue
         }
         attendence?.persons = NSSet(array: persons)
-        
         do {
             try context.save()
         } catch let error as NSError {
@@ -36,6 +35,25 @@ class CoreDataService {
         }
     }
     
+    ///Save  Person Admonished Attendence in Core Data for a specif date and daytype
+    func savePersonsAdmonishedAttendance(_ date: Date, _ personsAdmonished: [Person], _ type: DayType) {
+        var attendence = getAttendace(date, type: type)
+        if attendence == nil {
+            // Se è vuoto ne creo uno nuovo
+            attendence = Attendance(context: context)
+            attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
+            attendence?.type = type.rawValue
+        }
+        
+        attendence?.personsAdmonished = NSSet(array: personsAdmonished)
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    ///Get Attendance for a specif day and daytype
     func getAttendace(_ date: Date, type: DayType) -> Attendance? {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
         let dateString = DateFormatter.basicFormatter.string(from: date)
@@ -49,13 +67,27 @@ class CoreDataService {
         return nil
     }
     
-    ///Get  Attendence from Core Data
-    func getAttendancePerson(_ date: Date, type: DayType) -> [Person] {
+    ///Get  persons that were present in a specif day and dayType
+    func getPersonsPresent(_ date: Date, type: DayType) -> [Person] {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
         let dateString = DateFormatter.basicFormatter.string(from: date)
         do {
             let attendances = try self.context.fetch(fetchRequest).filter({ $0.dateString == dateString && $0.type == type.rawValue })
             return attendances.first?.persons?.allObjects as? [Person] ?? []
+            
+        } catch let error as NSError {
+            print("Could not list. \(error), \(error.userInfo)")
+        }
+        return []
+        
+    }
+    ///Get  amonished persons in a specif day and dayType
+    func getPersonsAmmonished(_ date: Date, type: DayType) -> [Person] {
+        let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
+        let dateString = DateFormatter.basicFormatter.string(from: date)
+        do {
+            let attendances = try self.context.fetch(fetchRequest).filter({ $0.dateString == dateString && $0.type == type.rawValue })
+            return attendances.first?.personsAdmonished?.allObjects as? [Person] ?? []
             
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
