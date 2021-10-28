@@ -40,15 +40,15 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource {
     }
     
     
-    //    func minimumDate(for calendar: FSCalendar) -> Date {
-    //        return DateFormatter.basicFormatter.date(from: "18/10/2021") ?? Date.yesterday
-    //    }
-    //
+    func minimumDate(for calendar: FSCalendar) -> Date {
+        return DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date.yesterday
+    }
+    
     func maximumDate(for calendar: FSCalendar) -> Date {
         return Date.now
     }
     
-        
+    
     // MARK: Utils
     func addCalendarGestureRecognizer() {
         
