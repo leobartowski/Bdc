@@ -19,7 +19,6 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var mainButton: UIButton!
     
     var indexPath = IndexPath()
-    var isAmonished = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +29,6 @@ class MainTableViewCell: UITableViewCell {
     func setUp(_ person: Person,_ isAdmonished: Bool = false,_ indexPath: IndexPath, _ delegate: MainTableViewCellDelegate) {
         self.delegate = delegate
         self.indexPath = indexPath
-        self.isAmonished = isAdmonished
         self.nameLabel.text = person.name
         let imageString = CommonUtility.getProfileImageString(person)
         self.mainImageView.image = UIImage(named: imageString)

@@ -18,8 +18,10 @@ class CoreDataService {
         self.context = CoreDataContainer.context
     }
     
-    ///Save  Persons Attendence in Core Data for a specif date and daytype
-    func savePersonsAttendance(_ date: Date, _ persons: [Person], _ type: DayType) {
+    //MARK: Method to save
+    
+    ///Save  Person Admonished Attendence in Core Data for a specif date and daytype
+    func savePersonsAndPersonsAdmonishedAttendance(_ date: Date,_ type: DayType, persons: [Person], personsAdmonished: [Person]) {
         var attendence = getAttendace(date, type: type)
         if attendence == nil {
             // Se è vuoto ne creo uno nuovo
@@ -27,7 +29,10 @@ class CoreDataService {
             attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
             attendence?.type = type.rawValue
         }
+    
         attendence?.persons = NSSet(array: persons)
+        attendence?.personsAdmonished = NSSet(array: personsAdmonished)
+        
         do {
             try context.save()
         } catch let error as NSError {
@@ -35,23 +40,41 @@ class CoreDataService {
         }
     }
     
-    ///Save  Person Admonished Attendence in Core Data for a specif date and daytype
-    func savePersonsAdmonishedAttendance(_ date: Date, _ personsAdmonished: [Person], _ type: DayType) {
-        var attendence = getAttendace(date, type: type)
-        if attendence == nil {
-            // Se è vuoto ne creo uno nuovo
-            attendence = Attendance(context: context)
-            attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
-            attendence?.type = type.rawValue
-        }
-        
-        attendence?.personsAdmonished = NSSet(array: personsAdmonished)
-        do {
-            try context.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-    }
+//    ///Save  Person Admonished Attendence in Core Data for a specif date and daytype
+//    func savePersonsAdmonishedAttendance(_ date: Date, _ personsAdmonished: [Person], _ type: DayType) {
+//        var attendence = getAttendace(date, type: type)
+//        if attendence == nil {
+//            // Se è vuoto ne creo uno nuovo
+//            attendence = Attendance(context: context)
+//            attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
+//            attendence?.type = type.rawValue
+//        }
+//        attendence?.personsAdmonished = NSSet(array: personsAdmonished)
+//        do {
+//            try context.save()
+//        } catch let error as NSError {
+//            print("Could not save. \(error), \(error.userInfo)")
+//        }
+//    }
+
+//    ///Save  Persons Attendence in Core Data for a specif date and daytype
+//    func savePersonsAttendance(_ date: Date, _ persons: [Person], _ type: DayType) {
+//        var attendence = getAttendace(date, type: type)
+//        if attendence == nil {
+//            // Se è vuoto ne creo uno nuovo
+//            attendence = Attendance(context: context)
+//            attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
+//            attendence?.type = type.rawValue
+//        }
+//        attendence?.persons = NSSet(array: persons)
+//        do {
+//            try context.save()
+//        } catch let error as NSError {
+//            print("Could not save. \(error), \(error.userInfo)")
+//        }
+//    }
+    
+    //MARK: Methods to fetch from Core Data
     
     ///Get Attendance for a specif day and daytype
     func getAttendace(_ date: Date, type: DayType) -> Attendance? {

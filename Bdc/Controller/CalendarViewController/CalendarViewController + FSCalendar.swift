@@ -12,11 +12,15 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource {
     
     // MARK: Delegate e DataSource
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        self.updatePresences()
+        self.getDataFromCoreDataAndReloadViews() // We don't save old data here but in the method shouldSelect
     }
     
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-        return (date.dayNumberOfWeek() == 1 || date.dayNumberOfWeek() == 7) ? false : true
+        if date.dayNumberOfWeek() == 1 || date.dayNumberOfWeek() == 7 {
+            return false
+        }
+        self.saveCurrentDataInCoreData()
+        return true
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
@@ -28,19 +32,23 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource {
         self.view.layoutIfNeeded()
     }
     
+    
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        self.saveCurrentDataInCoreData()
         self.calendarView.select(calendar.currentPage.getSpecificDayOfThisWeek(2))
-        self.updatePresences()
+        self.getDataFromCoreDataAndReloadViews()
     }
+    
     
     //    func minimumDate(for calendar: FSCalendar) -> Date {
     //        return DateFormatter.basicFormatter.date(from: "18/10/2021") ?? Date.yesterday
     //    }
     //
     func maximumDate(for calendar: FSCalendar) -> Date {
-        return Date()
+        return Date.now
     }
     
+        
     // MARK: Utils
     func addCalendarGestureRecognizer() {
         
