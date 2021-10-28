@@ -27,10 +27,10 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     
     // TODO: Crash on the simulator!
-    //    func maximumDate(for calendar: FSCalendar) -> Date {
-    //        return Date().getSpecificDayOfThisWeek(1)
-    //    }
-    //
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return Date().getSpecificDayOfThisWeek(1) // Maximum date should be sunday of the current week!
+    }
+    
     func minimumDate(for calendar: FSCalendar) -> Date {
         return DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date.yesterday
     }

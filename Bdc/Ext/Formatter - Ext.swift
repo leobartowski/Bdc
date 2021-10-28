@@ -11,6 +11,7 @@ extension Formatter {
     
     static let basicFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = .current
         dateFormatter.dateFormat = "dd/MM/yyyy"
         return dateFormatter
     }()

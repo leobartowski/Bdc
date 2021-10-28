@@ -73,4 +73,14 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource {
             self.calendarView.setScope(.week, animated: true)
         }
     }
+    
+    func checkAndChangeWeekendSelectedDate() {
+        if Date.now.dayNumberOfWeek() == 1 { // Sunday
+            self.calendarView.select(Date.tomorrow) // select Monday
+            self.calendarView.today = nil // needed to avoid the red pointer!
+        } else if Date.now.dayNumberOfWeek() == 7 { // Saturday
+            self.calendarView.select(Date.yesterday) // select Friday
+            self.calendarView.today = nil
+        }
+    }
 }

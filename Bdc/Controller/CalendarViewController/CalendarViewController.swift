@@ -17,7 +17,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     
     let sectionTitles = ["Presenti", "Assenti"]
-    var dayType = DayType.morning
+    var dayType = DayType.evening
     var personsPresent: [Person] = []
     var personsNotPresent: [Person] = []
     var personsAdmonished: [Person] = []
@@ -31,43 +31,61 @@ class CalendarViewController: UIViewController {
         self.getDataFromCoreDataAndReloadViews()
         self.addCalendarGestureRecognizer()
         NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     // Needed to update the Maximum Date when the app remains in RAM
     override func viewWillAppear(_ animated: Bool) {
-//        self.calendarView.reloadData()
-//        if Date.now.days(from: self.calendarView.maximumDate) < 0 {
-//            self.calendarView.reloadData()
-//        }
+        //        self.calendarView.reloadData()
+        //        if Date.now.days(from: self.calendarView.maximumDate) < 0 {
+        //            self.calendarView.reloadData()
+        //        }
     }
     
     // We save everything to core data to prepare the new data for the RankingVC
     override func viewWillDisappear(_ animated: Bool) {
         //When the user change controller we need to save the value in CoreData without clearing everything
-        self.saveCurrentDataInCoreData(clearAll: false)
+        self.saveCurrentDataInCoreData()
     }
-
-//   Get called when the app is no longer active and loses focus.
+    
+    //   Get called when the app is no longer active and loses focus.
     @objc func willResignActive() {
         //When the app lose focus we need to save the value in CoreData without clearing everything
-        self.saveCurrentDataInCoreData(clearAll: false)
+        self.saveCurrentDataInCoreData()
     }
     
-    func checkAndChangeWeekendSelectedDate() {
-        
-        if Date.now.dayNumberOfWeek() == 1 { // Sunday
-            self.calendarView.select(Date.tomorrow) // select Monday
-            self.calendarView.today = nil // needed to avoid the red pointer!
-        } else if Date.now.dayNumberOfWeek() == 7 { // Saturday
-            self.calendarView.select(Date.yesterday) // select Friday
-            self.calendarView.today = nil
+    //   Get called when the app is become active
+    @objc func willBecomeActive() {
+        self.updateDayTypeBasedOnTime()
+    }
+    
+    // MARK: Morning and Evening Selector
+    func updateDayTypeBasedOnTime() {
+        let todayString = DateFormatter.basicFormatter.string(from: Date.now)
+        let currentDayString = DateFormatter.basicFormatter.string(from: self.calendarView.selectedDate ?? Date())
+        if todayString == currentDayString {
+            var calendar = Calendar.current
+            calendar.locale = .current
+            let hour = calendar.component(.hour, from: Date.now)
+            if (hour < 16 && hour > 8) { // morning
+                self.dayType = .morning
+                self.segmentedControl.selectedSegmentIndex = 0
+            } else { // evening
+                self.dayType = .evening
+                self.segmentedControl.selectedSegmentIndex = 1
+            }
+            self.getDataFromCoreDataAndReloadViews()
         }
+        
     }
     
-    // MARK: General utils
+    // MARK: Functions to fetch and save CoreData
     
     /// Update Presence reloading data from CoreData
     func getDataFromCoreDataAndReloadViews() {
+        self.personsPresent.removeAll()
+        self.personsNotPresent.removeAll()
+        self.personsAdmonished.removeAll()
         let attendance =  CoreDataService.shared.getAttendace(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
         self.personsPresent = attendance?.persons?.allObjects as? [Person] ?? []
         for person in PersonListUtility.persons {
@@ -83,17 +101,13 @@ class CalendarViewController: UIViewController {
     }
     
     /// Save everything to Core Data and clear current class var before chainging data source. Use this function before updating current date and current dayType
-    func saveCurrentDataInCoreData(clearAll: Bool = true) {
+    func saveCurrentDataInCoreData() {
         CoreDataService.shared.savePersonsAndPersonsAdmonishedAttendance(self.calendarView.selectedDate ?? Date.now, self.dayType, persons: self.personsPresent, personsAdmonished: self.personsAdmonished)
-        if clearAll {
-        self.personsPresent.removeAll()
-        self.personsNotPresent.removeAll()
-        self.personsAdmonished.removeAll()
-        }
     }
     
     // MARK: IBActions
     @IBAction func segmentedControlValueChanged(_ sender: Any) {
+        
         self.saveCurrentDataInCoreData()
         switch segmentedControl.selectedSegmentIndex {
         case 0: self.dayType = .morning
@@ -115,8 +129,5 @@ class CalendarViewController: UIViewController {
             }
         }
     }
-    
-    
-    
 }
 
