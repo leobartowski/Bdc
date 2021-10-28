@@ -27,9 +27,9 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource {
     
 
     // TODO: Crash on the simulator!
-    func maximumDate(for calendar: FSCalendar) -> Date {
-        return Date().getSpecificDayOfThisWeek(1)
-    }
+//    func maximumDate(for calendar: FSCalendar) -> Date {
+//        return Date().getSpecificDayOfThisWeek(1)
+//    }
 //
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {

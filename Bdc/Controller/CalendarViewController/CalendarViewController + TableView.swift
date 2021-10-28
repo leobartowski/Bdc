@@ -28,7 +28,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource, Ma
             let personNotPresent = self.personsNotPresent[indexPath.row]
             let isAmonished = self.personsAdmonished.contains(where: { $0.name == personNotPresent.name })
             cell?.setUp(personNotPresent, isAmonished, indexPath, self)
-            
         }
         return cell ?? UITableViewCell()
     }
@@ -47,8 +46,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource, Ma
             self.personsNotPresent.remove(at: indexPath.row)
             self.personsPresent.append(personToAdd)
         }
-        // We pass always personsPresent because personToRemove override the person that are present
-        CoreDataService.shared.savePersonsAttendance(calendarView.selectedDate ?? Date.now, self.personsPresent, self.dayType)
         DispatchQueue.main.async {
             tableView.reloadData()
         }
@@ -68,8 +65,11 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource, Ma
     func mainCell(_ cell: MainTableViewCell, didSelectRowAt indexPath: IndexPath) {
         let personToHandle = self.personsNotPresent[indexPath.row]
         // I need to amonish this person if is not amonished or I need to remove the amonishment otherwise
-        !cell.isAmonished ? self.personsAdmonished.append(personToHandle) :  self.personsAdmonished.removeAll(where: { $0.name == personToHandle.name })
-        CoreDataService.shared.savePersonsAdmonishedAttendance(self.calendarView.selectedDate ?? Date.now, [personToHandle], self.dayType)
+        if let index = self.personsAdmonished.firstIndex(where: { $0.name == personToHandle.name}) {
+            self.personsAdmonished.remove(at: index)
+        } else {
+            self.personsAdmonished.append(personToHandle)
+        }
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
         feedbackGenerator.impactOccurred()
         DispatchQueue.main.async {
