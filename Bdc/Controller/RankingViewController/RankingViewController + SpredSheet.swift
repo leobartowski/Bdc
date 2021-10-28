@@ -55,7 +55,7 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
             switch indexPath.column {
             case 0: cell.label.text = self.weeklyAttendance[indexPath.row - 1].person.name
             case 1: cell.label.text = String(self.weeklyAttendance[indexPath.row - 1].attendanceNumber)
-            case 2: cell.label.text = "-" // Should add ammonizioni
+            case 2: cell.label.text = String(self.weeklyAttendance[indexPath.row - 1].admonishmentNumber)
             default: break
             }
             return cell

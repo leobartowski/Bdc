@@ -78,7 +78,7 @@ class PersonListUtility {
     private static func createEmptyWeeklyAttendance() -> [PersonWeeklyAttendance] {
         var personsWeeklyAttendance = [PersonWeeklyAttendance]()
         for person in PersonListUtility.persons {
-            let personAttendece = PersonWeeklyAttendance(person, 0)
+            let personAttendece = PersonWeeklyAttendance(person, 0, 0)
             personsWeeklyAttendance.append(personAttendece)
         }
         return personsWeeklyAttendance
@@ -92,9 +92,11 @@ public class PersonWeeklyAttendance {
     
     var person: Person
     var attendanceNumber: Int
+    var admonishmentNumber: Int
     
-    init(_ person: Person, _ attendanceNumber: Int ) {
+    init(_ person: Person, _ attendanceNumber: Int,_ adminishmentNumber: Int) {
         self.person = person
         self.attendanceNumber = attendanceNumber
+        self.admonishmentNumber = adminishmentNumber
     }
 }

@@ -25,12 +25,15 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource {
         return false
     }
     
-
+    
     // TODO: Crash on the simulator!
-//    func maximumDate(for calendar: FSCalendar) -> Date {
-//        return Date().getSpecificDayOfThisWeek(1)
-//    }
-//
+    //    func maximumDate(for calendar: FSCalendar) -> Date {
+    //        return Date().getSpecificDayOfThisWeek(1)
+    //    }
+    //
+    func minimumDate(for calendar: FSCalendar) -> Date {
+        return DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date.yesterday
+    }
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         self.deselectAllDates()
@@ -50,5 +53,5 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource {
             self.calendarView.deselect(date)
         }
     }
-
+    
 }

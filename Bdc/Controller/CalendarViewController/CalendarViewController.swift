@@ -30,7 +30,6 @@ class CalendarViewController: UIViewController {
         self.checkAndChangeWeekendSelectedDate()
         self.getDataFromCoreDataAndReloadViews()
         self.addCalendarGestureRecognizer()
-        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
     }
     
@@ -42,10 +41,10 @@ class CalendarViewController: UIViewController {
 //        }
     }
     
-    // MARK: - Notification oberserver methods
-
-    @objc func didBecomeActive() {
-        
+    // We save everything to core data to prepare the new data for the RankingVC
+    override func viewWillDisappear(_ animated: Bool) {
+        //When the user change controller we need to save the value in CoreData without clearing everything
+        self.saveCurrentDataInCoreData(clearAll: false)
     }
 
 //   Get called when the app is no longer active and loses focus.
