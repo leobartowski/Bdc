@@ -27,6 +27,7 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.calendarView.scope = .week // Needed to show the weekly at start! (BUG IN THE SYSTEM)
+        self.setUpCalendarAppearance()
         self.checkAndChangeWeekendSelectedDate()
         self.getDataFromCoreDataAndReloadViews()
         self.addCalendarGestureRecognizer()

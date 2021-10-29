@@ -28,6 +28,19 @@ extension Date {
         return Calendar.current.date(byAdding: .month, value: +1, to: self) ?? Date()
     }
     
+    func getStartOfMonth() -> Date {
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self))) ?? Date()
+    }
+    
+    // Get the Week Number in the year
+    func getWeekNumber() -> Int {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.firstWeekday = 2
+        calendar.locale = .current
+        calendar.minimumDaysInFirstWeek = 4
+        return calendar.component(.weekOfYear, from: self)
+    }
+    
     /// Get Specific day of the week of the given day (1: Sunday, 2: Monday, ..., 7: Saturday)
     func getSpecificDayOfThisWeek(_ dayInt: Int) -> Date {
         let calendar = Calendar.current

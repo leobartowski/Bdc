@@ -41,6 +41,7 @@
 		DDDCAE81272302EA00B66C9B /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDCAE80272302EA00B66C9B /* MainTableViewCell.swift */; };
 		DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */; };
 		DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */; };
+		DDF1DE4D272C50CE006B7DFD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF1DE4C272C50CE006B7DFD /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		DDDCAE80272302EA00B66C9B /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter - Ext.swift"; sourceTree = "<group>"; };
 		DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListUtility.swift; sourceTree = "<group>"; };
+		DDF1DE4C272C50CE006B7DFD /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		E9119FA55433DC0831BDC2B0 /* Pods_Bdc_BdcUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bdc_BdcUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -331,6 +333,7 @@
 			children = (
 				DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */,
 				DD1EAF392726DDD100EF1455 /* CommonUtility.swift */,
+				DDF1DE4C272C50CE006B7DFD /* Theme.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */,
 				DD1EAF3A2726DDD100EF1455 /* CommonUtility.swift in Sources */,
 				DD41743027246BA500BE5BFD /* RankingViewController + FSCalendar.swift in Sources */,
+				DDF1DE4D272C50CE006B7DFD /* Theme.swift in Sources */,
 				DDDCAE81272302EA00B66C9B /* MainTableViewCell.swift in Sources */,
 				DD5542E2272456B2000D9F48 /* CalendarViewController + TableView.swift in Sources */,
 				DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */,

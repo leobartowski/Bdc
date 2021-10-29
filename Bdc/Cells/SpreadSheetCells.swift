@@ -24,13 +24,13 @@ class HeaderCell: Cell {
 
         label.frame = bounds
         label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textAlignment = .left
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.textAlignment = .center
         label.numberOfLines = 2
         contentView.addSubview(label)
 
         sortArrow.text = ""
-        sortArrow.font = UIFont.boldSystemFont(ofSize: 14)
+        sortArrow.font = UIFont.boldSystemFont(ofSize: 17)
         sortArrow.textAlignment = .center
         contentView.addSubview(sortArrow)
     }
@@ -49,10 +49,15 @@ class HeaderCell: Cell {
 
 class TextCell: Cell {
     let label = UILabel()
+    
+    
+    override func prepareForReuse() {
+        self.backgroundColor = .white
+    }
 
     override var frame: CGRect {
         didSet {
-            label.frame = bounds.insetBy(dx: 4, dy: 2)
+            label.frame = bounds.insetBy(dx: 10, dy: 2)
         }
     }
 
@@ -65,8 +70,8 @@ class TextCell: Cell {
 
         label.frame = bounds
         label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textAlignment = .left
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textAlignment = .center
 
         contentView.addSubview(label)
     }

@@ -85,7 +85,9 @@ class RankingViewController: UIViewController {
                 }
             }
         }
-        self.spreadsheetView.reloadData()
+        DispatchQueue.main.async {
+            self.spreadsheetView.reloadData()
+        }
     }
 }
 
