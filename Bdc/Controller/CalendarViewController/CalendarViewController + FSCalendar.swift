@@ -8,7 +8,7 @@
 import Foundation
 import FSCalendar
 
-extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource {
+extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
     // MARK: Delegate e DataSource
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -34,20 +34,32 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource {
     
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        self.saveCurrentDataInCoreData()
-        self.calendarView.select(calendar.currentPage.getSpecificDayOfThisWeek(2))
-        self.getDataFromCoreDataAndReloadViews()
+        if calendarView.scope == .week {
+            self.saveCurrentDataInCoreData()
+            self.calendarView.select(calendar.currentPage.getSpecificDayOfThisWeek(2))
+            self.getDataFromCoreDataAndReloadViews()
+        } else {
+            self.saveCurrentDataInCoreData()
+            self.calendarView.select(calendar.currentPage.getStartOfMonth())
+            self.getDataFromCoreDataAndReloadViews()
+        }
     }
     
     
     func minimumDate(for calendar: FSCalendar) -> Date {
-        return DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date.yesterday
+        return self.calendarView.scope == .week
+        ? DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date.yesterday
+        : DateFormatter.basicFormatter.date(from: "01/10/2021") ?? Date.yesterday
     }
-    
+
     func maximumDate(for calendar: FSCalendar) -> Date {
         return Date.now
+ 
     }
     
+
+    // MARK: Appearance Delegate
+
     
     // MARK: Utils
     func addCalendarGestureRecognizer() {
@@ -82,5 +94,11 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource {
             self.calendarView.select(Date.yesterday) // select Friday
             self.calendarView.today = nil
         }
+    }
+    
+    // MARK: Design Calendar
+    func setUpCalendarAppearance() {
+        self.calendarView.appearance.titleWeekendColor = .lightGray
+//        self.calendarView.appearance.caseOptions = .weekdayUsesUpperCase
     }
 }
