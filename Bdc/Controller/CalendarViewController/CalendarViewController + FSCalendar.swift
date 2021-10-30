@@ -16,7 +16,7 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
     }
     
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-        if date.dayNumberOfWeek() == 1 || date.dayNumberOfWeek() == 7 {
+        if date.getDayNumberOfWeek() == 1 || date.getDayNumberOfWeek() == 7 {
             return false
         }
         self.saveCurrentDataInCoreData()
@@ -33,33 +33,40 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
     }
     
     
-    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        if calendarView.scope == .week {
-            self.saveCurrentDataInCoreData()
-            self.calendarView.select(calendar.currentPage.getSpecificDayOfThisWeek(2))
-            self.getDataFromCoreDataAndReloadViews()
-        } else {
-            self.saveCurrentDataInCoreData()
-            self.calendarView.select(calendar.currentPage.getStartOfMonth())
-            self.getDataFromCoreDataAndReloadViews()
-        }
-    }
-    
-    
     func minimumDate(for calendar: FSCalendar) -> Date {
-        return self.calendarView.scope == .week
-        ? DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date.yesterday
-        : DateFormatter.basicFormatter.date(from: "01/10/2021") ?? Date.yesterday
+        return DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date.yesterday
     }
 
     func maximumDate(for calendar: FSCalendar) -> Date {
-        return Date.now
- 
+        return Date.now.getDayNumberOfWeek() != 1 ? Date.now : Date.tomorrow
+
     }
     
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        let currentPageString = DateFormatter.basicFormatter.string(from: self.calendarView.currentPage)
+        // We need to check this != "01/10/2021" because if the current month is october 2021 and we change scope the app crash
+        if self.calendarView.scope == .week && currentPageString != "01/10/2021" {
+            self.saveCurrentDataInCoreData()
+            self.calendarView.select(calendar.currentPage.getSpecificDayOfThisWeek(2))
+            self.getDataFromCoreDataAndReloadViews()
+            
+        } else if self.calendarView.scope == .month {
+            
+            let getMonthAndYear = self.calendarView.currentPage.getMonthAndYearNumber()
+            self.saveCurrentDataInCoreData()
+            // To avoid crash if we are in October 2021 we cannot select 1 but we select 25
+            getMonthAndYear.yearNumber == 2021 && getMonthAndYear.monthNumber == 10
+            ? self.calendarView.select(DateFormatter.basicFormatter.date(from:"25/10/2021") ?? Date())
+            : self.calendarView.select(calendar.currentPage.getStartOfMonth())
+            self.getDataFromCoreDataAndReloadViews()
+        }
+    }
 
+    
     // MARK: Appearance Delegate
-
+    
+    
     
     // MARK: Utils
     func addCalendarGestureRecognizer() {
@@ -87,18 +94,18 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
     }
     
     func checkAndChangeWeekendSelectedDate() {
-        if Date.now.dayNumberOfWeek() == 1 { // Sunday
+        if Date.now.getDayNumberOfWeek() == 1 { // Sunday
             self.calendarView.select(Date.tomorrow) // select Monday
-            self.calendarView.today = nil // needed to avoid the red pointer!
-        } else if Date.now.dayNumberOfWeek() == 7 { // Saturday
+            self.calendarView.appearance.todayColor = Theme.customLightRed
+        } else if Date.now.getDayNumberOfWeek() == 7 { // Saturday
             self.calendarView.select(Date.yesterday) // select Friday
-            self.calendarView.today = nil
+            self.calendarView.appearance.todayColor = Theme.customLightRed
         }
     }
     
     // MARK: Design Calendar
     func setUpCalendarAppearance() {
         self.calendarView.appearance.titleWeekendColor = .lightGray
-//        self.calendarView.appearance.caseOptions = .weekdayUsesUpperCase
+        //        self.calendarView.appearance.caseOptions = .weekdayUsesUpperCase
     }
 }

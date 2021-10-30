@@ -28,11 +28,24 @@ extension Date {
         return Calendar.current.date(byAdding: .month, value: +1, to: self) ?? Date()
     }
     
+    /// Get first day of the month
     func getStartOfMonth() -> Date {
         return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self))) ?? Date()
     }
     
-    // Get the Week Number in the year
+    /// Get the month number and the year
+    func getMonthAndYearNumber() -> (monthNumber: Int, yearNumber: Int) {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.firstWeekday = 2
+        calendar.locale = .current
+        calendar.minimumDaysInFirstWeek = 4
+        let monthNumber = calendar.component(.month, from: self)
+        let yearNumber = calendar.component(.year, from: self)
+        return (monthNumber, yearNumber)
+    }
+    
+
+    /// Get the Week Number in the year
     func getWeekNumber() -> Int {
         var calendar = Calendar(identifier: .gregorian)
         calendar.firstWeekday = 2
@@ -51,7 +64,7 @@ extension Date {
     }
     
     /// Returns an integer from 1 - 7, with 1 being Sunday and 7 being Saturday
-    func dayNumberOfWeek() -> Int? {
+    func getDayNumberOfWeek() -> Int? {
         return Calendar.current.dateComponents([.weekday], from: self).weekday
     }
     
