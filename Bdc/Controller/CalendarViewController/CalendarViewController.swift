@@ -80,6 +80,12 @@ class CalendarViewController: UIViewController {
         
     }
     
+    func reloadCalendarDateIfNeeded() {
+        if self.calendarView.maximumDate < Date.now {
+            self.calendarView.reloadData()
+        }
+    }
+    
     // MARK: Functions to fetch and save CoreData
     
     /// Update Presence reloading data from CoreData

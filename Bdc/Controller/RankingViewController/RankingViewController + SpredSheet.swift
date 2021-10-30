@@ -59,7 +59,7 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
             default: break
             }
             // Show red and green cell only on friday and only if the week on focus is the current week
-            if Date().dayNumberOfWeek() == 6 && self.calendarView.currentPage.getWeekNumber() == Date.now.getWeekNumber() {
+            if Date().getDayNumberOfWeek() == 6 && self.calendarView.currentPage.getWeekNumber() == Date.now.getWeekNumber() {
                 // Check if the user has at least two presence or more than 2 admonishment
                 cell?.backgroundColor = self.weeklyAttendance[indexPath.row - 1].attendanceNumber < 2 || self.weeklyAttendance[indexPath.row - 1].admonishmentNumber >= 2
                 ? Theme.customRed
