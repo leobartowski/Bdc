@@ -8,8 +8,8 @@
 import Foundation
 import SpreadsheetView
 
-extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSource {
-    
+extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSource, HeaderCellDelegate {
+        
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
         return 3
     }
@@ -40,13 +40,8 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
         if indexPath.row == 0 { // Header Row
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: HeaderCell.self), for: indexPath) as? HeaderCell
+            cell?.setUp(indexPath.column, self)
             cell?.label.text = self.header[indexPath.column]
-            
-            //            if case indexPath.column = self.sortedColumn.column {
-            //                cell.sortArrow.text = self.sortedColumn.sorting.symbol
-            //            } else {
-            //                cell.sortArrow.text = ""
-            //            }
             cell?.setNeedsLayout()
             
             return cell ?? Cell()
@@ -70,6 +65,26 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
                 return cell ?? Cell()
             }
 
+        }
+    }
+    
+    // MARK: HeaderCellDelegate
+    func headerCell(_ cell: HeaderCell, didSelectRowAt column: Int) {
+        cell.label.text = header[column]
+        switch column {
+        case 0:
+            self.weeklyAttendance =  self.weeklyAttendance.sorted { $0.person.name ?? "" < $1.person.name ?? "" }
+            cell.label.text = header[column] + Sorting.ascending.symbol
+        case 1:
+            self.weeklyAttendance =  self.weeklyAttendance.sorted { $0.attendanceNumber > $1.attendanceNumber}
+            cell.label.text = header[column] + Sorting.ascending.symbol
+        case 2:
+            self.weeklyAttendance =  self.weeklyAttendance.sorted {$0.attendanceNumber > $1.attendanceNumber}
+            cell.label.text = header[column] + Sorting.ascending.symbol
+        default: return
+        }
+        DispatchQueue.main.async {
+            self.spreadsheetView.reloadData()
         }
     }
     
