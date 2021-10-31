@@ -9,15 +9,25 @@
 import UIKit
 import SpreadsheetView
 
+protocol HeaderCellDelegate: class {
+    func headerCell(_ cell: HeaderCell, didSelectRowAt column: Int)
+}
+
 class HeaderCell: Cell {
     
     let label = UILabel()
-    let sortArrow = UILabel()
+    var column = Int()
+    
+    weak var delegate: HeaderCellDelegate?
     
     override var frame: CGRect {
         didSet {
             label.frame = bounds.insetBy(dx: 4, dy: 2)
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
     }
     
     override init(frame: CGRect) {
@@ -31,21 +41,45 @@ class HeaderCell: Cell {
         label.adjustsFontSizeToFitWidth = true
         contentView.addSubview(label)
         
-        sortArrow.text = ""
-        sortArrow.font = UIFont.boldSystemFont(ofSize: 17)
-        sortArrow.textAlignment = .center
-        contentView.addSubview(sortArrow)
+        setupLabelTap()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        sortArrow.sizeToFit()
-        sortArrow.frame.origin.x = frame.width - sortArrow.frame.width - 8
-        sortArrow.frame.origin.y = (frame.height - sortArrow.frame.height) / 2
+    func setUp(_ column: Int, _ delegate: HeaderCellDelegate) {
+        self.delegate = delegate
+        self.column = column
+    }
+
+    // MARK: Label GestureRecognizer
+    @objc func labelTapped(_ sender: UITapGestureRecognizer) {
+        self.delegate?.headerCell(self, didSelectRowAt: self.column)
+    }
+    
+    func setupLabelTap() {
+        
+        let labelTap = UITapGestureRecognizer(target: self, action: #selector(self.labelTapped(_:)))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(labelTap)
+        
+    }
+    
+}
+
+public enum Sorting {
+    case ascending
+    case descending
+
+    var symbol: String {
+        switch self {
+        case .ascending:
+            return "\u{25B2}"
+        case .descending:
+            return "\u{25BC}"
+        }
     }
 }
 
@@ -96,6 +130,10 @@ class NameCell: Cell {
     let label = UILabel()
     var imageView = UIImageView()
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView.layer.cornerRadius = 20
+    }
     
     override func prepareForReuse() {
         self.backgroundColor = .white
@@ -124,7 +162,6 @@ class NameCell: Cell {
         
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 20
         
         contentView.addSubview(label)
         contentView.addSubview(imageView)

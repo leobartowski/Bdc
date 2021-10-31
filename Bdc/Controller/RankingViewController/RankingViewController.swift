@@ -49,6 +49,7 @@ class RankingViewController: UIViewController {
         self.calendarView.scope = .week // Needed to show the weekly at start!
         self.calendarView.allowsMultipleSelection = true
         self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Date.now)
+        self.calendarView.appearance.titleWeekendColor = .lightGray
     }
     
     
@@ -86,6 +87,7 @@ class RankingViewController: UIViewController {
                 }
             }
         }
+        self.weeklyAttendance =  self.weeklyAttendance.sorted { $0.person.name ?? "" < $1.person.name ?? "" }
         DispatchQueue.main.async {
             self.spreadsheetView.reloadData()
         }

@@ -44,7 +44,9 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource {
     func selectedAllDateOfTheWeek(_ date: Date) {
         self.daysOfThisWeek = date.getAllDateOfTheWeek()
         for day in self.daysOfThisWeek {
+            if day.getDayNumberOfWeek() != 1 && day.getDayNumberOfWeek() != 7 {
             self.calendarView.select(day)
+            }
         }
     }
     
