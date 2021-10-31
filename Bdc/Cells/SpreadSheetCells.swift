@@ -35,9 +35,9 @@ class HeaderCell: Cell {
         
         label.frame = bounds
         label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textAlignment = .center
-        label.numberOfLines = 2
+        label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         contentView.addSubview(label)
         
@@ -69,20 +69,6 @@ class HeaderCell: Cell {
     
 }
 
-public enum Sorting {
-    case ascending
-    case descending
-
-    var symbol: String {
-        switch self {
-        case .ascending:
-            return "\u{25B2}"
-        case .descending:
-            return "\u{25BC}"
-        }
-    }
-}
-
 class TextCell: Cell {
     
     let label = UILabel()
@@ -112,7 +98,7 @@ class TextCell: Cell {
         
         label.frame = bounds
         label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textAlignment = .center
         
         contentView.addSubview(label)
@@ -156,7 +142,7 @@ class NameCell: Cell {
         
         label.frame = bounds
         label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         
