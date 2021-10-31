@@ -44,6 +44,7 @@ class RankingViewController: UIViewController {
         self.spreadsheetView.allowsSelection = false
         self.spreadsheetView.register(HeaderCell.self, forCellWithReuseIdentifier: String(describing: HeaderCell.self))
         self.spreadsheetView.register(TextCell.self, forCellWithReuseIdentifier: String(describing: TextCell.self))
+        self.spreadsheetView.register(NameCell.self, forCellWithReuseIdentifier: String(describing: NameCell.self))
         // Calendar
         self.calendarView.scope = .week // Needed to show the weekly at start!
         self.calendarView.allowsMultipleSelection = true

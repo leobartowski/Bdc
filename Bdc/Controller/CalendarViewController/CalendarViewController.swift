@@ -35,14 +35,6 @@ class CalendarViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(willBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
-    // Needed to update the Maximum Date when the app remains in RAM
-    override func viewWillAppear(_ animated: Bool) {
-        //        self.calendarView.reloadData()
-        //        if Date.now.days(from: self.calendarView.maximumDate) < 0 {
-        //            self.calendarView.reloadData()
-        //        }
-    }
-    
     // We save everything to core data to prepare the new data for the RankingVC
     override func viewWillDisappear(_ animated: Bool) {
         //When the user change controller we need to save the value in CoreData without clearing everything
@@ -77,7 +69,6 @@ class CalendarViewController: UIViewController {
             }
             self.getDataFromCoreDataAndReloadViews()
         }
-        
     }
     
     func reloadCalendarDateIfNeeded() {
