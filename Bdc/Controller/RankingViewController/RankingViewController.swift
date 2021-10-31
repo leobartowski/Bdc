@@ -17,7 +17,9 @@ class RankingViewController: UIViewController {
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     
     var weeklyAttendance = PersonListUtility.personsWeeklyAttendance
-    let header = ["Nome", "Presenze", "Ammonizioni"]
+    let headerBasic = ["Nome", "Presenze", "Ammonizioni"]
+    var header: [String] = []
+    var sorting = SortingPositionAndType(.attendance, .descending) // This variable is needed to understand which column in sorted and if ascending or descending (type)
     var daysOfThisWeek = [Date]()
     
     //MARK: Lifecycle
@@ -35,6 +37,7 @@ class RankingViewController: UIViewController {
     
     func viewSetUp() {
         // Spreadsheet
+        self.header = self.headerBasic
         self.spreadsheetView.dataSource = self
         self.spreadsheetView.delegate = self
         self.spreadsheetView.bounces = false
@@ -87,10 +90,9 @@ class RankingViewController: UIViewController {
                 }
             }
         }
-        self.weeklyAttendance =  self.weeklyAttendance.sorted { $0.person.name ?? "" < $1.person.name ?? "" }
-        DispatchQueue.main.async {
-            self.spreadsheetView.reloadData()
-        }
+        self.handleSorting(column: self.sorting.sortingPosition.rawValue)
     }
 }
+
+
 
