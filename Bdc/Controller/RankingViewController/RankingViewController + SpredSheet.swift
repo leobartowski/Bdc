@@ -26,7 +26,7 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
     }
     
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, heightForRow row: Int) -> CGFloat {
-        return 50
+        return row == 0 ? 40 : 60
     }
     
     func frozenColumns(in spreadsheetView: SpreadsheetView) -> Int {
@@ -51,22 +51,35 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
             
             return cell ?? Cell()
         } else {
-            let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: TextCell.self), for: indexPath) as? TextCell
-            switch indexPath.column {
-            case 0: cell?.label.text = self.weeklyAttendance[indexPath.row - 1].person.name
-            case 1: cell?.label.text = String(self.weeklyAttendance[indexPath.row - 1].attendanceNumber)
-            case 2: cell?.label.text = String(self.weeklyAttendance[indexPath.row - 1].admonishmentNumber)
-            default: break
+            if indexPath.column == 0 { // NameCell
+                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: NameCell.self), for: indexPath) as? NameCell
+                let person = self.weeklyAttendance[indexPath.row - 1].person
+                cell?.label.text = person.name ?? ""
+                let imageString = CommonUtility.getProfileImageString(person)
+                cell?.imageView.image = UIImage(named: imageString)
+                cell?.setNeedsLayout()
+                cell?.setNeedsLayout()
+                return cell ?? Cell()
+            } else {
+                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: TextCell.self), for: indexPath) as? TextCell
+                if indexPath.column == 1 {
+                    cell?.label.text = String(self.weeklyAttendance[indexPath.row - 1].attendanceNumber)
+                } else if indexPath.column == 2 {
+                    cell?.label.text = String(self.weeklyAttendance[indexPath.row - 1].admonishmentNumber)
+                }
+                return cell ?? Cell()
             }
-            // Show red and green cell only on friday and only if the week on focus is the current week
-            if Date().getDayNumberOfWeek() == 6 && self.calendarView.currentPage.getWeekNumber() == Date.now.getWeekNumber() {
-                // Check if the user has at least two presence or more than 2 admonishment
-                cell?.backgroundColor = self.weeklyAttendance[indexPath.row - 1].attendanceNumber < 2 || self.weeklyAttendance[indexPath.row - 1].admonishmentNumber >= 2
-                ? Theme.customRed
-                : Theme.customGreen
-            }
-            cell?.setNeedsLayout()
-            return cell ?? Cell()
+
+        }
+    }
+    
+    func handleColorOfTheCellOnFriday(_ cell: Cell?, _ row: Int) {
+        // Show red and green cell only on friday and only if the week on focus is the current week
+        if Date().getDayNumberOfWeek() == 6 && self.calendarView.currentPage.getWeekNumber() == Date.now.getWeekNumber() {
+            // Check if the user has at least two presence or more than 2 admonishment
+            cell?.backgroundColor = self.weeklyAttendance[row - 1].attendanceNumber < 2 || self.weeklyAttendance[row - 1].admonishmentNumber >= 2
+            ? Theme.customRed
+            : Theme.customGreen
         }
     }
     

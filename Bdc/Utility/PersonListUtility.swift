@@ -39,6 +39,7 @@ class PersonListUtility {
         nero.name = "Nero"
         let cataldo = Person(context: context)
         cataldo.name = "Cataldo"
+        cataldo.iconString = "cataldo_icon"
         let enzo = Person(context: context)
         enzo.name = "Enzo"
         let savio = Person(context: context)
@@ -58,6 +59,7 @@ class PersonListUtility {
         franzese.name = "Franzese"
         let lisa = Person(context: context)
         lisa.name = "Lisa"
+        lisa.iconString = "lisa_icon"
         let danieled = Person(context: context)
         danieled.name = "Daniele D"
         let giovannir = Person(context: context)
@@ -70,8 +72,10 @@ class PersonListUtility {
         michelep.name = "Michele P"
         let angelo = Person(context: context)
         angelo.name = "Angelo"
+        let francescoe = Person(context: context)
+        francescoe.name = "Francesco E"
         
-        let persons = [franco, fiore, mary, raff, genny, gigi, giovannir, giannetta, enzo, cataldo, lisa, danieled, savio, nero, mattia, conte, raffaella, sossio, pacokh, moda, alessia, michelep, franzese, angelo]
+        let persons = [franco, fiore, mary, raff, genny, gigi, giovannir, giannetta, enzo, cataldo, lisa, danieled, savio, sossio, francescoe, nero, mattia, conte, raffaella, pacokh, moda, alessia, michelep, franzese, angelo]
         return persons
     }
     
