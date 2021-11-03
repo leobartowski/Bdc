@@ -91,40 +91,52 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
         let oldSorting = self.sorting
         switch column {
         case 0:
-            if oldSorting.sortingType == .ascending {
-                self.weeklyAttendance =  self.weeklyAttendance.sorted { $0.person.name ?? "" < $1.person.name ?? "" }
-                self.sorting.sortingType = .descending
-            } else {
-                self.weeklyAttendance =  self.weeklyAttendance.sorted { $0.person.name ?? "" > $1.person.name ?? "" }
+            // I want to sort in ascending when the oldSorting was name and descending or if i switch from another sortPosition
+            if oldSorting.sortingType == .descending {
+                self.weeklyAttendance =  self.weeklyAttendance.sorted{ $0.person.name ?? "" < $1.person.name ?? "" }
                 self.sorting.sortingType = .ascending
+            } else { // I want to sort in descending 
+                self.weeklyAttendance =  self.weeklyAttendance.sorted { $0.person.name ?? "" > $1.person.name ?? "" }
+                self.sorting.sortingType = .descending
             }
             self.header[column] = self.headerBasic[column] + " " + self.sorting.sortingType.symbol
             self.header[1] = self.headerBasic[1]
             self.header[2] = self.headerBasic[2]
         case 1:
-            if oldSorting.sortingType == .ascending {
+            if oldSorting.sortingType == .descending {
                 self.weeklyAttendance =  self.weeklyAttendance.sorted { $0.attendanceNumber < $1.attendanceNumber }
-                self.sorting.sortingType = .descending
+                self.sorting.sortingType = .ascending
             } else {
                 self.weeklyAttendance =  self.weeklyAttendance.sorted { $0.attendanceNumber > $1.attendanceNumber }
-                self.sorting.sortingType = .ascending
+                self.sorting.sortingType = .descending
             }
             self.header[column] = self.headerBasic[column] + " " + self.sorting.sortingType.symbol
             self.header[0] = self.headerBasic[0]
             self.header[2] = self.headerBasic[2]
         case 2:
-            if oldSorting.sortingType == .ascending {
+            if oldSorting.sortingType == .descending  {
                 self.weeklyAttendance =  self.weeklyAttendance.sorted { $0.admonishmentNumber < $1.admonishmentNumber }
-                self.sorting.sortingType = .descending
+                self.sorting.sortingType = .ascending
             } else {
                 self.weeklyAttendance =  self.weeklyAttendance.sorted { $0.admonishmentNumber > $1.admonishmentNumber }
-                self.sorting.sortingType = .ascending
+                self.sorting.sortingType = .descending
             }
             self.header[column] = self.headerBasic[column] + " " + self.sorting.sortingType.symbol
             self.header[0] = self.headerBasic[0]
             self.header[1] = self.headerBasic[1]
         default: return
         }
+        DispatchQueue.main.async {
+            self.spreadsheetView.reloadData()
+        }
+    }
+    
+    func sortDescendingAttendanceFirstTime() {
+        self.sorting = SortingPositionAndType(.attendance, .descending)
+        self.weeklyAttendance =  self.weeklyAttendance.sorted { $0.attendanceNumber > $1.attendanceNumber }
+        self.header[0] = self.headerBasic[0]
+        self.header[1] = self.headerBasic[1] + " " + self.sorting.sortingType.symbol
+        self.header[2] = self.headerBasic[2]
         DispatchQueue.main.async {
             self.spreadsheetView.reloadData()
         }
@@ -155,9 +167,9 @@ public enum SortingType {
 
     var symbol: String {
         switch self {
-        case .ascending:
+        case .ascending: // Freccia verso l'alto
             return "\u{25B2}"
-        case .descending:
+        case .descending: // Freccia verso il basso
             return "\u{25BC}"
         }
     }

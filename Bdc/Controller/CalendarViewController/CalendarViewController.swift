@@ -33,6 +33,7 @@ class CalendarViewController: UIViewController {
         self.addCalendarGestureRecognizer()
         NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(systemTimeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
     }
     
     // We save everything to core data to prepare the new data for the RankingVC
@@ -49,8 +50,14 @@ class CalendarViewController: UIViewController {
     
     //   Get called when the app is become active
     @objc func willBecomeActive() {
+        
         self.updateDayTypeBasedOnTime()
     }
+    
+    @objc func systemTimeChanged() {
+        self.updateCalendarIfNeeded()
+    }
+    
     
     // MARK: Morning and Evening Selector
     func updateDayTypeBasedOnTime() {
