@@ -90,7 +90,7 @@ class RankingViewController: UIViewController {
                 }
             }
         }
-        self.handleSorting(column: self.sorting.sortingPosition.rawValue)
+        self.sortDescendingAttendanceFirstTime()
     }
 }
 

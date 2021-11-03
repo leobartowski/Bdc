@@ -103,6 +103,14 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
         }
     }
     
+    /// Reload CalendarView because today is broken!
+    func updateCalendarIfNeeded() {
+        if Date.tomorrow.days(from: self.calendarView.maximumDate) > 0 {
+            self.calendarView.today = Date.now
+            self.calendarView.reloadData()
+        }
+    }
+    
     // MARK: Design Calendar
     func setUpCalendarAppearance() {
         self.calendarView.appearance.titleWeekendColor = .lightGray
