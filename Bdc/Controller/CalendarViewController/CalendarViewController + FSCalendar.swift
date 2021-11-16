@@ -36,10 +36,10 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
     func minimumDate(for calendar: FSCalendar) -> Date {
         return DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date.yesterday
     }
-
+    
     func maximumDate(for calendar: FSCalendar) -> Date {
         return Date.now.getDayNumberOfWeek() != 1 ? Date.now : Date.tomorrow
-
+        
     }
     
     
@@ -62,10 +62,16 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
             self.getDataFromCoreDataAndReloadViews()
         }
     }
-
+    
     
     // MARK: Appearance Delegate
-    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
+        if DateFormatter.basicFormatter.string(from: calendar.today ?? .now) == DateFormatter.basicFormatter.string(from: date) {
+            return Theme.FSCalendarStandardTodayColor
+        }
+        return Theme.FSCalendarStandardSelectionColor
+    }
+
     
     
     // MARK: Utils
@@ -113,7 +119,9 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
     
     // MARK: Design Calendar
     func setUpCalendarAppearance() {
+        self.calendarView.select(Date.now)
         self.calendarView.appearance.titleWeekendColor = .lightGray
-        //        self.calendarView.appearance.caseOptions = .weekdayUsesUpperCase
+        self.calendarView.appearance.todayColor = .clear
+        self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
     }
 }

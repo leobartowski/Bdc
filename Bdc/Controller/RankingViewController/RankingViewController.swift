@@ -37,24 +37,10 @@ class RankingViewController: UIViewController {
     
     func viewSetUp() {
         // Spreadsheet
-        self.header = self.headerBasic
-        self.spreadsheetView.dataSource = self
-        self.spreadsheetView.delegate = self
-        self.spreadsheetView.bounces = false
-        self.calendarView.today = nil // Removed today but should let the user understand that this is the selected week!
-        self.spreadsheetView.showsVerticalScrollIndicator = false
-        self.spreadsheetView.showsHorizontalScrollIndicator = false
-        self.spreadsheetView.allowsSelection = false
-        self.spreadsheetView.register(HeaderCell.self, forCellWithReuseIdentifier: String(describing: HeaderCell.self))
-        self.spreadsheetView.register(TextCell.self, forCellWithReuseIdentifier: String(describing: TextCell.self))
-        self.spreadsheetView.register(NameCell.self, forCellWithReuseIdentifier: String(describing: NameCell.self))
+        self.spreadSheetSetup()
         // Calendar
-        self.calendarView.scope = .week // Needed to show the weekly at start!
-        self.calendarView.allowsMultipleSelection = true
-        self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Date.now)
-        self.calendarView.appearance.titleWeekendColor = .lightGray
+        self.calendarSetup()
     }
-    
     
     func populateWeeklyAttendance() {
         for item in self.weeklyAttendance {

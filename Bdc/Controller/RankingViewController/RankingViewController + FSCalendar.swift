@@ -8,7 +8,7 @@
 import Foundation
 import FSCalendar
 
-extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource {
+extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         self.calendarViewHeightConstraint.constant = 127
@@ -27,12 +27,33 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     
     // TODO: Crash on the simulator!
-//    func maximumDate(for calendar: FSCalendar) -> Date {
-//        return Date().getSpecificDayOfThisWeek(1) // Maximum date should be sunday of the current week!
-//    }
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return Date().getSpecificDayOfThisWeek(1) // Maximum date should be sunday of the current week!
+    }
     
     func minimumDate(for calendar: FSCalendar) -> Date {
         return DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date.yesterday
+    }
+    
+    // MARK: Calendar Appearance
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
+        if DateFormatter.basicFormatter.string(from: calendar.today ?? .now) == DateFormatter.basicFormatter.string(from: date) {
+            return Theme.FSCalendarStandardTodayColor
+        }
+        return date > Date.now ? .clear : Theme.FSCalendarStandardSelectionColor
+    
+    }
+
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
+        return date > Date.now ? .lightGray : .white
+    }
+   
+    //MARK: Calendar SetUp
+    func calendarSetup() {
+        self.calendarView.scope = .week // Needed to show the weekly at start!
+        self.calendarView.allowsMultipleSelection = true
+        self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Date.now)
+        self.calendarView.appearance.titleWeekendColor = .lightGray
     }
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {

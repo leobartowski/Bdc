@@ -9,7 +9,7 @@ import Foundation
 import SpreadsheetView
 
 extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSource, HeaderCellDelegate {
-        
+    
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
         return 3
     }
@@ -43,7 +43,6 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
             cell?.setUp(indexPath.column, self)
             cell?.label.text = self.header[indexPath.column]
             cell?.setNeedsLayout()
-            
             return cell ?? Cell()
         } else {
             if indexPath.column == 0 { // NameCell
@@ -52,7 +51,7 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
                 cell?.label.text = person.name ?? ""
                 let imageString = CommonUtility.getProfileImageString(person)
                 cell?.imageView.image = UIImage(named: imageString)
-                cell?.setNeedsLayout()
+                self.handleColorOfTheCellOnFriday(cell, indexPath.row)
                 cell?.setNeedsLayout()
                 return cell ?? Cell()
             } else {
@@ -62,9 +61,10 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
                 } else if indexPath.column == 2 {
                     cell?.label.text = String(self.weeklyAttendance[indexPath.row - 1].admonishmentNumber)
                 }
+                self.handleColorOfTheCellOnFriday(cell, indexPath.row)
+                cell?.setNeedsLayout()
                 return cell ?? Cell()
             }
-
         }
     }
     
@@ -80,29 +80,44 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
         if Date().getDayNumberOfWeek() == 6 && self.calendarView.currentPage.getWeekNumber() == Date.now.getWeekNumber() {
             // Check if the user has at least two presence or more than 2 admonishment
             cell?.backgroundColor = self.weeklyAttendance[row - 1].attendanceNumber < 2 || self.weeklyAttendance[row - 1].admonishmentNumber >= 2
-            ? Theme.customRed
-            : Theme.customGreen
+            ? Theme.customMediumRed
+            : Theme.customMediumGreen
         }
+    }
+    
+    // MARK: SpreadSheet SetUp
+    func spreadSheetSetup() {
+        self.header = self.headerBasic
+        self.spreadsheetView.dataSource = self
+        self.spreadsheetView.delegate = self
+        self.spreadsheetView.bounces = false
+        self.calendarView.today = nil // Removed today but should let the user understand that this is the selected week!
+        self.spreadsheetView.showsVerticalScrollIndicator = false
+        self.spreadsheetView.showsHorizontalScrollIndicator = false
+        self.spreadsheetView.allowsSelection = false
+        self.spreadsheetView.register(HeaderCell.self, forCellWithReuseIdentifier: String(describing: HeaderCell.self))
+        self.spreadsheetView.register(TextCell.self, forCellWithReuseIdentifier: String(describing: TextCell.self))
+        self.spreadsheetView.register(NameCell.self, forCellWithReuseIdentifier: String(describing: NameCell.self))
     }
     
     // TODO: Re-write this method
     func handleSorting(column: Int) {
-    
+        
         let oldSorting = self.sorting
         switch column {
-        case 0:
+        case 0: // Name
             // I want to sort in ascending when the oldSorting was name and descending or if i switch from another sortPosition
             if oldSorting.sortingType == .descending {
                 self.weeklyAttendance =  self.weeklyAttendance.sorted{ $0.person.name ?? "" < $1.person.name ?? "" }
                 self.sorting.sortingType = .ascending
-            } else { // I want to sort in descending 
+            } else { // I want to sort in descending
                 self.weeklyAttendance =  self.weeklyAttendance.sorted { $0.person.name ?? "" > $1.person.name ?? "" }
                 self.sorting.sortingType = .descending
             }
             self.header[column] = self.headerBasic[column] + " " + self.sorting.sortingType.symbol
             self.header[1] = self.headerBasic[1]
             self.header[2] = self.headerBasic[2]
-        case 1:
+        case 1: // Attendacne
             if oldSorting.sortingType == .descending {
                 self.weeklyAttendance =  self.weeklyAttendance.sorted { $0.attendanceNumber < $1.attendanceNumber }
                 self.sorting.sortingType = .ascending
@@ -113,7 +128,7 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
             self.header[column] = self.headerBasic[column] + " " + self.sorting.sortingType.symbol
             self.header[0] = self.headerBasic[0]
             self.header[2] = self.headerBasic[2]
-        case 2:
+        case 2: // Admonishment
             if oldSorting.sortingType == .descending  {
                 self.weeklyAttendance =  self.weeklyAttendance.sorted { $0.admonishmentNumber < $1.admonishmentNumber }
                 self.sorting.sortingType = .ascending
@@ -164,7 +179,7 @@ public enum SortingPosition: Int {
 public enum SortingType {
     case ascending
     case descending
-
+    
     var symbol: String {
         switch self {
         case .ascending: // Freccia verso l'alto
