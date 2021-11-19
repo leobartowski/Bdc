@@ -120,6 +120,7 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
         self.calendarView.locale = Locale(identifier: "it")
         self.calendarView.appearance.caseOptions = .headerUsesCapitalized
         self.calendarView.appearance.titleFont = .systemFont(ofSize: 15)
+        self.calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 18)
         self.calendarView.appearance.titleWeekendColor = .lightGray
         self.calendarView.appearance.todayColor = .clear
         self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor

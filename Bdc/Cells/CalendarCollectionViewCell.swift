@@ -12,31 +12,30 @@ protocol CalendarCollectionViewCellDelegate: class {
     func mainCell(_ cell: CalendarCollectionViewCell, didSelectRowAt indexPath: IndexPath)
 }
 
-class CalendarCollectionViewCell: UICollectionViewCell {
+class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     weak var delegate: CalendarCollectionViewCellDelegate?
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var customBackgroundView: UIView!
-//    @IBOutlet weak var mainButton: UIButton!
     
     var indexPath = IndexPath()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.customBackgroundView.backgroundColor = .white
-//        self.mainButton.isHidden = true
+        self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
         
     }
     
-    override func draw(_ rect: CGRect) {
-        self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
-        self.customBackgroundView.layer.cornerRadius = 10
+    override func layoutSubviews() {
+        
+        self.customBackgroundView.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
+        self.customBackgroundView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.customBackgroundView.layer.shadowOpacity = 1
+        self.customBackgroundView.layer.shadowRadius = 2
         self.customBackgroundView.layer.masksToBounds = false
-        self.customBackgroundView.layer.shadowOpacity = 0.23
-        self.customBackgroundView.layer.shadowRadius = 4
-        self.customBackgroundView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.customBackgroundView.layer.shadowColor = UIColor.black.cgColor
+        self.customBackgroundView.layer.cornerRadius = 10
+        
     }
     
     func setUp(_ person: Person,_ isAdmonished: Bool = false,_ indexPath: IndexPath, _ delegate: CalendarCollectionViewCellDelegate) {
@@ -45,21 +44,21 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         self.nameLabel.text = person.name
         let imageString = CommonUtility.getProfileImageString(person)
         self.mainImageView.image = UIImage(named: imageString)
-//        if indexPath.section == 0 {
-//            self.mainButton.isHidden = true
-//            self.contentView.backgroundColor = .white
-//        } else {
-//            self.mainButton.isHidden = false
-//            self.contentView.backgroundColor = isAdmonished ? .yellow : .white
-//        }
+        if indexPath.section != 0 { self.setupLongGestureRecognizer() }
+        self.customBackgroundView.backgroundColor = indexPath.section == 0 ? .white : (isAdmonished ? .yellow : .white)
     }
     
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//    }
+    private func setupLongGestureRecognizer() {
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        lpgr.minimumPressDuration = 0.5
+        lpgr.delegate = self
+        self.customBackgroundView.addGestureRecognizer(lpgr)
+    }
     
-    
-    @IBAction func buttonDidTap(_ sender: Any) {
-        self.delegate?.mainCell(self, didSelectRowAt: self.indexPath)
+    @objc func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
+        if gestureReconizer.state == .began {
+            self.delegate?.mainCell(self, didSelectRowAt: self.indexPath)
+            return
+        }
     }
 }
