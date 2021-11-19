@@ -71,8 +71,6 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
         }
         return Theme.FSCalendarStandardSelectionColor
     }
-
-    
     
     // MARK: Utils
     func addCalendarGestureRecognizer() {
@@ -119,9 +117,15 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
     
     // MARK: Design Calendar
     func setUpCalendarAppearance() {
-        self.calendarView.select(Date.now)
+        self.calendarView.locale = Locale(identifier: "it")
+        self.calendarView.appearance.caseOptions = .headerUsesCapitalized
+        self.calendarView.appearance.titleFont = .systemFont(ofSize: 15)
         self.calendarView.appearance.titleWeekendColor = .lightGray
         self.calendarView.appearance.todayColor = .clear
         self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
+        self.calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
+        self.calendarView.appearance.weekdayTextColor = Theme.FSCalendarStandardSelectionColor
+        self.calendarView.select(Date.now)
+
     }
 }

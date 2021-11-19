@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -135,7 +136,9 @@
                             <constraint firstItem="IfQ-k3-apU" firstAttribute="top" secondItem="N8F-5I-ZFh" secondAttribute="bottom" id="qEK-Uc-Hqj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calendario" image="calendar" catalog="system" id="cgt-sd-LiU"/>
+                    <tabBarItem key="tabBarItem" title="Calendario" id="cgt-sd-LiU">
+                        <imageReference key="image" image="calendar" catalog="system"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="calendarView" destination="N8F-5I-ZFh" id="pdY-Fq-JxL"/>
                         <outlet property="calendarViewHeightConstraint" destination="T7g-n3-HVU" id="AtC-eF-16T"/>
@@ -155,6 +158,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="DzH-NR-MkT"/>
