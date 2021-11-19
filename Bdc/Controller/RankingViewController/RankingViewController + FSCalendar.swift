@@ -53,6 +53,7 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         self.calendarView.locale = Locale(identifier: "it")
         self.calendarView.appearance.caseOptions = .headerUsesCapitalized
         self.calendarView.appearance.titleFont = .systemFont(ofSize: 15)
+        self.calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 18)
         self.calendarView.scope = .week // Needed to show the weekly at start!
         self.calendarView.allowsMultipleSelection = true
         self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Date.now)

@@ -12,7 +12,6 @@ class CalendarViewController: UIViewController {
     
     
     @IBOutlet weak var calendarView: FSCalendar!
-//    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     

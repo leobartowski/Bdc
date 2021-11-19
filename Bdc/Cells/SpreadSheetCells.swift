@@ -76,7 +76,7 @@ class TextCell: Cell {
     
     
     override func prepareForReuse() {
-        self.backgroundColor = .white
+        self.backgroundColor = Theme.dirtyWhite
         label.frame = bounds.insetBy(dx: 10, dy: 2)
         imageView.removeFromSuperview()
         imageView.frame = .null
@@ -93,7 +93,7 @@ class TextCell: Cell {
         super.init(frame: frame)
         
         let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.2)
+        backgroundView.backgroundColor = Theme.dirtyWhite
         selectedBackgroundView = backgroundView
         
         label.frame = bounds
@@ -122,7 +122,7 @@ class NameCell: Cell {
     }
     
     override func prepareForReuse() {
-        self.backgroundColor = .white
+        self.backgroundColor = Theme.dirtyWhite
     }
     
     override var frame: CGRect {
@@ -137,7 +137,7 @@ class NameCell: Cell {
         super.init(frame: frame)
         
         let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.2)
+        backgroundView.backgroundColor = Theme.dirtyWhite
         selectedBackgroundView = backgroundView
         
         label.frame = bounds
