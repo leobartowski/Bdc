@@ -10,6 +10,9 @@
 		54B938B869BE45021DEB0B10 /* Pods_BdcTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860C8EC55C5FE510EA8FC2AA /* Pods_BdcTests.framework */; };
 		CADC2548265E9B1D06ECF247 /* Pods_Bdc_BdcUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9119FA55433DC0831BDC2B0 /* Pods_Bdc_BdcUITests.framework */; };
 		CFDB48D8A7E962B77C7B952B /* Pods_Bdc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3652EAF5B75E35B222818918 /* Pods_Bdc.framework */; };
+		DD03AC1727481092004C4819 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */; };
+		DD03AC19274811B8004C4819 /* CalendarViewController + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC18274811B8004C4819 /* CalendarViewController + CollectionView.swift */; };
+		DD03AC1B27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */; };
 		DD0CAB5027280FB200EA42B1 /* Attendance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB4F27280FB200EA42B1 /* Attendance+CoreDataProperties.swift */; };
 		DD0CAB532728108600EA42B1 /* DayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB522728108600EA42B1 /* DayType.swift */; };
 		DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */; };
@@ -70,6 +73,9 @@
 		7B1B729BA1A3ABB32348512A /* Pods-Bdc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bdc.debug.xcconfig"; path = "Target Support Files/Pods-Bdc/Pods-Bdc.debug.xcconfig"; sourceTree = "<group>"; };
 		860C8EC55C5FE510EA8FC2AA /* Pods_BdcTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BdcTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BFA4AC8C666FA34A5B36127 /* Pods-BdcTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BdcTests.release.xcconfig"; path = "Target Support Files/Pods-BdcTests/Pods-BdcTests.release.xcconfig"; sourceTree = "<group>"; };
+		DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD03AC18274811B8004C4819 /* CalendarViewController + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + CollectionView.swift"; sourceTree = "<group>"; };
+		DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		DD0CAB4F27280FB200EA42B1 /* Attendance+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attendance+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DD0CAB522728108600EA42B1 /* DayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayType.swift; sourceTree = "<group>"; };
 		DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ext.swift"; sourceTree = "<group>"; };
@@ -215,6 +221,8 @@
 			children = (
 				DDDCAE80272302EA00B66C9B /* MainTableViewCell.swift */,
 				DD5520442725629F006DB40C /* SpreadSheetCells.swift */,
+				DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */,
+				DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -224,6 +232,7 @@
 			children = (
 				DD8543F227219D4A004D38F0 /* CalendarViewController.swift */,
 				DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */,
+				DD03AC18274811B8004C4819 /* CalendarViewController + CollectionView.swift */,
 				DD5542E1272456B2000D9F48 /* CalendarViewController + TableView.swift */,
 			);
 			path = CalendarViewController;
@@ -590,6 +599,7 @@
 			files = (
 				DD64968727221A40009E455F /* Attendance+CoreDataClass.swift in Sources */,
 				DD18C7FB27220B890086BB6C /* CoreDateContainer.swift in Sources */,
+				DD03AC1727481092004C4819 /* CalendarCollectionViewCell.swift in Sources */,
 				DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */,
 				DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */,
 				DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */,
@@ -598,8 +608,10 @@
 				DD5542E52724589E000D9F48 /* RankingViewController + SpredSheet.swift in Sources */,
 				DD0CAB5027280FB200EA42B1 /* Attendance+CoreDataProperties.swift in Sources */,
 				DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */,
+				DD03AC19274811B8004C4819 /* CalendarViewController + CollectionView.swift in Sources */,
 				DD0CAB532728108600EA42B1 /* DayType.swift in Sources */,
 				DD5520452725629F006DB40C /* SpreadSheetCells.swift in Sources */,
+				DD03AC1B27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift in Sources */,
 				DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */,
 				DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */,
 				DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */,

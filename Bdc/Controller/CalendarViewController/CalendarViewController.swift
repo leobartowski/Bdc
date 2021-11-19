@@ -12,10 +12,11 @@ class CalendarViewController: UIViewController {
     
     
     @IBOutlet weak var calendarView: FSCalendar!
-    @IBOutlet weak var tableView: UITableView!
+//    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     let sectionTitles = ["Presenti", "Assenti"]
     var dayType = DayType.evening
     var personsPresent: [Person] = []
@@ -26,6 +27,7 @@ class CalendarViewController: UIViewController {
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.calendarView.scope = .week // Needed to show the weekly at start! (BUG IN THE SYSTEM)
         self.setUpCalendarAppearance()
         self.checkAndChangeWeekendSelectedDate()
@@ -50,7 +52,6 @@ class CalendarViewController: UIViewController {
     
     //   Get called when the app is become active
     @objc func willBecomeActive() {
-        
         self.updateDayTypeBasedOnTime()
     }
     
@@ -100,7 +101,7 @@ class CalendarViewController: UIViewController {
         }
         self.personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            self.collectionView.reloadData()
         }
         
     }
