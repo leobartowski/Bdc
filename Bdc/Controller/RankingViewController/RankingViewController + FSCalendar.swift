@@ -9,7 +9,7 @@ import Foundation
 import FSCalendar
 
 extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
-    
+
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         self.calendarViewHeightConstraint.constant = 127
         self.view.layoutIfNeeded()
@@ -24,7 +24,7 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         // The user cannot manually de-select a specific date!
         return false
     }
-    
+
     
     // TODO: Crash on the simulator!
     func maximumDate(for calendar: FSCalendar) -> Date {
@@ -50,10 +50,16 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
    
     //MARK: Calendar SetUp
     func calendarSetup() {
+        self.calendarView.locale = Locale(identifier: "it")
+        self.calendarView.appearance.caseOptions = .headerUsesCapitalized
+        self.calendarView.appearance.titleFont = .systemFont(ofSize: 15)
         self.calendarView.scope = .week // Needed to show the weekly at start!
         self.calendarView.allowsMultipleSelection = true
         self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Date.now)
         self.calendarView.appearance.titleWeekendColor = .lightGray
+        self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
+        self.calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
+        self.calendarView.appearance.weekdayTextColor = Theme.FSCalendarStandardSelectionColor
     }
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
