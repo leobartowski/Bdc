@@ -38,8 +38,7 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
     }
     
     func maximumDate(for calendar: FSCalendar) -> Date {
-        return Date.now.getDayNumberOfWeek() != 1 ? Date.now : Date.tomorrow
-        
+        return Date.now
     }
     
     
@@ -63,8 +62,8 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
         }
     }
     
-    
     // MARK: Appearance Delegate
+    
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
         if DateFormatter.basicFormatter.string(from: calendar.today ?? .now) == DateFormatter.basicFormatter.string(from: date) {
             return Theme.FSCalendarStandardTodayColor
@@ -74,14 +73,21 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
     
     // MARK: Utils
     func addCalendarGestureRecognizer() {
+        let swipeGestureUpCalendar = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(gesture:)))
+        swipeGestureUpCalendar.direction = .up
+        self.calendarView.addGestureRecognizer(swipeGestureUpCalendar)
         
-        let swipeGestureUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(gesture:)))
-        swipeGestureUp.direction = .up
-        self.calendarView.addGestureRecognizer(swipeGestureUp)
+        let swipeGestureUpBottomView = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(gesture:)))
+        swipeGestureUpBottomView.direction = .up
+        self.bottomCalendarHandleView.addGestureRecognizer(swipeGestureUpBottomView)
         
-        let swipeGestureDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(gesture:)))
-        swipeGestureDown.direction = .down
-        self.calendarView.addGestureRecognizer(swipeGestureDown)
+        let swipeGestureDownCalendar = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(gesture:)))
+        swipeGestureDownCalendar.direction = .down
+        self.calendarView.addGestureRecognizer(swipeGestureDownCalendar)
+        
+        let swipeGestureDownBottomView = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(gesture:)))
+        swipeGestureDownBottomView.direction = .down
+        self.bottomCalendarHandleView.addGestureRecognizer(swipeGestureDownBottomView)
     }
     
     // The animation and the chande of constraints are performed in the delagate method: boundingRectWillChange
@@ -99,11 +105,11 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
     
     func checkAndChangeWeekendSelectedDate() {
         if Date.now.getDayNumberOfWeek() == 1 { // Sunday
-            self.calendarView.select(Date.tomorrow) // select Monday
-            self.calendarView.appearance.todayColor = Theme.customLightRed
+            self.calendarView.select(Date().twoDayBefore)
+            self.calendarView.appearance.titleTodayColor = Theme.customLightRed
         } else if Date.now.getDayNumberOfWeek() == 7 { // Saturday
-            self.calendarView.select(Date.yesterday) // select Friday
-            self.calendarView.appearance.todayColor = Theme.customLightRed
+            self.calendarView.select(Date.yesterday)
+            self.calendarView.appearance.titleTodayColor = Theme.customLightRed
         }
     }
     
