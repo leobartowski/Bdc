@@ -15,6 +15,9 @@ extension Date {
     var dayBefore: Date {
         return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
     }
+    var twoDayBefore: Date {
+        return Calendar.current.date(byAdding: .day, value: -2, to: noon)!
+    }
     var dayAfter: Date {
         return Calendar.current.date(byAdding: .day, value: 1, to: noon)!
     }

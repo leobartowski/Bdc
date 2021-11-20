@@ -47,6 +47,15 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
         return date > Date.now ? .lightGray : .white
     }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+        if date.getDayNumberOfWeek() == 1 || date.getDayNumberOfWeek() == 7 {
+            if DateFormatter.basicFormatter.string(from: calendar.today ?? .now) == DateFormatter.basicFormatter.string(from: date) {
+                return Theme.customLightRed
+            }
+        }
+        return .lightGray
+    }
    
     //MARK: Calendar SetUp
     func calendarSetup() {
@@ -83,5 +92,4 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
             self.calendarView.deselect(date)
         }
     }
-    
 }

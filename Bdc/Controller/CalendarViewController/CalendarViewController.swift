@@ -14,6 +14,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var bottomCalendarHandleView: UIView!
     
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     let sectionTitles = ["Presenti", "Assenti"]
@@ -32,9 +33,11 @@ class CalendarViewController: UIViewController {
         self.checkAndChangeWeekendSelectedDate()
         self.getDataFromCoreDataAndReloadViews()
         self.addCalendarGestureRecognizer()
+        self.designBottomCalendarHandleView()
         NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(systemTimeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
+        
     }
     
     // We save everything to core data to prepare the new data for the RankingVC
@@ -108,6 +111,17 @@ class CalendarViewController: UIViewController {
     /// Save everything to Core Data and clear current class var before chainging data source. Use this function before updating current date and current dayType
     func saveCurrentDataInCoreData() {
         CoreDataService.shared.savePersonsAndPersonsAdmonishedAttendance(self.calendarView.selectedDate ?? Date.now, self.dayType, persons: self.personsPresent, personsAdmonished: self.personsAdmonished)
+    }
+    
+    /// Add shadow and corner radius to bottom Calendar Handle View
+    func designBottomCalendarHandleView() {
+        self.bottomCalendarHandleView.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
+        self.bottomCalendarHandleView.layer.shadowOffset = CGSize(width: 0.0, height: 4)
+        self.bottomCalendarHandleView.layer.shadowOpacity = 0.3
+        self.bottomCalendarHandleView.layer.shadowRadius = 2
+        self.bottomCalendarHandleView.layer.masksToBounds = false
+        self.bottomCalendarHandleView.layer.cornerRadius = 15
+        self.bottomCalendarHandleView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
     }
     
     // MARK: IBActions

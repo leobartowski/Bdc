@@ -37,10 +37,10 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IfQ-k3-apU">
-                                <rect key="frame" x="0.0" y="394" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="399" width="414" height="50"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="c0R-Hg-uRN">
-                                        <rect key="frame" x="20" y="9.5" width="374" height="32"/>
+                                        <rect key="frame" x="20" y="14.5" width="374" height="32"/>
                                         <segments>
                                             <segment title="Mattina"/>
                                             <segment title="Sera"/>
@@ -55,12 +55,12 @@
                                     <constraint firstAttribute="trailing" secondItem="c0R-Hg-uRN" secondAttribute="trailing" constant="20" id="7fl-ei-aJf"/>
                                     <constraint firstItem="c0R-Hg-uRN" firstAttribute="centerX" secondItem="IfQ-k3-apU" secondAttribute="centerX" id="JMc-va-W4u"/>
                                     <constraint firstItem="c0R-Hg-uRN" firstAttribute="leading" secondItem="IfQ-k3-apU" secondAttribute="leading" constant="20" id="VvN-10-B1J"/>
-                                    <constraint firstItem="c0R-Hg-uRN" firstAttribute="centerY" secondItem="IfQ-k3-apU" secondAttribute="centerY" id="hcG-XV-2Ky"/>
+                                    <constraint firstItem="c0R-Hg-uRN" firstAttribute="centerY" secondItem="IfQ-k3-apU" secondAttribute="centerY" constant="5" id="hcG-XV-2Ky"/>
                                     <constraint firstAttribute="height" constant="50" id="ze6-BL-dRc"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8Nf-BA-LP8">
-                                <rect key="frame" x="0.0" y="454" width="414" height="359"/>
+                                <rect key="frame" x="0.0" y="449" width="414" height="364"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="kbS-8J-NXJ">
                                     <size key="itemSize" width="80" height="100"/>
@@ -147,26 +147,54 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="HbV-Ps-Ryt"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E99-wd-Yoj">
+                                <rect key="frame" x="0.0" y="384" width="414" height="15"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBa-Fy-jMN">
+                                        <rect key="frame" x="189.5" y="4.5" width="35" height="6"/>
+                                        <color key="backgroundColor" white="0.79756530903991829" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="6" id="bLq-ih-MYX"/>
+                                            <constraint firstAttribute="width" constant="35" id="zBg-pw-QLf"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="PTE-b5-Hi5"/>
+                                    <constraint firstItem="ZBa-Fy-jMN" firstAttribute="centerX" secondItem="E99-wd-Yoj" secondAttribute="centerX" id="PwM-3i-HXH"/>
+                                    <constraint firstItem="ZBa-Fy-jMN" firstAttribute="centerY" secondItem="E99-wd-Yoj" secondAttribute="centerY" id="qsp-g2-fE5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="E99-wd-Yoj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3pL-s9-2r6"/>
                             <constraint firstItem="N8F-5I-ZFh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6si-QC-cJh"/>
-                            <constraint firstItem="IfQ-k3-apU" firstAttribute="top" secondItem="N8F-5I-ZFh" secondAttribute="bottom" id="EeL-79-Csk"/>
+                            <constraint firstItem="E99-wd-Yoj" firstAttribute="top" secondItem="N8F-5I-ZFh" secondAttribute="bottom" constant="-10" id="8U3-mw-rWc"/>
+                            <constraint firstItem="IfQ-k3-apU" firstAttribute="top" secondItem="N8F-5I-ZFh" secondAttribute="bottom" constant="5" id="EeL-79-Csk"/>
                             <constraint firstItem="IfQ-k3-apU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ptd-xc-3iP"/>
                             <constraint firstItem="N8F-5I-ZFh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SIg-z5-Whe"/>
                             <constraint firstItem="8Nf-BA-LP8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="VcD-Hu-uA3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="E99-wd-Yoj" secondAttribute="trailing" id="VfT-kh-gvf"/>
                             <constraint firstItem="8Nf-BA-LP8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vie-vb-smy"/>
                             <constraint firstItem="8Nf-BA-LP8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="akz-XR-pk4"/>
                             <constraint firstItem="IfQ-k3-apU" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rt7-vl-Yem"/>
                             <constraint firstItem="N8F-5I-ZFh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vCg-oL-eUf"/>
-                            <constraint firstItem="8Nf-BA-LP8" firstAttribute="top" secondItem="IfQ-k3-apU" secondAttribute="bottom" constant="10" id="wVb-Jn-4AM"/>
+                            <constraint firstItem="8Nf-BA-LP8" firstAttribute="top" secondItem="IfQ-k3-apU" secondAttribute="bottom" id="wVb-Jn-4AM"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calendario" id="cgt-sd-LiU">
                         <imageReference key="image" image="calendar" catalog="system"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="bottomCalendarHandleView" destination="E99-wd-Yoj" id="ikN-RS-ELP"/>
                         <outlet property="calendarView" destination="N8F-5I-ZFh" id="pdY-Fq-JxL"/>
                         <outlet property="calendarViewHeightConstraint" destination="xgx-tb-mHJ" id="Por-R3-Sdk"/>
                         <outlet property="collectionView" destination="8Nf-BA-LP8" id="DMG-ja-g7C"/>
