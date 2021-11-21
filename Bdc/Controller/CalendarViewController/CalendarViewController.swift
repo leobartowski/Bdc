@@ -166,7 +166,7 @@ class CalendarViewController: UIViewController {
     @IBAction func goToTodayTouchUpInside(_ sender: Any) {
         
         Date().getDayNumberOfWeek() == 1 || Date().getDayNumberOfWeek() == 7
-        ? self.presentAlert(alertText: "Hey!", alertMessage: "Mi dispiace, ma dovresti sapere che non si prendono presenze sabato e  e domenica!")
+        ? self.presentAlert(alertText: "Hey!", alertMessage: "Mi dispiace, ma dovresti sapere che non si prendono presenze sabato e domenica!")
         : self.automaticScrollToToday()
     }
     
