@@ -52,6 +52,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             self.personsNotPresent.remove(at: indexPath.row)
             self.personsPresent.append(personToAdd)
         }
+        self.sortPersonPresentAndNot()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }

@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -234,7 +233,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYo-CZ-vwa" customClass="SpreadsheetView" customModule="SpreadsheetView">
-                                <rect key="frame" x="0.0" y="394" width="414" height="419"/>
+                                <rect key="frame" x="10" y="414" width="394" height="379"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZL-9L-OaS" customClass="FSCalendar">
@@ -257,14 +256,13 @@
                         <viewLayoutGuide key="safeArea" id="C6Y-kX-hKN"/>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="bottom" secondItem="C6Y-kX-hKN" secondAttribute="bottom" id="5B5-k1-y0E"/>
+                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="bottom" secondItem="C6Y-kX-hKN" secondAttribute="bottom" constant="-20" id="5B5-k1-y0E"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" id="8GI-NO-n1C"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" id="CjB-5b-YJj"/>
-                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="top" secondItem="xZL-9L-OaS" secondAttribute="bottom" id="Jd2-9V-lFs"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="LyG-y3-Ajy"/>
-                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="SBz-nW-hav"/>
-                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="top" secondItem="xZL-9L-OaS" secondAttribute="bottom" id="aMH-kH-E1m"/>
-                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" id="i1t-Wt-fIO"/>
+                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" constant="10" id="SBz-nW-hav"/>
+                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="top" secondItem="xZL-9L-OaS" secondAttribute="bottom" constant="20" id="aMH-kH-E1m"/>
+                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" constant="-10" id="i1t-Wt-fIO"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Ranking" image="person.3.fill" catalog="system" id="Shf-1z-or0"/>
@@ -278,153 +276,9 @@
             </objects>
             <point key="canvasLocation" x="1946.376811594203" y="812.94642857142856"/>
         </scene>
-        <!--Calendario-->
-        <scene sceneID="y7m-x5-v6R">
-            <objects>
-                <viewController id="PDq-ig-o4C" customClass="CalendarViewController" customModule="Bdc" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Q7g-We-W80">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6r-GA-2Sa" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="350"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="xbE-Rn-Cda"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="dataSource" destination="PDq-ig-o4C" id="dzc-5A-KVw"/>
-                                    <outlet property="delegate" destination="PDq-ig-o4C" id="MTT-dF-qin"/>
-                                </connections>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2X-I5-eM3">
-                                <rect key="frame" x="0.0" y="444" width="414" height="418"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" id="FmU-2C-3fV" customClass="MainTableViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FmU-2C-3fV" id="bP4-LA-dfc">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFq-I1-uGT">
-                                                    <rect key="frame" x="85" y="5" width="309" height="50"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UZa-64-9Px">
-                                                    <rect key="frame" x="30" y="10" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="Bn4-Pz-aN5"/>
-                                                        <constraint firstAttribute="width" constant="40" id="Lkq-uj-AzB"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kR2-9n-daw">
-                                                    <rect key="frame" x="349" y="12.5" width="35" height="35"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="35" id="Zvs-Ko-gcd"/>
-                                                        <constraint firstAttribute="height" constant="35" id="t9E-1F-NK8"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain">
-                                                        <backgroundConfiguration key="background" image="yellow-card"/>
-                                                    </buttonConfiguration>
-                                                    <connections>
-                                                        <action selector="buttonDidTap:" destination="FmU-2C-3fV" eventType="touchUpInside" id="0Rg-EC-wwU"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="PFq-I1-uGT" secondAttribute="trailing" constant="20" id="0cC-0M-kWI"/>
-                                                <constraint firstItem="UZa-64-9Px" firstAttribute="centerY" secondItem="bP4-LA-dfc" secondAttribute="centerY" id="Iuz-3w-uW4"/>
-                                                <constraint firstItem="UZa-64-9Px" firstAttribute="leading" secondItem="bP4-LA-dfc" secondAttribute="leading" constant="30" id="YTU-IB-1YJ"/>
-                                                <constraint firstItem="PFq-I1-uGT" firstAttribute="top" secondItem="bP4-LA-dfc" secondAttribute="top" constant="5" id="kdh-ye-od4"/>
-                                                <constraint firstItem="PFq-I1-uGT" firstAttribute="leading" secondItem="UZa-64-9Px" secondAttribute="trailing" constant="15" id="nzr-xi-6PT"/>
-                                                <constraint firstAttribute="trailing" secondItem="kR2-9n-daw" secondAttribute="trailing" constant="30" id="p1T-Ow-wQo"/>
-                                                <constraint firstAttribute="bottom" secondItem="PFq-I1-uGT" secondAttribute="bottom" constant="5" id="tkE-d7-O4A"/>
-                                                <constraint firstItem="kR2-9n-daw" firstAttribute="centerY" secondItem="bP4-LA-dfc" secondAttribute="centerY" id="vx1-c5-PbU"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="mainButton" destination="kR2-9n-daw" id="w5q-ct-IxY"/>
-                                            <outlet property="mainImageView" destination="UZa-64-9Px" id="iNQ-cJ-3p4"/>
-                                            <outlet property="nameLabel" destination="PFq-I1-uGT" id="qAi-Ph-Vjd"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="PDq-ig-o4C" id="xfj-pp-Pf3"/>
-                                    <outlet property="delegate" destination="PDq-ig-o4C" id="IpV-s9-ABW"/>
-                                </connections>
-                            </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aqr-ie-7HV">
-                                <rect key="frame" x="0.0" y="394" width="414" height="50"/>
-                                <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="kUW-Hx-oG3">
-                                        <rect key="frame" x="20" y="10" width="374" height="31"/>
-                                        <segments>
-                                            <segment title="Mattina"/>
-                                            <segment title="Sera"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="segmentedControlValueChanged:" destination="PDq-ig-o4C" eventType="valueChanged" id="QIz-GP-Dkp"/>
-                                        </connections>
-                                    </segmentedControl>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="kUW-Hx-oG3" secondAttribute="bottom" constant="10" id="E5c-GL-3Qv"/>
-                                    <constraint firstItem="kUW-Hx-oG3" firstAttribute="top" secondItem="aqr-ie-7HV" secondAttribute="top" constant="10" id="HH8-cx-vvH"/>
-                                    <constraint firstAttribute="trailing" secondItem="kUW-Hx-oG3" secondAttribute="trailing" constant="20" id="Nwe-By-iHM"/>
-                                    <constraint firstItem="kUW-Hx-oG3" firstAttribute="leading" secondItem="aqr-ie-7HV" secondAttribute="leading" constant="20" id="n08-0i-yfI"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="pmg-zg-pVu"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="N6r-GA-2Sa" firstAttribute="leading" secondItem="pmg-zg-pVu" secondAttribute="leading" id="8eU-7Z-PBb"/>
-                            <constraint firstItem="P2X-I5-eM3" firstAttribute="leading" secondItem="pmg-zg-pVu" secondAttribute="leading" id="EQ5-8a-AJJ"/>
-                            <constraint firstItem="pmg-zg-pVu" firstAttribute="trailing" secondItem="P2X-I5-eM3" secondAttribute="trailing" id="H6l-rD-U9m"/>
-                            <constraint firstItem="P2X-I5-eM3" firstAttribute="top" secondItem="aqr-ie-7HV" secondAttribute="bottom" id="SgB-08-zZy"/>
-                            <constraint firstItem="aqr-ie-7HV" firstAttribute="leading" secondItem="pmg-zg-pVu" secondAttribute="leading" id="UVc-ep-qub"/>
-                            <constraint firstItem="pmg-zg-pVu" firstAttribute="trailing" secondItem="aqr-ie-7HV" secondAttribute="trailing" id="Y1S-mR-Zua"/>
-                            <constraint firstItem="pmg-zg-pVu" firstAttribute="bottom" secondItem="P2X-I5-eM3" secondAttribute="bottom" id="Y9T-70-f3f"/>
-                            <constraint firstItem="P2X-I5-eM3" firstAttribute="top" secondItem="N6r-GA-2Sa" secondAttribute="bottom" constant="50" id="oL1-xl-ULB"/>
-                            <constraint firstItem="N6r-GA-2Sa" firstAttribute="top" secondItem="pmg-zg-pVu" secondAttribute="top" id="r1Q-2F-aEy"/>
-                            <constraint firstItem="N6r-GA-2Sa" firstAttribute="trailing" secondItem="pmg-zg-pVu" secondAttribute="trailing" id="tCl-b4-PpT"/>
-                            <constraint firstItem="aqr-ie-7HV" firstAttribute="top" secondItem="N6r-GA-2Sa" secondAttribute="bottom" id="yFQ-l0-jCm"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Calendario" id="DO2-5A-pgB">
-                        <imageReference key="image" image="calendar" catalog="system"/>
-                    </tabBarItem>
-                    <connections>
-                        <outlet property="calendarView" destination="N6r-GA-2Sa" id="wwn-AW-bJM"/>
-                        <outlet property="calendarViewHeightConstraint" destination="xbE-Rn-Cda" id="GWH-rt-Pkc"/>
-                        <outlet property="segmentedControl" destination="kUW-Hx-oG3" id="2zg-Vk-Ujo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Cdy-Vj-fuH" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2859" y="1"/>
-        </scene>
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
-        <image name="yellow-card" width="512" height="512"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

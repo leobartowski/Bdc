@@ -102,15 +102,20 @@ class CalendarViewController: UIViewController {
             }
         }
         self.personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
+        self.sortPersonPresentAndNot()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
-        
     }
     
     /// Save everything to Core Data and clear current class var before chainging data source. Use this function before updating current date and current dayType
     func saveCurrentDataInCoreData() {
         CoreDataService.shared.savePersonsAndPersonsAdmonishedAttendance(self.calendarView.selectedDate ?? Date.now, self.dayType, persons: self.personsPresent, personsAdmonished: self.personsAdmonished)
+    }
+    
+    func sortPersonPresentAndNot() {
+        self.personsPresent = self.personsPresent.sorted{ $0.name ?? "" < $1.name ?? "" }
+        self.personsNotPresent = self.personsNotPresent.sorted{ $0.name ?? "" < $1.name ?? "" }
     }
     
     /// Add shadow and corner radius to bottom Calendar Handle View
