@@ -39,28 +39,25 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
     
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
         if indexPath.row == 0 { // Header Row
-            let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: HeaderCell.self), for: indexPath) as? HeaderCell
-            cell?.setUp(indexPath.column, self)
-            cell?.label.text = self.header[indexPath.column]
+            let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: HeaderSpreadSheetCell.self), for: indexPath) as? HeaderSpreadSheetCell
+            cell?.setUp(indexPath.column, self.header[indexPath.column], self)
             cell?.setNeedsLayout()
             return cell ?? Cell()
-        } else {
+        } else { // All the other Rows
+            
             if indexPath.column == 0 { // NameCell
-                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: NameCell.self), for: indexPath) as? NameCell
+                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: NameSpreadSheetCell.self), for: indexPath) as? NameSpreadSheetCell
                 let person = self.weeklyAttendance[indexPath.row - 1].person
-                cell?.label.text = person.name ?? ""
-                let imageString = CommonUtility.getProfileImageString(person)
-                cell?.imageView.image = UIImage(named: imageString)
+                cell?.setUp(person)
                 self.handleColorOfTheCellOnFriday(cell, indexPath.row)
                 cell?.setNeedsLayout()
                 return cell ?? Cell()
-            } else {
-                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: TextCell.self), for: indexPath) as? TextCell
-                if indexPath.column == 1 {
-                    cell?.label.text = String(self.weeklyAttendance[indexPath.row - 1].attendanceNumber)
-                } else if indexPath.column == 2 {
-                    cell?.label.text = String(self.weeklyAttendance[indexPath.row - 1].admonishmentNumber)
-                }
+            } else { // Presence cell and Admonishment cell
+                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: String(describing: TextSpreadSheetCell.self), for: indexPath) as? TextSpreadSheetCell
+                let text = indexPath.column == 1
+                ? String(self.weeklyAttendance[indexPath.row - 1].attendanceNumber)
+                : String(self.weeklyAttendance[indexPath.row - 1].admonishmentNumber)
+                cell?.setUp(indexPath.column, text)
                 self.handleColorOfTheCellOnFriday(cell, indexPath.row)
                 cell?.setNeedsLayout()
                 return cell ?? Cell()
@@ -69,7 +66,7 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
     }
     
     // MARK: HeaderCellDelegate
-    func headerCell(_ cell: HeaderCell, didSelectRowAt column: Int) {
+    func headerCell(_ cell: HeaderSpreadSheetCell, didSelectRowAt column: Int) {
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
         feedbackGenerator.impactOccurred()
         self.handleSorting(column: column)
@@ -88,18 +85,19 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
     // MARK: SpreadSheet SetUp
     func spreadSheetSetup() {
         self.header = self.headerBasic
+        self.spreadsheetView.backgroundColor = Theme.dirtyWhite
         self.spreadsheetView.dataSource = self
         self.spreadsheetView.delegate = self
         self.spreadsheetView.bounces = false
-        self.spreadsheetView.intercellSpacing = CGSize(width: 0, height: 0)
-        spreadsheetView.gridStyle = .none
+        self.spreadsheetView.intercellSpacing = CGSize(width: 0, height: 10)
+        self.spreadsheetView.gridStyle = .none
         self.calendarView.today = nil // Removed today and changed the appearence in the delegate
         self.spreadsheetView.showsVerticalScrollIndicator = false
         self.spreadsheetView.showsHorizontalScrollIndicator = false
         self.spreadsheetView.allowsSelection = false
-        self.spreadsheetView.register(HeaderCell.self, forCellWithReuseIdentifier: String(describing: HeaderCell.self))
-        self.spreadsheetView.register(TextCell.self, forCellWithReuseIdentifier: String(describing: TextCell.self))
-        self.spreadsheetView.register(NameCell.self, forCellWithReuseIdentifier: String(describing: NameCell.self))
+        self.spreadsheetView.register(HeaderSpreadSheetCell.self, forCellWithReuseIdentifier: String(describing: HeaderSpreadSheetCell.self))
+        self.spreadsheetView.register(TextSpreadSheetCell.self, forCellWithReuseIdentifier: String(describing: TextSpreadSheetCell.self))
+        self.spreadsheetView.register(NameSpreadSheetCell.self, forCellWithReuseIdentifier: String(describing: NameSpreadSheetCell.self))
     }
     
     // TODO: Re-write this method

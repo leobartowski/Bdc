@@ -249,8 +249,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYo-CZ-vwa" customClass="SpreadsheetView" customModule="SpreadsheetView">
-                                <rect key="frame" x="10" y="414" width="394" height="379"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="10" y="394" width="394" height="419"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZL-9L-OaS" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="44" width="414" height="350"/>
@@ -272,12 +272,12 @@
                         <viewLayoutGuide key="safeArea" id="C6Y-kX-hKN"/>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="bottom" secondItem="C6Y-kX-hKN" secondAttribute="bottom" constant="-20" id="5B5-k1-y0E"/>
+                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="bottom" secondItem="C6Y-kX-hKN" secondAttribute="bottom" id="5B5-k1-y0E"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" id="8GI-NO-n1C"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" id="CjB-5b-YJj"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="LyG-y3-Ajy"/>
                             <constraint firstItem="bYo-CZ-vwa" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" constant="10" id="SBz-nW-hav"/>
-                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="top" secondItem="xZL-9L-OaS" secondAttribute="bottom" constant="20" id="aMH-kH-E1m"/>
+                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="top" secondItem="xZL-9L-OaS" secondAttribute="bottom" id="aMH-kH-E1m"/>
                             <constraint firstItem="bYo-CZ-vwa" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" constant="-10" id="i1t-Wt-fIO"/>
                         </constraints>
                     </view>
