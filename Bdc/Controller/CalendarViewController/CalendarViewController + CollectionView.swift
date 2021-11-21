@@ -103,4 +103,11 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             self.collectionView.reloadItems(at: [indexPath])
         }
     }
+    
+    // MARK: SetUp CollectionView
+    func setupCollectionView() {
+        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout 
+        layout?.sectionHeadersPinToVisibleBounds = true
+
+    }
 }
