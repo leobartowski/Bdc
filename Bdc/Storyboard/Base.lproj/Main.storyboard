@@ -36,10 +36,10 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IfQ-k3-apU">
-                                <rect key="frame" x="0.0" y="399" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="399" width="414" height="55"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="c0R-Hg-uRN">
-                                        <rect key="frame" x="20" y="14.5" width="374" height="32"/>
+                                        <rect key="frame" x="20" y="12" width="322" height="32"/>
                                         <segments>
                                             <segment title="Mattina"/>
                                             <segment title="Sera"/>
@@ -48,18 +48,32 @@
                                             <action selector="segmentedControlValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="a8a-6s-Uwb"/>
                                         </connections>
                                     </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRC-Yl-aOc">
+                                        <rect key="frame" x="362" y="11.5" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="7Q9-av-vVi"/>
+                                            <constraint firstAttribute="width" constant="32" id="wxd-eX-nWY"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="calendar" catalog="system"/>
+                                        <connections>
+                                            <action selector="goToTodayTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XBY-5a-kvN"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="c0R-Hg-uRN" secondAttribute="trailing" constant="20" id="7fl-ei-aJf"/>
-                                    <constraint firstItem="c0R-Hg-uRN" firstAttribute="centerX" secondItem="IfQ-k3-apU" secondAttribute="centerX" id="JMc-va-W4u"/>
+                                    <constraint firstAttribute="trailing" secondItem="IRC-Yl-aOc" secondAttribute="trailing" constant="20" id="Dbb-re-AHO"/>
+                                    <constraint firstItem="IRC-Yl-aOc" firstAttribute="leading" secondItem="c0R-Hg-uRN" secondAttribute="trailing" constant="20" id="O8B-ml-TW2"/>
+                                    <constraint firstItem="IRC-Yl-aOc" firstAttribute="centerY" secondItem="IfQ-k3-apU" secondAttribute="centerY" id="Pcp-WX-F3o"/>
                                     <constraint firstItem="c0R-Hg-uRN" firstAttribute="leading" secondItem="IfQ-k3-apU" secondAttribute="leading" constant="20" id="VvN-10-B1J"/>
-                                    <constraint firstItem="c0R-Hg-uRN" firstAttribute="centerY" secondItem="IfQ-k3-apU" secondAttribute="centerY" constant="5" id="hcG-XV-2Ky"/>
-                                    <constraint firstAttribute="height" constant="50" id="ze6-BL-dRc"/>
+                                    <constraint firstItem="c0R-Hg-uRN" firstAttribute="centerY" secondItem="IfQ-k3-apU" secondAttribute="centerY" id="hcG-XV-2Ky"/>
+                                    <constraint firstAttribute="height" constant="55" id="ze6-BL-dRc"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8Nf-BA-LP8">
-                                <rect key="frame" x="0.0" y="449" width="414" height="364"/>
+                                <rect key="frame" x="0.0" y="454" width="414" height="359"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="kbS-8J-NXJ">
                                     <size key="itemSize" width="80" height="100"/>
@@ -197,7 +211,9 @@
                         <outlet property="calendarView" destination="N8F-5I-ZFh" id="pdY-Fq-JxL"/>
                         <outlet property="calendarViewHeightConstraint" destination="xgx-tb-mHJ" id="Por-R3-Sdk"/>
                         <outlet property="collectionView" destination="8Nf-BA-LP8" id="DMG-ja-g7C"/>
+                        <outlet property="goToTodayButton" destination="IRC-Yl-aOc" id="Lwp-BJ-bTq"/>
                         <outlet property="segmentedControl" destination="c0R-Hg-uRN" id="PO0-kP-lFZ"/>
+                        <outlet property="segmentedControlContainerView" destination="IfQ-k3-apU" id="YGz-DA-uas"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

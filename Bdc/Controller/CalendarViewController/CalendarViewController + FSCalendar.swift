@@ -123,7 +123,9 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
     
     // MARK: Design Calendar
     func setUpCalendarAppearance() {
+        
         self.calendarView.locale = Locale(identifier: "it")
+        self.calendarView.scope = .week // Needed to show the weekly at start! (BUG IN THE SYSTEM)
         self.calendarView.placeholderType = .none
         self.calendarView.appearance.caseOptions = .headerUsesCapitalized
         self.calendarView.appearance.titleFont = .systemFont(ofSize: 15)

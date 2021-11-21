@@ -15,6 +15,8 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var bottomCalendarHandleView: UIView!
+    @IBOutlet weak var goToTodayButton: UIButton!
+    @IBOutlet weak var segmentedControlContainerView: UIView!
     
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     let sectionTitles = ["Presenti", "Assenti"]
@@ -28,16 +30,14 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.calendarView.scope = .week // Needed to show the weekly at start! (BUG IN THE SYSTEM)
         self.setUpCalendarAppearance()
         self.checkAndChangeWeekendSelectedDate()
         self.getDataFromCoreDataAndReloadViews()
         self.addCalendarGestureRecognizer()
         self.designBottomCalendarHandleView()
-        NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(willBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(systemTimeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
-        
+        self.updateGoToTodayButton()
+        self.setupCollectionView()
+        self.addObservers()
     }
     
     // We save everything to core data to prepare the new data for the RankingVC
@@ -61,6 +61,37 @@ class CalendarViewController: UIViewController {
         self.updateCalendarIfNeeded()
     }
     
+    // MARK: Utils and Design
+    /// Add shadow and corner radius to bottom Calendar Handle View
+    func designBottomCalendarHandleView() {
+        self.bottomCalendarHandleView.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
+        self.bottomCalendarHandleView.layer.shadowOffset = CGSize(width: 0.0, height: 4)
+        self.bottomCalendarHandleView.layer.shadowOpacity = 0.3
+        self.bottomCalendarHandleView.layer.shadowRadius = 2
+        self.bottomCalendarHandleView.layer.masksToBounds = false
+        self.bottomCalendarHandleView.layer.cornerRadius = 15
+        self.bottomCalendarHandleView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+
+    }
+    
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(systemTimeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
+    }
+    
+    func updateGoToTodayButton() {
+        self.goToTodayButton.alpha = Date().getDayNumberOfWeek() == 1 || Date().getDayNumberOfWeek() == 7
+        ? 0.3
+        : 1
+    }
+    
+    func automaticScrollToToday() {
+        DispatchQueue.main.async {
+            self.calendarView.setCurrentPage(Date.now, animated: true)
+            self.calendarView.select(Date.now)
+        }
+    }
     
     // MARK: Morning and Evening Selector
     func updateDayTypeBasedOnTime() {
@@ -83,6 +114,7 @@ class CalendarViewController: UIViewController {
     
     func reloadCalendarDateIfNeeded() {
         if self.calendarView.maximumDate < Date.now {
+            self.updateGoToTodayButton()
             self.calendarView.reloadData()
         }
     }
@@ -118,16 +150,6 @@ class CalendarViewController: UIViewController {
         self.personsNotPresent = self.personsNotPresent.sorted{ $0.name ?? "" < $1.name ?? "" }
     }
     
-    /// Add shadow and corner radius to bottom Calendar Handle View
-    func designBottomCalendarHandleView() {
-        self.bottomCalendarHandleView.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
-        self.bottomCalendarHandleView.layer.shadowOffset = CGSize(width: 0.0, height: 4)
-        self.bottomCalendarHandleView.layer.shadowOpacity = 0.3
-        self.bottomCalendarHandleView.layer.shadowRadius = 2
-        self.bottomCalendarHandleView.layer.masksToBounds = false
-        self.bottomCalendarHandleView.layer.cornerRadius = 15
-        self.bottomCalendarHandleView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-    }
     
     // MARK: IBActions
     @IBAction func segmentedControlValueChanged(_ sender: Any) {
@@ -139,6 +161,13 @@ class CalendarViewController: UIViewController {
         default:break
         }
         self.getDataFromCoreDataAndReloadViews()
+    }
+    
+    @IBAction func goToTodayTouchUpInside(_ sender: Any) {
+        
+        Date().getDayNumberOfWeek() == 1 || Date().getDayNumberOfWeek() == 7
+        ? self.presentAlert(alertText: "Hey!", alertMessage: "Mi dispiace, ma dovresti sapere che non si prendono presenze sabato e  e domenica!")
+        : self.automaticScrollToToday()
     }
     
     @objc func handleSwipe(gesture: UIGestureRecognizer) {
