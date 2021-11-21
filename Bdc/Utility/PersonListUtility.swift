@@ -24,11 +24,13 @@ class PersonListUtility {
         fiore.iconString = "fiore_icon"
         let sossio = Person(context: context)
         sossio.name = "Sossio"
+        sossio.iconString = "sossio_icon"
         let mary = Person(context: context)
         mary.name = "Mary"
         mary.iconString = "mary_icon"
         let genny = Person(context: context)
         genny.name = "Genny"
+        genny.iconString = "genny_icon"
         let raff = Person(context: context)
         raff.name = "Raff N"
         raff.iconString = "raff_icon"

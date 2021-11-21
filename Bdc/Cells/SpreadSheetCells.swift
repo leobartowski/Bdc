@@ -35,14 +35,20 @@ class HeaderCell: Cell {
         
         label.frame = bounds
         label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .white
         label.textAlignment = .center
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         contentView.addSubview(label)
         
+        contentView.backgroundColor = Theme.FSCalendarStandardSelectionColor
+        
         setupLabelTap()
+        
+
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -52,6 +58,27 @@ class HeaderCell: Cell {
     func setUp(_ column: Int, _ delegate: HeaderCellDelegate) {
         self.delegate = delegate
         self.column = column
+        setUpCorner()
+    }
+    
+    func setUpCorner() {
+        if column == 0 {
+        contentView.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
+        contentView.layer.shadowOffset = CGSize(width: 0.0, height: 0)
+        contentView.layer.shadowOpacity = 0.3
+        contentView.layer.shadowRadius = 2
+        contentView.layer.masksToBounds = false
+        contentView.layer.cornerRadius = 20
+        contentView.layer.maskedCorners = [.layerMinXMinYCorner]
+        } else if column == 2 {
+            contentView.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
+            contentView.layer.shadowOffset = CGSize(width: 0.0, height: 0)
+            contentView.layer.shadowOpacity = 0.3
+            contentView.layer.shadowRadius = 2
+            contentView.layer.masksToBounds = false
+            contentView.layer.cornerRadius = 20
+            contentView.layer.maskedCorners = [.layerMaxXMinYCorner]
+        }
     }
 
     // MARK: Label GestureRecognizer
@@ -128,8 +155,8 @@ class NameCell: Cell {
     override var frame: CGRect {
         didSet {
             // The cell height is 60 and the weidth is 160
-            label.frame = CGRect(x: 65, y: 10, width: 90, height: 40)
-            imageView.frame = CGRect(x: 15, y: 10, width: 40, height: 40)
+            label.frame = CGRect(x: 75, y: 10, width: 90, height: 40)
+            imageView.frame = CGRect(x: 20, y: 10, width: 40, height: 40)
         }
     }
     

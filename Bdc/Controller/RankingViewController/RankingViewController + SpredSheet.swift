@@ -18,9 +18,9 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
         return self.weeklyAttendance.count + 1 // The first row is for the labels
     }
     
-    func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
+    func spreadsheetView(_ spreadshe5tView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
         let firstColumn: CGFloat = 160
-        let otherColumn: CGFloat = ((self.view.frame.width - firstColumn) / 2) - 2
+        let otherColumn: CGFloat = (((self.view.frame.width - 20) - firstColumn) / 2) 
         return column == 0 ? firstColumn : otherColumn
         
     }
@@ -91,7 +91,9 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
         self.spreadsheetView.dataSource = self
         self.spreadsheetView.delegate = self
         self.spreadsheetView.bounces = false
-        self.calendarView.today = nil // Removed today but should let the user understand that this is the selected week!
+        self.spreadsheetView.intercellSpacing = CGSize(width: 0, height: 0)
+        spreadsheetView.gridStyle = .none
+        self.calendarView.today = nil // Removed today and changed the appearence in the delegate
         self.spreadsheetView.showsVerticalScrollIndicator = false
         self.spreadsheetView.showsHorizontalScrollIndicator = false
         self.spreadsheetView.allowsSelection = false

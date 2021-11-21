@@ -124,6 +124,7 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
     // MARK: Design Calendar
     func setUpCalendarAppearance() {
         self.calendarView.locale = Locale(identifier: "it")
+        self.calendarView.placeholderType = .none
         self.calendarView.appearance.caseOptions = .headerUsesCapitalized
         self.calendarView.appearance.titleFont = .systemFont(ofSize: 15)
         self.calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 18)
@@ -133,6 +134,5 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
         self.calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
         self.calendarView.appearance.weekdayTextColor = Theme.FSCalendarStandardSelectionColor
         self.calendarView.select(Date.now)
-
     }
 }
