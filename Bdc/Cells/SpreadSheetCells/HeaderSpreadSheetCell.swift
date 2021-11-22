@@ -25,11 +25,6 @@ class HeaderSpreadSheetCell: Cell {
         }
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setUpCorner()
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -58,6 +53,7 @@ class HeaderSpreadSheetCell: Cell {
         self.delegate = delegate
         self.column = column
         self.label.text = text
+        self.setUpCorner()
     }
     
     func setUpCorner() {
