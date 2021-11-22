@@ -66,12 +66,11 @@ class CalendarViewController: UIViewController {
     func designBottomCalendarHandleView() {
         self.bottomCalendarHandleView.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
         self.bottomCalendarHandleView.layer.shadowOffset = CGSize(width: 0.0, height: 4)
-        self.bottomCalendarHandleView.layer.shadowOpacity = 0.3
+        self.bottomCalendarHandleView.layer.shadowOpacity = 0.5
         self.bottomCalendarHandleView.layer.shadowRadius = 2
         self.bottomCalendarHandleView.layer.masksToBounds = false
-        self.bottomCalendarHandleView.layer.cornerRadius = 15
+        self.bottomCalendarHandleView.layer.cornerRadius = 20
         self.bottomCalendarHandleView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-
     }
     
     func addObservers() {

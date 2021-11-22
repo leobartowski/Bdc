@@ -249,7 +249,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYo-CZ-vwa" customClass="SpreadsheetView" customModule="SpreadsheetView">
-                                <rect key="frame" x="10" y="394" width="394" height="419"/>
+                                <rect key="frame" x="10" y="384" width="394" height="429"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZL-9L-OaS" customClass="FSCalendar">
@@ -277,7 +277,7 @@
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" id="CjB-5b-YJj"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="LyG-y3-Ajy"/>
                             <constraint firstItem="bYo-CZ-vwa" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" constant="10" id="SBz-nW-hav"/>
-                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="top" secondItem="xZL-9L-OaS" secondAttribute="bottom" id="aMH-kH-E1m"/>
+                            <constraint firstItem="bYo-CZ-vwa" firstAttribute="top" secondItem="xZL-9L-OaS" secondAttribute="bottom" constant="-10" id="aMH-kH-E1m"/>
                             <constraint firstItem="bYo-CZ-vwa" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" constant="-10" id="i1t-Wt-fIO"/>
                         </constraints>
                     </view>
