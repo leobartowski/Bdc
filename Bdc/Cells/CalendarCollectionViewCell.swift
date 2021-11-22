@@ -27,17 +27,6 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
         
     }
     
-    override func layoutSubviews() {
-        
-        self.customBackgroundView.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
-        self.customBackgroundView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        self.customBackgroundView.layer.shadowOpacity = 1
-        self.customBackgroundView.layer.shadowRadius = 2
-        self.customBackgroundView.layer.masksToBounds = false
-        self.customBackgroundView.layer.cornerRadius = 10
-        
-    }
-    
     func setUp(_ person: Person,_ isAdmonished: Bool = false,_ indexPath: IndexPath, _ delegate: CalendarCollectionViewCellDelegate) {
         self.delegate = delegate
         self.indexPath = indexPath
@@ -46,6 +35,16 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
         self.mainImageView.image = UIImage(named: imageString)
         if indexPath.section != 0 { self.setupLongGestureRecognizer() }
         self.customBackgroundView.backgroundColor = indexPath.section == 0 ? .white : (isAdmonished ? .yellow : .white)
+        self.setUpShadow()
+    }
+    
+    func setUpShadow() {
+        self.customBackgroundView.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
+        self.customBackgroundView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.customBackgroundView.layer.shadowOpacity = 1
+        self.customBackgroundView.layer.shadowRadius = 2
+        self.customBackgroundView.layer.masksToBounds = false
+        self.customBackgroundView.layer.cornerRadius = 10
     }
     
     private func setupLongGestureRecognizer() {

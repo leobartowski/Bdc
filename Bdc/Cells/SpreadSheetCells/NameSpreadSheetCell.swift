@@ -45,38 +45,19 @@ class NameSpreadSheetCell: Cell {
         super.init(coder: aDecoder)
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.contentView.layer.shadowPath = UIBezierPath(
-            roundedRect: bounds,
-            cornerRadius: 10
-        ).cgPath
-    }
-    
     func setUp(_ person: Person) {
         self.label.text = person.name ?? ""
         let imageString = CommonUtility.getProfileImageString(person)
         self.imageView.image = UIImage(named: imageString)
-        self.setUpShadow()
+        self.setUpCornerRadius()
     }
     
-    func setUpShadow() {
+    func setUpCornerRadius() {
         
         imageView.layer.cornerRadius = imageView.frame.height / 2
-        
-        contentView.layer.cornerRadius = 10
+        contentView.layer.cornerRadius = 15
         contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         contentView.layer.masksToBounds = true
         
-        // Set masks to bounds to false to avoid the shadow
-        // from being clipped to the corner radius
-        layer.cornerRadius = 10
-        layer.masksToBounds = false
-        
-        // Apply a shadow
-        layer.shadowRadius = 2
-        layer.shadowOpacity = 1
-        layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 0)
     }
 }
