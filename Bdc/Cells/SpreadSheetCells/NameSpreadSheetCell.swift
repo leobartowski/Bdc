@@ -16,7 +16,7 @@ class NameSpreadSheetCell: Cell {
     override var frame: CGRect {
         didSet {
             // The cell height is 60 and the weidth is 160
-            label.frame = CGRect(x: 75, y: 10, width: 90, height: 40)
+            label.frame = CGRect(x: 70, y: 10, width: 80, height: 40)
             imageView.frame = CGRect(x: 20, y: 10, width: 40, height: 40)
         }
     }
@@ -55,9 +55,11 @@ class NameSpreadSheetCell: Cell {
     func setUpCornerRadius() {
         
         imageView.layer.cornerRadius = imageView.frame.height / 2
+        contentView.layer.borderWidth = 0.2
+        contentView.layer.borderColor = Theme.FSCalendarStandardSelectionColor.cgColor
+        
         contentView.layer.cornerRadius = 15
         contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
-        contentView.layer.masksToBounds = true
-        
+        contentView.clipsToBounds = true
     }
 }
