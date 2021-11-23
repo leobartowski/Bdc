@@ -67,6 +67,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             
             guard let typedHeaderView = headerView as? CalendarHeaderCollectionReusableView else { return headerView }
             typedHeaderView.titleLabel.text = self.sectionTitles[indexPath.section]
+            typedHeaderView.titleLabel.textColor = indexPath.section == 0 ? Theme.avatarBlack : Theme.avatarRed
             return typedHeaderView
         }
         return UICollectionReusableView()

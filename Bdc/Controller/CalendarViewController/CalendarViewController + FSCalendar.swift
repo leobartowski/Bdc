@@ -31,7 +31,6 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
             self.calendarViewHeightConstraint.constant = 127
         }
         self.view.layoutIfNeeded()
-        
     }
     
     
@@ -129,14 +128,17 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
         self.calendarView.locale = Locale(identifier: "it")
         self.calendarView.scope = .week // Needed to show the weekly at start! (BUG IN THE SYSTEM)
         self.calendarView.placeholderType = .none
+        self.calendarView.select(Date.now)
+        // Appearance
         self.calendarView.appearance.caseOptions = .headerUsesCapitalized
-        self.calendarView.appearance.titleFont = .systemFont(ofSize: 15)
-        self.calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 18)
+        self.calendarView.appearance.titleFont = .boldSystemFont(ofSize: 15)
+        self.calendarView.appearance.weekdayFont = .systemFont(ofSize: 17, weight: .light)
+        self.calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 19)
         self.calendarView.appearance.titleWeekendColor = .lightGray
         self.calendarView.appearance.todayColor = .clear
+        self.calendarView.appearance.titleDefaultColor = Theme.avatarBlack
         self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
         self.calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
-        self.calendarView.appearance.weekdayTextColor = Theme.FSCalendarStandardSelectionColor
-        self.calendarView.select(Date.now)
+        self.calendarView.appearance.weekdayTextColor = .black
     }
 }
