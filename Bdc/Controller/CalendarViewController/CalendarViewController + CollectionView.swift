@@ -105,9 +105,10 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     // MARK: SetUp CollectionView
-    func setupCollectionView() {
-        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout 
-        layout?.sectionHeadersPinToVisibleBounds = true
-
-    }
+    // I don't know why but putting sectionHeadersPinToVisibleBounds = true create a streange glich
+    // when the calendar change scope (week or month)
+//    func setupCollectionView() {
+//        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+//        layout?.sectionHeadersPinToVisibleBounds = true
+//    }
 }

@@ -24,12 +24,14 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        
         if self.calendarView.scope == .month {
             self.calendarViewHeightConstraint.constant = 350
         } else {
             self.calendarViewHeightConstraint.constant = 127
         }
         self.view.layoutIfNeeded()
+        
     }
     
     
