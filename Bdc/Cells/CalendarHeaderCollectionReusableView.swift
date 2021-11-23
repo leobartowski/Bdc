@@ -13,4 +13,9 @@ class CalendarHeaderCollectionReusableView: UICollectionReusableView {
     
     @IBOutlet weak var titleLabel: UILabel!
     
+    override func awakeFromNib() {
+        
+        self.titleLabel.textColor = Theme.avatarBlack
+    }
+    
 }

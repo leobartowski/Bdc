@@ -16,6 +16,7 @@ enum Theme {
     static let customMediumGreen = UIColor(red: 17/255, green: 187/255, blue: 85/255, alpha: 0.75)
     static let dirtyWhite = UIColor(named: "FAFAFA")
     static let avatarRed = UIColor(red: 250/255, green: 53/255, blue: 78/255, alpha: 1)
+    static let avatarLightRed = UIColor(red: 250/255, green: 53/255, blue: 78/255, alpha: 0.2)
     static let avatarBlack = UIColor(red: 51/255, green: 51/255, blue: 60/255, alpha: 1)
     static let FSCalendarStandardSelectionColor = UIColor(red: 0/255, green: 128/255, blue: 128/255, alpha: 1.0)
     static let FSCalendarStandardLightSelectionColor = UIColor(red: 0/255, green: 128/255, blue: 128/255, alpha: 0.2)
