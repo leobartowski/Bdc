@@ -36,7 +36,7 @@ class CalendarViewController: UIViewController {
         self.addCalendarGestureRecognizer()
         self.designBottomCalendarHandleView()
         self.updateGoToTodayButton()
-        self.setupCollectionView()
+//        self.setupCollectionView()
         self.addObservers()
     }
     
@@ -86,9 +86,11 @@ class CalendarViewController: UIViewController {
     }
     
     func automaticScrollToToday() {
+        self.saveCurrentDataInCoreData() // save the date of the current day before deselecting
         DispatchQueue.main.async {
             self.calendarView.setCurrentPage(Date.now, animated: true)
             self.calendarView.select(Date.now)
+            self.getDataFromCoreDataAndReloadViews()
         }
     }
     
