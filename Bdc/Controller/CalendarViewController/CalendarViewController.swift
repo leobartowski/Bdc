@@ -13,7 +13,7 @@ class CalendarViewController: UIViewController {
     
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var segmentedControl: MySegmentedControl!
     @IBOutlet weak var bottomCalendarHandleView: UIView!
     @IBOutlet weak var goToTodayButton: UIButton!
     @IBOutlet weak var segmentedControlContainerView: UIView!
@@ -31,11 +31,13 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
 
         self.setUpCalendarAppearance()
+        self.setupSegmentedControl()
         self.checkAndChangeWeekendSelectedDate()
         self.getDataFromCoreDataAndReloadViews()
         self.addCalendarGestureRecognizer()
         self.designBottomCalendarHandleView()
         self.updateGoToTodayButton()
+        
 //        self.setupCollectionView()
         self.addObservers()
     }
@@ -92,6 +94,22 @@ class CalendarViewController: UIViewController {
             self.calendarView.select(Date.now)
             self.getDataFromCoreDataAndReloadViews()
         }
+    }
+    
+    func setupSegmentedControl() {
+        self.segmentedControl.backgroundColor = .white
+        self.segmentedControl.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
+        self.segmentedControl.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        self.segmentedControl.layer.shadowOpacity = 0.5
+        self.segmentedControl.layer.shadowRadius = 3
+        self.segmentedControl.layer.masksToBounds = false
+        self.segmentedControl.borderColor = Theme.FSCalendarStandardSelectionColor
+        self.segmentedControl.selectedSegmentTintColor = Theme.FSCalendarStandardSelectionColor
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
+        
+        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        self.segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .normal)
     }
     
     // MARK: Morning and Evening Selector

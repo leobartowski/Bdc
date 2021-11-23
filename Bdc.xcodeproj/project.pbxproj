@@ -42,6 +42,7 @@
 		DDB292622721A90500D96E67 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB292612721A90500D96E67 /* SectionHeaderView.swift */; };
 		DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A32724065A0028E49B /* RankingViewController.swift */; };
 		DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A527240CAE0028E49B /* Date - Ext.swift */; };
+		DDCBBDB4274D44B4002B60DA /* MySegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */; };
 		DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DDD5051B27220FB000508F60 /* Bdc.xcdatamodeld */; };
 		DDDCAE81272302EA00B66C9B /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDCAE80272302EA00B66C9B /* MainTableViewCell.swift */; };
 		DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */; };
@@ -111,6 +112,7 @@
 		DDB292612721A90500D96E67 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		DDC337A32724065A0028E49B /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		DDC337A527240CAE0028E49B /* Date - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date - Ext.swift"; sourceTree = "<group>"; };
+		DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySegmentedControl.swift; sourceTree = "<group>"; };
 		DDD5051C27220FB000508F60 /* Bdc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bdc.xcdatamodel; sourceTree = "<group>"; };
 		DDDCAE80272302EA00B66C9B /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter - Ext.swift"; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */,
 				DD1EAF392726DDD100EF1455 /* CommonUtility.swift */,
 				DDF1DE4C272C50CE006B7DFD /* Theme.swift */,
+				DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				DD41743027246BA500BE5BFD /* RankingViewController + FSCalendar.swift in Sources */,
 				DDF1DE4D272C50CE006B7DFD /* Theme.swift in Sources */,
 				DDDCAE81272302EA00B66C9B /* MainTableViewCell.swift in Sources */,
+				DDCBBDB4274D44B4002B60DA /* MySegmentedControl.swift in Sources */,
 				DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */,
 				DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */,
 				DD8543F127219D4A004D38F0 /* SceneDelegate.swift in Sources */,

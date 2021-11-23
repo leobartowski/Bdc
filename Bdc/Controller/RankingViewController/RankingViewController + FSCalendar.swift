@@ -59,17 +59,24 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
    
     //MARK: Calendar SetUp
     func calendarSetup() {
+        
         self.calendarView.locale = Locale(identifier: "it")
-        self.calendarView.appearance.caseOptions = .headerUsesCapitalized
-        self.calendarView.appearance.titleFont = .systemFont(ofSize: 15)
-        self.calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 18)
+        self.calendarView.placeholderType = .none
         self.calendarView.scope = .week // Needed to show the weekly at start!
         self.calendarView.allowsMultipleSelection = true
         self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Date.now)
+        // Appearance
+        self.calendarView.appearance.caseOptions = .headerUsesCapitalized
+        self.calendarView.appearance.titleFont = .boldSystemFont(ofSize: 15)
+        self.calendarView.appearance.weekdayFont = .systemFont(ofSize: 17, weight: .light)
+        self.calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 19)
         self.calendarView.appearance.titleWeekendColor = .lightGray
+        self.calendarView.appearance.titleDefaultColor = Theme.avatarBlack
         self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
         self.calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
-        self.calendarView.appearance.weekdayTextColor = Theme.FSCalendarStandardSelectionColor
+        self.calendarView.appearance.weekdayTextColor = .black
+
+
     }
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
