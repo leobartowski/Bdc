@@ -12,8 +12,9 @@ import FSCalendar
 class RankingViewController: UIViewController {
     
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calendarView: FSCalendar!
-    @IBOutlet weak var spreadsheetView: SpreadsheetView!
+//    @IBOutlet weak var spreadsheetView: SpreadsheetView!
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     
     var weeklyAttendance = PersonListUtility.personsWeeklyAttendance
