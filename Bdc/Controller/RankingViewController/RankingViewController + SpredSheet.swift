@@ -80,25 +80,25 @@ extension RankingViewController: SpreadsheetViewDelegate, SpreadsheetViewDataSou
             ? Theme.customMediumRed
             : Theme.customMediumGreen
         }
-    }
+    }b
     
     // MARK: SpreadSheet SetUp
-    func spreadSheetSetup() {
-        self.header = self.headerBasic
-        self.spreadsheetView.backgroundColor = Theme.dirtyWhite
-        self.spreadsheetView.dataSource = self
-        self.spreadsheetView.delegate = self
-        self.spreadsheetView.bounces = false
-        self.spreadsheetView.intercellSpacing = CGSize(width: 0, height: 10)
-        self.spreadsheetView.gridStyle = .none
-        self.calendarView.today = nil // Removed today and changed the appearence in the delegate
-        self.spreadsheetView.showsVerticalScrollIndicator = false
-        self.spreadsheetView.showsHorizontalScrollIndicator = false
-        self.spreadsheetView.allowsSelection = false
-        self.spreadsheetView.register(HeaderSpreadSheetCell.self, forCellWithReuseIdentifier: String(describing: HeaderSpreadSheetCell.self))
-        self.spreadsheetView.register(TextSpreadSheetCell.self, forCellWithReuseIdentifier: String(describing: TextSpreadSheetCell.self))
-        self.spreadsheetView.register(NameSpreadSheetCell.self, forCellWithReuseIdentifier: String(describing: NameSpreadSheetCell.self))
-    }
+//    func spreadSheetSetup() {
+//        self.header = self.headerBasic
+//        self.spreadsheetView.backgroundColor = Theme.dirtyWhite
+//        self.spreadsheetView.dataSource = self
+//        self.spreadsheetView.delegate = self
+//        self.spreadsheetView.bounces = false
+//        self.spreadsheetView.intercellSpacing = CGSize(width: 0, height: 10)
+//        self.spreadsheetView.gridStyle = .none
+//        self.calendarView.today = nil // Removed today and changed the appearence in the delegate
+//        self.spreadsheetView.showsVerticalScrollIndicator = false
+//        self.spreadsheetView.showsHorizontalScrollIndicator = false
+//        self.spreadsheetView.allowsSelection = false
+//        self.spreadsheetView.register(HeaderSpreadSheetCell.self, forCellWithReuseIdentifier: String(describing: HeaderSpreadSheetCell.self))
+//        self.spreadsheetView.register(TextSpreadSheetCell.self, forCellWithReuseIdentifier: String(describing: TextSpreadSheetCell.self))
+//        self.spreadsheetView.register(NameSpreadSheetCell.self, forCellWithReuseIdentifier: String(describing: NameSpreadSheetCell.self))
+//    }
     
     // TODO: Re-write this method
     func handleSorting(column: Int) {
