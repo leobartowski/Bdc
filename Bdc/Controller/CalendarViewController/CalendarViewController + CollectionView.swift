@@ -85,6 +85,15 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
 //        cell.contentView.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: radius).cgPath
 //    }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if scrollView == self.collectionView && self.collectionView.contentSize.height > 0 &&
+            ((self.collectionView.contentOffset.y + self.collectionView.safeAreaInsets.top) <= 0) &&
+            self.calendarView.scope == .month {
+            
+                self.handleMonthlyToWeeklyCalendar()
+        }
+    }
+    
     //MARK: MainTableViewCellDelegate
     
     func mainCell(_ cell: CalendarCollectionViewCell, didSelectRowAt indexPath: IndexPath) {
