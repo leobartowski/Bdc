@@ -56,6 +56,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
