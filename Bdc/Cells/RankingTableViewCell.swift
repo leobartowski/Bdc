@@ -16,20 +16,21 @@ class RankingTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var mainImageView: UIImageView!
-    @IBOutlet weak var presenceLabel: UILabel!
+    @IBOutlet weak var attendanceLabel: UILabel!
     @IBOutlet weak var admonishmentLabel: UILabel!
     var indexPath = IndexPath()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.setUpShadow()
+        
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
     }
     
     func setUp(_ rankingAttendance: RankingPersonAttendance,_ indexPath: IndexPath) {
         self.indexPath = indexPath
+        self.setUpShadow()
         self.nameLabel.text = rankingAttendance.person.name
-        self.presenceLabel.text = String(rankingAttendance.attendanceNumber)
+        self.attendanceLabel.text = String(rankingAttendance.attendanceNumber)
         self.admonishmentLabel.text = String(rankingAttendance.admonishmentNumber)
         let imageString = CommonUtility.getProfileImageString(rankingAttendance.person)
         self.mainImageView.image = UIImage(named: imageString)
@@ -46,6 +47,25 @@ class RankingTableViewCell: UITableViewCell {
         self.containerView.layer.shadowRadius = 2
         self.containerView.layer.masksToBounds = false
         self.containerView.layer.cornerRadius = self.containerView.frame.height / 4
+    }
+    
+    func setupLabelDesign(_ labelNumber: Int) {
+        switch labelNumber {
+        case 0:
+            self.nameLabel.font = .systemFont(ofSize: 19, weight: .medium)
+            self.attendanceLabel.font = .systemFont(ofSize: 19, weight: .light)
+            self.admonishmentLabel.font = .systemFont(ofSize: 19, weight: .light)
+        case 1:
+            self.nameLabel.font = .systemFont(ofSize: 19, weight: .light)
+            self.attendanceLabel.font = .systemFont(ofSize: 19, weight: .medium)
+            self.admonishmentLabel.font = .systemFont(ofSize: 19, weight: .light)
+        case 2:
+            self.nameLabel.font = .systemFont(ofSize: 19, weight: .light)
+            self.attendanceLabel.font = .systemFont(ofSize: 19, weight: .light)
+            self.admonishmentLabel.font = .systemFont(ofSize: 19, weight: .medium)
+        default:
+            break
+        }
     }
     
 }
