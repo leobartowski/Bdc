@@ -12,7 +12,7 @@ import UIKit
 class PersonListUtility {
     
     public static let persons = createStartingPerson(CoreDataContainer.context)
-    public static var personsWeeklyAttendance = createEmptyWeeklyAttendance()
+    public static var rankingPersonsAttendance = createEmptyWeeklyAttendance()
     
     private static func createStartingPerson(_ context: NSManagedObjectContext) -> [Person] {
     
@@ -81,10 +81,10 @@ class PersonListUtility {
         return persons
     }
     
-    private static func createEmptyWeeklyAttendance() -> [PersonWeeklyAttendance] {
-        var personsWeeklyAttendance = [PersonWeeklyAttendance]()
+    private static func createEmptyWeeklyAttendance() -> [RankingPersonAttendance] {
+        var personsWeeklyAttendance = [RankingPersonAttendance]()
         for person in PersonListUtility.persons {
-            let personAttendece = PersonWeeklyAttendance(person, 0, 0)
+            let personAttendece = RankingPersonAttendance(person, 0, 0)
             personsWeeklyAttendance.append(personAttendece)
         }
         return personsWeeklyAttendance
@@ -94,7 +94,7 @@ class PersonListUtility {
 }
 
 
-public class PersonWeeklyAttendance {
+public class RankingPersonAttendance {
     
     var person: Person
     var attendanceNumber: Int
