@@ -156,6 +156,7 @@ class CalendarViewController: UIViewController {
         self.sortPersonPresentAndNot()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
+            self.collectionView.setContentOffset(.zero, animated: true)
         }
     }
     

@@ -35,8 +35,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // Check to avoid the modification of day older than 2 from now
-        if Date().days(from: self.calendarView.selectedDate ?? Date()) > 1 {
+        // Check to avoid the modification of day older than today
+        if Date().days(from: self.calendarView.selectedDate ?? Date()) > 0 {
             return
         }
         if indexPath.section == 0 { // Person Present
