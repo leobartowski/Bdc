@@ -39,9 +39,8 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
     }
     
     func setUpShadow() {
-        self.customBackgroundView.layer.shadowColor = indexPath.section == 0
-        ? Theme.FSCalendarStandardSelectionColor.cgColor
-        : Theme.avatarRed.cgColor
+
+        self.customBackgroundView.layer.shadowColor = UIColor.gray.cgColor
         self.customBackgroundView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         self.customBackgroundView.layer.shadowOpacity = 0.3
         self.customBackgroundView.layer.shadowRadius = 2

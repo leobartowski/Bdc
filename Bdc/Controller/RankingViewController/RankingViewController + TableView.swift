@@ -21,13 +21,14 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? RankingTableViewCell
         let rankingAttendance = self.rankingPersonsAttendaces[indexPath.row]
         cell?.setUp(rankingAttendance, indexPath)
+        cell?.setupLabelDesign(self.sorting.sortingPosition.rawValue)
         self.handleColorOfTheCellOnFriday(cell, indexPath.row)
         cell?.setNeedsLayout()
         return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 65
+        return 60
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -36,6 +37,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         sectionHeaderView.nameLabel.text = self.header[0]
         sectionHeaderView.attendanceLabel.text = self.header[1]
         sectionHeaderView.admonishmentLabel.text = self.header[2]
+        sectionHeaderView.setupLabelDesign(self.sorting.sortingPosition.rawValue)
         return sectionHeaderView
     }
     
@@ -47,9 +49,10 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         // Show red and green cell only on friday and only if the week on focus is the current week
         if Date().getDayNumberOfWeek() == 6 && self.calendarView.currentPage.getWeekNumber() == Date.now.getWeekNumber() {
             // Check if the user has at least two presence or more than 2 admonishment
-            cell?.containerView.backgroundColor = self.rankingPersonsAttendaces[row].attendanceNumber < 2 || self.rankingPersonsAttendaces[row].admonishmentNumber >= 2
-            ? Theme.customMediumRed
-            : Theme.customMediumGreen
+            cell?.containerView.layer.shadowOpacity = 0.7
+            cell?.containerView.layer.shadowColor = self.rankingPersonsAttendaces[row].attendanceNumber < 2 || self.rankingPersonsAttendaces[row].admonishmentNumber >= 2
+            ? UIColor.red.cgColor
+            : Theme.customGreen.cgColor
         }
     }
     
@@ -86,6 +89,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             self.header[column] = self.headerBasic[column] + " " + self.sorting.sortingType.symbol
             self.header[1] = self.headerBasic[1]
             self.header[2] = self.headerBasic[2]
+            self.sorting.sortingPosition = .name
         case 1: // Attendacne
             if oldSorting.sortingType == .descending {
                 self.rankingPersonsAttendaces =  self.rankingPersonsAttendaces.sorted { $0.attendanceNumber < $1.attendanceNumber }
@@ -97,6 +101,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             self.header[column] = self.headerBasic[column] + " " + self.sorting.sortingType.symbol
             self.header[0] = self.headerBasic[0]
             self.header[2] = self.headerBasic[2]
+            self.sorting.sortingPosition = .attendance
         case 2: // Admonishment
             if oldSorting.sortingType == .descending  {
                 self.rankingPersonsAttendaces =  self.rankingPersonsAttendaces.sorted { $0.admonishmentNumber < $1.admonishmentNumber }
@@ -108,6 +113,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             self.header[column] = self.headerBasic[column] + " " + self.sorting.sortingType.symbol
             self.header[0] = self.headerBasic[0]
             self.header[1] = self.headerBasic[1]
+            self.sorting.sortingPosition = .admonishment
         default: return
         }
         DispatchQueue.main.async {

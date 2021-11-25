@@ -44,6 +44,7 @@ class PersonListUtility {
         cataldo.iconString = "cataldo_icon"
         let enzo = Person(context: context)
         enzo.name = "Enzo"
+        enzo.iconString = "enzo_icon"
         let savio = Person(context: context)
         savio.name = "Savio Dj"
         let gigi = Person(context: context)
@@ -64,8 +65,10 @@ class PersonListUtility {
         lisa.iconString = "lisa_icon"
         let danieled = Person(context: context)
         danieled.name = "Daniele D"
+        danieled.iconString = "danieleD_icon"
         let giovannir = Person(context: context)
         giovannir.name = "Giovanni R"
+        giovannir.iconString = "giovanniR_icon"
         let conte = Person(context: context)
         conte.name = "Conte"
         let alessia = Person(context: context)

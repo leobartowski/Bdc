@@ -75,7 +75,7 @@
                                     <constraint firstAttribute="height" constant="55" id="ze6-BL-dRc"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8Nf-BA-LP8">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8Nf-BA-LP8">
                                 <rect key="frame" x="0.0" y="454" width="414" height="359"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="kbS-8J-NXJ">
@@ -267,7 +267,7 @@
                                     <outlet property="delegate" destination="gzR-Cb-bnF" id="PZf-wE-ane"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rxW-AI-RUa">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rxW-AI-RUa">
                                 <rect key="frame" x="0.0" y="394" width="414" height="419"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -338,10 +338,10 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="admonishmentLabel" destination="3ST-v4-LP0" id="rnj-yf-hRO"/>
+                                            <outlet property="attendanceLabel" destination="qgn-3j-jgy" id="zFT-Dp-3EW"/>
                                             <outlet property="containerView" destination="UFf-q7-g9B" id="S2K-rP-coQ"/>
                                             <outlet property="mainImageView" destination="P4n-y5-bj8" id="xE3-W1-aEU"/>
                                             <outlet property="nameLabel" destination="kDH-7i-bdI" id="YFY-TF-nla"/>
-                                            <outlet property="presenceLabel" destination="qgn-3j-jgy" id="zFT-Dp-3EW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
