@@ -11,10 +11,10 @@ import UIKit
 
 class PersonListUtility {
     
-    public static let persons = createStartingPerson(CoreDataContainer.context)
+    public static let persons = CoreDataService.shared.getPersonsList()
     public static var rankingPersonsAttendance = createEmptyWeeklyAttendance()
     
-    private static func createStartingPerson(_ context: NSManagedObjectContext) -> [Person] {
+    static func createStartingPerson(_ context: NSManagedObjectContext) -> [Person] {
     
         let franco = Person(context: context)
         franco.name = "Franco"
@@ -40,7 +40,7 @@ class PersonListUtility {
         let nero = Person(context: context)
         nero.name = "Nero"
         let cataldo = Person(context: context)
-        cataldo.name = "Cataldo"
+        cataldo.name = "Roberto"
         cataldo.iconString = "cataldo_icon"
         let enzo = Person(context: context)
         enzo.name = "Enzo"
