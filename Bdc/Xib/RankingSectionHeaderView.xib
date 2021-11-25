@@ -25,23 +25,23 @@
                     <rect key="frame" x="20" y="0.0" width="335" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlM-Fu-liw">
-                            <rect key="frame" x="40" y="13.5" width="120" height="23"/>
+                            <rect key="frame" x="40" y="13" width="120" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="th8-Ur-Yz6"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6z-Ta-oH4">
                             <rect key="frame" x="180" y="10" width="62.5" height="30"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mur-eO-Yxb">
                             <rect key="frame" x="262.5" y="10" width="62.5" height="30"/>
-                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>

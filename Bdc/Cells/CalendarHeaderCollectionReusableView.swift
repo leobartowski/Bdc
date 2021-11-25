@@ -17,5 +17,4 @@ class CalendarHeaderCollectionReusableView: UICollectionReusableView {
         
         self.titleLabel.textColor = Theme.avatarBlack
     }
-    
 }
