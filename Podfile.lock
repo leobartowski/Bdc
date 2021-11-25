@@ -1,20 +1,16 @@
 PODS:
   - FSCalendar (2.8.2)
-  - SpreadsheetView (0.9.1)
 
 DEPENDENCIES:
   - FSCalendar
-  - SpreadsheetView
 
 SPEC REPOS:
   trunk:
     - FSCalendar
-    - SpreadsheetView
 
 SPEC CHECKSUMS:
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
-  SpreadsheetView: 688dbd19f2b355df0eb09e486266fd913a013449
 
-PODFILE CHECKSUM: f4de50743fd97afcd4606c9924c0528b6c95ee91
+PODFILE CHECKSUM: 7d3e75ca41c8bcd1bbf896c7d42977493f3c3f22
 
 COCOAPODS: 1.11.2
