@@ -6,18 +6,17 @@
 //
 
 import UIKit
-import SpreadsheetView
 import FSCalendar
 
 class RankingViewController: UIViewController {
     
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calendarView: FSCalendar!
-    @IBOutlet weak var spreadsheetView: SpreadsheetView!
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     
-    var weeklyAttendance = PersonListUtility.personsWeeklyAttendance
-    let headerBasic = ["Nome", "Presenze", "Ammonizioni"]
+    var rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
+    let headerBasic = ["Nome", "P", "A"]
     var header: [String] = []
     var sorting = SortingPositionAndType(.attendance, .descending) // This variable is needed to understand which column in sorted and if ascending or descending (type)
     var daysOfThisWeek = [Date]()
@@ -36,14 +35,14 @@ class RankingViewController: UIViewController {
     }
     
     func viewSetUp() {
-        // Spreadsheet
-        self.spreadSheetSetup()
+        // Table View
+        self.tableViewSetup()
         // Calendar
         self.calendarSetup()
     }
     
     func populateWeeklyAttendance() {
-        for item in self.weeklyAttendance {
+        for item in self.rankingPersonsAttendaces {
             // We need to clear all presences and adomishment
             item.attendanceNumber = 0
             item.admonishmentNumber = 0
@@ -56,29 +55,30 @@ class RankingViewController: UIViewController {
             let morningPersonsAdmonished = morningAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
             let eveningPersonsAdmonished = eveningAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
             for person in morningPersons {
-                if let index = self.weeklyAttendance.firstIndex(where: {$0.person.name == person.name}) {
-                    self.weeklyAttendance[index].attendanceNumber += 1
+                if let index = self.rankingPersonsAttendaces.firstIndex(where: {$0.person.name == person.name}) {
+                    self.rankingPersonsAttendaces[index].attendanceNumber += 1
                 }
             }
             for person in eveningPersons {
-                if let index = self.weeklyAttendance.firstIndex(where: {$0.person.name == person.name}) {
-                    self.weeklyAttendance[index].attendanceNumber += 1
+                if let index = self.rankingPersonsAttendaces.firstIndex(where: {$0.person.name == person.name}) {
+                    self.rankingPersonsAttendaces[index].attendanceNumber += 1
                 }
             }
             for person in morningPersonsAdmonished {
-                if let index = self.weeklyAttendance.firstIndex(where: {$0.person.name == person.name}) {
-                    self.weeklyAttendance[index].admonishmentNumber += 1
+                if let index = self.rankingPersonsAttendaces.firstIndex(where: {$0.person.name == person.name}) {
+                    self.rankingPersonsAttendaces[index].admonishmentNumber += 1
                 }
             }
             for person in eveningPersonsAdmonished {
-                if let index = self.weeklyAttendance.firstIndex(where: {$0.person.name == person.name}) {
-                    self.weeklyAttendance[index].admonishmentNumber += 1
+                if let index = self.rankingPersonsAttendaces.firstIndex(where: {$0.person.name == person.name}) {
+                    self.rankingPersonsAttendaces[index].admonishmentNumber += 1
                 }
             }
         }
         self.sortDescendingAttendanceFirstTime()
     }
 }
+
 
 
 
