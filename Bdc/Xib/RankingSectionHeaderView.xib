@@ -25,23 +25,23 @@
                     <rect key="frame" x="20" y="0.0" width="335" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlM-Fu-liw">
-                            <rect key="frame" x="40" y="15" width="120" height="20.5"/>
+                            <rect key="frame" x="40" y="13.5" width="120" height="23"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="th8-Ur-Yz6"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6z-Ta-oH4">
-                            <rect key="frame" x="170" y="10" width="67.5" height="30"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <rect key="frame" x="180" y="10" width="62.5" height="30"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mur-eO-Yxb">
-                            <rect key="frame" x="257.5" y="10" width="67.5" height="30"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <rect key="frame" x="262.5" y="10" width="62.5" height="30"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -57,7 +57,7 @@
                         <constraint firstItem="XlM-Fu-liw" firstAttribute="leading" secondItem="MTf-lD-GAU" secondAttribute="leading" constant="40" id="mvw-u4-RIK"/>
                         <constraint firstAttribute="bottom" secondItem="Mur-eO-Yxb" secondAttribute="bottom" constant="10" id="q7y-Vg-3nx"/>
                         <constraint firstItem="Mur-eO-Yxb" firstAttribute="width" secondItem="h6z-Ta-oH4" secondAttribute="width" id="tS9-5L-RJu"/>
-                        <constraint firstItem="h6z-Ta-oH4" firstAttribute="leading" secondItem="XlM-Fu-liw" secondAttribute="trailing" constant="10" id="xaO-oT-iEQ"/>
+                        <constraint firstItem="h6z-Ta-oH4" firstAttribute="leading" secondItem="XlM-Fu-liw" secondAttribute="trailing" constant="20" id="xaO-oT-iEQ"/>
                     </constraints>
                 </view>
             </subviews>
