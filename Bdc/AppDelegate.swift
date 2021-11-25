@@ -13,10 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // MARK: Uncomment to erase all CoreData Data!!!!!!
-     ////CoreDataService.shared.cleanCoreDataDataBase()
-//        CoreDataService.shared.createPersonsList()
-//        CoreDataService.shared.updateImageStringSpecificPerson(name: "Fiore", iconString: "fiore_icon")
+        
         self.disableDarkMode()
         self.fixTableViewBugGloabally()
         return true
