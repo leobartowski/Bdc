@@ -39,6 +39,8 @@
 		DDB292622721A90500D96E67 /* RankingSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB292612721A90500D96E67 /* RankingSectionHeaderView.swift */; };
 		DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A32724065A0028E49B /* RankingViewController.swift */; };
 		DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A527240CAE0028E49B /* Date - Ext.swift */; };
+		DDC9EB6A275031CD00653138 /* PersonsList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC9EB68275031CD00653138 /* PersonsList+CoreDataClass.swift */; };
+		DDC9EB6B275031CD00653138 /* PersonsList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC9EB69275031CD00653138 /* PersonsList+CoreDataProperties.swift */; };
 		DDCBBDB4274D44B4002B60DA /* MySegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */; };
 		DDCBBDB6274D5288002B60DA /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCBBDB5274D5288002B60DA /* RankingTableViewCell.swift */; };
 		DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DDD5051B27220FB000508F60 /* Bdc.xcdatamodeld */; };
@@ -107,6 +109,8 @@
 		DDB292612721A90500D96E67 /* RankingSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSectionHeaderView.swift; sourceTree = "<group>"; };
 		DDC337A32724065A0028E49B /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		DDC337A527240CAE0028E49B /* Date - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date - Ext.swift"; sourceTree = "<group>"; };
+		DDC9EB68275031CD00653138 /* PersonsList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PersonsList+CoreDataClass.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/PersonsList+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		DDC9EB69275031CD00653138 /* PersonsList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PersonsList+CoreDataProperties.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/PersonsList+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySegmentedControl.swift; sourceTree = "<group>"; };
 		DDCBBDB5274D5288002B60DA /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		DDD5051C27220FB000508F60 /* Bdc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bdc.xcdatamodel; sourceTree = "<group>"; };
@@ -311,6 +315,8 @@
 		DDD5051127220E0300508F60 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				DDC9EB68275031CD00653138 /* PersonsList+CoreDataClass.swift */,
+				DDC9EB69275031CD00653138 /* PersonsList+CoreDataProperties.swift */,
 				DD0CAB4F27280FB200EA42B1 /* Attendance+CoreDataProperties.swift */,
 				DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */,
 				DD64968227221A40009E455F /* Person+CoreDataClass.swift */,
@@ -606,6 +612,7 @@
 				DD03AC1727481092004C4819 /* CalendarCollectionViewCell.swift in Sources */,
 				DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */,
 				DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */,
+				DDC9EB6A275031CD00653138 /* PersonsList+CoreDataClass.swift in Sources */,
 				DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */,
 				DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */,
 				DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */,
@@ -619,6 +626,7 @@
 				DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */,
 				DDB292622721A90500D96E67 /* RankingSectionHeaderView.swift in Sources */,
 				DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */,
+				DDC9EB6B275031CD00653138 /* PersonsList+CoreDataProperties.swift in Sources */,
 				DD1A1C65274908AB006FC676 /* UIView - Ext.swift in Sources */,
 				DD1EAF3A2726DDD100EF1455 /* CommonUtility.swift in Sources */,
 				DD41743027246BA500BE5BFD /* RankingViewController + FSCalendar.swift in Sources */,
