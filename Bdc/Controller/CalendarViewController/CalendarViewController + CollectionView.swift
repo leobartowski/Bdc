@@ -54,6 +54,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
             feedbackGenerator.impactOccurred()
         }
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .soft)
+        feedbackGenerator.impactOccurred(intensity: 0.6)
         self.sortPersonPresentAndNot()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
@@ -86,6 +88,15 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
 //        let radius = cell.customBackgroundView.layer.cornerRadius
 //        cell.contentView.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: radius).cgPath
 //    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if scrollView == self.collectionView && self.collectionView.contentSize.height > 0 &&
+            ((self.collectionView.contentOffset.y + self.collectionView.safeAreaInsets.top) <= 0) &&
+            self.calendarView.scope == .month {
+            
+                self.handleMonthlyToWeeklyCalendar()
+        }
+    }
     
     //MARK: MainTableViewCellDelegate
     

@@ -57,7 +57,8 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
     }
     
     @objc func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
-        if gestureReconizer.state == .began {
+        // Only the not Present Persons (section = 1) can use long Press Gesture Recoginzer
+        if gestureReconizer.state == .began && indexPath.section == 1 {
             self.delegate?.mainCell(self, didSelectRowAt: self.indexPath)
             return
         }
