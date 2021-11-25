@@ -62,7 +62,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="eey-ZR-qcv"/>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="MTf-lD-GAU" firstAttribute="top" secondItem="zg5-me-JnO" secondAttribute="top" id="0TH-nT-imL"/>
                 <constraint firstItem="eey-ZR-qcv" firstAttribute="trailing" secondItem="MTf-lD-GAU" secondAttribute="trailing" constant="20" id="7zH-Zm-i6R"/>
