@@ -52,6 +52,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             self.personsNotPresent.remove(at: indexPath.row)
             self.personsPresent.append(personToAdd)
         }
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .soft)
+        feedbackGenerator.impactOccurred(intensity: 0.6)
         self.sortPersonPresentAndNot()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
