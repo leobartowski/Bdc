@@ -14,7 +14,7 @@ protocol RankingSectionHeaderDelegate: class {
 
 class RankingSectionHeaderView: UIView {
     
-   
+    
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -40,7 +40,7 @@ class RankingSectionHeaderView: UIView {
     }
     
     override func layoutSubviews() {
-        self.containerView.layer.cornerRadius = 15
+        self.containerView.layer.cornerRadius = self.containerView.frame.height / 4
     }
     
     private func commonInit() {
@@ -50,6 +50,27 @@ class RankingSectionHeaderView: UIView {
         self.contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         self.setupLabelTap()
+    }
+    
+    /// Update label weight based on sorting type (name, attendence or admonishmenr)
+    func setupLabelDesign(_ labelNumber: Int) {
+        let fontSize: CGFloat = 20
+        switch labelNumber {
+        case 0:
+            self.nameLabel.font = .systemFont(ofSize: fontSize, weight: .medium)
+            self.attendanceLabel.font = .systemFont(ofSize: fontSize, weight: .light)
+            self.admonishmentLabel.font = .systemFont(ofSize: fontSize, weight: .light)
+        case 1:
+            self.nameLabel.font = .systemFont(ofSize: fontSize, weight: .light)
+            self.attendanceLabel.font = .systemFont(ofSize: fontSize, weight: .medium)
+            self.admonishmentLabel.font = .systemFont(ofSize: fontSize, weight: .light)
+        case 2:
+            self.nameLabel.font = .systemFont(ofSize: fontSize, weight: .light)
+            self.attendanceLabel.font = .systemFont(ofSize: fontSize, weight: .light)
+            self.admonishmentLabel.font = .systemFont(ofSize: fontSize, weight: .medium)
+        default:
+            break
+        }
     }
     
     // MARK: Label GestureRecognizer
@@ -71,6 +92,5 @@ class RankingSectionHeaderView: UIView {
         self.admonishmentLabel.isUserInteractionEnabled = true
         self.admonishmentLabel.addGestureRecognizer(admonishmentLabelTap)
     }
-    
 }
 
