@@ -82,18 +82,11 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         return CGSize(width: collectionView.frame.width, height: 50)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "presentCellID", for: indexPath) as? CalendarCollectionViewCell else { return }
-//        cell.customBackgroundView.layer.masksToBounds = true
-//        let radius = cell.customBackgroundView.layer.cornerRadius
-//        cell.contentView.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: radius).cgPath
-//    }
-    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if scrollView == self.collectionView && self.collectionView.contentSize.height > 0 &&
-            ((self.collectionView.contentOffset.y + self.collectionView.safeAreaInsets.top) <= 0) &&
-            self.calendarView.scope == .month {
-            
+        if scrollView == self.collectionView && self.calendarView.scope == .month &&
+            self.collectionView.contentSize.height > 0 &&
+            ((self.collectionView.contentOffset.y + self.collectionView.safeAreaInsets.top) <= 0) {
+
                 self.handleMonthlyToWeeklyCalendar()
         }
     }

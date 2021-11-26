@@ -41,12 +41,15 @@ class RankingTableViewCell: UITableViewCell {
     }
     
     func setUpShadow() {
+        let cornerRadius = self.containerView.frame.height / 4
+        self.containerView.cornerRadius = cornerRadius
+        self.containerView.layer.masksToBounds = true
         self.containerView.layer.shadowColor = UIColor.gray.cgColor
         self.containerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         self.containerView.layer.shadowOpacity = 0.3
         self.containerView.layer.shadowRadius = 2
+        self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: cornerRadius).cgPath
         self.containerView.layer.masksToBounds = false
-        self.containerView.layer.cornerRadius = self.containerView.frame.height / 4
     }
     
     func setupLabelDesign(_ labelNumber: Int) {
