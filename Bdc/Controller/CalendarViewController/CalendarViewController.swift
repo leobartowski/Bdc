@@ -164,14 +164,6 @@ class CalendarViewController: UIViewController {
         }
     }
     
-    /// Save everything to Core Data and clear current class var before chainging data source. Use this function before updating current date and current dayType
-    func saveCurrentDataInCoreData() {
-        DispatchQueue.main.async {
-            CoreDataService.shared.savePersonsAndPersonsAdmonishedAttendance(self.calendarView.selectedDate ?? Date.now, self.dayType, persons: self.personsPresent, personsAdmonished: self.personsAdmonished)
-        }
-        
-    }
-    
     func sortPersonPresentAndNot() {
         self.personsPresent = self.personsPresent.sorted{ $0.name ?? "" < $1.name ?? "" }
         self.personsNotPresent = self.personsNotPresent.sorted{ $0.name ?? "" < $1.name ?? "" }
