@@ -19,7 +19,6 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
         if date.getDayNumberOfWeek() == 1 || date.getDayNumberOfWeek() == 7 {
             return false
         }
-        self.saveCurrentDataInCoreData()
         return true
     }
     
@@ -47,14 +46,13 @@ extension CalendarViewController:  FSCalendarDelegate, FSCalendarDataSource, FSC
         let currentPageString = DateFormatter.basicFormatter.string(from: self.calendarView.currentPage)
         // We need to check this != "01/10/2021" because if the current month is october 2021 and we change scope the app crash
         if self.calendarView.scope == .week && currentPageString != "01/10/2021" {
-            self.saveCurrentDataInCoreData()
+            
             self.calendarView.select(calendar.currentPage.getSpecificDayOfThisWeek(2))
             self.getDataFromCoreDataAndReloadViews()
             
         } else if self.calendarView.scope == .month {
             
             let getMonthAndYear = self.calendarView.currentPage.getMonthAndYearNumber()
-            self.saveCurrentDataInCoreData()
             // To avoid crash if we are in October 2021 we cannot select 1 but we select 25
             getMonthAndYear.yearNumber == 2021 && getMonthAndYear.monthNumber == 10
             ? self.calendarView.select(DateFormatter.basicFormatter.date(from:"25/10/2021") ?? Date())

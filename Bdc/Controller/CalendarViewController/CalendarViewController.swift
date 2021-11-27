@@ -29,7 +29,7 @@ class CalendarViewController: UIViewController {
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.setUpCalendarAppearance()
         self.setupSegmentedControl()
         self.checkAndChangeWeekendSelectedDate()
@@ -38,20 +38,20 @@ class CalendarViewController: UIViewController {
         self.designBottomCalendarHandleView()
         self.updateGoToTodayButton()
         
-//        self.setupCollectionView()
+        //        self.setupCollectionView()
         self.addObservers()
     }
     
     // We save everything to core data to prepare the new data for the RankingVC
     override func viewWillDisappear(_ animated: Bool) {
         //When the user change controller we need to save the value in CoreData without clearing everything
-        self.saveCurrentDataInCoreData()
+        //        self.saveCurrentDataInCoreData()
     }
     
     //   Get called when the app is no longer active and loses focus.
     @objc func willResignActive() {
         //When the app lose focus we need to save the value in CoreData without clearing everything
-        self.saveCurrentDataInCoreData()
+        //        self.saveCurrentDataInCoreData()
     }
     
     //   Get called when the app is become active
@@ -88,7 +88,7 @@ class CalendarViewController: UIViewController {
     }
     
     func automaticScrollToToday() {
-        self.saveCurrentDataInCoreData() // save the date of the current day before deselecting
+        //        self.saveCurrentDataInCoreData() // save the date of the current day before deselecting
         DispatchQueue.main.async {
             self.calendarView.setCurrentPage(Date.now, animated: true)
             self.calendarView.select(Date.now)
@@ -150,12 +150,13 @@ class CalendarViewController: UIViewController {
         self.personsAdmonished.removeAll()
         let attendance =  CoreDataService.shared.getAttendace(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
         self.personsPresent = attendance?.persons?.allObjects as? [Person] ?? []
+        self.personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
         for person in PersonListUtility.persons {
             if !self.personsPresent.contains(where: { $0.name == person.name }) && !self.personsNotPresent.contains(where: { $0.name == person.name })  {
                 self.personsNotPresent.append(person)
             }
         }
-        self.personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
+        
         self.sortPersonPresentAndNot()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
@@ -165,7 +166,10 @@ class CalendarViewController: UIViewController {
     
     /// Save everything to Core Data and clear current class var before chainging data source. Use this function before updating current date and current dayType
     func saveCurrentDataInCoreData() {
-        CoreDataService.shared.savePersonsAndPersonsAdmonishedAttendance(self.calendarView.selectedDate ?? Date.now, self.dayType, persons: self.personsPresent, personsAdmonished: self.personsAdmonished)
+        DispatchQueue.main.async {
+            CoreDataService.shared.savePersonsAndPersonsAdmonishedAttendance(self.calendarView.selectedDate ?? Date.now, self.dayType, persons: self.personsPresent, personsAdmonished: self.personsAdmonished)
+        }
+        
     }
     
     func sortPersonPresentAndNot() {
@@ -177,7 +181,7 @@ class CalendarViewController: UIViewController {
     // MARK: IBActions
     @IBAction func segmentedControlValueChanged(_ sender: Any) {
         
-        self.saveCurrentDataInCoreData()
+        //        self.saveCurrentDataInCoreData()
         switch segmentedControl.selectedSegmentIndex {
         case 0: self.dayType = .morning
         case 1: self.dayType = .evening

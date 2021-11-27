@@ -22,17 +22,20 @@ class CoreDataService {
     
     ///Save  Person Admonished Attendence in Core Data for a specif date and daytype
     func savePersonsAndPersonsAdmonishedAttendance(_ date: Date,_ type: DayType, persons: [Person], personsAdmonished: [Person]) {
-        var attendence = getAttendace(date, type: type)
-        if attendence == nil {
-            // Se è vuoto ne creo uno nuovo
-            attendence = Attendance(context: context)
-            attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
-            attendence?.type = type.rawValue
-        }
-        attendence?.persons = NSSet(array: persons)
-        attendence?.personsAdmonished = NSSet(array: personsAdmonished)
         
         do {
+            
+            var attendence = getAttendace(date, type: type)
+            if attendence == nil {
+                // Se è vuoto ne creo uno nuovo
+                attendence = Attendance(context: context)
+                attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
+                attendence?.type = type.rawValue
+            }
+            attendence?.persons = NSSet(array: persons)
+            attendence?.personsAdmonished = NSSet(array: personsAdmonished)
+            
+
             try context.save()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
@@ -46,7 +49,9 @@ class CoreDataService {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
         let dateString = DateFormatter.basicFormatter.string(from: date)
         do {
+            
             let attendances = try self.context.fetch(fetchRequest).filter({ $0.dateString == dateString && $0.type == type.rawValue })
+            print(attendances.count)
             return attendances.first
             
         } catch let error as NSError {
@@ -99,6 +104,8 @@ class CoreDataService {
         }
         return []
     }
+    
+    // MARK: Methods to update Person Properties
     
     /// Use this string to update/add imageString to a person
     func updateImageStringSpecificPerson(name: String, iconString: String) {
