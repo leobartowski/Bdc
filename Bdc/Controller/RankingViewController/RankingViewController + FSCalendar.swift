@@ -27,9 +27,9 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
 
     
     // TODO: Crash on the simulator!
-//    func maximumDate(for calendar: FSCalendar) -> Date {
-//        return Date().getSpecificDayOfThisWeek(1) // Maximum date should be sunday of the current week!
-//    }
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return Date().getSpecificDayOfThisWeek(1) // Maximum date should be sunday of the current week!
+    }
 //    
     func minimumDate(for calendar: FSCalendar) -> Date {
         return DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date.yesterday
@@ -71,6 +71,7 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         self.calendarView.appearance.weekdayFont = .systemFont(ofSize: 17, weight: .light)
         self.calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 19)
         self.calendarView.appearance.titleWeekendColor = .lightGray
+        self.calendarView.appearance.todayColor = .clear
         self.calendarView.appearance.titleDefaultColor = Theme.avatarBlack
         self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
         self.calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
