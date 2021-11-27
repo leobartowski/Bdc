@@ -120,14 +120,17 @@ class CalendarViewController: UIViewController {
             var calendar = Calendar.current
             calendar.locale = .current
             let hour = calendar.component(.hour, from: Date.now)
+            let oldDayType = self.dayType
             if (hour < 16 && hour > 8) { // morning
                 self.dayType = .morning
                 self.segmentedControl.selectedSegmentIndex = 0
-            } else { // evening
+            } else  { // evening
                 self.dayType = .evening
                 self.segmentedControl.selectedSegmentIndex = 1
             }
-            self.getDataFromCoreDataAndReloadViews()
+            // We reload data from CoreData only if dayType is changed
+            if oldDayType != self.dayType { self.getDataFromCoreDataAndReloadViews() }
+            
         }
     }
     
@@ -156,6 +159,7 @@ class CalendarViewController: UIViewController {
         self.sortPersonPresentAndNot()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
+            self.collectionView.setContentOffset(.zero, animated: true)
         }
     }
     

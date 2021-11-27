@@ -40,12 +40,15 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
     
     func setUpShadow() {
 
+        self.customBackgroundView.layer.cornerRadius = 10
+        self.customBackgroundView.layer.masksToBounds = true
         self.customBackgroundView.layer.shadowColor = UIColor.gray.cgColor
         self.customBackgroundView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         self.customBackgroundView.layer.shadowOpacity = 0.3
         self.customBackgroundView.layer.shadowRadius = 2
+        self.customBackgroundView.layer.shadowPath = UIBezierPath(roundedRect: self.customBackgroundView.bounds, cornerRadius: 10).cgPath
         self.customBackgroundView.layer.masksToBounds = false
-        self.customBackgroundView.layer.cornerRadius = 10
+        
     }
     
     private func setupLongGestureRecognizer() {
