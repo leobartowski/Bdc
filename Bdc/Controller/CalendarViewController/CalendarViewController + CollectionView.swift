@@ -51,9 +51,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             }
             self.personsNotPresent.remove(at: indexPath.row)
             self.personsPresent.append(personToAdd)
-            let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
-            feedbackGenerator.impactOccurred()
         }
+        CoreDataService.shared.saveAttendance(self.calendarView.selectedDate ?? Date(), self.dayType, self.personsPresent)
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .soft)
         feedbackGenerator.impactOccurred(intensity: 0.6)
         self.sortPersonPresentAndNot()
@@ -91,7 +90,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         }
     }
     
-    //MARK: MainTableViewCellDelegate
+    //MARK: CalendarViewControllerCellDelegate
     
     func mainCell(_ cell: CalendarCollectionViewCell, didSelectRowAt indexPath: IndexPath) {
         // Check to avoid the modification of day older than 2 from now
@@ -105,6 +104,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         } else {
             self.personsAdmonished.append(personToHandle)
         }
+        CoreDataService.shared.saveAttendance(self.calendarView.selectedDate ?? Date(), self.dayType, self.personsAdmonished)
+
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
         feedbackGenerator.impactOccurred()
         DispatchQueue.main.async {

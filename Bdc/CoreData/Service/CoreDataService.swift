@@ -21,7 +21,8 @@ class CoreDataService {
     //MARK: Method to save
     
     ///Save  Person Admonished Attendence in Core Data for a specif date and daytype
-    func savePersonsAndPersonsAdmonishedAttendance(_ date: Date,_ type: DayType, persons: [Person], personsAdmonished: [Person]) {
+    func saveAttendance(_ date: Date,_ type: DayType,_ persons: [Person]) {
+        
         var attendence = getAttendace(date, type: type)
         if attendence == nil {
             // Se è vuoto ne creo uno nuovo
@@ -30,6 +31,23 @@ class CoreDataService {
             attendence?.type = type.rawValue
         }
         attendence?.persons = NSSet(array: persons)
+        
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func saveAdmonishedAttendance(_ date: Date,_ type: DayType,_ personsAdmonished: [Person]) {
+        
+        var attendence = getAttendace(date, type: type)
+        if attendence == nil {
+            // Se è vuoto ne creo uno nuovo
+            attendence = Attendance(context: context)
+            attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
+            attendence?.type = type.rawValue
+        }
         attendence?.personsAdmonished = NSSet(array: personsAdmonished)
         
         do {
@@ -46,7 +64,9 @@ class CoreDataService {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
         let dateString = DateFormatter.basicFormatter.string(from: date)
         do {
+            
             let attendances = try self.context.fetch(fetchRequest).filter({ $0.dateString == dateString && $0.type == type.rawValue })
+            print(attendances.count)
             return attendances.first
             
         } catch let error as NSError {
@@ -100,6 +120,8 @@ class CoreDataService {
         return []
     }
     
+    // MARK: Methods to update Person Properties
+    
     /// Use this string to update/add imageString to a person
     func updateImageStringSpecificPerson(name: String, iconString: String) {
         let persons = getPersonsList()
@@ -148,6 +170,21 @@ class CoreDataService {
                         persons[index].name = newName
                     }
                 }
+            }
+            try self.context.save()
+            
+        } catch let error as NSError {
+            print("Could not list. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func removeAllAdmonishment() {
+        
+        let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
+        do {
+            let attendances = try self.context.fetch(fetchRequest)
+            for attendance in attendances {
+                attendance.personsAdmonished = nil
             }
             try self.context.save()
             
