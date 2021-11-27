@@ -48,6 +48,7 @@ class CoreDataService {
             attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
             attendence?.type = type.rawValue
         }
+        
         attendence?.personsAdmonished = NSSet(array: personsAdmonished)
         
         do {

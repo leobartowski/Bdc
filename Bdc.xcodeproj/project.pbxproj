@@ -37,6 +37,8 @@
 		DD85441527219D4D004D38F0 /* BdcUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD85441427219D4D004D38F0 /* BdcUITestsLaunchTests.swift */; };
 		DDB292602721A8D400D96E67 /* RankingSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB2925F2721A8D400D96E67 /* RankingSectionHeaderView.xib */; };
 		DDB292622721A90500D96E67 /* RankingSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB292612721A90500D96E67 /* RankingSectionHeaderView.swift */; };
+		DDC1E5CE2752966E00C2BF2C /* Attendance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC1E5CC2752966E00C2BF2C /* Attendance+CoreDataProperties.swift */; };
+		DDC1E5CF2752966E00C2BF2C /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC1E5CD2752966E00C2BF2C /* Person+CoreDataProperties.swift */; };
 		DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A32724065A0028E49B /* RankingViewController.swift */; };
 		DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A527240CAE0028E49B /* Date - Ext.swift */; };
 		DDC9EB6A275031CD00653138 /* PersonsList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC9EB68275031CD00653138 /* PersonsList+CoreDataClass.swift */; };
@@ -106,6 +108,8 @@
 		DD85441427219D4D004D38F0 /* BdcUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BdcUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DDB2925F2721A8D400D96E67 /* RankingSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankingSectionHeaderView.xib; sourceTree = "<group>"; };
 		DDB292612721A90500D96E67 /* RankingSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSectionHeaderView.swift; sourceTree = "<group>"; };
+		DDC1E5CC2752966E00C2BF2C /* Attendance+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Attendance+CoreDataProperties.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/Attendance+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		DDC1E5CD2752966E00C2BF2C /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Person+CoreDataProperties.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/Person+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		DDC337A32724065A0028E49B /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		DDC337A527240CAE0028E49B /* Date - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date - Ext.swift"; sourceTree = "<group>"; };
 		DDC9EB68275031CD00653138 /* PersonsList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PersonsList+CoreDataClass.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/PersonsList+CoreDataClass.swift"; sourceTree = "<absolute>"; };
@@ -313,6 +317,8 @@
 			isa = PBXGroup;
 			children = (
 				DDC9EB68275031CD00653138 /* PersonsList+CoreDataClass.swift */,
+				DDC1E5CD2752966E00C2BF2C /* Person+CoreDataProperties.swift */,
+				DDC1E5CC2752966E00C2BF2C /* Attendance+CoreDataProperties.swift */,
 				DDC9EB69275031CD00653138 /* PersonsList+CoreDataProperties.swift */,
 				DD0CAB4F27280FB200EA42B1 /* Attendance+CoreDataProperties.swift */,
 				DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */,
@@ -609,11 +615,13 @@
 				DD03AC1727481092004C4819 /* CalendarCollectionViewCell.swift in Sources */,
 				DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */,
 				DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */,
+				DDC1E5CE2752966E00C2BF2C /* Attendance+CoreDataProperties.swift in Sources */,
 				DDC9EB6A275031CD00653138 /* PersonsList+CoreDataClass.swift in Sources */,
 				DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */,
 				DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */,
 				DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */,
 				DD0CAB5027280FB200EA42B1 /* Attendance+CoreDataProperties.swift in Sources */,
+				DDC1E5CF2752966E00C2BF2C /* Person+CoreDataProperties.swift in Sources */,
 				DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */,
 				DD03AC19274811B8004C4819 /* CalendarViewController + CollectionView.swift in Sources */,
 				DD0CAB532728108600EA42B1 /* DayType.swift in Sources */,

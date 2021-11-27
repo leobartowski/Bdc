@@ -94,9 +94,9 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     
     func mainCell(_ cell: CalendarCollectionViewCell, didSelectRowAt indexPath: IndexPath) {
         // Check to avoid the modification of day older than 2 from now
-        if Date().days(from: self.calendarView.selectedDate ?? Date()) > 1 {
-            return
-        }
+//        if Date().days(from: self.calendarView.selectedDate ?? Date()) > 1 {
+//            return
+//        }
         let personToHandle = self.personsNotPresent[indexPath.row]
         // I need to amonish this person if is not amonished or I need to remove the amonishment otherwise
         if let index = self.personsAdmonished.firstIndex(where: { $0.name == personToHandle.name}) {
@@ -104,7 +104,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         } else {
             self.personsAdmonished.append(personToHandle)
         }
-        CoreDataService.shared.saveAttendance(self.calendarView.selectedDate ?? Date(), self.dayType, self.personsAdmonished)
+        CoreDataService.shared.saveAdmonishedAttendance(self.calendarView.selectedDate ?? Date(), self.dayType, self.personsAdmonished)
 
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
         feedbackGenerator.impactOccurred()

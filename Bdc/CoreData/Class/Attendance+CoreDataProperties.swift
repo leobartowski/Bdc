@@ -2,7 +2,7 @@
 //  Attendance+CoreDataProperties.swift
 //  
 //
-//  Created by Francesco D'Angelo on 26/10/21.
+//  Created by Francesco D'Angelo on 27/11/21.
 //
 //
 
