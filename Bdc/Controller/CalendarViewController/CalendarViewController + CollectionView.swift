@@ -36,9 +36,9 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Check to avoid the modification of day older than today
-//        if Date().days(from: self.calendarView.selectedDate ?? Date()) > 0 {
-//            return
-//        }
+        if Date().days(from: self.calendarView.selectedDate ?? Date()) > 0 {
+            return
+        }
         if indexPath.section == 0 { // Person Present
             let personToRemove = self.personsPresent[indexPath.row]
             self.personsPresent.remove(at: indexPath.row)
@@ -52,7 +52,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             self.personsNotPresent.remove(at: indexPath.row)
             self.personsPresent.append(personToAdd)
         }
-        self.saveCurrentDataInCoreData()
+        CoreDataService.shared.saveAttendance(self.calendarView.selectedDate ?? Date(), self.dayType, self.personsPresent)
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .soft)
         feedbackGenerator.impactOccurred(intensity: 0.6)
         self.sortPersonPresentAndNot()
@@ -94,9 +94,9 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     
     func mainCell(_ cell: CalendarCollectionViewCell, didSelectRowAt indexPath: IndexPath) {
         // Check to avoid the modification of day older than 2 from now
-//        if Date().days(from: self.calendarView.selectedDate ?? Date()) > 1 {
-//            return
-//        }
+        if Date().days(from: self.calendarView.selectedDate ?? Date()) > 1 {
+            return
+        }
         let personToHandle = self.personsNotPresent[indexPath.row]
         // I need to amonish this person if is not amonished or I need to remove the amonishment otherwise
         if let index = self.personsAdmonished.firstIndex(where: { $0.name == personToHandle.name}) {
@@ -104,21 +104,12 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         } else {
             self.personsAdmonished.append(personToHandle)
         }
-        self.saveCurrentDataInCoreData()
-//
-//        let check = CoreDataService.shared.getPersonsAmmonished(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
-//        for i in check {
-//            print("persone ammonite core data \(i.name)")
-//
-//        }
-//        for person in self.personsAdmonished {
-//            print("persone ammonite view \(person.name)")
-//        }
+        CoreDataService.shared.saveAttendance(self.calendarView.selectedDate ?? Date(), self.dayType, self.personsAdmonished)
+
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
         feedbackGenerator.impactOccurred()
         DispatchQueue.main.async {
             self.collectionView.reloadItems(at: [indexPath])
-//            self.collectionView.reloadData()
         }
     }
     
