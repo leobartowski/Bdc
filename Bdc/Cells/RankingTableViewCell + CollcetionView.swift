@@ -20,7 +20,19 @@ extension RankingTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "daysCellID", for: indexPath) as? RankingSingleDayCollectionViewCell
-        cell?.mainLabel.text = self.days[indexPath.row]
+        
+        cell?.mainLabel.text = self.days[indexPath.item]
+        
+        if indexPath.section == 0 { // Morning
+            if self.morningDaysNumbers.contains(indexPath.item + 2) {
+                cell?.mainLabel.textColor = .black
+            }
+        } else { // Evening
+            
+            if self.eveningDaysNumbers.contains(indexPath.item + 2) {
+                cell?.mainLabel.textColor = .black
+            }
+        }
         return cell ?? UICollectionViewCell()
     }
     

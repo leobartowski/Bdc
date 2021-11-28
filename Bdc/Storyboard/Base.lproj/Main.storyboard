@@ -326,7 +326,7 @@
                                                     </constraints>
                                                 </view>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Abj-Tv-Rr0">
-                                                    <rect key="frame" x="20" y="75" width="374" height="115"/>
+                                                    <rect key="frame" x="40" y="75" width="334" height="115"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fPm-B9-mup">
                                                         <size key="itemSize" width="30" height="30"/>
@@ -345,7 +345,7 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRA-D4-4f9">
                                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                        <nil key="textColor"/>
+                                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
@@ -364,11 +364,11 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                     <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="rankingHeaderCVCellID" id="Byi-aF-kSP" customClass="RankingDayHeaderCollectionReusableView" customModule="Bdc" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="30"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VqY-QG-i9N">
-                                                                <rect key="frame" x="0.0" y="0.0" width="354" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="314" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -391,10 +391,10 @@
                                                 <constraint firstItem="UFf-q7-g9B" firstAttribute="leading" secondItem="fh2-Pr-eyZ" secondAttribute="leading" constant="20" id="9cm-dX-hbn"/>
                                                 <constraint firstAttribute="trailing" secondItem="UFf-q7-g9B" secondAttribute="trailing" constant="20" id="Jd6-XI-JfU"/>
                                                 <constraint firstAttribute="bottom" secondItem="Abj-Tv-Rr0" secondAttribute="bottom" constant="10" id="QzA-oe-xim"/>
-                                                <constraint firstItem="Abj-Tv-Rr0" firstAttribute="leading" secondItem="fh2-Pr-eyZ" secondAttribute="leading" constant="20" id="RQS-fu-E6o"/>
+                                                <constraint firstItem="Abj-Tv-Rr0" firstAttribute="leading" secondItem="fh2-Pr-eyZ" secondAttribute="leading" constant="40" id="RQS-fu-E6o"/>
                                                 <constraint firstItem="Abj-Tv-Rr0" firstAttribute="top" secondItem="fh2-Pr-eyZ" secondAttribute="top" constant="75" id="Stk-7e-y69"/>
                                                 <constraint firstItem="UFf-q7-g9B" firstAttribute="top" secondItem="fh2-Pr-eyZ" secondAttribute="top" constant="5" id="bxG-vc-wvp"/>
-                                                <constraint firstAttribute="trailing" secondItem="Abj-Tv-Rr0" secondAttribute="trailing" constant="20" id="mZh-nU-mBX"/>
+                                                <constraint firstAttribute="trailing" secondItem="Abj-Tv-Rr0" secondAttribute="trailing" constant="40" id="mZh-nU-mBX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

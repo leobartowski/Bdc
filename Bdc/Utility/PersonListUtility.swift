@@ -87,7 +87,7 @@ class PersonListUtility {
     private static func createEmptyWeeklyAttendance() -> [RankingPersonAttendance] {
         var personsWeeklyAttendance = [RankingPersonAttendance]()
         for person in PersonListUtility.persons {
-            let personAttendece = RankingPersonAttendance(person, 0, 0)
+            let personAttendece = RankingPersonAttendance(person)
             personsWeeklyAttendance.append(personAttendece)
         }
         return personsWeeklyAttendance
@@ -100,12 +100,12 @@ class PersonListUtility {
 public class RankingPersonAttendance {
     
     var person: Person
-    var attendanceNumber: Int
-    var admonishmentNumber: Int
+    var attendanceNumber: Int = 0
+    var admonishmentNumber: Int = 0
+    var morningDate: [Date] = []
+    var eveningDate: [Date] = []
     
-    init(_ person: Person, _ attendanceNumber: Int,_ adminishmentNumber: Int) {
+    init(_ person: Person) {
         self.person = person
-        self.attendanceNumber = attendanceNumber
-        self.admonishmentNumber = adminishmentNumber
     }
 }
