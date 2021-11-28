@@ -34,9 +34,10 @@ class RankingTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.contentView.autoresizingMask = .flexibleHeight
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.collectionView.isHidden = true
+//        self.collectionView.isHidden = true
         
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
     }
@@ -55,15 +56,15 @@ class RankingTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         if isDetailViewHidden, selected {
             self.collectionView.isHidden = false
-            
         } else {
+            
             self.collectionView.isHidden = true
         }
-        self.containerView.layoutIfNeeded()
-        self.containerView.updateConstraints()
-        self.containerView.layoutIfNeeded()
+        self.contentView.layoutIfNeeded()
+        self.contentView.updateConstraints()
+        self.contentView.layoutIfNeeded()
         
-//        self.setNeedsLayout()
+        self.setNeedsLayout()
     }
     
     func setUpShadow() {

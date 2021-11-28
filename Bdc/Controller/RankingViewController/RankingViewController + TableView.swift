@@ -18,8 +18,8 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let cell = tableView.cellForRow(at: indexPath)
-//        if cell?.isSelected ?? false { return 200 }
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell?.isSelected ?? false { return 200 }
         return 70
     }
     
@@ -39,6 +39,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         }
     }
     
+    // TODO: CAPIRE PERCHÈ SE CLICCO NON SI CHIUDE LA CELLA!
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if let cell = self.tableView.cellForRow(at: indexPath) as? RankingTableViewCell {
             cell.collectionView.isHidden = true
