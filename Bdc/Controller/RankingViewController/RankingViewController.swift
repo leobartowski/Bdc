@@ -54,14 +54,17 @@ class RankingViewController: UIViewController {
             let eveningPersons = eveningAttendance?.persons?.allObjects as? [Person] ?? []
             let morningPersonsAdmonished = morningAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
             let eveningPersonsAdmonished = eveningAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
+            
             for person in morningPersons {
                 if let index = self.rankingPersonsAttendaces.firstIndex(where: {$0.person.name == person.name}) {
                     self.rankingPersonsAttendaces[index].attendanceNumber += 1
+                    self.rankingPersonsAttendaces[index].morningDate.append(day)
                 }
             }
             for person in eveningPersons {
                 if let index = self.rankingPersonsAttendaces.firstIndex(where: {$0.person.name == person.name}) {
                     self.rankingPersonsAttendaces[index].attendanceNumber += 1
+                    self.rankingPersonsAttendaces[index].eveningDate.append(day)
                 }
             }
             for person in morningPersonsAdmonished {

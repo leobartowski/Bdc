@@ -33,17 +33,25 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         return cell ?? UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        UIView.animate(withDuration: 0.3) {
-            self.tableView.performBatchUpdates(nil)
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return indexPath }
+        if selectedIndexPath == indexPath {
+            tableView.deselectRow(at: indexPath, animated: true)
+            UIView.animate(withDuration: 0.3) {
+                tableView.performBatchUpdates(nil)
+            }
+            return nil
         }
+        return indexPath
     }
     
-    // TODO: CAPIRE PERCHÈ SE CLICCO NON SI CHIUDE LA CELLA!
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if let cell = self.tableView.cellForRow(at: indexPath) as? RankingTableViewCell {
-            cell.collectionView.isHidden = true
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        UIView.animate(withDuration: 0.3) {
+            tableView.performBatchUpdates(nil)
+            
         }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
