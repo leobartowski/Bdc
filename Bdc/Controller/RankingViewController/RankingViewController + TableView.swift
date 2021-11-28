@@ -17,6 +17,10 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         return self.rankingPersonsAttendaces.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.row == self.selectedCellRow ? 200 : 70
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? RankingTableViewCell
         let rankingAttendance = self.rankingPersonsAttendaces[indexPath.row]
@@ -25,6 +29,29 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         self.handleColorOfTheCellOnFriday(cell, indexPath.row)
         cell?.setNeedsLayout()
         return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        self.selectedCellRow = indexPath.row == self.selectedCellRow ? -1 : indexPath.row
+        guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return indexPath }
+        if selectedIndexPath == indexPath {
+            tableView.beginUpdates()
+            tableView.deselectRow(at: indexPath, animated: true)
+            UIView.animate(withDuration: 0.3) {
+                tableView.performBatchUpdates(nil)
+            }
+            tableView.endUpdates()
+            return nil
+        }
+        return indexPath
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.beginUpdates()
+        UIView.animate(withDuration: 0.3) {
+            tableView.performBatchUpdates(nil)
+        }
+        tableView.endUpdates()
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -42,6 +69,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
     
     func tableViewSetup() {
+        
         self.header = self.headerBasic
     }
     
@@ -62,6 +90,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         self.header[0] = self.headerBasic[0]
         self.header[1] = self.headerBasic[1] + " " + self.sorting.sortingType.symbol
         self.header[2] = self.headerBasic[2]
+        self.selectedCellRow = -1
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -116,6 +145,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             self.sorting.sortingPosition = .admonishment
         default: return
         }
+        self.selectedCellRow = -1
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

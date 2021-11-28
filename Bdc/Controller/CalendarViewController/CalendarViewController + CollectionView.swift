@@ -40,10 +40,12 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             return
         }
         if indexPath.section == 0 { // Person Present
+            
             let personToRemove = self.personsPresent[indexPath.row]
             self.personsPresent.remove(at: indexPath.row)
             self.personsNotPresent.append(personToRemove)
         } else { // Person not present
+            
             let personToAdd = self.personsNotPresent[indexPath.row]
             if self.personsAdmonished.contains(where: { $0.name == personToAdd.name }) {
                 self.presentAlert(alertText: "Errore", alertMessage: "Una persona ammonita non pùo risultate presente, rimuovi l'ammonizione e poi procedi ")
@@ -59,7 +61,6 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
