@@ -18,10 +18,25 @@ class RankingTableViewCell: UITableViewCell {
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var attendanceLabel: UILabel!
     @IBOutlet weak var admonishmentLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     var indexPath = IndexPath()
+    
+    let days = ["L", "M", "M", "G", "V"]
+    
+    var isDetailViewHidden: Bool {
+        return self.collectionView.isHidden
+      }
+    
+    override func layoutSubviews() {
+        self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: 15).cgPath
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.isHidden = true
         
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
     }
@@ -38,10 +53,21 @@ class RankingTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        if isDetailViewHidden, selected {
+            self.collectionView.isHidden = false
+            
+        } else {
+            self.collectionView.isHidden = true
+        }
+        self.containerView.layoutIfNeeded()
+        self.containerView.updateConstraints()
+        self.containerView.layoutIfNeeded()
+        
+//        self.setNeedsLayout()
     }
     
     func setUpShadow() {
-        let cornerRadius = self.containerView.frame.height / 4
+        let cornerRadius: CGFloat = 15
         self.containerView.cornerRadius = cornerRadius
         self.containerView.layer.masksToBounds = true
         self.containerView.layer.shadowColor = UIColor.gray.cgColor
