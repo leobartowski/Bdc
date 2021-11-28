@@ -23,6 +23,7 @@ extension RankingTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
         
         cell?.mainLabel.text = self.days[indexPath.item]
         
+        // TODO: FIX, NOT WORKING
         if indexPath.section == 0 { // Morning
             if self.morningDaysNumbers.contains(indexPath.item + 2) {
                 cell?.mainLabel.textColor = .black
