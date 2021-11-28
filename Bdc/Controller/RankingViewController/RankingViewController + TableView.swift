@@ -17,6 +17,12 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         return self.rankingPersonsAttendaces.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        let cell = tableView.cellForRow(at: indexPath)
+//        if cell?.isSelected ?? false { return 200 }
+        return 70
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? RankingTableViewCell
         let rankingAttendance = self.rankingPersonsAttendaces[indexPath.row]
@@ -25,6 +31,18 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         self.handleColorOfTheCellOnFriday(cell, indexPath.row)
         cell?.setNeedsLayout()
         return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.3) {
+            self.tableView.performBatchUpdates(nil)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = self.tableView.cellForRow(at: indexPath) as? RankingTableViewCell {
+            cell.collectionView.isHidden = true
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -42,6 +60,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
     
     func tableViewSetup() {
+        
         self.header = self.headerBasic
     }
     
