@@ -93,10 +93,10 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     //MARK: CalendarViewControllerCellDelegate
     
     func mainCell(_ cell: CalendarCollectionViewCell, didSelectRowAt indexPath: IndexPath) {
-        // Check to avoid the modification of day older than 2 from now
-//        if Date().days(from: self.calendarView.selectedDate ?? Date()) > 1 {
-//            return
-//        }
+        // Check to avoid the modification of day older than today
+        if Date().days(from: self.calendarView.selectedDate ?? Date()) > 0 {
+            return
+        }
         let personToHandle = self.personsNotPresent[indexPath.row]
         // I need to amonish this person if is not amonished or I need to remove the amonishment otherwise
         if let index = self.personsAdmonished.firstIndex(where: { $0.name == personToHandle.name}) {
