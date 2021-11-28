@@ -20,6 +20,7 @@ class RankingViewController: UIViewController {
     var header: [String] = []
     var sorting = SortingPositionAndType(.attendance, .descending) // This variable is needed to understand which column in sorted and if ascending or descending (type)
     var daysOfThisWeek = [Date]()
+    var selectedCellRow = -1
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -42,8 +43,11 @@ class RankingViewController: UIViewController {
     }
     
     func populateWeeklyAttendance() {
+        
         for item in self.rankingPersonsAttendaces {
             // We need to clear all presences and adomishment
+            item.eveningDate = []
+            item.morningDate = []
             item.attendanceNumber = 0
             item.admonishmentNumber = 0
         }
@@ -54,14 +58,17 @@ class RankingViewController: UIViewController {
             let eveningPersons = eveningAttendance?.persons?.allObjects as? [Person] ?? []
             let morningPersonsAdmonished = morningAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
             let eveningPersonsAdmonished = eveningAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
+            
             for person in morningPersons {
                 if let index = self.rankingPersonsAttendaces.firstIndex(where: {$0.person.name == person.name}) {
                     self.rankingPersonsAttendaces[index].attendanceNumber += 1
+                    self.rankingPersonsAttendaces[index].morningDate.append(day)
                 }
             }
             for person in eveningPersons {
                 if let index = self.rankingPersonsAttendaces.firstIndex(where: {$0.person.name == person.name}) {
                     self.rankingPersonsAttendaces[index].attendanceNumber += 1
+                    self.rankingPersonsAttendaces[index].eveningDate.append(day)
                 }
             }
             for person in morningPersonsAdmonished {

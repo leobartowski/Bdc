@@ -67,7 +67,6 @@ class CoreDataService {
         do {
             
             let attendances = try self.context.fetch(fetchRequest).filter({ $0.dateString == dateString && $0.type == type.rawValue })
-            print(attendances.count)
             return attendances.first
             
         } catch let error as NSError {
@@ -110,7 +109,6 @@ class CoreDataService {
     func getPersonsList() -> [Person] {
         let fetchRequest = NSFetchRequest<PersonsList>(entityName: "PersonsList")
         do {
-            print(try self.context.fetch(fetchRequest).count)
             if let personsList = try self.context.fetch(fetchRequest).first {
                 return personsList.persons?.allObjects as? [Person] ?? []
             }
