@@ -24,6 +24,14 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         // The user cannot manually de-select a specific date!
         return false
     }
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        self.deselectAllDates()
+        self.selectedAllDateOfTheWeek(calendar.currentPage)
+        self.selectedCellRow = -1
+        self.populateWeeklyAttendance()
+    }
+    
 
     
     // TODO: Crash on the simulator!
@@ -76,14 +84,6 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
         self.calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
         self.calendarView.appearance.weekdayTextColor = .black
-
-
-    }
-    
-    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        self.deselectAllDates()
-        self.selectedAllDateOfTheWeek(calendar.currentPage)
-        self.populateWeeklyAttendance()
     }
     
     func selectedAllDateOfTheWeek(_ date: Date) {

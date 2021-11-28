@@ -328,7 +328,7 @@
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Abj-Tv-Rr0">
                                                     <rect key="frame" x="40" y="70" width="334" height="125"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="15" id="fPm-B9-mup">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="20" id="fPm-B9-mup">
                                                         <size key="itemSize" width="30" height="30"/>
                                                         <size key="headerReferenceSize" width="50" height="30"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>

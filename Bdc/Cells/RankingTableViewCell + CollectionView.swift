@@ -24,14 +24,13 @@ extension RankingTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
         cell?.mainLabel.text = self.days[indexPath.item]
         
         if indexPath.section == 0 { // Morning
-            if self.morningDaysNumbers.contains(indexPath.item + 2) {
-                cell?.setupIfPresent()
-            }
+            let isPresent = self.morningDaysNumbers.contains(indexPath.item + 2)
+            cell?.setup(isPresent)
+
         } else { // Evening
             
-            if self.eveningDaysNumbers.contains(indexPath.item + 2) {
-                cell?.setupIfPresent()
-            }
+            let isPresent = self.eveningDaysNumbers.contains(indexPath.item + 2)
+            cell?.setup(isPresent)
         }
         return cell ?? UICollectionViewCell()
     }
