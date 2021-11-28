@@ -35,20 +35,23 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         self.selectedCellRow = indexPath.row == self.selectedCellRow ? -1 : indexPath.row
         guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return indexPath }
         if selectedIndexPath == indexPath {
+            tableView.beginUpdates()
             tableView.deselectRow(at: indexPath, animated: true)
             UIView.animate(withDuration: 0.3) {
                 tableView.performBatchUpdates(nil)
             }
+            tableView.endUpdates()
             return nil
         }
         return indexPath
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.beginUpdates()
         UIView.animate(withDuration: 0.3) {
             tableView.performBatchUpdates(nil)
         }
+        tableView.endUpdates()
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

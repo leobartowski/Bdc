@@ -233,12 +233,8 @@
 		DD55204327256283006DB40C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */,
-				DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */,
-				DDCBBDB5274D5288002B60DA /* RankingTableViewCell.swift */,
-				DD617CEC2753C3AE002AD5E7 /* RankingTableViewCell + CollectionView.swift */,
-				DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */,
-				DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */,
+				DDFE30C32754431F0025BA19 /* CalendarVC */,
+				DDFE30C2275443140025BA19 /* RankingVC */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -366,6 +362,26 @@
 				DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		DDFE30C2275443140025BA19 /* RankingVC */ = {
+			isa = PBXGroup;
+			children = (
+				DDCBBDB5274D5288002B60DA /* RankingTableViewCell.swift */,
+				DD617CEC2753C3AE002AD5E7 /* RankingTableViewCell + CollectionView.swift */,
+				DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */,
+				DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */,
+			);
+			path = RankingVC;
+			sourceTree = "<group>";
+		};
+		DDFE30C32754431F0025BA19 /* CalendarVC */ = {
+			isa = PBXGroup;
+			children = (
+				DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */,
+				DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */,
+			);
+			path = CalendarVC;
 			sourceTree = "<group>";
 		};
 		F29ADA14CAED47AAAD651460 /* Frameworks */ = {
