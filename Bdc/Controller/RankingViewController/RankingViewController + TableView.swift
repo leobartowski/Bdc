@@ -90,6 +90,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         self.header[0] = self.headerBasic[0]
         self.header[1] = self.headerBasic[1] + " " + self.sorting.sortingType.symbol
         self.header[2] = self.headerBasic[2]
+        self.selectedCellRow = -1
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -144,6 +145,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             self.sorting.sortingPosition = .admonishment
         default: return
         }
+        self.selectedCellRow = -1
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

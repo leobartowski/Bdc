@@ -43,6 +43,7 @@ class RankingViewController: UIViewController {
     }
     
     func populateWeeklyAttendance() {
+        
         for item in self.rankingPersonsAttendaces {
             // We need to clear all presences and adomishment
             item.eveningDate = []
