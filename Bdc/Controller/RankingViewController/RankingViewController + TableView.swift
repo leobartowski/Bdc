@@ -18,9 +18,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cell = tableView.cellForRow(at: indexPath)
-        if cell?.isSelected ?? false { return 200 }
-        return 70
+        return indexPath.row == self.selectedCellRow ? 200 : 70
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -34,6 +32,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        self.selectedCellRow = indexPath.row == self.selectedCellRow ? -1 : indexPath.row
         guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return indexPath }
         if selectedIndexPath == indexPath {
             tableView.deselectRow(at: indexPath, animated: true)
@@ -49,9 +48,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         
         UIView.animate(withDuration: 0.3) {
             tableView.performBatchUpdates(nil)
-            
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

@@ -23,15 +23,14 @@ extension RankingTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
         
         cell?.mainLabel.text = self.days[indexPath.item]
         
-        // TODO: FIX, NOT WORKING
         if indexPath.section == 0 { // Morning
             if self.morningDaysNumbers.contains(indexPath.item + 2) {
-                cell?.mainLabel.textColor = .black
+                cell?.setupIfPresent()
             }
         } else { // Evening
             
             if self.eveningDaysNumbers.contains(indexPath.item + 2) {
-                cell?.mainLabel.textColor = .black
+                cell?.setupIfPresent()
             }
         }
         return cell ?? UICollectionViewCell()
@@ -45,7 +44,7 @@ extension RankingTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
                 for: indexPath)
             
             guard let typedHeaderView = headerView as? RankingDayHeaderCollectionReusableView else { return headerView }
-            typedHeaderView.titleLabel.text = indexPath.section == 0 ? "Mattina" : "Pomeriggio"
+            typedHeaderView.titleLabel.text = indexPath.section == 0 ? "Mattina" : "Sera"
 
             return typedHeaderView
         }
@@ -55,7 +54,5 @@ extension RankingTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 20)
     }
-    
-    
     
 }

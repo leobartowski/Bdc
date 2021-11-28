@@ -110,7 +110,6 @@ class RankingTableViewCell: UITableViewCell {
         for date in dates {
             datesNumbers.append(date.getDayNumberOfWeek() ?? 1)
         }
-        print("ciro\(datesNumbers)")
         return datesNumbers
     }
     
