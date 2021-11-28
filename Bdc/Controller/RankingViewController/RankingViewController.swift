@@ -20,6 +20,7 @@ class RankingViewController: UIViewController {
     var header: [String] = []
     var sorting = SortingPositionAndType(.attendance, .descending) // This variable is needed to understand which column in sorted and if ascending or descending (type)
     var daysOfThisWeek = [Date]()
+    var selectedCellRow = -1
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -44,6 +45,8 @@ class RankingViewController: UIViewController {
     func populateWeeklyAttendance() {
         for item in self.rankingPersonsAttendaces {
             // We need to clear all presences and adomishment
+            item.eveningDate = []
+            item.morningDate = []
             item.attendanceNumber = 0
             item.admonishmentNumber = 0
         }
