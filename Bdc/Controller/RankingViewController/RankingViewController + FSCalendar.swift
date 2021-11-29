@@ -28,7 +28,6 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         self.deselectAllDates()
         self.selectedAllDateOfTheWeek(calendar.currentPage)
-        self.selectedCellRow = -1
         self.populateWeeklyAttendance()
     }
     
