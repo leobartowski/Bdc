@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource, CalendarCollectionViewCellDelegate {
+extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CalendarCollectionViewCellDelegate {
 
     
     // MARK: Delegate e DataSource
@@ -17,11 +17,18 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return section == 0 ? self.personsPresent.count : self.personsNotPresent.count
+        return section == 0
+        ? self.personsPresent.isEmpty ? 1 : self.personsPresent.count
+        : self.personsNotPresent.count
     }
     
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if indexPath.section == 0 && self.personsPresent.isEmpty {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "placeholderID", for: indexPath)
+            return cell
+        }
     
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "presentCellID", for: indexPath) as? CalendarCollectionViewCell
         if indexPath.section == 0 {
@@ -34,13 +41,20 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         return cell ?? UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         // Check to avoid the modification of day older than today
-        if Date().days(from: self.calendarView.selectedDate ?? Date()) > 0 {
-            return
+        if (Date().days(from: self.calendarView.selectedDate ?? Date()) > 0) ||
+            (indexPath.section == 0 && self.personsPresent.isEmpty ) {
+            return false
         }
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+
         if indexPath.section == 0 { // Person Present
-            
+        
             let personToRemove = self.personsPresent[indexPath.row]
             self.personsPresent.remove(at: indexPath.row)
             self.personsNotPresent.append(personToRemove)
@@ -80,6 +94,15 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if indexPath.section == 0 && self.personsPresent.isEmpty {
+            return CGSize(width: self.view.frame.width - 40, height: self.view.frame.height / 2.8)
+        }
+        return CGSize(width: 80, height: 100)
+
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
