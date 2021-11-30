@@ -168,6 +168,8 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         } else { // Left
             self.calendarView.setCurrentPage(selectedDate.nextWeek, animated: true)
         }
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .rigid)
+        feedbackGenerator.impactOccurred(intensity: 0.9)
    }
 }
 
