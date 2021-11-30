@@ -69,9 +69,18 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
     
     func tableViewSetup() {
+        let leftSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(tableViewSwiped))
+        leftSwipeGR.direction = .left
+        self.tableView.addGestureRecognizer(leftSwipeGR)
+        
+        let rightSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(tableViewSwiped))
+        rightSwipeGR.direction = .right
+        self.tableView.addGestureRecognizer(rightSwipeGR)
         
         self.header = self.headerBasic
     }
+    
+
     
     func handleColorOfTheCellOnFriday(_ cell: RankingTableViewCell?, _ row: Int) {
         // Show red and green cell only on friday and only if the week on focus is the current week
@@ -150,37 +159,15 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             self.tableView.reloadData()
         }
     }
-}
-
-
-public class SortingPositionAndType {
     
-    var sortingPosition: SortingPosition
-    var sortingType: SortingType
-    
-    init(_ sortingPosition: SortingPosition, _ sortingType: SortingType) {
-        self.sortingPosition = sortingPosition
-        self.sortingType = sortingType
-    }
-}
-
-
-public enum SortingPosition: Int {
-    case name = 0
-    case attendance = 1
-    case admonishment = 2
-}
-
-public enum SortingType {
-    case ascending
-    case descending
-    
-    var symbol: String {
-        switch self {
-        case .ascending: // Freccia verso l'alto
-            return "\u{25B2}"
-        case .descending: // Freccia verso il basso
-            return "\u{25BC}"
+    // MARK: Handle left or right swipe
+    @objc func tableViewSwiped(sender : UISwipeGestureRecognizer) {
+        let selectedDate = self.calendarView.selectedDate ?? Date.now
+        if sender.direction == .right {  // Right
+            self.calendarView.setCurrentPage(selectedDate.previousWeek, animated: true)
+        } else { // Left
+            self.calendarView.setCurrentPage(selectedDate.nextWeek, animated: true)
         }
-    }
+   }
 }
+
