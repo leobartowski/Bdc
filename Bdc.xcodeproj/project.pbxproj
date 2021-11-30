@@ -29,6 +29,10 @@
 		DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968127221A40009E455F /* Person+CoreDataProperties.swift */; };
 		DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968227221A40009E455F /* Person+CoreDataClass.swift */; };
 		DD64968727221A40009E455F /* Attendance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */; };
+		DD7B258327567AA100E663AC /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B258227567AA100E663AC /* PDFCreator.swift */; };
+		DD7B258527567B0600E663AC /* RankingViewController + PDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */; };
+		DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */; };
+		DD7B2589275680DE00E663AC /* Array + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2588275680DE00E663AC /* Array + Ext.swift */; };
 		DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543EE27219D4A004D38F0 /* AppDelegate.swift */; };
 		DD8543F127219D4A004D38F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543F027219D4A004D38F0 /* SceneDelegate.swift */; };
 		DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543F227219D4A004D38F0 /* CalendarViewController.swift */; };
@@ -100,6 +104,10 @@
 		DD64968127221A40009E455F /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DD64968227221A40009E455F /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attendance+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DD7B258227567AA100E663AC /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
+		DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + PDF.swift"; sourceTree = "<group>"; };
+		DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFTableDataItem.swift; sourceTree = "<group>"; };
+		DD7B2588275680DE00E663AC /* Array + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + Ext.swift"; sourceTree = "<group>"; };
 		DD8543EB27219D4A004D38F0 /* Bdc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bdc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8543EE27219D4A004D38F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD8543F027219D4A004D38F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -258,8 +266,18 @@
 				DDC337A32724065A0028E49B /* RankingViewController.swift */,
 				DD41742F27246BA500BE5BFD /* RankingViewController + FSCalendar.swift */,
 				DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */,
+				DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */,
 			);
 			path = RankingViewController;
+			sourceTree = "<group>";
+		};
+		DD7B258127567A9500E663AC /* PDFCreator */ = {
+			isa = PBXGroup;
+			children = (
+				DD7B258227567AA100E663AC /* PDFCreator.swift */,
+				DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */,
+			);
+			path = PDFCreator;
 			sourceTree = "<group>";
 		};
 		DD8543E227219D4A004D38F0 = {
@@ -352,6 +370,7 @@
 				DDC337A527240CAE0028E49B /* Date - Ext.swift */,
 				DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */,
 				DD1A1C64274908AB006FC676 /* UIView - Ext.swift */,
+				DD7B2588275680DE00E663AC /* Array + Ext.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -359,6 +378,7 @@
 		DDE3B1732722D3B000BFEFF0 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				DD7B258127567A9500E663AC /* PDFCreator */,
 				DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */,
 				DD1EAF392726DDD100EF1455 /* CommonUtility.swift */,
 				DDF1DE4C272C50CE006B7DFD /* Theme.swift */,
@@ -647,7 +667,9 @@
 				DDC9EB6A275031CD00653138 /* PersonsList+CoreDataClass.swift in Sources */,
 				DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */,
 				DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */,
+				DD7B258327567AA100E663AC /* PDFCreator.swift in Sources */,
 				DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */,
+				DD7B258527567B0600E663AC /* RankingViewController + PDF.swift in Sources */,
 				DD0CAB5027280FB200EA42B1 /* Attendance+CoreDataProperties.swift in Sources */,
 				DDC1E5CF2752966E00C2BF2C /* Person+CoreDataProperties.swift in Sources */,
 				DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */,
@@ -664,6 +686,7 @@
 				DDB292622721A90500D96E67 /* RankingSectionHeaderView.swift in Sources */,
 				DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */,
 				DDC9EB6B275031CD00653138 /* PersonsList+CoreDataProperties.swift in Sources */,
+				DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */,
 				DD1A1C65274908AB006FC676 /* UIView - Ext.swift in Sources */,
 				DD1EAF3A2726DDD100EF1455 /* CommonUtility.swift in Sources */,
 				DD41743027246BA500BE5BFD /* RankingViewController + FSCalendar.swift in Sources */,
@@ -673,6 +696,7 @@
 				DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */,
 				DD8543F127219D4A004D38F0 /* SceneDelegate.swift in Sources */,
 				DD413379274FC94C0038B4C6 /* RankingViewController + TableView.swift in Sources */,
+				DD7B2589275680DE00E663AC /* Array + Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
