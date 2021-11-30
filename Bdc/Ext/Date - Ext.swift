@@ -24,11 +24,20 @@ extension Date {
     var noon: Date {
         return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
     }
-    public var previousMonth: Date {
+    var previousMonth: Date {
         return Calendar.current.date(byAdding: .month, value: -1, to: self) ?? Date()
     }
+
     var nextMonth: Date {
         return Calendar.current.date(byAdding: .month, value: +1, to: self) ?? Date()
+    }
+    
+    var previousWeek: Date {
+        return Calendar.current.date(byAdding: .weekOfYear, value: -1, to: self) ?? Date()
+    }
+    
+    var nextWeek: Date {
+        return Calendar.current.date(byAdding: .weekOfYear, value: 1, to: self) ?? Date()
     }
     
     /// Get first day of the month

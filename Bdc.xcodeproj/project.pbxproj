@@ -44,6 +44,7 @@
 		DDC1E5CF2752966E00C2BF2C /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC1E5CD2752966E00C2BF2C /* Person+CoreDataProperties.swift */; };
 		DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A32724065A0028E49B /* RankingViewController.swift */; };
 		DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A527240CAE0028E49B /* Date - Ext.swift */; };
+		DDC51A4F27564191004A836B /* SortingPositionAndType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC51A4E27564191004A836B /* SortingPositionAndType.swift */; };
 		DDC9EB6A275031CD00653138 /* PersonsList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC9EB68275031CD00653138 /* PersonsList+CoreDataClass.swift */; };
 		DDC9EB6B275031CD00653138 /* PersonsList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC9EB69275031CD00653138 /* PersonsList+CoreDataProperties.swift */; };
 		DDCBBDB4274D44B4002B60DA /* MySegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */; };
@@ -118,6 +119,7 @@
 		DDC1E5CD2752966E00C2BF2C /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Person+CoreDataProperties.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/Person+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		DDC337A32724065A0028E49B /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		DDC337A527240CAE0028E49B /* Date - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date - Ext.swift"; sourceTree = "<group>"; };
+		DDC51A4E27564191004A836B /* SortingPositionAndType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingPositionAndType.swift; sourceTree = "<group>"; };
 		DDC9EB68275031CD00653138 /* PersonsList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PersonsList+CoreDataClass.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/PersonsList+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		DDC9EB69275031CD00653138 /* PersonsList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PersonsList+CoreDataProperties.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/PersonsList+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySegmentedControl.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				DD0CAB522728108600EA42B1 /* DayType.swift */,
+				DDC51A4E27564191004A836B /* SortingPositionAndType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */,
 				DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */,
 				DD617CED2753C3AE002AD5E7 /* RankingTableViewCell + CollectionView.swift in Sources */,
+				DDC51A4F27564191004A836B /* SortingPositionAndType.swift in Sources */,
 				DDB292622721A90500D96E67 /* RankingSectionHeaderView.swift in Sources */,
 				DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */,
 				DDC9EB6B275031CD00653138 /* PersonsList+CoreDataProperties.swift in Sources */,
