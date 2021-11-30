@@ -7,6 +7,7 @@
 
 import UIKit
 import FSCalendar
+import PDFKit
 
 class RankingViewController: UIViewController {
     
@@ -22,10 +23,13 @@ class RankingViewController: UIViewController {
     var daysOfThisWeek = [Date]()
     var selectedCellRow = -1
     
+    var pdfView: PDFView!
+    
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewSetUp()
+//        self.pdfSetup()
     }
     
     // Needed to update the Maximum Date when the app remains in RAM
@@ -84,6 +88,11 @@ class RankingViewController: UIViewController {
         }
         self.sortDescendingAttendanceFirstTime()
     }
+    
+    @IBAction func shareButtonAction(_ sender: Any) {
+        print("share button is pressed")
+    }
+    
 }
 
 

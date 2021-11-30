@@ -446,6 +446,19 @@
                                     <outlet property="delegate" destination="gzR-Cb-bnF" id="kYB-iP-fPg"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2f-9T-MNW">
+                                <rect key="frame" x="374" y="54" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="De9-iu-XYE"/>
+                                    <constraint firstAttribute="width" constant="30" id="PLU-T6-Aqf"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
+                                <connections>
+                                    <action selector="shareButtonAction:" destination="gzR-Cb-bnF" eventType="touchUpInside" id="rw4-kN-uEd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="C6Y-kX-hKN"/>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -455,8 +468,10 @@
                             <constraint firstItem="rxW-AI-RUa" firstAttribute="top" secondItem="xZL-9L-OaS" secondAttribute="bottom" id="Jjy-vo-FoY"/>
                             <constraint firstItem="C6Y-kX-hKN" firstAttribute="bottom" secondItem="rxW-AI-RUa" secondAttribute="bottom" id="L27-Aj-wSx"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="LyG-y3-Ajy"/>
+                            <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="w2f-9T-MNW" secondAttribute="trailing" constant="10" id="QJi-SD-lZt"/>
                             <constraint firstItem="rxW-AI-RUa" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="bS4-aJ-OKI"/>
                             <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="rxW-AI-RUa" secondAttribute="trailing" id="gCj-ms-5xM"/>
+                            <constraint firstItem="w2f-9T-MNW" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" constant="10" id="oZa-X4-rHL"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Ranking" image="person.3.fill" catalog="system" id="Shf-1z-or0"/>
@@ -468,13 +483,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SHI-8h-Xui" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1899" y="845"/>
+            <point key="canvasLocation" x="1898.5507246376812" y="844.41964285714278"/>
         </scene>
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="empty_placeholder" width="283" height="220"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
