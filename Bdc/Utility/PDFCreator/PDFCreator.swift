@@ -12,22 +12,20 @@ import PDFKit
 class PDFCreator: NSObject {
     
     let defaultOffset: CGFloat = 20
-    var titleHeight: CGFloat = 70
+    var titleHeight: CGFloat = 65
+    let pdfTitle: String
     let tableDataHeaderTitles: [String]
     let tableDataItems: [PDFTableDataItem]
-    let date1: Date
-    let date2: Date
 
-    init(tableDataItems: [PDFTableDataItem], tableDataHeaderTitles: [String], date1: Date, date2: Date) {
+    init(tableDataItems: [PDFTableDataItem], tableDataHeaderTitles: [String], pdfTitle: String) {
         self.tableDataItems = tableDataItems
         self.tableDataHeaderTitles = tableDataHeaderTitles
-        self.date1 = date1
-        self.date2 = date2
+        self.pdfTitle = pdfTitle
     }
     
-    private func createTitleText() -> String {
-        let date1String = DateFormatter.basicFormatter.string(from: self.date1)
-        let date2String = DateFormatter.basicFormatter.string(from: self.date2)
+    static func createTitleText(date1: Date, date2: Date) -> String {
+        let date1String = DateFormatter.basicFormatter.string(from: date1)
+        let date2String = DateFormatter.basicFormatter.string(from: date2)
         return "Presenze BdC dal " + date1String + " al " + date2String
     }
 
@@ -35,7 +33,8 @@ class PDFCreator: NSObject {
         
         let pdfMetaData = [
           kCGPDFContextCreator: "bdc",
-          kCGPDFContextAuthor: "leobartowski"
+          kCGPDFContextAuthor: "leobartowski",
+          kCGPDFContextTitle: "BdC"
         ]
         let format = UIGraphicsPDFRendererFormat()
         format.documentInfo = pdfMetaData as [String: Any]
@@ -54,8 +53,7 @@ class PDFCreator: NSObject {
             for tableDataChunk in tableDataChunked {
                 context.beginPage()
                 let cgContext = context.cgContext
-                let titleText = createTitleText()
-                addTitle(pageRect: pageRect, titleText: titleText)
+                addTitle(pageRect: pageRect, titleText: pdfTitle)
                 drawTableHeaderRect(drawContext: cgContext, pageRect: pageRect)
                 drawTableHeaderTitles(titles: tableDataHeaderTitles, drawContext: cgContext, pageRect: pageRect)
                 drawTableContentInnerBordersAndText(drawContext: cgContext, pageRect: pageRect, tableDataItems: tableDataChunk)
@@ -65,13 +63,12 @@ class PDFCreator: NSObject {
     }
 
     func calculateNumberOfElementsPerPage(with pageRect: CGRect) -> Int {
-        let rowHeight = (defaultOffset * 3)
-        let number = Int((pageRect.height - rowHeight - titleHeight) / rowHeight)
+        let rowHeight = (defaultOffset * 2)
+        let number = Int((pageRect.height - rowHeight - titleHeight - 20) / rowHeight)
         return number
     }
     
     func addTitle(pageRect: CGRect, titleText: String) {
-      // 1
       let titleFont = UIFont.systemFont(ofSize: 25.0, weight: .bold)
       // 2
       let titleAttributes: [NSAttributedString.Key: Any] =
@@ -79,7 +76,7 @@ class PDFCreator: NSObject {
          NSAttributedString.Key.foregroundColor : Theme.FSCalendarStandardSelectionColor]
       // 3
       let attributedTitle = NSAttributedString(
-        string: self.createTitleText(),
+        string: pdfTitle,
         attributes: titleAttributes
       )
       // 4
@@ -148,7 +145,7 @@ extension PDFCreator {
             let textRect = CGRect(x: tabX + defaultOffset,
                                   y: defaultOffset * 3 / 2 + titleHeight,
                                   width: tabWidth,
-                                  height: defaultOffset * 2)
+                                  height: defaultOffset * 3)
             attributedTitle.draw(in: textRect)
         }
     }
@@ -157,10 +154,10 @@ extension PDFCreator {
         drawContext.setLineWidth(1.0)
         drawContext.saveGState()
 
-        let defaultStartY = defaultOffset * 3
+        let defaultStartY = defaultOffset * 2
 
         for elementIndex in 0..<tableDataItems.count {
-            let yPosition = CGFloat(elementIndex) * defaultStartY + defaultStartY
+            let yPosition = CGFloat(elementIndex) * defaultStartY + defaultStartY + 20
 
             // Draw content's elements texts
             let textFont = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -183,9 +180,9 @@ extension PDFCreator {
                 }
                 let tabX = CGFloat(titleIndex) * tabWidth
                 let textRect = CGRect(x: tabX + defaultOffset,
-                                      y: yPosition + defaultOffset + titleHeight,
+                                      y: yPosition + defaultOffset + titleHeight - 10,
                                       width: tabWidth,
-                                      height: defaultOffset * 3)
+                                      height: defaultOffset * 2)
                 attributedText.draw(in: textRect)
             }
 

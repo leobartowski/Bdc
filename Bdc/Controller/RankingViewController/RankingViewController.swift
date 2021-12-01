@@ -88,9 +88,9 @@ class RankingViewController: UIViewController {
     }
     
     @IBAction func shareButtonAction(_ sender: Any) {
-        let pdfData = createPDF(date1: self.daysOfThisWeek.first ?? Date(),
-                                date2: self.daysOfThisWeek.last ?? Date()
-                                )
+        let pdfTitle = PDFCreator.createTitleText(date1: self.daysOfThisWeek.first ?? Date(),
+                                                  date2:  self.daysOfThisWeek.last ?? Date())
+        let pdfData = createPDF(pdfTitle)
         let vc = UIActivityViewController(activityItems: [pdfData],applicationActivities: [])
         present(vc, animated: true, completion: nil)
     }
