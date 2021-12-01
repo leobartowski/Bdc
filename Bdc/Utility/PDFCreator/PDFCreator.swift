@@ -34,7 +34,7 @@ class PDFCreator: NSObject {
         let pdfMetaData = [
           kCGPDFContextCreator: "bdc",
           kCGPDFContextAuthor: "leobartowski",
-          kCGPDFContextTitle: "BdC"
+          kCGPDFContextTitle: pdfTitle          
         ]
         let format = UIGraphicsPDFRendererFormat()
         format.documentInfo = pdfMetaData as [String: Any]
@@ -50,13 +50,16 @@ class PDFCreator: NSObject {
         let tableDataChunked: [[PDFTableDataItem]] = tableDataItems.chunkedElements(into: numberOfElementsPerPage)
 
         let data = renderer.pdfData { context in
-            for tableDataChunk in tableDataChunked {
+            for (i ,tableDataChunk) in tableDataChunked.enumerated() {
                 context.beginPage()
                 let cgContext = context.cgContext
-                addTitle(pageRect: pageRect, titleText: pdfTitle)
+                if i == 0 { addTitle(pageRect: pageRect, titleText: pdfTitle) }
+            
                 drawTableHeaderRect(drawContext: cgContext, pageRect: pageRect)
                 drawTableHeaderTitles(titles: tableDataHeaderTitles, drawContext: cgContext, pageRect: pageRect)
                 drawTableContentInnerBordersAndText(drawContext: cgContext, pageRect: pageRect, tableDataItems: tableDataChunk)
+                
+                if i == 0 { titleHeight = 0 }
             }
         }
         return data
@@ -99,6 +102,8 @@ class PDFCreator: NSObject {
 extension PDFCreator {
     
     func drawTableHeaderRect(drawContext: CGContext, pageRect: CGRect) {
+        
+        drawContext.setStrokeColor(Theme.FSCalendarStandardSelectionColor.cgColor)
         drawContext.saveGState()
         drawContext.setLineWidth(3.0)
 
@@ -128,7 +133,7 @@ extension PDFCreator {
 
     func drawTableHeaderTitles(titles: [String], drawContext: CGContext, pageRect: CGRect) {
         // prepare title attributes
-        let textFont = UIFont.systemFont(ofSize: 18.0, weight: .medium)
+        let textFont = UIFont.systemFont(ofSize: 20.0, weight: .medium)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         paragraphStyle.lineBreakMode = .byWordWrapping
@@ -160,7 +165,7 @@ extension PDFCreator {
             let yPosition = CGFloat(elementIndex) * defaultStartY + defaultStartY + 20
 
             // Draw content's elements texts
-            let textFont = UIFont.systemFont(ofSize: 16, weight: .regular)
+            let textFont = UIFont.systemFont(ofSize: 18, weight: .regular)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .center
             paragraphStyle.lineBreakMode = .byWordWrapping
