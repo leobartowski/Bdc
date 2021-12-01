@@ -447,7 +447,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2f-9T-MNW">
-                                <rect key="frame" x="374" y="54" width="30" height="30"/>
+                                <rect key="frame" x="374" y="49" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="De9-iu-XYE"/>
                                     <constraint firstAttribute="width" constant="30" id="PLU-T6-Aqf"/>
@@ -471,7 +471,7 @@
                             <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="w2f-9T-MNW" secondAttribute="trailing" constant="10" id="QJi-SD-lZt"/>
                             <constraint firstItem="rxW-AI-RUa" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="bS4-aJ-OKI"/>
                             <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="rxW-AI-RUa" secondAttribute="trailing" id="gCj-ms-5xM"/>
-                            <constraint firstItem="w2f-9T-MNW" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" constant="10" id="oZa-X4-rHL"/>
+                            <constraint firstItem="w2f-9T-MNW" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" constant="5" id="oZa-X4-rHL"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Ranking" image="person.3.fill" catalog="system" id="Shf-1z-or0"/>

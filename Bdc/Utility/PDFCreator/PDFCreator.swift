@@ -12,12 +12,23 @@ import PDFKit
 class PDFCreator: NSObject {
     
     let defaultOffset: CGFloat = 20
+    var titleHeight: CGFloat = 70
     let tableDataHeaderTitles: [String]
     let tableDataItems: [PDFTableDataItem]
+    let date1: Date
+    let date2: Date
 
-    init(tableDataItems: [PDFTableDataItem], tableDataHeaderTitles: [String]) {
+    init(tableDataItems: [PDFTableDataItem], tableDataHeaderTitles: [String], date1: Date, date2: Date) {
         self.tableDataItems = tableDataItems
         self.tableDataHeaderTitles = tableDataHeaderTitles
+        self.date1 = date1
+        self.date2 = date2
+    }
+    
+    private func createTitleText() -> String {
+        let date1String = DateFormatter.basicFormatter.string(from: self.date1)
+        let date2String = DateFormatter.basicFormatter.string(from: self.date2)
+        return "Presenze BdC dal " + date1String + " al " + date2String
     }
 
     func create() -> Data {
@@ -43,6 +54,8 @@ class PDFCreator: NSObject {
             for tableDataChunk in tableDataChunked {
                 context.beginPage()
                 let cgContext = context.cgContext
+                let titleText = createTitleText()
+                addTitle(pageRect: pageRect, titleText: titleText)
                 drawTableHeaderRect(drawContext: cgContext, pageRect: pageRect)
                 drawTableHeaderTitles(titles: tableDataHeaderTitles, drawContext: cgContext, pageRect: pageRect)
                 drawTableContentInnerBordersAndText(drawContext: cgContext, pageRect: pageRect, tableDataItems: tableDataChunk)
@@ -53,25 +66,53 @@ class PDFCreator: NSObject {
 
     func calculateNumberOfElementsPerPage(with pageRect: CGRect) -> Int {
         let rowHeight = (defaultOffset * 3)
-        let number = Int((pageRect.height - rowHeight) / rowHeight)
+        let number = Int((pageRect.height - rowHeight - titleHeight) / rowHeight)
         return number
+    }
+    
+    func addTitle(pageRect: CGRect, titleText: String) {
+      // 1
+      let titleFont = UIFont.systemFont(ofSize: 25.0, weight: .bold)
+      // 2
+      let titleAttributes: [NSAttributedString.Key: Any] =
+        [NSAttributedString.Key.font: titleFont,
+         NSAttributedString.Key.foregroundColor : Theme.FSCalendarStandardSelectionColor]
+      // 3
+      let attributedTitle = NSAttributedString(
+        string: self.createTitleText(),
+        attributes: titleAttributes
+      )
+      // 4
+      let titleStringSize = attributedTitle.size()
+      // 5
+      let titleStringRect = CGRect(
+        x: (pageRect.width - titleStringSize.width) / 2.0,
+        y: 36,
+        width: titleStringSize.width,
+        height: titleStringSize.height
+      )
+      // 6
+      attributedTitle.draw(in: titleStringRect)
+      // 7
+//      return titleStringRect.origin.y + titleStringRect.size.height
     }
 }
 
 // Drawings
 extension PDFCreator {
+    
     func drawTableHeaderRect(drawContext: CGContext, pageRect: CGRect) {
         drawContext.saveGState()
         drawContext.setLineWidth(3.0)
 
         // Draw header's 1 top horizontal line
-        drawContext.move(to: CGPoint(x: defaultOffset, y: defaultOffset))
-        drawContext.addLine(to: CGPoint(x: pageRect.width - defaultOffset, y: defaultOffset))
+        drawContext.move(to: CGPoint(x: defaultOffset, y: defaultOffset + titleHeight))
+        drawContext.addLine(to: CGPoint(x: pageRect.width - defaultOffset, y: defaultOffset + titleHeight))
         drawContext.strokePath()
 
         // Draw header's 1 bottom horizontal line
-        drawContext.move(to: CGPoint(x: defaultOffset, y: defaultOffset * 3))
-        drawContext.addLine(to: CGPoint(x: pageRect.width - defaultOffset, y: defaultOffset * 3))
+        drawContext.move(to: CGPoint(x: defaultOffset, y: defaultOffset * 3 + titleHeight))
+        drawContext.addLine(to: CGPoint(x: pageRect.width - defaultOffset, y: defaultOffset * 3 + titleHeight))
         drawContext.strokePath()
 
         // Draw header's 3 vertical lines
@@ -80,8 +121,8 @@ extension PDFCreator {
         let tabWidth = (pageRect.width - defaultOffset * 2) / CGFloat(3)
         for verticalLineIndex in 0..<4 {
             let tabX = CGFloat(verticalLineIndex) * tabWidth
-            drawContext.move(to: CGPoint(x: tabX + defaultOffset, y: defaultOffset))
-            drawContext.addLine(to: CGPoint(x: tabX + defaultOffset, y: defaultOffset * 3))
+            drawContext.move(to: CGPoint(x: tabX + defaultOffset, y: defaultOffset + titleHeight))
+            drawContext.addLine(to: CGPoint(x: tabX + defaultOffset, y: defaultOffset * 3 + titleHeight))
             drawContext.strokePath()
         }
 
@@ -90,7 +131,7 @@ extension PDFCreator {
 
     func drawTableHeaderTitles(titles: [String], drawContext: CGContext, pageRect: CGRect) {
         // prepare title attributes
-        let textFont = UIFont.systemFont(ofSize: 16.0, weight: .medium)
+        let textFont = UIFont.systemFont(ofSize: 18.0, weight: .medium)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         paragraphStyle.lineBreakMode = .byWordWrapping
@@ -105,7 +146,7 @@ extension PDFCreator {
             let attributedTitle = NSAttributedString(string: titles[titleIndex].capitalized, attributes: titleAttributes)
             let tabX = CGFloat(titleIndex) * tabWidth
             let textRect = CGRect(x: tabX + defaultOffset,
-                                  y: defaultOffset * 3 / 2,
+                                  y: defaultOffset * 3 / 2 + titleHeight,
                                   width: tabWidth,
                                   height: defaultOffset * 2)
             attributedTitle.draw(in: textRect)
@@ -122,7 +163,7 @@ extension PDFCreator {
             let yPosition = CGFloat(elementIndex) * defaultStartY + defaultStartY
 
             // Draw content's elements texts
-            let textFont = UIFont.systemFont(ofSize: 13.0, weight: .regular)
+            let textFont = UIFont.systemFont(ofSize: 16, weight: .regular)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .center
             paragraphStyle.lineBreakMode = .byWordWrapping
@@ -142,7 +183,7 @@ extension PDFCreator {
                 }
                 let tabX = CGFloat(titleIndex) * tabWidth
                 let textRect = CGRect(x: tabX + defaultOffset,
-                                      y: yPosition + defaultOffset,
+                                      y: yPosition + defaultOffset + titleHeight,
                                       width: tabWidth,
                                       height: defaultOffset * 3)
                 attributedText.draw(in: textRect)
@@ -151,14 +192,14 @@ extension PDFCreator {
             // Draw content's 3 vertical lines
             for verticalLineIndex in 0..<4 {
                 let tabX = CGFloat(verticalLineIndex) * tabWidth
-                drawContext.move(to: CGPoint(x: tabX + defaultOffset, y: yPosition))
-                drawContext.addLine(to: CGPoint(x: tabX + defaultOffset, y: yPosition + defaultStartY))
+                drawContext.move(to: CGPoint(x: tabX + defaultOffset, y: yPosition + titleHeight))
+                drawContext.addLine(to: CGPoint(x: tabX + defaultOffset, y: yPosition + defaultStartY + titleHeight))
                 drawContext.strokePath()
             }
 
             // Draw content's element bottom horizontal line
-            drawContext.move(to: CGPoint(x: defaultOffset, y: yPosition + defaultStartY))
-            drawContext.addLine(to: CGPoint(x: pageRect.width - defaultOffset, y: yPosition + defaultStartY))
+            drawContext.move(to: CGPoint(x: defaultOffset, y: yPosition + defaultStartY + titleHeight))
+            drawContext.addLine(to: CGPoint(x: pageRect.width - defaultOffset, y: yPosition + defaultStartY + titleHeight ))
             drawContext.strokePath()
         }
         drawContext.restoreGState()
