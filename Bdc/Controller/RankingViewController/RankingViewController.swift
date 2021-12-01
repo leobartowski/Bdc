@@ -23,13 +23,11 @@ class RankingViewController: UIViewController {
     var daysOfThisWeek = [Date]()
     var selectedCellRow = -1
     
-    var pdfView: PDFView!
     
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewSetUp()
-//        self.pdfSetup()
     }
     
     // Needed to update the Maximum Date when the app remains in RAM
@@ -90,7 +88,11 @@ class RankingViewController: UIViewController {
     }
     
     @IBAction func shareButtonAction(_ sender: Any) {
-        print("share button is pressed")
+        let pdfData = createPDF(date1: self.daysOfThisWeek.first ?? Date(),
+                                date2: self.daysOfThisWeek.last ?? Date()
+                                )
+        let vc = UIActivityViewController(activityItems: [pdfData],applicationActivities: [])
+        present(vc, animated: true, completion: nil)
     }
     
 }

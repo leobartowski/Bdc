@@ -10,14 +10,7 @@ import PDFKit
 
 extension RankingViewController {
     
-    
-    func pdfSetup() {
-        self.createUI()
-        self.createPDF()
-    }
-    
-    func createUI() {
-        pdfView = PDFView()
+    func createUI(pdfView: PDFView) {
         pdfView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(pdfView)
         pdfView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -26,9 +19,10 @@ extension RankingViewController {
         pdfView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 
-    func createPDF() {
+    func createPDF(date1: Date, date2: Date) -> Data {
+        let pdfPersonsAttendaces = self.rankingPersonsAttendaces.sorted { $0.attendanceNumber > $1.attendanceNumber }
         var tableDataItems = [PDFTableDataItem]()
-        for personAttendances in self.rankingPersonsAttendaces{
+        for personAttendances in pdfPersonsAttendaces {
             tableDataItems.append(PDFTableDataItem(
                 name: personAttendances.person.name ?? "---",
                 attendanceNumber: String(personAttendances.attendanceNumber) ,
@@ -36,10 +30,13 @@ extension RankingViewController {
             ))
         }
         let tableDataHeaderTitles =  ["Nome", "Presenze", "Ammonizioni"]
-        let pdfCreator = PDFCreator(tableDataItems: tableDataItems, tableDataHeaderTitles: tableDataHeaderTitles)
+        let pdfCreator = PDFCreator(tableDataItems: tableDataItems, tableDataHeaderTitles: tableDataHeaderTitles, date1: date1, date2: date2)
         let data = pdfCreator.create()
-
-        pdfView.document = PDFDocument(data: data)
-        pdfView.autoScales = true
+        
+        return data
+//
+//        pdfView.document = PDFDocument(data: data)
+//        pdfView.autoScales = true
+        
     }
 }
