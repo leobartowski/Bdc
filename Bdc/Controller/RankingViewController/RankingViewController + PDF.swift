@@ -8,16 +8,16 @@
 import Foundation
 import PDFKit
 
-extension RankingViewController {
+extension RankingViewController: UIActivityItemSource {
     
-    func createUI(pdfView: PDFView) {
-        pdfView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(pdfView)
-        pdfView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        pdfView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        pdfView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        pdfView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+        return "The pig is in the poke"
     }
+    
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
+        return "The pig is in the poke"
+    }
+    
 
     func createPDF(_ pdfTitle: String) -> Data {
         let pdfPersonsAttendaces = self.rankingPersonsAttendaces.sorted { $0.attendanceNumber > $1.attendanceNumber }
@@ -33,5 +33,13 @@ extension RankingViewController {
         let pdfCreator = PDFCreator(tableDataItems: tableDataItems, tableDataHeaderTitles: tableDataHeaderTitles, pdfTitle: pdfTitle)
         let data = pdfCreator.create()
         return data
+    }
+    
+    func getPdfTitle() -> String {
+        var  daysToCreateTitle = self.daysOfThisWeek.filter({ $0 <= Date.now })
+        daysToCreateTitle = daysToCreateTitle.sorted(by: {$0 < $1})
+        let pdfTitle = PDFCreator.createTitleText(date1: daysToCreateTitle.first ?? Date(),
+                                                  date2:  daysToCreateTitle.last ?? Date())
+        return pdfTitle
     }
 }
