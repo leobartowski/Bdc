@@ -34,12 +34,5 @@ extension RankingViewController: UIActivityItemSource {
         let data = pdfCreator.create()
         return data
     }
-    
-    func getPdfTitle() -> String {
-        var  daysToCreateTitle = self.daysOfThisWeek.filter({ $0 <= Date.now })
-        daysToCreateTitle = daysToCreateTitle.sorted(by: {$0 < $1})
-        let pdfTitle = PDFCreator.createTitleText(date1: daysToCreateTitle.first ?? Date(),
-                                                  date2:  daysToCreateTitle.last ?? Date())
-        return pdfTitle
-    }
+
 }
