@@ -88,14 +88,23 @@ class RankingViewController: UIViewController {
     }
     
     @IBAction func shareButtonAction(_ sender: Any) {
-        let pdfTitle = self.getPdfTitle()
+        let pdfTitle = PDFCreator.createPDFTitle(dates: self.daysOfThisWeek)
         let pdfData = createPDF(pdfTitle)
-        let vc = UIActivityViewController(activityItems: [pdfData], applicationActivities: [])
-        DispatchQueue.main.async {
-            self.present(vc, animated: true, completion: nil)
+
+        let temporaryFolder = FileManager.default.temporaryDirectory
+        let pdfFileName = pdfTitle.replacingOccurrences(of: "/", with: ":", options: .literal, range: nil)
+        let temporaryFileURL = temporaryFolder.appendingPathComponent(pdfFileName + ".pdf")
+        
+        do {
+            try pdfData.write(to: temporaryFileURL)
+            let vc = UIActivityViewController(activityItems: [temporaryFileURL], applicationActivities: [])
+            DispatchQueue.main.async {
+                self.present(vc, animated: true, completion: nil)
+            }
+        } catch {
+            print(error)
         }
     }
-
 }
 
 
