@@ -2,7 +2,9 @@
 //  PDF.swift
 //  Bdc
 //
-//  Created by Francesco D'Angelo on 30/11/21.
+//  Created by Francesco D'Angelo on 30/11/21
+//  with the great help of:
+//  https://stackoverflow.com/questions/59398853/swift-5-how-to-create-table-in-pdf-with-pdfkit
 //
 
 import UIKit
@@ -127,10 +129,9 @@ class PDFCreator: NSObject {
             width: titleStringSize.width,
             height: titleStringSize.height
         )
-        // 6
+        
         attributedTitle.draw(in: titleStringRect)
-        // 7
-        //      return titleStringRect.origin.y + titleStringRect.size.height
+    
     }
 }
 
