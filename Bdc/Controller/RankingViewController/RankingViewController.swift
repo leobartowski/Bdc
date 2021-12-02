@@ -92,7 +92,7 @@ class RankingViewController: UIViewController {
         let pdfData = createPDF(pdfTitle)
 
         let temporaryFolder = FileManager.default.temporaryDirectory
-        let pdfFileName = pdfTitle.replacingOccurrences(of: "/", with: ":", options: .literal, range: nil)
+        let pdfFileName = pdfTitle.replacingOccurrences(of: "/", with: "-", options: .literal, range: nil)
         let temporaryFileURL = temporaryFolder.appendingPathComponent(pdfFileName + ".pdf")
         
         do {

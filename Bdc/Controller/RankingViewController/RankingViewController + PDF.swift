@@ -8,15 +8,7 @@
 import Foundation
 import PDFKit
 
-extension RankingViewController: UIActivityItemSource {
-    
-    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
-        return "The pig is in the poke"
-    }
-    
-    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        return "The pig is in the poke"
-    }
+extension RankingViewController {
     
 
     func createPDF(_ pdfTitle: String) -> Data {
