@@ -7,6 +7,7 @@
 
 import UIKit
 import FSCalendar
+import PDFKit
 
 class RankingViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class RankingViewController: UIViewController {
     var sorting = SortingPositionAndType(.attendance, .descending) // This variable is needed to understand which column in sorted and if ascending or descending (type)
     var daysOfThisWeek = [Date]()
     var selectedCellRow = -1
+    
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -83,6 +85,25 @@ class RankingViewController: UIViewController {
             }
         }
         self.sortDescendingAttendanceFirstTime()
+    }
+    
+    @IBAction func shareButtonAction(_ sender: Any) {
+        let pdfTitle = PDFCreator.createPDFTitle(dates: self.daysOfThisWeek)
+        let pdfData = createPDF(pdfTitle)
+
+        let temporaryFolder = FileManager.default.temporaryDirectory
+        let pdfFileName = pdfTitle.replacingOccurrences(of: "/", with: "-", options: .literal, range: nil)
+        let temporaryFileURL = temporaryFolder.appendingPathComponent(pdfFileName + ".pdf")
+        
+        do {
+            try pdfData.write(to: temporaryFileURL)
+            let vc = UIActivityViewController(activityItems: [temporaryFileURL], applicationActivities: [])
+            DispatchQueue.main.async {
+                self.present(vc, animated: true, completion: nil)
+            }
+        } catch {
+            print(error)
+        }
     }
 }
 
