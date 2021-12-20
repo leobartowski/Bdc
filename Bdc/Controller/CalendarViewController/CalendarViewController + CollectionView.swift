@@ -9,126 +9,120 @@ import Foundation
 import UIKit
 
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CalendarCollectionViewCellDelegate {
-
     
     // MARK: Delegate e DataSource
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+
+    func numberOfSections(in _: UICollectionView) -> Int {
         return 2
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return section == 0
-        ? self.personsPresent.isEmpty ? 1 : self.personsPresent.count
-        : self.personsNotPresent.count
+            ? personsPresent.isEmpty ? 1 : personsPresent.count
+            : personsNotPresent.count
     }
-    
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if indexPath.section == 0 && self.personsPresent.isEmpty {
+        if indexPath.section == 0, personsPresent.isEmpty {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "placeholderID", for: indexPath)
             return cell
         }
-    
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "presentCellID", for: indexPath) as? CalendarCollectionViewCell
         if indexPath.section == 0 {
-            cell?.setUp(self.personsPresent[indexPath.row], false, indexPath, self)
+            cell?.setUp(personsPresent[indexPath.row], false, indexPath, self)
         } else {
-            let personNotPresent = self.personsNotPresent[indexPath.row]
-            let isAmonished = self.personsAdmonished.contains(where: { $0.name == personNotPresent.name })
+            let personNotPresent = personsNotPresent[indexPath.row]
+            let isAmonished = personsAdmonished.contains(where: { $0.name == personNotPresent.name })
             cell?.setUp(personNotPresent, isAmonished, indexPath, self)
         }
         return cell ?? UICollectionViewCell()
     }
-    
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+
+    func collectionView(_: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         // Check to avoid the modification of day older than today
-        if (Date().days(from: self.calendarView.selectedDate ?? Date()) > 0) ||
-            (indexPath.section == 0 && self.personsPresent.isEmpty ) {
+        if (Date().days(from: calendarView.selectedDate ?? Date()) > 0) ||
+            (indexPath.section == 0 && personsPresent.isEmpty)
+        {
             return false
         }
         return true
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-
+    func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 { // Person Present
-        
-            let personToRemove = self.personsPresent[indexPath.row]
-            self.personsPresent.remove(at: indexPath.row)
-            self.personsNotPresent.append(personToRemove)
+            let personToRemove = personsPresent[indexPath.row]
+            personsPresent.remove(at: indexPath.row)
+            personsNotPresent.append(personToRemove)
         } else { // Person not present
-            
-            let personToAdd = self.personsNotPresent[indexPath.row]
-            if self.personsAdmonished.contains(where: { $0.name == personToAdd.name }) {
-                self.presentAlert(alertText: "Errore", alertMessage: "Una persona ammonita non pùo risultate presente, rimuovi l'ammonizione e poi procedi ")
+            let personToAdd = personsNotPresent[indexPath.row]
+            if personsAdmonished.contains(where: { $0.name == personToAdd.name }) {
+                presentAlert(alertText: "Errore", alertMessage: "Una persona ammonita non pùo risultate presente, rimuovi l'ammonizione e poi procedi ")
                 return
             }
-            self.personsNotPresent.remove(at: indexPath.row)
-            self.personsPresent.append(personToAdd)
+            personsNotPresent.remove(at: indexPath.row)
+            personsPresent.append(personToAdd)
         }
-        CoreDataService.shared.saveAttendance(self.calendarView.selectedDate ?? Date(), self.dayType, self.personsPresent)
+        CoreDataService.shared.saveAttendance(calendarView.selectedDate ?? Date(), dayType, personsPresent)
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .soft)
         feedbackGenerator.impactOccurred(intensity: 0.6)
-        self.sortPersonPresentAndNot()
+        sortPersonPresentAndNot()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
                 withReuseIdentifier: "sectionHeaderID",
-                for: indexPath)
-            
+                for: indexPath
+            )
+
             guard let typedHeaderView = headerView as? CalendarHeaderCollectionReusableView else { return headerView }
-            typedHeaderView.titleLabel.text = self.sectionTitles[indexPath.section]
+            typedHeaderView.titleLabel.text = sectionTitles[indexPath.section]
 
             return typedHeaderView
         }
         return UICollectionReusableView()
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+
+    func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout, referenceSizeForHeaderInSection _: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 50)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        if indexPath.section == 0 && self.personsPresent.isEmpty {
-            return CGSize(width: self.view.frame.width - 40, height: self.view.frame.height / 2.8)
+
+    func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 0, personsPresent.isEmpty {
+            return CGSize(width: view.frame.width - 40, height: view.frame.height / 2.8)
         }
         return CGSize(width: 80, height: 100)
-
     }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if scrollView == self.collectionView && self.calendarView.scope == .month &&
-            self.collectionView.contentSize.height > 0 &&
-            ((self.collectionView.contentOffset.y + self.collectionView.safeAreaInsets.top) <= 0) {
 
-                self.handleMonthlyToWeeklyCalendar()
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if scrollView == self.collectionView, calendarView.scope == .month,
+           self.collectionView.contentSize.height > 0,
+           (self.collectionView.contentOffset.y + self.collectionView.safeAreaInsets.top) <= 0
+        {
+            handleMonthlyToWeeklyCalendar()
         }
     }
-    
-    //MARK: CalendarViewControllerCellDelegate
-    
-    func mainCell(_ cell: CalendarCollectionViewCell, didSelectRowAt indexPath: IndexPath) {
+
+    // MARK: CalendarViewControllerCellDelegate
+
+    func mainCell(_: CalendarCollectionViewCell, didSelectRowAt indexPath: IndexPath) {
         // Check to avoid the modification of day older than today
-        if Date().days(from: self.calendarView.selectedDate ?? Date()) > 0 {
+        if Date().days(from: calendarView.selectedDate ?? Date()) > 0 {
             return
         }
-        let personToHandle = self.personsNotPresent[indexPath.row]
+        let personToHandle = personsNotPresent[indexPath.row]
         // I need to amonish this person if is not amonished or I need to remove the amonishment otherwise
-        if let index = self.personsAdmonished.firstIndex(where: { $0.name == personToHandle.name}) {
-            self.personsAdmonished.remove(at: index)
+        if let index = personsAdmonished.firstIndex(where: { $0.name == personToHandle.name }) {
+            personsAdmonished.remove(at: index)
         } else {
-            self.personsAdmonished.append(personToHandle)
+            personsAdmonished.append(personToHandle)
         }
-        CoreDataService.shared.saveAdmonishedAttendance(self.calendarView.selectedDate ?? Date(), self.dayType, self.personsAdmonished)
+        CoreDataService.shared.saveAdmonishedAttendance(calendarView.selectedDate ?? Date(), dayType, personsAdmonished)
 
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
         feedbackGenerator.impactOccurred()
@@ -136,8 +130,9 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             self.collectionView.reloadItems(at: [indexPath])
         }
     }
-    
+
     // MARK: SetUp CollectionView
+
     // I don't know why but putting sectionHeadersPinToVisibleBounds = true create a streange glich
     // when the calendar change scope (week or month)
 //    func setupCollectionView() {

@@ -8,13 +8,11 @@
 import Foundation
 import UIKit
 
-
 class CalendarHeaderCollectionReusableView: UICollectionReusableView {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    
+    @IBOutlet var titleLabel: UILabel!
+
     override func awakeFromNib() {
-        
         self.titleLabel.textColor = Theme.avatarBlack
     }
 }

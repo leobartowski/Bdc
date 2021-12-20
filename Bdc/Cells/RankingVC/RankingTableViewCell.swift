@@ -8,43 +8,40 @@
 import Foundation
 import UIKit
 
-
-
 class RankingTableViewCell: UITableViewCell {
     
-    
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var mainImageView: UIImageView!
-    @IBOutlet weak var attendanceLabel: UILabel!
-    @IBOutlet weak var admonishmentLabel: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView!
-    
+    @IBOutlet var containerView: UIView!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var mainImageView: UIImageView!
+    @IBOutlet var attendanceLabel: UILabel!
+    @IBOutlet var admonishmentLabel: UILabel!
+    @IBOutlet var collectionView: UICollectionView!
+
     var indexPath = IndexPath()
-    
+
     let days = ["L", "M", "M", "G", "V"]
     var morningDaysNumbers: [Int] = []
     var eveningDaysNumbers: [Int] = []
-    
+
     var isDetailViewHidden: Bool {
         return self.collectionView.isHidden
-      }
-    
+    }
+
     override func layoutSubviews() {
         self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: 15).cgPath
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.contentView.autoresizingMask = .flexibleHeight
+        contentView.autoresizingMask = .flexibleHeight
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.isHidden = true
-        
+
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
     }
-    
-    func setUp(_ rankingAttendance: RankingPersonAttendance,_ indexPath: IndexPath) {
+
+    func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath) {
         self.indexPath = indexPath
         self.setUpShadow()
         self.nameLabel.text = rankingAttendance.person.name
@@ -58,21 +55,20 @@ class RankingTableViewCell: UITableViewCell {
             self.collectionView.reloadData()
         }
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        if isDetailViewHidden, selected {
+        if self.isDetailViewHidden, selected {
             self.collectionView.isHidden = false
         } else {
-            
             self.collectionView.isHidden = true
         }
-        self.contentView.layoutIfNeeded()
-        self.contentView.updateConstraints()
-        self.contentView.layoutIfNeeded()
-        self.setNeedsLayout()
+        contentView.layoutIfNeeded()
+        contentView.updateConstraints()
+        contentView.layoutIfNeeded()
+        setNeedsLayout()
     }
-    
+
     func setUpShadow() {
         let cornerRadius: CGFloat = 15
         self.containerView.cornerRadius = cornerRadius
@@ -84,7 +80,7 @@ class RankingTableViewCell: UITableViewCell {
 //        self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: cornerRadius).cgPath
         self.containerView.layer.masksToBounds = false
     }
-    
+
     func setupLabelDesign(_ labelNumber: Int) {
         switch labelNumber {
         case 0:
@@ -103,7 +99,7 @@ class RankingTableViewCell: UITableViewCell {
             break
         }
     }
-    
+
     // Given an array of date create an array of Int that represents the specifc number of the day in the weel
     func createNumbersArray(_ dates: [Date]) -> [Int] {
         var datesNumbers: [Int] = []
@@ -112,5 +108,4 @@ class RankingTableViewCell: UITableViewCell {
         }
         return datesNumbers
     }
-    
 }
