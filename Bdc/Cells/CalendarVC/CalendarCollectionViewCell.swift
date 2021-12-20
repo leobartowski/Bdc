@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol CalendarCollectionViewCellDelegate: class {
+protocol CalendarCollectionViewCellDelegate: AnyObject {
     
     func mainCell(_ cell: CalendarCollectionViewCell, didSelectRowAt indexPath: IndexPath)
 }
