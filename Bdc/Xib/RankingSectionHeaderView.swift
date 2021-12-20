@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol RankingSectionHeaderDelegate: class {
+protocol RankingSectionHeaderDelegate: AnyObject {
     
     func rankingSectionHeaderView(_ cell: RankingSectionHeaderView, didSelectLabel number: Int)
 }
