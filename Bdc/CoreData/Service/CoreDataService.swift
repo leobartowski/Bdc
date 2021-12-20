@@ -15,34 +15,34 @@ class CoreDataService {
     private var context: NSManagedObjectContext
 
     private init() {
-        context = CoreDataContainer.context
+        self.context = CoreDataContainer.context
     }
 
     // MARK: Method to save
 
     /// Save  Person Admonished Attendence in Core Data for a specif date and daytype
     func saveAttendance(_ date: Date, _ type: DayType, _ persons: [Person]) {
-        var attendence = getAttendace(date, type: type)
+        var attendence = self.getAttendace(date, type: type)
         if attendence == nil {
             // Se è vuoto ne creo uno nuovo
-            attendence = Attendance(context: context)
+            attendence = Attendance(context: self.context)
             attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
             attendence?.type = type.rawValue
         }
         attendence?.persons = NSSet(array: persons)
 
         do {
-            try context.save()
+            try self.context.save()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
 
     func saveAdmonishedAttendance(_ date: Date, _ type: DayType, _ personsAdmonished: [Person]) {
-        var attendence = getAttendace(date, type: type)
+        var attendence = self.getAttendace(date, type: type)
         if attendence == nil {
             // Se è vuoto ne creo uno nuovo
-            attendence = Attendance(context: context)
+            attendence = Attendance(context: self.context)
             attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
             attendence?.type = type.rawValue
         }
@@ -50,7 +50,7 @@ class CoreDataService {
         attendence?.personsAdmonished = NSSet(array: personsAdmonished)
 
         do {
-            try context.save()
+            try self.context.save()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
@@ -120,7 +120,7 @@ class CoreDataService {
 
     /// Use this string to update/add imageString to a person
     func updateImageStringSpecificPerson(name: String, iconString: String) {
-        let persons = getPersonsList()
+        let persons = self.getPersonsList()
 
         if let index = persons.firstIndex(where: { $0.name == name }) {
             persons[index].iconString = iconString
@@ -138,7 +138,7 @@ class CoreDataService {
 
     /// Use this method to change persons name in PersonsList and to change all the previous records (the id of the person is name)
     func updateNameSpecificPerson(oldName: String, newName: String) {
-        let persons = getPersonsList()
+        let persons = self.getPersonsList()
 
         if let index = persons.firstIndex(where: { $0.name == oldName }) {
             persons[index].name = newName
@@ -167,7 +167,7 @@ class CoreDataService {
                     }
                 }
             }
-            try context.save()
+            try self.context.save()
 
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
@@ -181,7 +181,7 @@ class CoreDataService {
             for attendance in attendances {
                 attendance.personsAdmonished = nil
             }
-            try context.save()
+            try self.context.save()
 
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
@@ -190,11 +190,11 @@ class CoreDataService {
 
     /// Use this  just one time to create the persons List on a new device!
     func createPersonsList() {
-        clearPersonList() // Delete all the present List if there are
+        self.clearPersonList() // Delete all the present List if there are
         let personsList = PersonsList(context: context)
-        personsList.persons = NSSet(array: PersonListUtility.createStartingPerson(context))
+        personsList.persons = NSSet(array: PersonListUtility.createStartingPerson(self.context))
         do {
-            try context.save()
+            try self.context.save()
 
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
@@ -212,8 +212,8 @@ class CoreDataService {
         let deleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
 
         do {
-            try context.execute(deleteRequest)
-            try context.execute(deleteRequest2)
+            try self.context.execute(deleteRequest)
+            try self.context.execute(deleteRequest2)
         } catch let error as NSError {
             print("Error:  \(error), \(error.userInfo)")
         }
@@ -224,7 +224,7 @@ class CoreDataService {
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 
         do {
-            try context.execute(deleteRequest)
+            try self.context.execute(deleteRequest)
 
         } catch let error as NSError {
             print("Error:  \(error), \(error.userInfo)")

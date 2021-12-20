@@ -26,7 +26,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         let rankingAttendance = rankingPersonsAttendaces[indexPath.row]
         cell?.setUp(rankingAttendance, indexPath)
         cell?.setupLabelDesign(sorting.sortingPosition.rawValue)
-        handleColorOfTheCellOnFriday(cell, indexPath.row)
+        self.handleColorOfTheCellOnFriday(cell, indexPath.row)
         cell?.setNeedsLayout()
         return cell ?? UITableViewCell()
     }
@@ -69,13 +69,13 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
 
     func tableViewSetup() {
-        let leftSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(tableViewSwiped))
+        let leftSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(self.tableViewSwiped))
         leftSwipeGR.direction = .left
-        tableView.addGestureRecognizer(leftSwipeGR)
+        self.tableView.addGestureRecognizer(leftSwipeGR)
 
-        let rightSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(tableViewSwiped))
+        let rightSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(self.tableViewSwiped))
         rightSwipeGR.direction = .right
-        tableView.addGestureRecognizer(rightSwipeGR)
+        self.tableView.addGestureRecognizer(rightSwipeGR)
 
         header = headerBasic
     }
@@ -106,7 +106,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     func rankingSectionHeaderView(_: RankingSectionHeaderView, didSelectLabel number: Int) {
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
         feedbackGenerator.impactOccurred()
-        handleSorting(column: number)
+        self.handleSorting(column: number)
     }
 
     func handleSorting(column: Int) {

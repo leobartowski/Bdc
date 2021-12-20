@@ -14,7 +14,7 @@ struct PDFTableDataItem {
     let admonishmentNumber: String
 
     init(name: String, attendanceNumber: String, admonishmentNumber: String) {
-        personName = name
+        self.personName = name
         self.attendanceNumber = attendanceNumber
         self.admonishmentNumber = admonishmentNumber
     }

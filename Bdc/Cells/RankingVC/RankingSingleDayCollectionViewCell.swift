@@ -13,11 +13,11 @@ class RankingSingleDayCollectionViewCell: UICollectionViewCell {
 
     func setup(_ isPresent: Bool) {
         if isPresent {
-            mainLabel.textColor = .black
-            mainLabel.font = .systemFont(ofSize: 17, weight: .bold)
+            self.mainLabel.textColor = .black
+            self.mainLabel.font = .systemFont(ofSize: 17, weight: .bold)
         } else {
-            mainLabel.textColor = .lightGray
-            mainLabel.font = .systemFont(ofSize: 17, weight: .light)
+            self.mainLabel.textColor = .lightGray
+            self.mainLabel.font = .systemFont(ofSize: 17, weight: .light)
         }
     }
 }

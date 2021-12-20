@@ -30,15 +30,15 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
 
         setUpCalendarAppearance()
-        setupSegmentedControl()
+        self.setupSegmentedControl()
         checkAndChangeWeekendSelectedDate()
-        getDataFromCoreDataAndReloadViews()
+        self.getDataFromCoreDataAndReloadViews()
         addCalendarGestureRecognizer()
-        designBottomCalendarHandleView()
-        updateGoToTodayButton()
+        self.designBottomCalendarHandleView()
+        self.updateGoToTodayButton()
 
         //        self.setupCollectionView()
-        addObservers()
+        self.addObservers()
     }
 
     // We save everything to core data to prepare the new data for the RankingVC
@@ -55,7 +55,7 @@ class CalendarViewController: UIViewController {
 
     //   Get called when the app is become active
     @objc func willBecomeActive() {
-        updateDayTypeBasedOnTime()
+        self.updateDayTypeBasedOnTime()
     }
 
     @objc func systemTimeChanged() {
@@ -66,23 +66,23 @@ class CalendarViewController: UIViewController {
 
     /// Add shadow and corner radius to bottom Calendar Handle View
     func designBottomCalendarHandleView() {
-        bottomCalendarHandleView.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
-        bottomCalendarHandleView.layer.shadowOffset = CGSize(width: 0.0, height: 4)
-        bottomCalendarHandleView.layer.shadowOpacity = 0.5
-        bottomCalendarHandleView.layer.shadowRadius = 2
-        bottomCalendarHandleView.layer.masksToBounds = false
-        bottomCalendarHandleView.layer.cornerRadius = 20
-        bottomCalendarHandleView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        self.bottomCalendarHandleView.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
+        self.bottomCalendarHandleView.layer.shadowOffset = CGSize(width: 0.0, height: 4)
+        self.bottomCalendarHandleView.layer.shadowOpacity = 0.5
+        self.bottomCalendarHandleView.layer.shadowRadius = 2
+        self.bottomCalendarHandleView.layer.masksToBounds = false
+        self.bottomCalendarHandleView.layer.cornerRadius = 20
+        self.bottomCalendarHandleView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
     }
 
     func addObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(willBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(systemTimeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.willBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.systemTimeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
     }
 
     func updateGoToTodayButton() {
-        goToTodayButton.alpha = Date().getDayNumberOfWeek() == 1 || Date().getDayNumberOfWeek() == 7
+        self.goToTodayButton.alpha = Date().getDayNumberOfWeek() == 1 || Date().getDayNumberOfWeek() == 7
             ? 0.3
             : 1
     }
@@ -97,47 +97,47 @@ class CalendarViewController: UIViewController {
     }
 
     func setupSegmentedControl() {
-        segmentedControl.backgroundColor = .white
-        segmentedControl.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
-        segmentedControl.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        segmentedControl.layer.shadowOpacity = 0.5
-        segmentedControl.layer.shadowRadius = 3
-        segmentedControl.layer.masksToBounds = false
-        segmentedControl.borderColor = Theme.FSCalendarStandardSelectionColor
-        segmentedControl.selectedSegmentTintColor = Theme.FSCalendarStandardSelectionColor
+        self.segmentedControl.backgroundColor = .white
+        self.segmentedControl.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
+        self.segmentedControl.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        self.segmentedControl.layer.shadowOpacity = 0.5
+        self.segmentedControl.layer.shadowRadius = 3
+        self.segmentedControl.layer.masksToBounds = false
+        self.segmentedControl.borderColor = Theme.FSCalendarStandardSelectionColor
+        self.segmentedControl.selectedSegmentTintColor = Theme.FSCalendarStandardSelectionColor
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
+        self.segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
 
         let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .normal)
+        self.segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .normal)
     }
 
     // MARK: Morning and Evening Selector
 
     func updateDayTypeBasedOnTime() {
         let todayString = DateFormatter.basicFormatter.string(from: Date.now)
-        let currentDayString = DateFormatter.basicFormatter.string(from: calendarView.selectedDate ?? Date())
+        let currentDayString = DateFormatter.basicFormatter.string(from: self.calendarView.selectedDate ?? Date())
         if todayString == currentDayString {
             var calendar = Calendar.current
             calendar.locale = .current
             let hour = calendar.component(.hour, from: Date.now)
-            let oldDayType = dayType
+            let oldDayType = self.dayType
             if hour < 16, hour > 8 { // morning
-                dayType = .morning
-                segmentedControl.selectedSegmentIndex = 0
+                self.dayType = .morning
+                self.segmentedControl.selectedSegmentIndex = 0
             } else { // evening
-                dayType = .evening
-                segmentedControl.selectedSegmentIndex = 1
+                self.dayType = .evening
+                self.segmentedControl.selectedSegmentIndex = 1
             }
             // We reload data from CoreData only if dayType is changed
-            if oldDayType != dayType { getDataFromCoreDataAndReloadViews() }
+            if oldDayType != self.dayType { self.getDataFromCoreDataAndReloadViews() }
         }
     }
 
     func reloadCalendarDateIfNeeded() {
-        if calendarView.maximumDate < Date.now {
-            updateGoToTodayButton()
-            calendarView.reloadData()
+        if self.calendarView.maximumDate < Date.now {
+            self.updateGoToTodayButton()
+            self.calendarView.reloadData()
         }
     }
 
@@ -145,19 +145,19 @@ class CalendarViewController: UIViewController {
 
     /// Update Presence reloading data from CoreData
     func getDataFromCoreDataAndReloadViews() {
-        personsPresent.removeAll()
-        personsNotPresent.removeAll()
-        personsAdmonished.removeAll()
-        let attendance = CoreDataService.shared.getAttendace(calendarView.selectedDate ?? Date.now, type: dayType)
-        personsPresent = attendance?.persons?.allObjects as? [Person] ?? []
-        personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
+        self.personsPresent.removeAll()
+        self.personsNotPresent.removeAll()
+        self.personsAdmonished.removeAll()
+        let attendance = CoreDataService.shared.getAttendace(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
+        self.personsPresent = attendance?.persons?.allObjects as? [Person] ?? []
+        self.personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
         for person in PersonListUtility.persons {
-            if !personsPresent.contains(where: { $0.name == person.name }), !personsNotPresent.contains(where: { $0.name == person.name }) {
-                personsNotPresent.append(person)
+            if !self.personsPresent.contains(where: { $0.name == person.name }), !self.personsNotPresent.contains(where: { $0.name == person.name }) {
+                self.personsNotPresent.append(person)
             }
         }
 
-        sortPersonPresentAndNot()
+        self.sortPersonPresentAndNot()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
             self.collectionView.setContentOffset(.zero, animated: true)
@@ -165,26 +165,26 @@ class CalendarViewController: UIViewController {
     }
 
     func sortPersonPresentAndNot() {
-        personsPresent = personsPresent.sorted { $0.name ?? "" < $1.name ?? "" }
-        personsNotPresent = personsNotPresent.sorted { $0.name ?? "" < $1.name ?? "" }
+        self.personsPresent = self.personsPresent.sorted { $0.name ?? "" < $1.name ?? "" }
+        self.personsNotPresent = self.personsNotPresent.sorted { $0.name ?? "" < $1.name ?? "" }
     }
 
     // MARK: IBActions
 
     @IBAction func segmentedControlValueChanged(_: Any) {
         //        self.saveCurrentDataInCoreData()
-        switch segmentedControl.selectedSegmentIndex {
-        case 0: dayType = .morning
-        case 1: dayType = .evening
+        switch self.segmentedControl.selectedSegmentIndex {
+        case 0: self.dayType = .morning
+        case 1: self.dayType = .evening
         default: break
         }
-        getDataFromCoreDataAndReloadViews()
+        self.getDataFromCoreDataAndReloadViews()
     }
 
     @IBAction func goToTodayTouchUpInside(_: Any) {
         Date().getDayNumberOfWeek() == 1 || Date().getDayNumberOfWeek() == 7
             ? presentAlert(alertText: "Hey!", alertMessage: "Mi dispiace, ma dovresti sapere che non si prendono presenze sabato e domenica!")
-            : automaticScrollToToday()
+            : self.automaticScrollToToday()
     }
 
     @objc func handleSwipe(gesture: UIGestureRecognizer) {

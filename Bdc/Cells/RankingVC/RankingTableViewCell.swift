@@ -28,29 +28,29 @@ class RankingTableViewCell: UITableViewCell {
     }
 
     override func layoutSubviews() {
-        containerView.layer.shadowPath = UIBezierPath(roundedRect: containerView.bounds, cornerRadius: 15).cgPath
+        self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: 15).cgPath
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         contentView.autoresizingMask = .flexibleHeight
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.isHidden = true
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.isHidden = true
 
-        mainImageView.layer.cornerRadius = mainImageView.frame.height / 2
+        self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
     }
 
     func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath) {
         self.indexPath = indexPath
-        setUpShadow()
-        nameLabel.text = rankingAttendance.person.name
-        attendanceLabel.text = String(rankingAttendance.attendanceNumber)
-        admonishmentLabel.text = String(rankingAttendance.admonishmentNumber)
+        self.setUpShadow()
+        self.nameLabel.text = rankingAttendance.person.name
+        self.attendanceLabel.text = String(rankingAttendance.attendanceNumber)
+        self.admonishmentLabel.text = String(rankingAttendance.admonishmentNumber)
         let imageString = CommonUtility.getProfileImageString(rankingAttendance.person)
-        mainImageView.image = UIImage(named: imageString)
-        morningDaysNumbers = createNumbersArray(rankingAttendance.morningDate)
-        eveningDaysNumbers = createNumbersArray(rankingAttendance.eveningDate)
+        self.mainImageView.image = UIImage(named: imageString)
+        self.morningDaysNumbers = self.createNumbersArray(rankingAttendance.morningDate)
+        self.eveningDaysNumbers = self.createNumbersArray(rankingAttendance.eveningDate)
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
@@ -58,10 +58,10 @@ class RankingTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        if isDetailViewHidden, selected {
-            collectionView.isHidden = false
+        if self.isDetailViewHidden, selected {
+            self.collectionView.isHidden = false
         } else {
-            collectionView.isHidden = true
+            self.collectionView.isHidden = true
         }
         contentView.layoutIfNeeded()
         contentView.updateConstraints()
@@ -71,30 +71,30 @@ class RankingTableViewCell: UITableViewCell {
 
     func setUpShadow() {
         let cornerRadius: CGFloat = 15
-        containerView.cornerRadius = cornerRadius
-        containerView.layer.masksToBounds = true
-        containerView.layer.shadowColor = UIColor.gray.cgColor
-        containerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        containerView.layer.shadowOpacity = 0.3
-        containerView.layer.shadowRadius = 2
+        self.containerView.cornerRadius = cornerRadius
+        self.containerView.layer.masksToBounds = true
+        self.containerView.layer.shadowColor = UIColor.gray.cgColor
+        self.containerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.containerView.layer.shadowOpacity = 0.3
+        self.containerView.layer.shadowRadius = 2
 //        self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: cornerRadius).cgPath
-        containerView.layer.masksToBounds = false
+        self.containerView.layer.masksToBounds = false
     }
 
     func setupLabelDesign(_ labelNumber: Int) {
         switch labelNumber {
         case 0:
-            nameLabel.font = .systemFont(ofSize: 19, weight: .medium)
-            attendanceLabel.font = .systemFont(ofSize: 19, weight: .light)
-            admonishmentLabel.font = .systemFont(ofSize: 19, weight: .light)
+            self.nameLabel.font = .systemFont(ofSize: 19, weight: .medium)
+            self.attendanceLabel.font = .systemFont(ofSize: 19, weight: .light)
+            self.admonishmentLabel.font = .systemFont(ofSize: 19, weight: .light)
         case 1:
-            nameLabel.font = .systemFont(ofSize: 19, weight: .light)
-            attendanceLabel.font = .systemFont(ofSize: 19, weight: .medium)
-            admonishmentLabel.font = .systemFont(ofSize: 19, weight: .light)
+            self.nameLabel.font = .systemFont(ofSize: 19, weight: .light)
+            self.attendanceLabel.font = .systemFont(ofSize: 19, weight: .medium)
+            self.admonishmentLabel.font = .systemFont(ofSize: 19, weight: .light)
         case 2:
-            nameLabel.font = .systemFont(ofSize: 19, weight: .light)
-            attendanceLabel.font = .systemFont(ofSize: 19, weight: .light)
-            admonishmentLabel.font = .systemFont(ofSize: 19, weight: .medium)
+            self.nameLabel.font = .systemFont(ofSize: 19, weight: .light)
+            self.attendanceLabel.font = .systemFont(ofSize: 19, weight: .light)
+            self.admonishmentLabel.font = .systemFont(ofSize: 19, weight: .medium)
         default:
             break
         }

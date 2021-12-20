@@ -100,9 +100,9 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if scrollView == collectionView, calendarView.scope == .month,
-           collectionView.contentSize.height > 0,
-           (collectionView.contentOffset.y + collectionView.safeAreaInsets.top) <= 0
+        if scrollView == self.collectionView, calendarView.scope == .month,
+           self.collectionView.contentSize.height > 0,
+           (self.collectionView.contentOffset.y + self.collectionView.safeAreaInsets.top) <= 0
         {
             handleMonthlyToWeeklyCalendar()
         }

@@ -9,10 +9,12 @@ import Foundation
 import UIKit
 
 protocol RankingSectionHeaderDelegate: class {
+    
     func rankingSectionHeaderView(_ cell: RankingSectionHeaderView, didSelectLabel number: Int)
 }
 
 class RankingSectionHeaderView: UIView {
+    
     @IBOutlet var contentView: UIView!
     @IBOutlet var containerView: UIView!
     @IBOutlet var nameLabel: UILabel!
@@ -25,12 +27,12 @@ class RankingSectionHeaderView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+        self.commonInit()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        commonInit()
+        self.commonInit()
     }
 
     override func awakeFromNib() {
@@ -38,16 +40,16 @@ class RankingSectionHeaderView: UIView {
     }
 
     override func layoutSubviews() {
-        containerView.layer.cornerRadius = containerView.frame.height / 4
+        self.containerView.layer.cornerRadius = self.containerView.frame.height / 4
     }
 
     private func commonInit() {
         Bundle.main.loadNibNamed("RankingSectionHeaderView", owner: self, options: nil)
-        addSubview(contentView)
-        contentView.frame = bounds
-        contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(self.contentView)
+        self.contentView.frame = bounds
+        self.contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
-        setupLabelTap()
+        self.setupLabelTap()
     }
 
     /// Update label weight based on sorting type (name, attendence or admonishmenr)
@@ -55,17 +57,17 @@ class RankingSectionHeaderView: UIView {
         let fontSize: CGFloat = 20
         switch labelNumber {
         case 0:
-            nameLabel.font = .systemFont(ofSize: fontSize, weight: .medium)
-            attendanceLabel.font = .systemFont(ofSize: fontSize, weight: .light)
-            admonishmentLabel.font = .systemFont(ofSize: fontSize, weight: .light)
+            self.nameLabel.font = .systemFont(ofSize: fontSize, weight: .medium)
+            self.attendanceLabel.font = .systemFont(ofSize: fontSize, weight: .light)
+            self.admonishmentLabel.font = .systemFont(ofSize: fontSize, weight: .light)
         case 1:
-            nameLabel.font = .systemFont(ofSize: fontSize, weight: .light)
-            attendanceLabel.font = .systemFont(ofSize: fontSize, weight: .medium)
-            admonishmentLabel.font = .systemFont(ofSize: fontSize, weight: .light)
+            self.nameLabel.font = .systemFont(ofSize: fontSize, weight: .light)
+            self.attendanceLabel.font = .systemFont(ofSize: fontSize, weight: .medium)
+            self.admonishmentLabel.font = .systemFont(ofSize: fontSize, weight: .light)
         case 2:
-            nameLabel.font = .systemFont(ofSize: fontSize, weight: .light)
-            attendanceLabel.font = .systemFont(ofSize: fontSize, weight: .light)
-            admonishmentLabel.font = .systemFont(ofSize: fontSize, weight: .medium)
+            self.nameLabel.font = .systemFont(ofSize: fontSize, weight: .light)
+            self.attendanceLabel.font = .systemFont(ofSize: fontSize, weight: .light)
+            self.admonishmentLabel.font = .systemFont(ofSize: fontSize, weight: .medium)
         default:
             break
         }
@@ -74,20 +76,20 @@ class RankingSectionHeaderView: UIView {
     // MARK: Label GestureRecognizer
 
     @objc func labelTapped(_ sender: UITapGestureRecognizer) {
-        delegate?.rankingSectionHeaderView(self, didSelectLabel: sender.view?.tag ?? 1)
+        self.delegate?.rankingSectionHeaderView(self, didSelectLabel: sender.view?.tag ?? 1)
     }
 
     func setupLabelTap() {
-        let nameLabelTap = UITapGestureRecognizer(target: self, action: #selector(labelTapped(_:)))
-        nameLabel.isUserInteractionEnabled = true
-        nameLabel.addGestureRecognizer(nameLabelTap)
+        let nameLabelTap = UITapGestureRecognizer(target: self, action: #selector(self.labelTapped(_:)))
+        self.nameLabel.isUserInteractionEnabled = true
+        self.nameLabel.addGestureRecognizer(nameLabelTap)
 
-        let attendanceLabelTap = UITapGestureRecognizer(target: self, action: #selector(labelTapped(_:)))
-        attendanceLabel.isUserInteractionEnabled = true
-        attendanceLabel.addGestureRecognizer(attendanceLabelTap)
+        let attendanceLabelTap = UITapGestureRecognizer(target: self, action: #selector(self.labelTapped(_:)))
+        self.attendanceLabel.isUserInteractionEnabled = true
+        self.attendanceLabel.addGestureRecognizer(attendanceLabelTap)
 
-        let admonishmentLabelTap = UITapGestureRecognizer(target: self, action: #selector(labelTapped(_:)))
-        admonishmentLabel.isUserInteractionEnabled = true
-        admonishmentLabel.addGestureRecognizer(admonishmentLabelTap)
+        let admonishmentLabelTap = UITapGestureRecognizer(target: self, action: #selector(self.labelTapped(_:)))
+        self.admonishmentLabel.isUserInteractionEnabled = true
+        self.admonishmentLabel.addGestureRecognizer(admonishmentLabelTap)
     }
 }

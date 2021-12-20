@@ -24,42 +24,42 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        mainImageView.layer.cornerRadius = mainImageView.frame.height / 2
+        self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
     }
 
     func setUp(_ person: Person, _ isAdmonished: Bool = false, _ indexPath: IndexPath, _ delegate: CalendarCollectionViewCellDelegate) {
         self.delegate = delegate
         self.indexPath = indexPath
-        nameLabel.text = person.name
+        self.nameLabel.text = person.name
         let imageString = CommonUtility.getProfileImageString(person)
-        mainImageView.image = UIImage(named: imageString)
-        if indexPath.section != 0 { setupLongGestureRecognizer() }
-        customBackgroundView.backgroundColor = indexPath.section == 0 ? .white : (isAdmonished ? .yellow : .white)
-        setUpShadow()
+        self.mainImageView.image = UIImage(named: imageString)
+        if indexPath.section != 0 { self.setupLongGestureRecognizer() }
+        self.customBackgroundView.backgroundColor = indexPath.section == 0 ? .white : (isAdmonished ? .yellow : .white)
+        self.setUpShadow()
     }
 
     func setUpShadow() {
-        customBackgroundView.layer.cornerRadius = 10
-        customBackgroundView.layer.masksToBounds = true
-        customBackgroundView.layer.shadowColor = UIColor.gray.cgColor
-        customBackgroundView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        customBackgroundView.layer.shadowOpacity = 0.3
-        customBackgroundView.layer.shadowRadius = 2
-        customBackgroundView.layer.shadowPath = UIBezierPath(roundedRect: customBackgroundView.bounds, cornerRadius: 10).cgPath
-        customBackgroundView.layer.masksToBounds = false
+        self.customBackgroundView.layer.cornerRadius = 10
+        self.customBackgroundView.layer.masksToBounds = true
+        self.customBackgroundView.layer.shadowColor = UIColor.gray.cgColor
+        self.customBackgroundView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.customBackgroundView.layer.shadowOpacity = 0.3
+        self.customBackgroundView.layer.shadowRadius = 2
+        self.customBackgroundView.layer.shadowPath = UIBezierPath(roundedRect: self.customBackgroundView.bounds, cornerRadius: 10).cgPath
+        self.customBackgroundView.layer.masksToBounds = false
     }
 
     private func setupLongGestureRecognizer() {
-        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
         lpgr.minimumPressDuration = 0.5
         lpgr.delegate = self
-        customBackgroundView.addGestureRecognizer(lpgr)
+        self.customBackgroundView.addGestureRecognizer(lpgr)
     }
 
     @objc func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
         // Only the not Present Persons (section = 1) can use long Press Gesture Recoginzer
-        if gestureReconizer.state == .began, indexPath.section == 1 {
-            delegate?.mainCell(self, didSelectRowAt: indexPath)
+        if gestureReconizer.state == .began, self.indexPath.section == 1 {
+            self.delegate?.mainCell(self, didSelectRowAt: self.indexPath)
             return
         }
     }
