@@ -1,39 +1,35 @@
 //
 //  Person+CoreDataProperties.swift
-//  
+//
 //
 //  Created by Francesco D'Angelo on 21/10/21.
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
-
-extension Person {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Person> {
+public extension Person {
+    @nonobjc class func fetchRequest() -> NSFetchRequest<Person> {
         return NSFetchRequest<Person>(entityName: "Person")
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var attendance: NSSet?
-
+    @NSManaged var name: String?
+    @NSManaged var attendance: NSSet?
 }
 
 // MARK: Generated accessors for attendance
-extension Person {
 
+public extension Person {
     @objc(addAttendanceObject:)
-    @NSManaged public func addToAttendance(_ value: Attendance)
+    @NSManaged func addToAttendance(_ value: Attendance)
 
     @objc(removeAttendanceObject:)
-    @NSManaged public func removeFromAttendance(_ value: Attendance)
+    @NSManaged func removeFromAttendance(_ value: Attendance)
 
     @objc(addAttendance:)
-    @NSManaged public func addToAttendance(_ values: NSSet)
+    @NSManaged func addToAttendance(_ values: NSSet)
 
     @objc(removeAttendance:)
-    @NSManaged public func removeFromAttendance(_ values: NSSet)
-
+    @NSManaged func removeFromAttendance(_ values: NSSet)
 }

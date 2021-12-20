@@ -9,19 +9,15 @@ import UIKit
 
 class RankingSingleDayCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var mainLabel: UILabel!
+    @IBOutlet var mainLabel: UILabel!
 
-    
     func setup(_ isPresent: Bool) {
         if isPresent {
-            self.mainLabel.textColor = .black
-            self.mainLabel.font = .systemFont(ofSize: 17, weight: .bold)
+            mainLabel.textColor = .black
+            mainLabel.font = .systemFont(ofSize: 17, weight: .bold)
         } else {
-            self.mainLabel.textColor = .lightGray
-            self.mainLabel.font = .systemFont(ofSize: 17, weight: .light)
+            mainLabel.textColor = .lightGray
+            mainLabel.font = .systemFont(ofSize: 17, weight: .light)
         }
-
     }
-    
-    
 }

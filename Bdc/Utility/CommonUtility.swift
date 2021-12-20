@@ -15,6 +15,5 @@ class CommonUtility {
         }
         let femaleName = ["Mary", "Lisa", "Giannetta", "Raffaella", "Alessia"]
         return femaleName.contains(person.name ?? "") ? "woman_placeholder_icon" : "man_placeholder_icon"
-        
     }
 }
