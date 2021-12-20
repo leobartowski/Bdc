@@ -15,14 +15,14 @@ extension Formatter {
         dateFormatter.dateFormat = "dd/MM/yyyy"
         return dateFormatter
     }()
-    
+
     static let dayAndMonthFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = .current
         dateFormatter.dateFormat = "dd/MM"
         return dateFormatter
     }()
-    
+
     static let creationDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = .current
@@ -30,4 +30,3 @@ extension Formatter {
         return dateFormatter
     }()
 }
-

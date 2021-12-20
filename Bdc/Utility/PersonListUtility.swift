@@ -5,17 +5,16 @@
 //  Created by Francesco D'Angelo on 22/10/21.
 //
 
-import Foundation
 import CoreData
+import Foundation
 import UIKit
 
 class PersonListUtility {
     
     public static let persons = CoreDataService.shared.getPersonsList()
     public static var rankingPersonsAttendance = createEmptyWeeklyAttendance()
-    
+
     static func createStartingPerson(_ context: NSManagedObjectContext) -> [Person] {
-    
         let franco = Person(context: context)
         franco.name = "Franco"
         franco.iconString = "franco_icon"
@@ -79,11 +78,11 @@ class PersonListUtility {
         angelo.name = "Angelo"
         let francescoe = Person(context: context)
         francescoe.name = "Francesco E"
-        
+
         let persons = [franco, fiore, mary, raff, genny, gigi, giovannir, giannetta, enzo, cataldo, lisa, danieled, savio, sossio, francescoe, nero, mattia, conte, raffaella, pacokh, moda, alessia, michelep, franzese, angelo]
         return persons
     }
-    
+
     private static func createEmptyWeeklyAttendance() -> [RankingPersonAttendance] {
         var personsWeeklyAttendance = [RankingPersonAttendance]()
         for person in PersonListUtility.persons {
@@ -92,19 +91,15 @@ class PersonListUtility {
         }
         return personsWeeklyAttendance
     }
-    
-    
 }
 
-
 public class RankingPersonAttendance {
-    
     var person: Person
     var attendanceNumber: Int = 0
     var admonishmentNumber: Int = 0
     var morningDate: [Date] = []
     var eveningDate: [Date] = []
-    
+
     init(_ person: Person) {
         self.person = person
     }

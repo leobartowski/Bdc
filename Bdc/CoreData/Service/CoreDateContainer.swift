@@ -5,26 +5,26 @@
 //  Created by Francesco D'Angelo on 21/10/21.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 class CoreDataContainer {
     
     public static var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
-    
+
     public static var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Bdc")
-        container.loadPersistentStores(completionHandler: { (_, error) in
+        container.loadPersistentStores(completionHandler: { _, error in
             if let error = error as NSError? {
                 print("Unresolved error \(error), \(error.userInfo)")
             }
         })
         return container
     }()
-    
-    public static func saveContext () {
+
+    public static func saveContext() {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
@@ -35,5 +35,4 @@ class CoreDataContainer {
             }
         }
     }
-    
 }
