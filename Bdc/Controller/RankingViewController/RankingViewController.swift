@@ -26,14 +26,14 @@ class RankingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewSetUp()
+        self.viewSetUp()
     }
 
     // Needed to update the Maximum Date when the app remains in RAM
 
     // We update the data in the DidAppear to have always data updated after some modification
     override func viewDidAppear(_: Bool) {
-        populateWeeklyAttendance()
+        self.populateWeeklyAttendance()
     }
 
     func viewSetUp() {
@@ -44,14 +44,14 @@ class RankingViewController: UIViewController {
     }
 
     func populateWeeklyAttendance() {
-        for item in rankingPersonsAttendaces {
+        for item in self.rankingPersonsAttendaces {
             // We need to clear all presences and adomishment
             item.eveningDate = []
             item.morningDate = []
             item.attendanceNumber = 0
             item.admonishmentNumber = 0
         }
-        for day in daysOfThisWeek {
+        for day in self.daysOfThisWeek {
             let morningAttendance = CoreDataService.shared.getAttendace(day, type: .morning)
             let eveningAttendance = CoreDataService.shared.getAttendace(day, type: .evening)
             let morningPersons = morningAttendance?.persons?.allObjects as? [Person] ?? []
@@ -61,24 +61,24 @@ class RankingViewController: UIViewController {
 
             for person in morningPersons {
                 if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
-                    rankingPersonsAttendaces[index].attendanceNumber += 1
-                    rankingPersonsAttendaces[index].morningDate.append(day)
+                    self.rankingPersonsAttendaces[index].attendanceNumber += 1
+                    self.rankingPersonsAttendaces[index].morningDate.append(day)
                 }
             }
             for person in eveningPersons {
                 if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
-                    rankingPersonsAttendaces[index].attendanceNumber += 1
-                    rankingPersonsAttendaces[index].eveningDate.append(day)
+                    self.rankingPersonsAttendaces[index].attendanceNumber += 1
+                    self.rankingPersonsAttendaces[index].eveningDate.append(day)
                 }
             }
             for person in morningPersonsAdmonished {
                 if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
-                    rankingPersonsAttendaces[index].admonishmentNumber += 1
+                    self.rankingPersonsAttendaces[index].admonishmentNumber += 1
                 }
             }
             for person in eveningPersonsAdmonished {
                 if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
-                    rankingPersonsAttendaces[index].admonishmentNumber += 1
+                    self.rankingPersonsAttendaces[index].admonishmentNumber += 1
                 }
             }
         }
@@ -86,7 +86,7 @@ class RankingViewController: UIViewController {
     }
 
     @IBAction func shareButtonAction(_: Any) {
-        let pdfTitle = PDFCreator.createPDFTitle(dates: daysOfThisWeek)
+        let pdfTitle = PDFCreator.createPDFTitle(dates: self.daysOfThisWeek)
         let pdfData = createPDF(pdfTitle)
 
         let temporaryFolder = FileManager.default.temporaryDirectory

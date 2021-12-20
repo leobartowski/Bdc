@@ -26,6 +26,7 @@ public enum SortingPosition: Int {
 }
 
 public enum SortingType {
+    
     case ascending
     case descending
 

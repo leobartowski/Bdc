@@ -25,7 +25,7 @@ class CoreDataContainer {
     }()
 
     public static func saveContext() {
-        let context = persistentContainer.viewContext
+        let context = self.persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()

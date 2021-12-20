@@ -13,15 +13,15 @@ extension Date {
     static var tomorrow: Date { return Date().dayAfter }
 
     var dayBefore: Date {
-        return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
+        return Calendar.current.date(byAdding: .day, value: -1, to: self.noon)!
     }
 
     var twoDayBefore: Date {
-        return Calendar.current.date(byAdding: .day, value: -2, to: noon)!
+        return Calendar.current.date(byAdding: .day, value: -2, to: self.noon)!
     }
 
     var dayAfter: Date {
-        return Calendar.current.date(byAdding: .day, value: 1, to: noon)!
+        return Calendar.current.date(byAdding: .day, value: 1, to: self.noon)!
     }
 
     var noon: Date {

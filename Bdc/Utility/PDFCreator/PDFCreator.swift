@@ -49,8 +49,8 @@ class PDFCreator: NSObject {
         let pageRect = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
         let renderer = UIGraphicsPDFRenderer(bounds: pageRect, format: format)
 
-        let numberOfElementsPerPage = calculateNumberOfElementsPerPage(with: pageRect)
-        let tableDataChunked: [[PDFTableDataItem]] = tableDataItems.chunkedElements(into: numberOfElementsPerPage)
+        let numberOfElementsPerPage = self.calculateNumberOfElementsPerPage(with: pageRect)
+        let tableDataChunked: [[PDFTableDataItem]] = self.tableDataItems.chunkedElements(into: numberOfElementsPerPage)
 
         let data = renderer.pdfData { context in
             for (i, tableDataChunk) in tableDataChunked.enumerated() {
@@ -72,7 +72,7 @@ class PDFCreator: NSObject {
 
     func calculateNumberOfElementsPerPage(with pageRect: CGRect) -> Int {
         let rowHeight = (defaultOffset * 2)
-        let number = Int((pageRect.height - rowHeight - titleHeight - 20) / rowHeight)
+        let number = Int((pageRect.height - rowHeight - self.titleHeight - 20) / rowHeight)
         return number
     }
 
@@ -137,23 +137,23 @@ extension PDFCreator {
         drawContext.setLineWidth(3.0)
 
         // Draw header's 1 top horizontal line
-        drawContext.move(to: CGPoint(x: defaultOffset, y: defaultOffset + titleHeight))
-        drawContext.addLine(to: CGPoint(x: pageRect.width - defaultOffset, y: defaultOffset + titleHeight))
+        drawContext.move(to: CGPoint(x: self.defaultOffset, y: self.defaultOffset + self.titleHeight))
+        drawContext.addLine(to: CGPoint(x: pageRect.width - self.defaultOffset, y: self.defaultOffset + self.titleHeight))
         drawContext.strokePath()
 
         // Draw header's 1 bottom horizontal line
-        drawContext.move(to: CGPoint(x: defaultOffset, y: defaultOffset * 3 + titleHeight))
-        drawContext.addLine(to: CGPoint(x: pageRect.width - defaultOffset, y: defaultOffset * 3 + titleHeight))
+        drawContext.move(to: CGPoint(x: self.defaultOffset, y: self.defaultOffset * 3 + self.titleHeight))
+        drawContext.addLine(to: CGPoint(x: pageRect.width - self.defaultOffset, y: self.defaultOffset * 3 + self.titleHeight))
         drawContext.strokePath()
 
         // Draw header's 3 vertical lines
         drawContext.setLineWidth(2.0)
         drawContext.saveGState()
-        let tabWidth = (pageRect.width - defaultOffset * 2) / CGFloat(3)
+        let tabWidth = (pageRect.width - self.defaultOffset * 2) / CGFloat(3)
         for verticalLineIndex in 0 ..< 4 {
             let tabX = CGFloat(verticalLineIndex) * tabWidth
-            drawContext.move(to: CGPoint(x: tabX + defaultOffset, y: defaultOffset + titleHeight))
-            drawContext.addLine(to: CGPoint(x: tabX + defaultOffset, y: defaultOffset * 3 + titleHeight))
+            drawContext.move(to: CGPoint(x: tabX + self.defaultOffset, y: self.defaultOffset + self.titleHeight))
+            drawContext.addLine(to: CGPoint(x: tabX + self.defaultOffset, y: self.defaultOffset * 3 + self.titleHeight))
             drawContext.strokePath()
         }
 
@@ -172,14 +172,14 @@ extension PDFCreator {
         ]
 
         // draw titles
-        let tabWidth = (pageRect.width - defaultOffset * 2) / CGFloat(3)
+        let tabWidth = (pageRect.width - self.defaultOffset * 2) / CGFloat(3)
         for titleIndex in 0 ..< titles.count {
             let attributedTitle = NSAttributedString(string: titles[titleIndex].capitalized, attributes: titleAttributes)
             let tabX = CGFloat(titleIndex) * tabWidth
-            let textRect = CGRect(x: tabX + defaultOffset,
-                                  y: defaultOffset * 3 / 2 + titleHeight,
+            let textRect = CGRect(x: tabX + self.defaultOffset,
+                                  y: self.defaultOffset * 3 / 2 + self.titleHeight,
                                   width: tabWidth,
-                                  height: defaultOffset * 3)
+                                  height: self.defaultOffset * 3)
             attributedTitle.draw(in: textRect)
         }
     }
@@ -188,7 +188,7 @@ extension PDFCreator {
         drawContext.setLineWidth(1.0)
         drawContext.saveGState()
 
-        let defaultStartY = defaultOffset * 2
+        let defaultStartY = self.defaultOffset * 2
 
         for elementIndex in 0 ..< tableDataItems.count {
             let yPosition = CGFloat(elementIndex) * defaultStartY + defaultStartY + 20
@@ -202,7 +202,7 @@ extension PDFCreator {
                 NSAttributedString.Key.paragraphStyle: paragraphStyle,
                 NSAttributedString.Key.font: textFont,
             ]
-            let tabWidth = (pageRect.width - defaultOffset * 2) / CGFloat(3)
+            let tabWidth = (pageRect.width - self.defaultOffset * 2) / CGFloat(3)
             for titleIndex in 0 ..< 3 {
                 var attributedText = NSAttributedString(string: "", attributes: textAttributes)
                 switch titleIndex {
@@ -213,24 +213,24 @@ extension PDFCreator {
                     break
                 }
                 let tabX = CGFloat(titleIndex) * tabWidth
-                let textRect = CGRect(x: tabX + defaultOffset,
-                                      y: yPosition + defaultOffset + titleHeight - 10,
+                let textRect = CGRect(x: tabX + self.defaultOffset,
+                                      y: yPosition + self.defaultOffset + self.titleHeight - 10,
                                       width: tabWidth,
-                                      height: defaultOffset * 2)
+                                      height: self.defaultOffset * 2)
                 attributedText.draw(in: textRect)
             }
 
             // Draw content's 3 vertical lines
             for verticalLineIndex in 0 ..< 4 {
                 let tabX = CGFloat(verticalLineIndex) * tabWidth
-                drawContext.move(to: CGPoint(x: tabX + defaultOffset, y: yPosition + titleHeight))
-                drawContext.addLine(to: CGPoint(x: tabX + defaultOffset, y: yPosition + defaultStartY + titleHeight))
+                drawContext.move(to: CGPoint(x: tabX + self.defaultOffset, y: yPosition + self.titleHeight))
+                drawContext.addLine(to: CGPoint(x: tabX + self.defaultOffset, y: yPosition + defaultStartY + self.titleHeight))
                 drawContext.strokePath()
             }
 
             // Draw content's element bottom horizontal line
-            drawContext.move(to: CGPoint(x: defaultOffset, y: yPosition + defaultStartY + titleHeight))
-            drawContext.addLine(to: CGPoint(x: pageRect.width - defaultOffset, y: yPosition + defaultStartY + titleHeight))
+            drawContext.move(to: CGPoint(x: self.defaultOffset, y: yPosition + defaultStartY + self.titleHeight))
+            drawContext.addLine(to: CGPoint(x: pageRect.width - self.defaultOffset, y: yPosition + defaultStartY + self.titleHeight))
             drawContext.strokePath()
         }
         drawContext.restoreGState()

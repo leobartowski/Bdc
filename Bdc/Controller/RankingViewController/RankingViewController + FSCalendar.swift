@@ -26,8 +26,8 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
     }
 
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        deselectAllDates()
-        selectedAllDateOfTheWeek(calendar.currentPage)
+        self.deselectAllDates()
+        self.selectedAllDateOfTheWeek(calendar.currentPage)
         populateWeeklyAttendance()
     }
 
@@ -73,7 +73,7 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         calendarView.placeholderType = .none
         calendarView.scope = .week // Needed to show the weekly at start!
         calendarView.allowsMultipleSelection = true
-        selectedAllDateOfTheWeek(calendarView.selectedDate ?? Date.now)
+        self.selectedAllDateOfTheWeek(calendarView.selectedDate ?? Date.now)
         // Appearance
         calendarView.appearance.caseOptions = .headerUsesCapitalized
         calendarView.appearance.titleFont = .boldSystemFont(ofSize: 15)
