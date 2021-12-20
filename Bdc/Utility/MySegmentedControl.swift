@@ -10,12 +10,12 @@ import UIKit
 
 class MySegmentedControl: UISegmentedControl {
     
-  //Needed to remove the greyish background
-  override func layoutSubviews() {
-    super.layoutSubviews()
-      
-    for i in 0...(numberOfSegments - 1)  {
-      subviews[i].isHidden = true
+    // Needed to remove the greyish background
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        for i in 0 ... (numberOfSegments - 1) {
+            subviews[i].isHidden = true
+        }
     }
-  }
 }

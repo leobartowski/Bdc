@@ -17,6 +17,4 @@ target 'Bdc' do
     # Pods for testing
   end
 
-
-
 end

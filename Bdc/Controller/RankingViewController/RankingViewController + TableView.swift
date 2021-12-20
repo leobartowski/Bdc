@@ -9,30 +9,30 @@ import UIKit
 
 extension RankingViewController: UITableViewDelegate, UITableViewDataSource, RankingSectionHeaderDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in _: UITableView) -> Int {
         return 1
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.rankingPersonsAttendaces.count
+
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        return rankingPersonsAttendaces.count
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == self.selectedCellRow ? 200 : 70
+
+    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.row == selectedCellRow ? 200 : 70
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? RankingTableViewCell
-        let rankingAttendance = self.rankingPersonsAttendaces[indexPath.row]
+        let rankingAttendance = rankingPersonsAttendaces[indexPath.row]
         cell?.setUp(rankingAttendance, indexPath)
-        cell?.setupLabelDesign(self.sorting.sortingPosition.rawValue)
+        cell?.setupLabelDesign(sorting.sortingPosition.rawValue)
         self.handleColorOfTheCellOnFriday(cell, indexPath.row)
         cell?.setNeedsLayout()
         return cell ?? UITableViewCell()
     }
-    
+
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        self.selectedCellRow = indexPath.row == self.selectedCellRow ? -1 : indexPath.row
+        selectedCellRow = indexPath.row == selectedCellRow ? -1 : indexPath.row
         guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return indexPath }
         if selectedIndexPath == indexPath {
             tableView.beginUpdates()
@@ -45,131 +45,128 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         }
         return indexPath
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt _: IndexPath) {
         tableView.beginUpdates()
         UIView.animate(withDuration: 0.3) {
             tableView.performBatchUpdates(nil)
         }
         tableView.endUpdates()
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+
+    func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
         return 60
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+    func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
         let sectionHeaderView = RankingSectionHeaderView()
         sectionHeaderView.delegate = self
-        sectionHeaderView.nameLabel.text = self.header[0]
-        sectionHeaderView.attendanceLabel.text = self.header[1]
-        sectionHeaderView.admonishmentLabel.text = self.header[2]
-        sectionHeaderView.setupLabelDesign(self.sorting.sortingPosition.rawValue)
+        sectionHeaderView.nameLabel.text = header[0]
+        sectionHeaderView.attendanceLabel.text = header[1]
+        sectionHeaderView.admonishmentLabel.text = header[2]
+        sectionHeaderView.setupLabelDesign(sorting.sortingPosition.rawValue)
         return sectionHeaderView
     }
-    
+
     func tableViewSetup() {
-        let leftSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(tableViewSwiped))
+        let leftSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(self.tableViewSwiped))
         leftSwipeGR.direction = .left
         self.tableView.addGestureRecognizer(leftSwipeGR)
-        
-        let rightSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(tableViewSwiped))
+
+        let rightSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(self.tableViewSwiped))
         rightSwipeGR.direction = .right
         self.tableView.addGestureRecognizer(rightSwipeGR)
-        
-        self.header = self.headerBasic
-    }
-    
 
-    
+        header = headerBasic
+    }
+
     func handleColorOfTheCellOnFriday(_ cell: RankingTableViewCell?, _ row: Int) {
         // Show red and green cell only on friday and only if the week on focus is the current week
-        if Date().getDayNumberOfWeek() == 6 && self.calendarView.currentPage.getWeekNumber() == Date.now.getWeekNumber() {
+        if Date().getDayNumberOfWeek() == 6, calendarView.currentPage.getWeekNumber() == Date.now.getWeekNumber() {
             // Check if the user has at least two presence or more than 2 admonishment
             cell?.containerView.layer.shadowOpacity = 0.7
-            cell?.containerView.layer.shadowColor = self.rankingPersonsAttendaces[row].attendanceNumber < 2 || self.rankingPersonsAttendaces[row].admonishmentNumber >= 2
-            ? UIColor.red.cgColor
-            : Theme.customGreen.cgColor
+            cell?.containerView.layer.shadowColor = rankingPersonsAttendaces[row].attendanceNumber < 2 || rankingPersonsAttendaces[row].admonishmentNumber >= 2
+                ? UIColor.red.cgColor
+                : Theme.customGreen.cgColor
         }
     }
-    
+
     func sortDescendingAttendanceFirstTime() {
-        self.sorting = SortingPositionAndType(.attendance, .descending)
-        self.rankingPersonsAttendaces =  self.rankingPersonsAttendaces.sorted { $0.attendanceNumber > $1.attendanceNumber }
-        self.header[0] = self.headerBasic[0]
-        self.header[1] = self.headerBasic[1] + " " + self.sorting.sortingType.symbol
-        self.header[2] = self.headerBasic[2]
-        self.selectedCellRow = -1
+        sorting = SortingPositionAndType(.attendance, .descending)
+        rankingPersonsAttendaces = rankingPersonsAttendaces.sorted { $0.attendanceNumber > $1.attendanceNumber }
+        header[0] = headerBasic[0]
+        header[1] = headerBasic[1] + " " + sorting.sortingType.symbol
+        header[2] = headerBasic[2]
+        selectedCellRow = -1
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
-    
-    func rankingSectionHeaderView(_ cell: RankingSectionHeaderView, didSelectLabel number: Int) {
+
+    func rankingSectionHeaderView(_: RankingSectionHeaderView, didSelectLabel number: Int) {
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
         feedbackGenerator.impactOccurred()
         self.handleSorting(column: number)
     }
-    
+
     func handleSorting(column: Int) {
-        
-        let oldSorting = self.sorting
+        let oldSorting = sorting
         switch column {
         case 0: // Name
             // I want to sort in ascending when the oldSorting was name and descending or if i switch from another sortPosition
             if oldSorting.sortingType == .descending {
-                self.rankingPersonsAttendaces =  self.rankingPersonsAttendaces.sorted{ $0.person.name ?? "" < $1.person.name ?? "" }
-                self.sorting.sortingType = .ascending
+                rankingPersonsAttendaces = rankingPersonsAttendaces.sorted { $0.person.name ?? "" < $1.person.name ?? "" }
+                sorting.sortingType = .ascending
             } else { // I want to sort in descending
-                self.rankingPersonsAttendaces =  self.rankingPersonsAttendaces.sorted { $0.person.name ?? "" > $1.person.name ?? "" }
-                self.sorting.sortingType = .descending
+                rankingPersonsAttendaces = rankingPersonsAttendaces.sorted { $0.person.name ?? "" > $1.person.name ?? "" }
+                sorting.sortingType = .descending
             }
-            self.header[column] = self.headerBasic[column] + " " + self.sorting.sortingType.symbol
-            self.header[1] = self.headerBasic[1]
-            self.header[2] = self.headerBasic[2]
-            self.sorting.sortingPosition = .name
+            header[column] = headerBasic[column] + " " + sorting.sortingType.symbol
+            header[1] = headerBasic[1]
+            header[2] = headerBasic[2]
+            sorting.sortingPosition = .name
         case 1: // Attendacne
             if oldSorting.sortingType == .descending {
-                self.rankingPersonsAttendaces =  self.rankingPersonsAttendaces.sorted { $0.attendanceNumber < $1.attendanceNumber }
-                self.sorting.sortingType = .ascending
+                rankingPersonsAttendaces = rankingPersonsAttendaces.sorted { $0.attendanceNumber < $1.attendanceNumber }
+                sorting.sortingType = .ascending
             } else {
-                self.rankingPersonsAttendaces =  self.rankingPersonsAttendaces.sorted { $0.attendanceNumber > $1.attendanceNumber }
-                self.sorting.sortingType = .descending
+                rankingPersonsAttendaces = rankingPersonsAttendaces.sorted { $0.attendanceNumber > $1.attendanceNumber }
+                sorting.sortingType = .descending
             }
-            self.header[column] = self.headerBasic[column] + " " + self.sorting.sortingType.symbol
-            self.header[0] = self.headerBasic[0]
-            self.header[2] = self.headerBasic[2]
-            self.sorting.sortingPosition = .attendance
+            header[column] = headerBasic[column] + " " + sorting.sortingType.symbol
+            header[0] = headerBasic[0]
+            header[2] = headerBasic[2]
+            sorting.sortingPosition = .attendance
         case 2: // Admonishment
-            if oldSorting.sortingType == .descending  {
-                self.rankingPersonsAttendaces =  self.rankingPersonsAttendaces.sorted { $0.admonishmentNumber < $1.admonishmentNumber }
-                self.sorting.sortingType = .ascending
+            if oldSorting.sortingType == .descending {
+                rankingPersonsAttendaces = rankingPersonsAttendaces.sorted { $0.admonishmentNumber < $1.admonishmentNumber }
+                sorting.sortingType = .ascending
             } else {
-                self.rankingPersonsAttendaces =  self.rankingPersonsAttendaces.sorted { $0.admonishmentNumber > $1.admonishmentNumber }
-                self.sorting.sortingType = .descending
+                rankingPersonsAttendaces = rankingPersonsAttendaces.sorted { $0.admonishmentNumber > $1.admonishmentNumber }
+                sorting.sortingType = .descending
             }
-            self.header[column] = self.headerBasic[column] + " " + self.sorting.sortingType.symbol
-            self.header[0] = self.headerBasic[0]
-            self.header[1] = self.headerBasic[1]
-            self.sorting.sortingPosition = .admonishment
+            header[column] = headerBasic[column] + " " + sorting.sortingType.symbol
+            header[0] = headerBasic[0]
+            header[1] = headerBasic[1]
+            sorting.sortingPosition = .admonishment
         default: return
         }
-        self.selectedCellRow = -1
+        selectedCellRow = -1
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
-    
+
     // MARK: Handle left or right swipe
-    @objc func tableViewSwiped(sender : UISwipeGestureRecognizer) {
-        let selectedDate = self.calendarView.selectedDate ?? Date.now
-        if sender.direction == .right {  // Right
-            self.calendarView.setCurrentPage(selectedDate.previousWeek, animated: true)
+
+    @objc func tableViewSwiped(sender: UISwipeGestureRecognizer) {
+        let selectedDate = calendarView.selectedDate ?? Date.now
+        if sender.direction == .right { // Right
+            calendarView.setCurrentPage(selectedDate.previousWeek, animated: true)
         } else { // Left
-            self.calendarView.setCurrentPage(selectedDate.nextWeek, animated: true)
+            calendarView.setCurrentPage(selectedDate.nextWeek, animated: true)
         }
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .rigid)
         feedbackGenerator.impactOccurred(intensity: 0.9)
-   }
+    }
 }
-

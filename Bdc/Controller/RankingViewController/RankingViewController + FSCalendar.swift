@@ -9,60 +9,55 @@ import Foundation
 import FSCalendar
 
 extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
-
-    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-        self.calendarViewHeightConstraint.constant = 127
-        self.view.layoutIfNeeded()
-    }
     
-    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+    func calendar(_: FSCalendar, boundingRectWillChange _: CGRect, animated _: Bool) {
+        calendarViewHeightConstraint.constant = 127
+        view.layoutIfNeeded()
+    }
+
+    func calendar(_: FSCalendar, shouldSelect _: Date, at _: FSCalendarMonthPosition) -> Bool {
         // The user cannot manually select a specific date!
         return false
     }
-    
-    func calendar(_ calendar: FSCalendar, shouldDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+
+    func calendar(_: FSCalendar, shouldDeselect _: Date, at _: FSCalendarMonthPosition) -> Bool {
         // The user cannot manually de-select a specific date!
         return false
     }
-    
+
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         self.deselectAllDates()
         self.selectedAllDateOfTheWeek(calendar.currentPage)
-        self.populateWeeklyAttendance()
+        populateWeeklyAttendance()
     }
-    
 
-    
     // TODO: Crash on the simulator!
-    func maximumDate(for calendar: FSCalendar) -> Date {
-        
-            #if targetEnvironment(simulator)
-        return Date.distantFuture
-            #else
-        return Date().getSpecificDayOfThisWeek(1) // Maximum date should be sunday of the current week!
-            #endif
-        
-        
+    func maximumDate(for _: FSCalendar) -> Date {
+        #if targetEnvironment(simulator)
+            return Date.distantFuture
+        #else
+            return Date().getSpecificDayOfThisWeek(1) // Maximum date should be sunday of the current week!
+        #endif
     }
-    
-    func minimumDate(for calendar: FSCalendar) -> Date {
+
+    func minimumDate(for _: FSCalendar) -> Date {
         return DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date.yesterday
     }
-    
+
     // MARK: Calendar Appearance
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
+
+    func calendar(_ calendar: FSCalendar, appearance _: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
         if DateFormatter.basicFormatter.string(from: calendar.today ?? .now) == DateFormatter.basicFormatter.string(from: date) {
             return Theme.FSCalendarStandardTodayColor
         }
         return date > Date.now ? .clear : Theme.FSCalendarStandardSelectionColor
-    
     }
 
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
+    func calendar(_: FSCalendar, appearance _: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
         return date > Date.now ? .lightGray : .white
     }
-    
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+
+    func calendar(_ calendar: FSCalendar, appearance _: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         if date.getDayNumberOfWeek() == 1 || date.getDayNumberOfWeek() == 7 {
             if DateFormatter.basicFormatter.string(from: calendar.today ?? .now) == DateFormatter.basicFormatter.string(from: date) {
                 return Theme.customLightRed
@@ -70,40 +65,40 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         }
         return .lightGray
     }
-   
-    //MARK: Calendar SetUp
+
+    // MARK: Calendar SetUp
+
     func calendarSetup() {
-        
-        self.calendarView.locale = Locale(identifier: "it")
-        self.calendarView.placeholderType = .none
-        self.calendarView.scope = .week // Needed to show the weekly at start!
-        self.calendarView.allowsMultipleSelection = true
-        self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Date.now)
+        calendarView.locale = Locale(identifier: "it")
+        calendarView.placeholderType = .none
+        calendarView.scope = .week // Needed to show the weekly at start!
+        calendarView.allowsMultipleSelection = true
+        self.selectedAllDateOfTheWeek(calendarView.selectedDate ?? Date.now)
         // Appearance
-        self.calendarView.appearance.caseOptions = .headerUsesCapitalized
-        self.calendarView.appearance.titleFont = .boldSystemFont(ofSize: 15)
-        self.calendarView.appearance.weekdayFont = .systemFont(ofSize: 17, weight: .light)
-        self.calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 19)
-        self.calendarView.appearance.titleWeekendColor = .lightGray
-        self.calendarView.appearance.todayColor = .clear
-        self.calendarView.appearance.titleDefaultColor = Theme.avatarBlack
-        self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
-        self.calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
-        self.calendarView.appearance.weekdayTextColor = .black
+        calendarView.appearance.caseOptions = .headerUsesCapitalized
+        calendarView.appearance.titleFont = .boldSystemFont(ofSize: 15)
+        calendarView.appearance.weekdayFont = .systemFont(ofSize: 17, weight: .light)
+        calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 19)
+        calendarView.appearance.titleWeekendColor = .lightGray
+        calendarView.appearance.todayColor = .clear
+        calendarView.appearance.titleDefaultColor = Theme.avatarBlack
+        calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
+        calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
+        calendarView.appearance.weekdayTextColor = .black
     }
-    
+
     func selectedAllDateOfTheWeek(_ date: Date) {
-        self.daysOfThisWeek = date.getAllDateOfTheWeek()
-        for day in self.daysOfThisWeek {
-            if day.getDayNumberOfWeek() != 1 && day.getDayNumberOfWeek() != 7 {
-            self.calendarView.select(day)
+        daysOfThisWeek = date.getAllDateOfTheWeek()
+        for day in daysOfThisWeek {
+            if day.getDayNumberOfWeek() != 1, day.getDayNumberOfWeek() != 7 {
+                calendarView.select(day)
             }
         }
     }
-    
+
     func deselectAllDates() {
-        for date in self.calendarView.selectedDates {
-            self.calendarView.deselect(date)
+        for date in calendarView.selectedDates {
+            calendarView.deselect(date)
         }
     }
 }

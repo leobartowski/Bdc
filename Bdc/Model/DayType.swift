@@ -8,6 +8,7 @@
 import Foundation
 
 public enum DayType: String {
+    
     case morning
     case evening
 }

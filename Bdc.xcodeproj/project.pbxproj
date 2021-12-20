@@ -13,7 +13,6 @@
 		DD03AC1727481092004C4819 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */; };
 		DD03AC19274811B8004C4819 /* CalendarViewController + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC18274811B8004C4819 /* CalendarViewController + CollectionView.swift */; };
 		DD03AC1B27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */; };
-		DD0CAB5027280FB200EA42B1 /* Attendance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB4F27280FB200EA42B1 /* Attendance+CoreDataProperties.swift */; };
 		DD0CAB532728108600EA42B1 /* DayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB522728108600EA42B1 /* DayType.swift */; };
 		DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */; };
 		DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD18C7F827220B0A0086BB6C /* CoreDataService.swift */; };
@@ -45,7 +44,6 @@
 		DDB292602721A8D400D96E67 /* RankingSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB2925F2721A8D400D96E67 /* RankingSectionHeaderView.xib */; };
 		DDB292622721A90500D96E67 /* RankingSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB292612721A90500D96E67 /* RankingSectionHeaderView.swift */; };
 		DDC1E5CE2752966E00C2BF2C /* Attendance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC1E5CC2752966E00C2BF2C /* Attendance+CoreDataProperties.swift */; };
-		DDC1E5CF2752966E00C2BF2C /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC1E5CD2752966E00C2BF2C /* Person+CoreDataProperties.swift */; };
 		DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A32724065A0028E49B /* RankingViewController.swift */; };
 		DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A527240CAE0028E49B /* Date - Ext.swift */; };
 		DDC51A4F27564191004A836B /* SortingPositionAndType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC51A4E27564191004A836B /* SortingPositionAndType.swift */; };
@@ -486,7 +484,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					DD8543EA27219D4A004D38F0 = {
 						CreatedOnToolsVersion = 13.0;
@@ -670,8 +668,6 @@
 				DD7B258327567AA100E663AC /* PDFCreator.swift in Sources */,
 				DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */,
 				DD7B258527567B0600E663AC /* RankingViewController + PDF.swift in Sources */,
-				DD0CAB5027280FB200EA42B1 /* Attendance+CoreDataProperties.swift in Sources */,
-				DDC1E5CF2752966E00C2BF2C /* Person+CoreDataProperties.swift in Sources */,
 				DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */,
 				DD03AC19274811B8004C4819 /* CalendarViewController + CollectionView.swift in Sources */,
 				DD0CAB532728108600EA42B1 /* DayType.swift in Sources */,
