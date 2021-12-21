@@ -28,6 +28,10 @@
 		DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968127221A40009E455F /* Person+CoreDataProperties.swift */; };
 		DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968227221A40009E455F /* Person+CoreDataClass.swift */; };
 		DD64968727221A40009E455F /* Attendance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */; };
+		DD717D4F2772411C0003CB16 /* RankingViewController + BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD717D4E2772411C0003CB16 /* RankingViewController + BottomSheet.swift */; };
+		DD717D522772428C0003CB16 /* RankingTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD717D512772428C0003CB16 /* RankingTypeViewController.swift */; };
+		DD717D54277244D70003CB16 /* BottomSheet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD717D53277244D70003CB16 /* BottomSheet.storyboard */; };
+		DD717D56277249B90003CB16 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD717D55277249B90003CB16 /* CheckBox.swift */; };
 		DD7B258327567AA100E663AC /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B258227567AA100E663AC /* PDFCreator.swift */; };
 		DD7B258527567B0600E663AC /* RankingViewController + PDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */; };
 		DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */; };
@@ -102,6 +106,10 @@
 		DD64968127221A40009E455F /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DD64968227221A40009E455F /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attendance+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DD717D4E2772411C0003CB16 /* RankingViewController + BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + BottomSheet.swift"; sourceTree = "<group>"; };
+		DD717D512772428C0003CB16 /* RankingTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTypeViewController.swift; sourceTree = "<group>"; };
+		DD717D53277244D70003CB16 /* BottomSheet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottomSheet.storyboard; sourceTree = "<group>"; };
+		DD717D55277249B90003CB16 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		DD7B258227567AA100E663AC /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
 		DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + PDF.swift"; sourceTree = "<group>"; };
 		DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFTableDataItem.swift; sourceTree = "<group>"; };
@@ -200,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				DD8543F427219D4A004D38F0 /* Main.storyboard */,
+				DD717D53277244D70003CB16 /* BottomSheet.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -261,12 +270,30 @@
 		DD5542E327245875000D9F48 /* RankingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				DD717D5727724AC90003CB16 /* RankingVC */,
+				DD717D502772413D0003CB16 /* BottomSheetController */,
+			);
+			path = RankingViewController;
+			sourceTree = "<group>";
+		};
+		DD717D502772413D0003CB16 /* BottomSheetController */ = {
+			isa = PBXGroup;
+			children = (
+				DD717D512772428C0003CB16 /* RankingTypeViewController.swift */,
+			);
+			path = BottomSheetController;
+			sourceTree = "<group>";
+		};
+		DD717D5727724AC90003CB16 /* RankingVC */ = {
+			isa = PBXGroup;
+			children = (
 				DDC337A32724065A0028E49B /* RankingViewController.swift */,
 				DD41742F27246BA500BE5BFD /* RankingViewController + FSCalendar.swift */,
 				DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */,
 				DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */,
+				DD717D4E2772411C0003CB16 /* RankingViewController + BottomSheet.swift */,
 			);
-			path = RankingViewController;
+			path = RankingVC;
 			sourceTree = "<group>";
 		};
 		DD7B258127567A9500E663AC /* PDFCreator */ = {
@@ -381,6 +408,7 @@
 				DD1EAF392726DDD100EF1455 /* CommonUtility.swift */,
 				DDF1DE4C272C50CE006B7DFD /* Theme.swift */,
 				DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */,
+				DD717D55277249B90003CB16 /* CheckBox.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -526,6 +554,7 @@
 			files = (
 				DDB292602721A8D400D96E67 /* RankingSectionHeaderView.xib in Resources */,
 				DD8543FE27219D4C004D38F0 /* LaunchScreen.storyboard in Resources */,
+				DD717D54277244D70003CB16 /* BottomSheet.storyboard in Resources */,
 				DD8543FB27219D4C004D38F0 /* Assets.xcassets in Resources */,
 				DD8543F627219D4A004D38F0 /* Main.storyboard in Resources */,
 			);
@@ -684,9 +713,12 @@
 				DDC9EB6B275031CD00653138 /* PersonsList+CoreDataProperties.swift in Sources */,
 				DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */,
 				DD1A1C65274908AB006FC676 /* UIView - Ext.swift in Sources */,
+				DD717D522772428C0003CB16 /* RankingTypeViewController.swift in Sources */,
+				DD717D56277249B90003CB16 /* CheckBox.swift in Sources */,
 				DD1EAF3A2726DDD100EF1455 /* CommonUtility.swift in Sources */,
 				DD41743027246BA500BE5BFD /* RankingViewController + FSCalendar.swift in Sources */,
 				DDF1DE4D272C50CE006B7DFD /* Theme.swift in Sources */,
+				DD717D4F2772411C0003CB16 /* RankingViewController + BottomSheet.swift in Sources */,
 				DDCBBDB4274D44B4002B60DA /* MySegmentedControl.swift in Sources */,
 				DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */,
 				DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */,

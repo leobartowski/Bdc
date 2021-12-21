@@ -14,6 +14,7 @@ class RankingViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var calendarView: FSCalendar!
     @IBOutlet var calendarViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var changeRankingTypeButton: UIButton!
 
     var rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
     let headerBasic = ["Nome", "P", "A"]
@@ -102,5 +103,9 @@ class RankingViewController: UIViewController {
         } catch {
             print(error)
         }
+    }
+
+    @IBAction func changeRankingTypeAction(_: Any) {
+        presentModalToChangeRankingType()
     }
 }

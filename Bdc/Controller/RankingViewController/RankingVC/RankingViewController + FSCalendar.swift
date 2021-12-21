@@ -11,7 +11,7 @@ import FSCalendar
 extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
     func calendar(_: FSCalendar, boundingRectWillChange _: CGRect, animated _: Bool) {
-        calendarViewHeightConstraint.constant = 127
+        self.calendarViewHeightConstraint.constant = 127
         view.layoutIfNeeded()
     }
 
@@ -28,7 +28,7 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         self.deselectAllDates()
         self.selectedAllDateOfTheWeek(calendar.currentPage)
-        populateWeeklyAttendance()
+        self.populateWeeklyAttendance()
     }
 
     // TODO: Crash on the simulator!
@@ -73,7 +73,7 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         calendarView.placeholderType = .none
         calendarView.scope = .week // Needed to show the weekly at start!
         calendarView.allowsMultipleSelection = true
-        self.selectedAllDateOfTheWeek(calendarView.selectedDate ?? Date.now)
+        selectedAllDateOfTheWeek(calendarView.selectedDate ?? Date.now)
         // Appearance
         calendarView.appearance.caseOptions = .headerUsesCapitalized
         calendarView.appearance.titleFont = .boldSystemFont(ofSize: 15)

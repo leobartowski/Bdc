@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LfF-gr-tm8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LfF-gr-tm8">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -285,7 +285,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZL-9L-OaS" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="54" width="414" height="324"/>
+                                <rect key="frame" x="0.0" y="99" width="414" height="324"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="324" id="lZO-hC-B6u"/>
@@ -301,7 +301,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rxW-AI-RUa">
-                                <rect key="frame" x="0.0" y="378" width="414" height="435"/>
+                                <rect key="frame" x="0.0" y="423" width="414" height="390"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellID" id="faC-8L-aif" customClass="RankingTableViewCell" customModule="Bdc" customModuleProvider="target">
@@ -446,40 +446,80 @@
                                     <outlet property="delegate" destination="gzR-Cb-bnF" id="kYB-iP-fPg"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2f-9T-MNW">
-                                <rect key="frame" x="384" y="39" width="20" height="23"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="du5-rp-LUH">
+                                <rect key="frame" x="0.0" y="44" width="414" height="55"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2f-9T-MNW">
+                                        <rect key="frame" x="374" y="15" width="20" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="bYA-Pb-cJL"/>
+                                            <constraint firstAttribute="width" constant="20" id="rv6-xr-xlm"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <backgroundConfiguration key="background" image="square.and.arrow.up" catalog="system"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="shareButtonAction:" destination="gzR-Cb-bnF" eventType="touchUpInside" id="rw4-kN-uEd"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5O-QU-MeP">
+                                        <rect key="frame" x="20" y="0.0" width="132" height="55"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jSh-Fm-GEi">
+                                        <rect key="frame" x="334" y="15" width="20" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="IBd-n1-q17"/>
+                                            <constraint firstAttribute="height" constant="25" id="egd-rm-1Vd"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <backgroundConfiguration key="background" image="square.and.arrow.up" catalog="system"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="changeRankingTypeAction:" destination="gzR-Cb-bnF" eventType="touchUpInside" id="saa-bY-dYL"/>
+                                            <action selector="shareButtonAction:" destination="gzR-Cb-bnF" eventType="touchUpInside" id="yEs-A0-7bC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="23" id="De9-iu-XYE"/>
-                                    <constraint firstAttribute="width" constant="20" id="PLU-T6-Aqf"/>
+                                    <constraint firstAttribute="bottom" secondItem="a5O-QU-MeP" secondAttribute="bottom" id="7Yw-Vk-wE5"/>
+                                    <constraint firstItem="a5O-QU-MeP" firstAttribute="leading" secondItem="du5-rp-LUH" secondAttribute="leading" constant="20" id="Av7-fF-XG1"/>
+                                    <constraint firstItem="w2f-9T-MNW" firstAttribute="leading" secondItem="jSh-Fm-GEi" secondAttribute="trailing" constant="20" id="BSy-kx-04p"/>
+                                    <constraint firstItem="w2f-9T-MNW" firstAttribute="centerY" secondItem="a5O-QU-MeP" secondAttribute="centerY" id="ZqE-Rd-nRm"/>
+                                    <constraint firstAttribute="trailing" secondItem="w2f-9T-MNW" secondAttribute="trailing" constant="20" id="nfD-8s-18r"/>
+                                    <constraint firstItem="jSh-Fm-GEi" firstAttribute="centerY" secondItem="a5O-QU-MeP" secondAttribute="centerY" id="pO2-MR-R5R"/>
+                                    <constraint firstItem="a5O-QU-MeP" firstAttribute="top" secondItem="du5-rp-LUH" secondAttribute="top" id="sGk-wk-mac"/>
                                 </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <backgroundConfiguration key="background" image="square.and.arrow.up" catalog="system"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="shareButtonAction:" destination="gzR-Cb-bnF" eventType="touchUpInside" id="rw4-kN-uEd"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="C6Y-kX-hKN"/>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xZL-9L-OaS" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" constant="10" id="8GI-NO-n1C"/>
+                            <constraint firstItem="xZL-9L-OaS" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" constant="55" id="8GI-NO-n1C"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" id="CjB-5b-YJj"/>
                             <constraint firstItem="rxW-AI-RUa" firstAttribute="top" secondItem="xZL-9L-OaS" secondAttribute="bottom" id="Jjy-vo-FoY"/>
+                            <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="du5-rp-LUH" secondAttribute="trailing" id="Kgh-Jm-3Fh"/>
                             <constraint firstItem="C6Y-kX-hKN" firstAttribute="bottom" secondItem="rxW-AI-RUa" secondAttribute="bottom" id="L27-Aj-wSx"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="LyG-y3-Ajy"/>
-                            <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="w2f-9T-MNW" secondAttribute="trailing" constant="10" id="QJi-SD-lZt"/>
+                            <constraint firstItem="du5-rp-LUH" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" id="XFW-Q2-QhH"/>
                             <constraint firstItem="rxW-AI-RUa" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="bS4-aJ-OKI"/>
                             <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="rxW-AI-RUa" secondAttribute="trailing" id="gCj-ms-5xM"/>
-                            <constraint firstItem="w2f-9T-MNW" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" constant="-5" id="oZa-X4-rHL"/>
+                            <constraint firstItem="xZL-9L-OaS" firstAttribute="top" secondItem="du5-rp-LUH" secondAttribute="bottom" id="kVN-Z8-31n"/>
+                            <constraint firstItem="du5-rp-LUH" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="lf7-th-vcB"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Ranking" image="person.3.fill" catalog="system" id="Shf-1z-or0"/>
                     <connections>
                         <outlet property="calendarView" destination="xZL-9L-OaS" id="xne-k8-w4e"/>
                         <outlet property="calendarViewHeightConstraint" destination="lZO-hC-B6u" id="gGn-W3-Yby"/>
+                        <outlet property="changeRankingTypeButton" destination="jSh-Fm-GEi" id="q38-F9-rOn"/>
                         <outlet property="tableView" destination="rxW-AI-RUa" id="8QQ-SO-j0F"/>
                     </connections>
                 </viewController>
