@@ -1,16 +1,20 @@
 PODS:
+  - FittedSheets (2.4.2)
   - FSCalendar (2.8.2)
 
 DEPENDENCIES:
+  - FittedSheets
   - FSCalendar
 
 SPEC REPOS:
   trunk:
+    - FittedSheets
     - FSCalendar
 
 SPEC CHECKSUMS:
+  FittedSheets: 661408776eb4ff514a31da75b3600bd7222b2b3d
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
 
-PODFILE CHECKSUM: be229f3146507d2ff4be851ca950c309a34743f4
+PODFILE CHECKSUM: a15e5d734671b3d01ba3e7ddf6f8e5855ab8cf0e
 
 COCOAPODS: 1.11.2

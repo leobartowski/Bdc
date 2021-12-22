@@ -7,21 +7,26 @@
 
 import Foundation
 import UIKit
+import FittedSheets
 
 extension RankingViewController {
     
     func presentModalToChangeRankingType() {
+        print("ciro\(rankingType)")
         
         let storyBoard = UIStoryboard(name: "BottomSheet", bundle: nil)
         if let vc = storyBoard.instantiateViewController(withIdentifier: "rankingTypeID") as? RankingTypeViewController {
-            let navigationController = UINavigationController(rootViewController: vc)
-            navigationController.modalPresentationStyle = .pageSheet
-            if let sheet = navigationController.sheetPresentationController {
-                sheet.detents = [.medium()]
+            vc.selectedType = self.rankingType
+            let sheetController = SheetViewController(
+                controller: vc,
+                sizes: [.fixed(310)]
+            )
+            sheetController.gripSize = CGSize(width: 35, height: 6)
+            sheetController.didDismiss = { _ in
+                self.rankingType = vc.selectedType
             }
-            self.present(navigationController, animated: true, completion: nil)
+            self.present(sheetController, animated: true, completion: nil)
         }
         
     }
-    
 }

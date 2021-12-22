@@ -8,33 +8,29 @@
 import Foundation
 import UIKit
 
-protocol RankingTypeTableViewCellDelegate: AnyObject {
-    
-    func mainCell(_ cell: RankingTypeTableViewCell, didSelectRowAt indexPath: IndexPath)
-    func mainCell(_ cell: RankingTypeTableViewCell, didDeselectRowAt indexPath: IndexPath)
-}
 
 class RankingTypeTableViewCell: UITableViewCell {
     
     @IBOutlet var mainLabel: UILabel!
     @IBOutlet var checkBox: CheckBox!
     
+    override var isSelected: Bool {
+        didSet {
+            self.isSelected ? self.checkBox.select(animated: false) : self.checkBox.deselect()
+        }
+    }
+    
     var indexPath = IndexPath()
     var myRankingType: RankingType = .weekly
     
-    weak var delegate: RankingTypeTableViewCellDelegate?
-    
     override func awakeFromNib() {
+        self.checkBox.isUserInteractionEnabled = false
         self.checkBox.selectedColor = Theme.FSCalendarStandardSelectionColor
     }
     
-    func setup(_ title: String, _ selectedRankingType: RankingType, _ indexPath: IndexPath, _ delegate: RankingTypeTableViewCellDelegate) {
-        self.delegate = delegate
+    func setup(_ title: String, _ selectedRankingType: RankingType, _ indexPath: IndexPath) {
         self.mainLabel.text = title
         self.indexPath = indexPath
         self.myRankingType = RankingType(rawValue: self.indexPath.row) ?? .weekly
-        self.myRankingType == selectedRankingType ? self.checkBox.select() : self.checkBox.deselect()
-        self.checkBox.onSelect { self.delegate?.mainCell(self, didSelectRowAt: indexPath) }
-        self.checkBox.onDeselect { self.delegate?.mainCell(self, didDeselectRowAt: indexPath) }
     }
 }
