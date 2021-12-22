@@ -16,11 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="61" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="npS-j3-13O">
-                                <rect key="frame" x="0.0" y="130" width="414" height="732"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="61" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="npS-j3-13O">
+                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" id="lXD-r5-esv" customClass="RankingTypeTableViewCell" customModule="Bdc" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellID" id="lXD-r5-esv" customClass="RankingTypeTableViewCell" customModule="Bdc" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lXD-r5-esv" id="lfs-76-z1W">
@@ -73,36 +73,21 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scegli tipo di visualizzazione" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlR-Q8-7do">
-                                <rect key="frame" x="20" y="90" width="374" height="30"/>
+                                <rect key="frame" x="20" y="64" width="374" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vi1-Ma-k3v">
-                                <rect key="frame" x="189.5" y="54" width="35" height="6"/>
-                                <color key="backgroundColor" white="0.797565309" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="6" id="db2-N3-Pvt"/>
-                                    <constraint firstAttribute="width" constant="35" id="tEJ-oI-WdF"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9XM-pP-X0N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="npS-j3-13O" firstAttribute="top" secondItem="mlR-Q8-7do" secondAttribute="bottom" constant="10" id="BSW-gt-oyu"/>
                             <constraint firstItem="npS-j3-13O" firstAttribute="leading" secondItem="9XM-pP-X0N" secondAttribute="leading" id="C12-65-Y58"/>
-                            <constraint firstItem="Vi1-Ma-k3v" firstAttribute="top" secondItem="9XM-pP-X0N" secondAttribute="top" constant="10" id="GUt-9X-Poe"/>
                             <constraint firstItem="mlR-Q8-7do" firstAttribute="leading" secondItem="9XM-pP-X0N" secondAttribute="leading" constant="20" id="Zex-d0-ybJ"/>
-                            <constraint firstItem="Vi1-Ma-k3v" firstAttribute="centerX" secondItem="0Tg-CT-Upk" secondAttribute="centerX" id="dnH-Mu-OfI"/>
                             <constraint firstItem="9XM-pP-X0N" firstAttribute="trailing" secondItem="mlR-Q8-7do" secondAttribute="trailing" constant="20" id="l18-fn-fnV"/>
                             <constraint firstItem="9XM-pP-X0N" firstAttribute="bottom" secondItem="npS-j3-13O" secondAttribute="bottom" id="qc6-16-axM"/>
-                            <constraint firstItem="mlR-Q8-7do" firstAttribute="top" secondItem="Vi1-Ma-k3v" secondAttribute="bottom" constant="30" id="tBM-3m-Xr6"/>
+                            <constraint firstItem="mlR-Q8-7do" firstAttribute="top" secondItem="9XM-pP-X0N" secondAttribute="top" constant="20" id="sCW-GM-3nl"/>
                             <constraint firstItem="9XM-pP-X0N" firstAttribute="trailing" secondItem="npS-j3-13O" secondAttribute="trailing" id="wMh-5S-f2o"/>
                         </constraints>
                     </view>

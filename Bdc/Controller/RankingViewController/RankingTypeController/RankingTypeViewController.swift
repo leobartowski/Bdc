@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RankingTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RankingTypeTableViewCellDelegate {
+class RankingTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet var tableView: UITableView!
@@ -17,6 +17,8 @@ class RankingTypeViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isHidden = true
+        // We set the selectedType based on the current rankingType in RankingVc
+        self.tableView.selectRow(at: IndexPath(row: self.selectedType.rawValue, section: 0), animated: false, scrollPosition: .none)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -25,21 +27,18 @@ class RankingTypeViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? RankingTypeTableViewCell
-        cell?.setup(self.types[indexPath.row], self.selectedType, indexPath, self)
+        cell?.setup(self.types[indexPath.row], self.selectedType, indexPath)
         return cell ?? UITableViewCell()
     }
     
-    // MARK: RankingTypeTableViewCellDelegate
-    
-    func mainCell(_ cell: RankingTypeTableViewCell, didDeselectRowAt indexPath: IndexPath) {
-        
-    }
-    
-    func mainCell(_ cell: RankingTypeTableViewCell, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedType = RankingType(rawValue: indexPath.row) ?? .weekly
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        let cell = tableView.cellForRow(at: indexPath) as? RankingTypeTableViewCell
+        cell?.checkBox.select()
     }
-
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as? RankingTypeTableViewCell
+        cell?.checkBox.deselect()
+    }
 }

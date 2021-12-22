@@ -7,6 +7,7 @@ target 'Bdc' do
 
   # Pods for Bdc
   pod 'FSCalendar'
+  pod 'FittedSheets'
 
   target 'BdcTests' do
     inherit! :search_paths

@@ -22,16 +22,14 @@ class RankingViewController: UIViewController {
     var sorting = SortingPositionAndType(.attendance, .descending) // This variable is needed to understand which column in sorted and if ascending or descending (type)
     var daysOfThisWeek = [Date]()
     var selectedCellRow = -1
+    var rankingType: RankingType = .weekly
 
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewSetUp()
-        self.definesPresentationContext = true 
     }
-
-    // Needed to update the Maximum Date when the app remains in RAM
 
     // We update the data in the DidAppear to have always data updated after some modification
     override func viewDidAppear(_: Bool) {

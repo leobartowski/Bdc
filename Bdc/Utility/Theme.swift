@@ -15,6 +15,7 @@ enum Theme {
     static let customMediumRed = UIColor(red: 230 / 255, green: 64 / 255, blue: 10 / 255, alpha: 0.75)
     static let customMediumGreen = UIColor(red: 17 / 255, green: 187 / 255, blue: 85 / 255, alpha: 0.75)
     static let dirtyWhite = UIColor(named: "FAFAFA")
+    static let pullbarGrey = UIColor(red: 193 / 255, green: 193 / 255, blue: 193 / 255, alpha: 1)
     static let avatarRed = UIColor(red: 250 / 255, green: 53 / 255, blue: 78 / 255, alpha: 1)
     static let avatarLightRed = UIColor(red: 250 / 255, green: 53 / 255, blue: 78 / 255, alpha: 0.2)
     static let avatarBlack = UIColor(red: 51 / 255, green: 51 / 255, blue: 60 / 255, alpha: 1)
