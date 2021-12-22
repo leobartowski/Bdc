@@ -12,22 +12,16 @@ extension RankingViewController {
     
     func presentModalToChangeRankingType() {
         
-            let vc = RankingTypeViewController()
-            let nav = UINavigationController(rootViewController: vc)
-            // 1
-            nav.modalPresentationStyle = .pageSheet
-
-            
-            // 2
-            if let sheet = nav.sheetPresentationController {
-
-                // 3
+        let storyBoard = UIStoryboard(name: "BottomSheet", bundle: nil)
+        if let vc = storyBoard.instantiateViewController(withIdentifier: "rankingTypeID") as? RankingTypeViewController {
+            let navigationController = UINavigationController(rootViewController: vc)
+            navigationController.modalPresentationStyle = .pageSheet
+            if let sheet = navigationController.sheetPresentationController {
                 sheet.detents = [.medium()]
-
             }
-            // 4
-            present(nav, animated: true, completion: nil)
-
+            self.present(navigationController, animated: true, completion: nil)
         }
+        
+    }
     
 }

@@ -28,6 +28,7 @@ class RankingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewSetUp()
+        self.definesPresentationContext = true 
     }
 
     // Needed to update the Maximum Date when the app remains in RAM

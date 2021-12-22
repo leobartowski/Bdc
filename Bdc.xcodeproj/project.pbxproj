@@ -271,17 +271,17 @@
 			isa = PBXGroup;
 			children = (
 				DD717D5727724AC90003CB16 /* RankingVC */,
-				DD717D502772413D0003CB16 /* BottomSheetController */,
+				DD717D502772413D0003CB16 /* RankingTypeController */,
 			);
 			path = RankingViewController;
 			sourceTree = "<group>";
 		};
-		DD717D502772413D0003CB16 /* BottomSheetController */ = {
+		DD717D502772413D0003CB16 /* RankingTypeController */ = {
 			isa = PBXGroup;
 			children = (
 				DD717D512772428C0003CB16 /* RankingTypeViewController.swift */,
 			);
-			path = BottomSheetController;
+			path = RankingTypeController;
 			sourceTree = "<group>";
 		};
 		DD717D5727724AC90003CB16 /* RankingVC */ = {
