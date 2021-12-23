@@ -23,7 +23,7 @@ class RankingViewController: UIViewController {
     let headerBasic = ["Nome", "P", "A"]
     var header: [String] = []
     var sorting = SortingPositionAndType(.attendance, .descending) // This variable is needed to understand which column in sorted and if ascending or descending (type)
-    var daysOfThisWeek = [Date]()
+    var daysCurrentPeriod = [Date]()
     var selectedCellRow = -1
     var rankingType: RankingType = .weekly
 
@@ -36,7 +36,9 @@ class RankingViewController: UIViewController {
 
     // We update the data in the DidAppear to have always data updated after some modification
     override func viewDidAppear(_: Bool) {
-        self.populateWeeklyAttendance()
+        if self.rankingType == .weekly {
+            self.populateAttendance()
+        }
     }
 
     func viewSetUp() {
@@ -50,7 +52,7 @@ class RankingViewController: UIViewController {
         self.yearDatePickerSetup()
     }
 
-    func populateWeeklyAttendance() {
+    func populateAttendance() {
         for item in self.rankingPersonsAttendaces {
             // We need to clear all presences and adomishment
             item.eveningDate = []
@@ -58,7 +60,7 @@ class RankingViewController: UIViewController {
             item.attendanceNumber = 0
             item.admonishmentNumber = 0
         }
-        for day in self.daysOfThisWeek {
+        for day in self.daysCurrentPeriod {
             let morningAttendance = CoreDataService.shared.getAttendace(day, type: .morning)
             let eveningAttendance = CoreDataService.shared.getAttendace(day, type: .evening)
             let morningPersons = morningAttendance?.persons?.allObjects as? [Person] ?? []
@@ -93,7 +95,7 @@ class RankingViewController: UIViewController {
     }
 
     @IBAction func shareButtonAction(_: Any) {
-        let pdfTitle = PDFCreator.createPDFTitle(dates: self.daysOfThisWeek)
+        let pdfTitle = PDFCreator.createPDFTitle(dates: self.daysCurrentPeriod)
         let pdfData = createPDF(pdfTitle)
 
         let temporaryFolder = FileManager.default.temporaryDirectory

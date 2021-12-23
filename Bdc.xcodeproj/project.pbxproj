@@ -33,7 +33,7 @@
 		DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968227221A40009E455F /* Person+CoreDataClass.swift */; };
 		DD64968727221A40009E455F /* Attendance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */; };
 		DD709C852773612C00D20C6A /* RankingTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD709C842773612C00D20C6A /* RankingTypeTableViewCell.swift */; };
-		DD717D4F2772411C0003CB16 /* RankingViewController + BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD717D4E2772411C0003CB16 /* RankingViewController + BottomSheet.swift */; };
+		DD717D4F2772411C0003CB16 /* RankingViewController + HandleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD717D4E2772411C0003CB16 /* RankingViewController + HandleType.swift */; };
 		DD717D522772428C0003CB16 /* RankingTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD717D512772428C0003CB16 /* RankingTypeViewController.swift */; };
 		DD717D54277244D70003CB16 /* BottomSheet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD717D53277244D70003CB16 /* BottomSheet.storyboard */; };
 		DD717D56277249B90003CB16 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD717D55277249B90003CB16 /* CheckBox.swift */; };
@@ -41,6 +41,7 @@
 		DD7B258527567B0600E663AC /* RankingViewController + PDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */; };
 		DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */; };
 		DD7B2589275680DE00E663AC /* Array + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2588275680DE00E663AC /* Array + Ext.swift */; };
+		DD8483072774DE9E00E7F179 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8483062774DE9E00E7F179 /* Constant.swift */; };
 		DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543EE27219D4A004D38F0 /* AppDelegate.swift */; };
 		DD8543F127219D4A004D38F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543F027219D4A004D38F0 /* SceneDelegate.swift */; };
 		DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543F227219D4A004D38F0 /* CalendarViewController.swift */; };
@@ -116,7 +117,7 @@
 		DD64968227221A40009E455F /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attendance+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DD709C842773612C00D20C6A /* RankingTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTypeTableViewCell.swift; sourceTree = "<group>"; };
-		DD717D4E2772411C0003CB16 /* RankingViewController + BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + BottomSheet.swift"; sourceTree = "<group>"; };
+		DD717D4E2772411C0003CB16 /* RankingViewController + HandleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + HandleType.swift"; sourceTree = "<group>"; };
 		DD717D512772428C0003CB16 /* RankingTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTypeViewController.swift; sourceTree = "<group>"; };
 		DD717D53277244D70003CB16 /* BottomSheet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottomSheet.storyboard; sourceTree = "<group>"; };
 		DD717D55277249B90003CB16 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
@@ -124,6 +125,7 @@
 		DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + PDF.swift"; sourceTree = "<group>"; };
 		DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFTableDataItem.swift; sourceTree = "<group>"; };
 		DD7B2588275680DE00E663AC /* Array + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + Ext.swift"; sourceTree = "<group>"; };
+		DD8483062774DE9E00E7F179 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		DD8543EB27219D4A004D38F0 /* Bdc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bdc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8543EE27219D4A004D38F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD8543F027219D4A004D38F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -317,7 +319,7 @@
 				DD41742F27246BA500BE5BFD /* RankingViewController + FSCalendar.swift */,
 				DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */,
 				DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */,
-				DD717D4E2772411C0003CB16 /* RankingViewController + BottomSheet.swift */,
+				DD717D4E2772411C0003CB16 /* RankingViewController + HandleType.swift */,
 				DD368F4F2774BECD000F0A84 /* RankingViewController+DatePicker.swift */,
 			);
 			path = RankingVC;
@@ -446,6 +448,7 @@
 				DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */,
 				DD1EAF392726DDD100EF1455 /* CommonUtility.swift */,
 				DDF1DE4C272C50CE006B7DFD /* Theme.swift */,
+				DD8483062774DE9E00E7F179 /* Constant.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 			files = (
 				DD64968727221A40009E455F /* Attendance+CoreDataClass.swift in Sources */,
 				DD18C7FB27220B890086BB6C /* CoreDateContainer.swift in Sources */,
+				DD8483072774DE9E00E7F179 /* Constant.swift in Sources */,
 				DDCBBDB6274D5288002B60DA /* RankingTableViewCell.swift in Sources */,
 				DD03AC1727481092004C4819 /* CalendarCollectionViewCell.swift in Sources */,
 				DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */,
@@ -760,7 +764,7 @@
 				DD1EAF3A2726DDD100EF1455 /* CommonUtility.swift in Sources */,
 				DD41743027246BA500BE5BFD /* RankingViewController + FSCalendar.swift in Sources */,
 				DDF1DE4D272C50CE006B7DFD /* Theme.swift in Sources */,
-				DD717D4F2772411C0003CB16 /* RankingViewController + BottomSheet.swift in Sources */,
+				DD717D4F2772411C0003CB16 /* RankingViewController + HandleType.swift in Sources */,
 				DDCBBDB4274D44B4002B60DA /* MySegmentedControl.swift in Sources */,
 				DD368F502774BECD000F0A84 /* RankingViewController+DatePicker.swift in Sources */,
 				DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */,

@@ -48,6 +48,19 @@ extension Date {
     func getStartOfMonth() -> Date {
         return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self))) ?? Date()
     }
+    /// Get last day of the month
+    func getEndOfMonth() -> Date {
+        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.getStartOfMonth()) ?? Date()
+    }
+    
+    /// Get first day of the year
+    func getStartOfYear() -> Date {
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year], from: Calendar.current.startOfDay(for: self))) ?? Date()
+    }
+    /// Get last day of the year
+    func getEndOfYear() -> Date {
+        return Calendar.current.date(byAdding: DateComponents(year: 1, day: -1), to: self.getStartOfMonth()) ?? Date()
+    }
 
     /// Get the month number and the year
     func getMonthAndYearNumber() -> (monthNumber: Int, yearNumber: Int) {
@@ -96,6 +109,32 @@ extension Date {
             }
         }
         return week
+    }
+    
+    /// Get all Dates of the month of the date
+    func getAllDateOfTheMonth() -> [Date] {
+        var dates: [Date] = []
+        var date = self.getStartOfMonth()
+         
+        while date <= self.getEndOfMonth() {
+             dates.append(date)
+             guard let newDate = Calendar.current.date(byAdding: .day, value: 1, to: date) else { break }
+             date = newDate
+         }
+         return dates
+    }
+    
+    /// Get all Dates of the year
+    func getAllDateOfTheYear() -> [Date] {
+        var dates: [Date] = []
+        var date = self.getStartOfYear()
+         
+        while date <= self.getEndOfYear() {
+             dates.append(date)
+             guard let newDate = Calendar.current.date(byAdding: .day, value: 1, to: date) else { break }
+             date = newDate
+         }
+         return dates
     }
 
     /// Returns the amount of years from another date

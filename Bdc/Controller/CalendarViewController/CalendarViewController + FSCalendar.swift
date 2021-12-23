@@ -33,7 +33,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
 
     func minimumDate(for _: FSCalendar) -> Date {
-        return DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date.yesterday
+        return Constant.startingDateBdC
     }
 
     func maximumDate(for _: FSCalendar) -> Date {
@@ -51,7 +51,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             let getMonthAndYear = calendarView.currentPage.getMonthAndYearNumber()
             // To avoid crash if we are in October 2021 we cannot select 1 but we select 25
             getMonthAndYear.yearNumber == 2021 && getMonthAndYear.monthNumber == 10
-                ? calendarView.select(DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date())
+                ? calendarView.select(Constant.startingDateBdC)
                 : calendarView.select(calendar.currentPage.getStartOfMonth())
             getDataFromCoreDataAndReloadViews()
         }

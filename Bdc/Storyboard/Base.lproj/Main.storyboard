@@ -284,8 +284,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZL-9L-OaS" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="99" width="414" height="324"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZL-9L-OaS" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="94" width="414" height="324"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="324" id="lZO-hC-B6u"/>
@@ -301,7 +301,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rxW-AI-RUa">
-                                <rect key="frame" x="0.0" y="423" width="414" height="390"/>
+                                <rect key="frame" x="0.0" y="418" width="414" height="395"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellID" id="faC-8L-aif" customClass="RankingTableViewCell" customModule="Bdc" customModuleProvider="target">
@@ -447,10 +447,10 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="du5-rp-LUH" userLabel="Top View">
-                                <rect key="frame" x="0.0" y="44" width="414" height="55"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2f-9T-MNW">
-                                        <rect key="frame" x="374" y="15" width="20" height="25"/>
+                                        <rect key="frame" x="374" y="12.5" width="20" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="bYA-Pb-cJL"/>
                                             <constraint firstAttribute="width" constant="20" id="rv6-xr-xlm"/>
@@ -465,13 +465,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5O-QU-MeP">
-                                        <rect key="frame" x="20" y="0.0" width="132" height="55"/>
+                                        <rect key="frame" x="20" y="0.0" width="132" height="50"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jSh-Fm-GEi">
-                                        <rect key="frame" x="334" y="15" width="20" height="25"/>
+                                        <rect key="frame" x="334" y="12.5" width="20" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="IBd-n1-q17"/>
                                             <constraint firstAttribute="height" constant="25" id="egd-rm-1Vd"/>
@@ -499,14 +499,14 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J7J-7m-B2l" userLabel="Monthly Year Date Picker" customClass="MonthYearPickerView" customModule="Bdc" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="99" width="414" height="127"/>
+                                <rect key="frame" x="50" y="94" width="314" height="127"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="127" id="Qcv-2L-yCh"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I1T-BT-1Dc" userLabel="Year Date Picker" customClass="YearPickerView" customModule="Bdc" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="99" width="414" height="127"/>
+                                <rect key="frame" x="50" y="94" width="314" height="127"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="127" id="rbI-p9-trA"/>
@@ -516,9 +516,9 @@
                         <viewLayoutGuide key="safeArea" id="C6Y-kX-hKN"/>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xZL-9L-OaS" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" constant="55" id="8GI-NO-n1C"/>
+                            <constraint firstItem="xZL-9L-OaS" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" constant="50" id="8GI-NO-n1C"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" id="CjB-5b-YJj"/>
-                            <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="J7J-7m-B2l" secondAttribute="trailing" id="FYw-Jw-oc6"/>
+                            <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="J7J-7m-B2l" secondAttribute="trailing" constant="50" id="FYw-Jw-oc6"/>
                             <constraint firstItem="rxW-AI-RUa" firstAttribute="top" secondItem="xZL-9L-OaS" secondAttribute="bottom" id="Jjy-vo-FoY"/>
                             <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="du5-rp-LUH" secondAttribute="trailing" id="Kgh-Jm-3Fh"/>
                             <constraint firstItem="C6Y-kX-hKN" firstAttribute="bottom" secondItem="rxW-AI-RUa" secondAttribute="bottom" id="L27-Aj-wSx"/>
@@ -527,12 +527,12 @@
                             <constraint firstItem="du5-rp-LUH" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" id="XFW-Q2-QhH"/>
                             <constraint firstItem="rxW-AI-RUa" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="bS4-aJ-OKI"/>
                             <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="rxW-AI-RUa" secondAttribute="trailing" id="gCj-ms-5xM"/>
-                            <constraint firstItem="J7J-7m-B2l" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="hR9-Ev-1Qc"/>
+                            <constraint firstItem="J7J-7m-B2l" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" constant="50" id="hR9-Ev-1Qc"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="top" secondItem="du5-rp-LUH" secondAttribute="bottom" id="kVN-Z8-31n"/>
                             <constraint firstItem="J7J-7m-B2l" firstAttribute="top" secondItem="du5-rp-LUH" secondAttribute="bottom" id="krC-sD-0Cm"/>
                             <constraint firstItem="du5-rp-LUH" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="lf7-th-vcB"/>
-                            <constraint firstItem="I1T-BT-1Dc" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="mJw-B0-9LG"/>
-                            <constraint firstItem="I1T-BT-1Dc" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" id="pmw-Hc-0Go"/>
+                            <constraint firstItem="I1T-BT-1Dc" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" constant="50" id="mJw-B0-9LG"/>
+                            <constraint firstItem="I1T-BT-1Dc" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" constant="-50" id="pmw-Hc-0Go"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Ranking" image="person.3.fill" catalog="system" id="Shf-1z-or0"/>
