@@ -22,6 +22,7 @@
 		DD27CAB1277368810020BE4D /* RankingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD27CAB0277368810020BE4D /* RankingType.swift */; };
 		DD368F4E2774BE4F000F0A84 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */; };
 		DD368F502774BECD000F0A84 /* RankingViewController+DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD368F4F2774BECD000F0A84 /* RankingViewController+DatePicker.swift */; };
+		DD368F522774D415000F0A84 /* YearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD368F512774D415000F0A84 /* YearPickerView.swift */; };
 		DD413379274FC94C0038B4C6 /* RankingViewController + TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */; };
 		DD41743027246BA500BE5BFD /* RankingViewController + FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41742F27246BA500BE5BFD /* RankingViewController + FSCalendar.swift */; };
 		DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */; };
@@ -104,6 +105,7 @@
 		DD27CAB0277368810020BE4D /* RankingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingType.swift; sourceTree = "<group>"; };
 		DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		DD368F4F2774BECD000F0A84 /* RankingViewController+DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController+DatePicker.swift"; sourceTree = "<group>"; };
+		DD368F512774D415000F0A84 /* YearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPickerView.swift; sourceTree = "<group>"; };
 		DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + TableView.swift"; sourceTree = "<group>"; };
 		DD41742F27246BA500BE5BFD /* RankingViewController + FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + FSCalendar.swift"; sourceTree = "<group>"; };
 		DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + FSCalendar.swift"; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 				DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */,
 				DD717D55277249B90003CB16 /* CheckBox.swift */,
 				DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */,
+				DD368F512774D415000F0A84 /* YearPickerView.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -741,6 +744,7 @@
 				DDB292622721A90500D96E67 /* RankingSectionHeaderView.swift in Sources */,
 				DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */,
 				DDC9EB6B275031CD00653138 /* PersonsList+CoreDataProperties.swift in Sources */,
+				DD368F522774D415000F0A84 /* YearPickerView.swift in Sources */,
 				DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */,
 				DD1A1C65274908AB006FC676 /* UIView - Ext.swift in Sources */,
 				DD717D522772428C0003CB16 /* RankingTypeViewController.swift in Sources */,

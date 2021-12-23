@@ -23,7 +23,7 @@
 //  SOFTWARE.
 import UIKit
 
-open class MonthYearPickerView: UIControl {
+open class YearPickerView: UIControl {
 
     /// specify min date. default is nil. When `minimumDate` > `maximumDate`, the values are ignored.
     /// If `date` is earlier than `minimumDate` when it is set, `date` is changed to `minimumDate`.
@@ -96,7 +96,6 @@ open class MonthYearPickerView: UIControl {
     }()
     
     fileprivate enum Component: Int {
-        case month
         case year
     }
     
@@ -118,11 +117,7 @@ open class MonthYearPickerView: UIControl {
 
     /// if animated is YES, animate the wheels of time to display the new date
     open func setDate(_ date: Date, animated: Bool) {
-        guard let yearRange = calendar.maximumRange(of: .year), let monthRange = calendar.maximumRange(of: .month) else {
-            return
-        }
-        let month = calendar.component(.month, from: date) - monthRange.lowerBound
-        pickerView.selectRow(month, inComponent: .month, animated: animated)
+        guard let yearRange = calendar.maximumRange(of: .year) else { return }
         let year = calendar.component(.year, from: date) - yearRange.lowerBound
         pickerView.selectRow(year, inComponent: .year, animated: animated)
         pickerView.reloadAllComponents()
@@ -138,32 +133,26 @@ open class MonthYearPickerView: UIControl {
     
 }
 
-extension MonthYearPickerView: UIPickerViewDelegate {
+extension YearPickerView: UIPickerViewDelegate {
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var dateComponents = calendar.dateComponents([.hour, .minute, .second], from: date)
         dateComponents.year = value(for: pickerView.selectedRow(inComponent: .year), representing: .year)
-        dateComponents.month = value(for: pickerView.selectedRow(inComponent: .month), representing: .month)
         guard let date = calendar.date(from: dateComponents) else { return }
         self.date = date
     }
     
 }
 
-extension MonthYearPickerView: UIPickerViewDataSource {
+extension YearPickerView: UIPickerViewDataSource {
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
+        return 1
     }
     
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         guard let component = Component(rawValue: component) else { return 0 }
-        switch component {
-        case .month:
-            return calendar.maximumRange(of: .month)?.count ?? 0
-        case .year:
-            return calendar.maximumRange(of: .year)?.count ?? 0
-        }
+        return calendar.maximumRange(of: .year)?.count ?? 0
     }
 
     private func value(for row: Int, representing component: Calendar.Component) -> Int? {
@@ -182,24 +171,11 @@ extension MonthYearPickerView: UIPickerViewDataSource {
 
         guard let component = Component(rawValue: component) else { return label }
         var dateComponents = calendar.dateComponents([.hour, .minute, .second], from: date)
-
-        switch component {
-            case .month:
-                dateComponents.month = value(for: row, representing: .month)
-                dateComponents.year = value(for: pickerView.selectedRow(inComponent: .year), representing: .year)
-            case .year:
-                dateComponents.month = value(for: pickerView.selectedRow(inComponent: .month), representing: .month)
-                dateComponents.year = value(for: row, representing: .year)
-        }
+        dateComponents.month = 1
+        dateComponents.year = value(for: row, representing: .year)
 
         guard let date = calendar.date(from: dateComponents) else { return label }
-
-        switch component {
-            case .month:
-                label.text = monthDateFormatter.string(from: date)
-            case .year:
-                label.text = yearDateFormatter.string(from: date)
-        }
+        label.text = yearDateFormatter.string(from: date)
 
         if #available(iOS 13.0, *) {
             label.textColor = isValidDate(date) ? .label : .secondaryLabel
@@ -212,11 +188,12 @@ extension MonthYearPickerView: UIPickerViewDataSource {
 }
 
 private extension UIPickerView {
-    func selectedRow(inComponent component: MonthYearPickerView.Component) -> Int {
+    func selectedRow(inComponent component: YearPickerView.Component) -> Int {
         selectedRow(inComponent: component.rawValue)
     }
 
-    func selectRow(_ row: Int, inComponent component: MonthYearPickerView.Component, animated: Bool) {
+    func selectRow(_ row: Int, inComponent component: YearPickerView.Component, animated: Bool) {
         selectRow(row, inComponent: component.rawValue, animated: animated)
     }
 }
+

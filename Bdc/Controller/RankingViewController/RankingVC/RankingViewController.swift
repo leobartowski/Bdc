@@ -15,7 +15,9 @@ class RankingViewController: UIViewController {
     @IBOutlet var calendarView: FSCalendar!
     @IBOutlet var calendarViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var changeRankingTypeButton: UIButton!
-    @IBOutlet var datePicker: MonthYearPickerView!
+    @IBOutlet var monthYearDatePicker: MonthYearPickerView!
+    @IBOutlet var yearDatePicker: YearPickerView!
+    
     
     var rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
     let headerBasic = ["Nome", "P", "A"]
@@ -42,8 +44,10 @@ class RankingViewController: UIViewController {
         self.tableViewSetup()
         // Calendar
         self.calendarSetup()
-        // Date Picker
-        self.datePickerSetup()
+        // Month and Year Date Picker
+        self.monthYearDatePickerSetup()
+        // Year Date Picker
+        self.yearDatePickerSetup()
     }
 
     func populateWeeklyAttendance() {
