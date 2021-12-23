@@ -28,7 +28,7 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         self.deselectAllDates()
         self.selectedAllDateOfTheWeek(calendar.currentPage)
-        self.populateWeeklyAttendance()
+        self.populateAttendance()
     }
 
     // TODO: Crash on the simulator!
@@ -41,7 +41,7 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
     }
 
     func minimumDate(for _: FSCalendar) -> Date {
-        return DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date.yesterday
+        return Constant.startingDateBdC
     }
 
     // MARK: Calendar Appearance
@@ -88,17 +88,17 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
     }
 
     func selectedAllDateOfTheWeek(_ date: Date) {
-        daysOfThisWeek = date.getAllDateOfTheWeek()
-        for day in daysOfThisWeek {
+        self.daysCurrentPeriod = date.getAllDateOfTheWeek()
+        for day in self.daysCurrentPeriod {
             if day.getDayNumberOfWeek() != 1, day.getDayNumberOfWeek() != 7 {
-                calendarView.select(day)
+                self.calendarView.select(day)
             }
         }
     }
 
     func deselectAllDates() {
         for date in calendarView.selectedDates {
-            calendarView.deselect(date)
+            self.calendarView.deselect(date)
         }
     }
 }
