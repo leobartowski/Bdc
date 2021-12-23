@@ -59,8 +59,6 @@ open class YearPickerView: UIControl {
     /// default is current calendar when picker created
     open var calendar: Calendar = Calendar.autoupdatingCurrent {
         didSet {
-            monthDateFormatter.calendar = calendar
-            monthDateFormatter.timeZone = calendar.timeZone
             yearDateFormatter.calendar = calendar
             yearDateFormatter.timeZone = calendar.timeZone
         }
@@ -70,7 +68,6 @@ open class YearPickerView: UIControl {
     open var locale: Locale? {
         didSet {
             calendar.locale = locale
-            monthDateFormatter.locale = locale
             yearDateFormatter.locale = locale
         }
     }
@@ -83,12 +80,6 @@ open class YearPickerView: UIControl {
         return pickerView
     }()
 
-    lazy private var monthDateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.setLocalizedDateFormatFromTemplate("MMMM")
-        return formatter
-    }()
-    
     lazy private var yearDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.setLocalizedDateFormatFromTemplate("y")
@@ -124,10 +115,10 @@ open class YearPickerView: UIControl {
     }
 
     internal func isValidDate(_ date: Date) -> Bool {
-        if let minimumDate = minimumDate,
-            let maximumDate = maximumDate, calendar.compare(minimumDate, to: maximumDate, toGranularity: .month) == .orderedDescending { return true }
-        if let minimumDate = minimumDate, calendar.compare(minimumDate, to: date, toGranularity: .month) == .orderedDescending { return false }
-        if let maximumDate = maximumDate, calendar.compare(date, to: maximumDate, toGranularity: .month) == .orderedDescending { return false }
+        if let minimumDate = minimumDate, let maximumDate = maximumDate,
+            calendar.compare(minimumDate, to: maximumDate, toGranularity: .year) == .orderedDescending { return true }
+        if let minimumDate = minimumDate, calendar.compare(minimumDate, to: date, toGranularity: .year) == .orderedDescending { return false }
+        if let maximumDate = maximumDate, calendar.compare(date, to: maximumDate, toGranularity: .year) == .orderedDescending { return false }
         return true
     }
     
@@ -151,7 +142,7 @@ extension YearPickerView: UIPickerViewDataSource {
     }
     
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        guard let component = Component(rawValue: component) else { return 0 }
+//        guard let component = Component(rawValue: component) else { return 0 }
         return calendar.maximumRange(of: .year)?.count ?? 0
     }
 
@@ -169,7 +160,7 @@ extension YearPickerView: UIPickerViewDataSource {
             return label
         }()
 
-        guard let component = Component(rawValue: component) else { return label }
+//        guard let component = Component(rawValue: component) else { return label }
         var dateComponents = calendar.dateComponents([.hour, .minute, .second], from: date)
         dateComponents.month = 1
         dateComponents.year = value(for: row, representing: .year)

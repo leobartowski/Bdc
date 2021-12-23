@@ -332,6 +332,17 @@
 			path = PDFCreator;
 			sourceTree = "<group>";
 		};
+		DD8483052774DD4A00E7F179 /* Custom Component */ = {
+			isa = PBXGroup;
+			children = (
+				DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */,
+				DD717D55277249B90003CB16 /* CheckBox.swift */,
+				DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */,
+				DD368F512774D415000F0A84 /* YearPickerView.swift */,
+			);
+			path = "Custom Component";
+			sourceTree = "<group>";
+		};
 		DD8543E227219D4A004D38F0 = {
 			isa = PBXGroup;
 			children = (
@@ -360,12 +371,13 @@
 				DD8543EE27219D4A004D38F0 /* AppDelegate.swift */,
 				DD0CAB512728107500EA42B1 /* Model */,
 				DD55204327256283006DB40C /* Cells */,
-				DDE3B1732722D3B000BFEFF0 /* Utility */,
+				DD8483052774DD4A00E7F179 /* Custom Component */,
 				DDE3B1702722CD3400BFEFF0 /* Ext */,
 				DD18C7F5272208920086BB6C /* Xib */,
 				DD18C7F4272207270086BB6C /* Storyboard */,
 				DD18C7F3272207050086BB6C /* Controller */,
 				DD18C80427220D0F0086BB6C /* CoreData */,
+				DDE3B1732722D3B000BFEFF0 /* Utility */,
 				DD8543FA27219D4C004D38F0 /* Assets.xcassets */,
 				DD8543FC27219D4C004D38F0 /* LaunchScreen.storyboard */,
 				DD8543FF27219D4C004D38F0 /* Info.plist */,
@@ -434,10 +446,6 @@
 				DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */,
 				DD1EAF392726DDD100EF1455 /* CommonUtility.swift */,
 				DDF1DE4C272C50CE006B7DFD /* Theme.swift */,
-				DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */,
-				DD717D55277249B90003CB16 /* CheckBox.swift */,
-				DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */,
-				DD368F512774D415000F0A84 /* YearPickerView.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";

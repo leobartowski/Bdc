@@ -21,7 +21,7 @@ extension RankingViewController {
     func yearDatePickerSetup() {
 //        self.yearDatePicker.isHidden = true
         self.yearDatePicker.locale = Locale(identifier: "it")
-        self.yearDatePicker.minimumDate = DateFormatter.basicFormatter.date(from: "25/10/2018") ?? Date()
+        self.yearDatePicker.minimumDate = DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date()
         self.yearDatePicker.maximumDate = Date.now
         self.yearDatePicker.addTarget(self, action: #selector(yearDatePickerDateChanged(_:)), for: .valueChanged)
     }
