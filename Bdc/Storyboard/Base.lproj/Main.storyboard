@@ -284,7 +284,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZL-9L-OaS" customClass="FSCalendar">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MOR-DT-m4K" customClass="MonthYearPickerView" customModule="Bdc" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="99" width="414" height="127"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="127" id="ATK-3i-qWr"/>
+                                </constraints>
+                            </pickerView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZL-9L-OaS" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="99" width="414" height="324"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -502,14 +508,17 @@
                         <viewLayoutGuide key="safeArea" id="C6Y-kX-hKN"/>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="MOR-DT-m4K" firstAttribute="top" secondItem="du5-rp-LUH" secondAttribute="bottom" id="7ej-5q-Dtm"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" constant="55" id="8GI-NO-n1C"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" id="CjB-5b-YJj"/>
                             <constraint firstItem="rxW-AI-RUa" firstAttribute="top" secondItem="xZL-9L-OaS" secondAttribute="bottom" id="Jjy-vo-FoY"/>
                             <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="du5-rp-LUH" secondAttribute="trailing" id="Kgh-Jm-3Fh"/>
                             <constraint firstItem="C6Y-kX-hKN" firstAttribute="bottom" secondItem="rxW-AI-RUa" secondAttribute="bottom" id="L27-Aj-wSx"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="LyG-y3-Ajy"/>
+                            <constraint firstItem="MOR-DT-m4K" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="SHf-kr-C1t"/>
                             <constraint firstItem="du5-rp-LUH" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" id="XFW-Q2-QhH"/>
                             <constraint firstItem="rxW-AI-RUa" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="bS4-aJ-OKI"/>
+                            <constraint firstItem="MOR-DT-m4K" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" id="ewO-JN-ssJ"/>
                             <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="rxW-AI-RUa" secondAttribute="trailing" id="gCj-ms-5xM"/>
                             <constraint firstItem="xZL-9L-OaS" firstAttribute="top" secondItem="du5-rp-LUH" secondAttribute="bottom" id="kVN-Z8-31n"/>
                             <constraint firstItem="du5-rp-LUH" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="lf7-th-vcB"/>
@@ -520,6 +529,7 @@
                         <outlet property="calendarView" destination="xZL-9L-OaS" id="xne-k8-w4e"/>
                         <outlet property="calendarViewHeightConstraint" destination="lZO-hC-B6u" id="gGn-W3-Yby"/>
                         <outlet property="changeRankingTypeButton" destination="jSh-Fm-GEi" id="q38-F9-rOn"/>
+                        <outlet property="datePicker" destination="MOR-DT-m4K" id="Aj4-HI-yj8"/>
                         <outlet property="tableView" destination="rxW-AI-RUa" id="8QQ-SO-j0F"/>
                     </connections>
                 </viewController>
