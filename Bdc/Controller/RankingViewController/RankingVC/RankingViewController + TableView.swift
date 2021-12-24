@@ -26,7 +26,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         let rankingAttendance = rankingPersonsAttendaces[indexPath.row]
         cell?.setUp(rankingAttendance, indexPath)
         cell?.setupLabelDesign(sorting.sortingPosition.rawValue)
-        self.handleColorOfTheCellOnFriday(cell, indexPath.row)
+        if self.rankingType == .weekly { self.handleColorOfTheCellOnFriday(cell, indexPath.row) }
         cell?.setNeedsLayout()
         return cell ?? UITableViewCell()
     }

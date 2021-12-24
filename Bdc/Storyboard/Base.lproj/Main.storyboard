@@ -465,21 +465,18 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5O-QU-MeP">
-                                        <rect key="frame" x="20" y="0.0" width="132" height="50"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                        <rect key="frame" x="30" y="0.0" width="106.5" height="50"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jSh-Fm-GEi">
-                                        <rect key="frame" x="334" y="12.5" width="20" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="IBd-n1-q17"/>
-                                            <constraint firstAttribute="height" constant="25" id="egd-rm-1Vd"/>
-                                        </constraints>
+                                        <rect key="frame" x="296" y="12" width="63" height="35"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain">
-                                            <backgroundConfiguration key="background" image="square.and.arrow.up" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Filtro">
+                                            <backgroundConfiguration key="background"/>
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="changeRankingTypeAction:" destination="gzR-Cb-bnF" eventType="touchUpInside" id="saa-bY-dYL"/>
@@ -490,11 +487,11 @@
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="a5O-QU-MeP" secondAttribute="bottom" id="7Yw-Vk-wE5"/>
-                                    <constraint firstItem="a5O-QU-MeP" firstAttribute="leading" secondItem="du5-rp-LUH" secondAttribute="leading" constant="20" id="Av7-fF-XG1"/>
-                                    <constraint firstItem="w2f-9T-MNW" firstAttribute="leading" secondItem="jSh-Fm-GEi" secondAttribute="trailing" constant="20" id="BSy-kx-04p"/>
+                                    <constraint firstItem="a5O-QU-MeP" firstAttribute="leading" secondItem="du5-rp-LUH" secondAttribute="leading" constant="30" id="Av7-fF-XG1"/>
+                                    <constraint firstItem="jSh-Fm-GEi" firstAttribute="top" secondItem="du5-rp-LUH" secondAttribute="top" constant="12" id="Wfj-B6-XMS"/>
                                     <constraint firstItem="w2f-9T-MNW" firstAttribute="centerY" secondItem="a5O-QU-MeP" secondAttribute="centerY" id="ZqE-Rd-nRm"/>
+                                    <constraint firstItem="w2f-9T-MNW" firstAttribute="leading" secondItem="jSh-Fm-GEi" secondAttribute="trailing" constant="15" id="c8u-zu-Qf2"/>
                                     <constraint firstAttribute="trailing" secondItem="w2f-9T-MNW" secondAttribute="trailing" constant="20" id="nfD-8s-18r"/>
-                                    <constraint firstItem="jSh-Fm-GEi" firstAttribute="centerY" secondItem="a5O-QU-MeP" secondAttribute="centerY" id="pO2-MR-R5R"/>
                                     <constraint firstItem="a5O-QU-MeP" firstAttribute="top" secondItem="du5-rp-LUH" secondAttribute="top" id="sGk-wk-mac"/>
                                 </constraints>
                             </view>

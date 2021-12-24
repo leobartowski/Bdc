@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        CoreDataService.shared.updateNameSpecificPerson(oldName: "Roberto", newName: "Cataldo")
         self.disableDarkMode()
         self.fixTableViewBugGloabally()
         return true
