@@ -284,24 +284,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZL-9L-OaS" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="94" width="414" height="324"/>
-                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fR-ul-Poo" userLabel="Container View for RankingType">
+                                <rect key="frame" x="20" y="87.5" width="374" height="350"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZL-9L-OaS" customClass="FSCalendar">
+                                        <rect key="frame" x="5" y="5" width="364" height="340"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="gzR-Cb-bnF" id="mYz-5P-VH0"/>
+                                            <outlet property="delegate" destination="gzR-Cb-bnF" id="PZf-wE-ane"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J7J-7m-B2l" userLabel="Monthly Year Date Picker" customClass="MonthYearPickerView" customModule="Bdc" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="5" width="314" height="340"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I1T-BT-1Dc" userLabel="Year Date Picker" customClass="YearPickerView" customModule="Bdc" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="5" width="314" height="340"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="324" id="lZO-hC-B6u"/>
+                                    <constraint firstItem="I1T-BT-1Dc" firstAttribute="leading" secondItem="6fR-ul-Poo" secondAttribute="leading" constant="30" id="Dl6-iQ-hGa"/>
+                                    <constraint firstItem="xZL-9L-OaS" firstAttribute="top" secondItem="6fR-ul-Poo" secondAttribute="top" constant="5" id="Fk1-0D-Ypa"/>
+                                    <constraint firstAttribute="trailing" secondItem="xZL-9L-OaS" secondAttribute="trailing" constant="5" id="IWj-xZ-W8M"/>
+                                    <constraint firstAttribute="bottom" secondItem="J7J-7m-B2l" secondAttribute="bottom" constant="5" id="Jgk-tc-vNc"/>
+                                    <constraint firstItem="J7J-7m-B2l" firstAttribute="leading" secondItem="6fR-ul-Poo" secondAttribute="leading" constant="30" id="QNt-Eb-XOD"/>
+                                    <constraint firstAttribute="trailing" secondItem="J7J-7m-B2l" secondAttribute="trailing" constant="30" id="ReK-aJ-hOe"/>
+                                    <constraint firstAttribute="height" constant="350" id="ad2-08-3zn"/>
+                                    <constraint firstItem="xZL-9L-OaS" firstAttribute="leading" secondItem="6fR-ul-Poo" secondAttribute="leading" constant="5" id="ajf-gY-0ye"/>
+                                    <constraint firstItem="J7J-7m-B2l" firstAttribute="top" secondItem="6fR-ul-Poo" secondAttribute="top" constant="5" id="gxC-8c-67r"/>
+                                    <constraint firstAttribute="trailing" secondItem="I1T-BT-1Dc" secondAttribute="trailing" constant="30" id="hl9-P8-QAI"/>
+                                    <constraint firstAttribute="bottom" secondItem="I1T-BT-1Dc" secondAttribute="bottom" constant="5" id="pih-oG-EPH"/>
+                                    <constraint firstAttribute="bottom" secondItem="xZL-9L-OaS" secondAttribute="bottom" constant="5" id="pud-dn-Na7"/>
+                                    <constraint firstItem="I1T-BT-1Dc" firstAttribute="top" secondItem="6fR-ul-Poo" secondAttribute="top" constant="5" id="yqc-Bs-Y6x"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="dataSource" destination="gzR-Cb-bnF" id="mYz-5P-VH0"/>
-                                    <outlet property="delegate" destination="gzR-Cb-bnF" id="PZf-wE-ane"/>
-                                </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rxW-AI-RUa">
-                                <rect key="frame" x="0.0" y="418" width="414" height="395"/>
+                                <rect key="frame" x="0.0" y="447.5" width="414" height="365.5"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellID" id="faC-8L-aif" customClass="RankingTableViewCell" customModule="Bdc" customModuleProvider="target">
@@ -447,10 +473,10 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="du5-rp-LUH" userLabel="Top View">
-                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="33.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2f-9T-MNW">
-                                        <rect key="frame" x="374" y="12.5" width="20" height="25"/>
+                                        <rect key="frame" x="374" y="4.5" width="20" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="bYA-Pb-cJL"/>
                                             <constraint firstAttribute="width" constant="20" id="rv6-xr-xlm"/>
@@ -465,13 +491,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5O-QU-MeP">
-                                        <rect key="frame" x="30" y="0.0" width="106.5" height="50"/>
+                                        <rect key="frame" x="30" y="0.0" width="106.5" height="33.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jSh-Fm-GEi">
-                                        <rect key="frame" x="296" y="7.5" width="63" height="35"/>
+                                        <rect key="frame" x="296" y="-0.5" width="63" height="35"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Filtro">
@@ -495,48 +521,28 @@
                                     <constraint firstItem="a5O-QU-MeP" firstAttribute="top" secondItem="du5-rp-LUH" secondAttribute="top" id="sGk-wk-mac"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J7J-7m-B2l" userLabel="Monthly Year Date Picker" customClass="MonthYearPickerView" customModule="Bdc" customModuleProvider="target">
-                                <rect key="frame" x="50" y="94" width="314" height="127"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="127" id="Qcv-2L-yCh"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I1T-BT-1Dc" userLabel="Year Date Picker" customClass="YearPickerView" customModule="Bdc" customModuleProvider="target">
-                                <rect key="frame" x="50" y="94" width="314" height="127"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="127" id="rbI-p9-trA"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="C6Y-kX-hKN"/>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xZL-9L-OaS" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" constant="50" id="8GI-NO-n1C"/>
-                            <constraint firstItem="xZL-9L-OaS" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" id="CjB-5b-YJj"/>
-                            <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="J7J-7m-B2l" secondAttribute="trailing" constant="50" id="FYw-Jw-oc6"/>
-                            <constraint firstItem="rxW-AI-RUa" firstAttribute="top" secondItem="xZL-9L-OaS" secondAttribute="bottom" id="Jjy-vo-FoY"/>
+                            <constraint firstItem="6fR-ul-Poo" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" constant="20" id="EWc-hI-RnP"/>
                             <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="du5-rp-LUH" secondAttribute="trailing" id="Kgh-Jm-3Fh"/>
                             <constraint firstItem="C6Y-kX-hKN" firstAttribute="bottom" secondItem="rxW-AI-RUa" secondAttribute="bottom" id="L27-Aj-wSx"/>
-                            <constraint firstItem="I1T-BT-1Dc" firstAttribute="top" secondItem="du5-rp-LUH" secondAttribute="bottom" id="LNr-Ri-9Gs"/>
-                            <constraint firstItem="xZL-9L-OaS" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="LyG-y3-Ajy"/>
                             <constraint firstItem="du5-rp-LUH" firstAttribute="top" secondItem="C6Y-kX-hKN" secondAttribute="top" id="XFW-Q2-QhH"/>
+                            <constraint firstItem="6fR-ul-Poo" firstAttribute="top" secondItem="du5-rp-LUH" secondAttribute="bottom" constant="10" id="Zsh-UU-mzY"/>
                             <constraint firstItem="rxW-AI-RUa" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="bS4-aJ-OKI"/>
+                            <constraint firstItem="rxW-AI-RUa" firstAttribute="top" secondItem="6fR-ul-Poo" secondAttribute="bottom" constant="10" id="dud-eN-aAJ"/>
                             <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="rxW-AI-RUa" secondAttribute="trailing" id="gCj-ms-5xM"/>
-                            <constraint firstItem="J7J-7m-B2l" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" constant="50" id="hR9-Ev-1Qc"/>
-                            <constraint firstItem="xZL-9L-OaS" firstAttribute="top" secondItem="du5-rp-LUH" secondAttribute="bottom" id="kVN-Z8-31n"/>
-                            <constraint firstItem="J7J-7m-B2l" firstAttribute="top" secondItem="du5-rp-LUH" secondAttribute="bottom" id="krC-sD-0Cm"/>
                             <constraint firstItem="du5-rp-LUH" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" id="lf7-th-vcB"/>
-                            <constraint firstItem="I1T-BT-1Dc" firstAttribute="leading" secondItem="C6Y-kX-hKN" secondAttribute="leading" constant="50" id="mJw-B0-9LG"/>
-                            <constraint firstItem="I1T-BT-1Dc" firstAttribute="trailing" secondItem="C6Y-kX-hKN" secondAttribute="trailing" constant="-50" id="pmw-Hc-0Go"/>
+                            <constraint firstItem="C6Y-kX-hKN" firstAttribute="trailing" secondItem="6fR-ul-Poo" secondAttribute="trailing" constant="20" id="t1w-fD-Wbo"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Ranking" image="person.3.fill" catalog="system" id="Shf-1z-or0"/>
                     <connections>
                         <outlet property="calendarView" destination="xZL-9L-OaS" id="xne-k8-w4e"/>
-                        <outlet property="calendarViewHeightConstraint" destination="lZO-hC-B6u" id="gGn-W3-Yby"/>
+                        <outlet property="calendarViewHeightConstraint" destination="ad2-08-3zn" id="xDW-m4-tee"/>
                         <outlet property="changeRankingTypeButton" destination="jSh-Fm-GEi" id="q38-F9-rOn"/>
+                        <outlet property="containerViewForRankingType" destination="6fR-ul-Poo" id="iqI-sX-f70"/>
                         <outlet property="monthYearDatePicker" destination="J7J-7m-B2l" id="l1i-7z-rWv"/>
                         <outlet property="tableView" destination="rxW-AI-RUa" id="8QQ-SO-j0F"/>
                         <outlet property="yearDatePicker" destination="I1T-BT-1Dc" id="zjL-td-ix2"/>
