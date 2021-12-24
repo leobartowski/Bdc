@@ -66,7 +66,7 @@ class CalendarViewController: UIViewController {
 
     /// Add shadow and corner radius to bottom Calendar Handle View
     func designBottomCalendarHandleView() {
-        self.bottomCalendarHandleView.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
+        self.bottomCalendarHandleView.layer.shadowColor = UIColor.lightGray.cgColor
         self.bottomCalendarHandleView.layer.shadowOffset = CGSize(width: 0.0, height: 4)
         self.bottomCalendarHandleView.layer.shadowOpacity = 0.5
         self.bottomCalendarHandleView.layer.shadowRadius = 2

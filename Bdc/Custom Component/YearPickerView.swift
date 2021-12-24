@@ -152,9 +152,12 @@ extension YearPickerView: UIPickerViewDataSource {
     }
 
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        if #available(iOS 14.0, *) { pickerView.subviews[1].backgroundColor = .clear }
+        
         let label: UILabel = view as? UILabel ?? {
             let label = UILabel()
-            label.font = .preferredFont(forTextStyle: .title2, compatibleWith: traitCollection)
+            label.font = .systemFont(ofSize: 25, weight: .regular)
             label.adjustsFontForContentSizeCategory = true
             label.textAlignment = .center
             return label
@@ -164,14 +167,16 @@ extension YearPickerView: UIPickerViewDataSource {
         var dateComponents = calendar.dateComponents([.hour, .minute, .second], from: date)
         dateComponents.month = 1
         dateComponents.year = value(for: row, representing: .year)
-
+        
         guard let date = calendar.date(from: dateComponents) else { return label }
         label.text = yearDateFormatter.string(from: date)
-
-        if #available(iOS 13.0, *) {
-            label.textColor = isValidDate(date) ? .label : .secondaryLabel
+        
+        if isValidDate(date) {
+            label.font = .systemFont(ofSize: 25, weight: .medium)
+            label.textColor = .black
         } else {
-            label.textColor = isValidDate(date) ? .black : .lightGray
+            label.font = .systemFont(ofSize: 25, weight: .light)
+            label.textColor = .lightGray
         }
 
         return label
