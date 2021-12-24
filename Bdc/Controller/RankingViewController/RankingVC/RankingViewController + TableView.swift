@@ -24,7 +24,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? RankingTableViewCell
         let rankingAttendance = rankingPersonsAttendaces[indexPath.row]
-        cell?.setUp(rankingAttendance, indexPath)
+        cell?.setUp(rankingAttendance, indexPath, self.rankingType)
         cell?.setupLabelDesign(sorting.sortingPosition.rawValue)
         if self.rankingType == .weekly { self.handleColorOfTheCellOnFriday(cell, indexPath.row) }
         cell?.setNeedsLayout()
@@ -32,7 +32,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if self.rankingType != .weekly { return nil }
+//        if self.rankingType != .weekly { return nil }
         selectedCellRow = indexPath.row == selectedCellRow ? -1 : indexPath.row
         guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return indexPath }
         if selectedIndexPath == indexPath {
@@ -48,7 +48,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt _: IndexPath) {
-        if self.rankingType != .weekly { return }
+//        if self.rankingType != .weekly { return }
         tableView.beginUpdates()
         UIView.animate(withDuration: 0.3) {
             tableView.performBatchUpdates(nil)

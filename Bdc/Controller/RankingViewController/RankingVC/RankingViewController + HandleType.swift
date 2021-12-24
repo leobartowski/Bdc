@@ -22,6 +22,7 @@ extension RankingViewController {
                 sizes: [.fixed(310)]
             )
             sheetController.gripSize = CGSize(width: 35, height: 6)
+            
             sheetController.didDismiss = { _ in
                 // Update rankingType based on user's choice
                 self.rankingType = vc.selectedType
@@ -40,12 +41,13 @@ extension RankingViewController {
             self.monthYearDatePicker.isHidden = true
             self.yearDatePicker.isHidden = true
             self.daysCurrentPeriod = self.calendarView.selectedDates
-            
+            self.tableView.allowsSelection = true
         case .monthly:
             self.calendarView.isHidden = true
             self.monthYearDatePicker.isHidden = false
             self.yearDatePicker.isHidden = true
             self.monthYearDatePicker.date = Date()
+            self.tableView.allowsSelection = false
             self.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheMonth()
         case .yearly:
             
@@ -53,6 +55,7 @@ extension RankingViewController {
             self.monthYearDatePicker.isHidden = true
             self.yearDatePicker.isHidden = false
             self.yearDatePicker.date = Date()
+            self.tableView.allowsSelection = false
             self.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheYear()
         }
         self.populateAttendance()
