@@ -41,7 +41,7 @@ class RankingTableViewCell: UITableViewCell {
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
     }
 
-    func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath) {
+    func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath, _ rankingType: RankingType) {
         self.indexPath = indexPath
         self.setUpShadow()
         self.nameLabel.text = rankingAttendance.person.name
@@ -49,6 +49,7 @@ class RankingTableViewCell: UITableViewCell {
         self.admonishmentLabel.text = String(rankingAttendance.admonishmentNumber)
         let imageString = CommonUtility.getProfileImageString(rankingAttendance.person)
         self.mainImageView.image = UIImage(named: imageString)
+        if rankingType != .weekly { return }
         self.morningDaysNumbers = self.createNumbersArray(rankingAttendance.morningDate)
         self.eveningDaysNumbers = self.createNumbersArray(rankingAttendance.eveningDate)
         DispatchQueue.main.async {

@@ -471,7 +471,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jSh-Fm-GEi">
-                                        <rect key="frame" x="296" y="12" width="63" height="35"/>
+                                        <rect key="frame" x="296" y="7.5" width="63" height="35"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Filtro">
@@ -488,9 +488,9 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="a5O-QU-MeP" secondAttribute="bottom" id="7Yw-Vk-wE5"/>
                                     <constraint firstItem="a5O-QU-MeP" firstAttribute="leading" secondItem="du5-rp-LUH" secondAttribute="leading" constant="30" id="Av7-fF-XG1"/>
-                                    <constraint firstItem="jSh-Fm-GEi" firstAttribute="top" secondItem="du5-rp-LUH" secondAttribute="top" constant="12" id="Wfj-B6-XMS"/>
-                                    <constraint firstItem="w2f-9T-MNW" firstAttribute="centerY" secondItem="a5O-QU-MeP" secondAttribute="centerY" id="ZqE-Rd-nRm"/>
+                                    <constraint firstItem="w2f-9T-MNW" firstAttribute="centerY" secondItem="a5O-QU-MeP" secondAttribute="centerY" id="H6b-Ha-C5O"/>
                                     <constraint firstItem="w2f-9T-MNW" firstAttribute="leading" secondItem="jSh-Fm-GEi" secondAttribute="trailing" constant="15" id="c8u-zu-Qf2"/>
+                                    <constraint firstItem="jSh-Fm-GEi" firstAttribute="centerY" secondItem="a5O-QU-MeP" secondAttribute="centerY" id="dwb-2V-cg0"/>
                                     <constraint firstAttribute="trailing" secondItem="w2f-9T-MNW" secondAttribute="trailing" constant="20" id="nfD-8s-18r"/>
                                     <constraint firstItem="a5O-QU-MeP" firstAttribute="top" secondItem="du5-rp-LUH" secondAttribute="top" id="sGk-wk-mac"/>
                                 </constraints>
