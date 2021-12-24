@@ -26,11 +26,13 @@ class PDFCreator: NSObject {
 
     static func createPDFTitle(dates: [Date]) -> String {
         var daysToCreateTitle = dates.filter { $0 <= Date.now }
+        daysToCreateTitle.removeAll(where: { $0 < Constant.startingDateBdC })
         daysToCreateTitle = daysToCreateTitle.sorted(by: { $0 < $1 })
         let date1 = daysToCreateTitle.first ?? Date()
         let date2 = daysToCreateTitle.last ?? Date()
         let date1String = DateFormatter.dayAndMonthFormatter.string(from: date1)
         let date2String = DateFormatter.dayAndMonthFormatter.string(from: date2)
+        
         return "Presenze BdC dal " + date1String + " al " + date2String
     }
 
