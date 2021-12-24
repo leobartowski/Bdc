@@ -13,11 +13,12 @@ class RankingViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var calendarView: FSCalendar!
-    @IBOutlet var calendarViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var changeRankingTypeButton: UIButton!
     @IBOutlet var monthYearDatePicker: MonthYearPickerView!
     @IBOutlet var yearDatePicker: YearPickerView!
-    
+    @IBOutlet var containerViewForRankingType: UIView!
+    // Constraints
+    @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     
     var rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
     let headerBasic = ["Nome", "P", "A"]
@@ -36,12 +37,16 @@ class RankingViewController: UIViewController {
 
     // We update the data in the DidAppear to have always data updated after some modification
     override func viewDidAppear(_: Bool) {
-        if self.rankingType == .weekly {
             self.populateAttendance()
-        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.containerViewForRankingType.layer.shadowPath = UIBezierPath(roundedRect: self.containerViewForRankingType.bounds, cornerRadius: 15).cgPath
     }
 
     func viewSetUp() {
+        // UI
+        self.setupShadowContainerView()
         // Table View
         self.tableViewSetup()
         // Calendar
@@ -51,7 +56,20 @@ class RankingViewController: UIViewController {
         // Year Date Picker
         self.yearDatePickerSetup()
     }
+    
+    func setupShadowContainerView() {
+        let cornerRadius: CGFloat = 15
+        self.containerViewForRankingType.cornerRadius = cornerRadius
+        self.containerViewForRankingType.layer.masksToBounds = true
+        self.containerViewForRankingType.layer.shadowColor = UIColor.gray.cgColor
+        self.containerViewForRankingType.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.containerViewForRankingType.layer.shadowOpacity = 0.3
+        self.containerViewForRankingType.layer.shadowRadius = 2
+        self.containerViewForRankingType.layer.shadowPath = UIBezierPath(roundedRect: self.containerViewForRankingType.bounds, cornerRadius: cornerRadius).cgPath
+        self.containerViewForRankingType.layer.masksToBounds = false
+    }
 
+    /// Retrive attendance from CoreData
     func populateAttendance() {
         for item in self.rankingPersonsAttendaces {
             // We need to clear all presences and adomishment

@@ -13,11 +13,11 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         return 1
     }
     
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rankingPersonsAttendaces.count
     }
     
-    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.row == selectedCellRow ? 200 : 70
     }
     
@@ -47,8 +47,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         return indexPath
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt _: IndexPath) {
-//        if self.rankingType != .weekly { return }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.beginUpdates()
         UIView.animate(withDuration: 0.3) {
             tableView.performBatchUpdates(nil)
@@ -56,11 +55,11 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         tableView.endUpdates()
     }
     
-    func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
-        return 60
+    func tableView(_ tableView: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
+        return 50
     }
     
-    func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection _: Int) -> UIView? {
         let sectionHeaderView = RankingSectionHeaderView()
         sectionHeaderView.delegate = self
         sectionHeaderView.nameLabel.text = header[0]
@@ -68,6 +67,10 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         sectionHeaderView.admonishmentLabel.text = header[2]
         sectionHeaderView.setupLabelDesign(sorting.sortingPosition.rawValue)
         return sectionHeaderView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        20
     }
     
     func tableViewSetup() {
@@ -80,13 +83,15 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         self.tableView.addGestureRecognizer(rightSwipeGR)
         
         self.header = self.headerBasic
+        
+        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 10))
     }
     
     func handleColorOfTheCellOnFriday(_ cell: RankingTableViewCell?, _ row: Int) {
         // Show red and green cell only on friday and only if the week on focus is the current week
         if Date().getDayNumberOfWeek() == 6, calendarView.currentPage.getWeekNumber() == Date.now.getWeekNumber() {
             // Check if the user has at least two presence or more than 2 admonishment
-            cell?.containerView.layer.shadowOpacity = 0.7
+            cell?.containerView.layer.shadowOpacity = 0.3
             cell?.containerView.layer.shadowColor = rankingPersonsAttendaces[row].attendanceNumber < 2 || rankingPersonsAttendaces[row].admonishmentNumber >= 2
             ? UIColor.red.cgColor
             : Theme.customGreen.cgColor
