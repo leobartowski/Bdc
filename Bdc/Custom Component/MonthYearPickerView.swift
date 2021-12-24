@@ -23,6 +23,7 @@
 //  SOFTWARE.
 import UIKit
 
+
 open class MonthYearPickerView: UIControl {
 
     /// specify min date. default is nil. When `minimumDate` > `maximumDate`, the values are ignored.
@@ -111,6 +112,7 @@ open class MonthYearPickerView: UIControl {
     }
     
     private func initialSetup() {
+        
         addSubview(pickerView)
         calendar.timeZone = TimeZone(secondsFromGMT: 0)!
         setDate(date, animated: false)
@@ -172,9 +174,11 @@ extension MonthYearPickerView: UIPickerViewDataSource {
     }
 
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        if #available(iOS 14.0, *) { pickerView.subviews[1].backgroundColor = .clear }
+        
         let label: UILabel = view as? UILabel ?? {
             let label = UILabel()
-            label.font = .preferredFont(forTextStyle: .title2, compatibleWith: traitCollection)
             label.adjustsFontForContentSizeCategory = true
             label.textAlignment = .center
             return label
@@ -197,16 +201,16 @@ extension MonthYearPickerView: UIPickerViewDataSource {
         switch component {
             case .month:
                 label.text = monthDateFormatter.string(from: date)
-            case .year:
-                label.text = yearDateFormatter.string(from: date)
+        case .year:
+            label.text = yearDateFormatter.string(from: date)
         }
-
-        if #available(iOS 13.0, *) {
-            label.textColor = isValidDate(date) ? .label : .secondaryLabel
+        if isValidDate(date) {
+            label.font = .systemFont(ofSize: 25, weight: .medium)
+            label.textColor = .black
         } else {
-            label.textColor = isValidDate(date) ? .black : .lightGray
+            label.font = .systemFont(ofSize: 25, weight: .light)
+            label.textColor = .lightGray
         }
-
         return label
     }
 }
