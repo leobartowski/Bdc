@@ -42,6 +42,8 @@
 		DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */; };
 		DD7B2589275680DE00E663AC /* Array + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2588275680DE00E663AC /* Array + Ext.swift */; };
 		DD8483072774DE9E00E7F179 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8483062774DE9E00E7F179 /* Constant.swift */; };
+		DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84830927772AFA00E7F179 /* SettingsViewController.swift */; };
+		DD84830D27772FC200E7F179 /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */; };
 		DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543EE27219D4A004D38F0 /* AppDelegate.swift */; };
 		DD8543F127219D4A004D38F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543F027219D4A004D38F0 /* SceneDelegate.swift */; };
 		DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543F227219D4A004D38F0 /* CalendarViewController.swift */; };
@@ -126,6 +128,8 @@
 		DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFTableDataItem.swift; sourceTree = "<group>"; };
 		DD7B2588275680DE00E663AC /* Array + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + Ext.swift"; sourceTree = "<group>"; };
 		DD8483062774DE9E00E7F179 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		DD84830927772AFA00E7F179 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		DD8543EB27219D4A004D38F0 /* Bdc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bdc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8543EE27219D4A004D38F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD8543F027219D4A004D38F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 		DD18C7F3272207050086BB6C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DD84830827772AE700E7F179 /* Settings */,
 				DD5542DE2724563C000D9F48 /* CalendarViewController */,
 				DD5542E327245875000D9F48 /* RankingViewController */,
 			);
@@ -264,6 +269,7 @@
 		DD55204327256283006DB40C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				DD84830B27772F8100E7F179 /* SettingsViewController */,
 				DDFE30C32754431F0025BA19 /* CalendarVC */,
 				DDFE30C2275443140025BA19 /* RankingViewController */,
 			);
@@ -343,6 +349,22 @@
 				DD368F512774D415000F0A84 /* YearPickerView.swift */,
 			);
 			path = "Custom Component";
+			sourceTree = "<group>";
+		};
+		DD84830827772AE700E7F179 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DD84830927772AFA00E7F179 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		DD84830B27772F8100E7F179 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */,
+			);
+			path = SettingsViewController;
 			sourceTree = "<group>";
 		};
 		DD8543E227219D4A004D38F0 = {
@@ -749,6 +771,7 @@
 				DD60B5552753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift in Sources */,
 				DD617CEB2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift in Sources */,
 				DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */,
+				DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */,
 				DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */,
 				DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */,
 				DD617CED2753C3AE002AD5E7 /* RankingTableViewCell + CollectionView.swift in Sources */,
@@ -767,6 +790,7 @@
 				DD717D4F2772411C0003CB16 /* RankingViewController + HandleType.swift in Sources */,
 				DDCBBDB4274D44B4002B60DA /* MySegmentedControl.swift in Sources */,
 				DD368F502774BECD000F0A84 /* RankingViewController+DatePicker.swift in Sources */,
+				DD84830D27772FC200E7F179 /* SettingsSwitchTableViewCell.swift in Sources */,
 				DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */,
 				DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */,
 				DD368F4E2774BE4F000F0A84 /* MonthYearPickerView.swift in Sources */,

@@ -41,9 +41,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         // Check to avoid the modification of day older than today
-        if (Date().days(from: calendarView.selectedDate ?? Date()) > 0) ||
-            (indexPath.section == 0 && personsPresent.isEmpty)
-        {
+        if !UserDefaults.standard.bool(forKey: "canModifyOldDays") || (indexPath.section == 0 && personsPresent.isEmpty) {
             return false
         }
         return true
