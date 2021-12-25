@@ -25,9 +25,8 @@ class PDFCreator: NSObject {
     }
 
     static func createPDFTitle(dates: [Date]) -> String {
-        var daysToCreateTitle = dates.filter { $0 <= Date.now }
-        daysToCreateTitle.removeAll(where: { $0 < Constant.startingDateBdC })
-        daysToCreateTitle = daysToCreateTitle.sorted(by: { $0 < $1 })
+        var daysToCreateTitle = dates.sorted(by: { $0 < $1 })
+        daysToCreateTitle = daysToCreateTitle.filter { $0 <= Date.now }
         let date1 = daysToCreateTitle.first ?? Date()
         let date2 = daysToCreateTitle.last ?? Date()
         let date1String = DateFormatter.dayAndMonthFormatter.string(from: date1)
