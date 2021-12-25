@@ -65,4 +65,10 @@ extension UIView {
         border.frame = CGRect(x: 0, y: 0, width: width, height: frame.size.height)
         layer.addSublayer(border)
     }
+    
+    func hideViewWithTransition(hidden: Bool, duration: CGFloat = 0.5) {
+        UIView.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {
+            self.isHidden = hidden
+        })
+    }
 }

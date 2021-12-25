@@ -25,38 +25,43 @@ extension RankingViewController {
             
             sheetController.didDismiss = { _ in
                 // Update rankingType based on user's choice
+                let oldRankingType = self.rankingType
                 self.rankingType = vc.selectedType
-                self.handleChangeRankingType()
+                self.handleChangeRankingType(oldRankingType)
             }
             self.present(sheetController, animated: true, completion: nil)
         }
     }
     
-    private func handleChangeRankingType() {
+    private func handleChangeRankingType(_ oldRankingType: RankingType) {
         self.daysCurrentPeriod.removeAll()
         
         switch self.rankingType {
         case .weekly:
-            self.calendarView.isHidden = false
+            
+            self.calendarView.hideViewWithTransition(hidden: false)
             self.monthYearDatePicker.isHidden = true
             self.yearDatePicker.isHidden = true
-            self.daysCurrentPeriod = self.calendarView.selectedDates
             self.tableView.allowsSelection = true
+            self.daysCurrentPeriod = self.calendarView.selectedDates
         case .monthly:
+            
             self.calendarView.isHidden = true
-            self.monthYearDatePicker.isHidden = false
+            self.monthYearDatePicker.hideViewWithTransition(hidden: false)
             self.yearDatePicker.isHidden = true
             self.monthYearDatePicker.date = Date()
             self.tableView.allowsSelection = false
             self.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheMonth()
+            self.daysCurrentPeriod.removeAll(where: { $0 < Constant.startingDateBdC })
         case .yearly:
             
             self.calendarView.isHidden = true
             self.monthYearDatePicker.isHidden = true
-            self.yearDatePicker.isHidden = false
+            self.yearDatePicker.hideViewWithTransition(hidden: false)
             self.yearDatePicker.date = Date()
             self.tableView.allowsSelection = false
             self.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheYear()
+            self.daysCurrentPeriod.removeAll(where: { $0 < Constant.startingDateBdC })
         }
         self.populateAttendance()
     }
