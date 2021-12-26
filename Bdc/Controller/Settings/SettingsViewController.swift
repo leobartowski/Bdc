@@ -49,7 +49,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 return cell ?? UITableViewCell()
             case 1: // Handle Persons List
                 let cell = tableView.dequeueReusableCell(withIdentifier: "arrowCellID", for: indexPath) as? SettingsArrowTableViewCell
-                cell?.setup(text: "Abilita modifica giorni passati", settingsType: .handlePersonList)
+                cell?.setup(text: "Gestisci persone", settingsType: .handlePersonList)
                 return cell ?? UITableViewCell()
             default:
                 return UITableViewCell()
