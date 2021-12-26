@@ -23,22 +23,22 @@ class CalendarViewController: UIViewController {
     var personsPresent: [Person] = []
     var personsNotPresent: [Person] = []
     var personsAdmonished: [Person] = []
+    var canModifyOldDays = false
 
     // MARK: LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setUpCalendarAppearance()
+        self.setUpCalendarAppearance()
         self.setupSegmentedControl()
-        checkAndChangeWeekendSelectedDate()
+        self.checkAndChangeWeekendSelectedDate()
         self.getDataFromCoreDataAndReloadViews()
-        addCalendarGestureRecognizer()
+        self.addCalendarGestureRecognizer()
         self.designBottomCalendarHandleView()
         self.updateGoToTodayButton()
-
-        //        self.setupCollectionView()
         self.addObservers()
+        self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
     }
 
     // We save everything to core data to prepare the new data for the RankingVC
@@ -79,7 +79,9 @@ class CalendarViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.willBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.systemTimeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
-    }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeModifyStatus(_:)), name: .didChangeModifyStatus, object: nil)
+}
 
     func updateGoToTodayButton() {
         self.goToTodayButton.alpha = Date().getDayNumberOfWeek() == 1 || Date().getDayNumberOfWeek() == 7
@@ -167,6 +169,11 @@ class CalendarViewController: UIViewController {
     func sortPersonPresentAndNot() {
         self.personsPresent = self.personsPresent.sorted { $0.name ?? "" < $1.name ?? "" }
         self.personsNotPresent = self.personsNotPresent.sorted { $0.name ?? "" < $1.name ?? "" }
+    }
+    
+    // MARK: Handle settings
+    @objc func didChangeModifyStatus(_: Notification) {
+        self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
     }
 
     // MARK: IBActions
