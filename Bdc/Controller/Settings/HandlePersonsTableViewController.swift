@@ -37,4 +37,16 @@ class HandlePersonsTableViewController: UITableViewController {
         cell?.setup(PersonListUtility.persons[indexPath.row])
         return cell ?? UITableViewCell()
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let cell = tableView.cellForRow(at: indexPath) as? HandlePersonTableViewCell
+            CoreDataService.shared.deletePersonFromPersonsList(name: cell?.person.name)
+            PersonListUtility.persons = CoreDataService.shared.getPersonsList()
+//            DispatchQueue.main.async {
+//                tableView.deleteRows(at: [indexPath], with: .none)
+//            }
+            
+        }
+    }
 }

@@ -109,13 +109,34 @@ class CoreDataService {
             if let personsList = try context.fetch(fetchRequest).first {
                 return personsList.persons?.allObjects as? [Person] ?? []
             }
-
+            
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
         }
         return []
     }
 
+    func deletePersonFromPersonsList(name: String? = "") {
+        print(" prima eliminazione \(CoreDataService.shared.getPersonsList().count)")
+        
+        let fetchRequest = NSFetchRequest<PersonsList>(entityName: "PersonsList")
+        do {
+            if let personsList = try context.fetch(fetchRequest).first {
+                
+                for person in personsList.persons?.allObjects as? [Person] ?? [] where person.name == name {
+                    self.context.delete(person)
+                }
+                
+                try self.context.save()
+                
+                print(" dopo eliminazione \(CoreDataService.shared.getPersonsList().count)")
+            }
+
+        } catch let error as NSError {
+            print("Could not list. \(error), \(error.userInfo)")
+        }
+    }
+    
     // MARK: Methods to update Person Properties
 
     /// Use this string to update/add imageString to a person
@@ -129,6 +150,8 @@ class CoreDataService {
         do {
             if let personsList = try context.fetch(fetchRequest).first {
                 personsList.persons = NSSet(array: persons)
+                
+                try self.context.save()
             }
 
         } catch let error as NSError {
@@ -189,10 +212,10 @@ class CoreDataService {
     }
 
     /// Use this  just one time to create the persons List on a new device!
-    func createPersonsList() {
+    func createPersonsList(_ persons: [Person] = []) {
         self.clearPersonList() // Delete all the present List if there are
         let personsList = PersonsList(context: context)
-        personsList.persons = NSSet(array: PersonListUtility.createStartingPerson(self.context))
+        personsList.persons = NSSet(array: persons.isEmpty ? PersonListUtility.createStartingPerson(self.context) : persons)
         do {
             try self.context.save()
 
