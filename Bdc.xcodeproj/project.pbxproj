@@ -74,6 +74,7 @@
 		DDF9B5872778721700E2FEE2 /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF9B5862778721700E2FEE2 /* Ranking.storyboard */; };
 		DDF9B5892778726700E2FEE2 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF9B5882778726700E2FEE2 /* Calendar.storyboard */; };
 		DDF9B58B2778740900E2FEE2 /* HandlePersonsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF9B58A2778740900E2FEE2 /* HandlePersonsTableViewController.swift */; };
+		DDF9B58F277878F900E2FEE2 /* HandlePersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF9B58E277878F900E2FEE2 /* HandlePersonTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +173,7 @@
 		DDF9B5862778721700E2FEE2 /* Ranking.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ranking.storyboard; sourceTree = "<group>"; };
 		DDF9B5882778726700E2FEE2 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		DDF9B58A2778740900E2FEE2 /* HandlePersonsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlePersonsTableViewController.swift; sourceTree = "<group>"; };
+		DDF9B58E277878F900E2FEE2 /* HandlePersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlePersonTableViewCell.swift; sourceTree = "<group>"; };
 		E9119FA55433DC0831BDC2B0 /* Pods_Bdc_BdcUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bdc_BdcUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -287,9 +289,9 @@
 		DD55204327256283006DB40C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				DD84830B27772F8100E7F179 /* SettingsViewController */,
-				DDFE30C32754431F0025BA19 /* CalendarVC */,
-				DDFE30C2275443140025BA19 /* RankingViewController */,
+				DD84830B27772F8100E7F179 /* Settings */,
+				DDFE30C32754431F0025BA19 /* Calendar */,
+				DDFE30C2275443140025BA19 /* Ranking */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -316,6 +318,10 @@
 		DD709C822773610300D20C6A /* RankingVC */ = {
 			isa = PBXGroup;
 			children = (
+				DDCBBDB5274D5288002B60DA /* RankingTableViewCell.swift */,
+				DD617CEC2753C3AE002AD5E7 /* RankingTableViewCell + CollectionView.swift */,
+				DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */,
+				DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */,
 			);
 			path = RankingVC;
 			sourceTree = "<group>";
@@ -378,13 +384,13 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		DD84830B27772F8100E7F179 /* SettingsViewController */ = {
+		DD84830B27772F8100E7F179 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */,
-				DDF9B58227786BC400E2FEE2 /* SettingsArrowTableViewCell.swift */,
+				DDF9B58D277878C900E2FEE2 /* SettingsViewController */,
+				DDF9B58C277878C100E2FEE2 /* HandlePersons */,
 			);
-			path = SettingsViewController;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		DD8543E227219D4A004D38F0 = {
@@ -496,26 +502,39 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		DDFE30C2275443140025BA19 /* RankingViewController */ = {
+		DDF9B58C277878C100E2FEE2 /* HandlePersons */ = {
+			isa = PBXGroup;
+			children = (
+				DDF9B58E277878F900E2FEE2 /* HandlePersonTableViewCell.swift */,
+			);
+			path = HandlePersons;
+			sourceTree = "<group>";
+		};
+		DDF9B58D277878C900E2FEE2 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */,
+				DDF9B58227786BC400E2FEE2 /* SettingsArrowTableViewCell.swift */,
+			);
+			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		DDFE30C2275443140025BA19 /* Ranking */ = {
 			isa = PBXGroup;
 			children = (
 				DD709C832773610C00D20C6A /* RankingTypeVC */,
 				DD709C822773610300D20C6A /* RankingVC */,
-				DDCBBDB5274D5288002B60DA /* RankingTableViewCell.swift */,
-				DD617CEC2753C3AE002AD5E7 /* RankingTableViewCell + CollectionView.swift */,
-				DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */,
-				DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */,
 			);
-			path = RankingViewController;
+			path = Ranking;
 			sourceTree = "<group>";
 		};
-		DDFE30C32754431F0025BA19 /* CalendarVC */ = {
+		DDFE30C32754431F0025BA19 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
 				DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */,
 				DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */,
 			);
-			path = CalendarVC;
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		F29ADA14CAED47AAAD651460 /* Frameworks */ = {
@@ -776,6 +795,7 @@
 				DD18C7FB27220B890086BB6C /* CoreDateContainer.swift in Sources */,
 				DD8483072774DE9E00E7F179 /* Constant.swift in Sources */,
 				DDCBBDB6274D5288002B60DA /* RankingTableViewCell.swift in Sources */,
+				DDF9B58F277878F900E2FEE2 /* HandlePersonTableViewCell.swift in Sources */,
 				DD03AC1727481092004C4819 /* CalendarCollectionViewCell.swift in Sources */,
 				DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */,
 				DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */,

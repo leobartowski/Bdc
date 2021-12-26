@@ -9,7 +9,7 @@ import UIKit
 
 class SettingsArrowTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var mainLabel: UILabel!
+    @IBOutlet var mainLabel: UILabel!
     
     var settingsType: SettingsType!
     

@@ -12,7 +12,6 @@ class HandlePersonsTableViewController: UITableViewController {
 
     
     override func viewDidLoad() {
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +33,8 @@ class HandlePersonsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? HandlePersonTableViewCell
+        cell?.setup(PersonListUtility.persons[indexPath.row])
+        return cell ?? UITableViewCell()
     }
 }
