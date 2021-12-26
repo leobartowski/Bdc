@@ -104,6 +104,7 @@ class CoreDataService {
 
     /// Retive all persons
     func getPersonsList() -> [Person] {
+        
         let fetchRequest = NSFetchRequest<PersonsList>(entityName: "PersonsList")
         do {
             if let personsList = try context.fetch(fetchRequest).first {
@@ -117,7 +118,6 @@ class CoreDataService {
     }
 
     func deletePersonFromPersonsList(name: String? = "") {
-        print(" prima eliminazione \(CoreDataService.shared.getPersonsList().count)")
         
         let fetchRequest = NSFetchRequest<PersonsList>(entityName: "PersonsList")
         do {
@@ -126,10 +126,8 @@ class CoreDataService {
                 for person in personsList.persons?.allObjects as? [Person] ?? [] where person.name == name {
                     self.context.delete(person)
                 }
-                
                 try self.context.save()
-                
-                print(" dopo eliminazione \(CoreDataService.shared.getPersonsList().count)")
+                PersonListUtility.persons = self.getPersonsList()
             }
 
         } catch let error as NSError {
@@ -210,6 +208,25 @@ class CoreDataService {
             print("Could not list. \(error), \(error.userInfo)")
         }
     }
+    
+    // TODO: Is needed?
+//    func removeAllPresenceOf(name: String) {
+//        let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
+//        do {
+//            let attendances = try context.fetch(fetchRequest)
+//            for attendance in attendances {
+//                for person in attendance.persons where person.name == name {
+//
+//                }
+//                attendance.personsAdmonished = nil
+//            }
+//            try self.context.save()
+//
+//        } catch let error as NSError {
+//            print("Could not list. \(error), \(error.userInfo)")
+//        }
+//    }
+
 
     /// Use this  just one time to create the persons List on a new device!
     func createPersonsList(_ persons: [Person] = []) {
