@@ -17,6 +17,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
     func setupTableViewShadow() {
         self.tableView.layer.masksToBounds = false
         self.tableView.layer.shadowColor = UIColor.gray.cgColor // any value you want
@@ -26,7 +30,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,8 +44,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             
             switch indexPath.row {
             case 0: // Modify Old Element
-                let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? SettingsSwitchTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
                 cell?.setup(text: "Abilita modifica giorni passati", settingsType: .modifyOldDays)
+                return cell ?? UITableViewCell()
+            case 1: // Handle Persons List
+                let cell = tableView.dequeueReusableCell(withIdentifier: "arrowCellID", for: indexPath) as? SettingsArrowTableViewCell
+                cell?.setup(text: "Abilita modifica giorni passati", settingsType: .handlePersonList)
                 return cell ?? UITableViewCell()
             default:
                 return UITableViewCell()
@@ -50,6 +58,23 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             return UITableViewCell()
         default:
             return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0: // First Section
+            
+            switch indexPath.row {
+            case 0:  return // Modify Old Element
+            case 1: // Handle Persons List
+                self.performSegue(withIdentifier: "segueToHandlePersons", sender: self)
+                self.tableView.deselectRow(at: indexPath, animated: false)
+            default: return
+            }
+
+        default:
+            return
         }
     }
 }
