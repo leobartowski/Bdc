@@ -11,7 +11,11 @@ import UIKit
 
 class PersonListUtility {
     
-    public static let persons = CoreDataService.shared.getPersonsList()
+    public static var persons = CoreDataService.shared.getPersonsList() {
+        didSet {
+            print("ciro")
+        }
+    }
     public static var rankingPersonsAttendance = createEmptyWeeklyAttendance()
 
     static func createStartingPerson(_ context: NSManagedObjectContext) -> [Person] {
