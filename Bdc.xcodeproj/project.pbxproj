@@ -44,6 +44,8 @@
 		DD8483072774DE9E00E7F179 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8483062774DE9E00E7F179 /* Constant.swift */; };
 		DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84830927772AFA00E7F179 /* SettingsViewController.swift */; };
 		DD84830D27772FC200E7F179 /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */; };
+		DD84830F277786D600E7F179 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84830E277786D500E7F179 /* NotificationName.swift */; };
+		DD84831127778D1500E7F179 /* SettingsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84831027778D1500E7F179 /* SettingsType.swift */; };
 		DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543EE27219D4A004D38F0 /* AppDelegate.swift */; };
 		DD8543F127219D4A004D38F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543F027219D4A004D38F0 /* SceneDelegate.swift */; };
 		DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543F227219D4A004D38F0 /* CalendarViewController.swift */; };
@@ -67,6 +69,7 @@
 		DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */; };
 		DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */; };
 		DDF1DE4D272C50CE006B7DFD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF1DE4C272C50CE006B7DFD /* Theme.swift */; };
+		DDF9B58327786BC400E2FEE2 /* SettingsArrowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF9B58227786BC400E2FEE2 /* SettingsArrowTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +133,8 @@
 		DD8483062774DE9E00E7F179 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		DD84830927772AFA00E7F179 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		DD84830E277786D500E7F179 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
+		DD84831027778D1500E7F179 /* SettingsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsType.swift; sourceTree = "<group>"; };
 		DD8543EB27219D4A004D38F0 /* Bdc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bdc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8543EE27219D4A004D38F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD8543F027219D4A004D38F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +163,7 @@
 		DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter - Ext.swift"; sourceTree = "<group>"; };
 		DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListUtility.swift; sourceTree = "<group>"; };
 		DDF1DE4C272C50CE006B7DFD /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		DDF9B58227786BC400E2FEE2 /* SettingsArrowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsArrowTableViewCell.swift; sourceTree = "<group>"; };
 		E9119FA55433DC0831BDC2B0 /* Pods_Bdc_BdcUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bdc_BdcUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -208,6 +214,7 @@
 				DD0CAB522728108600EA42B1 /* DayType.swift */,
 				DDC51A4E27564191004A836B /* SortingPositionAndType.swift */,
 				DD27CAB0277368810020BE4D /* RankingType.swift */,
+				DD84831027778D1500E7F179 /* SettingsType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -363,6 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */,
+				DDF9B58227786BC400E2FEE2 /* SettingsArrowTableViewCell.swift */,
 			);
 			path = SettingsViewController;
 			sourceTree = "<group>";
@@ -471,6 +479,7 @@
 				DD1EAF392726DDD100EF1455 /* CommonUtility.swift */,
 				DDF1DE4C272C50CE006B7DFD /* Theme.swift */,
 				DD8483062774DE9E00E7F179 /* Constant.swift */,
+				DD84830E277786D500E7F179 /* NotificationName.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -771,6 +780,7 @@
 				DD60B5552753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift in Sources */,
 				DD617CEB2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift in Sources */,
 				DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */,
+				DD84830F277786D600E7F179 /* NotificationName.swift in Sources */,
 				DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */,
 				DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */,
 				DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */,
@@ -779,6 +789,7 @@
 				DDB292622721A90500D96E67 /* RankingSectionHeaderView.swift in Sources */,
 				DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */,
 				DDC9EB6B275031CD00653138 /* PersonsList+CoreDataProperties.swift in Sources */,
+				DDF9B58327786BC400E2FEE2 /* SettingsArrowTableViewCell.swift in Sources */,
 				DD368F522774D415000F0A84 /* YearPickerView.swift in Sources */,
 				DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */,
 				DD1A1C65274908AB006FC676 /* UIView - Ext.swift in Sources */,
@@ -789,6 +800,7 @@
 				DDF1DE4D272C50CE006B7DFD /* Theme.swift in Sources */,
 				DD717D4F2772411C0003CB16 /* RankingViewController + HandleType.swift in Sources */,
 				DDCBBDB4274D44B4002B60DA /* MySegmentedControl.swift in Sources */,
+				DD84831127778D1500E7F179 /* SettingsType.swift in Sources */,
 				DD368F502774BECD000F0A84 /* RankingViewController+DatePicker.swift in Sources */,
 				DD84830D27772FC200E7F179 /* SettingsSwitchTableViewCell.swift in Sources */,
 				DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */,
