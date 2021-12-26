@@ -31,7 +31,7 @@ class SettingsSwitchTableViewCell: UITableViewCell {
         case .modifyOldDays:
             let notification = Notification(name: .didChangeModifyStatus, object: nil, userInfo: nil)
             NotificationCenter.default.post(notification)
-        case .none:
+        default:
             break
         }
 

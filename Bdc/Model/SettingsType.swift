@@ -10,5 +10,6 @@ import Foundation
 enum SettingsType: String {
     
     case modifyOldDays = "modifyOldDays"
+    case handlePersonList = "handlePersonList"
     
 }
