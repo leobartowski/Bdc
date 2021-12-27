@@ -11,7 +11,13 @@ import UIKit
 
 class PersonListUtility {
     
-    public static var persons = CoreDataService.shared.getPersonsList()
+    public static var persons = CoreDataService.shared.getPersonsList() {
+        didSet {
+            PersonListUtility.rankingPersonsAttendance = createEmptyWeeklyAttendance()
+            let notification = Notification(name: .didChangePersonList, object: nil, userInfo: nil)
+            NotificationCenter.default.post(notification)
+        }
+    }
     public static var rankingPersonsAttendance = createEmptyWeeklyAttendance()
 
     static func createStartingPerson(_ context: NSManagedObjectContext) -> [Person] {
