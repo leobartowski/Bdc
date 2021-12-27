@@ -59,7 +59,7 @@ class CalendarViewController: UIViewController {
     }
 
     @objc func systemTimeChanged() {
-        updateCalendarIfNeeded()
+        self.updateCalendarIfNeeded()
     }
 
     // MARK: Utils and Design
@@ -81,6 +81,7 @@ class CalendarViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.systemTimeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeModifyStatus(_:)), name: .didChangeModifyStatus, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
 }
 
     func updateGoToTodayButton() {
@@ -174,6 +175,11 @@ class CalendarViewController: UIViewController {
     // MARK: Handle settings
     @objc func didChangeModifyStatus(_: Notification) {
         self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
+    }
+    
+    // MARK: Handle settings
+    @objc func didChangePersonList(_: Notification) {
+        self.getDataFromCoreDataAndReloadViews()
     }
 
     // MARK: IBActions
