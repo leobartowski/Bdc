@@ -108,7 +108,8 @@ class CoreDataService {
         let fetchRequest = NSFetchRequest<PersonsList>(entityName: "PersonsList")
         do {
             if let personsList = try context.fetch(fetchRequest).first {
-                return personsList.persons?.allObjects as? [Person] ?? []
+                let personList = personsList.persons?.allObjects as? [Person] ?? []
+                return personList.sorted { $0.name ?? "" < $1.name ?? "" }
             }
             
         } catch let error as NSError {
@@ -129,7 +130,6 @@ class CoreDataService {
                 try self.context.save()
                 PersonListUtility.persons = self.getPersonsList()
             }
-
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
         }

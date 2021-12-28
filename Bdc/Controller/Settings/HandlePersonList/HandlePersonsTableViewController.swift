@@ -31,6 +31,10 @@ class HandlePersonsTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? HandlePersonTableViewCell
@@ -38,14 +42,28 @@ class HandlePersonsTableViewController: UITableViewController {
         return cell ?? UITableViewCell()
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let cell = tableView.cellForRow(at: indexPath) as? HandlePersonTableViewCell
-            CoreDataService.shared.deletePersonFromPersonsList(name: cell?.person.name)
-            DispatchQueue.main.async {
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let contextItem = UIContextualAction(style: .destructive, title: "Elimina") {  (contextualAction, view, boolValue) in
             
+            let cell = tableView.cellForRow(at: indexPath) as? HandlePersonTableViewCell
+            let name = cell?.person.name ?? ""
+            self.presentActionSheet(title: "Sei sicuro di voler cancellare \(name) dalla lista di persone??? Quest'azione è irreversibile.", mainAction: { _ in
+                self.deletePersonAndUpdateUI(name, indexPath)
+            }, mainActionTitle: "Cancella \(name)") { _ in
+                self.dismiss(animated: true, completion: nil)
+            }
         }
+        let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
+        return swipeActions
+    }
+    
+    private func deletePersonAndUpdateUI(_ name: String, _ indexPath: IndexPath) {
+//        self.tableView.beginUpdates()
+        CoreDataService.shared.deletePersonFromPersonsList(name: name)
+        DispatchQueue.main.async {
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+//            self.tableView.endUpdates()
+        }
+
     }
 }
