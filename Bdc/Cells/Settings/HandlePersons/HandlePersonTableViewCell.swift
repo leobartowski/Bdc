@@ -13,7 +13,6 @@ class HandlePersonTableViewCell: UITableViewCell {
     
     @IBOutlet var mainImageView: UIImageView!
     @IBOutlet var mainTextField: UITextField!
-    @IBOutlet var modifyButton: UIButton!
     
     var person: Person!
     
@@ -30,12 +29,5 @@ class HandlePersonTableViewCell: UITableViewCell {
             self.mainImageView.image = UIImage(named: imageString)
         }
     }
-    
-    
-    @IBAction func modifyButtonAction(_ sender: Any) {
-        
-    }
-    
-    
 }
 

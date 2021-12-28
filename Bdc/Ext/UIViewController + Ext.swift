@@ -20,6 +20,16 @@ extension UIViewController {
         // Add more actions as you see fit
         present(alert, animated: true, completion: nil)
     }
+    
+    func presentActionSheet(title: String, message: String? = nil, mainAction: @escaping (UIAlertAction) -> Void, mainActionTitle: String,  cancelAction: @escaping (UIAlertAction) -> Void, cancelActionTitle: String = "Annulla") {
+    
+           let actionSheet = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+           let mainAction = UIAlertAction(title: mainActionTitle, style: .destructive, handler: mainAction)
+           let cancelAction = UIAlertAction(title: cancelActionTitle, style: .cancel,  handler: cancelAction)
+           actionSheet.addAction(mainAction)
+           actionSheet.addAction(cancelAction)
+           self.present(actionSheet, animated: true, completion: nil)
+    }
 
     static func presentWindow(with storyboard: UIStoryboard) {
         DispatchQueue.main.async {

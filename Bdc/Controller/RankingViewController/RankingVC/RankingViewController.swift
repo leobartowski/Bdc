@@ -20,7 +20,7 @@ class RankingViewController: UIViewController {
     // Constraints
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     
-    var rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
+    var rankingPersonsAttendaces: [RankingPersonAttendance] = []
     let headerBasic = ["Nome", "P", "A"]
     var header: [String] = []
     var sorting = SortingPositionAndType(.attendance, .descending) // This variable is needed to understand which column in sorted and if ascending or descending (type)
@@ -32,13 +32,14 @@ class RankingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
         self.viewSetUp()
+        self.addObservers()
     }
     
     // We update the data in the DidAppear to have always data updated after some modification
     override func viewDidAppear(_: Bool) {
         self.populateAttendance()
-        self.addObservers()
     }
     
     override func viewDidLayoutSubviews() {

@@ -11,7 +11,6 @@
         <!--Impostazioni-->
         <scene sceneID="8w4-ma-ELh">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dYi-lZ-TIT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cby-in-Fq9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Impostazioni" image="gearshape.fill" catalog="system" id="uJE-R8-vSC"/>
                     <toolbarItems/>
@@ -24,6 +23,7 @@
                         <segue destination="6DN-a4-M3k" kind="relationship" relationship="rootViewController" id="08y-B3-bbH"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dYi-lZ-TIT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="500" y="802"/>
         </scene>
@@ -180,32 +180,17 @@
                                             </constraints>
                                         </imageView>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text Field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GAj-pv-TLq">
-                                            <rect key="frame" x="95" y="5" width="249" height="40"/>
+                                            <rect key="frame" x="95" y="5" width="73" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="Yjh-sx-QJb"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1l-sn-i1W">
-                                            <rect key="frame" x="364" y="10" width="30" height="30"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="Hwq-yS-AUZ"/>
-                                                <constraint firstAttribute="height" constant="30" id="jYz-2j-xDG"/>
-                                            </constraints>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system"/>
-                                            <connections>
-                                                <action selector="modifyButtonAction:" destination="88f-zC-QJz" eventType="touchUpInside" id="6xZ-mb-3lT"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="GAj-pv-TLq" firstAttribute="leading" secondItem="VEM-XI-8PW" secondAttribute="trailing" constant="20" id="2ja-Qq-oEe"/>
                                         <constraint firstItem="GAj-pv-TLq" firstAttribute="centerY" secondItem="VEM-XI-8PW" secondAttribute="centerY" id="W3r-T0-BrC"/>
-                                        <constraint firstAttribute="trailing" secondItem="p1l-sn-i1W" secondAttribute="trailing" constant="20" id="bIx-jT-jSF"/>
-                                        <constraint firstItem="p1l-sn-i1W" firstAttribute="leading" secondItem="GAj-pv-TLq" secondAttribute="trailing" constant="20" id="ePi-1n-3Ig"/>
-                                        <constraint firstItem="p1l-sn-i1W" firstAttribute="centerY" secondItem="VEM-XI-8PW" secondAttribute="centerY" id="eka-fj-vdJ"/>
                                         <constraint firstItem="VEM-XI-8PW" firstAttribute="centerY" secondItem="KBr-h6-Flf" secondAttribute="centerY" id="kJ7-b2-nvZ"/>
                                         <constraint firstItem="VEM-XI-8PW" firstAttribute="leading" secondItem="KBr-h6-Flf" secondAttribute="leadingMargin" constant="20" id="vsb-Dd-Lpk"/>
                                     </constraints>
@@ -213,7 +198,6 @@
                                 <connections>
                                     <outlet property="mainImageView" destination="VEM-XI-8PW" id="3jZ-we-qBC"/>
                                     <outlet property="mainTextField" destination="GAj-pv-TLq" id="F8G-gv-PxC"/>
-                                    <outlet property="modifyButton" destination="p1l-sn-i1W" id="Svo-YO-Hb0"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -230,11 +214,25 @@
             </objects>
             <point key="canvasLocation" x="2618.840579710145" y="1289.7321428571429"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="5JM-Rz-W4b">
+            <objects>
+                <viewController id="Bio-0Q-Nc2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p9f-9i-8Qs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="xFb-U0-Ryh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ELp-LZ-LPW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2619" y="1991"/>
+        </scene>
     </scenes>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
-        <image name="pencil" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
