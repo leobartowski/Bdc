@@ -15,6 +15,7 @@
 		DD03AC1B27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */; };
 		DD0CAB532728108600EA42B1 /* DayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB522728108600EA42B1 /* DayType.swift */; };
 		DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */; };
+		DD0E35BF277BB7F50082D32C /* AddChangePersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E35BE277BB7F50082D32C /* AddChangePersonViewController.swift */; };
 		DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD18C7F827220B0A0086BB6C /* CoreDataService.swift */; };
 		DD18C7FB27220B890086BB6C /* CoreDateContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD18C7FA27220B890086BB6C /* CoreDateContainer.swift */; };
 		DD1A1C65274908AB006FC676 /* UIView - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1A1C64274908AB006FC676 /* UIView - Ext.swift */; };
@@ -42,6 +43,10 @@
 		DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */; };
 		DD7B2589275680DE00E663AC /* Array + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2588275680DE00E663AC /* Array + Ext.swift */; };
 		DD8483072774DE9E00E7F179 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8483062774DE9E00E7F179 /* Constant.swift */; };
+		DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84830927772AFA00E7F179 /* SettingsViewController.swift */; };
+		DD84830D27772FC200E7F179 /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */; };
+		DD84830F277786D600E7F179 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84830E277786D500E7F179 /* NotificationName.swift */; };
+		DD84831127778D1500E7F179 /* SettingsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84831027778D1500E7F179 /* SettingsType.swift */; };
 		DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543EE27219D4A004D38F0 /* AppDelegate.swift */; };
 		DD8543F127219D4A004D38F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543F027219D4A004D38F0 /* SceneDelegate.swift */; };
 		DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543F227219D4A004D38F0 /* CalendarViewController.swift */; };
@@ -65,6 +70,12 @@
 		DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */; };
 		DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */; };
 		DDF1DE4D272C50CE006B7DFD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF1DE4C272C50CE006B7DFD /* Theme.swift */; };
+		DDF9B58327786BC400E2FEE2 /* SettingsArrowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF9B58227786BC400E2FEE2 /* SettingsArrowTableViewCell.swift */; };
+		DDF9B5852778715000E2FEE2 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF9B5842778715000E2FEE2 /* Settings.storyboard */; };
+		DDF9B5872778721700E2FEE2 /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF9B5862778721700E2FEE2 /* Ranking.storyboard */; };
+		DDF9B5892778726700E2FEE2 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF9B5882778726700E2FEE2 /* Calendar.storyboard */; };
+		DDF9B58B2778740900E2FEE2 /* HandlePersonsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF9B58A2778740900E2FEE2 /* HandlePersonsTableViewController.swift */; };
+		DDF9B58F277878F900E2FEE2 /* HandlePersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF9B58E277878F900E2FEE2 /* HandlePersonTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +110,7 @@
 		DD0CAB4F27280FB200EA42B1 /* Attendance+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attendance+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DD0CAB522728108600EA42B1 /* DayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayType.swift; sourceTree = "<group>"; };
 		DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ext.swift"; sourceTree = "<group>"; };
+		DD0E35BE277BB7F50082D32C /* AddChangePersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChangePersonViewController.swift; sourceTree = "<group>"; };
 		DD18C7F827220B0A0086BB6C /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		DD18C7FA27220B890086BB6C /* CoreDateContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateContainer.swift; sourceTree = "<group>"; };
 		DD1A1C64274908AB006FC676 /* UIView - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView - Ext.swift"; sourceTree = "<group>"; };
@@ -126,6 +138,10 @@
 		DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFTableDataItem.swift; sourceTree = "<group>"; };
 		DD7B2588275680DE00E663AC /* Array + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + Ext.swift"; sourceTree = "<group>"; };
 		DD8483062774DE9E00E7F179 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		DD84830927772AFA00E7F179 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		DD84830E277786D500E7F179 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
+		DD84831027778D1500E7F179 /* SettingsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsType.swift; sourceTree = "<group>"; };
 		DD8543EB27219D4A004D38F0 /* Bdc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bdc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8543EE27219D4A004D38F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD8543F027219D4A004D38F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +170,12 @@
 		DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter - Ext.swift"; sourceTree = "<group>"; };
 		DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListUtility.swift; sourceTree = "<group>"; };
 		DDF1DE4C272C50CE006B7DFD /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		DDF9B58227786BC400E2FEE2 /* SettingsArrowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsArrowTableViewCell.swift; sourceTree = "<group>"; };
+		DDF9B5842778715000E2FEE2 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		DDF9B5862778721700E2FEE2 /* Ranking.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ranking.storyboard; sourceTree = "<group>"; };
+		DDF9B5882778726700E2FEE2 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		DDF9B58A2778740900E2FEE2 /* HandlePersonsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlePersonsTableViewController.swift; sourceTree = "<group>"; };
+		DDF9B58E277878F900E2FEE2 /* HandlePersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlePersonTableViewCell.swift; sourceTree = "<group>"; };
 		E9119FA55433DC0831BDC2B0 /* Pods_Bdc_BdcUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bdc_BdcUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -204,13 +226,24 @@
 				DD0CAB522728108600EA42B1 /* DayType.swift */,
 				DDC51A4E27564191004A836B /* SortingPositionAndType.swift */,
 				DD27CAB0277368810020BE4D /* RankingType.swift */,
+				DD84831027778D1500E7F179 /* SettingsType.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DD0E35BD277BB7D40082D32C /* HandlePersonList */ = {
+			isa = PBXGroup;
+			children = (
+				DDF9B58A2778740900E2FEE2 /* HandlePersonsTableViewController.swift */,
+				DD0E35BE277BB7F50082D32C /* AddChangePersonViewController.swift */,
+			);
+			path = HandlePersonList;
 			sourceTree = "<group>";
 		};
 		DD18C7F3272207050086BB6C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DD84830827772AE700E7F179 /* Settings */,
 				DD5542DE2724563C000D9F48 /* CalendarViewController */,
 				DD5542E327245875000D9F48 /* RankingViewController */,
 			);
@@ -222,6 +255,9 @@
 			children = (
 				DD8543F427219D4A004D38F0 /* Main.storyboard */,
 				DD717D53277244D70003CB16 /* BottomSheet.storyboard */,
+				DDF9B5842778715000E2FEE2 /* Settings.storyboard */,
+				DDF9B5862778721700E2FEE2 /* Ranking.storyboard */,
+				DDF9B5882778726700E2FEE2 /* Calendar.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -264,8 +300,9 @@
 		DD55204327256283006DB40C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				DDFE30C32754431F0025BA19 /* CalendarVC */,
-				DDFE30C2275443140025BA19 /* RankingViewController */,
+				DD84830B27772F8100E7F179 /* Settings */,
+				DDFE30C32754431F0025BA19 /* Calendar */,
+				DDFE30C2275443140025BA19 /* Ranking */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -292,6 +329,10 @@
 		DD709C822773610300D20C6A /* RankingVC */ = {
 			isa = PBXGroup;
 			children = (
+				DDCBBDB5274D5288002B60DA /* RankingTableViewCell.swift */,
+				DD617CEC2753C3AE002AD5E7 /* RankingTableViewCell + CollectionView.swift */,
+				DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */,
+				DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */,
 			);
 			path = RankingVC;
 			sourceTree = "<group>";
@@ -343,6 +384,24 @@
 				DD368F512774D415000F0A84 /* YearPickerView.swift */,
 			);
 			path = "Custom Component";
+			sourceTree = "<group>";
+		};
+		DD84830827772AE700E7F179 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DD84830927772AFA00E7F179 /* SettingsViewController.swift */,
+				DD0E35BD277BB7D40082D32C /* HandlePersonList */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		DD84830B27772F8100E7F179 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DDF9B58D277878C900E2FEE2 /* SettingsViewController */,
+				DDF9B58C277878C100E2FEE2 /* HandlePersons */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		DD8543E227219D4A004D38F0 = {
@@ -449,30 +508,44 @@
 				DD1EAF392726DDD100EF1455 /* CommonUtility.swift */,
 				DDF1DE4C272C50CE006B7DFD /* Theme.swift */,
 				DD8483062774DE9E00E7F179 /* Constant.swift */,
+				DD84830E277786D500E7F179 /* NotificationName.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		DDFE30C2275443140025BA19 /* RankingViewController */ = {
+		DDF9B58C277878C100E2FEE2 /* HandlePersons */ = {
+			isa = PBXGroup;
+			children = (
+				DDF9B58E277878F900E2FEE2 /* HandlePersonTableViewCell.swift */,
+			);
+			path = HandlePersons;
+			sourceTree = "<group>";
+		};
+		DDF9B58D277878C900E2FEE2 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */,
+				DDF9B58227786BC400E2FEE2 /* SettingsArrowTableViewCell.swift */,
+			);
+			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		DDFE30C2275443140025BA19 /* Ranking */ = {
 			isa = PBXGroup;
 			children = (
 				DD709C832773610C00D20C6A /* RankingTypeVC */,
 				DD709C822773610300D20C6A /* RankingVC */,
-				DDCBBDB5274D5288002B60DA /* RankingTableViewCell.swift */,
-				DD617CEC2753C3AE002AD5E7 /* RankingTableViewCell + CollectionView.swift */,
-				DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */,
-				DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */,
 			);
-			path = RankingViewController;
+			path = Ranking;
 			sourceTree = "<group>";
 		};
-		DDFE30C32754431F0025BA19 /* CalendarVC */ = {
+		DDFE30C32754431F0025BA19 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
 				DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */,
 				DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */,
 			);
-			path = CalendarVC;
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		F29ADA14CAED47AAAD651460 /* Frameworks */ = {
@@ -597,6 +670,9 @@
 				DDB292602721A8D400D96E67 /* RankingSectionHeaderView.xib in Resources */,
 				DD8543FE27219D4C004D38F0 /* LaunchScreen.storyboard in Resources */,
 				DD717D54277244D70003CB16 /* BottomSheet.storyboard in Resources */,
+				DDF9B5852778715000E2FEE2 /* Settings.storyboard in Resources */,
+				DDF9B5892778726700E2FEE2 /* Calendar.storyboard in Resources */,
+				DDF9B5872778721700E2FEE2 /* Ranking.storyboard in Resources */,
 				DD8543FB27219D4C004D38F0 /* Assets.xcassets in Resources */,
 				DD8543F627219D4A004D38F0 /* Main.storyboard in Resources */,
 			);
@@ -730,6 +806,7 @@
 				DD18C7FB27220B890086BB6C /* CoreDateContainer.swift in Sources */,
 				DD8483072774DE9E00E7F179 /* Constant.swift in Sources */,
 				DDCBBDB6274D5288002B60DA /* RankingTableViewCell.swift in Sources */,
+				DDF9B58F277878F900E2FEE2 /* HandlePersonTableViewCell.swift in Sources */,
 				DD03AC1727481092004C4819 /* CalendarCollectionViewCell.swift in Sources */,
 				DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */,
 				DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */,
@@ -737,6 +814,7 @@
 				DDC9EB6A275031CD00653138 /* PersonsList+CoreDataClass.swift in Sources */,
 				DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */,
 				DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */,
+				DDF9B58B2778740900E2FEE2 /* HandlePersonsTableViewController.swift in Sources */,
 				DD7B258327567AA100E663AC /* PDFCreator.swift in Sources */,
 				DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */,
 				DD7B258527567B0600E663AC /* RankingViewController + PDF.swift in Sources */,
@@ -749,13 +827,17 @@
 				DD60B5552753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift in Sources */,
 				DD617CEB2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift in Sources */,
 				DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */,
+				DD84830F277786D600E7F179 /* NotificationName.swift in Sources */,
+				DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */,
 				DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */,
 				DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */,
 				DD617CED2753C3AE002AD5E7 /* RankingTableViewCell + CollectionView.swift in Sources */,
 				DDC51A4F27564191004A836B /* SortingPositionAndType.swift in Sources */,
+				DD0E35BF277BB7F50082D32C /* AddChangePersonViewController.swift in Sources */,
 				DDB292622721A90500D96E67 /* RankingSectionHeaderView.swift in Sources */,
 				DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */,
 				DDC9EB6B275031CD00653138 /* PersonsList+CoreDataProperties.swift in Sources */,
+				DDF9B58327786BC400E2FEE2 /* SettingsArrowTableViewCell.swift in Sources */,
 				DD368F522774D415000F0A84 /* YearPickerView.swift in Sources */,
 				DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */,
 				DD1A1C65274908AB006FC676 /* UIView - Ext.swift in Sources */,
@@ -766,7 +848,9 @@
 				DDF1DE4D272C50CE006B7DFD /* Theme.swift in Sources */,
 				DD717D4F2772411C0003CB16 /* RankingViewController + HandleType.swift in Sources */,
 				DDCBBDB4274D44B4002B60DA /* MySegmentedControl.swift in Sources */,
+				DD84831127778D1500E7F179 /* SettingsType.swift in Sources */,
 				DD368F502774BECD000F0A84 /* RankingViewController+DatePicker.swift in Sources */,
+				DD84830D27772FC200E7F179 /* SettingsSwitchTableViewCell.swift in Sources */,
 				DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */,
 				DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */,
 				DD368F4E2774BE4F000F0A84 /* MonthYearPickerView.swift in Sources */,
@@ -950,14 +1034,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NL9F3R852A;
+				DEVELOPMENT_TEAM = 885XTY2NH9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bdc/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -966,8 +1052,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = leobartowski.BdcApp;
+				PRODUCT_BUNDLE_IDENTIFIER = leobartowski.BdC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -980,14 +1067,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NL9F3R852A;
+				DEVELOPMENT_TEAM = 885XTY2NH9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bdc/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -996,8 +1085,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = leobartowski.BdcApp;
+				PRODUCT_BUNDLE_IDENTIFIER = leobartowski.BdC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

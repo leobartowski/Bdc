@@ -20,13 +20,27 @@ extension UIViewController {
         // Add more actions as you see fit
         present(alert, animated: true, completion: nil)
     }
-
-    static func presentWindow(with storyboard: UIStoryboard) {
-        DispatchQueue.main.async {
-            guard let viewController = storyboard.instantiateInitialViewController() else { return }
-            guard let window = UIApplication.shared.keyWindow else { return }
-            window.rootViewController = viewController
-            UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {}, completion: nil)
-        }
+    
+    func presentActionSheet(title: String, message: String? = nil, mainAction: @escaping (UIAlertAction) -> Void, mainActionTitle: String,  cancelAction: @escaping (UIAlertAction) -> Void, cancelActionTitle: String = "Annulla") {
+    
+           let actionSheet = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+           let mainAction = UIAlertAction(title: mainActionTitle, style: .destructive, handler: mainAction)
+           let cancelAction = UIAlertAction(title: cancelActionTitle, style: .cancel,  handler: cancelAction)
+           actionSheet.addAction(mainAction)
+           actionSheet.addAction(cancelAction)
+           self.present(actionSheet, animated: true, completion: nil)
     }
+
+//    static func presentWindow(with storyboard: UIStoryboard) {
+//        DispatchQueue.main.async {
+//            guard let viewController = storyboard.instantiateInitialViewController() else { return }
+//            guard let window = UIApplication
+//                .shared
+//                .connectedScenes
+//                .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
+//                .first { $0.isKeyWindow } { return }
+//            window.rootViewController = viewController
+//            UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {}, completion: nil)
+//        }
+//    }
 }
