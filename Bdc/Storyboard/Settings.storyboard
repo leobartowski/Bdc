@@ -160,39 +160,48 @@
         <scene sceneID="RXu-3d-sbZ">
             <objects>
                 <tableViewController id="ajU-sO-Xby" customClass="HandlePersonsTableViewController" customModule="Bdc" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="U9k-K8-v7V">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="61" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" id="U9k-K8-v7V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellID" id="88f-zC-QJz" customClass="HandlePersonTableViewCell" customModule="Bdc" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="50"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" id="88f-zC-QJz" customClass="HandlePersonTableViewCell" customModule="Bdc" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="88f-zC-QJz" id="KBr-h6-Flf">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VEM-XI-8PW">
-                                            <rect key="frame" x="40" y="7.5" width="35" height="35"/>
+                                            <rect key="frame" x="20" y="10.5" width="40" height="40"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="35" id="Def-JA-rrD"/>
-                                                <constraint firstAttribute="height" constant="35" id="ZmG-gU-h8l"/>
+                                                <constraint firstAttribute="width" constant="40" id="Def-JA-rrD"/>
+                                                <constraint firstAttribute="height" constant="40" id="ZmG-gU-h8l"/>
                                             </constraints>
                                         </imageView>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text Field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GAj-pv-TLq">
-                                            <rect key="frame" x="95" y="5" width="73" height="40"/>
+                                            <rect key="frame" x="80" y="10.5" width="77" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="Yjh-sx-QJb"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vla-kv-fgD">
+                                            <rect key="frame" x="0.0" y="60" width="414" height="1"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="KBt-Te-FJo"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="GAj-pv-TLq" firstAttribute="leading" secondItem="VEM-XI-8PW" secondAttribute="trailing" constant="20" id="2ja-Qq-oEe"/>
+                                        <constraint firstAttribute="bottom" secondItem="Vla-kv-fgD" secondAttribute="bottom" id="U4S-eL-Rg0"/>
                                         <constraint firstItem="GAj-pv-TLq" firstAttribute="centerY" secondItem="VEM-XI-8PW" secondAttribute="centerY" id="W3r-T0-BrC"/>
+                                        <constraint firstAttribute="trailing" secondItem="Vla-kv-fgD" secondAttribute="trailing" id="ZwP-fS-tAO"/>
+                                        <constraint firstItem="Vla-kv-fgD" firstAttribute="leading" secondItem="KBr-h6-Flf" secondAttribute="leading" id="eOV-nh-eTM"/>
                                         <constraint firstItem="VEM-XI-8PW" firstAttribute="centerY" secondItem="KBr-h6-Flf" secondAttribute="centerY" id="kJ7-b2-nvZ"/>
-                                        <constraint firstItem="VEM-XI-8PW" firstAttribute="leading" secondItem="KBr-h6-Flf" secondAttribute="leadingMargin" constant="20" id="vsb-Dd-Lpk"/>
+                                        <constraint firstItem="VEM-XI-8PW" firstAttribute="leading" secondItem="KBr-h6-Flf" secondAttribute="leadingMargin" id="vsb-Dd-Lpk"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -214,16 +223,54 @@
             </objects>
             <point key="canvasLocation" x="2618.840579710145" y="1289.7321428571429"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Change Person View Controller-->
         <scene sceneID="5JM-Rz-W4b">
             <objects>
-                <viewController id="Bio-0Q-Nc2" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addChangePersonVC" id="Bio-0Q-Nc2" customClass="AddChangePersonViewController" customModule="Bdc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p9f-9i-8Qs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man_placeholder_icon" translatesAutoresizingMaskIntoConstraints="NO" id="plV-kK-c83">
+                                <rect key="frame" x="157" y="84" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="2bG-a3-SBK"/>
+                                    <constraint firstAttribute="width" constant="100" id="Oty-Pd-jQ9"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qDz-pQ-IP0">
+                                <rect key="frame" x="20" y="214" width="374" height="40"/>
+                                <color key="tintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCp-u5-0RZ">
+                                <rect key="frame" x="327" y="44" width="67" height="31"/>
+                                <color key="tintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="modifyButtonAction:" destination="Bio-0Q-Nc2" eventType="touchUpInside" id="tbA-Q9-ZjA"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="xFb-U0-Ryh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xFb-U0-Ryh" firstAttribute="trailing" secondItem="qDz-pQ-IP0" secondAttribute="trailing" constant="20" id="8YL-l5-p5z"/>
+                            <constraint firstItem="plV-kK-c83" firstAttribute="centerX" secondItem="p9f-9i-8Qs" secondAttribute="centerX" id="FwC-hB-v6l"/>
+                            <constraint firstItem="plV-kK-c83" firstAttribute="top" secondItem="xFb-U0-Ryh" secondAttribute="top" constant="40" id="KrM-yN-hCl"/>
+                            <constraint firstItem="xFb-U0-Ryh" firstAttribute="trailing" secondItem="nCp-u5-0RZ" secondAttribute="trailing" constant="20" id="ely-MV-72p"/>
+                            <constraint firstItem="qDz-pQ-IP0" firstAttribute="leading" secondItem="xFb-U0-Ryh" secondAttribute="leading" constant="20" id="oSe-Ue-XVr"/>
+                            <constraint firstItem="qDz-pQ-IP0" firstAttribute="top" secondItem="plV-kK-c83" secondAttribute="bottom" constant="30" id="rI9-0D-Ulr"/>
+                            <constraint firstItem="nCp-u5-0RZ" firstAttribute="top" secondItem="xFb-U0-Ryh" secondAttribute="top" id="ynn-wb-V6V"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainImageView" destination="plV-kK-c83" id="bto-ev-P8D"/>
+                        <outlet property="mainTextField" destination="qDz-pQ-IP0" id="L4h-yh-ryv"/>
+                        <outlet property="modifyButton" destination="nCp-u5-0RZ" id="B5U-jP-igd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ELp-LZ-LPW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -233,6 +280,7 @@
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="man_placeholder_icon" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
