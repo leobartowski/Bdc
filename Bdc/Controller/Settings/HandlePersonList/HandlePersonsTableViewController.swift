@@ -8,43 +8,53 @@
 import UIKit
 import FittedSheets
 
-class HandlePersonsTableViewController: UITableViewController {
+class HandlePersonsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         self.setupUI()
+        self.setupTableViewShadow()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPerson))
         self.addObservers()
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.isHidden = false
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.navigationBar.isHidden = true
     }
-    
+
     func setupUI() {
+        self.navigationItem.largeTitleDisplayMode = .automatic
         self.navigationController?.navigationBar.tintColor = Theme.FSCalendarStandardSelectionColor
-        self.tableView.backgroundColor = .clear
+    }
+    
+    func setupTableViewShadow() {
+        self.tableView.layer.masksToBounds = false
+        self.tableView.layer.shadowColor = UIColor.gray.cgColor // any value you want
+        self.tableView.layer.shadowOpacity = 0.3 // any value you want
+        self.tableView.layer.shadowRadius = 2 // any value you want
+        self.tableView.layer.shadowOffset = .init(width: 0, height: 0)
     }
     
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return PersonListUtility.persons.count
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as? HandlePersonTableViewCell
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "addChangePersonVC") as? AddChangePersonViewController {
@@ -62,13 +72,13 @@ class HandlePersonsTableViewController: UITableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? HandlePersonTableViewCell
         cell?.setup(PersonListUtility.persons[indexPath.row])
         return cell ?? UITableViewCell()
     }
     
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let contextItem = UIContextualAction(style: .destructive, title: "Elimina") {  (contextualAction, view, boolValue) in
             
             let cell = tableView.cellForRow(at: indexPath) as? HandlePersonTableViewCell
