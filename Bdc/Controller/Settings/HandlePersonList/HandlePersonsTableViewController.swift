@@ -11,10 +11,11 @@ import FittedSheets
 class HandlePersonsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
-        self.navigationController?.navigationBar.tintColor = Theme.FSCalendarStandardSelectionColor
+        self.setupUI()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPerson))
         self.addObservers()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -24,6 +25,11 @@ class HandlePersonsTableViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    func setupUI() {
+        self.navigationController?.navigationBar.tintColor = Theme.FSCalendarStandardSelectionColor
+        self.tableView.backgroundColor = .clear
     }
     
     func addObservers() {
