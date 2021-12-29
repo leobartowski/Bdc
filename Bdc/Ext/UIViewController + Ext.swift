@@ -31,12 +31,16 @@ extension UIViewController {
            self.present(actionSheet, animated: true, completion: nil)
     }
 
-    static func presentWindow(with storyboard: UIStoryboard) {
-        DispatchQueue.main.async {
-            guard let viewController = storyboard.instantiateInitialViewController() else { return }
-            guard let window = UIApplication.shared.keyWindow else { return }
-            window.rootViewController = viewController
-            UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {}, completion: nil)
-        }
-    }
+//    static func presentWindow(with storyboard: UIStoryboard) {
+//        DispatchQueue.main.async {
+//            guard let viewController = storyboard.instantiateInitialViewController() else { return }
+//            guard let window = UIApplication
+//                .shared
+//                .connectedScenes
+//                .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
+//                .first { $0.isKeyWindow } { return }
+//            window.rootViewController = viewController
+//            UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {}, completion: nil)
+//        }
+//    }
 }
