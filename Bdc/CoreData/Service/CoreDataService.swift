@@ -12,7 +12,7 @@ class CoreDataService {
     
     static var shared = CoreDataService()
 
-    private var context: NSManagedObjectContext
+     var context: NSManagedObjectContext
 
     private init() {
         self.context = CoreDataContainer.context
@@ -168,6 +168,7 @@ class CoreDataService {
         do {
             if let personsList = try context.fetch(fetchRequest).first {
                 personsList.persons = NSSet(array: persons)
+                try context.save()
                 CoreDataService.shared.updateNameInOldRecords(oldName: oldName, newName: newName)
             }
 
@@ -189,6 +190,7 @@ class CoreDataService {
                 }
             }
             try self.context.save()
+            PersonListUtility.persons = self.getPersonsList()
 
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
@@ -235,6 +237,22 @@ class CoreDataService {
         personsList.persons = NSSet(array: persons.isEmpty ? PersonListUtility.createStartingPerson(self.context) : persons)
         do {
             try self.context.save()
+
+        } catch let error as NSError {
+            print("Could not list. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func addPersonToPersonList(_ person: Person) {
+        let fetchRequest = NSFetchRequest<PersonsList>(entityName: "PersonsList")
+        do {
+            if let personsList = try context.fetch(fetchRequest).first {
+                var persons = personsList.persons?.allObjects as? [Person] ?? []
+                persons.append(person)
+                personsList.persons = NSSet(array: persons)
+                try context.save()
+                PersonListUtility.persons = self.getPersonsList()
+            }
 
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")

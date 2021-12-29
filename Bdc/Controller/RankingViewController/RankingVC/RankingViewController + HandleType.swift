@@ -23,11 +23,12 @@ extension RankingViewController {
             )
             sheetController.gripSize = CGSize(width: 35, height: 6)
             
-            sheetController.didDismiss = { _ in
+            sheetController.shouldDismiss = { _ in
                 // Update rankingType based on user's choice
                 let oldRankingType = self.rankingType
                 self.rankingType = vc.selectedType
                 self.handleChangeRankingType(oldRankingType)
+                return true
             }
             self.present(sheetController, animated: true, completion: nil)
         }
