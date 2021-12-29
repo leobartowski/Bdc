@@ -20,30 +20,32 @@ class RankingViewController: UIViewController {
     // Constraints
     @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     
-    var rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
+    var rankingPersonsAttendaces: [RankingPersonAttendance] = []
     let headerBasic = ["Nome", "P", "A"]
     var header: [String] = []
     var sorting = SortingPositionAndType(.attendance, .descending) // This variable is needed to understand which column in sorted and if ascending or descending (type)
     var daysCurrentPeriod = [Date]()
     var selectedCellRow = -1
     var rankingType: RankingType = .weekly
-
+    
     // MARK: Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
         self.viewSetUp()
+        self.addObservers()
     }
-
+    
     // We update the data in the DidAppear to have always data updated after some modification
     override func viewDidAppear(_: Bool) {
-            self.populateAttendance()
+        self.populateAttendance()
     }
     
     override func viewDidLayoutSubviews() {
         self.containerViewForRankingType.layer.shadowPath = UIBezierPath(roundedRect: self.containerViewForRankingType.bounds, cornerRadius: 15).cgPath
     }
-
+    
     func viewSetUp() {
         // UI
         self.setupShadowContainerView()
@@ -67,6 +69,10 @@ class RankingViewController: UIViewController {
         self.containerViewForRankingType.layer.shadowRadius = 2
         self.containerViewForRankingType.layer.shadowPath = UIBezierPath(roundedRect: self.containerViewForRankingType.bounds, cornerRadius: cornerRadius).cgPath
         self.containerViewForRankingType.layer.masksToBounds = false
+    }
+    
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
     }
 
     /// Retrive attendance from CoreData
@@ -110,6 +116,12 @@ class RankingViewController: UIViewController {
             }
         }
         self.sortDescendingAttendanceFirstTime()
+    }
+    
+    @objc func didChangePersonList(_: Notification) {
+        self.rankingPersonsAttendaces.removeAll()
+        self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
+        self.populateAttendance()
     }
 
     @IBAction func shareButtonAction(_: Any) {

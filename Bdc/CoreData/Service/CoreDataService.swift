@@ -12,7 +12,7 @@ class CoreDataService {
     
     static var shared = CoreDataService()
 
-    private var context: NSManagedObjectContext
+     var context: NSManagedObjectContext
 
     private init() {
         self.context = CoreDataContainer.context
@@ -104,18 +104,37 @@ class CoreDataService {
 
     /// Retive all persons
     func getPersonsList() -> [Person] {
+        
         let fetchRequest = NSFetchRequest<PersonsList>(entityName: "PersonsList")
         do {
             if let personsList = try context.fetch(fetchRequest).first {
-                return personsList.persons?.allObjects as? [Person] ?? []
+                let personList = personsList.persons?.allObjects as? [Person] ?? []
+                return personList.sorted { $0.name ?? "" < $1.name ?? "" }
             }
-
+            
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
         }
         return []
     }
 
+    func deletePersonFromPersonsList(name: String? = "") {
+        
+        let fetchRequest = NSFetchRequest<PersonsList>(entityName: "PersonsList")
+        do {
+            if let personsList = try context.fetch(fetchRequest).first {
+                
+                for person in personsList.persons?.allObjects as? [Person] ?? [] where person.name == name {
+                    self.context.delete(person)
+                }
+                try self.context.save()
+                PersonListUtility.persons = self.getPersonsList()
+            }
+        } catch let error as NSError {
+            print("Could not list. \(error), \(error.userInfo)")
+        }
+    }
+    
     // MARK: Methods to update Person Properties
 
     /// Use this string to update/add imageString to a person
@@ -129,6 +148,8 @@ class CoreDataService {
         do {
             if let personsList = try context.fetch(fetchRequest).first {
                 personsList.persons = NSSet(array: persons)
+                
+                try self.context.save()
             }
 
         } catch let error as NSError {
@@ -147,6 +168,7 @@ class CoreDataService {
         do {
             if let personsList = try context.fetch(fetchRequest).first {
                 personsList.persons = NSSet(array: persons)
+                try context.save()
                 CoreDataService.shared.updateNameInOldRecords(oldName: oldName, newName: newName)
             }
 
@@ -168,6 +190,7 @@ class CoreDataService {
                 }
             }
             try self.context.save()
+            PersonListUtility.persons = self.getPersonsList()
 
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
@@ -187,14 +210,49 @@ class CoreDataService {
             print("Could not list. \(error), \(error.userInfo)")
         }
     }
+    
+    // TODO: Is needed?
+//    func removeAllPresenceOf(name: String) {
+//        let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
+//        do {
+//            let attendances = try context.fetch(fetchRequest)
+//            for attendance in attendances {
+//                for person in attendance.persons where person.name == name {
+//
+//                }
+//                attendance.personsAdmonished = nil
+//            }
+//            try self.context.save()
+//
+//        } catch let error as NSError {
+//            print("Could not list. \(error), \(error.userInfo)")
+//        }
+//    }
+
 
     /// Use this  just one time to create the persons List on a new device!
-    func createPersonsList() {
+    func createPersonsList(_ persons: [Person] = []) {
         self.clearPersonList() // Delete all the present List if there are
         let personsList = PersonsList(context: context)
-        personsList.persons = NSSet(array: PersonListUtility.createStartingPerson(self.context))
+        personsList.persons = NSSet(array: persons.isEmpty ? PersonListUtility.createStartingPerson(self.context) : persons)
         do {
             try self.context.save()
+
+        } catch let error as NSError {
+            print("Could not list. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func addPersonToPersonList(_ person: Person) {
+        let fetchRequest = NSFetchRequest<PersonsList>(entityName: "PersonsList")
+        do {
+            if let personsList = try context.fetch(fetchRequest).first {
+                var persons = personsList.persons?.allObjects as? [Person] ?? []
+                persons.append(person)
+                personsList.persons = NSSet(array: persons)
+                try context.save()
+                PersonListUtility.persons = self.getPersonsList()
+            }
 
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
