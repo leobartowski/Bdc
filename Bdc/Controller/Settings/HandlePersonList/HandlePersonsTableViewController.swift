@@ -64,19 +64,8 @@ class HandlePersonsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
      func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let contextItem = UIContextualAction(style: .destructive, title: "Elimina") {  (contextualAction, view, boolValue) in
-            
-            let cell = tableView.cellForRow(at: indexPath) as? HandlePersonTableViewCell
-            let name = cell?.person.name ?? ""
-            self.presentActionSheet(title: "Sei sicuro di voler cancellare \(name) dalla lista di persone??? Quest'azione è irreversibile.", mainAction: { _ in
-                self.deletePersonAndUpdateUI(name, indexPath)
-            }, mainActionTitle: "Cancella \(name)") { _ in
-                // TODO: Automatic close trailingSwipe
-                tableView.setEditing(false, animated: true)
-                self.dismiss(animated: true, completion: nil)
-            }
-        }
-        let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
+         
+         let swipeActions = UISwipeActionsConfiguration(actions: [self.contextItemToDeleteRow(indexPath)])
         return swipeActions
     }
     
@@ -84,9 +73,26 @@ class HandlePersonsViewController: UIViewController, UITableViewDelegate, UITabl
         self.tableView.beginUpdates()
         CoreDataService.shared.deletePersonFromPersonsList(name: name)
         DispatchQueue.main.async {
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
             self.tableView.endUpdates()
         }
+    }
+    
+    private func contextItemToDeleteRow(_ indexPath: IndexPath) -> UIContextualAction {
+        let  contextItem = UIContextualAction(style: .destructive, title: "Elimina") {  (contextualAction, view, completionHandler) in
+            
+            let cell = self.tableView.cellForRow(at: indexPath) as? HandlePersonTableViewCell
+            let name = cell?.person.name ?? ""
+            self.presentActionSheet(title: "Sei sicuro di voler cancellare \(name) dalla lista di persone??? Quest'azione è irreversibile.", mainAction: { _ in
+                self.deletePersonAndUpdateUI(name, indexPath)
+                completionHandler(true)
+            }, mainActionTitle: "Cancella \(name)") { _ in
+                // TODO: Automatic close trailingSwipe
+                self.dismiss(animated: false, completion: nil)
+                completionHandler(true)
+            }
+        }
+        return contextItem
     }
     
     // MARK: Add Person
