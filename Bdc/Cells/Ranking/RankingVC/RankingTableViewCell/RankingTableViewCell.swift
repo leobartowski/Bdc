@@ -80,7 +80,6 @@ class RankingTableViewCell: UITableViewCell {
         self.containerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         self.containerView.layer.shadowOpacity = 0.3
         self.containerView.layer.shadowRadius = 2
-//        self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: cornerRadius).cgPath
         self.containerView.layer.masksToBounds = false
     }
 
@@ -102,7 +101,20 @@ class RankingTableViewCell: UITableViewCell {
             break
         }
     }
-
+    
+    func handleShadowOnFriday(_ weekNumber: Int? = 0) {
+        // Show red and green cell only on friday and only if the week on focus is the current week
+        if Date().getDayNumberOfWeek() == 6, weekNumber == Date.now.getWeekNumber() {
+            // Check if the user has at least two presence or more than 2 admonishment
+            let attendance: Int = Int(attendanceLabel.text ?? "") ?? 0
+            let admonishment: Int = Int(admonishmentLabel.text ?? "") ?? 0
+            self.containerView.layer.shadowOpacity = 0.3
+            self.containerView.layer.shadowColor = attendance < 2 || admonishment >= 2
+            ? UIColor.red.cgColor
+            : Theme.customGreen.cgColor
+        }
+    }
+    
     // Given an array of date create an array of Int that represents the specifc number of the day in the weel
     func createNumbersArray(_ dates: [Date]) -> [Int] {
         var datesNumbers: [Int] = []

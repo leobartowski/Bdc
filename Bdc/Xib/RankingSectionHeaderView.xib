@@ -22,10 +22,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MTf-lD-GAU">
-                    <rect key="frame" x="20" y="0.0" width="335" height="60"/>
+                    <rect key="frame" x="20" y="5" width="335" height="55"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlM-Fu-liw">
-                            <rect key="frame" x="40" y="18" width="120" height="24"/>
+                            <rect key="frame" x="40" y="15.5" width="120" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="th8-Ur-Yz6"/>
                             </constraints>
@@ -34,13 +34,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6z-Ta-oH4">
-                            <rect key="frame" x="180" y="10" width="62.5" height="40"/>
+                            <rect key="frame" x="180" y="10" width="62.5" height="35"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mur-eO-Yxb">
-                            <rect key="frame" x="262.5" y="10" width="62.5" height="40"/>
+                            <rect key="frame" x="262.5" y="10" width="62.5" height="35"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -62,15 +62,15 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="eey-ZR-qcv"/>
-            <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="0.0" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="MTf-lD-GAU" firstAttribute="top" secondItem="zg5-me-JnO" secondAttribute="top" id="0TH-nT-imL"/>
+                <constraint firstItem="MTf-lD-GAU" firstAttribute="top" secondItem="zg5-me-JnO" secondAttribute="top" constant="5" id="0TH-nT-imL"/>
                 <constraint firstItem="eey-ZR-qcv" firstAttribute="trailing" secondItem="MTf-lD-GAU" secondAttribute="trailing" constant="20" id="7zH-Zm-i6R"/>
                 <constraint firstItem="eey-ZR-qcv" firstAttribute="bottom" secondItem="MTf-lD-GAU" secondAttribute="bottom" constant="5" id="L1B-Fv-fAQ"/>
                 <constraint firstItem="MTf-lD-GAU" firstAttribute="leading" secondItem="eey-ZR-qcv" secondAttribute="leading" constant="20" id="pQV-Li-cq6"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="121.0144927536232" y="265.17857142857144"/>
+            <point key="canvasLocation" x="121.0144927536232" y="264.84375"/>
         </view>
     </objects>
 </document>

@@ -26,19 +26,19 @@ class RankingTypeViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? RankingTypeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? RankingTypeBottomSheetTableViewCell
         cell?.setup(self.types[indexPath.row], self.selectedType, indexPath)
         return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedType = RankingType(rawValue: indexPath.row) ?? .weekly
-        let cell = tableView.cellForRow(at: indexPath) as? RankingTypeTableViewCell
+        let cell = tableView.cellForRow(at: indexPath) as? RankingTypeBottomSheetTableViewCell
         cell?.checkBox.select()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as? RankingTypeTableViewCell
+        let cell = tableView.cellForRow(at: indexPath) as? RankingTypeBottomSheetTableViewCell
         cell?.checkBox.deselect()
     }
 }

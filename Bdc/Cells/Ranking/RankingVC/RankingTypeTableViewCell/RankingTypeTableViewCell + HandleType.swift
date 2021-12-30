@@ -1,14 +1,13 @@
 //
-//  RankingViewController+DatePicker.swift
+//  RankingTypeTableViewCell + HandleType.swift
 //  Bdc
 //
-//  Created by leobartowski on 23/12/21.
+//  Created by leobartowski on 29/12/21.
 //
 
 import Foundation
-import UIKit
 
-extension RankingViewController {
+extension RankingTypeTableViewCell {
     
     func monthYearDatePickerSetup() {
         self.monthYearDatePicker.isHidden = true
@@ -27,15 +26,14 @@ extension RankingViewController {
     }
     
     @objc func monthtYearDatePickerDateChanged(_ sender: Any) {
-        self.daysCurrentPeriod.removeAll()
-        self.daysCurrentPeriod = self.monthYearDatePicker.date.getAllDateOfTheMonth()
-        self.populateAttendance()
+        self.rankingViewController?.daysCurrentPeriod.removeAll()
+        self.rankingViewController?.daysCurrentPeriod = self.monthYearDatePicker.date.getAllDateOfTheMonth()
+        self.rankingViewController?.populateAttendance()
     }
     
     @objc func yearDatePickerDateChanged(_ sender: Any) {
-        self.daysCurrentPeriod.removeAll()
-        self.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheYear()
-        self.populateAttendance()
+        self.rankingViewController?.daysCurrentPeriod.removeAll()
+        self.rankingViewController?.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheYear()
+        self.rankingViewController?.populateAttendance()
     }
-    
 }
