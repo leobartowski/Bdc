@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class RankingTypeTableViewCell: UITableViewCell {
+class RankingTypeBottomSheetTableViewCell: UITableViewCell {
     
     @IBOutlet var mainLabel: UILabel!
     @IBOutlet var checkBox: CheckBox!

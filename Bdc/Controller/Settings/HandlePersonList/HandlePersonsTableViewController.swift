@@ -13,25 +13,10 @@ class HandlePersonsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
-        self.setupUI()
+        
         self.setupTableViewShadow()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPerson))
         self.addObservers()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.isHidden = false
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationController?.navigationBar.isHidden = true
-    }
-
-    func setupUI() {
-        self.navigationItem.largeTitleDisplayMode = .automatic
-        self.navigationController?.navigationBar.tintColor = Theme.FSCalendarStandardSelectionColor
     }
     
     func setupTableViewShadow() {

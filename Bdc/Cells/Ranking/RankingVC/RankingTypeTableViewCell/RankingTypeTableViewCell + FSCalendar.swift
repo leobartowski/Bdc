@@ -1,18 +1,19 @@
 //
-//  RankingViewController + FSCalendar.swift
+//  RankingTypeTableViewCell + FSCalendar.swift
 //  Bdc
 //
-//  Created by Francesco D'Angelo on 23/10/21.
+//  Created by leobartowski on 29/12/21.
 //
 
-import Foundation
+import UIKit
 import FSCalendar
 
-extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
-    func calendar(_: FSCalendar, boundingRectWillChange _: CGRect, animated _: Bool) {
-        self.calendarViewHeightConstraint.constant = 127
-        view.layoutIfNeeded()
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        self.calendarHeightConstraint.constant = 110
+        self.contentView.layoutIfNeeded()
+        self.containerView.layoutIfNeeded()
     }
 
     func calendar(_: FSCalendar, shouldSelect _: Date, at _: FSCalendarMonthPosition) -> Bool {
@@ -28,7 +29,7 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         self.deselectAllDates()
         self.selectedAllDateOfTheWeek(calendar.currentPage)
-        self.populateAttendance()
+        self.rankingViewController?.populateAttendance()
     }
 
     // TODO: Crash on the simulator!
@@ -69,11 +70,13 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
     // MARK: Calendar SetUp
 
     func calendarSetup() {
+        self.calendarView.delegate = self
+        self.calendarView.dataSource = self
         calendarView.locale = Locale(identifier: "it")
         calendarView.placeholderType = .none
         calendarView.scope = .week // Needed to show the weekly at start!
+        calendarHeightConstraint.constant = 320 // This line has absolutly no sense but is needed for a bug of FSCalendar
         calendarView.allowsMultipleSelection = true
-        selectedAllDateOfTheWeek(calendarView.selectedDate ?? Date.now)
         // Appearance
         calendarView.appearance.caseOptions = .headerUsesCapitalized
         calendarView.appearance.titleFont = .boldSystemFont(ofSize: 15)
@@ -88,8 +91,8 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
     }
 
     func selectedAllDateOfTheWeek(_ date: Date) {
-        self.daysCurrentPeriod = date.getAllDateOfTheWeek()
-        for day in self.daysCurrentPeriod {
+        self.rankingViewController?.daysCurrentPeriod = date.getAllDateOfTheWeek()
+        for day in self.rankingViewController?.daysCurrentPeriod ?? [] {
             if day.getDayNumberOfWeek() != 1, day.getDayNumberOfWeek() != 7 {
                 self.calendarView.select(day)
             }
@@ -102,3 +105,4 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         }
     }
 }
+
