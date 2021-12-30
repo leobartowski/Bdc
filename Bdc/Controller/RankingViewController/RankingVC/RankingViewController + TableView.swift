@@ -69,7 +69,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return section == 0 ? 0 : 50
+        return section == 0 ? 0 : 60
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
