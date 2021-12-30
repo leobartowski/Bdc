@@ -15,7 +15,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         self.setupTableViewShadow()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
