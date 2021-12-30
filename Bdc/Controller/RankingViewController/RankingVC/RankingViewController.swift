@@ -8,17 +8,11 @@
 import FSCalendar
 import PDFKit
 import UIKit
+import FittedSheets
 
 class RankingViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var calendarView: FSCalendar!
-    @IBOutlet var changeRankingTypeButton: UIButton!
-    @IBOutlet var monthYearDatePicker: MonthYearPickerView!
-    @IBOutlet var yearDatePicker: YearPickerView!
-    @IBOutlet var containerViewForRankingType: UIView!
-    // Constraints
-    @IBOutlet weak var calendarViewHeightConstraint: NSLayoutConstraint!
     
     var rankingPersonsAttendaces: [RankingPersonAttendance] = []
     let headerBasic = ["Nome", "P", "A"]
@@ -29,7 +23,6 @@ class RankingViewController: UIViewController {
     var rankingType: RankingType = .weekly
     
     // MARK: Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
@@ -42,33 +35,17 @@ class RankingViewController: UIViewController {
         self.populateAttendance()
     }
     
-    override func viewDidLayoutSubviews() {
-        self.containerViewForRankingType.layer.shadowPath = UIBezierPath(roundedRect: self.containerViewForRankingType.bounds, cornerRadius: 15).cgPath
-    }
-    
     func viewSetUp() {
-        // UI
-        self.setupShadowContainerView()
+        // Navigation Bar
+        self.navigationBarSetup()
         // Table View
         self.tableViewSetup()
-        // Calendar
-        self.calendarSetup()
-        // Month and Year Date Picker
-        self.monthYearDatePickerSetup()
-        // Year Date Picker
-        self.yearDatePickerSetup()
     }
     
-    func setupShadowContainerView() {
-        let cornerRadius: CGFloat = 15
-        self.containerViewForRankingType.cornerRadius = cornerRadius
-        self.containerViewForRankingType.layer.masksToBounds = true
-        self.containerViewForRankingType.layer.shadowColor = UIColor.gray.cgColor
-        self.containerViewForRankingType.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        self.containerViewForRankingType.layer.shadowOpacity = 0.3
-        self.containerViewForRankingType.layer.shadowRadius = 2
-        self.containerViewForRankingType.layer.shadowPath = UIBezierPath(roundedRect: self.containerViewForRankingType.bounds, cornerRadius: cornerRadius).cgPath
-        self.containerViewForRankingType.layer.masksToBounds = false
+    func navigationBarSetup() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(shareButtonAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(shareButtonAction))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filtro", style: .done, target: self, action: #selector(chooseRankingTypePeriod))
     }
     
     func addObservers() {
@@ -123,8 +100,10 @@ class RankingViewController: UIViewController {
         self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
         self.populateAttendance()
     }
+    
+    // MARK: Share pdf current period
+    @objc func shareButtonAction() {
 
-    @IBAction func shareButtonAction(_: Any) {
         let pdfTitle = PDFCreator.createPDFTitle(dates: self.daysCurrentPeriod)
         let pdfData = createPDF(pdfTitle)
 
@@ -142,8 +121,9 @@ class RankingViewController: UIViewController {
             print(error)
         }
     }
-
-    @IBAction func changeRankingTypeAction(_: Any) {
+    
+    // MARK: Present modal to change ranking type
+    @objc func chooseRankingTypePeriod() {
         self.presentModalToChangeRankingType()
     }
 }

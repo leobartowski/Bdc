@@ -10,39 +10,51 @@ import UIKit
 extension RankingViewController: UITableViewDelegate, UITableViewDataSource, RankingSectionHeaderDelegate {
     
     func numberOfSections(in _: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.rankingPersonsAttendaces.count
+        return section == 0 ? 1 : self.rankingPersonsAttendaces.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == selectedCellRow ? 200 : 70
+        return indexPath.section == 0
+        ? 140
+        : indexPath.row == self.selectedCellRow ? 200 : 70
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? RankingTableViewCell
-        let rankingAttendance = rankingPersonsAttendaces[indexPath.row]
-        cell?.setUp(rankingAttendance, indexPath, self.rankingType)
-        cell?.setupLabelDesign(sorting.sortingPosition.rawValue)
-        if self.rankingType == .weekly { self.handleColorOfTheCellOnFriday(cell, indexPath.row) }
-        cell?.setNeedsLayout()
-        return cell ?? UITableViewCell()
+        if indexPath.section == 0 {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "rankingTypeCellID", for: indexPath) as? RankingTypeTableViewCell
+            cell?.setup(self)
+            return cell ?? UITableViewCell()
+            
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? RankingTableViewCell
+            let rankingAttendance = rankingPersonsAttendaces[indexPath.row]
+            cell?.setUp(rankingAttendance, indexPath, self.rankingType)
+            cell?.setupLabelDesign(sorting.sortingPosition.rawValue)
+            if self.rankingType == .weekly { cell?.handleShadowOnFriday(self.daysCurrentPeriod.last?.getWeekNumber()) }
+            cell?.setNeedsLayout()
+            return cell ?? UITableViewCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-//        if self.rankingType != .weekly { return nil }
-        selectedCellRow = indexPath.row == selectedCellRow ? -1 : indexPath.row
-        guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return indexPath }
-        if selectedIndexPath == indexPath {
-            tableView.beginUpdates()
-            tableView.deselectRow(at: indexPath, animated: true)
-            UIView.animate(withDuration: 0.3) {
-                tableView.performBatchUpdates(nil)
+        if indexPath.section == 1 {
+            selectedCellRow = indexPath.row == selectedCellRow ? -1 : indexPath.row
+            guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return indexPath }
+            if selectedIndexPath == indexPath {
+                tableView.beginUpdates()
+                tableView.deselectRow(at: indexPath, animated: true)
+                UIView.animate(withDuration: 0.3) {
+                    tableView.performBatchUpdates(nil)
+                }
+                tableView.endUpdates()
+                return nil
             }
-            tableView.endUpdates()
-            return nil
         }
         return indexPath
     }
@@ -55,11 +67,13 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         tableView.endUpdates()
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
-        return 50
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return section == 0 ? 0 : 60
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection _: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 { return nil }
         let sectionHeaderView = RankingSectionHeaderView()
         sectionHeaderView.delegate = self
         sectionHeaderView.nameLabel.text = header[0]
@@ -70,7 +84,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        20
+        return section == 0 ? 0 : 20
     }
     
     func tableViewSetup() {
@@ -83,19 +97,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         self.tableView.addGestureRecognizer(rightSwipeGR)
         
         self.header = self.headerBasic
-        
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 10))
-    }
-    
-    func handleColorOfTheCellOnFriday(_ cell: RankingTableViewCell?, _ row: Int) {
-        // Show red and green cell only on friday and only if the week on focus is the current week
-        if Date().getDayNumberOfWeek() == 6, calendarView.currentPage.getWeekNumber() == Date.now.getWeekNumber() {
-            // Check if the user has at least two presence or more than 2 admonishment
-            cell?.containerView.layer.shadowOpacity = 0.3
-            cell?.containerView.layer.shadowColor = rankingPersonsAttendaces[row].attendanceNumber < 2 || rankingPersonsAttendaces[row].admonishmentNumber >= 2
-            ? UIColor.red.cgColor
-            : Theme.customGreen.cgColor
-        }
     }
     
     func sortDescendingAttendanceFirstTime() {
@@ -168,14 +170,15 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     
     @objc func tableViewSwiped(sender: UISwipeGestureRecognizer) {
         if self.rankingType != .weekly { return }
-        let selectedDate = calendarView.selectedDate ?? Date.now
-        if sender.direction == .right { // Right
-            calendarView.setCurrentPage(selectedDate.previousWeek, animated: true)
-        } else { // Left
-            calendarView.setCurrentPage(selectedDate.nextWeek, animated: true)
+        if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? RankingTypeTableViewCell {
+            let selectedDate = cell.calendarView.selectedDate ?? Date.now
+            if sender.direction == .right { // Right
+                cell.calendarView.setCurrentPage(selectedDate.previousWeek, animated: true)
+            } else { // Left
+                cell.calendarView.setCurrentPage(selectedDate.nextWeek, animated: true)
+            }
+            let feedbackGenerator = UIImpactFeedbackGenerator(style: .rigid)
+            feedbackGenerator.impactOccurred(intensity: 0.9)
         }
-        let feedbackGenerator = UIImpactFeedbackGenerator(style: .rigid)
-        feedbackGenerator.impactOccurred(intensity: 0.9)
     }
-    
 }
