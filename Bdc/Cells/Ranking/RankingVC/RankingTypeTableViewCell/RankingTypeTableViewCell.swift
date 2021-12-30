@@ -14,7 +14,7 @@ class RankingTypeTableViewCell: UITableViewCell {
     @IBOutlet var calendarView: FSCalendar!
     @IBOutlet var monthYearDatePicker: MonthYearPickerView!
     @IBOutlet var yearDatePicker: YearPickerView!
-    
+    // Constraints
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     
     var rankingType: RankingType = .weekly
@@ -60,7 +60,7 @@ class RankingTypeTableViewCell: UITableViewCell {
         switch self.rankingType {
         case .weekly:
             
-            self.calendarView.hideViewWithTransition(hidden: false)
+            self.calendarView.isHidden = false
             self.monthYearDatePicker.isHidden = true
             self.yearDatePicker.isHidden = true
             self.rankingViewController?.tableView.allowsSelection = true
@@ -68,7 +68,7 @@ class RankingTypeTableViewCell: UITableViewCell {
         case .monthly:
             
             self.calendarView.isHidden = true
-            self.monthYearDatePicker.hideViewWithTransition(hidden: false)
+            self.monthYearDatePicker.isHidden = false
             self.yearDatePicker.isHidden = true
             self.monthYearDatePicker.date = Date()
             self.rankingViewController?.tableView.allowsSelection = false
@@ -78,7 +78,7 @@ class RankingTypeTableViewCell: UITableViewCell {
             
             self.calendarView.isHidden = true
             self.monthYearDatePicker.isHidden = true
-            self.yearDatePicker.hideViewWithTransition(hidden: false)
+            self.yearDatePicker.isHidden = false
             self.yearDatePicker.date = Date()
             self.rankingViewController?.tableView.allowsSelection = false
             self.rankingViewController?.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheYear()

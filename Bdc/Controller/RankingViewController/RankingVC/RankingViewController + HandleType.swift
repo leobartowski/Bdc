@@ -27,8 +27,9 @@ extension RankingViewController {
                 // Update rankingType based on user's choice
                 if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? RankingTypeTableViewCell {
                     
-                    let oldRankingType = cell.rankingType
+                    let oldRankingType = self.rankingType
                     cell.rankingType = vc.selectedType
+                    self.rankingType = vc.selectedType
                     cell.handleChangeRankingType(oldRankingType)
                     
                 }
