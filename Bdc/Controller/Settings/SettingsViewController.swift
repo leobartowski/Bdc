@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SafariServices
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -30,11 +31,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return section == 0 ? 2 : 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -55,7 +56,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 return UITableViewCell()
             }
         case 1: // Second Section
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCell(withIdentifier: "arrowCellID", for: indexPath) as? SettingsArrowTableViewCell
+            cell?.setup(text: "Regolamento", settingsType: .showRegulation)
+            return cell ?? UITableViewCell()
         default:
             return UITableViewCell()
         }
@@ -72,7 +75,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 self.tableView.deselectRow(at: indexPath, animated: false)
             default: return
             }
-
+        case 1:
+            if let url = URL(string: "https://drive.google.com/file/d/1fvKB4Tbz4FOWQvNWF4ncY0XhpRdPdDB-/view?usp=sharing") {
+                let svc = SFSafariViewController(url: url)
+                self.present(svc, animated: true, completion: nil)
+                self.tableView.deselectRow(at: indexPath, animated: false)
+            }
         default:
             return
         }

@@ -11,5 +11,5 @@ enum SettingsType: String {
     
     case modifyOldDays = "modifyOldDays"
     case handlePersonList = "handlePersonList"
-    
+    case showRegulation = "showRegulation"
 }
