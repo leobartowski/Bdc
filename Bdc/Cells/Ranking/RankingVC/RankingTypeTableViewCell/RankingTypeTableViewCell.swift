@@ -53,37 +53,4 @@ class RankingTypeTableViewCell: UITableViewCell {
         self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: cornerRadius).cgPath
         self.containerView.layer.masksToBounds = false
     }
-    
-    func handleChangeRankingType(_ oldRankingType: RankingType) {
-        self.rankingViewController?.daysCurrentPeriod.removeAll()
-        
-        switch self.rankingType {
-        case .weekly:
-            
-            self.calendarView.isHidden = false
-            self.monthYearDatePicker.isHidden = true
-            self.yearDatePicker.isHidden = true
-            self.rankingViewController?.tableView.allowsSelection = true
-            self.rankingViewController?.daysCurrentPeriod = self.calendarView.selectedDates
-        case .monthly:
-            
-            self.calendarView.isHidden = true
-            self.monthYearDatePicker.isHidden = false
-            self.yearDatePicker.isHidden = true
-            self.monthYearDatePicker.date = Date()
-            self.rankingViewController?.tableView.allowsSelection = false
-            self.rankingViewController?.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheMonth()
-            self.rankingViewController?.daysCurrentPeriod.removeAll(where: { $0 < Constant.startingDateBdC })
-        case .yearly:
-            
-            self.calendarView.isHidden = true
-            self.monthYearDatePicker.isHidden = true
-            self.yearDatePicker.isHidden = false
-            self.yearDatePicker.date = Date()
-            self.rankingViewController?.tableView.allowsSelection = false
-            self.rankingViewController?.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheYear()
-            self.rankingViewController?.daysCurrentPeriod.removeAll(where: { $0 < Constant.startingDateBdC })
-        }
-        self.rankingViewController?.populateAttendance()
-    }
 }

@@ -18,7 +18,7 @@ class RankingViewController: UIViewController {
     let headerBasic = ["Nome", "P", "A"]
     var header: [String] = []
     var sorting = SortingPositionAndType(.attendance, .descending) // This variable is needed to understand which column in sorted and if ascending or descending (type)
-    var daysCurrentPeriod = [Date]()
+    var daysCurrentPeriod = [Date]() 
     var selectedCellRow = -1
     var rankingType: RankingType = .weekly
     
@@ -103,8 +103,8 @@ class RankingViewController: UIViewController {
     
     // MARK: Share pdf current period
     @objc func shareButtonAction() {
-
-        let pdfTitle = PDFCreator.createPDFTitle(dates: self.daysCurrentPeriod)
+        
+        let pdfTitle = PDFCreator.createPDFTitle(dates: self.daysCurrentPeriod, self.rankingType)
         let pdfData = createPDF(pdfTitle)
 
         let temporaryFolder = FileManager.default.temporaryDirectory
