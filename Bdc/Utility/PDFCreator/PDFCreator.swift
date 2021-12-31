@@ -13,7 +13,7 @@ import UIKit
 class PDFCreator: NSObject {
     
     let defaultOffset: CGFloat = 20
-    var titleHeight: CGFloat = 65
+    var titleHeight: CGFloat = 50
     let pdfTitle: String
     let tableDataHeaderTitles: [String]
     let tableDataItems: [PDFTableDataItem]
@@ -24,15 +24,29 @@ class PDFCreator: NSObject {
         self.pdfTitle = pdfTitle
     }
 
-    static func createPDFTitle(dates: [Date]) -> String {
+    static func createPDFTitle(dates: [Date], _ rankingType: RankingType = .weekly) -> String {
         var daysToCreateTitle = dates.sorted(by: { $0 < $1 })
         daysToCreateTitle = daysToCreateTitle.filter { $0 <= Date.now }
-        let date1 = daysToCreateTitle.first ?? Date()
-        let date2 = daysToCreateTitle.last ?? Date()
-        let date1String = DateFormatter.dayAndMonthFormatter.string(from: date1)
-        let date2String = DateFormatter.dayAndMonthFormatter.string(from: date2)
         
-        return "Presenze BdC dal " + date1String + " al " + date2String
+        switch rankingType {
+        case .weekly:
+            let date1 = daysToCreateTitle.first ?? Date()
+            let date2 = daysToCreateTitle.last ?? Date()
+            let date1String = DateFormatter.dayAndMonthFormatter.string(from: date1)
+            let date2String = DateFormatter.dayAndMonthFormatter.string(from: date2)
+            
+            return "Presenze BdC dal " + date1String + " al " + date2String
+        case .monthly:
+            
+            let date = daysToCreateTitle.first ?? Date()
+            let dateString = DateFormatter.verboseMonthYear.string(from: date)
+            return "Presenze BdC " + dateString
+            
+        case .yearly:
+            let date = daysToCreateTitle.first ?? Date()
+            let dateString = DateFormatter.verboseYear.string(from: date)
+            return "Presenze annuali del " + dateString
+        }
     }
 
     func create() -> Data {
@@ -73,7 +87,7 @@ class PDFCreator: NSObject {
 
     func calculateNumberOfElementsPerPage(with pageRect: CGRect) -> Int {
         let rowHeight = (defaultOffset * 2)
-        let number = Int((pageRect.height - rowHeight - self.titleHeight - 20) / rowHeight)
+        let number = Int((pageRect.height - rowHeight - self.titleHeight - 30) / rowHeight)
         return number
     }
 
@@ -93,7 +107,7 @@ class PDFCreator: NSObject {
         // 5
         let titleStringRect = CGRect(
             x: (pageRect.width - titleStringSize.width) / 2.0,
-            y: 36,
+            y: 20,
             width: titleStringSize.width,
             height: titleStringSize.height
         )
@@ -121,7 +135,7 @@ class PDFCreator: NSObject {
 
         let titleStringRect = CGRect(
             x: (pageRect.width - titleStringSize.width) / 2.0,
-            y: 11 * 72.0 - 35, // 11 * 72.0 = pageHeight
+            y: 11 * 72.0 - 25, // 11 * 72.0 = pageHeight
             width: titleStringSize.width,
             height: titleStringSize.height
         )

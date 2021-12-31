@@ -29,4 +29,18 @@ extension Formatter {
         dateFormatter.dateFormat = "dd/MM/yyyy 'alle' HH:mm:ss"
         return dateFormatter
     }()
+    
+    static let verboseMonthYear: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "it")
+        dateFormatter.setLocalizedDateFormatFromTemplate("MMMMyyyy")
+        return dateFormatter
+    }()
+    
+    static let verboseYear: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "it")
+        dateFormatter.setLocalizedDateFormatFromTemplate("yyyy")
+        return dateFormatter
+    }()
 }
