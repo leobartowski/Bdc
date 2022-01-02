@@ -41,18 +41,6 @@ class CalendarViewController: UIViewController {
         self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
     }
 
-    // We save everything to core data to prepare the new data for the RankingVC
-    override func viewWillDisappear(_: Bool) {
-        // When the user change controller we need to save the value in CoreData without clearing everything
-        //        self.saveCurrentDataInCoreData()
-    }
-
-    //   Get called when the app is no longer active and loses focus.
-    @objc func willResignActive() {
-        // When the app lose focus we need to save the value in CoreData without clearing everything
-        //        self.saveCurrentDataInCoreData()
-    }
-
     //   Get called when the app is become active
     @objc func willBecomeActive() {
         self.updateDayTypeBasedOnTime()
@@ -76,7 +64,7 @@ class CalendarViewController: UIViewController {
     }
 
     func addObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.willBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.systemTimeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
         
