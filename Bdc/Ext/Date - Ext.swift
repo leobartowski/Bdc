@@ -13,19 +13,23 @@ extension Date {
     static var tomorrow: Date { return Date().dayAfter }
 
     var dayBefore: Date {
-        return Calendar.current.date(byAdding: .day, value: -1, to: self.noon)!
+        return Calendar.current.date(byAdding: .day, value: -1, to: self.noon) ?? Date()
     }
 
     var twoDayBefore: Date {
-        return Calendar.current.date(byAdding: .day, value: -2, to: self.noon)!
+        return Calendar.current.date(byAdding: .day, value: -2, to: self.noon) ?? Date()
     }
 
     var dayAfter: Date {
-        return Calendar.current.date(byAdding: .day, value: 1, to: self.noon)!
+        return Calendar.current.date(byAdding: .day, value: 1, to: self.noon) ?? Date()
+    }
+    
+    var twoDayAfter: Date {
+        return Calendar.current.date(byAdding: .day, value: 2, to: self.noon) ?? Date()
     }
 
     var noon: Date {
-        return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
+        return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self) ?? Date()
     }
 
     var previousMonth: Date {

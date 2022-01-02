@@ -130,14 +130,21 @@ open class MonthYearPickerView: UIControl {
         pickerView.reloadAllComponents()
     }
 
-    internal func isValidDate(_ date: Date) -> Bool {
-        if let minimumDate = minimumDate,
-            let maximumDate = maximumDate, calendar.compare(minimumDate, to: maximumDate, toGranularity: .month) == .orderedDescending { return true }
-        if let minimumDate = minimumDate, calendar.compare(minimumDate, to: date, toGranularity: .month) == .orderedDescending { return false }
-        if let maximumDate = maximumDate, calendar.compare(date, to: maximumDate, toGranularity: .month) == .orderedDescending { return false }
-        return true
+    internal func isValidDate(_ date: Date, isMonth: Bool = true) -> Bool {
+        if isMonth {
+            if let minimumDate = minimumDate,
+                let maximumDate = maximumDate, calendar.compare(minimumDate, to: maximumDate, toGranularity: .month) == .orderedDescending { return true }
+            if let minimumDate = minimumDate, calendar.compare(minimumDate, to: date, toGranularity: .month) == .orderedDescending { return false }
+            if let maximumDate = maximumDate, calendar.compare(date, to: maximumDate, toGranularity: .month) == .orderedDescending { return false }
+            return true
+        } else {
+            if let minimumDate = minimumDate, let maximumDate = maximumDate,
+                calendar.compare(minimumDate, to: maximumDate, toGranularity: .year) == .orderedDescending { return true }
+            if let minimumDate = minimumDate, calendar.compare(minimumDate, to: date, toGranularity: .year) == .orderedDescending { return false }
+            if let maximumDate = maximumDate, calendar.compare(date, to: maximumDate, toGranularity: .year) == .orderedDescending { return false }
+            return true
+        }
     }
-    
 }
 
 extension MonthYearPickerView: UIPickerViewDelegate {
@@ -199,12 +206,12 @@ extension MonthYearPickerView: UIPickerViewDataSource {
         guard let date = calendar.date(from: dateComponents) else { return label }
 
         switch component {
-            case .month:
-                label.text = monthDateFormatter.string(from: date)
+        case .month:
+            label.text = monthDateFormatter.string(from: date)
         case .year:
             label.text = yearDateFormatter.string(from: date)
         }
-        if isValidDate(date) {
+        if isValidDate(date, isMonth: component == .month ? true : false) {
             label.font = .systemFont(ofSize: 25, weight: .medium)
             label.textColor = .black
         } else {
