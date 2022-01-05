@@ -63,7 +63,7 @@ extension Date {
     }
     /// Get last day of the year
     func getEndOfYear() -> Date {
-        return Calendar.current.date(byAdding: DateComponents(year: 1, day: -1), to: self.getStartOfMonth()) ?? Date()
+        return Calendar.current.date(byAdding: DateComponents(year: 1, day: -1), to: self.getStartOfYear()) ?? Date()
     }
 
     /// Get the month number and the year
