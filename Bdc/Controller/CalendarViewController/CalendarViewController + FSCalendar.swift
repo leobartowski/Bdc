@@ -108,7 +108,6 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             DispatchQueue.main.async {
                 self.calendarView.reloadData()
             }
-            
         }
     }
 

@@ -59,7 +59,7 @@ extension RankingTypeTableViewCell {
             self.monthYearDatePicker.date = Date()
             self.rankingViewController?.tableView.allowsSelection = false
             self.rankingViewController?.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheMonth()
-            self.rankingViewController?.daysCurrentPeriod.removeAll(where: { $0 < Constant.startingDateBdC })
+            self.rankingViewController?.daysCurrentPeriod.removeAll(where: { $0 < Constant.startingDateBdC || $0 > Date.tomorrow })
         case .yearly:
             
             self.calendarView.isHidden = true
@@ -68,7 +68,7 @@ extension RankingTypeTableViewCell {
             self.yearDatePicker.date = Date()
             self.rankingViewController?.tableView.allowsSelection = false
             self.rankingViewController?.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheYear()
-            self.rankingViewController?.daysCurrentPeriod.removeAll(where: { $0 < Constant.startingDateBdC })
+            self.rankingViewController?.daysCurrentPeriod.removeAll(where: { $0 < Constant.startingDateBdC || $0 > Date.tomorrow })
         }
         self.rankingViewController?.populateAttendance()
     }
