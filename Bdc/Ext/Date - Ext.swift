@@ -140,6 +140,19 @@ extension Date {
          }
          return dates
     }
+    
+    /// Get all Dates between starting Date to self
+    func getAllDatesFrom(startingDate: Date) -> [Date] {
+        var dates: [Date] = []
+        var date = startingDate
+         
+        while date <= self {
+             dates.append(date)
+             guard let newDate = Calendar.current.date(byAdding: .day, value: 1, to: date) else { break }
+             date = newDate
+         }
+         return dates
+    }
 
     /// Returns the amount of years from another date
     func years(from date: Date) -> Int {

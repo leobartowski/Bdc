@@ -46,6 +46,10 @@ class PDFCreator: NSObject {
             let date = daysToCreateTitle.first ?? Date()
             let dateString = DateFormatter.verboseYear.string(from: date)
             return "Presenze annuali del " + dateString
+        case .allTime:
+            
+            let dateString = DateFormatter.basicFormatter.string(from: Date())
+            return "Presenze dal 25/10/21 al " + dateString
         }
     }
 
