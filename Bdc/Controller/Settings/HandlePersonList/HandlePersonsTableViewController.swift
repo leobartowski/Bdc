@@ -10,7 +10,7 @@ import FittedSheets
 
 class HandlePersonsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
@@ -21,9 +21,9 @@ class HandlePersonsViewController: UIViewController, UITableViewDelegate, UITabl
     
     func setupTableViewShadow() {
         self.tableView.layer.masksToBounds = false
-        self.tableView.layer.shadowColor = UIColor.gray.cgColor // any value you want
-        self.tableView.layer.shadowOpacity = 0.3 // any value you want
-        self.tableView.layer.shadowRadius = 2 // any value you want
+        self.tableView.layer.shadowColor = UIColor.gray.cgColor
+        self.tableView.layer.shadowOpacity = 0.3
+        self.tableView.layer.shadowRadius = 2 
         self.tableView.layer.shadowOffset = .init(width: 0, height: 0)
     }
     
