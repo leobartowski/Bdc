@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Attendance" representedClassName="Attendance" syncable="YES">
         <attribute name="dateString" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="persons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="attendance" inverseEntity="Person"/>
-        <relationship name="personsAdmonished" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person"/>
+        <relationship name="personsAdmonished" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="attendanceAdmonishment" inverseEntity="Person"/>
     </entity>
     <entity name="Person" representedClassName="Person" syncable="YES">
         <attribute name="iconString" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="attendance" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attendance" inverseName="persons" inverseEntity="Attendance"/>
+        <relationship name="attendanceAdmonishment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Attendance" inverseName="personsAdmonished" inverseEntity="Attendance"/>
+        <relationship name="personsList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonsList" inverseName="persons" inverseEntity="PersonsList"/>
+    </entity>
+    <entity name="PersonsList" representedClassName="PersonsList" syncable="YES">
+        <relationship name="persons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="personsList" inverseEntity="Person"/>
     </entity>
     <elements>
-        <element name="Attendance" positionX="-54" positionY="0" width="128" height="103"/>
-        <element name="Person" positionX="-413.9989013671875" positionY="47.3211669921875" width="128" height="88"/>
+        <element name="Attendance" positionX="-54" positionY="0" width="128" height="89"/>
+        <element name="Person" positionX="-413.9989013671875" positionY="47.3211669921875" width="128" height="104"/>
+        <element name="PersonsList" positionX="-428.435791015625" positionY="-118.9204406738281" width="128" height="44"/>
     </elements>
 </model>

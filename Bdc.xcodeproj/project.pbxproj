@@ -13,19 +13,39 @@
 		DD03AC1727481092004C4819 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */; };
 		DD03AC19274811B8004C4819 /* CalendarViewController + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC18274811B8004C4819 /* CalendarViewController + CollectionView.swift */; };
 		DD03AC1B27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */; };
-		DD0CAB5027280FB200EA42B1 /* Attendance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB4F27280FB200EA42B1 /* Attendance+CoreDataProperties.swift */; };
 		DD0CAB532728108600EA42B1 /* DayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB522728108600EA42B1 /* DayType.swift */; };
 		DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */; };
+		DD0E35BF277BB7F50082D32C /* AddChangePersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E35BE277BB7F50082D32C /* AddChangePersonViewController.swift */; };
 		DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD18C7F827220B0A0086BB6C /* CoreDataService.swift */; };
 		DD18C7FB27220B890086BB6C /* CoreDateContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD18C7FA27220B890086BB6C /* CoreDateContainer.swift */; };
 		DD1A1C65274908AB006FC676 /* UIView - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1A1C64274908AB006FC676 /* UIView - Ext.swift */; };
 		DD1EAF3A2726DDD100EF1455 /* CommonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EAF392726DDD100EF1455 /* CommonUtility.swift */; };
+		DD27CAB1277368810020BE4D /* RankingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD27CAB0277368810020BE4D /* RankingType.swift */; };
+		DD368F4E2774BE4F000F0A84 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */; };
+		DD368F522774D415000F0A84 /* YearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD368F512774D415000F0A84 /* YearPickerView.swift */; };
 		DD413379274FC94C0038B4C6 /* RankingViewController + TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */; };
-		DD41743027246BA500BE5BFD /* RankingViewController + FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41742F27246BA500BE5BFD /* RankingViewController + FSCalendar.swift */; };
 		DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */; };
+		DD60B5552753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */; };
+		DD617CEB2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */; };
+		DD617CED2753C3AE002AD5E7 /* RankingTableViewCell + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD617CEC2753C3AE002AD5E7 /* RankingTableViewCell + CollectionView.swift */; };
 		DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968127221A40009E455F /* Person+CoreDataProperties.swift */; };
 		DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968227221A40009E455F /* Person+CoreDataClass.swift */; };
 		DD64968727221A40009E455F /* Attendance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */; };
+		DD6ED5EB277CFC4000F44D6F /* RankingTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6ED5EA277CFC4000F44D6F /* RankingTypeTableViewCell.swift */; };
+		DD709C852773612C00D20C6A /* RankingTypeBottomSheetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD709C842773612C00D20C6A /* RankingTypeBottomSheetTableViewCell.swift */; };
+		DD717D4F2772411C0003CB16 /* RankingViewController + HandleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD717D4E2772411C0003CB16 /* RankingViewController + HandleType.swift */; };
+		DD717D522772428C0003CB16 /* RankingTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD717D512772428C0003CB16 /* RankingTypeViewController.swift */; };
+		DD717D54277244D70003CB16 /* BottomSheet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD717D53277244D70003CB16 /* BottomSheet.storyboard */; };
+		DD717D56277249B90003CB16 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD717D55277249B90003CB16 /* CheckBox.swift */; };
+		DD7B258327567AA100E663AC /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B258227567AA100E663AC /* PDFCreator.swift */; };
+		DD7B258527567B0600E663AC /* RankingViewController + PDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */; };
+		DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */; };
+		DD7B2589275680DE00E663AC /* Array + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2588275680DE00E663AC /* Array + Ext.swift */; };
+		DD8483072774DE9E00E7F179 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8483062774DE9E00E7F179 /* Constant.swift */; };
+		DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84830927772AFA00E7F179 /* SettingsViewController.swift */; };
+		DD84830D27772FC200E7F179 /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */; };
+		DD84830F277786D600E7F179 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84830E277786D500E7F179 /* NotificationName.swift */; };
+		DD84831127778D1500E7F179 /* SettingsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84831027778D1500E7F179 /* SettingsType.swift */; };
 		DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543EE27219D4A004D38F0 /* AppDelegate.swift */; };
 		DD8543F127219D4A004D38F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543F027219D4A004D38F0 /* SceneDelegate.swift */; };
 		DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8543F227219D4A004D38F0 /* CalendarViewController.swift */; };
@@ -35,17 +55,28 @@
 		DD85440927219D4D004D38F0 /* BdcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD85440827219D4D004D38F0 /* BdcTests.swift */; };
 		DD85441327219D4D004D38F0 /* BdcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD85441227219D4D004D38F0 /* BdcUITests.swift */; };
 		DD85441527219D4D004D38F0 /* BdcUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD85441427219D4D004D38F0 /* BdcUITestsLaunchTests.swift */; };
+		DDA9CD24277CFEBA00EDC2BE /* RankingTypeTableViewCell + FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA9CD23277CFEBA00EDC2BE /* RankingTypeTableViewCell + FSCalendar.swift */; };
+		DDA9CD26277D02EC00EDC2BE /* RankingTypeTableViewCell + HandleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA9CD25277D02EC00EDC2BE /* RankingTypeTableViewCell + HandleType.swift */; };
 		DDB292602721A8D400D96E67 /* RankingSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB2925F2721A8D400D96E67 /* RankingSectionHeaderView.xib */; };
 		DDB292622721A90500D96E67 /* RankingSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB292612721A90500D96E67 /* RankingSectionHeaderView.swift */; };
+		DDC1E5CE2752966E00C2BF2C /* Attendance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC1E5CC2752966E00C2BF2C /* Attendance+CoreDataProperties.swift */; };
 		DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A32724065A0028E49B /* RankingViewController.swift */; };
 		DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A527240CAE0028E49B /* Date - Ext.swift */; };
+		DDC51A4F27564191004A836B /* SortingPositionAndType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC51A4E27564191004A836B /* SortingPositionAndType.swift */; };
+		DDC9EB6A275031CD00653138 /* PersonsList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC9EB68275031CD00653138 /* PersonsList+CoreDataClass.swift */; };
+		DDC9EB6B275031CD00653138 /* PersonsList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC9EB69275031CD00653138 /* PersonsList+CoreDataProperties.swift */; };
 		DDCBBDB4274D44B4002B60DA /* MySegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */; };
 		DDCBBDB6274D5288002B60DA /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCBBDB5274D5288002B60DA /* RankingTableViewCell.swift */; };
 		DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DDD5051B27220FB000508F60 /* Bdc.xcdatamodeld */; };
-		DDDCAE81272302EA00B66C9B /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDCAE80272302EA00B66C9B /* MainTableViewCell.swift */; };
 		DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */; };
 		DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */; };
 		DDF1DE4D272C50CE006B7DFD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF1DE4C272C50CE006B7DFD /* Theme.swift */; };
+		DDF9B58327786BC400E2FEE2 /* SettingsArrowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF9B58227786BC400E2FEE2 /* SettingsArrowTableViewCell.swift */; };
+		DDF9B5852778715000E2FEE2 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF9B5842778715000E2FEE2 /* Settings.storyboard */; };
+		DDF9B5872778721700E2FEE2 /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF9B5862778721700E2FEE2 /* Ranking.storyboard */; };
+		DDF9B5892778726700E2FEE2 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF9B5882778726700E2FEE2 /* Calendar.storyboard */; };
+		DDF9B58B2778740900E2FEE2 /* HandlePersonsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF9B58A2778740900E2FEE2 /* HandlePersonsTableViewController.swift */; };
+		DDF9B58F277878F900E2FEE2 /* HandlePersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF9B58E277878F900E2FEE2 /* HandlePersonTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,16 +111,37 @@
 		DD0CAB4F27280FB200EA42B1 /* Attendance+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attendance+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DD0CAB522728108600EA42B1 /* DayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayType.swift; sourceTree = "<group>"; };
 		DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ext.swift"; sourceTree = "<group>"; };
+		DD0E35BE277BB7F50082D32C /* AddChangePersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChangePersonViewController.swift; sourceTree = "<group>"; };
 		DD18C7F827220B0A0086BB6C /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		DD18C7FA27220B890086BB6C /* CoreDateContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateContainer.swift; sourceTree = "<group>"; };
 		DD1A1C64274908AB006FC676 /* UIView - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView - Ext.swift"; sourceTree = "<group>"; };
 		DD1EAF392726DDD100EF1455 /* CommonUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtility.swift; sourceTree = "<group>"; };
+		DD27CAB0277368810020BE4D /* RankingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingType.swift; sourceTree = "<group>"; };
+		DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
+		DD368F512774D415000F0A84 /* YearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPickerView.swift; sourceTree = "<group>"; };
 		DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + TableView.swift"; sourceTree = "<group>"; };
-		DD41742F27246BA500BE5BFD /* RankingViewController + FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + FSCalendar.swift"; sourceTree = "<group>"; };
 		DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + FSCalendar.swift"; sourceTree = "<group>"; };
+		DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDayHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSingleDayCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD617CEC2753C3AE002AD5E7 /* RankingTableViewCell + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingTableViewCell + CollectionView.swift"; sourceTree = "<group>"; };
 		DD64968127221A40009E455F /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DD64968227221A40009E455F /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attendance+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DD6ED5EA277CFC4000F44D6F /* RankingTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTypeTableViewCell.swift; sourceTree = "<group>"; };
+		DD709C842773612C00D20C6A /* RankingTypeBottomSheetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTypeBottomSheetTableViewCell.swift; sourceTree = "<group>"; };
+		DD717D4E2772411C0003CB16 /* RankingViewController + HandleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + HandleType.swift"; sourceTree = "<group>"; };
+		DD717D512772428C0003CB16 /* RankingTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTypeViewController.swift; sourceTree = "<group>"; };
+		DD717D53277244D70003CB16 /* BottomSheet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottomSheet.storyboard; sourceTree = "<group>"; };
+		DD717D55277249B90003CB16 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		DD7B258227567AA100E663AC /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
+		DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + PDF.swift"; sourceTree = "<group>"; };
+		DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFTableDataItem.swift; sourceTree = "<group>"; };
+		DD7B2588275680DE00E663AC /* Array + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + Ext.swift"; sourceTree = "<group>"; };
+		DD8483062774DE9E00E7F179 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		DD84830927772AFA00E7F179 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		DD84830E277786D500E7F179 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
+		DD84831027778D1500E7F179 /* SettingsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsType.swift; sourceTree = "<group>"; };
 		DD8543EB27219D4A004D38F0 /* Bdc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bdc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8543EE27219D4A004D38F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD8543F027219D4A004D38F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,17 +155,29 @@
 		DD85440E27219D4D004D38F0 /* BdcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BdcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD85441227219D4D004D38F0 /* BdcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BdcUITests.swift; sourceTree = "<group>"; };
 		DD85441427219D4D004D38F0 /* BdcUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BdcUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DDA9CD23277CFEBA00EDC2BE /* RankingTypeTableViewCell + FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingTypeTableViewCell + FSCalendar.swift"; sourceTree = "<group>"; };
+		DDA9CD25277D02EC00EDC2BE /* RankingTypeTableViewCell + HandleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingTypeTableViewCell + HandleType.swift"; sourceTree = "<group>"; };
 		DDB2925F2721A8D400D96E67 /* RankingSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankingSectionHeaderView.xib; sourceTree = "<group>"; };
 		DDB292612721A90500D96E67 /* RankingSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSectionHeaderView.swift; sourceTree = "<group>"; };
+		DDC1E5CC2752966E00C2BF2C /* Attendance+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Attendance+CoreDataProperties.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/Attendance+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		DDC1E5CD2752966E00C2BF2C /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Person+CoreDataProperties.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/Person+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		DDC337A32724065A0028E49B /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		DDC337A527240CAE0028E49B /* Date - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date - Ext.swift"; sourceTree = "<group>"; };
+		DDC51A4E27564191004A836B /* SortingPositionAndType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingPositionAndType.swift; sourceTree = "<group>"; };
+		DDC9EB68275031CD00653138 /* PersonsList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PersonsList+CoreDataClass.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/PersonsList+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		DDC9EB69275031CD00653138 /* PersonsList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PersonsList+CoreDataProperties.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/PersonsList+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySegmentedControl.swift; sourceTree = "<group>"; };
 		DDCBBDB5274D5288002B60DA /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		DDD5051C27220FB000508F60 /* Bdc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bdc.xcdatamodel; sourceTree = "<group>"; };
-		DDDCAE80272302EA00B66C9B /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter - Ext.swift"; sourceTree = "<group>"; };
 		DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListUtility.swift; sourceTree = "<group>"; };
 		DDF1DE4C272C50CE006B7DFD /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		DDF9B58227786BC400E2FEE2 /* SettingsArrowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsArrowTableViewCell.swift; sourceTree = "<group>"; };
+		DDF9B5842778715000E2FEE2 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		DDF9B5862778721700E2FEE2 /* Ranking.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ranking.storyboard; sourceTree = "<group>"; };
+		DDF9B5882778726700E2FEE2 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		DDF9B58A2778740900E2FEE2 /* HandlePersonsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlePersonsTableViewController.swift; sourceTree = "<group>"; };
+		DDF9B58E277878F900E2FEE2 /* HandlePersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlePersonTableViewCell.swift; sourceTree = "<group>"; };
 		E9119FA55433DC0831BDC2B0 /* Pods_Bdc_BdcUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bdc_BdcUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -162,13 +226,26 @@
 			isa = PBXGroup;
 			children = (
 				DD0CAB522728108600EA42B1 /* DayType.swift */,
+				DDC51A4E27564191004A836B /* SortingPositionAndType.swift */,
+				DD27CAB0277368810020BE4D /* RankingType.swift */,
+				DD84831027778D1500E7F179 /* SettingsType.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DD0E35BD277BB7D40082D32C /* HandlePersonList */ = {
+			isa = PBXGroup;
+			children = (
+				DDF9B58A2778740900E2FEE2 /* HandlePersonsTableViewController.swift */,
+				DD0E35BE277BB7F50082D32C /* AddChangePersonViewController.swift */,
+			);
+			path = HandlePersonList;
 			sourceTree = "<group>";
 		};
 		DD18C7F3272207050086BB6C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DD84830827772AE700E7F179 /* Settings */,
 				DD5542DE2724563C000D9F48 /* CalendarViewController */,
 				DD5542E327245875000D9F48 /* RankingViewController */,
 			);
@@ -179,6 +256,10 @@
 			isa = PBXGroup;
 			children = (
 				DD8543F427219D4A004D38F0 /* Main.storyboard */,
+				DD717D53277244D70003CB16 /* BottomSheet.storyboard */,
+				DDF9B5842778715000E2FEE2 /* Settings.storyboard */,
+				DDF9B5862778721700E2FEE2 /* Ranking.storyboard */,
+				DDF9B5882778726700E2FEE2 /* Calendar.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -221,10 +302,9 @@
 		DD55204327256283006DB40C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				DDDCAE80272302EA00B66C9B /* MainTableViewCell.swift */,
-				DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */,
-				DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */,
-				DDCBBDB5274D5288002B60DA /* RankingTableViewCell.swift */,
+				DD84830B27772F8100E7F179 /* Settings */,
+				DDFE30C32754431F0025BA19 /* Calendar */,
+				DDFE30C2275443140025BA19 /* Ranking */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -242,11 +322,121 @@
 		DD5542E327245875000D9F48 /* RankingViewController */ = {
 			isa = PBXGroup;
 			children = (
-				DDC337A32724065A0028E49B /* RankingViewController.swift */,
-				DD41742F27246BA500BE5BFD /* RankingViewController + FSCalendar.swift */,
-				DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */,
+				DD717D5727724AC90003CB16 /* RankingVC */,
+				DD717D502772413D0003CB16 /* RankingTypeController */,
 			);
 			path = RankingViewController;
+			sourceTree = "<group>";
+		};
+		DD6ED5E6277CFB9700F44D6F /* RankingTypeTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DD6ED5EA277CFC4000F44D6F /* RankingTypeTableViewCell.swift */,
+				DDA9CD23277CFEBA00EDC2BE /* RankingTypeTableViewCell + FSCalendar.swift */,
+				DDA9CD25277D02EC00EDC2BE /* RankingTypeTableViewCell + HandleType.swift */,
+			);
+			path = RankingTypeTableViewCell;
+			sourceTree = "<group>";
+		};
+		DD6ED5E7277CFBC500F44D6F /* RankingHeaderTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RankingHeaderTableViewCell;
+			sourceTree = "<group>";
+		};
+		DD6ED5E8277CFBE500F44D6F /* RankingTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DD6ED5E9277CFC1600F44D6F /* CollectionView */,
+				DDCBBDB5274D5288002B60DA /* RankingTableViewCell.swift */,
+				DD617CEC2753C3AE002AD5E7 /* RankingTableViewCell + CollectionView.swift */,
+			);
+			path = RankingTableViewCell;
+			sourceTree = "<group>";
+		};
+		DD6ED5E9277CFC1600F44D6F /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */,
+				DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		DD709C822773610300D20C6A /* RankingVC */ = {
+			isa = PBXGroup;
+			children = (
+				DD6ED5E8277CFBE500F44D6F /* RankingTableViewCell */,
+				DD6ED5E7277CFBC500F44D6F /* RankingHeaderTableViewCell */,
+				DD6ED5E6277CFB9700F44D6F /* RankingTypeTableViewCell */,
+			);
+			path = RankingVC;
+			sourceTree = "<group>";
+		};
+		DD709C832773610C00D20C6A /* RankingTypeBottomSheetVC */ = {
+			isa = PBXGroup;
+			children = (
+				DD709C842773612C00D20C6A /* RankingTypeBottomSheetTableViewCell.swift */,
+			);
+			path = RankingTypeBottomSheetVC;
+			sourceTree = "<group>";
+		};
+		DD717D502772413D0003CB16 /* RankingTypeController */ = {
+			isa = PBXGroup;
+			children = (
+				DD717D512772428C0003CB16 /* RankingTypeViewController.swift */,
+			);
+			path = RankingTypeController;
+			sourceTree = "<group>";
+		};
+		DD717D5727724AC90003CB16 /* RankingVC */ = {
+			isa = PBXGroup;
+			children = (
+				DDC337A32724065A0028E49B /* RankingViewController.swift */,
+				DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */,
+				DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */,
+				DD717D4E2772411C0003CB16 /* RankingViewController + HandleType.swift */,
+			);
+			path = RankingVC;
+			sourceTree = "<group>";
+		};
+		DD7B258127567A9500E663AC /* PDFCreator */ = {
+			isa = PBXGroup;
+			children = (
+				DD7B258227567AA100E663AC /* PDFCreator.swift */,
+				DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */,
+			);
+			path = PDFCreator;
+			sourceTree = "<group>";
+		};
+		DD8483052774DD4A00E7F179 /* Custom Component */ = {
+			isa = PBXGroup;
+			children = (
+				DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */,
+				DD717D55277249B90003CB16 /* CheckBox.swift */,
+				DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */,
+				DD368F512774D415000F0A84 /* YearPickerView.swift */,
+			);
+			path = "Custom Component";
+			sourceTree = "<group>";
+		};
+		DD84830827772AE700E7F179 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DD84830927772AFA00E7F179 /* SettingsViewController.swift */,
+				DD0E35BD277BB7D40082D32C /* HandlePersonList */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		DD84830B27772F8100E7F179 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DDF9B58D277878C900E2FEE2 /* SettingsViewController */,
+				DDF9B58C277878C100E2FEE2 /* HandlePersons */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		DD8543E227219D4A004D38F0 = {
@@ -277,12 +467,13 @@
 				DD8543EE27219D4A004D38F0 /* AppDelegate.swift */,
 				DD0CAB512728107500EA42B1 /* Model */,
 				DD55204327256283006DB40C /* Cells */,
-				DDE3B1732722D3B000BFEFF0 /* Utility */,
+				DD8483052774DD4A00E7F179 /* Custom Component */,
 				DDE3B1702722CD3400BFEFF0 /* Ext */,
 				DD18C7F5272208920086BB6C /* Xib */,
 				DD18C7F4272207270086BB6C /* Storyboard */,
 				DD18C7F3272207050086BB6C /* Controller */,
 				DD18C80427220D0F0086BB6C /* CoreData */,
+				DDE3B1732722D3B000BFEFF0 /* Utility */,
 				DD8543FA27219D4C004D38F0 /* Assets.xcassets */,
 				DD8543FC27219D4C004D38F0 /* LaunchScreen.storyboard */,
 				DD8543FF27219D4C004D38F0 /* Info.plist */,
@@ -311,6 +502,10 @@
 		DDD5051127220E0300508F60 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				DDC9EB68275031CD00653138 /* PersonsList+CoreDataClass.swift */,
+				DDC1E5CD2752966E00C2BF2C /* Person+CoreDataProperties.swift */,
+				DDC1E5CC2752966E00C2BF2C /* Attendance+CoreDataProperties.swift */,
+				DDC9EB69275031CD00653138 /* PersonsList+CoreDataProperties.swift */,
 				DD0CAB4F27280FB200EA42B1 /* Attendance+CoreDataProperties.swift */,
 				DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */,
 				DD64968227221A40009E455F /* Person+CoreDataClass.swift */,
@@ -335,6 +530,7 @@
 				DDC337A527240CAE0028E49B /* Date - Ext.swift */,
 				DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */,
 				DD1A1C64274908AB006FC676 /* UIView - Ext.swift */,
+				DD7B2588275680DE00E663AC /* Array + Ext.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -342,12 +538,49 @@
 		DDE3B1732722D3B000BFEFF0 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				DD7B258127567A9500E663AC /* PDFCreator */,
 				DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */,
 				DD1EAF392726DDD100EF1455 /* CommonUtility.swift */,
 				DDF1DE4C272C50CE006B7DFD /* Theme.swift */,
-				DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */,
+				DD8483062774DE9E00E7F179 /* Constant.swift */,
+				DD84830E277786D500E7F179 /* NotificationName.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		DDF9B58C277878C100E2FEE2 /* HandlePersons */ = {
+			isa = PBXGroup;
+			children = (
+				DDF9B58E277878F900E2FEE2 /* HandlePersonTableViewCell.swift */,
+			);
+			path = HandlePersons;
+			sourceTree = "<group>";
+		};
+		DDF9B58D277878C900E2FEE2 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */,
+				DDF9B58227786BC400E2FEE2 /* SettingsArrowTableViewCell.swift */,
+			);
+			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		DDFE30C2275443140025BA19 /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				DD709C832773610C00D20C6A /* RankingTypeBottomSheetVC */,
+				DD709C822773610300D20C6A /* RankingVC */,
+			);
+			path = Ranking;
+			sourceTree = "<group>";
+		};
+		DDFE30C32754431F0025BA19 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */,
+				DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		F29ADA14CAED47AAAD651460 /* Frameworks */ = {
@@ -429,7 +662,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					DD8543EA27219D4A004D38F0 = {
 						CreatedOnToolsVersion = 13.0;
@@ -471,6 +704,10 @@
 			files = (
 				DDB292602721A8D400D96E67 /* RankingSectionHeaderView.xib in Resources */,
 				DD8543FE27219D4C004D38F0 /* LaunchScreen.storyboard in Resources */,
+				DD717D54277244D70003CB16 /* BottomSheet.storyboard in Resources */,
+				DDF9B5852778715000E2FEE2 /* Settings.storyboard in Resources */,
+				DDF9B5892778726700E2FEE2 /* Calendar.storyboard in Resources */,
+				DDF9B5872778721700E2FEE2 /* Ranking.storyboard in Resources */,
 				DD8543FB27219D4C004D38F0 /* Assets.xcassets in Resources */,
 				DD8543F627219D4A004D38F0 /* Main.storyboard in Resources */,
 			);
@@ -602,33 +839,60 @@
 			files = (
 				DD64968727221A40009E455F /* Attendance+CoreDataClass.swift in Sources */,
 				DD18C7FB27220B890086BB6C /* CoreDateContainer.swift in Sources */,
+				DD8483072774DE9E00E7F179 /* Constant.swift in Sources */,
 				DDCBBDB6274D5288002B60DA /* RankingTableViewCell.swift in Sources */,
+				DDF9B58F277878F900E2FEE2 /* HandlePersonTableViewCell.swift in Sources */,
 				DD03AC1727481092004C4819 /* CalendarCollectionViewCell.swift in Sources */,
 				DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */,
 				DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */,
+				DDC1E5CE2752966E00C2BF2C /* Attendance+CoreDataProperties.swift in Sources */,
+				DDC9EB6A275031CD00653138 /* PersonsList+CoreDataClass.swift in Sources */,
+				DDA9CD26277D02EC00EDC2BE /* RankingTypeTableViewCell + HandleType.swift in Sources */,
 				DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */,
 				DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */,
+				DDF9B58B2778740900E2FEE2 /* HandlePersonsTableViewController.swift in Sources */,
+				DD7B258327567AA100E663AC /* PDFCreator.swift in Sources */,
 				DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */,
-				DD0CAB5027280FB200EA42B1 /* Attendance+CoreDataProperties.swift in Sources */,
+				DD7B258527567B0600E663AC /* RankingViewController + PDF.swift in Sources */,
+				DD6ED5EB277CFC4000F44D6F /* RankingTypeTableViewCell.swift in Sources */,
 				DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */,
 				DD03AC19274811B8004C4819 /* CalendarViewController + CollectionView.swift in Sources */,
 				DD0CAB532728108600EA42B1 /* DayType.swift in Sources */,
+				DD709C852773612C00D20C6A /* RankingTypeBottomSheetTableViewCell.swift in Sources */,
+				DD27CAB1277368810020BE4D /* RankingType.swift in Sources */,
 				DD03AC1B27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift in Sources */,
+				DD60B5552753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift in Sources */,
+				DD617CEB2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift in Sources */,
 				DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */,
+				DD84830F277786D600E7F179 /* NotificationName.swift in Sources */,
+				DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */,
 				DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */,
 				DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */,
+				DD617CED2753C3AE002AD5E7 /* RankingTableViewCell + CollectionView.swift in Sources */,
+				DDC51A4F27564191004A836B /* SortingPositionAndType.swift in Sources */,
+				DD0E35BF277BB7F50082D32C /* AddChangePersonViewController.swift in Sources */,
 				DDB292622721A90500D96E67 /* RankingSectionHeaderView.swift in Sources */,
 				DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */,
+				DDA9CD24277CFEBA00EDC2BE /* RankingTypeTableViewCell + FSCalendar.swift in Sources */,
+				DDC9EB6B275031CD00653138 /* PersonsList+CoreDataProperties.swift in Sources */,
+				DDF9B58327786BC400E2FEE2 /* SettingsArrowTableViewCell.swift in Sources */,
+				DD368F522774D415000F0A84 /* YearPickerView.swift in Sources */,
+				DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */,
 				DD1A1C65274908AB006FC676 /* UIView - Ext.swift in Sources */,
+				DD717D522772428C0003CB16 /* RankingTypeViewController.swift in Sources */,
+				DD717D56277249B90003CB16 /* CheckBox.swift in Sources */,
 				DD1EAF3A2726DDD100EF1455 /* CommonUtility.swift in Sources */,
-				DD41743027246BA500BE5BFD /* RankingViewController + FSCalendar.swift in Sources */,
 				DDF1DE4D272C50CE006B7DFD /* Theme.swift in Sources */,
-				DDDCAE81272302EA00B66C9B /* MainTableViewCell.swift in Sources */,
+				DD717D4F2772411C0003CB16 /* RankingViewController + HandleType.swift in Sources */,
 				DDCBBDB4274D44B4002B60DA /* MySegmentedControl.swift in Sources */,
+				DD84831127778D1500E7F179 /* SettingsType.swift in Sources */,
+				DD84830D27772FC200E7F179 /* SettingsSwitchTableViewCell.swift in Sources */,
 				DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */,
 				DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */,
+				DD368F4E2774BE4F000F0A84 /* MonthYearPickerView.swift in Sources */,
 				DD8543F127219D4A004D38F0 /* SceneDelegate.swift in Sources */,
 				DD413379274FC94C0038B4C6 /* RankingViewController + TableView.swift in Sources */,
+				DD7B2589275680DE00E663AC /* Array + Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,14 +1070,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NL9F3R852A;
+				DEVELOPMENT_TEAM = 885XTY2NH9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bdc/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -822,8 +1088,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = leobartowski.BdcApp;
+				PRODUCT_BUNDLE_IDENTIFIER = leobartowski.BdC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -836,14 +1103,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NL9F3R852A;
+				DEVELOPMENT_TEAM = 885XTY2NH9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bdc/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -852,8 +1121,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = leobartowski.BdcApp;
+				PRODUCT_BUNDLE_IDENTIFIER = leobartowski.BdC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
