@@ -5,17 +5,23 @@
 //  Created by Francesco D'Angelo on 22/10/21.
 //
 
-import Foundation
 import CoreData
+import Foundation
 import UIKit
 
 class PersonListUtility {
     
-    public static let persons = createStartingPerson(CoreDataContainer.context)
+    public static var persons = CoreDataService.shared.getPersonsList() {
+        didSet {
+            PersonListUtility.rankingPersonsAttendance = createEmptyWeeklyAttendance()
+            let notification = Notification(name: .didChangePersonList, object: nil, userInfo: nil)
+            NotificationCenter.default.post(notification)
+            
+        }
+    }
     public static var rankingPersonsAttendance = createEmptyWeeklyAttendance()
-    
-    private static func createStartingPerson(_ context: NSManagedObjectContext) -> [Person] {
-    
+
+    static func createStartingPerson(_ context: NSManagedObjectContext) -> [Person] {
         let franco = Person(context: context)
         franco.name = "Franco"
         franco.iconString = "franco_icon"
@@ -40,7 +46,7 @@ class PersonListUtility {
         let nero = Person(context: context)
         nero.name = "Nero"
         let cataldo = Person(context: context)
-        cataldo.name = "Cataldo"
+        cataldo.name = "Roberto"
         cataldo.iconString = "cataldo_icon"
         let enzo = Person(context: context)
         enzo.name = "Enzo"
@@ -79,33 +85,29 @@ class PersonListUtility {
         angelo.name = "Angelo"
         let francescoe = Person(context: context)
         francescoe.name = "Francesco E"
-        
+
         let persons = [franco, fiore, mary, raff, genny, gigi, giovannir, giannetta, enzo, cataldo, lisa, danieled, savio, sossio, francescoe, nero, mattia, conte, raffaella, pacokh, moda, alessia, michelep, franzese, angelo]
         return persons
     }
-    
+
     private static func createEmptyWeeklyAttendance() -> [RankingPersonAttendance] {
         var personsWeeklyAttendance = [RankingPersonAttendance]()
         for person in PersonListUtility.persons {
-            let personAttendece = RankingPersonAttendance(person, 0, 0)
+            let personAttendece = RankingPersonAttendance(person)
             personsWeeklyAttendance.append(personAttendece)
         }
         return personsWeeklyAttendance
     }
-    
-    
 }
 
-
 public class RankingPersonAttendance {
-    
     var person: Person
-    var attendanceNumber: Int
-    var admonishmentNumber: Int
-    
-    init(_ person: Person, _ attendanceNumber: Int,_ adminishmentNumber: Int) {
+    var attendanceNumber: Int = 0
+    var admonishmentNumber: Int = 0
+    var morningDate: [Date] = []
+    var eveningDate: [Date] = []
+
+    init(_ person: Person) {
         self.person = person
-        self.attendanceNumber = attendanceNumber
-        self.admonishmentNumber = adminishmentNumber
     }
 }
