@@ -55,9 +55,16 @@
                                                             <rect key="frame" x="30" y="5" width="314" height="110"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khM-Xz-exi">
+                                                            <rect key="frame" x="30" y="5" width="314" height="110"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="55"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="khM-Xz-exi" secondAttribute="bottom" constant="5" id="3o7-9I-OuW"/>
                                                         <constraint firstItem="c1Y-SV-Dlj" firstAttribute="leading" secondItem="9M9-dQ-J12" secondAttribute="leading" constant="30" id="6lc-TS-Td0"/>
                                                         <constraint firstItem="Wvp-Yo-ljY" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="8DU-nR-1jd"/>
                                                         <constraint firstAttribute="trailing" secondItem="c1Y-SV-Dlj" secondAttribute="trailing" constant="30" id="8eg-bx-8Vm"/>
@@ -65,8 +72,11 @@
                                                         <constraint firstAttribute="bottom" secondItem="54j-7B-VTN" secondAttribute="bottom" constant="5" id="CrA-Xt-zfK"/>
                                                         <constraint firstAttribute="bottom" secondItem="c1Y-SV-Dlj" secondAttribute="bottom" constant="5" id="Hiy-1s-SS3"/>
                                                         <constraint firstItem="54j-7B-VTN" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="P4Z-64-P7l"/>
+                                                        <constraint firstItem="khM-Xz-exi" firstAttribute="leading" secondItem="9M9-dQ-J12" secondAttribute="leading" constant="30" id="UgT-bM-dIk"/>
+                                                        <constraint firstAttribute="trailing" secondItem="khM-Xz-exi" secondAttribute="trailing" constant="30" id="XBR-oV-yin"/>
                                                         <constraint firstItem="c1Y-SV-Dlj" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="gpR-2X-Zak"/>
                                                         <constraint firstAttribute="trailing" secondItem="54j-7B-VTN" secondAttribute="trailing" constant="30" id="gyY-55-8GY"/>
+                                                        <constraint firstItem="khM-Xz-exi" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="h75-0G-fsS"/>
                                                         <constraint firstItem="54j-7B-VTN" firstAttribute="leading" secondItem="9M9-dQ-J12" secondAttribute="leading" constant="30" id="n4L-A0-1PP"/>
                                                         <constraint firstAttribute="trailing" secondItem="Wvp-Yo-ljY" secondAttribute="trailing" constant="5" id="qkz-6t-Yik"/>
                                                     </constraints>
@@ -81,6 +91,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="allTimeLabel" destination="khM-Xz-exi" id="xib-qR-JJd"/>
                                             <outlet property="calendarHeightConstraint" destination="WqN-ld-wWd" id="VEd-w8-EEZ"/>
                                             <outlet property="calendarView" destination="Wvp-Yo-ljY" id="ZHV-vE-em7"/>
                                             <outlet property="containerView" destination="9M9-dQ-J12" id="uZl-2B-jTe"/>

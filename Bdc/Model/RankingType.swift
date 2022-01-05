@@ -12,4 +12,5 @@ enum RankingType: Int {
     case weekly = 0
     case monthly = 1
     case yearly = 2
+    case allTime = 3
 }

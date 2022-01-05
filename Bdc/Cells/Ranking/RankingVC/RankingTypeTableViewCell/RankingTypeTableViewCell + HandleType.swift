@@ -9,6 +9,11 @@ import Foundation
 
 extension RankingTypeTableViewCell {
     
+    func setupAllTimeLabel() {
+        self.allTimeLabel.text = "All-Time"
+        self.allTimeLabel.isHidden = true
+    }
+    
     func monthYearDatePickerSetup() {
         self.monthYearDatePicker.isHidden = true
         self.monthYearDatePicker.locale = Locale(identifier: "it")
@@ -49,6 +54,7 @@ extension RankingTypeTableViewCell {
             self.calendarView.hideViewWithTransition(hidden: false)
             self.monthYearDatePicker.isHidden = true
             self.yearDatePicker.isHidden = true
+            self.allTimeLabel.isHidden = true
             self.rankingViewController?.tableView.allowsSelection = true
             self.rankingViewController?.daysCurrentPeriod = self.calendarView.selectedDates
         case .monthly:
@@ -56,6 +62,7 @@ extension RankingTypeTableViewCell {
             self.calendarView.isHidden = true
             self.monthYearDatePicker.hideViewWithTransition(hidden: false)
             self.yearDatePicker.isHidden = true
+            self.allTimeLabel.isHidden = true
             self.monthYearDatePicker.date = Date()
             self.rankingViewController?.tableView.allowsSelection = false
             self.rankingViewController?.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheMonth()
@@ -64,11 +71,21 @@ extension RankingTypeTableViewCell {
             
             self.calendarView.isHidden = true
             self.monthYearDatePicker.isHidden = true
+            self.allTimeLabel.isHidden = true
             self.yearDatePicker.hideViewWithTransition(hidden: false)
             self.yearDatePicker.date = Date()
             self.rankingViewController?.tableView.allowsSelection = false
             self.rankingViewController?.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheYear()
             self.rankingViewController?.daysCurrentPeriod.removeAll(where: { $0 < Constant.startingDateBdC || $0 > Date.tomorrow })
+        case .allTime:
+            
+            self.calendarView.isHidden = true
+            self.monthYearDatePicker.isHidden = true
+            self.yearDatePicker.isHidden = true
+            self.allTimeLabel.hideViewWithTransition(hidden: false)
+            self.rankingViewController?.tableView.allowsSelection = false
+            self.rankingViewController?.daysCurrentPeriod = Date().getAllDatesFrom(startingDate: Constant.startingDateBdC)
+            
         }
         self.rankingViewController?.populateAttendance()
     }
