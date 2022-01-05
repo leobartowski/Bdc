@@ -14,8 +14,9 @@ class RankingTypeTableViewCell: UITableViewCell {
     @IBOutlet var calendarView: FSCalendar!
     @IBOutlet var monthYearDatePicker: MonthYearPickerView!
     @IBOutlet var yearDatePicker: YearPickerView!
+    @IBOutlet var allTimeLabel: UILabel!
     // Constraints
-    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var calendarHeightConstraint: NSLayoutConstraint!
     
     var rankingType: RankingType = .weekly
     
@@ -30,6 +31,9 @@ class RankingTypeTableViewCell: UITableViewCell {
         self.monthYearDatePickerSetup()
         // Year Date Picker
         self.yearDatePickerSetup()
+        // Setup Label
+        self.setupAllTimeLabel()
+
     }
     
     override func layoutSubviews() {
