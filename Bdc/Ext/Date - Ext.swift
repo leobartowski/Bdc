@@ -47,6 +47,11 @@ extension Date {
     var nextWeek: Date {
         return Calendar.current.date(byAdding: .weekOfYear, value: 1, to: self) ?? Date()
     }
+    
+    /// Get value of specifc component -> ex. retrive day of the month
+    func getComponent(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
+        return calendar.component(component, from: self)
+    }
 
     /// Get first day of the month
     func getStartOfMonth() -> Date {

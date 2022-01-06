@@ -30,19 +30,14 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         view.layoutIfNeeded()
     }
 
-    func minimumDate(for _calendar: FSCalendar) -> Date {
+    func minimumDate(for calendar: FSCalendar) -> Date {
         return Constant.startingDateBdC
     }
-
-    func maximumDate(for _calendar: FSCalendar) -> Date {
-        if self.calendarView.scope == .month && Date.now.getDayNumberOfWeek() == 1 { // Sunday
-            
-            return Date().dayAfter
-        } else if self.calendarView.scope == .month && Date.now.getDayNumberOfWeek() == 7 {
-            
-            return Date().twoDayAfter
-        } // Saturday
-        return Date.now
+    
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        self.calendarView.scope == .month
+        ? self.safeSelectDate(Date(), isForward: Date().getComponent(.day) == 1 ? true : false )
+        : Date()
     }
 
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
@@ -52,7 +47,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             calendar.select(self.safeSelectDate(mondayOfThisWeek, isForward: true))
             self.getDataFromCoreDataAndReloadViews()
 
-        } else if calendar.scope == .month {
+        } else {
 
             let startOfTheMonth = calendar.currentPage.getStartOfMonth()
             calendar.select(self.safeSelectDate(startOfTheMonth, isForward: true))
