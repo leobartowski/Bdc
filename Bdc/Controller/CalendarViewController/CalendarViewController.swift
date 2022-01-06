@@ -73,7 +73,7 @@ class CalendarViewController: UIViewController {
 }
 
     func updateGoToTodayButton() {
-        self.goToTodayButton.alpha = self.isThisDaySelectable(Date()) ? 1 : 0.3
+        self.goToTodayButton.alpha = Date().isThisDaySelectable() ? 1 : 0.3
     }
 
     func automaticScrollToToday() {
@@ -157,12 +157,7 @@ class CalendarViewController: UIViewController {
         self.personsPresent = self.personsPresent.sorted { $0.name ?? "" < $1.name ?? "" }
         self.personsNotPresent = self.personsNotPresent.sorted { $0.name ?? "" < $1.name ?? "" }
     }
-    
-    func isThisDaySelectable(_ date: Date) -> Bool {
-        return date.getDayNumberOfWeek() == 1 || date.getDayNumberOfWeek() == 7 || date.isHoliday(in: .italy) || date < Constant.startingDateBdC
-        ? false
-        : true
-    }
+
     
     // MARK: Handle settings
     @objc func didChangeModifyStatus(_: Notification) {
@@ -187,7 +182,7 @@ class CalendarViewController: UIViewController {
     }
 
     @IBAction func goToTodayTouchUpInside(_: Any) {
-        !self.isThisDaySelectable(Date())
+        !Date().isThisDaySelectable()
         ? self.presentAlert(alertText: "Hey!", alertMessage: "Mi dispiace, ma dovresti sapere che oggi non si prendono presenze!")
         : self.automaticScrollToToday()
     }

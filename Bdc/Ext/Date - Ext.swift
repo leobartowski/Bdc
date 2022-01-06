@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftHoliday
 
 extension Date {
     
@@ -192,5 +193,12 @@ extension Date {
     /// Returns the amount of seconds from another date
     func seconds(from date: Date) -> Int {
         return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
+    }
+    
+    // MARK: Utilis specific
+    func isThisDaySelectable() -> Bool {
+        return self.getDayNumberOfWeek() == 1 || self.getDayNumberOfWeek() == 7 || self.isHoliday(in: .italy) || self < Constant.startingDateBdC
+        ? false
+        : true
     }
 }
