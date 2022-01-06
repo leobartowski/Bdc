@@ -98,7 +98,6 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             DispatchQueue.main.async {
                 self.calendarView.reloadData()
             }
-
         }
     }
 
@@ -118,12 +117,15 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         } else if Date.now.getDayNumberOfWeek() == 7 { // Saturday
             calendarView.select(Date.yesterday)
             calendarView.appearance.titleTodayColor = Theme.customLightRed
+        } else {
+            calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
         }
     }
     
     func checkAndChangeWeekendSelectedDateMonthScope() {
         if calendarView.currentPage.getDayNumberOfWeek() != 1 && calendarView.currentPage.getDayNumberOfWeek() != 7 {
             calendarView.select(calendarView.currentPage.getStartOfMonth())
+            calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
             
         } else if calendarView.currentPage.getDayNumberOfWeek() == 1 { // Sunday
             calendarView.select(calendarView.currentPage.dayAfter)
@@ -131,7 +133,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             
         } else if calendarView.currentPage.getDayNumberOfWeek() == 7 { // Saturday
             calendarView.select(calendarView.currentPage.twoDayAfter)
-            calendarView.appearance.titleTodayColor = Theme.customLightRed
+            calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
         }
     }
 
