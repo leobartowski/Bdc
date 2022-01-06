@@ -16,6 +16,23 @@
 		DD0CAB532728108600EA42B1 /* DayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB522728108600EA42B1 /* DayType.swift */; };
 		DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */; };
 		DD0E35BF277BB7F50082D32C /* AddChangePersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E35BE277BB7F50082D32C /* AddChangePersonViewController.swift */; };
+		DD171B8627864B2C002ACF4F /* SwiftHoliday.h in Headers */ = {isa = PBXBuildFile; fileRef = DD171B8527864B2C002ACF4F /* SwiftHoliday.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD171B8927864B2C002ACF4F /* SwiftHoliday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD171B8327864B2C002ACF4F /* SwiftHoliday.framework */; };
+		DD171B8B27864B2C002ACF4F /* SwiftHoliday.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DD171B8327864B2C002ACF4F /* SwiftHoliday.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DD171B9827864B3F002ACF4F /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD171B8F27864B3E002ACF4F /* .swiftlint.yml */; };
+		DD171BA327864B47002ACF4F /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BA127864B47002ACF4F /* DateExtensions.swift */; };
+		DD171BA427864B47002ACF4F /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BA227864B47002ACF4F /* CalendarExtensions.swift */; };
+		DD171BA927864B52002ACF4F /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BA527864B51002ACF4F /* Country.swift */; };
+		DD171BAA27864B52002ACF4F /* CountryBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BA627864B52002ACF4F /* CountryBase.swift */; };
+		DD171BAB27864B52002ACF4F /* CountryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BA727864B52002ACF4F /* CountryProtocol.swift */; };
+		DD171BAC27864B52002ACF4F /* CountryWithStateBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BA827864B52002ACF4F /* CountryWithStateBase.swift */; };
+		DD171BB027864B59002ACF4F /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BAD27864B59002ACF4F /* Month.swift */; };
+		DD171BB127864B59002ACF4F /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BAE27864B59002ACF4F /* Weekday.swift */; };
+		DD171BB227864B59002ACF4F /* LocalDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BAF27864B59002ACF4F /* LocalDate.swift */; };
+		DD171BB927864BA0002ACF4F /* HolidaysBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BB727864BA0002ACF4F /* HolidaysBuilder.swift */; };
+		DD171BBA27864BA0002ACF4F /* HolidaysBuilderUS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BB827864BA0002ACF4F /* HolidaysBuilderUS.swift */; };
+		DD171BBC27864C8C002ACF4F /* Italy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BBB27864C8C002ACF4F /* Italy.swift */; };
+		DD171BC627866E12002ACF4F /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BC027866CD9002ACF4F /* Holiday.swift */; };
 		DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD18C7F827220B0A0086BB6C /* CoreDataService.swift */; };
 		DD18C7FB27220B890086BB6C /* CoreDateContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD18C7FA27220B890086BB6C /* CoreDateContainer.swift */; };
 		DD1A1C65274908AB006FC676 /* UIView - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1A1C64274908AB006FC676 /* UIView - Ext.swift */; };
@@ -80,6 +97,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DD171B8727864B2C002ACF4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD8543E327219D4A004D38F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD171B8227864B2C002ACF4F;
+			remoteInfo = SwiftHoliday;
+		};
 		DD85440527219D4D004D38F0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DD8543E327219D4A004D38F0 /* Project object */;
@@ -95,6 +119,20 @@
 			remoteInfo = Bdc;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DD171B8A27864B2C002ACF4F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DD171B8B27864B2C002ACF4F /* SwiftHoliday.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2FA8570DFB0F386206E4ED2C /* Pods-Bdc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bdc.release.xcconfig"; path = "Target Support Files/Pods-Bdc/Pods-Bdc.release.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +150,22 @@
 		DD0CAB522728108600EA42B1 /* DayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayType.swift; sourceTree = "<group>"; };
 		DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ext.swift"; sourceTree = "<group>"; };
 		DD0E35BE277BB7F50082D32C /* AddChangePersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChangePersonViewController.swift; sourceTree = "<group>"; };
+		DD171B8327864B2C002ACF4F /* SwiftHoliday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftHoliday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD171B8527864B2C002ACF4F /* SwiftHoliday.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftHoliday.h; sourceTree = "<group>"; };
+		DD171B8F27864B3E002ACF4F /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		DD171BA127864B47002ACF4F /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		DD171BA227864B47002ACF4F /* CalendarExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarExtensions.swift; sourceTree = "<group>"; };
+		DD171BA527864B51002ACF4F /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		DD171BA627864B52002ACF4F /* CountryBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryBase.swift; sourceTree = "<group>"; };
+		DD171BA727864B52002ACF4F /* CountryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryProtocol.swift; sourceTree = "<group>"; };
+		DD171BA827864B52002ACF4F /* CountryWithStateBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryWithStateBase.swift; sourceTree = "<group>"; };
+		DD171BAD27864B59002ACF4F /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		DD171BAE27864B59002ACF4F /* Weekday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
+		DD171BAF27864B59002ACF4F /* LocalDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDate.swift; sourceTree = "<group>"; };
+		DD171BB727864BA0002ACF4F /* HolidaysBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidaysBuilder.swift; sourceTree = "<group>"; };
+		DD171BB827864BA0002ACF4F /* HolidaysBuilderUS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidaysBuilderUS.swift; sourceTree = "<group>"; };
+		DD171BBB27864C8C002ACF4F /* Italy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Italy.swift; sourceTree = "<group>"; };
+		DD171BC027866CD9002ACF4F /* Holiday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Holiday.swift; sourceTree = "<group>"; };
 		DD18C7F827220B0A0086BB6C /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		DD18C7FA27220B890086BB6C /* CoreDateContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateContainer.swift; sourceTree = "<group>"; };
 		DD1A1C64274908AB006FC676 /* UIView - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView - Ext.swift"; sourceTree = "<group>"; };
@@ -182,11 +236,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DD171B8027864B2C002ACF4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DD8543E827219D4A004D38F0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CFDB48D8A7E962B77C7B952B /* Pods_Bdc.framework in Frameworks */,
+				DD171B8927864B2C002ACF4F /* SwiftHoliday.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +302,84 @@
 				DD0E35BE277BB7F50082D32C /* AddChangePersonViewController.swift */,
 			);
 			path = HandlePersonList;
+			sourceTree = "<group>";
+		};
+		DD171B8427864B2C002ACF4F /* SwiftHoliday */ = {
+			isa = PBXGroup;
+			children = (
+				DD171BC527866D9A002ACF4F /* Countries */,
+				DD171BC327866D23002ACF4F /* Ext */,
+				DD171BBE27866CC0002ACF4F /* Model */,
+				DD171BBD27866CAB002ACF4F /* Utils */,
+				DD171B8F27864B3E002ACF4F /* .swiftlint.yml */,
+				DD171B8527864B2C002ACF4F /* SwiftHoliday.h */,
+			);
+			path = SwiftHoliday;
+			sourceTree = "<group>";
+		};
+		DD171BBD27866CAB002ACF4F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DD171BB727864BA0002ACF4F /* HolidaysBuilder.swift */,
+				DD171BB827864BA0002ACF4F /* HolidaysBuilderUS.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		DD171BBE27866CC0002ACF4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DD171BC227866D02002ACF4F /* Country */,
+				DD171BC127866CDD002ACF4F /* Date */,
+				DD171BBF27866CD1002ACF4F /* Holiday */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DD171BBF27866CD1002ACF4F /* Holiday */ = {
+			isa = PBXGroup;
+			children = (
+				DD171BC027866CD9002ACF4F /* Holiday.swift */,
+			);
+			path = Holiday;
+			sourceTree = "<group>";
+		};
+		DD171BC127866CDD002ACF4F /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				DD171BAF27864B59002ACF4F /* LocalDate.swift */,
+				DD171BAD27864B59002ACF4F /* Month.swift */,
+				DD171BAE27864B59002ACF4F /* Weekday.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		DD171BC227866D02002ACF4F /* Country */ = {
+			isa = PBXGroup;
+			children = (
+				DD171BA827864B52002ACF4F /* CountryWithStateBase.swift */,
+				DD171BA627864B52002ACF4F /* CountryBase.swift */,
+				DD171BA727864B52002ACF4F /* CountryProtocol.swift */,
+				DD171BA527864B51002ACF4F /* Country.swift */,
+			);
+			path = Country;
+			sourceTree = "<group>";
+		};
+		DD171BC327866D23002ACF4F /* Ext */ = {
+			isa = PBXGroup;
+			children = (
+				DD171BA227864B47002ACF4F /* CalendarExtensions.swift */,
+				DD171BA127864B47002ACF4F /* DateExtensions.swift */,
+			);
+			path = Ext;
+			sourceTree = "<group>";
+		};
+		DD171BC527866D9A002ACF4F /* Countries */ = {
+			isa = PBXGroup;
+			children = (
+				DD171BBB27864C8C002ACF4F /* Italy.swift */,
+			);
+			path = Countries;
 			sourceTree = "<group>";
 		};
 		DD18C7F3272207050086BB6C /* Controller */ = {
@@ -445,6 +585,7 @@
 				DD8543ED27219D4A004D38F0 /* Bdc */,
 				DD85440727219D4D004D38F0 /* BdcTests */,
 				DD85441127219D4D004D38F0 /* BdcUITests */,
+				DD171B8427864B2C002ACF4F /* SwiftHoliday */,
 				DD8543EC27219D4A004D38F0 /* Products */,
 				49A7EE23B1DBA698B5539C0D /* Pods */,
 				F29ADA14CAED47AAAD651460 /* Frameworks */,
@@ -457,6 +598,7 @@
 				DD8543EB27219D4A004D38F0 /* Bdc.app */,
 				DD85440427219D4D004D38F0 /* BdcTests.xctest */,
 				DD85440E27219D4D004D38F0 /* BdcUITests.xctest */,
+				DD171B8327864B2C002ACF4F /* SwiftHoliday.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -595,7 +737,36 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		DD171B7E27864B2C002ACF4F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD171B8627864B2C002ACF4F /* SwiftHoliday.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		DD171B8227864B2C002ACF4F /* SwiftHoliday */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD171B8E27864B2C002ACF4F /* Build configuration list for PBXNativeTarget "SwiftHoliday" */;
+			buildPhases = (
+				DD171B7E27864B2C002ACF4F /* Headers */,
+				DD171B7F27864B2C002ACF4F /* Sources */,
+				DD171B8027864B2C002ACF4F /* Frameworks */,
+				DD171B8127864B2C002ACF4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftHoliday;
+			productName = SwiftHoliday;
+			productReference = DD171B8327864B2C002ACF4F /* SwiftHoliday.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		DD8543EA27219D4A004D38F0 /* Bdc */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD85441827219D4D004D38F0 /* Build configuration list for PBXNativeTarget "Bdc" */;
@@ -605,10 +776,12 @@
 				DD8543E827219D4A004D38F0 /* Frameworks */,
 				DD8543E927219D4A004D38F0 /* Resources */,
 				A89542EC8CAF841A9B5FD905 /* [CP] Embed Pods Frameworks */,
+				DD171B8A27864B2C002ACF4F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DD171B8827864B2C002ACF4F /* PBXTargetDependency */,
 			);
 			name = Bdc;
 			productName = Bdc;
@@ -664,6 +837,10 @@
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					DD171B8227864B2C002ACF4F = {
+						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
+					};
 					DD8543EA27219D4A004D38F0 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -693,11 +870,20 @@
 				DD8543EA27219D4A004D38F0 /* Bdc */,
 				DD85440327219D4D004D38F0 /* BdcTests */,
 				DD85440D27219D4D004D38F0 /* BdcUITests */,
+				DD171B8227864B2C002ACF4F /* SwiftHoliday */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DD171B8127864B2C002ACF4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD171B9827864B3F002ACF4F /* .swiftlint.yml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DD8543E927219D4A004D38F0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -833,6 +1019,26 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DD171B7F27864B2C002ACF4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD171BB127864B59002ACF4F /* Weekday.swift in Sources */,
+				DD171BAB27864B52002ACF4F /* CountryProtocol.swift in Sources */,
+				DD171BB927864BA0002ACF4F /* HolidaysBuilder.swift in Sources */,
+				DD171BB227864B59002ACF4F /* LocalDate.swift in Sources */,
+				DD171BBC27864C8C002ACF4F /* Italy.swift in Sources */,
+				DD171BAC27864B52002ACF4F /* CountryWithStateBase.swift in Sources */,
+				DD171BA427864B47002ACF4F /* CalendarExtensions.swift in Sources */,
+				DD171BB027864B59002ACF4F /* Month.swift in Sources */,
+				DD171BA327864B47002ACF4F /* DateExtensions.swift in Sources */,
+				DD171BAA27864B52002ACF4F /* CountryBase.swift in Sources */,
+				DD171BA927864B52002ACF4F /* Country.swift in Sources */,
+				DD171BC627866E12002ACF4F /* Holiday.swift in Sources */,
+				DD171BBA27864BA0002ACF4F /* HolidaysBuilderUS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DD8543E727219D4A004D38F0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -916,6 +1122,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DD171B8827864B2C002ACF4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD171B8227864B2C002ACF4F /* SwiftHoliday */;
+			targetProxy = DD171B8727864B2C002ACF4F /* PBXContainerItemProxy */;
+		};
 		DD85440627219D4D004D38F0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DD8543EA27219D4A004D38F0 /* Bdc */;
@@ -948,6 +1159,75 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		DD171B8C27864B2C002ACF4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 885XTY2NH9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "leobartowski.swift-holiday.SwiftHoliday";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DD171B8D27864B2C002ACF4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 885XTY2NH9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "leobartowski.swift-holiday.SwiftHoliday";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		DD85441627219D4D004D38F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1068,6 +1348,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B1B729BA1A3ABB32348512A /* Pods-Bdc.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1093,7 +1374,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1101,6 +1382,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2FA8570DFB0F386206E4ED2C /* Pods-Bdc.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1126,7 +1408,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1233,6 +1515,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DD171B8E27864B2C002ACF4F /* Build configuration list for PBXNativeTarget "SwiftHoliday" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD171B8C27864B2C002ACF4F /* Debug */,
+				DD171B8D27864B2C002ACF4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DD8543E627219D4A004D38F0 /* Build configuration list for PBXProject "Bdc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
