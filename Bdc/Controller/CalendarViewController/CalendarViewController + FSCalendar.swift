@@ -18,7 +18,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
 
     func calendar(_: FSCalendar, shouldSelect date: Date, at _: FSCalendarMonthPosition) -> Bool {
-        return self.isThisDaySelectable(date)
+        return date.isThisDaySelectable()
     }
 
     func calendar(_ calendar: FSCalendar, boundingRectWillChange _: CGRect, animated _: Bool) {
@@ -67,7 +67,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         let dateIsToday = LocalDate(date: Date()) == LocalDate(date: date)
         
-        if !self.isThisDaySelectable(date) || date > calendar.maximumDate || date < calendar.minimumDate {
+        if !date.isThisDaySelectable() || date > calendar.maximumDate || date < calendar.minimumDate {
             return dateIsToday ? Theme.customLightRed : .lightGray
             
         } else if dateIsToday {
@@ -125,11 +125,11 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     
     func safeSelectDate(_ startingDate: Date, isForward: Bool = false) -> Date {
         
-        if self.isThisDaySelectable(startingDate) { return startingDate }
+        if startingDate.isThisDaySelectable() { return startingDate }
         var date = startingDate
         repeat {
             date = isForward ? date.dayAfter : date.dayBefore
-        } while(!self.isThisDaySelectable(date))
+        } while(!date.isThisDaySelectable())
         return date
     }
 

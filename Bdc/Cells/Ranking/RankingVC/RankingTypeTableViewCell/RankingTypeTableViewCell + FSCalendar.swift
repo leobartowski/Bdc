@@ -7,6 +7,7 @@
 
 import UIKit
 import FSCalendar
+import SwiftHoliday
 
 extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
@@ -48,25 +49,27 @@ extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FS
     // MARK: Calendar Appearance
 
     func calendar(_ calendar: FSCalendar, appearance _: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
-        if DateFormatter.basicFormatter.string(from: calendar.today ?? .now) == DateFormatter.basicFormatter.string(from: date) {
+        let dateIsToday = LocalDate(date: calendar.today ?? .now) == LocalDate(date: date)
+        if dateIsToday, date.isThisDaySelectable()  {
             return Theme.FSCalendarStandardTodayColor
+            
+        } else if !date.isThisDaySelectable() || date > Date() {
+            return .clear
         }
-        return date > Date.now ? .clear : Theme.FSCalendarStandardSelectionColor
+        return Theme.FSCalendarStandardSelectionColor
     }
 
-    func calendar(_: FSCalendar, appearance _: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
-        return date > Date.now ? .lightGray : .white
+    func calendar(_ calendar: FSCalendar, appearance _: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
+        if LocalDate(date: calendar.today ?? .now) == LocalDate(date: date) { // isToday
+            return date.isThisDaySelectable() ? .white : Theme.customLightRed
+        }
+        return (date > Date.now || !date.isThisDaySelectable()) ? .lightGray : .white
     }
-
+    
     func calendar(_ calendar: FSCalendar, appearance _: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
-        if date.getDayNumberOfWeek() == 1 || date.getDayNumberOfWeek() == 7 {
-            if DateFormatter.basicFormatter.string(from: calendar.today ?? .now) == DateFormatter.basicFormatter.string(from: date) {
-                return Theme.customLightRed
-            }
-        }
         return .lightGray
     }
-
+    
     // MARK: Calendar SetUp
 
     func calendarSetup() {
