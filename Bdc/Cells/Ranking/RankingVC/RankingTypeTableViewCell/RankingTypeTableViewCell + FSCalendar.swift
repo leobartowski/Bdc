@@ -16,9 +16,14 @@ extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FS
         self.contentView.layoutIfNeeded()
         self.containerView.layoutIfNeeded()
     }
-
-    func calendar(_ calendar: FSCalendar, shouldSelect _: Date, at _: FSCalendarMonthPosition) -> Bool {
-        // The user cannot manually select a specific date!
+    
+    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+        // The user cannot manually SELECT a specific date!
+        return false
+    }
+    
+    func calendar(_ calendar: FSCalendar, shouldDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+        // The user cannot manually DESELECT a specific date!
         return false
     }
 
