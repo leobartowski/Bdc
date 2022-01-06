@@ -72,22 +72,22 @@ extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FS
     func calendarSetup() {
         self.calendarView.delegate = self
         self.calendarView.dataSource = self
-        calendarView.locale = Locale(identifier: "it")
-        calendarView.placeholderType = .none
-        calendarView.scope = .week // Needed to show the weekly at start!
-        calendarHeightConstraint.constant = 320 // This line has absolutly no sense but is needed for a bug of FSCalendar
-        calendarView.allowsMultipleSelection = true
+        self.calendarView.locale = Locale(identifier: "it")
+        self.calendarView.placeholderType = .none
+        self.calendarView.scope = .week // Needed to show the weekly at start!
+        self.calendarHeightConstraint.constant = 320 // This line has absolutly no sense but is needed for a bug of FSCalendar
+        self.calendarView.allowsMultipleSelection = true
         // Appearance
-        calendarView.appearance.caseOptions = .headerUsesCapitalized
-        calendarView.appearance.titleFont = .boldSystemFont(ofSize: 15)
-        calendarView.appearance.weekdayFont = .systemFont(ofSize: 17, weight: .light)
-        calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 19)
-        calendarView.appearance.titleWeekendColor = .lightGray
-        calendarView.appearance.todayColor = .clear
-        calendarView.appearance.titleDefaultColor = Theme.avatarBlack
-        calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
-        calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
-        calendarView.appearance.weekdayTextColor = .black
+        self.calendarView.appearance.caseOptions = .headerUsesCapitalized
+        self.calendarView.appearance.titleFont = .boldSystemFont(ofSize: 15)
+        self.calendarView.appearance.weekdayFont = .systemFont(ofSize: 17, weight: .light)
+        self.calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 19)
+        self.calendarView.appearance.titleWeekendColor = .lightGray
+        self.calendarView.appearance.todayColor = .clear
+        self.calendarView.appearance.titleDefaultColor = Theme.avatarBlack
+        self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
+        self.calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
+        self.calendarView.appearance.weekdayTextColor = .black
     }
 
     func selectedAllDateOfTheWeek(_ date: Date) {
