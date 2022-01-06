@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftHoliday
 
 extension Date {
     
@@ -46,6 +47,11 @@ extension Date {
 
     var nextWeek: Date {
         return Calendar.current.date(byAdding: .weekOfYear, value: 1, to: self) ?? Date()
+    }
+    
+    /// Get value of specifc component -> ex. retrive day of the month
+    func getComponent(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
+        return calendar.component(component, from: self)
     }
 
     /// Get first day of the month
@@ -187,5 +193,12 @@ extension Date {
     /// Returns the amount of seconds from another date
     func seconds(from date: Date) -> Int {
         return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
+    }
+    
+    // MARK: Utilis specific
+    func isThisDaySelectable() -> Bool {
+        return self.getDayNumberOfWeek() == 1 || self.getDayNumberOfWeek() == 7 || self.isHoliday(in: .italy) || self < Constant.startingDateBdC
+        ? false
+        : true
     }
 }
