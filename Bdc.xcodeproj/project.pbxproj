@@ -30,7 +30,6 @@
 		DD171BB127864B59002ACF4F /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BAE27864B59002ACF4F /* Weekday.swift */; };
 		DD171BB227864B59002ACF4F /* LocalDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BAF27864B59002ACF4F /* LocalDate.swift */; };
 		DD171BB927864BA0002ACF4F /* HolidaysBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BB727864BA0002ACF4F /* HolidaysBuilder.swift */; };
-		DD171BBA27864BA0002ACF4F /* HolidaysBuilderUS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BB827864BA0002ACF4F /* HolidaysBuilderUS.swift */; };
 		DD171BBC27864C8C002ACF4F /* Italy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BBB27864C8C002ACF4F /* Italy.swift */; };
 		DD171BC627866E12002ACF4F /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD171BC027866CD9002ACF4F /* Holiday.swift */; };
 		DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD18C7F827220B0A0086BB6C /* CoreDataService.swift */; };
@@ -163,7 +162,6 @@
 		DD171BAE27864B59002ACF4F /* Weekday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
 		DD171BAF27864B59002ACF4F /* LocalDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDate.swift; sourceTree = "<group>"; };
 		DD171BB727864BA0002ACF4F /* HolidaysBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidaysBuilder.swift; sourceTree = "<group>"; };
-		DD171BB827864BA0002ACF4F /* HolidaysBuilderUS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidaysBuilderUS.swift; sourceTree = "<group>"; };
 		DD171BBB27864C8C002ACF4F /* Italy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Italy.swift; sourceTree = "<group>"; };
 		DD171BC027866CD9002ACF4F /* Holiday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Holiday.swift; sourceTree = "<group>"; };
 		DD18C7F827220B0A0086BB6C /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
@@ -321,7 +319,6 @@
 			isa = PBXGroup;
 			children = (
 				DD171BB727864BA0002ACF4F /* HolidaysBuilder.swift */,
-				DD171BB827864BA0002ACF4F /* HolidaysBuilderUS.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1035,7 +1032,6 @@
 				DD171BAA27864B52002ACF4F /* CountryBase.swift in Sources */,
 				DD171BA927864B52002ACF4F /* Country.swift in Sources */,
 				DD171BC627866E12002ACF4F /* Holiday.swift in Sources */,
-				DD171BBA27864BA0002ACF4F /* HolidaysBuilderUS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
