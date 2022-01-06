@@ -7,6 +7,7 @@
 
 import FSCalendar
 import UIKit
+import SwiftHoliday
 
 class CalendarViewController: UIViewController {
     
@@ -32,7 +33,6 @@ class CalendarViewController: UIViewController {
 
         self.setUpCalendarAppearance()
         self.setupSegmentedControl()
-        self.checkAndChangeWeekendSelectedDate()
         self.getDataFromCoreDataAndReloadViews()
         self.addCalendarGestureRecognizer()
         self.designBottomCalendarHandleView()
@@ -73,9 +73,7 @@ class CalendarViewController: UIViewController {
 }
 
     func updateGoToTodayButton() {
-        self.goToTodayButton.alpha = Date().getDayNumberOfWeek() == 1 || Date().getDayNumberOfWeek() == 7
-            ? 0.3
-            : 1
+        self.goToTodayButton.alpha = self.isThisDaySelectable(Date()) ? 1 : 0.3
     }
 
     func automaticScrollToToday() {
@@ -160,6 +158,12 @@ class CalendarViewController: UIViewController {
         self.personsNotPresent = self.personsNotPresent.sorted { $0.name ?? "" < $1.name ?? "" }
     }
     
+    func isThisDaySelectable(_ date: Date) -> Bool {
+        return date.getDayNumberOfWeek() == 1 || date.getDayNumberOfWeek() == 7 || date.isHoliday(in: .italy) || date < Constant.startingDateBdC
+        ? false
+        : true
+    }
+    
     // MARK: Handle settings
     @objc func didChangeModifyStatus(_: Notification) {
         self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
@@ -183,18 +187,18 @@ class CalendarViewController: UIViewController {
     }
 
     @IBAction func goToTodayTouchUpInside(_: Any) {
-        Date().getDayNumberOfWeek() == 1 || Date().getDayNumberOfWeek() == 7
-            ? presentAlert(alertText: "Hey!", alertMessage: "Mi dispiace, ma dovresti sapere che non si prendono presenze sabato e domenica!")
-            : self.automaticScrollToToday()
+        !self.isThisDaySelectable(Date())
+        ? self.presentAlert(alertText: "Hey!", alertMessage: "Mi dispiace, ma dovresti sapere che oggi non si prendono presenze!")
+        : self.automaticScrollToToday()
     }
 
     @objc func handleSwipe(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case .up:
-                handleMonthlyToWeeklyCalendar()
+                self.handleMonthlyToWeeklyCalendar()
             case .down:
-                handleWeeklyToMonthlyCalendar()
+                self.handleWeeklyToMonthlyCalendar()
             default:
                 break
             }

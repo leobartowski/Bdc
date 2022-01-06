@@ -7,27 +7,25 @@
 
 import Foundation
 import FSCalendar
+import SwiftHoliday
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
     // MARK: Delegate e DataSource
 
     func calendar(_: FSCalendar, didSelect _: Date, at _: FSCalendarMonthPosition) {
-        getDataFromCoreDataAndReloadViews()
+        self.getDataFromCoreDataAndReloadViews()
     }
 
     func calendar(_: FSCalendar, shouldSelect date: Date, at _: FSCalendarMonthPosition) -> Bool {
-        if date.getDayNumberOfWeek() == 1 || date.getDayNumberOfWeek() == 7 {
-            return false
-        }
-        return true
+        return self.isThisDaySelectable(date)
     }
 
     func calendar(_ calendar: FSCalendar, boundingRectWillChange _: CGRect, animated _: Bool) {
-        if calendarView.scope == .month {
-            calendarViewHeightConstraint.constant = 350
+        if self.calendarView.scope == .month {
+            self.calendarViewHeightConstraint.constant = 350
         } else {
-            calendarViewHeightConstraint.constant = 127
+            self.calendarViewHeightConstraint.constant = 127
         }
         view.layoutIfNeeded()
     }
@@ -37,38 +35,50 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
 
     func maximumDate(for _calendar: FSCalendar) -> Date {
-        if calendarView.scope == .month && Date.now.getDayNumberOfWeek() == 1 { // Sunday
+        if self.calendarView.scope == .month && Date.now.getDayNumberOfWeek() == 1 { // Sunday
+            
             return Date().dayAfter
-        } else if calendarView.scope == .month && Date.now.getDayNumberOfWeek() == 7 {
+        } else if self.calendarView.scope == .month && Date.now.getDayNumberOfWeek() == 7 {
+            
             return Date().twoDayAfter
         } // Saturday
         return Date.now
     }
 
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        let currentPageString = DateFormatter.basicFormatter.string(from: calendarView.currentPage)
-        // We need to check this != "01/10/2021" because if the current month is october 2021 and we change scope the app crash
-        if calendarView.scope == .week, currentPageString != "01/10/2021" {
-            calendarView.select(calendar.currentPage.getSpecificDayOfThisWeek(2))
-            getDataFromCoreDataAndReloadViews()
 
-        } else if calendarView.scope == .month {
-            let getMonthAndYear = calendarView.currentPage.getMonthAndYearNumber()
-            // To avoid crash if we are in October 2021 we cannot select 1 but we select 25
-            getMonthAndYear.yearNumber == 2021 && getMonthAndYear.monthNumber == 10
-                ? calendarView.select(Constant.startingDateBdC)
-                : checkAndChangeWeekendSelectedDateMonthScope()
-            getDataFromCoreDataAndReloadViews()
+        if calendar.scope == .week {
+            let mondayOfThisWeek = calendar.currentPage.getSpecificDayOfThisWeek(2)
+            calendar.select(self.safeSelectDate(mondayOfThisWeek, isForward: true))
+            self.getDataFromCoreDataAndReloadViews()
+
+        } else if calendar.scope == .month {
+
+            let startOfTheMonth = calendar.currentPage.getStartOfMonth()
+            calendar.select(self.safeSelectDate(startOfTheMonth, isForward: true))
+            self.getDataFromCoreDataAndReloadViews()
         }
     }
 
     // MARK: Appearance Delegate
 
     func calendar(_ calendar: FSCalendar, appearance _: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
-        if DateFormatter.basicFormatter.string(from: calendar.today ?? .now) == DateFormatter.basicFormatter.string(from: date) {
+        if LocalDate(date: calendar.today ?? .now) == LocalDate(date: date) {
             return Theme.FSCalendarStandardTodayColor
         }
         return Theme.FSCalendarStandardSelectionColor
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+        let dateIsToday = LocalDate(date: Date()) == LocalDate(date: date)
+        
+        if !self.isThisDaySelectable(date) || date > calendar.maximumDate || date < calendar.minimumDate {
+            return dateIsToday ? Theme.customLightRed : .lightGray
+            
+        } else if dateIsToday {
+            return Theme.FSCalendarStandardTodayColor
+        }
+        return Theme.avatarBlack
     }
 
     // MARK: Utils
@@ -76,25 +86,25 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     func addCalendarGestureRecognizer() {
         let swipeGestureUpCalendar = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(gesture:)))
         swipeGestureUpCalendar.direction = .up
-        calendarView.addGestureRecognizer(swipeGestureUpCalendar)
+        self.calendarView.addGestureRecognizer(swipeGestureUpCalendar)
 
         let swipeGestureUpBottomView = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(gesture:)))
         swipeGestureUpBottomView.direction = .up
-        bottomCalendarHandleView.addGestureRecognizer(swipeGestureUpBottomView)
+        self.bottomCalendarHandleView.addGestureRecognizer(swipeGestureUpBottomView)
 
         let swipeGestureDownCalendar = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(gesture:)))
         swipeGestureDownCalendar.direction = .down
-        calendarView.addGestureRecognizer(swipeGestureDownCalendar)
+        self.calendarView.addGestureRecognizer(swipeGestureDownCalendar)
 
         let swipeGestureDownBottomView = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(gesture:)))
         swipeGestureDownBottomView.direction = .down
-        bottomCalendarHandleView.addGestureRecognizer(swipeGestureDownBottomView)
+        self.bottomCalendarHandleView.addGestureRecognizer(swipeGestureDownBottomView)
     }
 
     // The animation and the chande of constraints are performed in the delagate method: boundingRectWillChange
     func handleWeeklyToMonthlyCalendar() {
-        if calendarView.scope == .week {
-            calendarView.setScope(.month, animated: true)
+        if self.calendarView.scope == .week {
+            self.calendarView.setScope(.month, animated: true)
             DispatchQueue.main.async {
                 self.calendarView.reloadData()
             }
@@ -102,67 +112,49 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
 
     func handleMonthlyToWeeklyCalendar() {
-        if calendarView.scope == .month {
-            calendarView.setScope(.week, animated: true)
+        if self.calendarView.scope == .month {
+            self.calendarView.setScope(.week, animated: true)
             DispatchQueue.main.async {
                 self.calendarView.reloadData()
             }
         }
     }
 
-    func checkAndChangeWeekendSelectedDate() {
-        if Date.now.getDayNumberOfWeek() == 1 { // Sunday
-            calendarView.select(Date().twoDayBefore)
-            calendarView.appearance.titleTodayColor = Theme.customLightRed
-        } else if Date.now.getDayNumberOfWeek() == 7 { // Saturday
-            calendarView.select(Date.yesterday)
-            calendarView.appearance.titleTodayColor = Theme.customLightRed
-        } else {
-            calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
+    /// Reload CalendarView because today is broken!
+    func updateCalendarIfNeeded() {
+        if Date.tomorrow.days(from: self.calendarView.maximumDate) > 0 {
+            self.calendarView.today = Date.now
+            self.calendarView.reloadData()
         }
     }
     
-    func checkAndChangeWeekendSelectedDateMonthScope() {
-        if calendarView.currentPage.getDayNumberOfWeek() != 1 && calendarView.currentPage.getDayNumberOfWeek() != 7 {
-            calendarView.select(calendarView.currentPage.getStartOfMonth())
-            calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
-            
-        } else if calendarView.currentPage.getDayNumberOfWeek() == 1 { // Sunday
-            calendarView.select(calendarView.currentPage.dayAfter)
-            calendarView.appearance.titleTodayColor = Theme.customLightRed
-            
-        } else if calendarView.currentPage.getDayNumberOfWeek() == 7 { // Saturday
-            calendarView.select(calendarView.currentPage.twoDayAfter)
-            calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
-        }
-    }
-
-
-    /// Reload CalendarView because today is broken!
-    func updateCalendarIfNeeded() {
-        if Date.tomorrow.days(from: calendarView.maximumDate) > 0 {
-            calendarView.today = Date.now
-            calendarView.reloadData()
-        }
+    func safeSelectDate(_ startingDate: Date, isForward: Bool = false) -> Date {
+        
+        if self.isThisDaySelectable(startingDate) { return startingDate }
+        var date = startingDate
+        repeat {
+            date = isForward ? date.dayAfter : date.dayBefore
+        } while(!self.isThisDaySelectable(date))
+        return date
     }
 
     // MARK: Design Calendar
 
     func setUpCalendarAppearance() {
-        calendarView.locale = Locale(identifier: "it")
-        calendarView.scope = .week // Needed to show the weekly at start! (BUG IN THE SYSTEM)
-        calendarView.placeholderType = .none
-        calendarView.select(Date.now)
+        self.calendarView.locale = Locale(identifier: "it")
+        self.calendarView.scope = .week // Needed to show the weekly at start! (BUG IN THE SYSTEM)
+        self.calendarView.placeholderType = .none
+        self.calendarView.select(self.safeSelectDate(Date()))
         // Appearance
-        calendarView.appearance.caseOptions = .headerUsesCapitalized
-        calendarView.appearance.titleFont = .boldSystemFont(ofSize: 15)
-        calendarView.appearance.weekdayFont = .systemFont(ofSize: 17, weight: .light)
-        calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 19)
-        calendarView.appearance.titleWeekendColor = .lightGray
-        calendarView.appearance.todayColor = .clear
-        calendarView.appearance.titleDefaultColor = Theme.avatarBlack
-        calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
-        calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
-        calendarView.appearance.weekdayTextColor = .black
+        self.calendarView.appearance.caseOptions = .headerUsesCapitalized
+        self.calendarView.appearance.titleFont = .boldSystemFont(ofSize: 15)
+        self.calendarView.appearance.weekdayFont = .systemFont(ofSize: 17, weight: .light)
+        self.calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 19)
+        self.calendarView.appearance.titleWeekendColor = .lightGray
+        self.calendarView.appearance.todayColor = .clear
+        self.calendarView.appearance.titleDefaultColor = Theme.avatarBlack
+        self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
+        self.calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
+        self.calendarView.appearance.weekdayTextColor = .black
     }
 }
