@@ -33,7 +33,6 @@ class RankingTypeTableViewCell: UITableViewCell {
         self.yearDatePickerSetup()
         // Setup Label
         self.setupAllTimeLabel()
-
     }
     
     override func layoutSubviews() {
