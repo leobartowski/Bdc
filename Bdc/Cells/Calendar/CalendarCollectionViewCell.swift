@@ -34,7 +34,7 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
         let imageString = CommonUtility.getProfileImageString(person)
         self.mainImageView.image = UIImage(named: imageString)
         if indexPath.section != 0 { self.setupLongGestureRecognizer() }
-        self.customBackgroundView.backgroundColor = indexPath.section == 0 ? .white : (isAdmonished ? .yellow : .white)
+        self.customBackgroundView.backgroundColor = indexPath.section == 0 ? .white : (isAdmonished ? Theme.customYellow : .white)
         self.setUpShadow()
     }
 

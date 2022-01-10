@@ -77,8 +77,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             }
         case 1:
             if let url = URL(string: "https://drive.google.com/file/d/1fvKB4Tbz4FOWQvNWF4ncY0XhpRdPdDB-/view?usp=sharing") {
-                let svc = SFSafariViewController(url: url)
-                self.present(svc, animated: true, completion: nil)
+                let safariVC = SFSafariViewController(url: url)
+                safariVC.preferredBarTintColor = .white
+                safariVC.preferredControlTintColor = Theme.FSCalendarStandardSelectionColor
+                self.present(safariVC, animated: true, completion: nil)
                 self.tableView.deselectRow(at: indexPath, animated: false)
             }
         default:

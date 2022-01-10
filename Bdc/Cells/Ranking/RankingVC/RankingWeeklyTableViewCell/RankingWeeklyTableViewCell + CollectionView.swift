@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension RankingTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension RankingWeeklyTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in _: UICollectionView) -> Int {
         2
@@ -21,14 +21,19 @@ extension RankingTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "daysCellID", for: indexPath) as? RankingSingleDayCollectionViewCell
 
         cell?.mainLabel.text = days[indexPath.item]
+        
+        if self.holidayDaysNumbers.contains(indexPath.item + 2) { // This day is Holiday
+            cell?.setupForHoliday()
+        } else { // This day is not holiday
 
-        if indexPath.section == 0 { // Morning
-            let isPresent = morningDaysNumbers.contains(indexPath.item + 2)
-            cell?.setup(isPresent)
-
-        } else { // Evening
-            let isPresent = eveningDaysNumbers.contains(indexPath.item + 2)
-            cell?.setup(isPresent)
+            if indexPath.section == 0 { // Morning
+                let isPresent = self.morningDaysNumbers.contains(indexPath.item + 2)
+                cell?.setup(isPresent)
+                
+            } else { // Evening
+                let isPresent = self.eveningDaysNumbers.contains(indexPath.item + 2)
+                cell?.setup(isPresent)
+            }
         }
         return cell ?? UICollectionViewCell()
     }
@@ -52,4 +57,6 @@ extension RankingTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout, referenceSizeForHeaderInSection _: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 20)
     }
+    
+    
 }

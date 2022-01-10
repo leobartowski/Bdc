@@ -20,7 +20,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0
         ? 140
-        : indexPath.row == self.selectedCellRow ? 200 : 70
+        : (indexPath.row == self.selectedCellRow && self.rankingType == .weekly) ? 200 : 70
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -31,15 +31,24 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             return cell ?? UITableViewCell()
             
         } else {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? RankingTableViewCell
-            let rankingAttendance = rankingPersonsAttendaces[indexPath.row]
-            cell?.setUp(rankingAttendance, indexPath, self.rankingType)
-            cell?.setupLabelDesign(sorting.sortingPosition.rawValue)
-            if self.rankingType == .weekly { cell?.handleShadowOnFriday(self.daysCurrentPeriod.last?.getWeekNumber()) }
-            cell?.setNeedsLayout()
-            return cell ?? UITableViewCell()
+            if self.rankingType == .weekly {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "weeklyCellID", for: indexPath) as? RankingWeeklyTableViewCell
+                let rankingAttendance = rankingPersonsAttendaces[indexPath.row]
+                cell?.setUp(rankingAttendance, indexPath, self.rankingType, self.daysCurrentPeriod)
+                cell?.setupLabelDesign(sorting.sortingPosition.rawValue)
+                cell?.handleShadowOnFriday(self.daysCurrentPeriod.last?.getWeekNumber())
+                cell?.setNeedsLayout()
+                return cell ?? UITableViewCell()
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? RankingTableViewCell
+                let rankingAttendance = rankingPersonsAttendaces[indexPath.row]
+                cell?.setUp(rankingAttendance, indexPath, self.rankingType)
+                cell?.setupLabelDesign(sorting.sortingPosition.rawValue)
+                cell?.setNeedsLayout()
+                return cell ?? UITableViewCell()
+            }
         }
+        
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -162,7 +171,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         }
         selectedCellRow = -1
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
         }
     }
     
