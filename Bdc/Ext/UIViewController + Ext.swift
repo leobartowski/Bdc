@@ -15,20 +15,22 @@ extension UIViewController {
 
     /// Present alert with with action to dismiss it
     func presentAlert(alertText: String, alertMessage: String, actionTitle: String = "Ok!") {
-        let alert = UIAlertController(title: alertText, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: actionTitle, style: UIAlertAction.Style.default, handler: nil))
-        // Add more actions as you see fit
+        let alert = UIAlertController(title: alertText, message: alertMessage, preferredStyle: .alert)
+        let action = UIAlertAction(title: actionTitle, style: .default, handler: nil)
+        action.setValue(Theme.FSCalendarStandardSelectionColor, forKey: "titleTextColor")
+        alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
     
     func presentActionSheet(title: String, message: String? = nil, mainAction: @escaping (UIAlertAction) -> Void, mainActionTitle: String,  cancelAction: @escaping (UIAlertAction) -> Void, cancelActionTitle: String = "Annulla") {
-    
-           let actionSheet = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-           let mainAction = UIAlertAction(title: mainActionTitle, style: .destructive, handler: mainAction)
-           let cancelAction = UIAlertAction(title: cancelActionTitle, style: .cancel,  handler: cancelAction)
-           actionSheet.addAction(mainAction)
-           actionSheet.addAction(cancelAction)
-           self.present(actionSheet, animated: true, completion: nil)
+        
+        let actionSheet = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let mainAction = UIAlertAction(title: mainActionTitle, style: .destructive, handler: mainAction)
+        let cancelAction = UIAlertAction(title: cancelActionTitle, style: .cancel,  handler: cancelAction)
+        cancelAction.setValue(Theme.FSCalendarStandardSelectionColor, forKey: "titleTextColor")
+        actionSheet.addAction(mainAction)
+        actionSheet.addAction(cancelAction)
+        self.present(actionSheet, animated: true, completion: nil)
     }
 
 //    static func presentWindow(with storyboard: UIStoryboard) {

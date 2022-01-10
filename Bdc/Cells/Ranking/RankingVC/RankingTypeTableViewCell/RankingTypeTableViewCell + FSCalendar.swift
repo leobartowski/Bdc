@@ -67,7 +67,9 @@ extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FS
     }
     
     func calendar(_ calendar: FSCalendar, appearance _: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
-        return .lightGray
+        return (LocalDate(date: .now) == LocalDate(date: date) && !date.isThisDaySelectable())
+        ? Theme.customLightRed
+        : .lightGray
     }
     
     // MARK: Calendar SetUp
