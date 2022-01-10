@@ -115,10 +115,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         header[0] = headerBasic[0]
         header[1] = headerBasic[1] + " " + sorting.sortingType.symbol
         header[2] = headerBasic[2]
-        selectedCellRow = -1
-        DispatchQueue.main.async {
-            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
-        }
+        self.customReloadTableView()
     }
     
     func rankingSectionHeaderView(_: RankingSectionHeaderView, didSelectLabel number: Int) {
@@ -169,9 +166,16 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             sorting.sortingPosition = .admonishment
         default: return
         }
-        selectedCellRow = -1
+        self.customReloadTableView()
+    }
+    
+    ///  Used to reload the table view section 1 to update the attendance
+    func customReloadTableView() {
+        // We need this temp var because to avoid a graphic glitch we need to use animation if there was a selected cell
+        let previousSelectedRow = self.selectedCellRow
+        self.selectedCellRow = -1
         DispatchQueue.main.async {
-            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+            self.tableView.reloadSections(IndexSet(integer: 1), with: previousSelectedRow != -1 ? .automatic : .none)
         }
     }
     
