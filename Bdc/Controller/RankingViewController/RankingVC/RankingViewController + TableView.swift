@@ -117,7 +117,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         header[2] = headerBasic[2]
         selectedCellRow = -1
         DispatchQueue.main.async {
-            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+            self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
         }
     }
     
@@ -171,7 +171,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         }
         selectedCellRow = -1
         DispatchQueue.main.async {
-            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+            self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
         }
     }
     
