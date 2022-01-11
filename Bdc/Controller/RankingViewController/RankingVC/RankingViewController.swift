@@ -8,7 +8,6 @@
 import FSCalendar
 import PDFKit
 import UIKit
-import FittedSheets
 
 class RankingViewController: UIViewController {
     
