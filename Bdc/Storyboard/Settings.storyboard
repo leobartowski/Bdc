@@ -253,6 +253,15 @@
                                     <action selector="modifyButtonAction:" destination="Bio-0Q-Nc2" eventType="touchUpInside" id="tbA-Q9-ZjA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBj-xO-ct5">
+                                <rect key="frame" x="20" y="44" width="67" height="31"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="cancelButtonAction:" destination="Bio-0Q-Nc2" eventType="touchUpInside" id="dvp-YI-znz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xFb-U0-Ryh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -260,13 +269,16 @@
                             <constraint firstItem="xFb-U0-Ryh" firstAttribute="trailing" secondItem="qDz-pQ-IP0" secondAttribute="trailing" constant="20" id="8YL-l5-p5z"/>
                             <constraint firstItem="plV-kK-c83" firstAttribute="centerX" secondItem="p9f-9i-8Qs" secondAttribute="centerX" id="FwC-hB-v6l"/>
                             <constraint firstItem="plV-kK-c83" firstAttribute="top" secondItem="xFb-U0-Ryh" secondAttribute="top" constant="40" id="KrM-yN-hCl"/>
+                            <constraint firstItem="PBj-xO-ct5" firstAttribute="leading" secondItem="xFb-U0-Ryh" secondAttribute="leading" constant="20" id="VoQ-QA-ucv"/>
                             <constraint firstItem="xFb-U0-Ryh" firstAttribute="trailing" secondItem="nCp-u5-0RZ" secondAttribute="trailing" constant="20" id="ely-MV-72p"/>
                             <constraint firstItem="qDz-pQ-IP0" firstAttribute="leading" secondItem="xFb-U0-Ryh" secondAttribute="leading" constant="20" id="oSe-Ue-XVr"/>
                             <constraint firstItem="qDz-pQ-IP0" firstAttribute="top" secondItem="plV-kK-c83" secondAttribute="bottom" constant="30" id="rI9-0D-Ulr"/>
+                            <constraint firstItem="PBj-xO-ct5" firstAttribute="top" secondItem="xFb-U0-Ryh" secondAttribute="top" id="wEs-O5-T9b"/>
                             <constraint firstItem="nCp-u5-0RZ" firstAttribute="top" secondItem="xFb-U0-Ryh" secondAttribute="top" id="ynn-wb-V6V"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="PBj-xO-ct5" id="Afe-jk-mRV"/>
                         <outlet property="mainImageView" destination="plV-kK-c83" id="bto-ev-P8D"/>
                         <outlet property="mainTextField" destination="qDz-pQ-IP0" id="L4h-yh-ryv"/>
                         <outlet property="modifyButton" destination="nCp-u5-0RZ" id="B5U-jP-igd"/>
@@ -283,6 +295,9 @@
         <image name="man_placeholder_icon" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

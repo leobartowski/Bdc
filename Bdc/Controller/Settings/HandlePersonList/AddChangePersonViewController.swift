@@ -12,6 +12,7 @@ class AddChangePersonViewController: UIViewController {
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var modifyButton: UIButton!
     @IBOutlet weak var mainTextField: UITextField!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var person: Person!
     
@@ -22,8 +23,11 @@ class AddChangePersonViewController: UIViewController {
     
     private func setupUI() {
         self.mainTextField.isEnabled = false
+        self.mainTextField.autocapitalizationType = .words
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
         self.modifyButton.setTitle("Modifica", for: .normal)
+        self.cancelButton.setTitle("Annulla", for: .normal)
+        self.cancelButton.isHidden = true
         self.modifyButton.tag = 1
     }
     
@@ -35,19 +39,32 @@ class AddChangePersonViewController: UIViewController {
         }
     }
     
+    @IBAction func cancelButtonAction(_ sender: Any) {
+        self.mainTextField.isEnabled = false
+        self.mainTextField.text = self.person.name
+        self.modifyButton.setTitle("Modifica", for: .normal)
+        self.cancelButton.isHidden = true
+        self.modifyButton.tag = 1
+    }
+    
     @IBAction func modifyButtonAction(_ sender: Any) {
         
-        if self.modifyButton.tag == 1 {
+        if self.modifyButton.tag == 1 { // Modify
             
             self.mainTextField.isEnabled = true
+            self.cancelButton.isHidden = false
             self.mainTextField.becomeFirstResponder()
             self.modifyButton.setTitle("Salva", for: .normal)
             self.modifyButton.tag = 2
-        } else {
+        } else { // Save
             guard let oldName = self.person.name, let newName = self.mainTextField.text else { return }
-            let newNamePro = newName.capitalized.trimmingCharacters(in: .whitespacesAndNewlines) // Removed trimmingCharacters and upperCased first letter
-            CoreDataService.shared.updateNameSpecificPerson(oldName: oldName, newName: newNamePro)
+            let newNamePro = newName.trimmingCharacters(in: .whitespacesAndNewlines) // Removed trimmingCharacters
+            self.mainTextField.text = newNamePro
+            if oldName != newNamePro {
+                CoreDataService.shared.updateNameSpecificPerson(oldName: oldName, newName: newNamePro)
+            }
             self.mainTextField.isEnabled = false
+            self.cancelButton.isHidden = true
             self.modifyButton.setTitle("Modifica", for: .normal)
             self.modifyButton.tag = 1
         }
