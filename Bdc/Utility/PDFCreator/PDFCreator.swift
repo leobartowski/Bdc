@@ -124,7 +124,7 @@ class PDFCreator: NSObject {
     func addCreationTime(pageRect: CGRect) {
         let titleFont = UIFont.systemFont(ofSize: 15, weight: .bold)
         let timestampString = DateFormatter.creationDateFormatter.string(from: Date.now)
-        let text = "Creato con ❤️ dall'app BdC il " + timestampString
+        let text = "Creato col ❤️ dall'app BdC il " + timestampString
 
         let titleAttributes: [NSAttributedString.Key: Any] =
             [NSAttributedString.Key.font: titleFont,
