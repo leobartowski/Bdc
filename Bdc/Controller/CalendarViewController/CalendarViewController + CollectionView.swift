@@ -56,7 +56,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         } else { // Person not present
             let personToAdd = personsNotPresent[indexPath.row]
             if personsAdmonished.contains(where: { $0.name == personToAdd.name }) {
-                presentAlert(alertText: "Errore", alertMessage: "Una persona ammonita non pùo risultate presente, rimuovi l'ammonizione e poi procedi ")
+                presentAlert(alertText: "Errore", alertMessage: "Una persona ammonita non pùo risultare presente, rimuovi l'ammonizione se vuoi mettere la presenza a \(personToAdd.name ?? "")")
                 return
             }
             personsNotPresent.remove(at: indexPath.row)

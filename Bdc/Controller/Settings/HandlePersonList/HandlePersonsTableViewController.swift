@@ -46,8 +46,10 @@ class HandlePersonsViewController: UIViewController, UITableViewDelegate, UITabl
             vc.person = cell?.person
             let sheetController = SheetViewController(
                 controller: vc,
-                sizes: [.fixed(310)]
+                sizes: [.fixed(310)],
+                options: SheetOptions(shrinkPresentingViewController: false)
             )
+
             sheetController.shouldDismiss = { _ in
                 self.tableView.deselectRow(at: indexPath, animated: true)
                 return true
