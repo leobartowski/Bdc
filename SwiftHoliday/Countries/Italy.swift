@@ -23,7 +23,7 @@ final class Italy: CountryBase {
         return [
             Holiday(name: "Capodanno", date: (year, .january, 1)),
             Holiday(name: "Epifania", date: (year, .january, 6)),
-            Holiday(name: "Carnevale", date:  easter.addingDays(-46)),
+//            Holiday(name: "Carnevale", date:  easter.addingDays(-47)),
             Holiday(name: "Pasqua", date:  easter),
             Holiday(name: "Pasquetta", date: easter.addingDays(1)),
             Holiday(name: "Festa della Liberazione", date: (year, .april, 25)),
