@@ -77,6 +77,7 @@ class PersonListUtility {
         giovannir.iconString = "giovanniR_icon"
         let conte = Person(context: context)
         conte.name = "Conte"
+        conte.iconString = "conte_icon"
         let alessia = Person(context: context)
         alessia.name = "Alessia"
         let michelep = Person(context: context)
