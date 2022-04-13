@@ -118,8 +118,11 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     /// Reload CalendarView because today is broken!
     func updateCalendarIfNeeded() {
         if Date.tomorrow.days(from: self.calendarView.maximumDate) > 0 {
-//            self.calendarView.today = Date() // Caused crash I think
-            self.calendarView.reloadData()
+            DispatchQueue.main.async {
+                self.calendarView.reloadData()
+                self.calendarView.today = Date()
+//                self.setUpCalendarAppearance()
+            }
         }
     }
     
