@@ -35,7 +35,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -55,7 +55,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             default:
                 return UITableViewCell()
             }
-        case 1: // Second Section
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
+            cell?.setup(text: "Mostra statistiche ranking", settingsType: .showStatistics)
+            return cell ?? UITableViewCell()
+        case 2: // Second Section
             let cell = tableView.dequeueReusableCell(withIdentifier: "arrowCellID", for: indexPath) as? SettingsArrowTableViewCell
             cell?.setup(text: "Regolamento", settingsType: .showRegulation)
             return cell ?? UITableViewCell()
@@ -75,7 +79,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 self.tableView.deselectRow(at: indexPath, animated: false)
             default: return
             }
-        case 1:
+        case 2:
             if let url = URL(string: "https://drive.google.com/file/d/1fvKB4Tbz4FOWQvNWF4ncY0XhpRdPdDB-/view?usp=sharing") {
                 let safariVC = SFSafariViewController(url: url)
                 safariVC.preferredBarTintColor = .white

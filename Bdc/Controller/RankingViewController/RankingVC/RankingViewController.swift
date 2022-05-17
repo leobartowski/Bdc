@@ -49,6 +49,7 @@ class RankingViewController: UIViewController {
     
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
+
     }
 
     /// Retrive attendance from CoreData
@@ -57,6 +58,7 @@ class RankingViewController: UIViewController {
             // We need to clear all presences and adomishment
             item.eveningDate = []
             item.morningDate = []
+            item.possibleAttendanceNumber = (self.daysCurrentPeriod.count * 2)
             item.attendanceNumber = 0
             item.admonishmentNumber = 0
         }

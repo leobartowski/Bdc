@@ -104,6 +104,7 @@ class PersonListUtility {
 public class RankingPersonAttendance {
     var person: Person
     var attendanceNumber: Int = 0
+    var possibleAttendanceNumber: Int = 0
     var admonishmentNumber: Int = 0
     var morningDate: [Date] = []
     var eveningDate: [Date] = []

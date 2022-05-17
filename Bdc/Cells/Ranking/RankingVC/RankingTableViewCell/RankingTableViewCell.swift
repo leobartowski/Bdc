@@ -14,8 +14,12 @@ class RankingTableViewCell: UITableViewCell {
     @IBOutlet var mainImageView: UIImageView!
     @IBOutlet var attendanceLabel: UILabel!
     @IBOutlet var admonishmentLabel: UILabel!
-
+    @IBOutlet var percentualAttendanceLabel: UILabel!
+    @IBOutlet var percentualAdmonishmentLabel: UILabel!
+    
     var indexPath = IndexPath()
+    var rankingAttendance: RankingPersonAttendance?
+    var showStatistics = false
 
     override func layoutSubviews() {
         self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: 15).cgPath
@@ -23,18 +27,27 @@ class RankingTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowStatistics(_:)), name: .didChangeShowStatistics, object: nil)
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
+    }
+    
+    // MARK: Handle Show Statistics
+    @objc func didChangeShowStatistics(_: Notification) {
+        self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
+        self.handleStatistics()
     }
 
     func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath, _ rankingType: RankingType) {
         self.indexPath = indexPath
+        self.rankingAttendance = rankingAttendance
         self.setUpShadow()
         self.nameLabel.text = rankingAttendance.person.name
         self.attendanceLabel.text = String(rankingAttendance.attendanceNumber)
         self.admonishmentLabel.text = String(rankingAttendance.admonishmentNumber)
+        self.handleStatistics()
         let imageString = CommonUtility.getProfileImageString(rankingAttendance.person)
         self.mainImageView.image = UIImage(named: imageString)
-        
     }
     
     func setUpShadow() {
@@ -66,5 +79,33 @@ class RankingTableViewCell: UITableViewCell {
             break
         }
     }
+    
+    func handleStatistics() {
+        self.percentualAdmonishmentLabel.isHidden = !self.showStatistics
+        self.percentualAttendanceLabel.isHidden = !self.showStatistics
+        if let rankingAttendance = self.rankingAttendance, self.showStatistics {
+            DispatchQueue.main.async {
+                self.percentualAttendanceLabel.text = self.createAttendancePercentagesString(
+                    rankingAttendance.attendanceNumber,
+                    rankingAttendance.possibleAttendanceNumber)
+                self.percentualAdmonishmentLabel.text = self.createAttendancePercentagesString(
+                    rankingAttendance.admonishmentNumber,
+                    rankingAttendance.possibleAttendanceNumber)
+            }
+        }
+    }
+    
+    func createAttendancePercentagesString(_ numberOfPresence: Int, _ numberOfPossibleAttendance: Int) -> String {
+        let numberOfPresenceDouble = Double(numberOfPresence)
+        let numberOfPossibleAttendanceDouble = Double(numberOfPossibleAttendance)
+        if numberOfPossibleAttendance != 0 {
+            let percental = (numberOfPresenceDouble / numberOfPossibleAttendanceDouble) * 100
+            let percentalString = String(format: "%.0f", percental)
+            
+            return "\(percentalString)%"
+        }
+        return ""
+    }
+
 }
 

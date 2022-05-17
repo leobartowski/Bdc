@@ -15,23 +15,27 @@ class RankingWeeklyTableViewCell: UITableViewCell {
     @IBOutlet var mainImageView: UIImageView!
     @IBOutlet var attendanceLabel: UILabel!
     @IBOutlet var admonishmentLabel: UILabel!
+    @IBOutlet var percentualAttendanceLabel: UILabel!
     @IBOutlet var collectionView: UICollectionView!
-
+    @IBOutlet var percentualAdmonishmentLabel: UILabel!
+    
     var indexPath = IndexPath()
-
+    var rankingAttendance: RankingPersonAttendance?
+    var showStatistics = false
+    
     let days = ["L", "M", "M", "G", "V"]
     var morningDaysNumbers: [Int] = []
     var eveningDaysNumbers: [Int] = []
     var holidayDaysNumbers: [Int] = []
-
+    
     var isDetailViewHidden: Bool {
         return self.collectionView.isHidden
     }
-
+    
     override func layoutSubviews() {
         self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: 15).cgPath
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         contentView.autoresizingMask = .flexibleHeight
@@ -40,6 +44,8 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         self.collectionView.isHidden = true
         self.collectionView.collectionViewLayout = self.setupCollectionViewLayout()
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
+        self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowStatistics(_:)), name: .didChangeShowStatistics, object: nil)
     }
     
     private func setupCollectionViewLayout() -> UICollectionViewFlowLayout {
@@ -54,24 +60,23 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return layout
     }
-
+    
     func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath, _ rankingType: RankingType, _ datesOfTheWeek: [Date]) {
         self.indexPath = indexPath
+        self.rankingAttendance = rankingAttendance
         self.setUpShadow()
         self.nameLabel.text = rankingAttendance.person.name
         self.attendanceLabel.text = String(rankingAttendance.attendanceNumber)
         self.admonishmentLabel.text = String(rankingAttendance.admonishmentNumber)
-        // TODO:  Image View need async?
+        self.handleStatistics()
         let imageString = CommonUtility.getProfileImageString(rankingAttendance.person)
         self.mainImageView.image = UIImage(named: imageString)
         self.morningDaysNumbers = self.createNumbersArray(rankingAttendance.morningDate)
         self.eveningDaysNumbers = self.createNumbersArray(rankingAttendance.eveningDate)
         self.holidayDaysNumbers = self.createHoldayDatesNumberArray(datesOfTheWeek)
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
     }
-
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         if self.isDetailViewHidden, selected {
@@ -84,7 +89,13 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         contentView.layoutIfNeeded()
         setNeedsLayout()
     }
-
+    
+    // MARK: Handle Show Statistics
+    @objc func didChangeShowStatistics(_: Notification) {
+        self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
+        self.handleStatistics()
+    }
+    
     func setUpShadow() {
         let cornerRadius: CGFloat = 15
         self.containerView.cornerRadius = cornerRadius
@@ -95,7 +106,7 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         self.containerView.layer.shadowRadius = 2
         self.containerView.layer.masksToBounds = false
     }
-
+    
     func setupLabelDesign(_ labelNumber: Int) {
         switch labelNumber {
         case 0:
@@ -145,5 +156,31 @@ class RankingWeeklyTableViewCell: UITableViewCell {
             }
         }
         return holidayDatesNumbers
+    }
+    
+    func handleStatistics() {
+        self.percentualAdmonishmentLabel.isHidden = !self.showStatistics
+        self.percentualAttendanceLabel.isHidden = !self.showStatistics
+        if let rankingAttendance = self.rankingAttendance, self.showStatistics {
+            DispatchQueue.main.async {
+                self.percentualAttendanceLabel.text = self.createAttendancePercentagesString(
+                    rankingAttendance.attendanceNumber,
+                    rankingAttendance.possibleAttendanceNumber)
+                self.percentualAdmonishmentLabel.text = self.createAttendancePercentagesString(
+                    rankingAttendance.admonishmentNumber,
+                    rankingAttendance.possibleAttendanceNumber)
+            }
+        }
+    }
+    
+    func createAttendancePercentagesString(_ numberOfPresence: Int, _ numberOfPossibleAttendance: Int) -> String {
+        let numberOfPresenceDouble = Double(numberOfPresence)
+        let numberOfPossibleAttendanceDouble = Double(numberOfPossibleAttendance)
+        if numberOfPossibleAttendance != 0 {
+            let percental = (numberOfPresenceDouble / numberOfPossibleAttendanceDouble) * 100
+            let percentalString = String(format: "%.0f", percental)
+            return "\(percentalString)%"
+        }
+        return ""
     }
 }

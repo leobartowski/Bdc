@@ -113,7 +113,7 @@ extension Date {
         var week = [Date]()
         if let weekInterval = calendar.dateInterval(of: .weekOfYear, for: today) {
             for i in 0 ... 6 {
-                if let day = calendar.date(byAdding: .day, value: i, to: weekInterval.start) {
+                if let day = calendar.date(byAdding: .day, value: i, to: weekInterval.start), day.isThisDaySelectable() {
                     week += [day]
                 }
             }
@@ -127,7 +127,7 @@ extension Date {
         var date = self.getStartOfMonth()
          
         while date <= self.getEndOfMonth() {
-             dates.append(date)
+            if date.isThisDaySelectable() { dates.append(date) }
              guard let newDate = Calendar.current.date(byAdding: .day, value: 1, to: date) else { break }
              date = newDate
          }
@@ -140,7 +140,7 @@ extension Date {
         var date = self.getStartOfYear()
          
         while date <= self.getEndOfYear() {
-             dates.append(date)
+            if date.isThisDaySelectable() { dates.append(date) }
              guard let newDate = Calendar.current.date(byAdding: .day, value: 1, to: date) else { break }
              date = newDate
          }
@@ -153,7 +153,7 @@ extension Date {
         var date = startingDate
          
         while date <= self {
-             dates.append(date)
+            if date.isThisDaySelectable() { dates.append(date) }
              guard let newDate = Calendar.current.date(byAdding: .day, value: 1, to: date) else { break }
              date = newDate
          }
@@ -197,7 +197,7 @@ extension Date {
     
     // MARK: Utilis specific
     func isThisDaySelectable() -> Bool {
-        return self.getDayNumberOfWeek() == 1 || self.getDayNumberOfWeek() == 7 || self.isHoliday(in: .italy) || self < Constant.startingDateBdC
+        return self.getDayNumberOfWeek() == 1 || self.getDayNumberOfWeek() == 7 || self.isHoliday(in: .italy) || self < Constant.startingDateBdC || self > Date()
         ? false
         : true
     }

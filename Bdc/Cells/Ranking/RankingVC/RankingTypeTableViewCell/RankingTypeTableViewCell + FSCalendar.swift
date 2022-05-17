@@ -117,6 +117,7 @@ extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FS
             DispatchQueue.main.async {
                 self.calendarView.reloadData()
                 self.calendarView.today = Date()
+                self.calendarView.appearance.calendar.reloadData()
 //                self.rankingViewController?.tableView.reloadData()
             }
         }
