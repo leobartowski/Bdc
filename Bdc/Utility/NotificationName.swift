@@ -12,5 +12,6 @@ extension Notification.Name {
     
     static let didChangeModifyStatus = Notification.Name("didChangeModifyStatus")
     static let didChangePersonList = Notification.Name("didChangePersonList")
+    static let didChangeShowStatistics = Notification.Name("didChangeShowStatistics")
     
 }

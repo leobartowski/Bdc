@@ -121,6 +121,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             DispatchQueue.main.async {
                 self.calendarView.reloadData()
                 self.calendarView.today = Date()
+                self.updateGoToTodayButton()
 //                self.setUpCalendarAppearance()
             }
         }
