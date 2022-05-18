@@ -26,6 +26,7 @@ extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FS
         // The user cannot manually DESELECT a specific date!
         return false
     }
+    
 
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         self.deselectAllDates()
@@ -107,6 +108,18 @@ extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FS
     func deselectAllDates() {
         for date in calendarView.selectedDates {
             self.calendarView.deselect(date)
+        }
+    }
+    
+    /// Reload CalendarView because today is broken!
+    func updateCalendarIfNeeded() {
+        if Date.tomorrow.days(from: self.calendarView.maximumDate) > 0 {
+            DispatchQueue.main.async {
+                self.calendarView.reloadData()
+                self.calendarView.today = Date()
+                self.calendarView.appearance.calendar.reloadData()
+//                self.rankingViewController?.tableView.reloadData()
+            }
         }
     }
 }

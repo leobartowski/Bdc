@@ -77,6 +77,7 @@ class PersonListUtility {
         giovannir.iconString = "giovanniR_icon"
         let conte = Person(context: context)
         conte.name = "Conte"
+        conte.iconString = "conte_icon"
         let alessia = Person(context: context)
         alessia.name = "Alessia"
         let michelep = Person(context: context)
@@ -103,6 +104,7 @@ class PersonListUtility {
 public class RankingPersonAttendance {
     var person: Person
     var attendanceNumber: Int = 0
+    var possibleAttendanceNumber: Int = 0
     var admonishmentNumber: Int = 0
     var morningDate: [Date] = []
     var eveningDate: [Date] = []
