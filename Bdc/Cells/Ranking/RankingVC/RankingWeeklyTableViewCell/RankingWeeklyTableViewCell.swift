@@ -68,12 +68,15 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         self.nameLabel.text = rankingAttendance.person.name
         self.attendanceLabel.text = String(rankingAttendance.attendanceNumber)
         self.admonishmentLabel.text = String(rankingAttendance.admonishmentNumber)
-        self.handleStatistics()
-        let imageString = CommonUtility.getProfileImageString(rankingAttendance.person)
-        self.mainImageView.image = UIImage(named: imageString)
         self.morningDaysNumbers = self.createNumbersArray(rankingAttendance.morningDate)
         self.eveningDaysNumbers = self.createNumbersArray(rankingAttendance.eveningDate)
         self.holidayDaysNumbers = self.createHoldayDatesNumberArray(datesOfTheWeek)
+        self.handleStatistics()
+        let imageString = CommonUtility.getProfileImageString(rankingAttendance.person)
+        self.mainImageView.image = UIImage(named: imageString)
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
     

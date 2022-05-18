@@ -49,7 +49,6 @@ class RankingViewController: UIViewController {
     
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
-
     }
 
     /// Retrive attendance from CoreData
