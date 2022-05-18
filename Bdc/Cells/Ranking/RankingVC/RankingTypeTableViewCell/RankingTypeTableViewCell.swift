@@ -33,6 +33,8 @@ class RankingTypeTableViewCell: UITableViewCell {
         self.yearDatePickerSetup()
         // Setup Label
         self.setupAllTimeLabel()
+        // Setup Observer
+        self.setupObserver()
     }
     
     override func layoutSubviews() {
@@ -42,7 +44,7 @@ class RankingTypeTableViewCell: UITableViewCell {
     func setup(_ vc: RankingViewController ) {
         self.rankingViewController = vc
         vc.rankingType = self.rankingType
-        selectedAllDateOfTheWeek(calendarView.selectedDate ?? Date.now)
+        self.selectedAllDateOfTheWeek(calendarView.selectedDate ?? Date.now)
     }
     
     func setupShadowContainerView() {
@@ -55,5 +57,13 @@ class RankingTypeTableViewCell: UITableViewCell {
         self.containerView.layer.shadowRadius = 2
         self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: cornerRadius).cgPath
         self.containerView.layer.masksToBounds = false
+    }
+    
+    func setupObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.systemTimeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
+    }
+    
+    @objc func systemTimeChanged() {
+        self.updateCalendarIfNeeded()
     }
 }

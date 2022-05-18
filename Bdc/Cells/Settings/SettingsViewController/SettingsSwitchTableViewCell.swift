@@ -31,6 +31,9 @@ class SettingsSwitchTableViewCell: UITableViewCell {
         case .modifyOldDays:
             let notification = Notification(name: .didChangeModifyStatus, object: nil, userInfo: nil)
             NotificationCenter.default.post(notification)
+        case .showStatistics:
+            let notification = Notification(name: .didChangeShowStatistics, object: nil, userInfo: nil)
+            NotificationCenter.default.post(notification)
         default:
             break
         }
