@@ -17,7 +17,8 @@ class RankingViewController: UIViewController {
     let headerBasic = ["Nome", "P", "A"]
     var header: [String] = []
     var sorting = SortingPositionAndType(.attendance, .descending) // This variable is needed to understand which column in sorted and if ascending or descending (type)
-    var daysCurrentPeriod = [Date]() 
+    var daysCurrentPeriod = [Date]()
+    var holidaysNumbers: [Int] = [] // We calculate the holiday number here to avoid doing calculation several times in the cell
     var selectedCellRow = -1
     var rankingType: RankingType = .weekly
     
@@ -50,7 +51,7 @@ class RankingViewController: UIViewController {
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
     }
-
+    
     /// Retrive attendance from CoreData
     func populateAttendance() {
         for item in self.rankingPersonsAttendaces {
@@ -68,7 +69,7 @@ class RankingViewController: UIViewController {
             let eveningPersons = eveningAttendance?.persons?.allObjects as? [Person] ?? []
             let morningPersonsAdmonished = morningAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
             let eveningPersonsAdmonished = eveningAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
-
+            
             for person in morningPersons {
                 if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
                     self.rankingPersonsAttendaces[index].attendanceNumber += 1
@@ -92,6 +93,8 @@ class RankingViewController: UIViewController {
                 }
             }
         }
+        
+        self.createHoldayDatesNumberArrayIfNeeded()
         self.sortDescendingAttendanceFirstTime()
     }
     
@@ -106,11 +109,11 @@ class RankingViewController: UIViewController {
         
         let pdfTitle = PDFCreator.createPDFTitle(dates: self.daysCurrentPeriod, self.rankingType)
         let pdfData = createPDF(pdfTitle)
-
+        
         let temporaryFolder = FileManager.default.temporaryDirectory
         let pdfFileName = pdfTitle.replacingOccurrences(of: "/", with: "-", options: .literal, range: nil)
         let temporaryFileURL = temporaryFolder.appendingPathComponent(pdfFileName + ".pdf")
-
+        
         do {
             try pdfData.write(to: temporaryFileURL)
             let vc = UIActivityViewController(activityItems: [temporaryFileURL], applicationActivities: [])

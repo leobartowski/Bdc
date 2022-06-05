@@ -97,7 +97,7 @@ extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FS
     }
 
     func selectedAllDateOfTheWeek(_ date: Date) {
-        self.rankingViewController?.daysCurrentPeriod = date.getAllDateOfTheWeek()
+        self.rankingViewController?.daysCurrentPeriod = date.getAllSelectableDateOfTheWeek()
         for day in self.rankingViewController?.daysCurrentPeriod ?? [] {
             if day.getDayNumberOfWeek() != 1, day.getDayNumberOfWeek() != 7 {
                 self.calendarView.select(day)
