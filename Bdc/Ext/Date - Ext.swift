@@ -106,7 +106,7 @@ extension Date {
         return Calendar.current.dateComponents([.weekday], from: self).weekday
     }
 
-    func getAllDateOfTheWeek() -> [Date] {
+    func getAllSelectableDateOfTheWeek() -> [Date] {
         var calendar = Calendar.autoupdatingCurrent
         calendar.firstWeekday = 2 // / Week start on Monday (or 1 for Sunday)
         let today = calendar.startOfDay(for: self)
@@ -121,8 +121,23 @@ extension Date {
         return week
     }
     
-    /// Get all Dates of the month of the date
-    func getAllDateOfTheMonth() -> [Date] {
+    func getAllDatesOfTheWeek() -> [Date] {
+        var calendar = Calendar.autoupdatingCurrent
+        calendar.firstWeekday = 2 // / Week start on Monday (or 1 for Sunday)
+        let today = calendar.startOfDay(for: self)
+        var week = [Date]()
+        if let weekInterval = calendar.dateInterval(of: .weekOfYear, for: today) {
+            for i in 0 ... 6 {
+                if let day = calendar.date(byAdding: .day, value: i, to: weekInterval.start) {
+                    week += [day]
+                }
+            }
+        }
+        return week
+    }
+    
+    /// Get all Selectable dates of the month given specifc date
+    func getAllSelectableDatesOfTheMonth() -> [Date] {
         var dates: [Date] = []
         var date = self.getStartOfMonth()
          

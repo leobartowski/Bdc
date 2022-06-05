@@ -34,7 +34,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             if self.rankingType == .weekly {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "weeklyCellID", for: indexPath) as? RankingWeeklyTableViewCell
                 let rankingAttendance = rankingPersonsAttendaces[indexPath.row]
-                cell?.setUp(rankingAttendance, indexPath, self.rankingType, self.daysCurrentPeriod)
+                cell?.setUp(rankingAttendance, indexPath, self.rankingType, self.holidaysNumbers)
                 cell?.setupLabelDesign(sorting.sortingPosition.rawValue)
                 cell?.handleShadowOnFriday(self.daysCurrentPeriod.last?.getWeekNumber())
                 cell?.setNeedsLayout()
@@ -116,6 +116,17 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         header[1] = headerBasic[1] + " " + sorting.sortingType.symbol
         header[2] = headerBasic[2]
         self.customReloadTableView()
+    }
+    
+    func createHoldayDatesNumberArrayIfNeeded() {
+        self.holidaysNumbers = []
+        if let allDates = self.daysCurrentPeriod.first?.getAllDatesOfTheWeek(), self.rankingType == .weekly {
+            for date in allDates {
+                if date.isHoliday(in: .italy) {
+                    self.holidaysNumbers.append(date.getDayNumberOfWeek() ?? 1)
+                }
+            }
+        }
     }
     
     func rankingSectionHeaderView(_: RankingSectionHeaderView, didSelectLabel number: Int) {

@@ -33,7 +33,7 @@ extension RankingTypeTableViewCell {
     @objc func monthtYearDatePickerDateChanged(_ sender: Any) {
         guard let rankingVC = self.rankingViewController else { return }
         rankingVC.daysCurrentPeriod.removeAll()
-        rankingVC.daysCurrentPeriod = self.monthYearDatePicker.date.getAllDateOfTheMonth()
+        rankingVC.daysCurrentPeriod = self.monthYearDatePicker.date.getAllSelectableDatesOfTheMonth()
         rankingVC.populateAttendance()
     }
     
@@ -65,7 +65,7 @@ extension RankingTypeTableViewCell {
             self.allTimeLabel.isHidden = true
             self.monthYearDatePicker.date = Date()
             self.rankingViewController?.tableView.allowsSelection = false
-            self.rankingViewController?.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheMonth()
+            self.rankingViewController?.daysCurrentPeriod = self.yearDatePicker.date.getAllSelectableDatesOfTheMonth()
             self.rankingViewController?.daysCurrentPeriod.removeAll(where: { $0 < Constant.startingDateBdC || $0 > Date.tomorrow })
         case .yearly:
             

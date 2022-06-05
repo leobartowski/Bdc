@@ -61,7 +61,7 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         return layout
     }
     
-    func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath, _ rankingType: RankingType, _ datesOfTheWeek: [Date]) {
+    func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath, _ rankingType: RankingType, _ holidaysNumbers: [Int]) {
         self.indexPath = indexPath
         self.rankingAttendance = rankingAttendance
         self.setUpShadow()
@@ -70,7 +70,7 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         self.admonishmentLabel.text = String(rankingAttendance.admonishmentNumber)
         self.morningDaysNumbers = self.createNumbersArray(rankingAttendance.morningDate)
         self.eveningDaysNumbers = self.createNumbersArray(rankingAttendance.eveningDate)
-        self.holidayDaysNumbers = self.createHoldayDatesNumberArray(datesOfTheWeek)
+        self.holidayDaysNumbers = holidaysNumbers
         self.handleStatistics()
         let imageString = CommonUtility.getProfileImageString(rankingAttendance.person)
         self.mainImageView.image = UIImage(named: imageString)
@@ -149,16 +149,6 @@ class RankingWeeklyTableViewCell: UITableViewCell {
             datesNumbers.append(date.getDayNumberOfWeek() ?? 1)
         }
         return datesNumbers
-    }
-    
-    func createHoldayDatesNumberArray(_ dates: [Date]) -> [Int] {
-        var holidayDatesNumbers: [Int] = []
-        for date in dates {
-            if date.isHoliday(in: .italy) {
-                holidayDatesNumbers.append(date.getDayNumberOfWeek() ?? 1)
-            }
-        }
-        return holidayDatesNumbers
     }
     
     func handleStatistics() {
