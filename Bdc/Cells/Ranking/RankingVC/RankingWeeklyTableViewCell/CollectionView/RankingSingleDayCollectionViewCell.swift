@@ -26,6 +26,6 @@ class RankingSingleDayCollectionViewCell: UICollectionViewCell {
     }
     
     func setupForHoliday() { // Setup for all the days that are holiday
-        self.mainLabel.diagonalStrikeThrough(color: UIColor.red.cgColor)
+        self.mainLabel.diagonalStrikeThrough(color: Theme.avatarRed.cgColor)
     }
 }

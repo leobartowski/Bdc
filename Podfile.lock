@@ -1,20 +1,24 @@
 PODS:
   - FittedSheets (2.4.2)
   - FSCalendar (2.8.2)
+  - SwiftConfettiView (0.1.0)
 
 DEPENDENCIES:
   - FittedSheets
   - FSCalendar
+  - SwiftConfettiView
 
 SPEC REPOS:
   trunk:
     - FittedSheets
     - FSCalendar
+    - SwiftConfettiView
 
 SPEC CHECKSUMS:
   FittedSheets: 661408776eb4ff514a31da75b3600bd7222b2b3d
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
+  SwiftConfettiView: 1bdbc2e6913b6b1c76d8070802b212508ad5c352
 
-PODFILE CHECKSUM: a15e5d734671b3d01ba3e7ddf6f8e5855ab8cf0e
+PODFILE CHECKSUM: 1edc729d867b3a930b151d160234c40c1cbfbaf0
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
