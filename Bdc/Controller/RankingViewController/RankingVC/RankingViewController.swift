@@ -8,6 +8,8 @@
 import FSCalendar
 import PDFKit
 import UIKit
+import SwiftConfettiView
+
 
 class RankingViewController: UIViewController {
     
@@ -21,12 +23,14 @@ class RankingViewController: UIViewController {
     var holidaysNumbers: [Int] = [] // We calculate the holiday number here to avoid doing calculation several times in the cell
     var selectedCellRow = -1
     var rankingType: RankingType = .weekly
+    var confettiView: SwiftConfettiView?
     
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
         self.viewSetUp()
+
         self.addObservers()
     }
     
@@ -36,10 +40,9 @@ class RankingViewController: UIViewController {
     }
     
     func viewSetUp() {
-        // Navigation Bar
         self.navigationBarSetup()
-        // Table View
         self.tableViewSetup()
+        self.setupConfettiView()
     }
     
     func navigationBarSetup() {
@@ -85,11 +88,14 @@ class RankingViewController: UIViewController {
             for person in morningPersonsAdmonished {
                 if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
                     self.rankingPersonsAttendaces[index].admonishmentNumber += 1
+                    self.rankingPersonsAttendaces[index].morningAdmonishmentDate.append(day)
                 }
             }
             for person in eveningPersonsAdmonished {
                 if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
                     self.rankingPersonsAttendaces[index].admonishmentNumber += 1
+                    self.rankingPersonsAttendaces[index].eveningAdmonishmentDate.append(day)
+
                 }
             }
         }
@@ -97,6 +103,7 @@ class RankingViewController: UIViewController {
         self.createHoldayDatesNumberArrayIfNeeded()
         self.sortDescendingAttendanceFirstTime()
     }
+
     
     @objc func didChangePersonList(_: Notification) {
         self.rankingPersonsAttendaces.removeAll()

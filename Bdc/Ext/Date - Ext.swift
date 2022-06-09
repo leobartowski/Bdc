@@ -82,6 +82,17 @@ extension Date {
         let yearNumber = calendar.component(.year, from: self)
         return (monthNumber, yearNumber)
     }
+    
+    /// Get the month number and the year
+    func getWeekNumberAndYearNumber() -> (weekNumber: Int, yearNumber: Int) {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.firstWeekday = 2
+        calendar.locale = .current
+        calendar.minimumDaysInFirstWeek = 4
+        let weekNumber = calendar.component(.weekOfYear, from: self)
+        let yearNumber = calendar.component(.year, from: self)
+        return (weekNumber, yearNumber)
+    }
 
     /// Get the Week Number in the year
     func getWeekNumber() -> Int {
