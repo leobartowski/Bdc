@@ -26,6 +26,8 @@ class RankingWeeklyTableViewCell: UITableViewCell {
     let days = ["L", "M", "M", "G", "V"]
     var morningDaysNumbers: [Int] = []
     var eveningDaysNumbers: [Int] = []
+    var morningDaysAdmonishmentNumbers: [Int] = []
+    var eveningDaysAdmonishmentNumbers: [Int] = []
     var holidayDaysNumbers: [Int] = []
     
     var isDetailViewHidden: Bool {
@@ -69,6 +71,8 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         self.nameLabel.text = rankingAttendance.person.name
         self.attendanceLabel.text = String(rankingAttendance.attendanceNumber)
         self.admonishmentLabel.text = String(rankingAttendance.admonishmentNumber)
+        self.morningDaysAdmonishmentNumbers = self.createNumbersArray(rankingAttendance.morningAdmonishmentDate)
+        self.eveningDaysAdmonishmentNumbers = self.createNumbersArray(rankingAttendance.eveningAdmonishmentDate)
         self.morningDaysNumbers = self.createNumbersArray(rankingAttendance.morningDate)
         self.eveningDaysNumbers = self.createNumbersArray(rankingAttendance.eveningDate)
         self.holidayDaysNumbers = holidaysNumbers

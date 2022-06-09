@@ -27,12 +27,20 @@ extension RankingWeeklyTableViewCell: UICollectionViewDelegate, UICollectionView
         } else { // This day is not holiday
 
             if indexPath.section == 0 { // Morning
-                let isPresent = self.morningDaysNumbers.contains(indexPath.item + 2)
-                cell?.setup(isPresent)
+                
+                if self.morningDaysNumbers.contains(indexPath.item + 2) { // isPresent
+                    cell?.setupIfPresent()
+                } else if self.morningDaysAdmonishmentNumbers.contains(indexPath.item + 2) { // isAdminished
+                    cell?.setupIfAdmonished()
+                }
                 
             } else { // Evening
-                let isPresent = self.eveningDaysNumbers.contains(indexPath.item + 2)
-                cell?.setup(isPresent)
+                
+                if self.eveningDaysNumbers.contains(indexPath.item + 2) { // isPresent
+                    cell?.setupIfPresent()
+                } else if self.eveningDaysAdmonishmentNumbers.contains(indexPath.item + 2) { // isAdminished
+                    cell?.setupIfAdmonished()
+                }
             }
         }
         return cell ?? UICollectionViewCell()
