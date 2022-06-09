@@ -88,11 +88,14 @@ class RankingViewController: UIViewController {
             for person in morningPersonsAdmonished {
                 if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
                     self.rankingPersonsAttendaces[index].admonishmentNumber += 1
+                    self.rankingPersonsAttendaces[index].morningAdmonishmentDate.append(day)
                 }
             }
             for person in eveningPersonsAdmonished {
                 if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
                     self.rankingPersonsAttendaces[index].admonishmentNumber += 1
+                    self.rankingPersonsAttendaces[index].eveningAdmonishmentDate.append(day)
+
                 }
             }
         }

@@ -17,13 +17,26 @@ extension RankingViewController {
         switch self.rankingType {
         case .weekly:
             // TODO: Improve this logic
-            return (rankingAttendace.possibleAttendanceNumber == rankingAttendace.attendanceNumber) && (lastDayCurrentPeriod.getWeekNumber() != Date().getWeekNumber())
-
+            return (rankingAttendace.possibleAttendanceNumber == rankingAttendace.attendanceNumber) && self.checkIfCurrentWeekAndIfSoPastFriday(lastDayCurrentPeriod)
+            
         case .monthly:
             return (rankingAttendace.possibleAttendanceNumber == rankingAttendace.attendanceNumber) && (lastDayCurrentPeriod.getMonthAndYearNumber() != Date().getMonthAndYearNumber())
         default: return false
         }
     }
+    
+    private func checkIfCurrentWeekAndIfSoPastFriday(_ dateToCheck: Date) -> Bool {
+        // Show confetti if the week is not the current
+        if dateToCheck.getWeekNumberAndYearNumber() != Date().getWeekNumberAndYearNumber() {
+            return true
+            // Show confetti if the week is the current and is saturday or sunday
+        } else if dateToCheck.getDayNumberOfWeek() == 1 || dateToCheck.getDayNumberOfWeek() == 7 {
+            return true
+        }
+        return false
+    }
+    
+    
     
     func setupConfettiView() {
         self.confettiView = SwiftConfettiView(frame: self.view.bounds)
