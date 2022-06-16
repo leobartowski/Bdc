@@ -141,7 +141,7 @@ class RankingWeeklyTableViewCell: UITableViewCell {
             let attendance: Int = Int(attendanceLabel.text ?? "") ?? 0
             let admonishment: Int = Int(admonishmentLabel.text ?? "") ?? 0
             self.containerView.layer.shadowOpacity = 0.3
-            self.containerView.layer.shadowColor = attendance < 2 || admonishment >= 2
+            self.containerView.layer.shadowColor = attendance < 2 || admonishment >= 3
             ? UIColor.red.cgColor
             : Theme.customGreen.cgColor
         }
