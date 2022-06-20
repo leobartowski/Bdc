@@ -125,7 +125,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
         feedbackGenerator.impactOccurred()
         DispatchQueue.main.async {
-            self.collectionView.reloadItems(at: [indexPath])
+            self.collectionView.reloadData()
         }
     }
 
