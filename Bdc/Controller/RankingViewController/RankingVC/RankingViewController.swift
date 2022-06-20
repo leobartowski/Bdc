@@ -61,6 +61,8 @@ class RankingViewController: UIViewController {
             // We need to clear all presences and adomishment
             item.eveningDate = []
             item.morningDate = []
+            item.eveningAdmonishmentDate = []
+            item.morningAdmonishmentDate = []
             item.possibleAttendanceNumber = (self.daysCurrentPeriod.count * 2)
             item.attendanceNumber = 0
             item.admonishmentNumber = 0

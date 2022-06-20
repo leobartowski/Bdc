@@ -20,32 +20,37 @@ extension RankingWeeklyTableViewCell: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "daysCellID", for: indexPath) as? RankingSingleDayCollectionViewCell
 
-        cell?.mainLabel.text = days[indexPath.item]
+        cell?.mainLabel.text = self.days[indexPath.item]
         
         if self.holidayDaysNumbers.contains(indexPath.item + 2) { // This day is Holiday
             cell?.setupForHoliday()
+            return cell ?? UICollectionViewCell()
         } else { // This day is not holiday
-
+            
             if indexPath.section == 0 { // Morning
-                
                 if self.morningDaysNumbers.contains(indexPath.item + 2) { // isPresent
                     cell?.setupIfPresent()
-                } else if self.morningDaysAdmonishmentNumbers.contains(indexPath.item + 2) { // isAdminished
+                    return cell ?? UICollectionViewCell()
+                }
+                if self.morningDaysAdmonishmentNumbers.contains(indexPath.item + 2) { // isAdminished
                     cell?.setupIfAdmonished()
+                    return cell ?? UICollectionViewCell()
                 }
                 
             } else { // Evening
-                
                 if self.eveningDaysNumbers.contains(indexPath.item + 2) { // isPresent
                     cell?.setupIfPresent()
-                } else if self.eveningDaysAdmonishmentNumbers.contains(indexPath.item + 2) { // isAdminished
+                    return cell ?? UICollectionViewCell()
+                }
+                if self.eveningDaysAdmonishmentNumbers.contains(indexPath.item + 2) { // isAdminished
                     cell?.setupIfAdmonished()
+                    return cell ?? UICollectionViewCell()
                 }
             }
         }
         return cell ?? UICollectionViewCell()
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(
