@@ -30,7 +30,6 @@ class RankingViewController: UIViewController {
         super.viewDidLoad()
         self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
         self.viewSetUp()
-
         self.addObservers()
     }
     
@@ -53,20 +52,12 @@ class RankingViewController: UIViewController {
     
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowConfetti(_:)), name: .didChangeShowConfetti, object: nil)
     }
     
     /// Retrive attendance from CoreData
     func populateAttendance() {
-        for item in self.rankingPersonsAttendaces {
-            // We need to clear all presences and adomishment
-            item.eveningDate = []
-            item.morningDate = []
-            item.eveningAdmonishmentDate = []
-            item.morningAdmonishmentDate = []
-            item.possibleAttendanceNumber = (self.daysCurrentPeriod.count * 2)
-            item.attendanceNumber = 0
-            item.admonishmentNumber = 0
-        }
+        self.cleanValuesAttendance()
         for day in self.daysCurrentPeriod {
             let morningAttendance = CoreDataService.shared.getAttendace(day, type: .morning)
             let eveningAttendance = CoreDataService.shared.getAttendace(day, type: .evening)
@@ -104,6 +95,18 @@ class RankingViewController: UIViewController {
         
         self.createHoldayDatesNumberArrayIfNeeded()
         self.sortDescendingAttendanceFirstTime()
+    }
+    
+    func cleanValuesAttendance() {
+        for item in self.rankingPersonsAttendaces {
+            item.eveningDate = []
+            item.morningDate = []
+            item.eveningAdmonishmentDate = []
+            item.morningAdmonishmentDate = []
+            item.possibleAttendanceNumber = (self.daysCurrentPeriod.count * 2)
+            item.attendanceNumber = 0
+            item.admonishmentNumber = 0
+        }
     }
 
     
