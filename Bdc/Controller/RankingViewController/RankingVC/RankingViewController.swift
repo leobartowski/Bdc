@@ -8,6 +8,8 @@
 import FSCalendar
 import PDFKit
 import UIKit
+import SwiftConfettiView
+
 
 class RankingViewController: UIViewController {
     
@@ -17,9 +19,11 @@ class RankingViewController: UIViewController {
     let headerBasic = ["Nome", "P", "A"]
     var header: [String] = []
     var sorting = SortingPositionAndType(.attendance, .descending) // This variable is needed to understand which column in sorted and if ascending or descending (type)
-    var daysCurrentPeriod = [Date]() 
+    var daysCurrentPeriod = [Date]()
+    var holidaysNumbers: [Int] = [] // We calculate the holiday number here to avoid doing calculation several times in the cell
     var selectedCellRow = -1
     var rankingType: RankingType = .weekly
+    var confettiView: SwiftConfettiView?
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -35,10 +39,9 @@ class RankingViewController: UIViewController {
     }
     
     func viewSetUp() {
-        // Navigation Bar
         self.navigationBarSetup()
-        // Table View
         self.tableViewSetup()
+        self.setupConfettiView()
     }
     
     func navigationBarSetup() {
@@ -49,18 +52,12 @@ class RankingViewController: UIViewController {
     
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowConfetti(_:)), name: .didChangeShowConfetti, object: nil)
     }
-
+    
     /// Retrive attendance from CoreData
     func populateAttendance() {
-        for item in self.rankingPersonsAttendaces {
-            // We need to clear all presences and adomishment
-            item.eveningDate = []
-            item.morningDate = []
-            item.possibleAttendanceNumber = (self.daysCurrentPeriod.count * 2)
-            item.attendanceNumber = 0
-            item.admonishmentNumber = 0
-        }
+        self.cleanValuesAttendance()
         for day in self.daysCurrentPeriod {
             let morningAttendance = CoreDataService.shared.getAttendace(day, type: .morning)
             let eveningAttendance = CoreDataService.shared.getAttendace(day, type: .evening)
@@ -68,7 +65,7 @@ class RankingViewController: UIViewController {
             let eveningPersons = eveningAttendance?.persons?.allObjects as? [Person] ?? []
             let morningPersonsAdmonished = morningAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
             let eveningPersonsAdmonished = eveningAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
-
+            
             for person in morningPersons {
                 if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
                     self.rankingPersonsAttendaces[index].attendanceNumber += 1
@@ -84,16 +81,34 @@ class RankingViewController: UIViewController {
             for person in morningPersonsAdmonished {
                 if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
                     self.rankingPersonsAttendaces[index].admonishmentNumber += 1
+                    self.rankingPersonsAttendaces[index].morningAdmonishmentDate.append(day)
                 }
             }
             for person in eveningPersonsAdmonished {
                 if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
                     self.rankingPersonsAttendaces[index].admonishmentNumber += 1
+                    self.rankingPersonsAttendaces[index].eveningAdmonishmentDate.append(day)
+
                 }
             }
         }
+        
+        self.createHoldayDatesNumberArrayIfNeeded()
         self.sortDescendingAttendanceFirstTime()
     }
+    
+    func cleanValuesAttendance() {
+        for item in self.rankingPersonsAttendaces {
+            item.eveningDate = []
+            item.morningDate = []
+            item.eveningAdmonishmentDate = []
+            item.morningAdmonishmentDate = []
+            item.possibleAttendanceNumber = (self.daysCurrentPeriod.count * 2)
+            item.attendanceNumber = 0
+            item.admonishmentNumber = 0
+        }
+    }
+
     
     @objc func didChangePersonList(_: Notification) {
         self.rankingPersonsAttendaces.removeAll()
@@ -106,11 +121,11 @@ class RankingViewController: UIViewController {
         
         let pdfTitle = PDFCreator.createPDFTitle(dates: self.daysCurrentPeriod, self.rankingType)
         let pdfData = createPDF(pdfTitle)
-
+        
         let temporaryFolder = FileManager.default.temporaryDirectory
         let pdfFileName = pdfTitle.replacingOccurrences(of: "/", with: "-", options: .literal, range: nil)
         let temporaryFileURL = temporaryFolder.appendingPathComponent(pdfFileName + ".pdf")
-
+        
         do {
             try pdfData.write(to: temporaryFileURL)
             let vc = UIActivityViewController(activityItems: [temporaryFileURL], applicationActivities: [])

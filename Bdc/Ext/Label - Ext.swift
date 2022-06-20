@@ -11,7 +11,7 @@ extension UILabel {
     /// Strikes through diagonally
     /// - Parameters:
     /// - offsetPercent: Improve visual appearance or flip line completely by passing a value between 0 and 1
-    func diagonalStrikeThrough(offsetPercent: CGFloat = 0, riduceDimensionBy dim: CGFloat = 5) {
+    func diagonalStrikeThrough(offsetPercent: CGFloat = 0, riduceDimensionBy dim: CGFloat = 5, color: CGColor? = nil) {
         let linePath = UIBezierPath()
         linePath.move(to: CGPoint(x: dim, y: bounds.height * (1 - offsetPercent) - dim))
         linePath.addLine(to: CGPoint(x: bounds.width - dim, y: bounds.height * offsetPercent + dim))
@@ -19,7 +19,7 @@ extension UILabel {
         let lineLayer = CAShapeLayer()
         lineLayer.path = linePath.cgPath
         lineLayer.lineWidth = 1
-        lineLayer.strokeColor = textColor.cgColor
+        lineLayer.strokeColor = color == nil ? textColor.cgColor : color
         layer.addSublayer(lineLayer)
     }
 }

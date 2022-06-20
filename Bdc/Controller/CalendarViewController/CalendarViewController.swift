@@ -141,7 +141,8 @@ class CalendarViewController: UIViewController {
         self.personsPresent = attendance?.persons?.allObjects as? [Person] ?? []
         self.personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
         for person in PersonListUtility.persons {
-            if !self.personsPresent.contains(where: { $0.name == person.name }), !self.personsNotPresent.contains(where: { $0.name == person.name }) {
+            if !self.personsPresent.contains(where: { $0.name == person.name }),
+               !self.personsNotPresent.contains(where: { $0.name == person.name }) {
                 self.personsNotPresent.append(person)
             }
         }
