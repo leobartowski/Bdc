@@ -26,6 +26,8 @@ class RankingWeeklyTableViewCell: UITableViewCell {
     let days = ["L", "M", "M", "G", "V"]
     var morningDaysNumbers: [Int] = []
     var eveningDaysNumbers: [Int] = []
+    var morningDaysAdmonishmentNumbers: [Int] = []
+    var eveningDaysAdmonishmentNumbers: [Int] = []
     var holidayDaysNumbers: [Int] = []
     
     var isDetailViewHidden: Bool {
@@ -61,16 +63,18 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         return layout
     }
     
-    func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath, _ rankingType: RankingType, _ datesOfTheWeek: [Date]) {
+    func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath, _ rankingType: RankingType, _ holidaysNumbers: [Int]) {
         self.indexPath = indexPath
         self.rankingAttendance = rankingAttendance
         self.setUpShadow()
         self.nameLabel.text = rankingAttendance.person.name
         self.attendanceLabel.text = String(rankingAttendance.attendanceNumber)
         self.admonishmentLabel.text = String(rankingAttendance.admonishmentNumber)
+        self.morningDaysAdmonishmentNumbers = self.createNumbersArray(rankingAttendance.morningAdmonishmentDate)
+        self.eveningDaysAdmonishmentNumbers = self.createNumbersArray(rankingAttendance.eveningAdmonishmentDate)
         self.morningDaysNumbers = self.createNumbersArray(rankingAttendance.morningDate)
         self.eveningDaysNumbers = self.createNumbersArray(rankingAttendance.eveningDate)
-        self.holidayDaysNumbers = self.createHoldayDatesNumberArray(datesOfTheWeek)
+        self.holidayDaysNumbers = holidaysNumbers
         self.handleStatistics()
         let imageString = CommonUtility.getProfileImageString(rankingAttendance.person)
         self.mainImageView.image = UIImage(named: imageString)
@@ -98,6 +102,7 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
         self.handleStatistics()
     }
+
     
     func setUpShadow() {
         let cornerRadius: CGFloat = 15
@@ -136,7 +141,7 @@ class RankingWeeklyTableViewCell: UITableViewCell {
             let attendance: Int = Int(attendanceLabel.text ?? "") ?? 0
             let admonishment: Int = Int(admonishmentLabel.text ?? "") ?? 0
             self.containerView.layer.shadowOpacity = 0.3
-            self.containerView.layer.shadowColor = attendance < 2 || admonishment >= 2
+            self.containerView.layer.shadowColor = attendance < 2 || admonishment >= 3
             ? UIColor.red.cgColor
             : Theme.customGreen.cgColor
         }
@@ -149,16 +154,6 @@ class RankingWeeklyTableViewCell: UITableViewCell {
             datesNumbers.append(date.getDayNumberOfWeek() ?? 1)
         }
         return datesNumbers
-    }
-    
-    func createHoldayDatesNumberArray(_ dates: [Date]) -> [Int] {
-        var holidayDatesNumbers: [Int] = []
-        for date in dates {
-            if date.isHoliday(in: .italy) {
-                holidayDatesNumbers.append(date.getDayNumberOfWeek() ?? 1)
-            }
-        }
-        return holidayDatesNumbers
     }
     
     func handleStatistics() {
@@ -186,4 +181,5 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         }
         return ""
     }
+    
 }

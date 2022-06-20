@@ -82,6 +82,17 @@ extension Date {
         let yearNumber = calendar.component(.year, from: self)
         return (monthNumber, yearNumber)
     }
+    
+    /// Get the month number and the year
+    func getWeekNumberAndYearNumber() -> (weekNumber: Int, yearNumber: Int) {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.firstWeekday = 2
+        calendar.locale = .current
+        calendar.minimumDaysInFirstWeek = 4
+        let weekNumber = calendar.component(.weekOfYear, from: self)
+        let yearNumber = calendar.component(.year, from: self)
+        return (weekNumber, yearNumber)
+    }
 
     /// Get the Week Number in the year
     func getWeekNumber() -> Int {
@@ -106,7 +117,7 @@ extension Date {
         return Calendar.current.dateComponents([.weekday], from: self).weekday
     }
 
-    func getAllDateOfTheWeek() -> [Date] {
+    func getAllSelectableDateOfTheWeek() -> [Date] {
         var calendar = Calendar.autoupdatingCurrent
         calendar.firstWeekday = 2 // / Week start on Monday (or 1 for Sunday)
         let today = calendar.startOfDay(for: self)
@@ -121,8 +132,23 @@ extension Date {
         return week
     }
     
-    /// Get all Dates of the month of the date
-    func getAllDateOfTheMonth() -> [Date] {
+    func getAllDatesOfTheWeek() -> [Date] {
+        var calendar = Calendar.autoupdatingCurrent
+        calendar.firstWeekday = 2 // / Week start on Monday (or 1 for Sunday)
+        let today = calendar.startOfDay(for: self)
+        var week = [Date]()
+        if let weekInterval = calendar.dateInterval(of: .weekOfYear, for: today) {
+            for i in 0 ... 6 {
+                if let day = calendar.date(byAdding: .day, value: i, to: weekInterval.start) {
+                    week += [day]
+                }
+            }
+        }
+        return week
+    }
+    
+    /// Get all Selectable dates of the month given specifc date
+    func getAllSelectableDatesOfTheMonth() -> [Date] {
         var dates: [Date] = []
         var date = self.getStartOfMonth()
          

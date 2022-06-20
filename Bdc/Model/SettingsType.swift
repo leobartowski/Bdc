@@ -13,4 +13,5 @@ enum SettingsType: String {
     case showStatistics = "showStatistics"
     case handlePersonList = "handlePersonList"
     case showRegulation = "showRegulation"
+    case showConfetti = "showConfetti"
 }

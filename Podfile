@@ -8,6 +8,7 @@ target 'Bdc' do
   # Pods for Bdc
   pod 'FSCalendar'
   pod 'FittedSheets'
+  pod 'SwiftConfettiView'
 
   target 'BdcTests' do
     inherit! :search_paths

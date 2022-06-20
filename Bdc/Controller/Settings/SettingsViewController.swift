@@ -31,7 +31,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 2 : 1
+        switch section {
+        case 0:
+            return 3
+        case 1:
+            return 1
+        case 2:
+            return 1
+        default:
+            return 0
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -48,16 +57,21 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
                 cell?.setup(text: "Abilita modifica giorni passati", settingsType: .modifyOldDays)
                 return cell ?? UITableViewCell()
-            case 1: // Handle Persons List
-                let cell = tableView.dequeueReusableCell(withIdentifier: "arrowCellID", for: indexPath) as? SettingsArrowTableViewCell
-                cell?.setup(text: "Gestisci persone", settingsType: .handlePersonList)
+            case 1: // S
+                let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
+                cell?.setup(text: "Mostra statistiche ranking", settingsType: .showStatistics)
                 return cell ?? UITableViewCell()
+            case 2: // Show confetti view
+                let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
+                cell?.setup(text: "Mostra coriandoli periodo perfetto", settingsType: .showConfetti)
+                return cell ?? UITableViewCell()
+
             default:
                 return UITableViewCell()
             }
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
-            cell?.setup(text: "Mostra statistiche ranking", settingsType: .showStatistics)
+        case 1: // Handle Persons List
+            let cell = tableView.dequeueReusableCell(withIdentifier: "arrowCellID", for: indexPath) as? SettingsArrowTableViewCell
+            cell?.setup(text: "Gestisci persone", settingsType: .handlePersonList)
             return cell ?? UITableViewCell()
         case 2: // Second Section
             let cell = tableView.dequeueReusableCell(withIdentifier: "arrowCellID", for: indexPath) as? SettingsArrowTableViewCell
@@ -73,13 +87,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 0: // First Section
             
             switch indexPath.row {
-            case 0:  return // Modify Old Element
-            case 1: // Handle Persons List
-                self.performSegue(withIdentifier: "segueToHandlePersons", sender: self)
-                self.tableView.deselectRow(at: indexPath, animated: false)
+            case 0: return // Modify Old Element
+            case 1: return // Show Statistics
+            case 2: return // Show confetti
             default: return
             }
-        case 2:
+        case 1: // Handle Person list
+            self.performSegue(withIdentifier: "segueToHandlePersons", sender: self)
+            self.tableView.deselectRow(at: indexPath, animated: false)
+        case 2: // 
             if let url = URL(string: "https://drive.google.com/file/d/1fvKB4Tbz4FOWQvNWF4ncY0XhpRdPdDB-/view?usp=sharing") {
                 let safariVC = SFSafariViewController(url: url)
                 safariVC.preferredBarTintColor = .white

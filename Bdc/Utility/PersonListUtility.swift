@@ -108,6 +108,8 @@ public class RankingPersonAttendance {
     var admonishmentNumber: Int = 0
     var morningDate: [Date] = []
     var eveningDate: [Date] = []
+    var morningAdmonishmentDate: [Date] = []
+    var eveningAdmonishmentDate: [Date] = []
 
     init(_ person: Person) {
         self.person = person
