@@ -63,7 +63,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 return cell ?? UITableViewCell()
             case 2: // Show confetti view
                 let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
-                cell?.setup(text: "Mostra Coriandoli periodo perfetto", settingsType: .showConfetti)
+                cell?.setup(text: "Mostra coriandoli periodo perfetto", settingsType: .showConfetti)
                 return cell ?? UITableViewCell()
 
             default:
