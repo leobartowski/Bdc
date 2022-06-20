@@ -140,7 +140,6 @@ class CalendarViewController: UIViewController {
         let attendance = CoreDataService.shared.getAttendace(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
         self.personsPresent = attendance?.persons?.allObjects as? [Person] ?? []
         self.personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
-        print(personsAdmonished)
         for person in PersonListUtility.persons {
             if !self.personsPresent.contains(where: { $0.name == person.name }),
                !self.personsNotPresent.contains(where: { $0.name == person.name }) {
