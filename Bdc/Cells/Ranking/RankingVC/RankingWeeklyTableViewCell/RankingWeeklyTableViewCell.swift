@@ -48,7 +48,6 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
         self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowStatistics(_:)), name: .didChangeShowStatistics, object: nil)
-
     }
     
     private func setupCollectionViewLayout() -> UICollectionViewFlowLayout {
@@ -103,6 +102,7 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
         self.handleStatistics()
     }
+
     
     func setUpShadow() {
         let cornerRadius: CGFloat = 15
