@@ -99,8 +99,47 @@
                                             <outlet property="yearDatePicker" destination="c1Y-SV-Dlj" id="P1O-Xy-swU"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="slotTypeCellID" rowHeight="44" id="fHt-8g-5W5" customClass="RankingSlotTypeTableViewCell" customModule="Bdc" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="184.5" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fHt-8g-5W5" id="b74-BL-ivK">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cK-vi-MmN" userLabel="Container View for RankingType">
+                                                    <rect key="frame" x="20" y="2" width="374" height="36"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh1-gT-PuI">
+                                                            <rect key="frame" x="30" y="2" width="314" height="32"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="yh1-gT-PuI" secondAttribute="trailing" constant="30" id="YRN-7g-czd"/>
+                                                        <constraint firstAttribute="bottom" secondItem="yh1-gT-PuI" secondAttribute="bottom" constant="2" id="aCG-oh-Uvp"/>
+                                                        <constraint firstItem="yh1-gT-PuI" firstAttribute="top" secondItem="8cK-vi-MmN" secondAttribute="top" constant="2" id="eSi-Ha-JWw"/>
+                                                        <constraint firstItem="yh1-gT-PuI" firstAttribute="leading" secondItem="8cK-vi-MmN" secondAttribute="leading" constant="30" id="uvb-2x-DeB"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="8cK-vi-MmN" secondAttribute="bottom" constant="6" id="33H-jI-SuH"/>
+                                                <constraint firstItem="8cK-vi-MmN" firstAttribute="leading" secondItem="b74-BL-ivK" secondAttribute="leading" constant="20" id="FaP-jF-lik"/>
+                                                <constraint firstAttribute="trailing" secondItem="8cK-vi-MmN" secondAttribute="trailing" constant="20" id="dFA-u2-XNg"/>
+                                                <constraint firstItem="8cK-vi-MmN" firstAttribute="top" secondItem="b74-BL-ivK" secondAttribute="top" constant="2" id="tJh-rX-2dF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="containerView" destination="8cK-vi-MmN" id="rGt-yz-oTi"/>
+                                            <outlet property="mainLabel" destination="yh1-gT-PuI" id="24R-5b-9v4"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="weeklyCellID" id="8YP-zk-Ego" customClass="RankingWeeklyTableViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="184.5" width="414" height="200"/>
+                                        <rect key="frame" x="0.0" y="228.5" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8YP-zk-Ego" id="gwm-S0-oFG">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
@@ -262,7 +301,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellID" rowHeight="70" id="Ikh-5V-TgG" customClass="RankingTableViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="384.5" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="428.5" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ikh-5V-TgG" id="i54-ue-66L">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
