@@ -94,7 +94,7 @@ class RankingViewController: UIViewController {
             }
             for person in eveningPersonsAdmonished {
                 if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
-                   (self.slotType == .morningAndEvening || self.slotType == .morning) {
+                   (self.slotType == .morningAndEvening || self.slotType == .evening) {
                     self.rankingPersonsAttendaces[index].admonishmentNumber += 1
                     self.rankingPersonsAttendaces[index].eveningAdmonishmentDate.append(day)
 
