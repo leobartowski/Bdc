@@ -89,4 +89,5 @@ extension RankingTypeTableViewCell {
         }
         self.rankingViewController?.populateAttendance()
     }
+
 }
