@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CalendarCollectionViewCellDelegate {
+extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CalendarCollectionViewCellDelegate, UISearchBarDelegate {
     
     // MARK: Delegate e DataSource
 
@@ -18,8 +18,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return section == 0
-            ? personsPresent.isEmpty ? 1 : personsPresent.count
-            : personsNotPresent.count
+        ? self.personsPresent.isEmpty ? 1 : self.personsPresent.count
+        : self.isFiltering ? self.filteredPersonsNotPresent.count : self.personsNotPresent.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -32,7 +32,9 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         if indexPath.section == 0 {
             cell?.setUp(personsPresent[indexPath.row], false, indexPath, self)
         } else {
-            let personNotPresent = personsNotPresent[indexPath.row]
+            let personNotPresent = isFiltering
+            ? filteredPersonsNotPresent[indexPath.row]
+            : personsNotPresent[indexPath.row]
             let isAmonished = personsAdmonished.contains(where: { $0.name == personNotPresent.name })
             cell?.setUp(personNotPresent, isAmonished, indexPath, self)
         }
@@ -81,14 +83,25 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
 
             guard let typedHeaderView = headerView as? CalendarHeaderCollectionReusableView else { return headerView }
             typedHeaderView.titleLabel.text = sectionTitles[indexPath.section]
+            if indexPath.section == 0 {
+                
+                typedHeaderView.searchBar.delegate = self
+            } else {
+                typedHeaderView.searchBar.isHidden = false
+                self.searchBar = typedHeaderView.searchBar // NOT WORKING!
+                typedHeaderView.searchBar.delegate = self
 
+            }
+            typedHeaderView.titleLabel.text = sectionTitles[indexPath.section]
+            typedHeaderView.searchBar.isHidden = indexPath.section == 0 ? true : false
+            typedHeaderView.searchBar.delegate = self
             return typedHeaderView
         }
         return UICollectionReusableView()
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout, referenceSizeForHeaderInSection _: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 50)
+    func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: section == 0 ? 50 : 90)
     }
 
     func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -128,6 +141,13 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             self.collectionView.reloadData()
         }
     }
+    
+    // MARK: SearchBar
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        print("ciao ciao " + searchText)
+    }
+    
 
     // MARK: SetUp CollectionView
 

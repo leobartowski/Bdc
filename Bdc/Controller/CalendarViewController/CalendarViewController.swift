@@ -17,12 +17,16 @@ class CalendarViewController: UIViewController {
     @IBOutlet var bottomCalendarHandleView: UIView!
     @IBOutlet var goToTodayButton: UIButton!
     @IBOutlet var segmentedControlContainerView: UIView!
-
     @IBOutlet var calendarViewHeightConstraint: NSLayoutConstraint!
+    var searchBar = UISearchBar() 
     let sectionTitles = ["Presenti", "Assenti"]
     var dayType = DayType.evening
     var personsPresent: [Person] = []
     var personsNotPresent: [Person] = []
+    var filteredPersonsNotPresent: [Person] = []
+    var isFiltering: Bool {
+        return self.searchBar.searchTextField.isEditing
+    }
     var personsAdmonished: [Person] = []
     var canModifyOldDays = false
 
