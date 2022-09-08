@@ -23,6 +23,7 @@ class RankingViewController: UIViewController {
     var holidaysNumbers: [Int] = [] // We calculate the holiday number here to avoid doing calculation several times in the cell
     var selectedCellRow = -1
     var rankingType: RankingType = .weekly
+    var slotType: SlotType = .morningAndEvening
     var confettiView: SwiftConfettiView?
     
     // MARK: Lifecycle
@@ -47,7 +48,11 @@ class RankingViewController: UIViewController {
     func navigationBarSetup() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(shareButtonAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(shareButtonAction))
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filtro", style: .done, target: self, action: #selector(chooseRankingTypePeriod))
+        self.navigationItem.leftBarButtonItems = [
+            UIBarButtonItem(title: "Periodo", style: .done, target: self, action: #selector(chooseRankingTypePeriod)),
+            UIBarButtonItem(title: "Slot", style: .done, target: self, action: #selector(chooseSlotTypePeriod))
+            ]
+        
     }
     
     func addObservers() {
@@ -67,32 +72,35 @@ class RankingViewController: UIViewController {
             let eveningPersonsAdmonished = eveningAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
             
             for person in morningPersons {
-                if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
+                if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
+                (self.slotType == .morningAndEvening || self.slotType == .morning) {
                     self.rankingPersonsAttendaces[index].attendanceNumber += 1
                     self.rankingPersonsAttendaces[index].morningDate.append(day)
                 }
             }
             for person in eveningPersons {
-                if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
+                if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
+                    (self.slotType == .morningAndEvening || self.slotType == .evening) {
                     self.rankingPersonsAttendaces[index].attendanceNumber += 1
                     self.rankingPersonsAttendaces[index].eveningDate.append(day)
                 }
             }
             for person in morningPersonsAdmonished {
-                if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
+                if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
+                    (self.slotType == .morningAndEvening || self.slotType == .morning) {
                     self.rankingPersonsAttendaces[index].admonishmentNumber += 1
                     self.rankingPersonsAttendaces[index].morningAdmonishmentDate.append(day)
                 }
             }
             for person in eveningPersonsAdmonished {
-                if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }) {
+                if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
+                   (self.slotType == .morningAndEvening || self.slotType == .evening) {
                     self.rankingPersonsAttendaces[index].admonishmentNumber += 1
                     self.rankingPersonsAttendaces[index].eveningAdmonishmentDate.append(day)
 
                 }
             }
         }
-        
         self.createHoldayDatesNumberArrayIfNeeded()
         self.sortDescendingAttendanceFirstTime()
     }
@@ -103,7 +111,10 @@ class RankingViewController: UIViewController {
             item.morningDate = []
             item.eveningAdmonishmentDate = []
             item.morningAdmonishmentDate = []
-            item.possibleAttendanceNumber = (self.daysCurrentPeriod.count * 2)
+            item.possibleAttendanceNumber = self.daysCurrentPeriod.count
+            if self.slotType == .morningAndEvening {
+                item.possibleAttendanceNumber = self.daysCurrentPeriod.count * 2
+            }
             item.attendanceNumber = 0
             item.admonishmentNumber = 0
         }
@@ -119,7 +130,7 @@ class RankingViewController: UIViewController {
     // MARK: Share pdf current period
     @objc func shareButtonAction() {
         
-        let pdfTitle = PDFCreator.createPDFTitle(dates: self.daysCurrentPeriod, self.rankingType)
+        let pdfTitle = PDFCreator.createPDFTitle(dates: self.daysCurrentPeriod, self.rankingType, self.slotType)
         let pdfData = createPDF(pdfTitle)
         
         let temporaryFolder = FileManager.default.temporaryDirectory
@@ -140,5 +151,10 @@ class RankingViewController: UIViewController {
     // MARK: Present modal to change ranking type
     @objc func chooseRankingTypePeriod() {
         self.presentModalToChangeRankingType()
+    }
+    
+    // MARK: Present modal to change slot type
+    @objc func chooseSlotTypePeriod() {
+        self.presentModalToChangeSlotType()
     }
 }

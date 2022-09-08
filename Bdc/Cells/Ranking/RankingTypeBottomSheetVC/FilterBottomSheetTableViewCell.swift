@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class RankingTypeBottomSheetTableViewCell: UITableViewCell {
+class FilterBottomSheetTableViewCell: UITableViewCell {
     
     @IBOutlet var mainLabel: UILabel!
     @IBOutlet var checkBox: CheckBox!
@@ -22,15 +22,22 @@ class RankingTypeBottomSheetTableViewCell: UITableViewCell {
     
     var indexPath = IndexPath()
     var myRankingType: RankingType = .weekly
+    var mySlotType: SlotType = .morningAndEvening
     
     override func awakeFromNib() {
         self.checkBox.isUserInteractionEnabled = false
         self.checkBox.selectedColor = Theme.FSCalendarStandardSelectionColor
     }
     
-    func setup(_ title: String, _ selectedRankingType: RankingType, _ indexPath: IndexPath) {
+    func setupRankingType(_ title: String, _ selectedRankingType: RankingType, _ indexPath: IndexPath) {
         self.mainLabel.text = title
         self.indexPath = indexPath
         self.myRankingType = RankingType(rawValue: self.indexPath.row) ?? .weekly
+    }
+    
+    func setupSlotType(_ title: String, _ selectedSlotType: SlotType, _ indexPath: IndexPath) {
+        self.mainLabel.text = title
+        self.indexPath = indexPath
+        self.mySlotType = SlotType(rawValue: self.indexPath.row) ?? .morningAndEvening
     }
 }
