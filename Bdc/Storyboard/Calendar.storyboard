@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lFF-gd-bBU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lFF-gd-bBU">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -79,13 +79,13 @@
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="N9c-Su-oep">
                                     <size key="itemSize" width="80" height="100"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="90"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="20" minY="10" maxX="20" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="presentCellID" id="Whb-w5-6Xv" customClass="CalendarCollectionViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="167" y="60" width="80" height="100"/>
+                                        <rect key="frame" x="167" y="100" width="80" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cuE-O1-IBd">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
@@ -135,7 +135,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="placeholderID" id="yhZ-ZT-SKm">
-                                        <rect key="frame" x="57" y="170" width="300" height="200"/>
+                                        <rect key="frame" x="57" y="210" width="300" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="E4W-Cy-Gui">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
@@ -167,26 +167,34 @@
                                         <size key="customSize" width="300" height="200"/>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="sectionHeaderID" id="myh-oG-KN7" customClass="CalendarHeaderCollectionReusableView" customModule="Bdc" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="sectionHeaderID" id="96g-cJ-dTv" customClass="CalendarHeaderCollectionReusableView" customModule="Bdc" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZR-FA-WKf">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="50"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lga-hq-CpL">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="36"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Cerca assenti..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFt-07-MgX">
+                                            <rect key="frame" x="10" y="37" width="394" height="51"/>
+                                            <color key="barTintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </searchBar>
                                     </subviews>
                                     <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="1ZR-FA-WKf" secondAttribute="trailing" constant="20" id="5s8-33-sfT"/>
-                                        <constraint firstAttribute="bottom" secondItem="1ZR-FA-WKf" secondAttribute="bottom" id="8NI-AN-oLu"/>
-                                        <constraint firstItem="1ZR-FA-WKf" firstAttribute="leading" secondItem="myh-oG-KN7" secondAttribute="leading" constant="20" id="XUh-Pv-bun"/>
-                                        <constraint firstItem="1ZR-FA-WKf" firstAttribute="top" secondItem="myh-oG-KN7" secondAttribute="top" id="boc-V9-Ts4"/>
+                                        <constraint firstAttribute="bottom" secondItem="lFt-07-MgX" secondAttribute="bottom" constant="2" id="Fvy-BH-d6B"/>
+                                        <constraint firstItem="lFt-07-MgX" firstAttribute="leading" secondItem="96g-cJ-dTv" secondAttribute="leading" constant="10" id="M79-MT-0Ux"/>
+                                        <constraint firstAttribute="trailing" secondItem="lFt-07-MgX" secondAttribute="trailing" constant="10" id="ZXe-QK-PEq"/>
+                                        <constraint firstItem="Lga-hq-CpL" firstAttribute="leading" secondItem="96g-cJ-dTv" secondAttribute="leading" constant="20" id="lF9-yz-QV9"/>
+                                        <constraint firstAttribute="trailing" secondItem="Lga-hq-CpL" secondAttribute="trailing" constant="20" id="qYn-NF-SHk"/>
+                                        <constraint firstItem="Lga-hq-CpL" firstAttribute="top" secondItem="96g-cJ-dTv" secondAttribute="top" id="wly-jk-4D0"/>
                                     </constraints>
                                     <connections>
-                                        <outlet property="titleLabel" destination="1ZR-FA-WKf" id="lZg-rj-diA"/>
+                                        <outlet property="searchBar" destination="lFt-07-MgX" id="rpp-Rt-UnG"/>
+                                        <outlet property="titleLabel" destination="Lga-hq-CpL" id="iNQ-UD-Z0I"/>
                                     </connections>
                                 </collectionReusableView>
                                 <connections>
