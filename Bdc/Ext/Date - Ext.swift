@@ -114,6 +114,7 @@ extension Date {
 
     /// Returns an integer from 1 - 7, with 1 being Sunday and 7 being Saturday
     func getDayNumberOfWeek() -> Int? {
+
         return Calendar.current.dateComponents([.weekday], from: self).weekday
     }
 

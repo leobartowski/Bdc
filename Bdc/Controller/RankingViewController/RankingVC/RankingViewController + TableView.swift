@@ -14,22 +14,28 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : self.rankingPersonsAttendaces.count
+        return section == 0 ? 2 : self.rankingPersonsAttendaces.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0
-        ? 140
+        ? indexPath.row == 0 ? 140 : 44
         : (indexPath.row == self.selectedCellRow && self.rankingType == .weekly) ? 200 : 70
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "rankingTypeCellID", for: indexPath) as? RankingTypeTableViewCell
-            cell?.setup(self)
-            return cell ?? UITableViewCell()
-            
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "rankingTypeCellID", for: indexPath) as? RankingTypeTableViewCell
+                cell?.setup(self)
+                return cell ?? UITableViewCell()
+                
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "slotTypeCellID", for: indexPath) as? RankingSlotTypeTableViewCell
+                cell?.setup(self.slotType)
+                return cell ?? UITableViewCell()
+            }
+
         } else {
             if self.rankingType == .weekly {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "weeklyCellID", for: indexPath) as? RankingWeeklyTableViewCell

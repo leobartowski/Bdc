@@ -13,11 +13,11 @@ extension RankingViewController {
     
     
     func calculateIfShowConfetti(_ rankingAttendace: RankingPersonAttendance) -> Bool {
+        
         guard let lastDayCurrentPeriod = self.daysCurrentPeriod.last else { return false }
         switch self.rankingType {
         case .weekly:
             return (rankingAttendace.possibleAttendanceNumber == rankingAttendace.attendanceNumber) && self.checkIfCurrentWeekAndIfSoPastFriday(lastDayCurrentPeriod)
-            
         case .monthly:
             return (rankingAttendace.possibleAttendanceNumber == rankingAttendace.attendanceNumber) && (lastDayCurrentPeriod.getMonthAndYearNumber() != Date().getMonthAndYearNumber())
         default: return false
@@ -30,8 +30,7 @@ extension RankingViewController {
             return true
         }
         // Show confetti if the week is the current and it's saturday or sunday
-        if  (dateToCheck.getWeekNumberAndYearNumber() == Date().getWeekNumberAndYearNumber()),
-            (dateToCheck.getDayNumberOfWeek() == 1 || dateToCheck.getDayNumberOfWeek() == 7) {
+        if (dateToCheck.getDayNumberOfWeek() == 1 || dateToCheck.getDayNumberOfWeek() == 7) {
             return true
         }
         return false
