@@ -24,7 +24,17 @@ class PDFCreator: NSObject {
         self.pdfTitle = pdfTitle
     }
 
-    static func createPDFTitle(dates: [Date], _ rankingType: RankingType = .weekly) -> String {
+    static func createPDFTitle(dates: [Date], _ rankingType: RankingType = .weekly, _ slotType: SlotType = .morningAndEvening) -> String {
+        var dateTitle = PDFCreator.createTitleBasedOnDate(dates, rankingType)
+        if slotType == .morning {
+            dateTitle.append(" - Solo Mattina")
+        } else if slotType == .evening {
+            dateTitle.append(" - Solo Pomeriggio")
+        }
+        return dateTitle
+    }
+    
+    private static func createTitleBasedOnDate(_ dates: [Date], _ rankingType: RankingType = .weekly) -> String {
         var daysToCreateTitle = dates.sorted(by: { $0 < $1 })
         daysToCreateTitle = daysToCreateTitle.filter { $0 <= Date.now }
         
@@ -96,7 +106,7 @@ class PDFCreator: NSObject {
     }
 
     func addTitle(pageRect: CGRect, titleText _: String) {
-        let titleFont = UIFont.systemFont(ofSize: 25.0, weight: .bold)
+        let titleFont = UIFont.systemFont(ofSize: 22.0, weight: .bold)
         // 2
         let titleAttributes: [NSAttributedString.Key: Any] =
             [NSAttributedString.Key.font: titleFont,
