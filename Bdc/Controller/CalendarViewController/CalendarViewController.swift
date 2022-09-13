@@ -25,7 +25,13 @@ class CalendarViewController: UIViewController {
     var personsNotPresent: [Person] = []
     var filteredPersonsNotPresent: [Person] = []
     var isFiltering: Bool {
-        return self.searchBar.searchTextField.isEditing
+        let searchBarScopeIsFiltering =
+        self.searchBar.selectedScopeButtonIndex != 0
+        return self.searchBar.isFirstResponder &&
+          (!isSearchBarEmpty || searchBarScopeIsFiltering)
+    }
+    var isSearchBarEmpty: Bool {
+        return self.searchBar.text?.isEmpty ?? true
     }
     var personsAdmonished: [Person] = []
     var canModifyOldDays = false

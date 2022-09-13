@@ -144,8 +144,29 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     
     // MARK: SearchBar
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        print("ciao ciao " + searchText)
+//    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+//        print("begin")
+//        self.isFiltering = true
+//        return true
+//    }
+//
+//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//        self.isFiltering = false
+//        self.collectionView.reloadData()
+//    }
+    
+    
+    func searchBar(_ searchBar: UISearchBar,
+                   selectedScopeButtonIndexDidChange selectedScope: Int) {
+        self.filterPersons(searchBar.text!)
+    }
+    
+    
+    func filterPersons(_ searchText: String) {
+        self.filteredPersonsNotPresent = self.personsNotPresent.filter({ person in
+            person.name!.lowercased().contains(searchText.lowercased())
+        })
+        self.collectionView.reloadSections(IndexSet(integer: 1))
     }
     
 
