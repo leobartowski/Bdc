@@ -57,4 +57,5 @@ extension RankingViewController {
     @objc func didChangeShowConfetti(_: Notification) {
         self.confettiView?.isHidden = !UserDefaults.standard.bool(forKey: "showConfetti")
     }
+    
 }

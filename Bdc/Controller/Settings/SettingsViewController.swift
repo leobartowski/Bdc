@@ -33,7 +33,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 3
+            return 4
         case 1:
             return 1
         case 2:
@@ -65,6 +65,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
                 cell?.setup(text: "Mostra coriandoli periodo perfetto", settingsType: .showConfetti)
                 return cell ?? UITableViewCell()
+            case 3: //  Weighted Attendance
+                let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
+                cell?.setup(text: "Calcola presenze ponderate", settingsType: .weightedAttendance)
+                return cell ?? UITableViewCell()
 
             default:
                 return UITableViewCell()
@@ -90,6 +94,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             case 0: return // Modify Old Element
             case 1: return // Show Statistics
             case 2: return // Show confetti
+            case 3: return // Weighted Attendance
             default: return
             }
         case 1: // Handle Person list
