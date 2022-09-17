@@ -61,9 +61,15 @@ class RankingTypeTableViewCell: UITableViewCell {
     
     func setupObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.systemTimeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeWeightedAttendance(_:)), name: .didChangeweightedAttendance, object: nil)
     }
     
     @objc func systemTimeChanged() {
         self.updateCalendarIfNeeded()
+    }
+    
+    @objc func didChangeWeightedAttendance(_: Notification) {
+        let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
+        self.allTimeLabel.text = isWeightedAttendance ? "All-Time ponderate" : "All-Time"
     }
 }

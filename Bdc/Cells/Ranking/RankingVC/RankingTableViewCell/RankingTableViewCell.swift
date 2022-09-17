@@ -19,6 +19,7 @@ class RankingTableViewCell: UITableViewCell {
     
     var indexPath = IndexPath()
     var rankingAttendance: RankingPersonAttendance?
+    var rankingType: RankingType?
     var showStatistics = false
     var showWeightedAttendance = false
 
@@ -31,7 +32,7 @@ class RankingTableViewCell: UITableViewCell {
         self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
         self.showWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowStatistics(_:)), name: .didChangeShowStatistics, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowStatistics(_:)), name: .didChangeShowStatistics, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeWeightedAttendance(_:)), name: .didChangeweightedAttendance, object: nil)
         // Design
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
     }
@@ -40,18 +41,19 @@ class RankingTableViewCell: UITableViewCell {
     func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath, _ rankingType: RankingType) {
         self.indexPath = indexPath
         self.rankingAttendance = rankingAttendance
+        self.rankingType = rankingType
         self.setUpShadow()
         self.nameLabel.text = rankingAttendance.person.name
-        self.attendanceLabel.text = self.getStringOfAttendanceLabel(rankingAttendance)
+        self.attendanceLabel.text = self.getStringOfAttendanceLabel(rankingAttendance, rankingType)
         self.admonishmentLabel.text = String(rankingAttendance.admonishmentNumber)
         self.handleStatistics()
         let imageString = CommonUtility.getProfileImageString(rankingAttendance.person)
         self.mainImageView.image = UIImage(named: imageString)
     }
     
-    func getStringOfAttendanceLabel(_ rankingAttendance: RankingPersonAttendance) -> String {
-        if self.showWeightedAttendance {
-            var number = Float(rankingAttendance.attendanceNumber) * rankingAttendance.person.difficultyCoefficient
+    func getStringOfAttendanceLabel(_ rankingAttendance: RankingPersonAttendance, _ rankingType: RankingType) -> String {
+        if self.showWeightedAttendance && rankingType == .allTime {
+            let number = Float(rankingAttendance.attendanceNumber) * rankingAttendance.person.difficultyCoefficient
             return String(format: "%.1f", number)
         } else {
             return String(rankingAttendance.attendanceNumber)
@@ -89,8 +91,8 @@ class RankingTableViewCell: UITableViewCell {
     }
     
     func handleStatistics() {
-        self.percentualAdmonishmentLabel.isHidden = !self.showStatistics
-        self.percentualAttendanceLabel.isHidden = !self.showStatistics
+        self.percentualAdmonishmentLabel.isHidden = !self.showStatistics || self.showWeightedAttendance
+        self.percentualAttendanceLabel.isHidden = !self.showStatistics || self.showWeightedAttendance
         if let rankingAttendance = self.rankingAttendance, self.showStatistics, !self.showWeightedAttendance {
             DispatchQueue.main.async {
                 self.percentualAttendanceLabel.text = self.createAttendancePercentagesString(
@@ -122,9 +124,9 @@ class RankingTableViewCell: UITableViewCell {
     }
     
     @objc func didChangeWeightedAttendance(_: Notification) {
-        self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
-        if self.rankingAttendance != nil  {
-            self.attendanceLabel.text = self.getStringOfAttendanceLabel(self.rankingAttendance!)
+        self.showWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
+        if self.rankingAttendance != nil, rankingType != nil  {
+            self.attendanceLabel.text = self.getStringOfAttendanceLabel(self.rankingAttendance!, self.rankingType!)
         }
         self.percentualAdmonishmentLabel.isHidden = self.showWeightedAttendance ? true : false
         self.percentualAttendanceLabel.isHidden = self.showWeightedAttendance ? true : false
