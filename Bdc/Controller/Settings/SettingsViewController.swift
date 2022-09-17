@@ -67,7 +67,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 return cell ?? UITableViewCell()
             case 3: //  Weighted Attendance
                 let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
-                cell?.setup(text: "Calcola presenze ponderate", settingsType: .weightedAttendance)
+                cell?.setup(text: "Calcola presenze All-Time ponderate", settingsType: .weightedAttendance)
                 return cell ?? UITableViewCell()
 
             default:

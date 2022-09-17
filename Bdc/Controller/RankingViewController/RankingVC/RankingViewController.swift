@@ -129,7 +129,8 @@ class RankingViewController: UIViewController {
     }
     
     @objc func didChangeWeightedAttendance(_: Notification) {
-        self.populateAttendance()
+        // There is no need to populate the attendance again, we need to change only the sort
+        self.sortDescendingAttendanceFirstTime()
     }
     
     // MARK: Share pdf current period

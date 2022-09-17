@@ -35,7 +35,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
                 cell?.setup(self.slotType)
                 return cell ?? UITableViewCell()
             }
-
+            
         } else {
             if self.rankingType == .weekly {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "weeklyCellID", for: indexPath) as? RankingWeeklyTableViewCell
@@ -117,16 +117,15 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
     
     func sortDescendingAttendanceFirstTime() {
-        sorting = SortingPositionAndType(.attendance, .descending)
+        self.sorting = SortingPositionAndType(.attendance, .descending)
         let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
         self.rankingPersonsAttendaces = self.rankingPersonsAttendaces.sorted {
-            if !isWeightedAttendance && self.rankingType != .weekly {
-                return $0.attendanceNumber > $1.attendanceNumber
-            } else {
-                
+            if isWeightedAttendance && self.rankingType == .allTime {
                 let weightedAttendance0 = Float($0.attendanceNumber) * $0.person.difficultyCoefficient
                 let weightedAttendance1 = Float($1.attendanceNumber) * $1.person.difficultyCoefficient
                 return weightedAttendance0 > weightedAttendance1
+            } else {
+                return $0.attendanceNumber > $1.attendanceNumber
             }
         }
         header[0] = headerBasic[0]
@@ -172,24 +171,23 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
             if oldSorting.sortingType == .descending {
                 self.rankingPersonsAttendaces = self.rankingPersonsAttendaces.sorted {
-                    if !isWeightedAttendance && self.rankingType != .weekly {
-                        return $0.attendanceNumber < $1.attendanceNumber
-                    } else {
-                        
+                    if isWeightedAttendance && self.rankingType == .allTime {
                         let weightedAttendance0 = Float($0.attendanceNumber) * $0.person.difficultyCoefficient
                         let weightedAttendance1 = Float($1.attendanceNumber) * $1.person.difficultyCoefficient
                         return weightedAttendance0 < weightedAttendance1
+                    } else {
+                        return $0.attendanceNumber < $1.attendanceNumber
                     }
                 }
                 self.sorting.sortingType = .ascending
             } else {
                 self.rankingPersonsAttendaces = self.rankingPersonsAttendaces.sorted {
-                    if !isWeightedAttendance && self.rankingType != .weekly {
-                        return $0.attendanceNumber > $1.attendanceNumber
-                    } else {
+                    if isWeightedAttendance && self.rankingType == .allTime {
                         let weightedAttendance0 = Float($0.attendanceNumber) * $0.person.difficultyCoefficient
                         let weightedAttendance1 = Float($1.attendanceNumber) * $1.person.difficultyCoefficient
                         return weightedAttendance0 > weightedAttendance1
+                    } else {
+                        return $0.attendanceNumber > $1.attendanceNumber
                     }
                 }
                 self.sorting.sortingType = .descending
