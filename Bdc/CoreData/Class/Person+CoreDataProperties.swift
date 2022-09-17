@@ -6,32 +6,38 @@
 //
 //
 
-import CoreData
 import Foundation
+import CoreData
 
-public extension Person {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<Person> {
+
+extension Person {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Person> {
         return NSFetchRequest<Person>(entityName: "Person")
     }
 
-    @NSManaged var iconString: String?
-    @NSManaged var name: String?
-    @NSManaged var attendance: NSSet?
-    @NSManaged var attendanceAdmonishment: Attendance?
+    @NSManaged public var iconString: String?
+    @NSManaged public var name: String?
+    @NSManaged public var difficultyCoefficient: Float
+    @NSManaged public var attendance: NSSet?
+    @NSManaged public var attendanceAdmonishment: Attendance?
+
 }
 
 // MARK: Generated accessors for attendance
+extension Person {
 
-public extension Person {
     @objc(addAttendanceObject:)
-    @NSManaged func addToAttendance(_ value: Attendance)
+    @NSManaged public func addToAttendance(_ value: Attendance)
 
     @objc(removeAttendanceObject:)
-    @NSManaged func removeFromAttendance(_ value: Attendance)
+    @NSManaged public func removeFromAttendance(_ value: Attendance)
 
     @objc(addAttendance:)
-    @NSManaged func addToAttendance(_ values: NSSet)
+    @NSManaged public func addToAttendance(_ values: NSSet)
 
     @objc(removeAttendance:)
-    @NSManaged func removeFromAttendance(_ values: NSSet)
+    @NSManaged public func removeFromAttendance(_ values: NSSet)
+
 }
+

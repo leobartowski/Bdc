@@ -58,6 +58,7 @@ class RankingViewController: UIViewController {
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowConfetti(_:)), name: .didChangeShowConfetti, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeWeightedAttendance(_:)), name: .didChangeweightedAttendance, object: nil)
     }
     
     /// Retrive attendance from CoreData
@@ -124,6 +125,10 @@ class RankingViewController: UIViewController {
     @objc func didChangePersonList(_: Notification) {
         self.rankingPersonsAttendaces.removeAll()
         self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
+        self.populateAttendance()
+    }
+    
+    @objc func didChangeWeightedAttendance(_: Notification) {
         self.populateAttendance()
     }
     
