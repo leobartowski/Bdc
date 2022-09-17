@@ -91,9 +91,10 @@ class RankingTableViewCell: UITableViewCell {
     }
     
     func handleStatistics() {
-        self.percentualAdmonishmentLabel.isHidden = !self.showStatistics || self.showWeightedAttendance
-        self.percentualAttendanceLabel.isHidden = !self.showStatistics || self.showWeightedAttendance
-        if let rankingAttendance = self.rankingAttendance, self.showStatistics, !self.showWeightedAttendance {
+        
+        self.percentualAdmonishmentLabel.isHidden = !self.showStatistics || (self.showWeightedAttendance && self.rankingType == .allTime)
+        self.percentualAttendanceLabel.isHidden = !self.showStatistics || (self.showWeightedAttendance && self.rankingType == .allTime)
+        if let rankingAttendance = self.rankingAttendance, self.showStatistics {
             DispatchQueue.main.async {
                 self.percentualAttendanceLabel.text = self.createAttendancePercentagesString(
                     rankingAttendance.attendanceNumber,
