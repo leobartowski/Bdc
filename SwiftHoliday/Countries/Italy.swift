@@ -7,7 +7,7 @@
 
 import Foundation
 
-// https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
+// https://en.wikipedia.org/wiki/Public_holidays_in_Italy
 final class Italy: CountryBase {
     
     override class var iso2Code: String { "IT" }
@@ -30,7 +30,7 @@ final class Italy: CountryBase {
             Holiday(name: "Primo maggio", date: (year, .may, 1)),
             Holiday(name: "Festa Della Repubblica", date: (year, .june, 2)),
             Holiday(name: "Ferragosto", date: (year, .august, 15)),
-            Holiday(name: "San Sossio", date: (year, .january, 1)),
+            Holiday(name: "San Sossio", date: (year, .september, 23)),
             Holiday(name: "Ognissanti", date: (year, .november, 1)),
             Holiday(name: "Immacolata", date: (year, .december, 8)),
             Holiday(name: "Vigilia di Natale", date: (year, .december, 24)),
