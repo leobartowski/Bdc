@@ -45,6 +45,7 @@ class RankingTypeTableViewCell: UITableViewCell {
         self.rankingViewController = vc
         vc.rankingType = self.rankingType
         self.selectedAllDateOfTheWeek(calendarView.selectedDate ?? Date.now)
+        vc.populateAttendance()
     }
     
     func setupShadowContainerView() {

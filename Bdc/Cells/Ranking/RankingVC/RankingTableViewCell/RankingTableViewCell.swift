@@ -54,6 +54,7 @@ class RankingTableViewCell: UITableViewCell {
     func getStringOfAttendanceLabel(_ rankingAttendance: RankingPersonAttendance, _ rankingType: RankingType) -> String {
         if self.showWeightedAttendance && rankingType == .allTime {
             let number = Float(rankingAttendance.attendanceNumber) * rankingAttendance.person.difficultyCoefficient
+            
             return String(format: "%.1f", number)
         } else {
             return String(rankingAttendance.attendanceNumber)
