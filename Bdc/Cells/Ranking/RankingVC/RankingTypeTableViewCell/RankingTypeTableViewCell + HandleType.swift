@@ -10,7 +10,8 @@ import Foundation
 extension RankingTypeTableViewCell {
     
     func setupAllTimeLabel() {
-        self.allTimeLabel.text = "All-Time"
+        let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
+        self.allTimeLabel.text = isWeightedAttendance ? "All-Time ponderate" : "All-Time"
         self.allTimeLabel.isHidden = true
     }
     
