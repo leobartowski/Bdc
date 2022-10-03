@@ -11,18 +11,36 @@ import PDFKit
 extension RankingViewController {
     
     func createPDF(_ pdfTitle: String) -> Data {
-        let pdfPersonsAttendaces = rankingPersonsAttendaces.sorted { $0.attendanceNumber > $1.attendanceNumber }
+        
+        let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
         var tableDataItems = [PDFTableDataItem]()
-        for personAttendances in pdfPersonsAttendaces {
+        
+        for personAttendances in self.rankingPersonsAttendaces {
             tableDataItems.append(PDFTableDataItem(
                 name: personAttendances.person.name ?? "---",
-                attendanceNumber: String(personAttendances.attendanceNumber),
+                attendanceNumber: self.getStringOfAttendanceLabel(personAttendances, isWeightedAttendance),
                 admonishmentNumber: String(personAttendances.admonishmentNumber)
             ))
         }
+        tableDataItems = tableDataItems.sorted { (Float($0.attendanceNumber) ?? 0) > (Float($1.attendanceNumber) ?? 0) }
         let tableDataHeaderTitles = ["Nome", "Presenze", "Ammonizioni"]
-        let pdfCreator = PDFCreator(tableDataItems: tableDataItems, tableDataHeaderTitles: tableDataHeaderTitles, pdfTitle: pdfTitle)
+        let pdfCreator = PDFCreator(
+            tableDataItems: tableDataItems,
+            tableDataHeaderTitles: tableDataHeaderTitles,
+            pdfTitle: pdfTitle,
+            rankingType: self.rankingType
+        )
         let data = pdfCreator.create()
         return data
+    }
+    
+    // TODO: This if can be removed using two for in createPDF method
+    func getStringOfAttendanceLabel(_ rankingAttendance: RankingPersonAttendance, _ isWeightedAttendance: Bool) -> String {
+        if isWeightedAttendance && self.rankingType == .allTime {
+            let number = Float(rankingAttendance.attendanceNumber) * rankingAttendance.person.difficultyCoefficient
+            return String(format: "%.1f", number)
+        } else {
+            return String(rankingAttendance.attendanceNumber)
+        }
     }
 }

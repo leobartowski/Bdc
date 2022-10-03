@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Attendance" representedClassName="Attendance" syncable="YES">
         <attribute name="dateString" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
@@ -7,6 +7,7 @@
         <relationship name="personsAdmonished" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="attendanceAdmonishment" inverseEntity="Person"/>
     </entity>
     <entity name="Person" representedClassName="Person" syncable="YES">
+        <attribute name="difficultyCoefficient" optional="YES" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
         <attribute name="iconString" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="attendance" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attendance" inverseName="persons" inverseEntity="Attendance"/>
@@ -16,9 +17,4 @@
     <entity name="PersonsList" representedClassName="PersonsList" syncable="YES">
         <relationship name="persons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="personsList" inverseEntity="Person"/>
     </entity>
-    <elements>
-        <element name="Attendance" positionX="-54" positionY="0" width="128" height="103"/>
-        <element name="Person" positionX="-413.9989013671875" positionY="47.3211669921875" width="128" height="118"/>
-        <element name="PersonsList" positionX="-428.435791015625" positionY="-118.9204406738281" width="128" height="58"/>
-    </elements>
 </model>
