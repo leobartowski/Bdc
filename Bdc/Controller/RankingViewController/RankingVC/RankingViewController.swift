@@ -34,11 +34,6 @@ class RankingViewController: UIViewController {
         self.addObservers()
     }
     
-    // We update the data in the DidAppear to have always data updated after some modification
-    override func viewDidAppear(_: Bool) {
-        self.populateAttendance()
-    }
-    
     func viewSetUp() {
         self.navigationBarSetup()
         self.tableViewSetup()
@@ -59,6 +54,7 @@ class RankingViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowConfetti(_:)), name: .didChangeShowConfetti, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeWeightedAttendance(_:)), name: .didChangeweightedAttendance, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didUpdateAttendance(_:)), name: .didUpdateAttendance, object: nil)
     }
     
     /// Retrive attendance from CoreData
@@ -133,6 +129,10 @@ class RankingViewController: UIViewController {
         self.sortDescendingAttendanceFirstTime()
     }
     
+    @objc func didUpdateAttendance(_: Notification) {
+        self.populateAttendance()
+    }
+
     // MARK: Share pdf current period
     @objc func shareButtonAction() {
         
