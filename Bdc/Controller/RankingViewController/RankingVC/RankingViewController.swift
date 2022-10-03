@@ -19,7 +19,7 @@ class RankingViewController: UIViewController {
     let headerBasic = ["Nome", "P", "A"]
     var header: [String] = []
     var sorting = SortingPositionAndType(.attendance, .descending) // This variable is needed to understand which column in sorted and if ascending or descending (type)
-    var daysCurrentPeriod = [Date]()
+    var daysCurrentPeriod = [Date]() // The first time is inizialized in the setup of RankingTypeTableViewCell
     var holidaysNumbers: [Int] = [] // We calculate the holiday number here to avoid doing calculation several times in the cell
     var selectedCellRow = -1
     var rankingType: RankingType = .weekly
@@ -125,8 +125,7 @@ class RankingViewController: UIViewController {
     }
     
     @objc func didChangeWeightedAttendance(_: Notification) {
-        // There is no need to populate the attendance again, we need to change only the sort
-        self.sortDescendingAttendanceFirstTime()
+        self.populateAttendance()
     }
     
     @objc func didUpdateAttendance(_: Notification) {
