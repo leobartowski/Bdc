@@ -19,7 +19,7 @@ class RankingViewController: UIViewController {
     let headerBasic = ["Nome", "P", "A"]
     var header: [String] = []
     var sorting = SortingPositionAndType(.attendance, .descending) // This variable is needed to understand which column in sorted and if ascending or descending (type)
-    var daysCurrentPeriod = [Date]()
+    var daysCurrentPeriod = [Date]() // The first time is inizialized in the setup of RankingTypeTableViewCell
     var holidaysNumbers: [Int] = [] // We calculate the holiday number here to avoid doing calculation several times in the cell
     var selectedCellRow = -1
     var rankingType: RankingType = .weekly
@@ -32,11 +32,6 @@ class RankingViewController: UIViewController {
         self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
         self.viewSetUp()
         self.addObservers()
-    }
-    
-    // We update the data in the DidAppear to have always data updated after some modification
-    override func viewDidAppear(_: Bool) {
-        self.populateAttendance()
     }
     
     func viewSetUp() {
@@ -58,6 +53,8 @@ class RankingViewController: UIViewController {
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowConfetti(_:)), name: .didChangeShowConfetti, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeWeightedAttendance(_:)), name: .didChangeweightedAttendance, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didUpdateAttendance(_:)), name: .didUpdateAttendance, object: nil)
     }
     
     /// Retrive attendance from CoreData
@@ -127,6 +124,14 @@ class RankingViewController: UIViewController {
         self.populateAttendance()
     }
     
+    @objc func didChangeWeightedAttendance(_: Notification) {
+        self.populateAttendance()
+    }
+    
+    @objc func didUpdateAttendance(_: Notification) {
+        self.populateAttendance()
+    }
+
     // MARK: Share pdf current period
     @objc func shareButtonAction() {
         

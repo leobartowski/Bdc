@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UgY-xa-Obx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UgY-xa-Obx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -22,7 +23,7 @@
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="rankingTypeCellID" rowHeight="140" id="2qb-Jk-0po" customClass="RankingTypeTableViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="140"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2qb-Jk-0po" id="qaV-fn-0zA">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
@@ -55,8 +56,8 @@
                                                             <rect key="frame" x="30" y="5" width="314" height="110"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khM-Xz-exi">
-                                                            <rect key="frame" x="30" y="5" width="314" height="110"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="khM-Xz-exi">
+                                                            <rect key="frame" x="5" y="5" width="364" height="110"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="55"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -72,8 +73,8 @@
                                                         <constraint firstAttribute="bottom" secondItem="54j-7B-VTN" secondAttribute="bottom" constant="5" id="CrA-Xt-zfK"/>
                                                         <constraint firstAttribute="bottom" secondItem="c1Y-SV-Dlj" secondAttribute="bottom" constant="5" id="Hiy-1s-SS3"/>
                                                         <constraint firstItem="54j-7B-VTN" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="P4Z-64-P7l"/>
-                                                        <constraint firstItem="khM-Xz-exi" firstAttribute="leading" secondItem="9M9-dQ-J12" secondAttribute="leading" constant="30" id="UgT-bM-dIk"/>
-                                                        <constraint firstAttribute="trailing" secondItem="khM-Xz-exi" secondAttribute="trailing" constant="30" id="XBR-oV-yin"/>
+                                                        <constraint firstItem="khM-Xz-exi" firstAttribute="leading" secondItem="9M9-dQ-J12" secondAttribute="leading" constant="5" id="UgT-bM-dIk"/>
+                                                        <constraint firstAttribute="trailing" secondItem="khM-Xz-exi" secondAttribute="trailing" constant="5" id="XBR-oV-yin"/>
                                                         <constraint firstItem="c1Y-SV-Dlj" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="gpR-2X-Zak"/>
                                                         <constraint firstAttribute="trailing" secondItem="54j-7B-VTN" secondAttribute="trailing" constant="30" id="gyY-55-8GY"/>
                                                         <constraint firstItem="khM-Xz-exi" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="h75-0G-fsS"/>
@@ -100,7 +101,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="slotTypeCellID" rowHeight="44" id="fHt-8g-5W5" customClass="RankingSlotTypeTableViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="184.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="190" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fHt-8g-5W5" id="b74-BL-ivK">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -139,7 +140,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="weeklyCellID" id="8YP-zk-Ego" customClass="RankingWeeklyTableViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="228.5" width="414" height="200"/>
+                                        <rect key="frame" x="0.0" y="234" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8YP-zk-Ego" id="gwm-S0-oFG">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
@@ -301,7 +302,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellID" rowHeight="70" id="Ikh-5V-TgG" customClass="RankingTableViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="428.5" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="434" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ikh-5V-TgG" id="i54-ue-66L">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
@@ -428,7 +429,7 @@
                     <tabBarItem key="tabBarItem" title="Ranking" image="person.3.fill" catalog="system" id="WCo-hh-nEI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="CMb-OD-Yxf">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
