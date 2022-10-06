@@ -176,6 +176,24 @@ class CoreDataService {
             print("Could not list. \(error), \(error.userInfo)")
         }
     }
+    
+    /// Use this method to change persons name in PersonsList and to change all the previous records (the id of the person is name)
+    func updateDifficultCoefficencyToEveryOne() {
+        let persons = self.getPersonsList()
+        for person in persons {
+            person.difficultyCoefficient = PersonListUtility.getDifficultyCoefficient(person)
+        }
+        let fetchRequest = NSFetchRequest<PersonsList>(entityName: "PersonsList")
+        do {
+            if let personsList = try context.fetch(fetchRequest).first {
+                personsList.persons = NSSet(array: persons)
+                try context.save()
+            }
+
+        } catch let error as NSError {
+            print("Could not list. \(error), \(error.userInfo)")
+        }
+    }
 
     /// Search all the old records of the database and updates the name
     func updateNameInOldRecords(oldName: String, newName: String) {

@@ -37,6 +37,9 @@ class SettingsSwitchTableViewCell: UITableViewCell {
         case .showConfetti:
             let notification = Notification(name: .didChangeShowConfetti, object: nil, userInfo: nil)
             NotificationCenter.default.post(notification)
+        case .weightedAttendance:
+            let notification = Notification(name: .didChangeweightedAttendance, object: nil, userInfo: nil)
+            NotificationCenter.default.post(notification)
         default:
             break
         }

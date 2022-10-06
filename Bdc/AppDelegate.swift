@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.fixTableViewBugGloabally()
         return true
     }
+    
 
     // MARK: UISceneSession Lifecycle
 

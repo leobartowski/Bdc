@@ -70,6 +70,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         sortPersonPresentAndNot()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
+            self.postNotificationUpdateAttendance()
         }
     }
 
@@ -139,6 +140,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         feedbackGenerator.impactOccurred()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
+            self.postNotificationUpdateAttendance()
         }
     }
     
