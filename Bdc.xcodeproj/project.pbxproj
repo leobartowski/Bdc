@@ -47,7 +47,6 @@
 		DD60B5552753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */; };
 		DD617CEB2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */; };
 		DD617CED2753C3AE002AD5E7 /* RankingWeeklyTableViewCell + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD617CEC2753C3AE002AD5E7 /* RankingWeeklyTableViewCell + CollectionView.swift */; };
-		DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968127221A40009E455F /* Person+CoreDataProperties.swift */; };
 		DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968227221A40009E455F /* Person+CoreDataClass.swift */; };
 		DD64968727221A40009E455F /* Attendance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */; };
 		DD6ED5EB277CFC4000F44D6F /* RankingTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6ED5EA277CFC4000F44D6F /* RankingTypeTableViewCell.swift */; };
@@ -78,6 +77,7 @@
 		DDA9CD26277D02EC00EDC2BE /* RankingTypeTableViewCell + HandleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA9CD25277D02EC00EDC2BE /* RankingTypeTableViewCell + HandleType.swift */; };
 		DDB292602721A8D400D96E67 /* RankingSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB2925F2721A8D400D96E67 /* RankingSectionHeaderView.xib */; };
 		DDB292622721A90500D96E67 /* RankingSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB292612721A90500D96E67 /* RankingSectionHeaderView.swift */; };
+		DDB69F5928D5DC9C0006C9F8 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB69F5828D5DC9C0006C9F8 /* Person+CoreDataProperties.swift */; };
 		DDC1E5CE2752966E00C2BF2C /* Attendance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC1E5CC2752966E00C2BF2C /* Attendance+CoreDataProperties.swift */; };
 		DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A32724065A0028E49B /* RankingViewController.swift */; };
 		DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A527240CAE0028E49B /* Date - Ext.swift */; };
@@ -185,7 +185,6 @@
 		DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDayHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSingleDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD617CEC2753C3AE002AD5E7 /* RankingWeeklyTableViewCell + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingWeeklyTableViewCell + CollectionView.swift"; sourceTree = "<group>"; };
-		DD64968127221A40009E455F /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DD64968227221A40009E455F /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attendance+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DD6ED5EA277CFC4000F44D6F /* RankingTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTypeTableViewCell.swift; sourceTree = "<group>"; };
@@ -220,8 +219,8 @@
 		DDA9CD25277D02EC00EDC2BE /* RankingTypeTableViewCell + HandleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingTypeTableViewCell + HandleType.swift"; sourceTree = "<group>"; };
 		DDB2925F2721A8D400D96E67 /* RankingSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankingSectionHeaderView.xib; sourceTree = "<group>"; };
 		DDB292612721A90500D96E67 /* RankingSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSectionHeaderView.swift; sourceTree = "<group>"; };
+		DDB69F5828D5DC9C0006C9F8 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Person+CoreDataProperties.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/Person+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		DDC1E5CC2752966E00C2BF2C /* Attendance+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Attendance+CoreDataProperties.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/Attendance+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		DDC1E5CD2752966E00C2BF2C /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Person+CoreDataProperties.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/Person+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		DDC337A32724065A0028E49B /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		DDC337A527240CAE0028E49B /* Date - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date - Ext.swift"; sourceTree = "<group>"; };
 		DDC51A4E27564191004A836B /* SortingPositionAndType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingPositionAndType.swift; sourceTree = "<group>"; };
@@ -666,14 +665,13 @@
 		DDD5051127220E0300508F60 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				DDB69F5828D5DC9C0006C9F8 /* Person+CoreDataProperties.swift */,
 				DDC9EB68275031CD00653138 /* PersonsList+CoreDataClass.swift */,
-				DDC1E5CD2752966E00C2BF2C /* Person+CoreDataProperties.swift */,
 				DDC1E5CC2752966E00C2BF2C /* Attendance+CoreDataProperties.swift */,
 				DDC9EB69275031CD00653138 /* PersonsList+CoreDataProperties.swift */,
 				DD0CAB4F27280FB200EA42B1 /* Attendance+CoreDataProperties.swift */,
 				DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */,
 				DD64968227221A40009E455F /* Person+CoreDataClass.swift */,
-				DD64968127221A40009E455F /* Person+CoreDataProperties.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -1090,8 +1088,8 @@
 				DDF9B58F277878F900E2FEE2 /* HandlePersonTableViewCell.swift in Sources */,
 				DD03AC1727481092004C4819 /* CalendarCollectionViewCell.swift in Sources */,
 				DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */,
-				DD64968527221A40009E455F /* Person+CoreDataProperties.swift in Sources */,
 				DDC1E5CE2752966E00C2BF2C /* Attendance+CoreDataProperties.swift in Sources */,
+				DDB69F5928D5DC9C0006C9F8 /* Person+CoreDataProperties.swift in Sources */,
 				DDE9D76A28BE1B7C008463CD /* SlotTypeViewController.swift in Sources */,
 				DDC9EB6A275031CD00653138 /* PersonsList+CoreDataClass.swift in Sources */,
 				DDA9CD26277D02EC00EDC2BE /* RankingTypeTableViewCell + HandleType.swift in Sources */,

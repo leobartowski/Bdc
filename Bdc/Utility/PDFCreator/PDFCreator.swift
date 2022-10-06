@@ -15,13 +15,15 @@ class PDFCreator: NSObject {
     let defaultOffset: CGFloat = 20
     var titleHeight: CGFloat = 50
     let pdfTitle: String
+    let rankingType: RankingType
     let tableDataHeaderTitles: [String]
     let tableDataItems: [PDFTableDataItem]
 
-    init(tableDataItems: [PDFTableDataItem], tableDataHeaderTitles: [String], pdfTitle: String) {
+    init(tableDataItems: [PDFTableDataItem], tableDataHeaderTitles: [String], pdfTitle: String, rankingType: RankingType) {
         self.tableDataItems = tableDataItems
         self.tableDataHeaderTitles = tableDataHeaderTitles
         self.pdfTitle = pdfTitle
+        self.rankingType = rankingType
     }
 
     static func createPDFTitle(dates: [Date], _ rankingType: RankingType = .weekly, _ slotType: SlotType = .morningAndEvening) -> String {
@@ -121,14 +123,39 @@ class PDFCreator: NSObject {
         // 5
         let titleStringRect = CGRect(
             x: (pageRect.width - titleStringSize.width) / 2.0,
-            y: 20,
+            y: 15,
             width: titleStringSize.width,
             height: titleStringSize.height
         )
         // 6
         attributedTitle.draw(in: titleStringRect)
-        // 7
-        //      return titleStringRect.origin.y + titleStringRect.size.height
+        self.addWeightedAttendanceTitleIfNeeded(pageRect)
+    }
+    
+    func addWeightedAttendanceTitleIfNeeded(_ pageRect: CGRect) {
+        let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
+        if !isWeightedAttendance || self.rankingType != .allTime { return }
+        let titleFont = UIFont.systemFont(ofSize: 16.0, weight: .regular)
+        // 2
+        let titleAttributes: [NSAttributedString.Key: Any] =
+            [NSAttributedString.Key.font: titleFont,
+             NSAttributedString.Key.foregroundColor: UIColor.black]
+        // 3
+        let attributedTitle = NSAttributedString(
+            string: "(Presenze ponderate)",
+            attributes: titleAttributes
+        )
+        // 4
+        let titleStringSize = attributedTitle.size()
+        // 5
+        let titleStringRect = CGRect(
+            x: (pageRect.width - titleStringSize.width) / 2.0,
+            y: 40,
+            width: titleStringSize.width,
+            height: titleStringSize.height
+        )
+        // 6
+        attributedTitle.draw(in: titleStringRect)
     }
 
     func addCreationTime(pageRect: CGRect) {

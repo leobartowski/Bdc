@@ -94,6 +94,12 @@ class CalendarViewController: UIViewController {
             self.getDataFromCoreDataAndReloadViews()
         }
     }
+    
+    func postNotificationUpdateAttendance() {
+        let notification = Notification(name: .didUpdateAttendance, object: nil, userInfo: nil)
+        NotificationCenter.default.post(notification)
+    }
+
 
     func setupSegmentedControl() {
         self.segmentedControl.backgroundColor = .white

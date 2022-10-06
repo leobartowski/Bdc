@@ -14,7 +14,7 @@ class CommonUtility {
         if let personIconString = person.iconString {
             return personIconString
         }
-        let femaleName = ["Mary", "Lisa", "Giannetta", "Raffaella", "Alessia"]
+        let femaleName = ["Mary", "Lisa", "Giannetta", "Raffaella", "Alessia", "Angela"]
         return femaleName.contains(person.name ?? "") ? "woman_placeholder_icon" : "man_placeholder_icon"
     }
 }
