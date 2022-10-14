@@ -24,12 +24,12 @@ class CalendarViewController: UIViewController {
     var personsPresent: [Person] = []
     var personsNotPresent: [Person] = []
     var filteredPersonsNotPresent: [Person] = []
-    var isFiltering: Bool {
-        let searchBarScopeIsFiltering =
-        self.searchBar.selectedScopeButtonIndex != 0
-        return self.searchBar.isFirstResponder &&
-          (!isSearchBarEmpty || searchBarScopeIsFiltering)
-    }
+//    var isFiltering: Bool {
+//        let searchBarScopeIsFiltering =
+//        self.searchBar.selectedScopeButtonIndex != 0
+//        return self.searchBar.isFirstResponder &&
+//          (!isSearchBarEmpty || searchBarScopeIsFiltering)
+//    }
     var isSearchBarEmpty: Bool {
         return self.searchBar.text?.isEmpty ?? true
     }
@@ -152,6 +152,7 @@ class CalendarViewController: UIViewController {
     func getDataFromCoreDataAndReloadViews() {
         self.personsPresent.removeAll()
         self.personsNotPresent.removeAll()
+        self.filteredPersonsNotPresent.removeAll()
         self.personsAdmonished.removeAll()
         let attendance = CoreDataService.shared.getAttendace(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
         self.personsPresent = attendance?.persons?.allObjects as? [Person] ?? []
@@ -162,7 +163,7 @@ class CalendarViewController: UIViewController {
                 self.personsNotPresent.append(person)
             }
         }
-
+        self.filteredPersonsNotPresent = self.personsNotPresent
         self.sortPersonPresentAndNot()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
@@ -172,7 +173,7 @@ class CalendarViewController: UIViewController {
 
     func sortPersonPresentAndNot() {
         self.personsPresent = self.personsPresent.sorted { $0.name ?? "" < $1.name ?? "" }
-        self.personsNotPresent = self.personsNotPresent.sorted { $0.name ?? "" < $1.name ?? "" }
+        self.filteredPersonsNotPresent = self.filteredPersonsNotPresent.sorted { $0.name ?? "" < $1.name ?? "" }
     }
 
     
