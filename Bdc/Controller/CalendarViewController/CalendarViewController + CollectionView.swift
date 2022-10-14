@@ -155,6 +155,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     // MARK: SearchBar
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
         self.filteredPersonsNotPresent = searchText.isEmpty ? self.personsNotPresent : self.personsNotPresent.filter { (person: Person) -> Bool in
             
             // If dataItem matches the searchText, return true to include it
@@ -162,6 +163,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         }
         self.collectionView.reloadSections(IndexSet(integer: 2))
     }
+
     
     
     
