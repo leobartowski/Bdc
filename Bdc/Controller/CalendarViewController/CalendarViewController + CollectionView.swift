@@ -12,14 +12,15 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     
     // MARK: Delegate e DataSource
     func numberOfSections(in _: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filteredPerson.count
+        return section == 0 ? 0 : filteredPerson.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.section == 0 { return UICollectionViewCell() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "presentCellID", for: indexPath) as? CalendarCollectionViewCell
         let person = filteredPerson[indexPath.row]
         let isPresent = personsPresent.contains(where: { $0.name == person.name })
@@ -29,6 +30,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 0 { return false }
         // Check to avoid the modification of day older than today
         if ((Date().days(from: calendarView.selectedDate ?? Date()) > 0) && !self.canModifyOldDays) {
             return false
@@ -37,7 +39,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if indexPath.section == 0 { return }
         let person = self.filteredPerson[indexPath.row]
         let isPresent = self.personsPresent.contains(where: { $0.name == person.name })
         if isPresent {
@@ -62,6 +64,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if indexPath.section == 1 { return UICollectionReusableView() }
         if kind == UICollectionView.elementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
@@ -76,12 +79,12 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
+        if section == 1 { return CGSize.zero }
         return CGSize(width: collectionView.frame.width, height: 60)
     }
     
     func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+        if indexPath.section == 0 { return CGSize.zero }
         return CGSize(width: 80, height: 100)
     }
     
@@ -127,10 +130,30 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             // If dataItem matches the searchText, return true to include it
             return person.name!.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
-        // TODO: FIX SEARCHBAR
-        self.collectionView.reloadItems(at: [IndexPath(row: 0, section: 0)])
-        searchBar.becomeFirstResponder()
+        UIView.performWithoutAnimation {
+            self.collectionView.reloadSections(IndexSet(integer: 1))
+        }
     }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        self.filteredPerson = self.allPersons
+        UIView.performWithoutAnimation {
+            self.collectionView.reloadSections(IndexSet(integer: 1))
+        }
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    
     
     // MARK: SetUp CollectionView
     
