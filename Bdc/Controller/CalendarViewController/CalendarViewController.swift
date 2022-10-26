@@ -167,7 +167,6 @@ class CalendarViewController: UIViewController {
     func sortPersonPresentAndNot() {
         self.allPersons = self.allPersons.sorted { $0.name ?? "" < $1.name ?? "" }
     }
-
     
     // MARK: Handle settings
     @objc func didChangeModifyStatus(_: Notification) {
