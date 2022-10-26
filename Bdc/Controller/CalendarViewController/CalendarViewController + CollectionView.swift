@@ -77,8 +77,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
-//        return CGSize(width: collectionView.frame.width, height: 60)
-        return CGSize.zero // TODO: FIX SEARCHBAR
+        return CGSize(width: collectionView.frame.width, height: 60)
     }
     
     func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -129,8 +128,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             return person.name!.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         // TODO: FIX SEARCHBAR
-        let indexes = (0..<self.filteredPerson.count).map { IndexPath(row: $0, section: 0) }
-        self.collectionView.reloadItems(at: indexes)
+        self.collectionView.reloadItems(at: [IndexPath(row: 0, section: 0)])
+        searchBar.becomeFirstResponder()
     }
     
     // MARK: SetUp CollectionView

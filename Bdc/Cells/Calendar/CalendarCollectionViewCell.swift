@@ -35,7 +35,7 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
         let imageString = CommonUtility.getProfileImageString(person)
         self.mainImageView.image = UIImage(named: imageString)
         self.customBackgroundView.backgroundColor = isPresent
-        ? Theme.customGreen // TODO: FIX COLOR
+        ? Theme.customGreen03
         : (isAdmonished ? Theme.customYellow : .white)
         self.setUpShadow()
     }
