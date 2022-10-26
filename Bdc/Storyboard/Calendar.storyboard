@@ -82,11 +82,11 @@
                                     <size key="itemSize" width="80" height="100"/>
                                     <size key="headerReferenceSize" width="50" height="60"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="20" minY="10" maxX="20" maxY="10"/>
+                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="presentCellID" id="Whb-w5-6Xv" customClass="CalendarCollectionViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="167" y="70" width="80" height="100"/>
+                                        <rect key="frame" x="167" y="60" width="80" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cuE-O1-IBd">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
@@ -136,7 +136,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="placeholderID" id="yhZ-ZT-SKm">
-                                        <rect key="frame" x="57" y="180" width="300" height="200"/>
+                                        <rect key="frame" x="57" y="170" width="300" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="E4W-Cy-Gui">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
@@ -172,17 +172,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Cerca assenti..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFt-07-MgX">
-                                            <rect key="frame" x="10" y="2" width="394" height="56"/>
+                                        <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Cerca..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFt-07-MgX">
+                                            <rect key="frame" x="10" y="2" width="394" height="58"/>
+                                            <color key="tintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="barTintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <scopeButtonTitles>
+                                                <string>Title</string>
+                                                <string>Title</string>
+                                            </scopeButtonTitles>
                                         </searchBar>
                                     </subviews>
                                     <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="lFt-07-MgX" firstAttribute="top" secondItem="96g-cJ-dTv" secondAttribute="top" constant="2" id="5gk-8U-gFb"/>
                                         <constraint firstAttribute="trailing" secondItem="lFt-07-MgX" secondAttribute="trailing" constant="10" id="Be5-as-hdm"/>
-                                        <constraint firstAttribute="bottom" secondItem="lFt-07-MgX" secondAttribute="bottom" constant="2" id="bDI-lC-GwT"/>
+                                        <constraint firstAttribute="bottom" secondItem="lFt-07-MgX" secondAttribute="bottom" id="bDI-lC-GwT"/>
                                         <constraint firstItem="lFt-07-MgX" firstAttribute="leading" secondItem="96g-cJ-dTv" secondAttribute="leading" constant="10" id="wMF-9k-esS"/>
                                     </constraints>
                                     <connections>

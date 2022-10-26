@@ -13,5 +13,7 @@ class CalendarHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func awakeFromNib() {
+        self.searchBar.setValue("Annulla", forKey: "cancelButtonText")
+
     }
 }

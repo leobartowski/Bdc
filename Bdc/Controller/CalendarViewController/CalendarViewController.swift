@@ -18,7 +18,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet var goToTodayButton: UIButton!
     @IBOutlet var segmentedControlContainerView: UIView!
     @IBOutlet var calendarViewHeightConstraint: NSLayoutConstraint!
-    var searchBar = UISearchBar()
+
     
     let sectionTitles = ["Presenti", "Assenti"]
     var dayType = DayType.evening
@@ -26,16 +26,12 @@ class CalendarViewController: UIViewController {
     var filteredPerson: [Person] = []
     var personsAdmonished: [Person] = []
     var personsPresent: [Person] = []
-    var isSearchBarEmpty: Bool {
-        return self.searchBar.text?.isEmpty ?? true
-    }
     var canModifyOldDays = false
 
     // MARK: LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.setUpCalendarAppearance()
         self.setupSegmentedControl()
         self.getDataFromCoreDataAndReloadViews()
