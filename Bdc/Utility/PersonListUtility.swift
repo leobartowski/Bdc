@@ -16,7 +16,6 @@ class PersonListUtility {
             PersonListUtility.rankingPersonsAttendance = createEmptyWeeklyAttendance()
             let notification = Notification(name: .didChangePersonList, object: nil, userInfo: nil)
             NotificationCenter.default.post(notification)
-            
         }
     }
     public static var rankingPersonsAttendance = createEmptyWeeklyAttendance()
