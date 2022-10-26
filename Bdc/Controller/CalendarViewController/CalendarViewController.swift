@@ -17,20 +17,21 @@ class CalendarViewController: UIViewController {
     @IBOutlet var bottomCalendarHandleView: UIView!
     @IBOutlet var goToTodayButton: UIButton!
     @IBOutlet var segmentedControlContainerView: UIView!
-
     @IBOutlet var calendarViewHeightConstraint: NSLayoutConstraint!
+
+    
     let sectionTitles = ["Presenti", "Assenti"]
     var dayType = DayType.evening
-    var personsPresent: [Person] = []
-    var personsNotPresent: [Person] = []
+    var allPersons = PersonListUtility.persons
+    var filteredPerson: [Person] = []
     var personsAdmonished: [Person] = []
+    var personsPresent: [Person] = []
     var canModifyOldDays = false
 
     // MARK: LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.setUpCalendarAppearance()
         self.setupSegmentedControl()
         self.getDataFromCoreDataAndReloadViews()
@@ -70,6 +71,9 @@ class CalendarViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeModifyStatus(_:)), name: .didChangeModifyStatus, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
+        // Handle keybaord
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 }
 
     func updateGoToTodayButton() {
@@ -140,19 +144,14 @@ class CalendarViewController: UIViewController {
 
     /// Update Presence reloading data from CoreData
     func getDataFromCoreDataAndReloadViews() {
-        self.personsPresent.removeAll()
-        self.personsNotPresent.removeAll()
+        self.filteredPerson.removeAll()
         self.personsAdmonished.removeAll()
+        self.personsPresent.removeAll()
         let attendance = CoreDataService.shared.getAttendace(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
         self.personsPresent = attendance?.persons?.allObjects as? [Person] ?? []
         self.personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
-        for person in PersonListUtility.persons {
-            if !self.personsPresent.contains(where: { $0.name == person.name }),
-               !self.personsNotPresent.contains(where: { $0.name == person.name }) {
-                self.personsNotPresent.append(person)
-            }
-        }
-
+        self.allPersons = PersonListUtility.persons
+        self.filteredPerson = self.allPersons
         self.sortPersonPresentAndNot()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
@@ -160,11 +159,10 @@ class CalendarViewController: UIViewController {
         }
     }
 
+    // TODO: Improve sorting
     func sortPersonPresentAndNot() {
-        self.personsPresent = self.personsPresent.sorted { $0.name ?? "" < $1.name ?? "" }
-        self.personsNotPresent = self.personsNotPresent.sorted { $0.name ?? "" < $1.name ?? "" }
+        self.allPersons = self.allPersons.sorted { $0.name ?? "" < $1.name ?? "" }
     }
-
     
     // MARK: Handle settings
     @objc func didChangeModifyStatus(_: Notification) {
@@ -205,5 +203,19 @@ class CalendarViewController: UIViewController {
                 break
             }
         }
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0 {
+//                self.view.frame.origin.y -= keyboardSize.height - 50
+//            }
+//        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+//        if self.view.frame.origin.y != 0 {
+//            self.view.frame.origin.y = 0
+//        }
     }
 }
