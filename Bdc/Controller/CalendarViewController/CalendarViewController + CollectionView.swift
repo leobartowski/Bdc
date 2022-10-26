@@ -73,6 +73,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             )
             guard let typedHeaderView = headerView as? CalendarHeaderCollectionReusableView else { return headerView }
             typedHeaderView.searchBar.delegate = self
+            self.searchBar = typedHeaderView.searchBar
             return typedHeaderView
         }
         return UICollectionReusableView()
@@ -95,6 +96,10 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
            (self.collectionView.contentOffset.y + self.collectionView.safeAreaInsets.top) <= 0 {
             
             self.handleMonthlyToWeeklyCalendar()
+        }
+        if scrollView == self.collectionView,
+           self.searchBar?.searchTextField.isEditing ?? true {
+            self.searchBar?.endEditing(true)
         }
     }
     
