@@ -62,6 +62,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             self.postNotificationUpdateAttendance()
         }
     }
+
+    
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if indexPath.section == 1 { return UICollectionReusableView() }
@@ -96,10 +98,6 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
            (self.collectionView.contentOffset.y + self.collectionView.safeAreaInsets.top) <= 0 {
             
             self.handleMonthlyToWeeklyCalendar()
-        }
-        if scrollView == self.collectionView,
-           self.searchBar?.searchTextField.isEditing ?? true {
-            self.searchBar?.endEditing(true)
         }
     }
     

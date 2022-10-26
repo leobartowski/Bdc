@@ -37,10 +37,10 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOu-As-8fU">
-                                <rect key="frame" x="0.0" y="403" width="414" height="55"/>
+                                <rect key="frame" x="0.0" y="410" width="414" height="45"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="81Y-SL-qSW" customClass="MySegmentedControl" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="12" width="322" height="32"/>
+                                        <rect key="frame" x="20" y="7" width="322" height="32"/>
                                         <segments>
                                             <segment title="Mattina"/>
                                             <segment title="Sera"/>
@@ -52,7 +52,7 @@
                                         </connections>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRY-LI-Fg4">
-                                        <rect key="frame" x="362" y="11.5" width="32" height="32"/>
+                                        <rect key="frame" x="362" y="6.5" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="8Vs-EY-hXY"/>
                                             <constraint firstAttribute="width" constant="32" id="L9t-i5-ZfG"/>
@@ -69,24 +69,25 @@
                                 <constraints>
                                     <constraint firstItem="81Y-SL-qSW" firstAttribute="centerY" secondItem="QOu-As-8fU" secondAttribute="centerY" id="FXN-LP-3SG"/>
                                     <constraint firstItem="bRY-LI-Fg4" firstAttribute="centerY" secondItem="QOu-As-8fU" secondAttribute="centerY" id="Mvk-fU-yAs"/>
-                                    <constraint firstAttribute="height" constant="55" id="O9c-qU-WSa"/>
+                                    <constraint firstAttribute="height" constant="45" id="O9c-qU-WSa"/>
                                     <constraint firstItem="bRY-LI-Fg4" firstAttribute="leading" secondItem="81Y-SL-qSW" secondAttribute="trailing" constant="20" id="PBA-jP-kel"/>
                                     <constraint firstItem="81Y-SL-qSW" firstAttribute="leading" secondItem="QOu-As-8fU" secondAttribute="leading" constant="20" id="jjD-Lx-bLy"/>
                                     <constraint firstAttribute="trailing" secondItem="bRY-LI-Fg4" secondAttribute="trailing" constant="20" id="zlX-K4-tBh"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cUb-iM-sZp">
-                                <rect key="frame" x="0.0" y="458" width="414" height="508"/>
+                                <rect key="frame" x="0.0" y="455" width="414" height="511"/>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="5" maxX="0.0" maxY="10"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="N9c-Su-oep">
                                     <size key="itemSize" width="80" height="100"/>
-                                    <size key="headerReferenceSize" width="50" height="60"/>
+                                    <size key="headerReferenceSize" width="50" height="65"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="presentCellID" id="Whb-w5-6Xv" customClass="CalendarCollectionViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="167" y="60" width="80" height="100"/>
+                                        <rect key="frame" x="167" y="65" width="80" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cuE-O1-IBd">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
@@ -136,7 +137,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="placeholderID" id="yhZ-ZT-SKm">
-                                        <rect key="frame" x="57" y="170" width="300" height="200"/>
+                                        <rect key="frame" x="57" y="175" width="300" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="E4W-Cy-Gui">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
@@ -169,11 +170,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="sectionHeaderID" id="96g-cJ-dTv" customClass="CalendarHeaderCollectionReusableView" customModule="Bdc" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Cerca..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFt-07-MgX">
-                                            <rect key="frame" x="10" y="2" width="394" height="58"/>
+                                            <rect key="frame" x="10" y="4.5" width="394" height="56"/>
                                             <color key="tintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="barTintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -185,10 +186,10 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="lFt-07-MgX" firstAttribute="top" secondItem="96g-cJ-dTv" secondAttribute="top" constant="2" id="5gk-8U-gFb"/>
-                                        <constraint firstAttribute="trailing" secondItem="lFt-07-MgX" secondAttribute="trailing" constant="10" id="Be5-as-hdm"/>
-                                        <constraint firstAttribute="bottom" secondItem="lFt-07-MgX" secondAttribute="bottom" id="bDI-lC-GwT"/>
-                                        <constraint firstItem="lFt-07-MgX" firstAttribute="leading" secondItem="96g-cJ-dTv" secondAttribute="leading" constant="10" id="wMF-9k-esS"/>
+                                        <constraint firstItem="lFt-07-MgX" firstAttribute="centerY" secondItem="96g-cJ-dTv" secondAttribute="centerY" id="7xp-wd-sbf"/>
+                                        <constraint firstAttribute="trailing" secondItem="lFt-07-MgX" secondAttribute="trailing" constant="10" id="IJ6-85-x6x"/>
+                                        <constraint firstItem="lFt-07-MgX" firstAttribute="leading" secondItem="96g-cJ-dTv" secondAttribute="leading" constant="10" id="YnF-Eh-nV9"/>
+                                        <constraint firstItem="lFt-07-MgX" firstAttribute="centerX" secondItem="96g-cJ-dTv" secondAttribute="centerX" id="h9L-6b-6Ka"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="searchBar" destination="lFt-07-MgX" id="rpp-Rt-UnG"/>
@@ -227,7 +228,7 @@
                         <viewLayoutGuide key="safeArea" id="Csh-zm-cYX"/>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="QOu-As-8fU" firstAttribute="top" secondItem="9Uk-SP-eJW" secondAttribute="bottom" constant="5" id="9wd-qx-eld"/>
+                            <constraint firstItem="QOu-As-8fU" firstAttribute="top" secondItem="9Uk-SP-eJW" secondAttribute="bottom" constant="12" id="9wd-qx-eld"/>
                             <constraint firstItem="cUb-iM-sZp" firstAttribute="trailing" secondItem="Csh-zm-cYX" secondAttribute="trailing" id="ChR-Qr-OlB"/>
                             <constraint firstItem="cUb-iM-sZp" firstAttribute="bottom" secondItem="Csh-zm-cYX" secondAttribute="bottom" id="RGT-ve-Wab"/>
                             <constraint firstItem="Csh-zm-cYX" firstAttribute="trailing" secondItem="5fq-Gp-qQo" secondAttribute="trailing" id="RQt-V2-fAB"/>

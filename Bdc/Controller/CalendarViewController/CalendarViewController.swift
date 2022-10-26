@@ -43,6 +43,10 @@ class CalendarViewController: UIViewController {
         self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+
+    }
+    
     //   Get called when the app is become active
     @objc func willBecomeActive() {
         self.updateDayTypeBasedOnTime()
@@ -72,6 +76,8 @@ class CalendarViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeModifyStatus(_:)), name: .didChangeModifyStatus, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     func updateGoToTodayButton() {
@@ -79,7 +85,6 @@ class CalendarViewController: UIViewController {
     }
     
     func automaticScrollToToday() {
-        //        self.saveCurrentDataInCoreData() // save the date of the current day before deselecting
         DispatchQueue.main.async {
             self.calendarView.setCurrentPage(Date.now, animated: true)
             self.calendarView.select(Date.now)
@@ -153,7 +158,7 @@ class CalendarViewController: UIViewController {
         self.sortPersonPresentAndNot()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
-            self.collectionView.setContentOffset(.zero, animated: true)
+            self.collectionView.setContentOffset(CGPoint(x: 0, y: 53), animated: true)
         }
     }
     
@@ -201,5 +206,20 @@ class CalendarViewController: UIViewController {
                 break
             }
         }
+    }
+    
+    @objc func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            collectionView.contentInset = .zero
+        } else {
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+        }
+
+        collectionView.scrollIndicatorInsets = collectionView.contentInset
     }
 }
