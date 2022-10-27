@@ -18,7 +18,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet var goToTodayButton: UIButton!
     @IBOutlet var segmentedControlContainerView: UIView!
     @IBOutlet var calendarViewHeightConstraint: NSLayoutConstraint!
-    var searchBar: UISearchBar?
+//    var searchBar: UISearchBar?
     
     
     let sectionTitles = ["Presenti", "Assenti"]
@@ -215,11 +215,10 @@ class CalendarViewController: UIViewController {
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
 
         if notification.name == UIResponder.keyboardWillHideNotification {
-            collectionView.contentInset = .zero
+            self.collectionView.contentInset = .zero
         } else {
-            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+            self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
         }
-
-        collectionView.scrollIndicatorInsets = collectionView.contentInset
+        self.collectionView.scrollIndicatorInsets = collectionView.contentInset
     }
 }
