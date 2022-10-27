@@ -75,7 +75,6 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             )
             guard let typedHeaderView = headerView as? CalendarHeaderCollectionReusableView else { return headerView }
             typedHeaderView.searchBar.delegate = self
-            self.searchBar = typedHeaderView.searchBar
             return typedHeaderView
         }
         return UICollectionReusableView()

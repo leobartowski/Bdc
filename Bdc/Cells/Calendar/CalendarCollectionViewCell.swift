@@ -21,6 +21,10 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
     @IBOutlet var customBackgroundView: UIView!
 
     var indexPath = IndexPath()
+    
+    override func prepareForReuse() {
+        self.customBackgroundView.borderWidth = 0
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,9 +38,14 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
         self.nameLabel.text = person.name
         let imageString = CommonUtility.getProfileImageString(person)
         self.mainImageView.image = UIImage(named: imageString)
-        self.customBackgroundView.backgroundColor = isPresent
-        ? Theme.customGreen03
-        : (isAdmonished ? Theme.customYellow : .white)
+        if isPresent {
+            self.customBackgroundView.borderColor = Theme.mainColor
+            self.customBackgroundView.borderWidth = 2
+        }
+        self.customBackgroundView.backgroundColor = isAdmonished ? Theme.customYellow : .white
+//        self.customBackgroundView.backgroundColor = isPresent
+//        ? Theme.selectionGreen
+//        : (isAdmonished ? Theme.customYellow : .white)
         self.setUpShadow()
     }
 
