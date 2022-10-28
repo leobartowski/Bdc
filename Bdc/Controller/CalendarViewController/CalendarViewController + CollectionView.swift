@@ -62,6 +62,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             self.postNotificationUpdateAttendance()
         }
     }
+
+    
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if indexPath.section == 1 { return UICollectionReusableView() }
