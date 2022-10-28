@@ -11,7 +11,7 @@
 		CADC2548265E9B1D06ECF247 /* Pods_Bdc_BdcUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9119FA55433DC0831BDC2B0 /* Pods_Bdc_BdcUITests.framework */; };
 		CFDB48D8A7E962B77C7B952B /* Pods_Bdc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3652EAF5B75E35B222818918 /* Pods_Bdc.framework */; };
 		DD03AC1727481092004C4819 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */; };
-		DD03AC19274811B8004C4819 /* CalendarViewController + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC18274811B8004C4819 /* CalendarViewController + CollectionView.swift */; };
+		DD03AC19274811B8004C4819 /* AttendanceCollectionViewController + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC18274811B8004C4819 /* AttendanceCollectionViewController + CollectionView.swift */; };
 		DD03AC1B27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */; };
 		DD0CAB532728108600EA42B1 /* DayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB522728108600EA42B1 /* DayType.swift */; };
 		DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */; };
@@ -39,6 +39,7 @@
 		DD27CAB1277368810020BE4D /* RankingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD27CAB0277368810020BE4D /* RankingType.swift */; };
 		DD368F4E2774BE4F000F0A84 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */; };
 		DD368F522774D415000F0A84 /* YearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD368F512774D415000F0A84 /* YearPickerView.swift */; };
+		DD3C552C290C3A600039F060 /* AttendanceCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3C552B290C3A600039F060 /* AttendanceCollectionViewController.swift */; };
 		DD413379274FC94C0038B4C6 /* RankingViewController + TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */; };
 		DD4667CF284E0E4E003954D5 /* RankingViewController+ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4667CE284E0E4E003954D5 /* RankingViewController+ConfettiView.swift */; };
 		DD47EEC1278B2C4F0081388D /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */; };
@@ -149,7 +150,7 @@
 		860C8EC55C5FE510EA8FC2AA /* Pods_BdcTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BdcTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BFA4AC8C666FA34A5B36127 /* Pods-BdcTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BdcTests.release.xcconfig"; path = "Target Support Files/Pods-BdcTests/Pods-BdcTests.release.xcconfig"; sourceTree = "<group>"; };
 		DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
-		DD03AC18274811B8004C4819 /* CalendarViewController + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + CollectionView.swift"; sourceTree = "<group>"; };
+		DD03AC18274811B8004C4819 /* AttendanceCollectionViewController + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttendanceCollectionViewController + CollectionView.swift"; sourceTree = "<group>"; };
 		DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		DD0CAB4F27280FB200EA42B1 /* Attendance+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attendance+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DD0CAB522728108600EA42B1 /* DayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayType.swift; sourceTree = "<group>"; };
@@ -177,6 +178,7 @@
 		DD27CAB0277368810020BE4D /* RankingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingType.swift; sourceTree = "<group>"; };
 		DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		DD368F512774D415000F0A84 /* YearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPickerView.swift; sourceTree = "<group>"; };
+		DD3C552B290C3A600039F060 /* AttendanceCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCollectionViewController.swift; sourceTree = "<group>"; };
 		DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + TableView.swift"; sourceTree = "<group>"; };
 		DD4667CE284E0E4E003954D5 /* RankingViewController+ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController+ConfettiView.swift"; sourceTree = "<group>"; };
 		DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
@@ -448,6 +450,24 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		DD3C552A290C3A1A0039F060 /* AttendanceCollectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DD3C552B290C3A600039F060 /* AttendanceCollectionViewController.swift */,
+				DD03AC18274811B8004C4819 /* AttendanceCollectionViewController + CollectionView.swift */,
+			);
+			path = AttendanceCollectionViewController;
+			sourceTree = "<group>";
+		};
+		DD3C552D290C3B140039F060 /* CalendarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DD8543F227219D4A004D38F0 /* CalendarViewController.swift */,
+				DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */,
+			);
+			path = CalendarViewController;
+			sourceTree = "<group>";
+		};
 		DD47EEBF278B2C1F0081388D /* RankingTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,9 +489,8 @@
 		DD5542DE2724563C000D9F48 /* CalendarViewController */ = {
 			isa = PBXGroup;
 			children = (
-				DD8543F227219D4A004D38F0 /* CalendarViewController.swift */,
-				DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */,
-				DD03AC18274811B8004C4819 /* CalendarViewController + CollectionView.swift */,
+				DD3C552D290C3B140039F060 /* CalendarViewController */,
+				DD3C552A290C3A1A0039F060 /* AttendanceCollectionViewController */,
 			);
 			path = CalendarViewController;
 			sourceTree = "<group>";
@@ -1103,7 +1122,7 @@
 				DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */,
 				DDE9D76C28BE1CC3008463CD /* SlotType.swift in Sources */,
 				DD47EEC3278B3CBF0081388D /* Label - Ext.swift in Sources */,
-				DD03AC19274811B8004C4819 /* CalendarViewController + CollectionView.swift in Sources */,
+				DD03AC19274811B8004C4819 /* AttendanceCollectionViewController + CollectionView.swift in Sources */,
 				DD0CAB532728108600EA42B1 /* DayType.swift in Sources */,
 				DD709C852773612C00D20C6A /* FilterBottomSheetTableViewCell.swift in Sources */,
 				DD27CAB1277368810020BE4D /* RankingType.swift in Sources */,
@@ -1113,6 +1132,7 @@
 				DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */,
 				DD84830F277786D600E7F179 /* NotificationName.swift in Sources */,
 				DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */,
+				DD3C552C290C3A600039F060 /* AttendanceCollectionViewController.swift in Sources */,
 				DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */,
 				DD4667CF284E0E4E003954D5 /* RankingViewController+ConfettiView.swift in Sources */,
 				DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */,

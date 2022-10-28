@@ -14,7 +14,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     // MARK: Delegate e DataSource
 
     func calendar(_: FSCalendar, didSelect _: Date, at _: FSCalendarMonthPosition) {
-        self.getDataFromCoreDataAndReloadViews()
+        self.attendanceCVViewController.getDataFromCoreDataAndReloadViews()
     }
 
     func calendar(_: FSCalendar, shouldSelect date: Date, at _: FSCalendarMonthPosition) -> Bool {
@@ -45,13 +45,13 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         if calendar.scope == .week {
             let mondayOfThisWeek = calendar.currentPage.getSpecificDayOfThisWeek(2)
             calendar.select(self.safeSelectDate(mondayOfThisWeek, isForward: true))
-            self.getDataFromCoreDataAndReloadViews()
+            self.attendanceCVViewController.getDataFromCoreDataAndReloadViews()
 
         } else {
 
             let startOfTheMonth = calendar.currentPage.getStartOfMonth()
             calendar.select(self.safeSelectDate(startOfTheMonth, isForward: true))
-            self.getDataFromCoreDataAndReloadViews()
+            self.attendanceCVViewController.getDataFromCoreDataAndReloadViews()
         }
     }
 

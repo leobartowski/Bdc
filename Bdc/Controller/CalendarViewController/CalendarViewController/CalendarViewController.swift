@@ -12,41 +12,35 @@ import SwiftHoliday
 class CalendarViewController: UIViewController {
     
     @IBOutlet var calendarView: FSCalendar!
-    @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var segmentedControl: MySegmentedControl!
     @IBOutlet var bottomCalendarHandleView: UIView!
     @IBOutlet var goToTodayButton: UIButton!
     @IBOutlet var segmentedControlContainerView: UIView!
     @IBOutlet var calendarViewHeightConstraint: NSLayoutConstraint!
-//    var searchBar: UISearchBar?
+    var attendanceCVViewController: AttendanceCollectionViewController!
     
-    
-    let sectionTitles = ["Presenti", "Assenti"]
     var dayType = DayType.evening
-    var allPersons = PersonListUtility.persons
-    var filteredPerson: [Person] = []
-    var personsAdmonished: [Person] = []
-    var personsPresent: [Person] = []
-    var canModifyOldDays = false
     
     // MARK: LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getAttendanceVC()
         self.setUpCalendarAppearance()
         self.setupSegmentedControl()
-        self.getDataFromCoreDataAndReloadViews()
         self.addCalendarGestureRecognizer()
         self.designBottomCalendarHandleView()
         self.updateGoToTodayButton()
         self.addObservers()
-        self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    private func getAttendanceVC() {
+        if let navigationControllerCV = self.children.first as? UINavigationController,
+           let vc = navigationControllerCV.viewControllers.first as? AttendanceCollectionViewController {
+            self.attendanceCVViewController = vc
+        }
+    }
 
-    }
-    
     //   Get called when the app is become active
     @objc func willBecomeActive() {
         self.updateDayTypeBasedOnTime()
@@ -73,11 +67,6 @@ class CalendarViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.willBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.systemTimeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeModifyStatus(_:)), name: .didChangeModifyStatus, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     func updateGoToTodayButton() {
@@ -88,13 +77,8 @@ class CalendarViewController: UIViewController {
         DispatchQueue.main.async {
             self.calendarView.setCurrentPage(Date.now, animated: true)
             self.calendarView.select(Date.now)
-            self.getDataFromCoreDataAndReloadViews()
+            self.attendanceCVViewController.getDataFromCoreDataAndReloadViews()
         }
-    }
-    
-    func postNotificationUpdateAttendance() {
-        let notification = Notification(name: .didUpdateAttendance, object: nil, userInfo: nil)
-        NotificationCenter.default.post(notification)
     }
     
     
@@ -109,7 +93,6 @@ class CalendarViewController: UIViewController {
         self.segmentedControl.selectedSegmentTintColor = Theme.FSCalendarStandardSelectionColor
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
-        
         let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .normal)
     }
@@ -132,7 +115,7 @@ class CalendarViewController: UIViewController {
                 self.segmentedControl.selectedSegmentIndex = 1
             }
             // We reload data from CoreData only if dayType is changed
-            if oldDayType != self.dayType { self.getDataFromCoreDataAndReloadViews() }
+            if oldDayType != self.dayType { self.attendanceCVViewController.getDataFromCoreDataAndReloadViews() }
         }
     }
     
@@ -141,58 +124,6 @@ class CalendarViewController: UIViewController {
             self.updateGoToTodayButton()
             self.calendarView.reloadData()
         }
-    }
-    
-    // MARK: Functions to fetch and save CoreData
-    
-    /// Update Presence reloading data from CoreData
-    func getDataFromCoreDataAndReloadViews() {
-        self.filteredPerson.removeAll()
-        self.personsAdmonished.removeAll()
-        self.personsPresent.removeAll()
-        let attendance = CoreDataService.shared.getAttendace(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
-        self.personsPresent = attendance?.persons?.allObjects as? [Person] ?? []
-        self.personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
-        self.allPersons = PersonListUtility.persons
-        self.filteredPerson = self.allPersons
-        self.sortPersonPresentAndNot()
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-            self.collectionView.setContentOffset(CGPoint(x: 0, y: 53), animated: true)
-        }
-    }
-    
-    // TODO: Improve sorting
-    func sortPersonPresentAndNot() {
-        self.allPersons = self.allPersons.sorted { $0.name ?? "" < $1.name ?? "" }
-    }
-    
-    // MARK: Handle settings
-    @objc func didChangeModifyStatus(_: Notification) {
-        self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
-    }
-    
-    // MARK: Handle settings
-    @objc func didChangePersonList(_: Notification) {
-        self.getDataFromCoreDataAndReloadViews()
-    }
-    
-    // MARK: IBActions
-    
-    @IBAction func segmentedControlValueChanged(_: Any) {
-        //        self.saveCurrentDataInCoreData()
-        switch self.segmentedControl.selectedSegmentIndex {
-        case 0: self.dayType = .morning
-        case 1: self.dayType = .evening
-        default: break
-        }
-        self.getDataFromCoreDataAndReloadViews()
-    }
-    
-    @IBAction func goToTodayTouchUpInside(_: Any) {
-        !Date().isThisDaySelectable()
-        ? self.presentAlert(alertText: "Hey!", alertMessage: "Mi dispiace, ma dovresti sapere che oggi non si prendono presenze!")
-        : self.automaticScrollToToday()
     }
     
     @objc func handleSwipe(gesture: UIGestureRecognizer) {
@@ -208,17 +139,21 @@ class CalendarViewController: UIViewController {
         }
     }
     
-    @objc func adjustForKeyboard(notification: Notification) {
-        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-
-        let keyboardScreenEndFrame = keyboardValue.cgRectValue
-        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-
-        if notification.name == UIResponder.keyboardWillHideNotification {
-            self.collectionView.contentInset = .zero
-        } else {
-            self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+    // MARK: IBActions
+    
+    @IBAction func segmentedControlValueChanged(_: Any) {
+        //        self.saveCurrentDataInCoreData()
+        switch self.segmentedControl.selectedSegmentIndex {
+        case 0: self.dayType = .morning
+        case 1: self.dayType = .evening
+        default: break
         }
-        self.collectionView.scrollIndicatorInsets = collectionView.contentInset
+        self.attendanceCVViewController.getDataFromCoreDataAndReloadViews()
+    }
+    
+    @IBAction func goToTodayTouchUpInside(_: Any) {
+        !Date().isThisDaySelectable()
+        ? self.presentAlert(alertText: "Hey!", alertMessage: "Mi dispiace, ma dovresti sapere che oggi non si prendono presenze!")
+        : self.automaticScrollToToday()
     }
 }
