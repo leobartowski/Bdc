@@ -18,10 +18,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet var goToTodayButton: UIButton!
     @IBOutlet var segmentedControlContainerView: UIView!
     @IBOutlet var calendarViewHeightConstraint: NSLayoutConstraint!
-//    var searchBar: UISearchBar?
     
-    
-    let sectionTitles = ["Presenti", "Assenti"]
     var dayType = DayType.evening
     var allPersons = PersonListUtility.persons
     var filteredPerson: [Person] = []
@@ -41,10 +38,6 @@ class CalendarViewController: UIViewController {
         self.updateGoToTodayButton()
         self.addObservers()
         self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-
     }
     
     //   Get called when the app is become active

@@ -8,9 +8,8 @@
 import Foundation
 import UIKit
 
-extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CalendarCollectionViewCellDelegate, UISearchBarDelegate {
+extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CalendarCollectionViewCellDelegate {
     
-    // MARK: Delegate e DataSource
     func numberOfSections(in _: UICollectionView) -> Int {
         return 2
     }
@@ -62,8 +61,6 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             self.postNotificationUpdateAttendance()
         }
     }
-
-    
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if indexPath.section == 1 { return UICollectionReusableView() }
@@ -101,7 +98,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     // MARK: CalendarViewControllerCellDelegate
-    
+
     func mainCell(_: CalendarCollectionViewCell, didSelectRowAt indexPath: IndexPath) {
         
         // Check to avoid the modification of day older than today
@@ -123,46 +120,4 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             self.postNotificationUpdateAttendance()
         }
     }
-    
-    // MARK: SearchBar
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        self.filteredPerson = searchText.isEmpty ? self.allPersons : self.allPersons.filter { (person: Person) -> Bool in
-            // If dataItem matches the searchText, return true to include it
-            return person.name!.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
-        UIView.performWithoutAnimation {
-            self.collectionView.reloadSections(IndexSet(integer: 1))
-        }
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: true)
-        searchBar.showsCancelButton = true
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        self.filteredPerson = self.allPersons
-        UIView.performWithoutAnimation {
-            self.collectionView.reloadSections(IndexSet(integer: 1))
-        }
-        searchBar.setShowsCancelButton(false, animated: true)
-        searchBar.showsCancelButton = false
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.endEditing(true)
-    }
-    
-    
-    // MARK: SetUp CollectionView
-    
-    // I don't know why but putting sectionHeadersPinToVisibleBounds = true create a streange glich
-    // when the calendar change scope (week or month)
-    //    func setupCollectionView() {
-    //        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
-    //        layout?.sectionHeadersPinToVisibleBounds = true
-    //    }
 }
