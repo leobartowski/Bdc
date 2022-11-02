@@ -69,7 +69,7 @@ class PDFCreator: NSObject {
         let pdfMetaData = [
             kCGPDFContextCreator: "bdc",
             kCGPDFContextAuthor: "leobartowski",
-            kCGPDFContextTitle: pdfTitle,
+            kCGPDFContextTitle: pdfTitle
         ]
         let format = UIGraphicsPDFRendererFormat()
         format.documentInfo = pdfMetaData as [String: Any]
@@ -224,7 +224,7 @@ extension PDFCreator {
         paragraphStyle.lineBreakMode = .byWordWrapping
         let titleAttributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
-            NSAttributedString.Key.font: textFont,
+            NSAttributedString.Key.font: textFont
         ]
 
         // draw titles
@@ -256,7 +256,7 @@ extension PDFCreator {
             paragraphStyle.lineBreakMode = .byWordWrapping
             let textAttributes = [
                 NSAttributedString.Key.paragraphStyle: paragraphStyle,
-                NSAttributedString.Key.font: textFont,
+                NSAttributedString.Key.font: textFont
             ]
             let tabWidth = (pageRect.width - self.defaultOffset * 2) / CGFloat(3)
             for titleIndex in 0 ..< 3 {

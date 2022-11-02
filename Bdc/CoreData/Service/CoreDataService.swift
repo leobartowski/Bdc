@@ -229,7 +229,6 @@ class CoreDataService {
         }
     }
     
-    // TODO: Is needed?
 //    func removeAllPresenceOf(name: String) {
 //        let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
 //        do {
@@ -246,7 +245,6 @@ class CoreDataService {
 //            print("Could not list. \(error), \(error.userInfo)")
 //        }
 //    }
-
 
     /// Use this  just one time to create the persons List on a new device!
     func createPersonsList(_ persons: [Person] = []) {

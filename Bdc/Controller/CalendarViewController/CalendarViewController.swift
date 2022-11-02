@@ -90,7 +90,6 @@ class CalendarViewController: UIViewController {
         NotificationCenter.default.post(notification)
     }
     
-    
     func setupSegmentedControl() {
         self.segmentedControl.backgroundColor = .white
         self.segmentedControl.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
@@ -155,7 +154,6 @@ class CalendarViewController: UIViewController {
         }
     }
     
-    // TODO: Improve sorting
     func sortPersonPresentAndNot() {
         self.allPersons = self.allPersons.sorted { $0.name ?? "" < $1.name ?? "" }
     }
@@ -183,9 +181,11 @@ class CalendarViewController: UIViewController {
     }
     
     @IBAction func goToTodayTouchUpInside(_: Any) {
-        !Date().isThisDaySelectable()
-        ? self.presentAlert(alertText: "Hey!", alertMessage: "Mi dispiace, ma dovresti sapere che oggi non si prendono presenze!")
-        : self.automaticScrollToToday()
+        if !Date().isThisDaySelectable() {
+            self.presentAlert(alertText: "Hey!", alertMessage: "Mi dispiace, ma dovresti sapere che oggi non si prendono presenze!")
+        } else {
+            self.automaticScrollToToday()
+        }
     }
     
     @objc func handleSwipe(gesture: UIGestureRecognizer) {

@@ -104,8 +104,10 @@ class PersonListUtility {
         francescoe.name = "Francesco E"
         francescoe.difficultyCoefficient = DifficultyCoefficient.easy.rawValue
 
-
-        let persons = [franco, fiore, mary, raff, genny, gigi, giovannir, giannetta, enzo, cataldo, lisa, danieled, savio, sossio, francescoe, nero, mattia, conte, pacokh, moda, alessia, michelep, franzese, angelo]
+        let persons = [
+            franco, fiore, mary, raff, genny, gigi, giovannir, giannetta, enzo, cataldo, lisa, danieled,
+            savio, sossio, francescoe, nero, mattia, conte, pacokh, moda, alessia, michelep, franzese, angelo
+        ]
         return persons
     }
     
@@ -118,7 +120,6 @@ class PersonListUtility {
         }
     }
     
-
     private static func createEmptyWeeklyAttendance() -> [RankingPersonAttendance] {
         var personsWeeklyAttendance = [RankingPersonAttendance]()
         for person in PersonListUtility.persons {
@@ -150,4 +151,3 @@ public enum DifficultyCoefficient: Float {
     case medium = 1.3
     case hard = 1.4
 }
-

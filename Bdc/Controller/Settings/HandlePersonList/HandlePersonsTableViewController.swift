@@ -89,7 +89,6 @@ class HandlePersonsViewController: UIViewController, UITableViewDelegate, UITabl
                 self.deletePersonAndUpdateUI(name, indexPath)
                 completionHandler(true)
             }, mainActionTitle: "Cancella \(name)") { _ in
-                // TODO: Automatic close trailingSwipe
                 self.dismiss(animated: false, completion: nil)
                 completionHandler(true)
             }

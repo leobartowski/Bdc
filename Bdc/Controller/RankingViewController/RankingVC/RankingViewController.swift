@@ -10,7 +10,6 @@ import PDFKit
 import UIKit
 import SwiftConfettiView
 
-
 class RankingViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
@@ -117,7 +116,6 @@ class RankingViewController: UIViewController {
         }
     }
 
-    
     @objc func didChangePersonList(_: Notification) {
         self.rankingPersonsAttendaces.removeAll()
         self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance

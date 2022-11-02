@@ -22,11 +22,11 @@ class RankingTableViewCell: UITableViewCell {
     var rankingType: RankingType?
     var showStatistics = false
     var showWeightedAttendance = false
-
+    
     override func layoutSubviews() {
         self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: 15).cgPath
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
@@ -36,7 +36,7 @@ class RankingTableViewCell: UITableViewCell {
         // Design
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
     }
-
+    
     // MARK: SetUp
     func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath, _ rankingType: RankingType) {
         self.indexPath = indexPath
@@ -71,7 +71,7 @@ class RankingTableViewCell: UITableViewCell {
         self.containerView.layer.shadowRadius = 2
         self.containerView.layer.masksToBounds = false
     }
-
+    
     func setupLabelDesign(_ labelNumber: Int) {
         switch labelNumber {
         case 0:
@@ -127,12 +127,10 @@ class RankingTableViewCell: UITableViewCell {
     
     @objc func didChangeWeightedAttendance(_: Notification) {
         self.showWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
-        if self.rankingAttendance != nil, rankingType != nil  {
+        if self.rankingAttendance != nil, rankingType != nil {
             self.attendanceLabel.text = self.getStringOfAttendanceLabel(self.rankingAttendance!, self.rankingType!)
         }
         self.percentualAdmonishmentLabel.isHidden = self.showWeightedAttendance ? true : false
         self.percentualAttendanceLabel.isHidden = self.showWeightedAttendance ? true : false
     }
-
 }
-

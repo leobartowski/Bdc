@@ -9,7 +9,6 @@ import UIKit
 
 class SlotTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
     @IBOutlet var tableView: UITableView!
     
     let types = ["Mattina & Pomeriggio", "Mattina", "Pomeriggio"]
@@ -42,4 +41,3 @@ class SlotTypeViewController: UIViewController, UITableViewDelegate, UITableView
         cell?.checkBox.deselect()
     }
 }
-

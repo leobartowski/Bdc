@@ -137,10 +137,8 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     func createHoldayDatesNumberArrayIfNeeded() {
         self.holidaysNumbers = []
         if let allDates = self.daysCurrentPeriod.first?.getAllDatesOfTheWeek(), self.rankingType == .weekly {
-            for date in allDates {
-                if date.isHoliday(in: .italy) {
-                    self.holidaysNumbers.append(date.getDayNumberOfWeek() ?? 1)
-                }
+            for date in allDates where date.isHoliday(in: .italy) {
+                self.holidaysNumbers.append(date.getDayNumberOfWeek() ?? 1)
             }
         }
     }
@@ -192,10 +190,10 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
                 }
                 self.sorting.sortingType = .descending
             }
-            header[column] = headerBasic[column] + " " + sorting.sortingType.symbol
-            header[0] = headerBasic[0]
-            header[2] = headerBasic[2]
-            sorting.sortingPosition = .attendance
+            self.header[column] = self.headerBasic[column] + " " + sorting.sortingType.symbol
+            self.header[0] = self.headerBasic[0]
+            self.header[2] = self.headerBasic[2]
+            self.sorting.sortingPosition = .attendance
         case 2: // Admonishment
             if oldSorting.sortingType == .descending {
                 self.rankingPersonsAttendaces = self.rankingPersonsAttendaces.sorted { $0.admonishmentNumber < $1.admonishmentNumber }

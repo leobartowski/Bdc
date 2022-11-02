@@ -27,14 +27,13 @@ extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FS
         return false
     }
     
-
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         self.deselectAllDates()
         self.selectedAllDateOfTheWeek(calendar.currentPage)
         self.rankingViewController?.populateAttendance()
     }
 
-    // TODO: Crash on the simulator!
+    /// Uded for avoid  crash on the simulator!
     func maximumDate(for _: FSCalendar) -> Date {
         #if targetEnvironment(simulator)
             return Date.distantFuture
@@ -51,7 +50,7 @@ extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FS
 
     func calendar(_ calendar: FSCalendar, appearance _: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
         let dateIsToday = LocalDate(date: calendar.today ?? .now) == LocalDate(date: date)
-        if dateIsToday, date.isThisDaySelectable()  {
+        if dateIsToday, date.isThisDaySelectable() {
             return Theme.FSCalendarStandardTodayColor
             
         } else if !date.isThisDaySelectable() || date > Date() {
@@ -98,10 +97,9 @@ extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FS
 
     func selectedAllDateOfTheWeek(_ date: Date) {
         self.rankingViewController?.daysCurrentPeriod = date.getAllSelectableDateOfTheWeek()
-        for day in self.rankingViewController?.daysCurrentPeriod ?? [] {
-            if day.getDayNumberOfWeek() != 1, day.getDayNumberOfWeek() != 7 {
-                self.calendarView.select(day)
-            }
+        let daysCurrentPeriod = self.rankingViewController?.daysCurrentPeriod ?? []
+        for day in daysCurrentPeriod where (day.getDayNumberOfWeek() != 1 && day.getDayNumberOfWeek() != 7) {
+            self.calendarView.select(day)
         }
     }
 
@@ -123,4 +121,3 @@ extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FS
         }
     }
 }
-

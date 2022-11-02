@@ -27,7 +27,7 @@ open class YearPickerView: UIControl {
 
     /// specify min date. default is nil. When `minimumDate` > `maximumDate`, the values are ignored.
     /// If `date` is earlier than `minimumDate` when it is set, `date` is changed to `minimumDate`.
-    open var minimumDate: Date? = nil {
+    open var minimumDate: Date? {
         didSet {
             guard let minimumDate = minimumDate, calendar.compare(minimumDate, to: date, toGranularity: .month) == .orderedDescending else { return }
             date = minimumDate
@@ -36,7 +36,7 @@ open class YearPickerView: UIControl {
 
     /// specify max date. default is nil. When `minimumDate` > `maximumDate`, the values are ignored.
     /// If `date` is later than `maximumDate` when it is set, `date` is changed to `maximumDate`.
-    open var maximumDate: Date? = nil {
+    open var maximumDate: Date? {
         didSet {
             guard let maximumDate = maximumDate, calendar.compare(date, to: maximumDate, toGranularity: .month) == .orderedDescending else { return }
             date = maximumDate
@@ -192,4 +192,3 @@ private extension UIPickerView {
         selectRow(row, inComponent: component.rawValue, animated: animated)
     }
 }
-

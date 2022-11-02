@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 extension Notification.Name {
 
     static let didUpdateAttendance = Notification.Name("didUpdateAttendance")

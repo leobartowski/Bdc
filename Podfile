@@ -9,6 +9,10 @@ target 'Bdc' do
   pod 'FSCalendar'
   pod 'FittedSheets'
   pod 'SwiftConfettiView'
+  pod 'SwiftLint'
+  
+  # ignore all warnings from all pods
+  inhibit_all_warnings!
 
   target 'BdcTests' do
     inherit! :search_paths

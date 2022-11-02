@@ -23,27 +23,26 @@
 //  SOFTWARE.
 import UIKit
 
-
 open class MonthYearPickerView: UIControl {
-
+    
     /// specify min date. default is nil. When `minimumDate` > `maximumDate`, the values are ignored.
     /// If `date` is earlier than `minimumDate` when it is set, `date` is changed to `minimumDate`.
-    open var minimumDate: Date? = nil {
+    open var minimumDate: Date? {
         didSet {
             guard let minimumDate = minimumDate, calendar.compare(minimumDate, to: date, toGranularity: .month) == .orderedDescending else { return }
             date = minimumDate
         }
     }
-
+    
     /// specify max date. default is nil. When `minimumDate` > `maximumDate`, the values are ignored.
     /// If `date` is later than `maximumDate` when it is set, `date` is changed to `maximumDate`.
-    open var maximumDate: Date? = nil {
+    open var maximumDate: Date? {
         didSet {
             guard let maximumDate = maximumDate, calendar.compare(date, to: maximumDate, toGranularity: .month) == .orderedDescending else { return }
             date = maximumDate
         }
     }
-
+    
     /// default is current date when picker created
     open var date: Date = Date() {
         didSet {
@@ -56,7 +55,7 @@ open class MonthYearPickerView: UIControl {
             sendActions(for: .valueChanged)
         }
     }
-
+    
     /// default is current calendar when picker created
     open var calendar: Calendar = Calendar.autoupdatingCurrent {
         didSet {
@@ -66,7 +65,7 @@ open class MonthYearPickerView: UIControl {
             yearDateFormatter.timeZone = calendar.timeZone
         }
     }
-
+    
     /// default is nil
     open var locale: Locale? {
         didSet {
@@ -75,7 +74,7 @@ open class MonthYearPickerView: UIControl {
             yearDateFormatter.locale = locale
         }
     }
-
+    
     lazy private var pickerView: UIPickerView = {
         let pickerView = UIPickerView(frame: self.bounds)
         pickerView.dataSource = self
@@ -83,7 +82,7 @@ open class MonthYearPickerView: UIControl {
         pickerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return pickerView
     }()
-
+    
     lazy private var monthDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.setLocalizedDateFormatFromTemplate("MMMM")
@@ -117,7 +116,7 @@ open class MonthYearPickerView: UIControl {
         calendar.timeZone = TimeZone(secondsFromGMT: 0)!
         setDate(date, animated: false)
     }
-
+    
     /// if animated is YES, animate the wheels of time to display the new date
     open func setDate(_ date: Date, animated: Bool) {
         guard let yearRange = calendar.maximumRange(of: .year), let monthRange = calendar.maximumRange(of: .month) else {
@@ -129,17 +128,17 @@ open class MonthYearPickerView: UIControl {
         pickerView.selectRow(year, inComponent: .year, animated: animated)
         pickerView.reloadAllComponents()
     }
-
+    
     internal func isValidDate(_ date: Date, isMonth: Bool = true) -> Bool {
         if isMonth {
             if let minimumDate = minimumDate,
-                let maximumDate = maximumDate, calendar.compare(minimumDate, to: maximumDate, toGranularity: .month) == .orderedDescending { return true }
+               let maximumDate = maximumDate, calendar.compare(minimumDate, to: maximumDate, toGranularity: .month) == .orderedDescending { return true }
             if let minimumDate = minimumDate, calendar.compare(minimumDate, to: date, toGranularity: .month) == .orderedDescending { return false }
             if let maximumDate = maximumDate, calendar.compare(date, to: maximumDate, toGranularity: .month) == .orderedDescending { return false }
             return true
         } else {
             if let minimumDate = minimumDate, let maximumDate = maximumDate,
-                calendar.compare(minimumDate, to: maximumDate, toGranularity: .year) == .orderedDescending { return true }
+               calendar.compare(minimumDate, to: maximumDate, toGranularity: .year) == .orderedDescending { return true }
             if let minimumDate = minimumDate, calendar.compare(minimumDate, to: date, toGranularity: .year) == .orderedDescending { return false }
             if let maximumDate = maximumDate, calendar.compare(date, to: maximumDate, toGranularity: .year) == .orderedDescending { return false }
             return true
@@ -174,12 +173,12 @@ extension MonthYearPickerView: UIPickerViewDataSource {
             return calendar.maximumRange(of: .year)?.count ?? 0
         }
     }
-
+    
     private func value(for row: Int, representing component: Calendar.Component) -> Int? {
         guard let range = calendar.maximumRange(of: component) else { return nil }
         return range.lowerBound + row
     }
-
+    
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
         if #available(iOS 14.0, *) { pickerView.subviews[1].backgroundColor = .clear }
@@ -190,21 +189,21 @@ extension MonthYearPickerView: UIPickerViewDataSource {
             label.textAlignment = .center
             return label
         }()
-
+        
         guard let component = Component(rawValue: component) else { return label }
         var dateComponents = calendar.dateComponents([.hour, .minute, .second], from: date)
-
+        
         switch component {
-            case .month:
-                dateComponents.month = value(for: row, representing: .month)
-                dateComponents.year = value(for: pickerView.selectedRow(inComponent: .year), representing: .year)
-            case .year:
-                dateComponents.month = value(for: pickerView.selectedRow(inComponent: .month), representing: .month)
-                dateComponents.year = value(for: row, representing: .year)
+        case .month:
+            dateComponents.month = value(for: row, representing: .month)
+            dateComponents.year = value(for: pickerView.selectedRow(inComponent: .year), representing: .year)
+        case .year:
+            dateComponents.month = value(for: pickerView.selectedRow(inComponent: .month), representing: .month)
+            dateComponents.year = value(for: row, representing: .year)
         }
-
+        
         guard let date = calendar.date(from: dateComponents) else { return label }
-
+        
         switch component {
         case .month:
             label.text = monthDateFormatter.string(from: date)
@@ -226,7 +225,7 @@ private extension UIPickerView {
     func selectedRow(inComponent component: MonthYearPickerView.Component) -> Int {
         selectedRow(inComponent: component.rawValue)
     }
-
+    
     func selectRow(_ row: Int, inComponent component: MonthYearPickerView.Component, animated: Bool) {
         selectRow(row, inComponent: component.rawValue, animated: animated)
     }

@@ -9,7 +9,6 @@ import Foundation
 
 class CommonUtility {
     
-    // TODO: Handle better this logic!
     public static func getProfileImageString(_ person: Person) -> String {
         if let personIconString = person.iconString {
             return personIconString

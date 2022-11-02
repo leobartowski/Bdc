@@ -71,5 +71,4 @@ extension RankingWeeklyTableViewCell: UICollectionViewDelegate, UICollectionView
         return CGSize(width: collectionView.frame.width, height: 20)
     }
     
-    
 }

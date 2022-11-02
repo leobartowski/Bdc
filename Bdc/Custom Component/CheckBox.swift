@@ -5,6 +5,7 @@
 //  Created by Roland Leth on 17.11.2016.
 //  Copyright © 2016 Roland Leth All rights reserved.
 //
+// swiftlint:disable all
 import UIKit
 
 /// A radio button with a fill animation.
@@ -420,3 +421,4 @@ fileprivate extension CALayer {
     }
     
 }
+// swiftlint:enable all

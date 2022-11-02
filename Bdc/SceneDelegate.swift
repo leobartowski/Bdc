@@ -4,6 +4,7 @@
 //
 //  Created by Francesco D'Angelo on 21/10/21.
 //
+// swiftlint:disable all
 
 import UIKit
 
@@ -49,3 +50,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         CoreDataContainer.saveContext()
     }
 }
+// swiftlint:enable all
