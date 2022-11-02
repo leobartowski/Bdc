@@ -24,7 +24,7 @@ final class Italy: CountryBase {
             Holiday(name: "Capodanno", date: (year, .january, 1)),
             Holiday(name: "Epifania", date: (year, .january, 6)),
 //            Holiday(name: "Carnevale", date:  easter.addingDays(-47)),
-            Holiday(name: "Pasqua", date:  easter),
+            Holiday(name: "Pasqua", date: easter),
             Holiday(name: "Pasquetta", date: easter.addingDays(1)),
             Holiday(name: "Festa della Liberazione", date: (year, .april, 25)),
             Holiday(name: "Primo maggio", date: (year, .may, 1)),
