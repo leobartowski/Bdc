@@ -21,26 +21,35 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
     @IBOutlet var customBackgroundView: UIView!
 
     var indexPath = IndexPath()
+    
+    override func prepareForReuse() {
+        self.customBackgroundView.borderWidth = 0
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.setupLongGestureRecognizer()
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
     }
 
-    func setUp(_ person: Person, _ isAdmonished: Bool = false, _ indexPath: IndexPath, _ delegate: CalendarCollectionViewCellDelegate) {
+    func setUp(_ person: Person, _ isPresent: Bool = false, _ isAdmonished: Bool = false, _ indexPath: IndexPath, _ delegate: CalendarCollectionViewCellDelegate) {
         self.delegate = delegate
         self.indexPath = indexPath
         self.nameLabel.text = person.name
         let imageString = CommonUtility.getProfileImageString(person)
         self.mainImageView.image = UIImage(named: imageString)
-        if indexPath.section != 0 { self.setupLongGestureRecognizer() }
-        self.customBackgroundView.backgroundColor = indexPath.section == 0
-        ? .white
-        : (isAdmonished ? Theme.customYellow : .white)
+        if isPresent {
+            self.customBackgroundView.borderColor = Theme.mainColor
+            self.customBackgroundView.borderWidth = 2
+        }
+        self.customBackgroundView.backgroundColor = isAdmonished ? Theme.customYellow : .white
+//        self.customBackgroundView.backgroundColor = isPresent
+//        ? Theme.selectionGreen
+//        : (isAdmonished ? Theme.customYellow : .white)
         self.setUpShadow()
     }
 
-    func setUpShadow() {
+    private func setUpShadow() {
         self.customBackgroundView.layer.cornerRadius = 10
         self.customBackgroundView.layer.masksToBounds = true
         self.customBackgroundView.layer.shadowColor = UIColor.gray.cgColor
@@ -59,8 +68,8 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
     }
 
     @objc func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
-        // Only the not Present Persons (section = 1) can use long Press Gesture Recoginzer
-        if gestureReconizer.state == .began, self.indexPath.section == 1 {
+        
+        if gestureReconizer.state == .began {
             self.delegate?.mainCell(self, didSelectRowAt: self.indexPath)
             return
         }

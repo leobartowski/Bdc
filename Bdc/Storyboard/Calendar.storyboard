@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lFF-gd-bBU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lFF-gd-bBU">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Uk-SP-eJW" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="350"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="350"/>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -36,10 +37,10 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOu-As-8fU">
-                                <rect key="frame" x="0.0" y="399" width="414" height="55"/>
+                                <rect key="frame" x="0.0" y="410" width="414" height="45"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="81Y-SL-qSW" customClass="MySegmentedControl" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="12" width="322" height="32"/>
+                                        <rect key="frame" x="20" y="7" width="322" height="32"/>
                                         <segments>
                                             <segment title="Mattina"/>
                                             <segment title="Sera"/>
@@ -51,7 +52,7 @@
                                         </connections>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRY-LI-Fg4">
-                                        <rect key="frame" x="362" y="11.5" width="32" height="32"/>
+                                        <rect key="frame" x="362" y="6.5" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="8Vs-EY-hXY"/>
                                             <constraint firstAttribute="width" constant="32" id="L9t-i5-ZfG"/>
@@ -68,24 +69,25 @@
                                 <constraints>
                                     <constraint firstItem="81Y-SL-qSW" firstAttribute="centerY" secondItem="QOu-As-8fU" secondAttribute="centerY" id="FXN-LP-3SG"/>
                                     <constraint firstItem="bRY-LI-Fg4" firstAttribute="centerY" secondItem="QOu-As-8fU" secondAttribute="centerY" id="Mvk-fU-yAs"/>
-                                    <constraint firstAttribute="height" constant="55" id="O9c-qU-WSa"/>
+                                    <constraint firstAttribute="height" constant="45" id="O9c-qU-WSa"/>
                                     <constraint firstItem="bRY-LI-Fg4" firstAttribute="leading" secondItem="81Y-SL-qSW" secondAttribute="trailing" constant="20" id="PBA-jP-kel"/>
                                     <constraint firstItem="81Y-SL-qSW" firstAttribute="leading" secondItem="QOu-As-8fU" secondAttribute="leading" constant="20" id="jjD-Lx-bLy"/>
                                     <constraint firstAttribute="trailing" secondItem="bRY-LI-Fg4" secondAttribute="trailing" constant="20" id="zlX-K4-tBh"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cUb-iM-sZp">
-                                <rect key="frame" x="0.0" y="454" width="414" height="512"/>
+                                <rect key="frame" x="0.0" y="455" width="414" height="511"/>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="5" maxX="0.0" maxY="10"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="N9c-Su-oep">
                                     <size key="itemSize" width="80" height="100"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="65"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="20" minY="10" maxX="20" maxY="10"/>
+                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="presentCellID" id="Whb-w5-6Xv" customClass="CalendarCollectionViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="167" y="60" width="80" height="100"/>
+                                        <rect key="frame" x="167" y="65" width="80" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cuE-O1-IBd">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
@@ -135,7 +137,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="placeholderID" id="yhZ-ZT-SKm">
-                                        <rect key="frame" x="57" y="170" width="300" height="200"/>
+                                        <rect key="frame" x="57" y="175" width="300" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="E4W-Cy-Gui">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
@@ -167,26 +169,30 @@
                                         <size key="customSize" width="300" height="200"/>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="sectionHeaderID" id="myh-oG-KN7" customClass="CalendarHeaderCollectionReusableView" customModule="Bdc" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="sectionHeaderID" id="96g-cJ-dTv" customClass="CalendarHeaderCollectionReusableView" customModule="Bdc" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZR-FA-WKf">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="50"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Cerca..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFt-07-MgX">
+                                            <rect key="frame" x="10" y="4.5" width="394" height="56"/>
+                                            <color key="tintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="barTintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <scopeButtonTitles>
+                                                <string>Title</string>
+                                                <string>Title</string>
+                                            </scopeButtonTitles>
+                                        </searchBar>
                                     </subviews>
                                     <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="1ZR-FA-WKf" secondAttribute="trailing" constant="20" id="5s8-33-sfT"/>
-                                        <constraint firstAttribute="bottom" secondItem="1ZR-FA-WKf" secondAttribute="bottom" id="8NI-AN-oLu"/>
-                                        <constraint firstItem="1ZR-FA-WKf" firstAttribute="leading" secondItem="myh-oG-KN7" secondAttribute="leading" constant="20" id="XUh-Pv-bun"/>
-                                        <constraint firstItem="1ZR-FA-WKf" firstAttribute="top" secondItem="myh-oG-KN7" secondAttribute="top" id="boc-V9-Ts4"/>
+                                        <constraint firstItem="lFt-07-MgX" firstAttribute="centerY" secondItem="96g-cJ-dTv" secondAttribute="centerY" id="7xp-wd-sbf"/>
+                                        <constraint firstAttribute="trailing" secondItem="lFt-07-MgX" secondAttribute="trailing" constant="10" id="IJ6-85-x6x"/>
+                                        <constraint firstItem="lFt-07-MgX" firstAttribute="leading" secondItem="96g-cJ-dTv" secondAttribute="leading" constant="10" id="YnF-Eh-nV9"/>
+                                        <constraint firstItem="lFt-07-MgX" firstAttribute="centerX" secondItem="96g-cJ-dTv" secondAttribute="centerX" id="h9L-6b-6Ka"/>
                                     </constraints>
                                     <connections>
-                                        <outlet property="titleLabel" destination="1ZR-FA-WKf" id="lZg-rj-diA"/>
+                                        <outlet property="searchBar" destination="lFt-07-MgX" id="rpp-Rt-UnG"/>
                                     </connections>
                                 </collectionReusableView>
                                 <connections>
@@ -195,7 +201,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fq-Gp-qQo">
-                                <rect key="frame" x="0.0" y="384" width="414" height="15"/>
+                                <rect key="frame" x="0.0" y="388" width="414" height="15"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7v-4R-0Cy">
                                         <rect key="frame" x="189.5" y="4.5" width="35" height="6"/>
@@ -222,7 +228,7 @@
                         <viewLayoutGuide key="safeArea" id="Csh-zm-cYX"/>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="QOu-As-8fU" firstAttribute="top" secondItem="9Uk-SP-eJW" secondAttribute="bottom" constant="5" id="9wd-qx-eld"/>
+                            <constraint firstItem="QOu-As-8fU" firstAttribute="top" secondItem="9Uk-SP-eJW" secondAttribute="bottom" constant="12" id="9wd-qx-eld"/>
                             <constraint firstItem="cUb-iM-sZp" firstAttribute="trailing" secondItem="Csh-zm-cYX" secondAttribute="trailing" id="ChR-Qr-OlB"/>
                             <constraint firstItem="cUb-iM-sZp" firstAttribute="bottom" secondItem="Csh-zm-cYX" secondAttribute="bottom" id="RGT-ve-Wab"/>
                             <constraint firstItem="Csh-zm-cYX" firstAttribute="trailing" secondItem="5fq-Gp-qQo" secondAttribute="trailing" id="RQt-V2-fAB"/>
@@ -257,7 +263,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="empty_placeholder" width="283" height="220"/>
     </resources>
 </document>

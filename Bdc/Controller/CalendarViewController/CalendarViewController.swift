@@ -17,20 +17,19 @@ class CalendarViewController: UIViewController {
     @IBOutlet var bottomCalendarHandleView: UIView!
     @IBOutlet var goToTodayButton: UIButton!
     @IBOutlet var segmentedControlContainerView: UIView!
-
     @IBOutlet var calendarViewHeightConstraint: NSLayoutConstraint!
-    let sectionTitles = ["Presenti", "Assenti"]
+    
     var dayType = DayType.evening
-    var personsPresent: [Person] = []
-    var personsNotPresent: [Person] = []
+    var allPersons = PersonListUtility.persons
+    var filteredPerson: [Person] = []
     var personsAdmonished: [Person] = []
+    var personsPresent: [Person] = []
     var canModifyOldDays = false
-
+    
     // MARK: LifeCycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.setUpCalendarAppearance()
         self.setupSegmentedControl()
         self.getDataFromCoreDataAndReloadViews()
@@ -40,18 +39,18 @@ class CalendarViewController: UIViewController {
         self.addObservers()
         self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
     }
-
+    
     //   Get called when the app is become active
     @objc func willBecomeActive() {
         self.updateDayTypeBasedOnTime()
     }
-
+    
     @objc func systemTimeChanged() {
         self.updateCalendarIfNeeded()
     }
-
+    
     // MARK: Utils and Design
-
+    
     /// Add shadow and corner radius to bottom Calendar Handle View
     func designBottomCalendarHandleView() {
         self.bottomCalendarHandleView.layer.shadowColor = UIColor.gray.cgColor
@@ -62,7 +61,7 @@ class CalendarViewController: UIViewController {
         self.bottomCalendarHandleView.layer.cornerRadius = 13
         self.bottomCalendarHandleView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
     }
-
+    
     func addObservers() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.willBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
@@ -70,14 +69,15 @@ class CalendarViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeModifyStatus(_:)), name: .didChangeModifyStatus, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
-}
-
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
     func updateGoToTodayButton() {
         self.goToTodayButton.alpha = Date().isThisDaySelectable() ? 1 : 0.3
     }
-
+    
     func automaticScrollToToday() {
-        //        self.saveCurrentDataInCoreData() // save the date of the current day before deselecting
         DispatchQueue.main.async {
             self.calendarView.setCurrentPage(Date.now, animated: true)
             self.calendarView.select(Date.now)
@@ -89,8 +89,8 @@ class CalendarViewController: UIViewController {
         let notification = Notification(name: .didUpdateAttendance, object: nil, userInfo: nil)
         NotificationCenter.default.post(notification)
     }
-
-
+    
+    
     func setupSegmentedControl() {
         self.segmentedControl.backgroundColor = .white
         self.segmentedControl.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
@@ -102,13 +102,13 @@ class CalendarViewController: UIViewController {
         self.segmentedControl.selectedSegmentTintColor = Theme.FSCalendarStandardSelectionColor
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
-
+        
         let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .normal)
     }
-
+    
     // MARK: Morning and Evening Selector
-
+    
     func updateDayTypeBasedOnTime() {
         let todayString = DateFormatter.basicFormatter.string(from: Date.now)
         let currentDayString = DateFormatter.basicFormatter.string(from: self.calendarView.selectedDate ?? Date())
@@ -128,43 +128,37 @@ class CalendarViewController: UIViewController {
             if oldDayType != self.dayType { self.getDataFromCoreDataAndReloadViews() }
         }
     }
-
+    
     func reloadCalendarDateIfNeeded() {
         if self.calendarView.maximumDate < Date.now {
             self.updateGoToTodayButton()
             self.calendarView.reloadData()
         }
     }
-
+    
     // MARK: Functions to fetch and save CoreData
-
+    
     /// Update Presence reloading data from CoreData
     func getDataFromCoreDataAndReloadViews() {
-        self.personsPresent.removeAll()
-        self.personsNotPresent.removeAll()
+        self.filteredPerson.removeAll()
         self.personsAdmonished.removeAll()
+        self.personsPresent.removeAll()
         let attendance = CoreDataService.shared.getAttendace(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
         self.personsPresent = attendance?.persons?.allObjects as? [Person] ?? []
         self.personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
-        for person in PersonListUtility.persons {
-            if !self.personsPresent.contains(where: { $0.name == person.name }),
-               !self.personsNotPresent.contains(where: { $0.name == person.name }) {
-                self.personsNotPresent.append(person)
-            }
-        }
-
+        self.allPersons = PersonListUtility.persons
+        self.filteredPerson = self.allPersons
         self.sortPersonPresentAndNot()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
-            self.collectionView.setContentOffset(.zero, animated: true)
+            self.collectionView.setContentOffset(CGPoint(x: 0, y: 53), animated: true)
         }
     }
-
+    
+    // TODO: Improve sorting
     func sortPersonPresentAndNot() {
-        self.personsPresent = self.personsPresent.sorted { $0.name ?? "" < $1.name ?? "" }
-        self.personsNotPresent = self.personsNotPresent.sorted { $0.name ?? "" < $1.name ?? "" }
+        self.allPersons = self.allPersons.sorted { $0.name ?? "" < $1.name ?? "" }
     }
-
     
     // MARK: Handle settings
     @objc func didChangeModifyStatus(_: Notification) {
@@ -175,9 +169,9 @@ class CalendarViewController: UIViewController {
     @objc func didChangePersonList(_: Notification) {
         self.getDataFromCoreDataAndReloadViews()
     }
-
+    
     // MARK: IBActions
-
+    
     @IBAction func segmentedControlValueChanged(_: Any) {
         //        self.saveCurrentDataInCoreData()
         switch self.segmentedControl.selectedSegmentIndex {
@@ -187,13 +181,13 @@ class CalendarViewController: UIViewController {
         }
         self.getDataFromCoreDataAndReloadViews()
     }
-
+    
     @IBAction func goToTodayTouchUpInside(_: Any) {
         !Date().isThisDaySelectable()
         ? self.presentAlert(alertText: "Hey!", alertMessage: "Mi dispiace, ma dovresti sapere che oggi non si prendono presenze!")
         : self.automaticScrollToToday()
     }
-
+    
     @objc func handleSwipe(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
@@ -205,5 +199,19 @@ class CalendarViewController: UIViewController {
                 break
             }
         }
+    }
+    
+    @objc func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            self.collectionView.contentInset = .zero
+        } else {
+            self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+        }
+        self.collectionView.scrollIndicatorInsets = collectionView.contentInset
     }
 }

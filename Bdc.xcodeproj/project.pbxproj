@@ -16,6 +16,7 @@
 		DD0CAB532728108600EA42B1 /* DayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB522728108600EA42B1 /* DayType.swift */; };
 		DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */; };
 		DD0E35BF277BB7F50082D32C /* AddChangePersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E35BE277BB7F50082D32C /* AddChangePersonViewController.swift */; };
+		DD12B8CA29103C2A00C483D8 /* UIApplication - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD12B8C929103C2A00C483D8 /* UIApplication - Ext.swift */; };
 		DD171B8627864B2C002ACF4F /* SwiftHoliday.h in Headers */ = {isa = PBXBuildFile; fileRef = DD171B8527864B2C002ACF4F /* SwiftHoliday.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD171B8927864B2C002ACF4F /* SwiftHoliday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD171B8327864B2C002ACF4F /* SwiftHoliday.framework */; };
 		DD171B8B27864B2C002ACF4F /* SwiftHoliday.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DD171B8327864B2C002ACF4F /* SwiftHoliday.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -45,6 +46,7 @@
 		DD47EEC3278B3CBF0081388D /* Label - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47EEC2278B3CBF0081388D /* Label - Ext.swift */; };
 		DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */; };
 		DD60B5552753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */; };
+		DD611B5B2910412C00D8063C /* CalendarViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD611B5A2910412C00D8063C /* CalendarViewController+SearchBar.swift */; };
 		DD617CEB2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */; };
 		DD617CED2753C3AE002AD5E7 /* RankingWeeklyTableViewCell + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD617CEC2753C3AE002AD5E7 /* RankingWeeklyTableViewCell + CollectionView.swift */; };
 		DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968227221A40009E455F /* Person+CoreDataClass.swift */; };
@@ -58,7 +60,7 @@
 		DD7B258327567AA100E663AC /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B258227567AA100E663AC /* PDFCreator.swift */; };
 		DD7B258527567B0600E663AC /* RankingViewController + PDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */; };
 		DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */; };
-		DD7B2589275680DE00E663AC /* Array + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2588275680DE00E663AC /* Array + Ext.swift */; };
+		DD7B2589275680DE00E663AC /* Array - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2588275680DE00E663AC /* Array - Ext.swift */; };
 		DD8483072774DE9E00E7F179 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8483062774DE9E00E7F179 /* Constant.swift */; };
 		DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84830927772AFA00E7F179 /* SettingsViewController.swift */; };
 		DD84830D27772FC200E7F179 /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */; };
@@ -155,6 +157,7 @@
 		DD0CAB522728108600EA42B1 /* DayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayType.swift; sourceTree = "<group>"; };
 		DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ext.swift"; sourceTree = "<group>"; };
 		DD0E35BE277BB7F50082D32C /* AddChangePersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChangePersonViewController.swift; sourceTree = "<group>"; };
+		DD12B8C929103C2A00C483D8 /* UIApplication - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication - Ext.swift"; sourceTree = "<group>"; };
 		DD171B8327864B2C002ACF4F /* SwiftHoliday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftHoliday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD171B8527864B2C002ACF4F /* SwiftHoliday.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftHoliday.h; sourceTree = "<group>"; };
 		DD171B8F27864B3E002ACF4F /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -183,6 +186,7 @@
 		DD47EEC2278B3CBF0081388D /* Label - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label - Ext.swift"; sourceTree = "<group>"; };
 		DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + FSCalendar.swift"; sourceTree = "<group>"; };
 		DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDayHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		DD611B5A2910412C00D8063C /* CalendarViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController+SearchBar.swift"; sourceTree = "<group>"; };
 		DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSingleDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD617CEC2753C3AE002AD5E7 /* RankingWeeklyTableViewCell + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingWeeklyTableViewCell + CollectionView.swift"; sourceTree = "<group>"; };
 		DD64968227221A40009E455F /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -196,7 +200,7 @@
 		DD7B258227567AA100E663AC /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
 		DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + PDF.swift"; sourceTree = "<group>"; };
 		DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFTableDataItem.swift; sourceTree = "<group>"; };
-		DD7B2588275680DE00E663AC /* Array + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + Ext.swift"; sourceTree = "<group>"; };
+		DD7B2588275680DE00E663AC /* Array - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array - Ext.swift"; sourceTree = "<group>"; };
 		DD8483062774DE9E00E7F179 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		DD84830927772AFA00E7F179 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -472,6 +476,7 @@
 				DD8543F227219D4A004D38F0 /* CalendarViewController.swift */,
 				DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */,
 				DD03AC18274811B8004C4819 /* CalendarViewController + CollectionView.swift */,
+				DD611B5A2910412C00D8063C /* CalendarViewController+SearchBar.swift */,
 			);
 			path = CalendarViewController;
 			sourceTree = "<group>";
@@ -692,8 +697,9 @@
 				DDC337A527240CAE0028E49B /* Date - Ext.swift */,
 				DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */,
 				DD1A1C64274908AB006FC676 /* UIView - Ext.swift */,
-				DD7B2588275680DE00E663AC /* Array + Ext.swift */,
+				DD7B2588275680DE00E663AC /* Array - Ext.swift */,
 				DD47EEC2278B3CBF0081388D /* Label - Ext.swift */,
+				DD12B8C929103C2A00C483D8 /* UIApplication - Ext.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -872,7 +878,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					DD171B8227864B2C002ACF4F = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -1080,6 +1086,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD64968727221A40009E455F /* Attendance+CoreDataClass.swift in Sources */,
+				DD12B8CA29103C2A00C483D8 /* UIApplication - Ext.swift in Sources */,
 				DD18C7FB27220B890086BB6C /* CoreDateContainer.swift in Sources */,
 				DDE9D76F28BE3F0A008463CD /* RankingSlotTypeTableViewCell.swift in Sources */,
 				DD47EEC1278B2C4F0081388D /* RankingTableViewCell.swift in Sources */,
@@ -1126,6 +1133,7 @@
 				DDF9B58327786BC400E2FEE2 /* SettingsArrowTableViewCell.swift in Sources */,
 				DD368F522774D415000F0A84 /* YearPickerView.swift in Sources */,
 				DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */,
+				DD611B5B2910412C00D8063C /* CalendarViewController+SearchBar.swift in Sources */,
 				DD1A1C65274908AB006FC676 /* UIView - Ext.swift in Sources */,
 				DD717D522772428C0003CB16 /* RankingTypeViewController.swift in Sources */,
 				DD717D56277249B90003CB16 /* CheckBox.swift in Sources */,
@@ -1140,7 +1148,7 @@
 				DD368F4E2774BE4F000F0A84 /* MonthYearPickerView.swift in Sources */,
 				DD8543F127219D4A004D38F0 /* SceneDelegate.swift in Sources */,
 				DD413379274FC94C0038B4C6 /* RankingViewController + TableView.swift in Sources */,
-				DD7B2589275680DE00E663AC /* Array + Ext.swift in Sources */,
+				DD7B2589275680DE00E663AC /* Array - Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1205,7 +1213,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1240,7 +1248,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1399,12 +1407,12 @@
 				DEVELOPMENT_TEAM = 885XTY2NH9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bdc/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BdC;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1433,12 +1441,12 @@
 				DEVELOPMENT_TEAM = 885XTY2NH9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bdc/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BdC;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -128,9 +128,9 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
                 return $0.attendanceNumber > $1.attendanceNumber
             }
         }
-        header[0] = headerBasic[0]
-        header[1] = headerBasic[1] + " " + sorting.sortingType.symbol
-        header[2] = headerBasic[2]
+        self.header[0] = self.headerBasic[0]
+        self.header[1] = self.headerBasic[1] + " " + self.sorting.sortingType.symbol
+        self.header[2] = self.headerBasic[2]
         self.customReloadTableView()
     }
     
@@ -163,10 +163,10 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
                 rankingPersonsAttendaces = rankingPersonsAttendaces.sorted { $0.person.name ?? "" > $1.person.name ?? "" }
                 sorting.sortingType = .descending
             }
-            header[column] = headerBasic[column] + " " + sorting.sortingType.symbol
-            header[1] = headerBasic[1]
-            header[2] = headerBasic[2]
-            sorting.sortingPosition = .name
+            self.header[column] = self.headerBasic[column] + " " + self.sorting.sortingType.symbol
+            self.header[1] = self.headerBasic[1]
+            self.header[2] = self.headerBasic[2]
+            self.sorting.sortingPosition = .name
         case 1: // Attendacne
             let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
             if oldSorting.sortingType == .descending {
@@ -198,16 +198,16 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             sorting.sortingPosition = .attendance
         case 2: // Admonishment
             if oldSorting.sortingType == .descending {
-                rankingPersonsAttendaces = rankingPersonsAttendaces.sorted { $0.admonishmentNumber < $1.admonishmentNumber }
-                sorting.sortingType = .ascending
+                self.rankingPersonsAttendaces = self.rankingPersonsAttendaces.sorted { $0.admonishmentNumber < $1.admonishmentNumber }
+                self.sorting.sortingType = .ascending
             } else {
-                rankingPersonsAttendaces = rankingPersonsAttendaces.sorted { $0.admonishmentNumber > $1.admonishmentNumber }
-                sorting.sortingType = .descending
+                self.rankingPersonsAttendaces = self.rankingPersonsAttendaces.sorted { $0.admonishmentNumber > $1.admonishmentNumber }
+                self.sorting.sortingType = .descending
             }
-            header[column] = headerBasic[column] + " " + sorting.sortingType.symbol
-            header[0] = headerBasic[0]
-            header[1] = headerBasic[1]
-            sorting.sortingPosition = .admonishment
+            self.header[column] = self.headerBasic[column] + " " + self.sorting.sortingType.symbol
+            self.header[0] = self.headerBasic[0]
+            self.header[1] = self.headerBasic[1]
+            self.sorting.sortingPosition = .admonishment
         default: return
         }
         self.customReloadTableView()
