@@ -1,4 +1,5 @@
 # SCRIPT CREATED ONLY TO ADD SELF EVERYWHERE 
+# Run this into project folder using terminal: swiftformat . --config ".swiftformat"
 
 --self insert
 
