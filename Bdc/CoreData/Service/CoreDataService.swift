@@ -168,7 +168,7 @@ class CoreDataService {
         do {
             if let personsList = try context.fetch(fetchRequest).first {
                 personsList.persons = NSSet(array: persons)
-                try context.save()
+                try self.context.save()
                 CoreDataService.shared.updateNameInOldRecords(oldName: oldName, newName: newName)
             }
 
@@ -187,7 +187,7 @@ class CoreDataService {
         do {
             if let personsList = try context.fetch(fetchRequest).first {
                 personsList.persons = NSSet(array: persons)
-                try context.save()
+                try self.context.save()
             }
 
         } catch let error as NSError {
@@ -266,7 +266,7 @@ class CoreDataService {
                 var persons = personsList.persons?.allObjects as? [Person] ?? []
                 persons.append(person)
                 personsList.persons = NSSet(array: persons)
-                try context.save()
+                try self.context.save()
                 PersonListUtility.persons = self.getPersonsList()
             }
 

@@ -21,15 +21,15 @@ public class CheckBox: UIView {
     @IBInspectable
     public var selectedColor = UIColor(red: 0.29, green: 0.56, blue: 0.88, alpha: 1.0) {
         willSet {
-            innerCircle.layer.borderColor = newValue.cgColor
-            waveCircle.layer.borderColor  = newValue.cgColor
+            self.innerCircle.layer.borderColor = newValue.cgColor
+            self.waveCircle.layer.borderColor  = newValue.cgColor
         }
     }
     /// The color used for the deselected state.
     @IBInspectable
     public var deselectedColor = UIColor.lightGray {
         willSet {
-            circle.layer.borderColor = newValue.cgColor
+            self.circle.layer.borderColor = newValue.cgColor
         }
     }
     /// A `Boolean` value that indicates whether the button is selected.
@@ -40,20 +40,20 @@ public class CheckBox: UIView {
     /// - Settings this to `false` will also remove the `UITapGestureRecognizer` if it was previously added.
     public var useTapGestureRecognizer = true {
         willSet {
-            guard newValue else { return removeGestureRecognizer(tapGesture) }
-            addTapGesture()
+            guard newValue else { return removeGestureRecognizer(self.tapGesture) }
+            self.addTapGesture()
         }
     }
     
     /// The final width of the inner circle's border, used for filling.
     private var innerBorderWidth: CGFloat {
-        return innerCircle.frame.width * 0.6
+        return self.innerCircle.frame.width * 0.6
     }
     /// The percentage with which the innler circle will increase for the elastic filling effect.
     private let innerIncreaseDelta: CGFloat = 1.1
     /// The width of the inner circle after increasing for the elasting filling effect.
     private var innerIncreasedWidth: CGFloat {
-        return innerCircle.frame.width * innerIncreaseDelta
+        return self.innerCircle.frame.width * self.innerIncreaseDelta
     }
     
     /// The tap gesture that will handle the `onSelect`/`onDeselect` callbacks.
@@ -87,7 +87,7 @@ public class CheckBox: UIView {
     /// - Important: Calling this will also add the required `UITapGestureRecognizer`, unless it was already added or `useTapGestureRecognizer` was set to `false`.
     /// - Parameter closure: The closure the be called.
     public func onSelect(execute closure: @escaping () -> Void) {
-        didSelect = closure
+        self.didSelect = closure
     }
     
     /// Sets a closure that will be called when the control is deselected.
@@ -95,7 +95,7 @@ public class CheckBox: UIView {
     /// - Important: Calling this will also add the required `UITapGestureRecognizer`, unless it was already added or `useTapGestureRecognizer` was set to `false`.
     /// - Parameter closure: The closure the be called.
     public func onDeselect(execute closure: @escaping () -> Void) {
-        didDeselect = closure
+        self.didDeselect = closure
     }
     
     
@@ -107,7 +107,7 @@ public class CheckBox: UIView {
         
         borderWidth.duration       = 0.2
         borderWidth.fromValue      = 0.0
-        borderWidth.toValue        = innerBorderWidth
+        borderWidth.toValue        = self.innerBorderWidth
         borderWidth.timingFunction = CAMediaTimingFunction(name: .easeIn)
         borderWidth.fillMode       = .backwards
         borderWidth.beginTime      = layer.lth_currentMediaTime
@@ -121,15 +121,15 @@ public class CheckBox: UIView {
         let group = CAAnimationGroup()
         
         let bounds       = CABasicAnimation(keyPath: "bounds")
-        bounds.fromValue = NSValue(cgRect: innerCircle.frame)
+        bounds.fromValue = NSValue(cgRect: self.innerCircle.frame)
         bounds.toValue   = NSValue(cgRect: CGRect(
             x: 0, y: 0,
-            width: innerIncreasedWidth, height: innerIncreasedWidth)
+            width: self.innerIncreasedWidth, height: self.innerIncreasedWidth)
         )
         
         let cornerRadius       = CABasicAnimation(keyPath: "cornerRadius")
-        cornerRadius.fromValue = innerCircle.layer.cornerRadius
-        cornerRadius.toValue   = innerCircle.layer.cornerRadius * innerIncreaseDelta
+        cornerRadius.fromValue = self.innerCircle.layer.cornerRadius
+        cornerRadius.toValue   = self.innerCircle.layer.cornerRadius * self.innerIncreaseDelta
         
         group.duration       = 0.1
         group.animations     = [bounds, cornerRadius]
@@ -145,15 +145,15 @@ public class CheckBox: UIView {
         let group = CAAnimationGroup()
         
         let bounds = CABasicAnimation(keyPath: "bounds")
-        bounds.toValue   = NSValue(cgRect: innerCircle.frame)
+        bounds.toValue   = NSValue(cgRect: self.innerCircle.frame)
         bounds.fromValue = NSValue(cgRect: CGRect(
             x: 0, y: 0,
-            width: innerIncreasedWidth, height: innerIncreasedWidth)
+            width: self.innerIncreasedWidth, height: self.innerIncreasedWidth)
         )
         
         let cornerRadius       = CABasicAnimation(keyPath: "cornerRadius")
-        cornerRadius.fromValue = innerCircle.layer.cornerRadius * innerIncreaseDelta
-        cornerRadius.toValue   = innerCircle.layer.cornerRadius
+        cornerRadius.fromValue = self.innerCircle.layer.cornerRadius * self.innerIncreaseDelta
+        cornerRadius.toValue   = self.innerCircle.layer.cornerRadius
         
         group.duration       = 0.15
         group.animations     = [bounds, cornerRadius]
@@ -168,8 +168,8 @@ public class CheckBox: UIView {
         let borderColor = CABasicAnimation(keyPath: "borderColor")
         
         borderColor.duration       = 0.15
-        borderColor.fromValue      = deselectedColor.cgColor
-        borderColor.toValue        = selectedColor.cgColor
+        borderColor.fromValue      = self.deselectedColor.cgColor
+        borderColor.toValue        = self.selectedColor.cgColor
         borderColor.timingFunction = CAMediaTimingFunction(name: .linear)
         borderColor.fillMode       = .backwards
         borderColor.beginTime      = layer.lth_currentMediaTime + 0.28
@@ -182,19 +182,19 @@ public class CheckBox: UIView {
     private func waveIncreaseGroup() -> CAAnimationGroup {
         let start = 0.21
         let delta = CGFloat(2.15)
-        let width = waveCircle.frame.width * delta
+        let width = self.waveCircle.frame.width * delta
         let group = CAAnimationGroup()
         
         let bounds       = CABasicAnimation(keyPath: "bounds")
-        bounds.fromValue = NSValue(cgRect: waveCircle.frame)
+        bounds.fromValue = NSValue(cgRect: self.waveCircle.frame)
         bounds.toValue   = NSValue(cgRect: CGRect(
             x: 0, y: 0,
             width: width, height: width)
         )
         
         let cornerRadius       = CABasicAnimation(keyPath: "cornerRadius")
-        cornerRadius.fromValue = waveCircle.layer.cornerRadius
-        cornerRadius.toValue   = waveCircle.layer.cornerRadius * delta
+        cornerRadius.fromValue = self.waveCircle.layer.cornerRadius
+        cornerRadius.toValue   = self.waveCircle.layer.cornerRadius * delta
         
         group.duration       = 0.25
         group.animations     = [bounds, cornerRadius]
@@ -239,7 +239,7 @@ public class CheckBox: UIView {
         let group = CAAnimationGroup()
 
         let borderWidth       = CABasicAnimation(keyPath: "borderWidth")
-        borderWidth.fromValue = innerBorderWidth
+        borderWidth.fromValue = self.innerBorderWidth
         borderWidth.toValue   = 0.0
         
         let opacity       = CABasicAnimation(keyPath: "opacity")
@@ -259,8 +259,8 @@ public class CheckBox: UIView {
         let borderColor = CABasicAnimation(keyPath: "borderColor")
         
         borderColor.duration       = duration
-        borderColor.fromValue      = selectedColor.cgColor
-        borderColor.toValue        = deselectedColor.cgColor
+        borderColor.fromValue      = self.selectedColor.cgColor
+        borderColor.toValue        = self.deselectedColor.cgColor
         borderColor.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         borderColor.beginTime      = layer.lth_currentMediaTime
         
@@ -275,25 +275,25 @@ public class CheckBox: UIView {
     /// - Parameter animated: A `Boolean` value which determines whether the transition should be animated or not. Defaults to `true`.
     @objc(selectAnimated:)
     public func select(animated: Bool = true) {
-        guard !isSelected else { return }
-        isSelected = true
+        guard !self.isSelected else { return }
+        self.isSelected = true
         
-        innerCircle.layer.borderWidth = innerBorderWidth
-        circle.layer.borderColor      = selectedColor.cgColor
+        self.innerCircle.layer.borderWidth = self.innerBorderWidth
+        self.circle.layer.borderColor      = self.selectedColor.cgColor
         
-        didSelect()
+        self.didSelect()
         
         guard animated else { return }
         
-        innerCircle.layer.add(innerBorderIncrease(), forKey: "innerBorderWidth")
-        innerCircle.layer.add(innerIncreaseGroup(), forKey: "innerIncreaseGroup")
-        innerCircle.layer.add(innerDecreaseGroup(), forKey: "innerDecreaseGroup")
+        self.innerCircle.layer.add(self.innerBorderIncrease(), forKey: "innerBorderWidth")
+        self.innerCircle.layer.add(self.innerIncreaseGroup(), forKey: "innerIncreaseGroup")
+        self.innerCircle.layer.add(self.innerDecreaseGroup(), forKey: "innerDecreaseGroup")
         
-        circle.layer.add(circleBorderColor(), forKey: "circleBorderColor")
+        self.circle.layer.add(self.circleBorderColor(), forKey: "circleBorderColor")
         
-        waveCircle.layer.add(waveIncreaseGroup(), forKey: "innerDecreaseGroup")
-        waveCircle.layer.add(waveAlphaDecrease(), forKey: "outerAlphaDecrease")
-        waveCircle.layer.add(waveBorderDecrease(), forKey: "outerBorderDecrease")
+        self.waveCircle.layer.add(self.waveIncreaseGroup(), forKey: "innerDecreaseGroup")
+        self.waveCircle.layer.add(self.waveAlphaDecrease(), forKey: "outerAlphaDecrease")
+        self.waveCircle.layer.add(self.waveBorderDecrease(), forKey: "outerBorderDecrease")
     }
     
     /// Sets the deselected state of the control.
@@ -301,46 +301,46 @@ public class CheckBox: UIView {
     /// - Parameter animated: A `Boolean` value which determines whether the transition should be animated or not. Defaults to `true`.
     @objc(deselectAnimated:)
     public func deselect(animated: Bool = true) {
-        guard isSelected else { return }
-        isSelected = false
+        guard self.isSelected else { return }
+        self.isSelected = false
         
-        removeAnimations()
-        setDeselectedEndValues()
-        didDeselect()
+        self.removeAnimations()
+        self.setDeselectedEndValues()
+        self.didDeselect()
         
         guard animated else { return }
         
         let duration = 0.2
-        innerCircle.layer.add(innerDecreaseGroupReverse(duration: duration), forKey: "innerDecreaseGroupReverse")
-        circle.layer.add(circleBorderColorReverse(duration: duration), forKey: "circleBorderColorReverse")
+        self.innerCircle.layer.add(self.innerDecreaseGroupReverse(duration: duration), forKey: "innerDecreaseGroupReverse")
+        self.circle.layer.add(self.circleBorderColorReverse(duration: duration), forKey: "circleBorderColorReverse")
     }
     
     /// Sets the end values for the deselected state.
     private func setDeselectedEndValues() {
-        innerCircle.layer.borderWidth = 0
-        circle.layer.borderColor      = deselectedColor.cgColor
+        self.innerCircle.layer.borderWidth = 0
+        self.circle.layer.borderColor      = self.deselectedColor.cgColor
     }
     
     /// Removes all animations.
     private func removeAnimations() {
-        waveCircle.layer.removeAllAnimations()
-        circle.layer.removeAllAnimations()
-        innerCircle.layer.removeAllAnimations()
+        self.waveCircle.layer.removeAllAnimations()
+        self.circle.layer.removeAllAnimations()
+        self.innerCircle.layer.removeAllAnimations()
     }
     
     /// Toggles between selected and deselected states.
     @objc private func toggleState() {
-        guard isSelected else { return select() }
+        guard self.isSelected else { return self.select() }
         
-        deselect()
+        self.deselect()
     }
     
     /// Adds the `UITapGestureRecognizer`.
     private func addTapGesture() {
-        guard useTapGestureRecognizer else { return }
-        guard gestureRecognizers?.contains(tapGesture) != true else { return }
+        guard self.useTapGestureRecognizer else { return }
+        guard gestureRecognizers?.contains(self.tapGesture) != true else { return }
         
-        addGestureRecognizer(tapGesture)
+        addGestureRecognizer(self.tapGesture)
     }
     
     
@@ -355,13 +355,13 @@ public class CheckBox: UIView {
     public init(diameter: CGFloat = 18, selectedColor: UIColor? = nil, deselectedColor: UIColor? = nil) {
         let size = CGSize(width: diameter, height: diameter)
         super.init(frame: CGRect(origin: .zero, size: size))
-        commonInit(diameter: diameter, selectedColor: selectedColor, deselectedColor: deselectedColor)
+        self.commonInit(diameter: diameter, selectedColor: selectedColor, deselectedColor: deselectedColor)
     }
     
     /// Called when a radio button is loaded from a xib. `selectedColor` and `deselectedColor` can be either added as *User Defined Runtime Attributes*, or set after initialization.
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit(diameter: frame.size.width, selectedColor: nil, deselectedColor: nil)
+        self.commonInit(diameter: frame.size.width, selectedColor: nil, deselectedColor: nil)
     }
     
     /// Performs the initialization of the radio button.
@@ -379,30 +379,30 @@ public class CheckBox: UIView {
         self.selectedColor   = selectedColor ?? self.selectedColor
         self.deselectedColor = deselectedColor ?? self.deselectedColor
         
-        addSubview(circle)
-        circle.backgroundColor    = .clear
-        circle.layer.cornerRadius = radius
-        circle.layer.borderColor  = self.deselectedColor.cgColor
-        circle.layer.borderWidth  = diameter * 0.1
-        circle.frame.size         = CGSize(width: diameter, height: diameter)
-        circle.center             = center
+        addSubview(self.circle)
+        self.circle.backgroundColor    = .clear
+        self.circle.layer.cornerRadius = radius
+        self.circle.layer.borderColor  = self.deselectedColor.cgColor
+        self.circle.layer.borderWidth  = diameter * 0.1
+        self.circle.frame.size         = CGSize(width: diameter, height: diameter)
+        self.circle.center             = center
         
-        addSubview(innerCircle)
-        innerCircle.backgroundColor    = .clear
-        innerCircle.layer.cornerRadius = innerCircleDiameter * 0.5
-        innerCircle.layer.borderColor  = self.selectedColor.cgColor
-        innerCircle.layer.borderWidth  = 0
-        innerCircle.frame.size         = CGSize(width: innerCircleDiameter, height: innerCircleDiameter)
-        innerCircle.center             = center
+        addSubview(self.innerCircle)
+        self.innerCircle.backgroundColor    = .clear
+        self.innerCircle.layer.cornerRadius = innerCircleDiameter * 0.5
+        self.innerCircle.layer.borderColor  = self.selectedColor.cgColor
+        self.innerCircle.layer.borderWidth  = 0
+        self.innerCircle.frame.size         = CGSize(width: innerCircleDiameter, height: innerCircleDiameter)
+        self.innerCircle.center             = center
         
-        addSubview(waveCircle)
-        waveCircle.backgroundColor    = .clear
-        waveCircle.layer.cornerRadius = innerCircle.layer.cornerRadius
-        waveCircle.layer.borderColor  = self.selectedColor.cgColor
-        waveCircle.layer.borderWidth  = 0
-        waveCircle.alpha              = 0
-        waveCircle.frame.size         = innerCircle.frame.size
-        waveCircle.center             = center
+        addSubview(self.waveCircle)
+        self.waveCircle.backgroundColor    = .clear
+        self.waveCircle.layer.cornerRadius = self.innerCircle.layer.cornerRadius
+        self.waveCircle.layer.borderColor  = self.selectedColor.cgColor
+        self.waveCircle.layer.borderWidth  = 0
+        self.waveCircle.alpha              = 0
+        self.waveCircle.frame.size         = self.innerCircle.frame.size
+        self.waveCircle.center             = center
     }
     
 }

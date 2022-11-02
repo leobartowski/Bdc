@@ -127,7 +127,7 @@ class RankingTableViewCell: UITableViewCell {
     
     @objc func didChangeWeightedAttendance(_: Notification) {
         self.showWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
-        if self.rankingAttendance != nil, rankingType != nil {
+        if self.rankingAttendance != nil, self.rankingType != nil {
             self.attendanceLabel.text = self.getStringOfAttendanceLabel(self.rankingAttendance!, self.rankingType!)
         }
         self.percentualAdmonishmentLabel.isHidden = self.showWeightedAttendance ? true : false

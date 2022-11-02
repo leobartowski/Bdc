@@ -15,7 +15,7 @@ class HandlePersonsViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
         self.setupTableViewShadow()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPerson))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addPerson))
         self.addObservers()
     }
     

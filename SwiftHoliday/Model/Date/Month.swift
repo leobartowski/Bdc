@@ -31,7 +31,7 @@ public enum Month: Int, CaseIterable {
     }
 
     func lastDay(in year: Int) -> LocalDate {
-        return LocalDate(year: year, month: self, day: length(in: year))!
+        return LocalDate(year: year, month: self, day: self.length(in: year))!
     }
 
     enum WeekdayInMonthOrdinal: Int {
@@ -39,7 +39,7 @@ public enum Month: Int, CaseIterable {
     }
 
     func first(_ weekday: Weekday, in year: Int) -> LocalDate {
-        var date = firstDay(in: year)
+        var date = self.firstDay(in: year)
         while date.weekday != weekday {
             date = date.addingDays(1)
         }
@@ -47,7 +47,7 @@ public enum Month: Int, CaseIterable {
     }
 
     func last(_ weekday: Weekday, in year: Int) -> LocalDate {
-        var date = lastDay(in: year)
+        var date = self.lastDay(in: year)
         while date.weekday != weekday {
             date = date.addingDays(-1)
         }
@@ -55,6 +55,6 @@ public enum Month: Int, CaseIterable {
     }
 
     func get(_ ordinal: WeekdayInMonthOrdinal, _ weekday: Weekday, in year: Int) -> LocalDate {
-        return first(weekday, in: year).addingDays(ordinal.rawValue * 7)
+        return self.first(weekday, in: year).addingDays(ordinal.rawValue * 7)
     }
 }

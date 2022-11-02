@@ -1,2 +1,10 @@
+# SCRIPT CREATED ONLY TO ADD SELF EVERYWHERE 
+
 --self insert
---selfrequired 
+
+# file options
+--exclude Pods,Generated
+
+# rules
+--disable all
+--enable redundantSelf

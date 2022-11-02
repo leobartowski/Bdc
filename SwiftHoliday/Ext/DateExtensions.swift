@@ -15,7 +15,7 @@ public extension Date {
     ///   - country: Country to check for holidays in. Refer to `Country.availableCountries` for a list of available countries.
     ///   - timeZone: Time zone to interpret the date. If left unspecified, the default time zone for the given country will be used.
     func isHoliday(in country: Country, timeZone: TimeZone? = nil) -> Bool {
-        return getHoliday(in: country, timeZone: timeZone) != nil
+        return self.getHoliday(in: country, timeZone: timeZone) != nil
     }
 
     /// SwiftyHolidays: Returns a `Holiday` instance if the date is a holiday in a given country and time zone.

@@ -10,14 +10,14 @@ class HolidaysBuilder {
     var holidays = [Holiday]()
 
     func addHoliday(_ name: String, date: LocalDate) {
-        holidays.append(Holiday(name: name, date: date))
+        self.holidays.append(Holiday(name: name, date: date))
     }
 
     func addHoliday(_ name: String, date: (Month, Int)) {
-        holidays.append(Holiday(name: name, date: (year, date.0, date.1)))
+        self.holidays.append(Holiday(name: name, date: (self.year, date.0, date.1)))
     }
 
     func getHolidays() -> [Holiday] {
-        return holidays
+        return self.holidays
     }
 }

@@ -44,7 +44,7 @@ class RankingTypeTableViewCell: UITableViewCell {
     func setup(_ vc: RankingViewController ) {
         self.rankingViewController = vc
         vc.rankingType = self.rankingType
-        self.selectedAllDateOfTheWeek(calendarView.selectedDate ?? Date.now)
+        self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Date.now)
         vc.populateAttendance()
     }
     
