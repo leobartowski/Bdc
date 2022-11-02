@@ -1,0 +1,11 @@
+# SCRIPT CREATED ONLY TO ADD SELF EVERYWHERE 
+# Run this into project folder using terminal: swiftformat . --config ".swiftformat"
+
+--self insert
+
+# file options
+--exclude Pods,Generated
+
+# rules
+--disable all
+--enable redundantSelf

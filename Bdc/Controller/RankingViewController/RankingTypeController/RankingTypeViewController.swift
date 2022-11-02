@@ -9,10 +9,9 @@ import UIKit
 
 class RankingTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
     @IBOutlet var tableView: UITableView!
     
-    let types = ["Settimanale", "Mensile" , "Annuale", "All-Time"]
+    let types = ["Settimanale", "Mensile", "Annuale", "All-Time"]
     var selectedType: RankingType = .weekly
     
     override func viewDidLoad() {

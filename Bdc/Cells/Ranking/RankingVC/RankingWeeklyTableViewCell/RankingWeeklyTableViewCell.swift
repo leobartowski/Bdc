@@ -55,7 +55,6 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         layout.itemSize = CGSize(width: 30, height: 30)
         layout.headerReferenceSize = CGSize(width: 50, height: 30)
         layout.footerReferenceSize = CGSize(width: 0, height: 0)
-        // TODO: Improve minimumInteritemSpacing and itemSize to to align the letters with the calendar days (lun, mar, mer, ...)
         let minimumInteritemSpacing = (self.collectionView.frame.width - (layout.itemSize.width * 7)) / 7
         layout.minimumInteritemSpacing = CGFloat(minimumInteritemSpacing)
         layout.minimumLineSpacing = CGFloat(0)
@@ -83,7 +82,6 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         }
     }
     
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         if self.isDetailViewHidden, selected {
@@ -103,7 +101,6 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         self.handleStatistics()
     }
 
-    
     func setUpShadow() {
         let cornerRadius: CGFloat = 15
         self.containerView.cornerRadius = cornerRadius

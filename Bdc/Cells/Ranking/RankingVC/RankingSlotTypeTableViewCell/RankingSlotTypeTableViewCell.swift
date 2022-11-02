@@ -15,7 +15,6 @@ class RankingSlotTypeTableViewCell: UITableViewCell {
     
     var slotType: SlotType = .morningAndEvening
     
-    
     override func awakeFromNib() {
         self.setupShadowContainerView()
     }
@@ -23,7 +22,6 @@ class RankingSlotTypeTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: 8).cgPath
     }
-    
     
     func setupShadowContainerView() {
         let cornerRadius: CGFloat = 8

@@ -39,12 +39,12 @@ public struct LocalDate: Equatable {
 
     /// SwiftyHolidays: Returns `true` if the date is a holiday in the given country.
     public func isHoliday(in country: Country) -> Bool {
-        return getHoliday(in: country) != nil
+        return self.getHoliday(in: country) != nil
     }
 
     /// SwiftyHolidays: Returns a `Holiday` instance if the date is a holiday in the given country and state.
     public func getHoliday(in country: Country) -> Holiday? {
-        return country.allHolidays(in: year).first { $0.date == self }
+        return country.allHolidays(in: self.year).first { $0.date == self }
     }
 
     /// SwiftyHolidays: Converts the `LocalDate` to a `Date`.
@@ -53,9 +53,9 @@ public struct LocalDate: Equatable {
     ///   - timeZone: Time zone to interpret the date.
     public func asDate(in timeZone: TimeZone = TimeZone(abbreviation: "CET")!) -> Date {
         var dateComponents = DateComponents()
-        dateComponents.year = year
-        dateComponents.month = month
-        dateComponents.day = day
+        dateComponents.year = self.year
+        dateComponents.month = self.month
+        dateComponents.day = self.day
         return Calendar(timeZone: timeZone).date(from: dateComponents)!
     }
 
@@ -63,17 +63,17 @@ public struct LocalDate: Equatable {
 
     var weekday: Weekday {
         let gmt = TimeZone(secondsFromGMT: 0)!
-        let date = asDate(in: gmt)
+        let date = self.asDate(in: gmt)
         let dateWeekday = Calendar(timeZone: gmt).component(.weekday, from: date)
         return Weekday(rawValue: dateWeekday)!
     }
 
     func addingDays(_ days: Int) -> LocalDate {
-        var newDay = day + days
+        var newDay = self.day + days
         var newMonth = month
-        var newYear = year
+        var newYear = self.year
         while let month = Month(rawValue: newMonth), newDay > month.length(in: year) {
-            newDay -= month.length(in: year)
+            newDay -= month.length(in: self.year)
             if month == .december {
                 newMonth = 1
                 newYear += 1
@@ -88,13 +88,13 @@ public struct LocalDate: Equatable {
             } else {
                 newMonth -= 1
             }
-            newDay += Month(rawValue: newMonth)!.length(in: year)
+            newDay += Month(rawValue: newMonth)!.length(in: self.year)
         }
         return LocalDate(year: newYear, month: newMonth, day: newDay)!
     }
 
     func previous(_ weekday: Weekday) -> LocalDate {
-        var day = addingDays(-1)
+        var day = self.addingDays(-1)
         while day.weekday != weekday {
             day = day.addingDays(-1)
         }
@@ -102,7 +102,7 @@ public struct LocalDate: Equatable {
     }
 
     func next(_ weekday: Weekday) -> LocalDate {
-        var day = addingDays(1)
+        var day = self.addingDays(1)
         while day.weekday != weekday {
             day = day.addingDays(1)
         }

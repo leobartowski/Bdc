@@ -10,7 +10,6 @@ import PDFKit
 import UIKit
 import SwiftConfettiView
 
-
 class RankingViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
@@ -41,11 +40,11 @@ class RankingViewController: UIViewController {
     }
     
     func navigationBarSetup() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(shareButtonAction))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(shareButtonAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.shareButtonAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(self.shareButtonAction))
         self.navigationItem.leftBarButtonItems = [
-            UIBarButtonItem(title: "Periodo", style: .done, target: self, action: #selector(chooseRankingTypePeriod)),
-            UIBarButtonItem(title: "Slot", style: .done, target: self, action: #selector(chooseSlotTypePeriod))
+            UIBarButtonItem(title: "Periodo", style: .done, target: self, action: #selector(self.chooseRankingTypePeriod)),
+            UIBarButtonItem(title: "Slot", style: .done, target: self, action: #selector(self.chooseSlotTypePeriod))
             ]
         
     }
@@ -117,7 +116,6 @@ class RankingViewController: UIViewController {
         }
     }
 
-    
     @objc func didChangePersonList(_: Notification) {
         self.rankingPersonsAttendaces.removeAll()
         self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance

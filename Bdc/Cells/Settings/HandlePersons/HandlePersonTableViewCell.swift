@@ -7,9 +7,7 @@
 
 import UIKit
 
-
 class HandlePersonTableViewCell: UITableViewCell {
-    
     
     @IBOutlet var mainImageView: UIImageView!
     @IBOutlet var mainTextField: UITextField!
@@ -30,4 +28,3 @@ class HandlePersonTableViewCell: UITableViewCell {
         }
     }
 }
-

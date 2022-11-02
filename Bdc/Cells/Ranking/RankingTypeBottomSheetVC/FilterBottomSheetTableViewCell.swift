@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 class FilterBottomSheetTableViewCell: UITableViewCell {
     
     @IBOutlet var mainLabel: UILabel!
