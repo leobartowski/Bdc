@@ -31,7 +31,7 @@ final class Italy: CountryBase {
             Holiday(name: "Festa Della Repubblica", date: (year, .june, 2)),
             Holiday(name: "Ferragosto", date: (year, .august, 15)),
             Holiday(name: "San Sossio", date: (year, .september, 23)),
-            Holiday(name: "Ognissanti", date: (year, .november, 1)),
+//            Holiday(name: "Ognissanti", date: (year, .november, 1)), // IT BREAKS THE APP
             Holiday(name: "Immacolata", date: (year, .december, 8)),
             Holiday(name: "Vigilia di Natale", date: (year, .december, 24)),
             Holiday(name: "Natale", date: (year, .december, 25)),
