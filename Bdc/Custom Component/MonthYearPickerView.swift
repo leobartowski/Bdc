@@ -76,7 +76,9 @@ open class MonthYearPickerView: UIControl {
     }
     
     lazy private var pickerView: UIPickerView = {
-        let pickerView = UIPickerView(frame: self.bounds)
+        let pickerView = UIPickerView()
+        // swiftlint:disable legacy_constructor
+        pickerView.frame = CGRectMake(0, 0, self.bounds.width, self.bounds.height)
         pickerView.dataSource = self
         pickerView.delegate = self
         pickerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -177,6 +179,10 @@ extension MonthYearPickerView: UIPickerViewDataSource {
     private func value(for row: Int, representing component: Calendar.Component) -> Int? {
         guard let range = calendar.maximumRange(of: component) else { return nil }
         return range.lowerBound + row
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 29
     }
     
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

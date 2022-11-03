@@ -1,20 +1,19 @@
 //
-//  RankingTypeTableViewCell + FSCalendar.swift
+//  RankingViewController + HandlePeriodCollectionView.swift
 //  Bdc
 //
-//  Created by leobartowski on 29/12/21.
+//  Created by leobartowski on 03/11/22.
 //
 
-import UIKit
+import Foundation
 import FSCalendar
 import SwiftHoliday
 
-extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         self.calendarHeightConstraint.constant = 110
-        self.contentView.layoutIfNeeded()
-        self.containerView.layoutIfNeeded()
+        self.containerPeriodView.layoutIfNeeded()
     }
     
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
@@ -30,7 +29,7 @@ extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FS
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         self.deselectAllDates()
         self.selectedAllDateOfTheWeek(calendar.currentPage)
-        self.rankingViewController?.populateAttendance()
+        self.populateAttendance()
     }
 
     /// Uded for avoid  crash on the simulator!
@@ -96,8 +95,8 @@ extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FS
     }
 
     func selectedAllDateOfTheWeek(_ date: Date) {
-        self.rankingViewController?.daysCurrentPeriod = date.getAllSelectableDateOfTheWeek()
-        let daysCurrentPeriod = self.rankingViewController?.daysCurrentPeriod ?? []
+        self.daysCurrentPeriod = date.getAllSelectableDateOfTheWeek()
+        let daysCurrentPeriod = self.daysCurrentPeriod
         for day in daysCurrentPeriod where (day.getDayNumberOfWeek() != 1 && day.getDayNumberOfWeek() != 7) {
             self.calendarView.select(day)
         }
@@ -120,4 +119,5 @@ extension RankingTypeTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FS
             }
         }
     }
+    
 }
