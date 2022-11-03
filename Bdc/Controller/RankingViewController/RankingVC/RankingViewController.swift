@@ -13,7 +13,17 @@ import SwiftConfettiView
 class RankingViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
-    
+    // Handle Period
+    @IBOutlet var containerPeriodView: UIView!
+    @IBOutlet var calendarView: FSCalendar!
+    @IBOutlet var monthYearDatePicker: MonthYearPickerView!
+    @IBOutlet var yearDatePicker: YearPickerView!
+    @IBOutlet var allTimeLabel: UILabel!
+    @IBOutlet var calendarHeightConstraint: NSLayoutConstraint!
+    // Handle Slot
+    @IBOutlet weak var slotLabel: UILabel!
+    @IBOutlet var containerSlotView: UIView!
+
     var rankingPersonsAttendaces: [RankingPersonAttendance] = []
     let headerBasic = ["Nome", "P", "A"]
     var header: [String] = []
@@ -26,11 +36,20 @@ class RankingViewController: UIViewController {
     var confettiView: SwiftConfettiView?
     
     // MARK: Lifecycle
+    
+    override func viewDidLayoutSubviews() {
+        self.containerPeriodView.layer.shadowPath = UIBezierPath(roundedRect: self.containerPeriodView.bounds, cornerRadius: 15).cgPath
+        self.containerSlotView.layer.shadowPath = UIBezierPath(roundedRect: self.containerSlotView.bounds, cornerRadius: 8).cgPath
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
         self.viewSetUp()
+        self.setupHandlePeriodView()
+        self.setupSlotView()
         self.addObservers()
+        self.loadCurrentWeekData()
     }
     
     func viewSetUp() {
@@ -46,7 +65,6 @@ class RankingViewController: UIViewController {
             UIBarButtonItem(title: "Periodo", style: .done, target: self, action: #selector(self.chooseRankingTypePeriod)),
             UIBarButtonItem(title: "Slot", style: .done, target: self, action: #selector(self.chooseSlotTypePeriod))
             ]
-        
     }
     
     func addObservers() {
@@ -115,6 +133,11 @@ class RankingViewController: UIViewController {
             item.admonishmentNumber = 0
         }
     }
+    
+    private func loadCurrentWeekData( ) {
+        self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Date.now)
+        self.populateAttendance()
+    }
 
     @objc func didChangePersonList(_: Notification) {
         self.rankingPersonsAttendaces.removeAll()
@@ -123,6 +146,8 @@ class RankingViewController: UIViewController {
     }
     
     @objc func didChangeWeightedAttendance(_: Notification) {
+        let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
+        self.allTimeLabel.text = isWeightedAttendance ? "All-Time ponderate" : "All-Time"
         self.populateAttendance()
     }
     
