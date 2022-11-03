@@ -44,7 +44,7 @@
 		DD368F4E2774BE4F000F0A84 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */; };
 		DD368F522774D415000F0A84 /* YearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD368F512774D415000F0A84 /* YearPickerView.swift */; };
 		DD413379274FC94C0038B4C6 /* RankingViewController + TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */; };
-		DD4667CF284E0E4E003954D5 /* RankingViewController+ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4667CE284E0E4E003954D5 /* RankingViewController+ConfettiView.swift */; };
+		DD4667CF284E0E4E003954D5 /* RankingViewController + ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4667CE284E0E4E003954D5 /* RankingViewController + ConfettiView.swift */; };
 		DD47EEC1278B2C4F0081388D /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */; };
 		DD47EEC3278B3CBF0081388D /* Label - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47EEC2278B3CBF0081388D /* Label - Ext.swift */; };
 		DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */; };
@@ -56,7 +56,7 @@
 		DD64968727221A40009E455F /* Attendance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */; };
 		DD6ED5EB277CFC4000F44D6F /* RankingTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6ED5EA277CFC4000F44D6F /* RankingTypeTableViewCell.swift */; };
 		DD709C852773612C00D20C6A /* FilterBottomSheetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD709C842773612C00D20C6A /* FilterBottomSheetTableViewCell.swift */; };
-		DD717D4F2772411C0003CB16 /* RankingViewController + HandleFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD717D4E2772411C0003CB16 /* RankingViewController + HandleFilters.swift */; };
+		DD717D4F2772411C0003CB16 /* RankingViewController + BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD717D4E2772411C0003CB16 /* RankingViewController + BottomSheet.swift */; };
 		DD717D522772428C0003CB16 /* RankingTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD717D512772428C0003CB16 /* RankingTypeViewController.swift */; };
 		DD717D54277244D70003CB16 /* BottomSheet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD717D53277244D70003CB16 /* BottomSheet.storyboard */; };
 		DD717D56277249B90003CB16 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD717D55277249B90003CB16 /* CheckBox.swift */; };
@@ -187,7 +187,7 @@
 		DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		DD368F512774D415000F0A84 /* YearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPickerView.swift; sourceTree = "<group>"; };
 		DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + TableView.swift"; sourceTree = "<group>"; };
-		DD4667CE284E0E4E003954D5 /* RankingViewController+ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController+ConfettiView.swift"; sourceTree = "<group>"; };
+		DD4667CE284E0E4E003954D5 /* RankingViewController + ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + ConfettiView.swift"; sourceTree = "<group>"; };
 		DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		DD47EEC2278B3CBF0081388D /* Label - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label - Ext.swift"; sourceTree = "<group>"; };
 		DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + FSCalendar.swift"; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 		DD64968327221A40009E455F /* Attendance+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attendance+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DD6ED5EA277CFC4000F44D6F /* RankingTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTypeTableViewCell.swift; sourceTree = "<group>"; };
 		DD709C842773612C00D20C6A /* FilterBottomSheetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottomSheetTableViewCell.swift; sourceTree = "<group>"; };
-		DD717D4E2772411C0003CB16 /* RankingViewController + HandleFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + HandleFilters.swift"; sourceTree = "<group>"; };
+		DD717D4E2772411C0003CB16 /* RankingViewController + BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + BottomSheet.swift"; sourceTree = "<group>"; };
 		DD717D512772428C0003CB16 /* RankingTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTypeViewController.swift; sourceTree = "<group>"; };
 		DD717D53277244D70003CB16 /* BottomSheet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottomSheet.storyboard; sourceTree = "<group>"; };
 		DD717D55277249B90003CB16 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
@@ -557,10 +557,10 @@
 			isa = PBXGroup;
 			children = (
 				DDC337A32724065A0028E49B /* RankingViewController.swift */,
-				DD4667CE284E0E4E003954D5 /* RankingViewController+ConfettiView.swift */,
+				DD4667CE284E0E4E003954D5 /* RankingViewController + ConfettiView.swift */,
 				DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */,
 				DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */,
-				DD717D4E2772411C0003CB16 /* RankingViewController + HandleFilters.swift */,
+				DD717D4E2772411C0003CB16 /* RankingViewController + BottomSheet.swift */,
 				DD30A8AE2913DB97007DC8F3 /* RankingViewController + HandlePeriod.swift */,
 				DD30A8B02913DC1E007DC8F3 /* RankingViewController + HandleSlot.swift */,
 				DD30A8B22913DE42007DC8F3 /* RankingViewController + HandlePeriodCalendar.swift */,
@@ -1142,7 +1142,7 @@
 				DD84830F277786D600E7F179 /* NotificationName.swift in Sources */,
 				DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */,
 				DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */,
-				DD4667CF284E0E4E003954D5 /* RankingViewController+ConfettiView.swift in Sources */,
+				DD4667CF284E0E4E003954D5 /* RankingViewController + ConfettiView.swift in Sources */,
 				DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */,
 				DD617CED2753C3AE002AD5E7 /* RankingWeeklyTableViewCell + CollectionView.swift in Sources */,
 				DDC51A4F27564191004A836B /* SortingPositionAndType.swift in Sources */,
@@ -1162,7 +1162,7 @@
 				DD717D56277249B90003CB16 /* CheckBox.swift in Sources */,
 				DD1EAF3A2726DDD100EF1455 /* CommonUtility.swift in Sources */,
 				DDF1DE4D272C50CE006B7DFD /* Theme.swift in Sources */,
-				DD717D4F2772411C0003CB16 /* RankingViewController + HandleFilters.swift in Sources */,
+				DD717D4F2772411C0003CB16 /* RankingViewController + BottomSheet.swift in Sources */,
 				DDCBBDB4274D44B4002B60DA /* MySegmentedControl.swift in Sources */,
 				DD84831127778D1500E7F179 /* SettingsType.swift in Sources */,
 				DD84830D27772FC200E7F179 /* SettingsSwitchTableViewCell.swift in Sources */,

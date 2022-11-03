@@ -10,7 +10,7 @@ import UIKit
 
 extension RankingViewController {
     
-     func setupHandlePeriod() {
+     func setupHandlePeriodView() {
         // Shadow container View
         self.setupShadowContainerPeriodView()
         // Calendar Setup
@@ -23,12 +23,6 @@ extension RankingViewController {
         self.setupAllTimeLabel()
         // Setup Observer
         self.setupObserver()
-    }
-    
-    
-    func setup( ) {
-        self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Date.now)
-        self.populateAttendance()
     }
     
     func setupShadowContainerPeriodView() {

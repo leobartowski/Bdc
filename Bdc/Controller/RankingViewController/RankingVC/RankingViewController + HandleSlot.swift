@@ -17,7 +17,6 @@ extension RankingViewController {
     
     func setupShadowContainerSlotView() {
 
-        
         let cornerRadius: CGFloat = 8
         self.containerSlotView.cornerRadius = cornerRadius
         self.containerSlotView.layer.masksToBounds = true

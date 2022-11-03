@@ -26,17 +26,14 @@ extension RankingViewController {
             
             sheetController.shouldDismiss = { _ in
                 // Update rankingType based on user's choice
-                if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? RankingTypeTableViewCell {
-                    
-                    let oldRankingType = self.rankingType
-                    cell.rankingType = vc.selectedType
-                    self.rankingType = vc.selectedType
-                    cell.handleChangeRankingType(oldRankingType)
-                }
+                let oldRankingType = self.rankingType
+                self.rankingType = vc.selectedType
+                self.handleChangeRankingType(oldRankingType)
                 return true
             }
             self.present(sheetController, animated: true, completion: nil)
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            self.tableView.setContentOffset(CGPoint(x: 0, y: -140), animated: true)
+
         }
     }
     
@@ -56,14 +53,12 @@ extension RankingViewController {
             sheetController.shouldDismiss = { _ in
                 // Update slotType based on user's choice
                 self.slotType = vc.selectedSlot
-                if let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? RankingSlotTypeTableViewCell {
-                    cell.setup(self.slotType)
-                    self.populateAttendance()
-                }
+                self.setupSlotLabel()
+                self.populateAttendance()
                 return true
             }
             self.present(sheetController, animated: true, completion: nil)
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            self.tableView.setContentOffset(CGPoint(x: 0, y: -140), animated: true)
         }
     }
 

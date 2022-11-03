@@ -40,7 +40,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             return cell ?? UITableViewCell()
         }
     }
-
+    
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         
         self.selectedCellRow = indexPath.row == self.selectedCellRow ? -1 : indexPath.row
@@ -67,16 +67,15 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        return section == 0 ? 0 : 60
+        return 60
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = RankingSectionHeaderView()
         sectionHeaderView.delegate = self
-        sectionHeaderView.nameLabel.text = header[0]
-        sectionHeaderView.attendanceLabel.text = header[1]
-        sectionHeaderView.admonishmentLabel.text = header[2]
+        sectionHeaderView.nameLabel.text = self.header[0]
+        sectionHeaderView.attendanceLabel.text = self.header[1]
+        sectionHeaderView.admonishmentLabel.text = self.header[2]
         sectionHeaderView.setupLabelDesign(sorting.sortingPosition.rawValue)
         return sectionHeaderView
     }
@@ -209,12 +208,12 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     @objc func tableViewSwiped(sender: UISwipeGestureRecognizer) {
         if self.rankingType != .weekly { return }
         let selectedDate = self.calendarView.selectedDate ?? Date.now
-            if sender.direction == .right { // Right
-                self.calendarView.setCurrentPage(selectedDate.previousWeek, animated: true)
-            } else { // Left
-                self.calendarView.setCurrentPage(selectedDate.nextWeek, animated: true)
-            }
-            let feedbackGenerator = UIImpactFeedbackGenerator(style: .rigid)
-            feedbackGenerator.impactOccurred(intensity: 0.9)
+        if sender.direction == .right { // Right
+            self.calendarView.setCurrentPage(selectedDate.previousWeek, animated: true)
+        } else { // Left
+            self.calendarView.setCurrentPage(selectedDate.nextWeek, animated: true)
+        }
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .rigid)
+        feedbackGenerator.impactOccurred(intensity: 0.9)
     }
 }

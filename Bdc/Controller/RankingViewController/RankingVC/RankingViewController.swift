@@ -46,9 +46,10 @@ class RankingViewController: UIViewController {
         super.viewDidLoad()
         self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
         self.viewSetUp()
-        self.setupHandlePeriod()
-        self.setupShadowContainerPeriodView()
+        self.setupHandlePeriodView()
+        self.setupSlotView()
         self.addObservers()
+        self.loadCurrentWeekData()
     }
     
     func viewSetUp() {
@@ -64,7 +65,6 @@ class RankingViewController: UIViewController {
             UIBarButtonItem(title: "Periodo", style: .done, target: self, action: #selector(self.chooseRankingTypePeriod)),
             UIBarButtonItem(title: "Slot", style: .done, target: self, action: #selector(self.chooseSlotTypePeriod))
             ]
-        
     }
     
     func addObservers() {
@@ -132,6 +132,11 @@ class RankingViewController: UIViewController {
             item.attendanceNumber = 0
             item.admonishmentNumber = 0
         }
+    }
+    
+    private func loadCurrentWeekData( ) {
+        self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Date.now)
+        self.populateAttendance()
     }
 
     @objc func didChangePersonList(_: Notification) {
