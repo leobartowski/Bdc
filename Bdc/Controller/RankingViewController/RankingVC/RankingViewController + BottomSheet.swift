@@ -32,7 +32,8 @@ extension RankingViewController {
                 return true
             }
             self.present(sheetController, animated: true, completion: nil)
-            self.tableView.setContentOffset(CGPoint(x: 0, y: -150), animated: true)
+            // I have no idea where this -143 came from but it works
+            self.tableView.setContentOffset(CGPoint(x: 0, y: -143), animated: true)
 
         }
     }
@@ -58,7 +59,7 @@ extension RankingViewController {
                 return true
             }
             self.present(sheetController, animated: true, completion: nil)
-            self.tableView.setContentOffset(CGPoint(x: 0, y: -150), animated: true)
+            self.tableView.setContentOffset(CGPoint(x: 0, y: -143), animated: true)
         }
     }
 
