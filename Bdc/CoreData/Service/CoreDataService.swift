@@ -247,15 +247,18 @@ class CoreDataService {
 //    }
 
     /// Use this  just one time to create the persons List on a new device!
-    func createPersonsList(_ persons: [Person] = []) {
-        self.clearPersonList() // Delete all the present List if there are
-        let personsList = PersonsList(context: context)
-        personsList.persons = NSSet(array: persons.isEmpty ? PersonListUtility.createStartingPerson(self.context) : persons)
-        do {
-            try self.context.save()
-
-        } catch let error as NSError {
-            print("Could not list. \(error), \(error.userInfo)")
+    func createPersonsListIfNeeded(_ persons: [Person] = []) {
+        let currentPersons = CoreDataService.shared.getPersonsList()
+        if currentPersons.isEmpty {
+            self.clearPersonList() // Delete all the present List if there are
+            let personsList = PersonsList(context: context)
+            personsList.persons = NSSet(array: persons.isEmpty ? PersonListUtility.createStartingPerson(self.context) : persons)
+            do {
+                try self.context.save()
+                
+            } catch let error as NSError {
+                print("Could not list. \(error), \(error.userInfo)")
+            }
         }
     }
     
