@@ -181,6 +181,10 @@ extension MonthYearPickerView: UIPickerViewDataSource {
         return range.lowerBound + row
     }
     
+    public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 29
+    }
+    
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
         if #available(iOS 14.0, *) { pickerView.subviews[1].backgroundColor = .clear }

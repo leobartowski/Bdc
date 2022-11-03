@@ -152,14 +152,17 @@ extension YearPickerView: UIPickerViewDataSource {
         guard let range = calendar.maximumRange(of: component) else { return nil }
         return range.lowerBound + row
     }
-
+    
+    public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 29
+    }
+    
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
         if #available(iOS 14.0, *) { pickerView.subviews[1].backgroundColor = .clear }
         
         let label: UILabel = view as? UILabel ?? {
             let label = UILabel()
-            label.font = .systemFont(ofSize: 25, weight: .regular)
             label.adjustsFontForContentSizeCategory = true
             label.textAlignment = .center
             return label
