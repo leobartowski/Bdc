@@ -23,7 +23,6 @@ final class Italy: CountryBase {
         return [
             Holiday(name: "Capodanno", date: (year, .january, 1)),
             Holiday(name: "Epifania", date: (year, .january, 6)),
-//            Holiday(name: "Carnevale", date:  easter.addingDays(-47)),
             Holiday(name: "Pasqua", date: easter),
             Holiday(name: "Pasquetta", date: easter.addingDays(1)),
             Holiday(name: "Festa della Liberazione", date: (year, .april, 25)),
@@ -31,7 +30,7 @@ final class Italy: CountryBase {
             Holiday(name: "Festa Della Repubblica", date: (year, .june, 2)),
             Holiday(name: "Ferragosto", date: (year, .august, 15)),
             Holiday(name: "San Sossio", date: (year, .september, 23)),
-//            Holiday(name: "Ognissanti", date: (year, .november, 1)), // IT BREAKS THE APP
+            Holiday(name: "Ognissanti", date: (year, .november, 1)), // IT BREAKS THE APP IF IT'S TODAY
             Holiday(name: "Immacolata", date: (year, .december, 8)),
             Holiday(name: "Vigilia di Natale", date: (year, .december, 24)),
             Holiday(name: "Natale", date: (year, .december, 25)),
