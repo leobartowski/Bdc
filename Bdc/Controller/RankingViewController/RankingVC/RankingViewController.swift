@@ -146,7 +146,8 @@ class RankingViewController: UIViewController {
     }
     
     @objc func didChangeWeightedAttendance(_: Notification) {
-        self.setupAllTimeLabel()
+        let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
+        self.allTimeLabel.text = isWeightedAttendance ? "All-Time ponderate" : "All-Time"
         self.populateAttendance()
     }
     
