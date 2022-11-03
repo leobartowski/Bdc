@@ -13,7 +13,17 @@ import SwiftConfettiView
 class RankingViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
-    
+    // Handle Period
+    @IBOutlet var containerPeriodView: UIView!
+    @IBOutlet var calendarView: FSCalendar!
+    @IBOutlet var monthYearDatePicker: MonthYearPickerView!
+    @IBOutlet var yearDatePicker: YearPickerView!
+    @IBOutlet var allTimeLabel: UILabel!
+    @IBOutlet var calendarHeightConstraint: NSLayoutConstraint!
+    // Handle Slot
+    @IBOutlet weak var slotLabel: UILabel!
+    @IBOutlet var containerSlotView: UIView!
+
     var rankingPersonsAttendaces: [RankingPersonAttendance] = []
     let headerBasic = ["Nome", "P", "A"]
     var header: [String] = []
@@ -26,10 +36,18 @@ class RankingViewController: UIViewController {
     var confettiView: SwiftConfettiView?
     
     // MARK: Lifecycle
+    
+    override func viewDidLayoutSubviews() {
+        self.containerPeriodView.layer.shadowPath = UIBezierPath(roundedRect: self.containerPeriodView.bounds, cornerRadius: 15).cgPath
+        self.containerSlotView.layer.shadowPath = UIBezierPath(roundedRect: self.containerSlotView.bounds, cornerRadius: 8).cgPath
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
         self.viewSetUp()
+        self.setupHandlePeriod()
+        self.setupShadowContainerPeriodView()
         self.addObservers()
     }
     
@@ -123,6 +141,7 @@ class RankingViewController: UIViewController {
     }
     
     @objc func didChangeWeightedAttendance(_: Notification) {
+        self.setupAllTimeLabel()
         self.populateAttendance()
     }
     

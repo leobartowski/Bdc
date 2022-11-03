@@ -21,124 +21,101 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Py9-kz-7il">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="eJL-en-YG4">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="184"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M9-dQ-J12" userLabel="Container View for RankingType">
+                                            <rect key="frame" x="20" y="12" width="374" height="128"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wvp-Yo-ljY" customClass="FSCalendar">
+                                                    <rect key="frame" x="5" y="5" width="364" height="110"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="110" id="WqN-ld-wWd"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
+                                                            <integer key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="BI4-mw-ItO" id="kzU-Fc-gJn"/>
+                                                        <outlet property="delegate" destination="BI4-mw-ItO" id="jIb-DO-pak"/>
+                                                    </connections>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54j-7B-VTN" userLabel="Monthly Year Date Picker" customClass="MonthYearPickerView" customModule="Bdc" customModuleProvider="target">
+                                                    <rect key="frame" x="30" y="5" width="314" height="110"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="110" id="RRt-aJ-fYM"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1Y-SV-Dlj" userLabel="Year Date Picker" customClass="YearPickerView" customModule="Bdc" customModuleProvider="target">
+                                                    <rect key="frame" x="30" y="5" width="314" height="110"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="110" id="rGc-8r-u0q"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="khM-Xz-exi">
+                                                    <rect key="frame" x="5" y="5" width="364" height="110"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="110" id="byy-LJ-CXa"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="55"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="c1Y-SV-Dlj" firstAttribute="leading" secondItem="9M9-dQ-J12" secondAttribute="leading" constant="30" id="6lc-TS-Td0"/>
+                                                <constraint firstItem="Wvp-Yo-ljY" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="8DU-nR-1jd"/>
+                                                <constraint firstAttribute="trailing" secondItem="c1Y-SV-Dlj" secondAttribute="trailing" constant="30" id="8eg-bx-8Vm"/>
+                                                <constraint firstItem="Wvp-Yo-ljY" firstAttribute="leading" secondItem="9M9-dQ-J12" secondAttribute="leading" constant="5" id="C8g-Hx-eV5"/>
+                                                <constraint firstItem="54j-7B-VTN" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="P4Z-64-P7l"/>
+                                                <constraint firstItem="khM-Xz-exi" firstAttribute="leading" secondItem="9M9-dQ-J12" secondAttribute="leading" constant="5" id="UgT-bM-dIk"/>
+                                                <constraint firstAttribute="trailing" secondItem="khM-Xz-exi" secondAttribute="trailing" constant="5" id="XBR-oV-yin"/>
+                                                <constraint firstItem="c1Y-SV-Dlj" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="gpR-2X-Zak"/>
+                                                <constraint firstAttribute="trailing" secondItem="54j-7B-VTN" secondAttribute="trailing" constant="30" id="gyY-55-8GY"/>
+                                                <constraint firstItem="khM-Xz-exi" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="h75-0G-fsS"/>
+                                                <constraint firstItem="54j-7B-VTN" firstAttribute="leading" secondItem="9M9-dQ-J12" secondAttribute="leading" constant="30" id="n4L-A0-1PP"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wvp-Yo-ljY" secondAttribute="trailing" constant="5" id="qkz-6t-Yik"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cK-vi-MmN" userLabel="Container View for RankingType">
+                                            <rect key="frame" x="20" y="140" width="374" height="36"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh1-gT-PuI">
+                                                    <rect key="frame" x="30" y="2" width="314" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="yh1-gT-PuI" secondAttribute="trailing" constant="30" id="YRN-7g-czd"/>
+                                                <constraint firstAttribute="bottom" secondItem="yh1-gT-PuI" secondAttribute="bottom" constant="2" id="aCG-oh-Uvp"/>
+                                                <constraint firstItem="yh1-gT-PuI" firstAttribute="top" secondItem="8cK-vi-MmN" secondAttribute="top" constant="2" id="eSi-Ha-JWw"/>
+                                                <constraint firstItem="yh1-gT-PuI" firstAttribute="leading" secondItem="8cK-vi-MmN" secondAttribute="leading" constant="30" id="uvb-2x-DeB"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="9M9-dQ-J12" firstAttribute="top" secondItem="eJL-en-YG4" secondAttribute="top" constant="12" id="5El-N5-wkv"/>
+                                        <constraint firstAttribute="bottom" secondItem="8cK-vi-MmN" secondAttribute="bottom" constant="8" id="5T5-77-QFy"/>
+                                        <constraint firstItem="8cK-vi-MmN" firstAttribute="leading" secondItem="eJL-en-YG4" secondAttribute="leading" constant="20" id="FBm-Ko-OZ2"/>
+                                        <constraint firstAttribute="trailing" secondItem="8cK-vi-MmN" secondAttribute="trailing" constant="20" id="JTg-9o-Kx9"/>
+                                        <constraint firstAttribute="bottom" secondItem="9M9-dQ-J12" secondAttribute="bottom" constant="44" id="Ssm-jS-Xfd"/>
+                                        <constraint firstAttribute="trailing" secondItem="9M9-dQ-J12" secondAttribute="trailing" constant="20" id="YOw-eC-Fgh"/>
+                                        <constraint firstItem="8cK-vi-MmN" firstAttribute="top" secondItem="eJL-en-YG4" secondAttribute="top" constant="140" id="npO-uh-w8L"/>
+                                        <constraint firstItem="9M9-dQ-J12" firstAttribute="leading" secondItem="eJL-en-YG4" secondAttribute="leading" constant="20" id="oLP-XX-pT2"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="rankingTypeCellID" rowHeight="140" id="2qb-Jk-0po" customClass="RankingTypeTableViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="140"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2qb-Jk-0po" id="qaV-fn-0zA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M9-dQ-J12" userLabel="Container View for RankingType">
-                                                    <rect key="frame" x="20" y="10" width="374" height="120"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wvp-Yo-ljY" customClass="FSCalendar">
-                                                            <rect key="frame" x="5" y="5" width="364" height="110"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="110" id="WqN-ld-wWd"/>
-                                                            </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
-                                                                    <integer key="value" value="2"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                            <connections>
-                                                                <outlet property="dataSource" destination="BI4-mw-ItO" id="kzU-Fc-gJn"/>
-                                                                <outlet property="delegate" destination="BI4-mw-ItO" id="jIb-DO-pak"/>
-                                                            </connections>
-                                                        </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54j-7B-VTN" userLabel="Monthly Year Date Picker" customClass="MonthYearPickerView" customModule="Bdc" customModuleProvider="target">
-                                                            <rect key="frame" x="30" y="5" width="314" height="110"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1Y-SV-Dlj" userLabel="Year Date Picker" customClass="YearPickerView" customModule="Bdc" customModuleProvider="target">
-                                                            <rect key="frame" x="30" y="5" width="314" height="110"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="khM-Xz-exi">
-                                                            <rect key="frame" x="5" y="5" width="364" height="110"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="55"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="khM-Xz-exi" secondAttribute="bottom" constant="5" id="3o7-9I-OuW"/>
-                                                        <constraint firstItem="c1Y-SV-Dlj" firstAttribute="leading" secondItem="9M9-dQ-J12" secondAttribute="leading" constant="30" id="6lc-TS-Td0"/>
-                                                        <constraint firstItem="Wvp-Yo-ljY" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="8DU-nR-1jd"/>
-                                                        <constraint firstAttribute="trailing" secondItem="c1Y-SV-Dlj" secondAttribute="trailing" constant="30" id="8eg-bx-8Vm"/>
-                                                        <constraint firstItem="Wvp-Yo-ljY" firstAttribute="leading" secondItem="9M9-dQ-J12" secondAttribute="leading" constant="5" id="C8g-Hx-eV5"/>
-                                                        <constraint firstAttribute="bottom" secondItem="54j-7B-VTN" secondAttribute="bottom" constant="5" id="CrA-Xt-zfK"/>
-                                                        <constraint firstAttribute="bottom" secondItem="c1Y-SV-Dlj" secondAttribute="bottom" constant="5" id="Hiy-1s-SS3"/>
-                                                        <constraint firstItem="54j-7B-VTN" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="P4Z-64-P7l"/>
-                                                        <constraint firstItem="khM-Xz-exi" firstAttribute="leading" secondItem="9M9-dQ-J12" secondAttribute="leading" constant="5" id="UgT-bM-dIk"/>
-                                                        <constraint firstAttribute="trailing" secondItem="khM-Xz-exi" secondAttribute="trailing" constant="5" id="XBR-oV-yin"/>
-                                                        <constraint firstItem="c1Y-SV-Dlj" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="gpR-2X-Zak"/>
-                                                        <constraint firstAttribute="trailing" secondItem="54j-7B-VTN" secondAttribute="trailing" constant="30" id="gyY-55-8GY"/>
-                                                        <constraint firstItem="khM-Xz-exi" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="h75-0G-fsS"/>
-                                                        <constraint firstItem="54j-7B-VTN" firstAttribute="leading" secondItem="9M9-dQ-J12" secondAttribute="leading" constant="30" id="n4L-A0-1PP"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Wvp-Yo-ljY" secondAttribute="trailing" constant="5" id="qkz-6t-Yik"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="9M9-dQ-J12" secondAttribute="trailing" constant="20" id="5hc-ml-N0q"/>
-                                                <constraint firstAttribute="bottom" secondItem="9M9-dQ-J12" secondAttribute="bottom" constant="10" id="6jv-0P-wVr"/>
-                                                <constraint firstItem="9M9-dQ-J12" firstAttribute="top" secondItem="qaV-fn-0zA" secondAttribute="top" constant="10" id="Env-RG-h9p"/>
-                                                <constraint firstItem="9M9-dQ-J12" firstAttribute="leading" secondItem="qaV-fn-0zA" secondAttribute="leading" constant="20" id="b6C-jP-Xg9"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <outlet property="allTimeLabel" destination="khM-Xz-exi" id="xib-qR-JJd"/>
-                                            <outlet property="calendarHeightConstraint" destination="WqN-ld-wWd" id="VEd-w8-EEZ"/>
-                                            <outlet property="calendarView" destination="Wvp-Yo-ljY" id="ZHV-vE-em7"/>
-                                            <outlet property="containerView" destination="9M9-dQ-J12" id="uZl-2B-jTe"/>
-                                            <outlet property="monthYearDatePicker" destination="54j-7B-VTN" id="3Gc-tW-ZLM"/>
-                                            <outlet property="yearDatePicker" destination="c1Y-SV-Dlj" id="P1O-Xy-swU"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="slotTypeCellID" rowHeight="44" id="fHt-8g-5W5" customClass="RankingSlotTypeTableViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="190" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fHt-8g-5W5" id="b74-BL-ivK">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cK-vi-MmN" userLabel="Container View for RankingType">
-                                                    <rect key="frame" x="20" y="2" width="374" height="36"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh1-gT-PuI">
-                                                            <rect key="frame" x="30" y="2" width="314" height="32"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="yh1-gT-PuI" secondAttribute="trailing" constant="30" id="YRN-7g-czd"/>
-                                                        <constraint firstAttribute="bottom" secondItem="yh1-gT-PuI" secondAttribute="bottom" constant="2" id="aCG-oh-Uvp"/>
-                                                        <constraint firstItem="yh1-gT-PuI" firstAttribute="top" secondItem="8cK-vi-MmN" secondAttribute="top" constant="2" id="eSi-Ha-JWw"/>
-                                                        <constraint firstItem="yh1-gT-PuI" firstAttribute="leading" secondItem="8cK-vi-MmN" secondAttribute="leading" constant="30" id="uvb-2x-DeB"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="8cK-vi-MmN" secondAttribute="bottom" constant="6" id="33H-jI-SuH"/>
-                                                <constraint firstItem="8cK-vi-MmN" firstAttribute="leading" secondItem="b74-BL-ivK" secondAttribute="leading" constant="20" id="FaP-jF-lik"/>
-                                                <constraint firstAttribute="trailing" secondItem="8cK-vi-MmN" secondAttribute="trailing" constant="20" id="dFA-u2-XNg"/>
-                                                <constraint firstItem="8cK-vi-MmN" firstAttribute="top" secondItem="b74-BL-ivK" secondAttribute="top" constant="2" id="tJh-rX-2dF"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <outlet property="containerView" destination="8cK-vi-MmN" id="rGt-yz-oTi"/>
-                                            <outlet property="mainLabel" destination="yh1-gT-PuI" id="24R-5b-9v4"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="weeklyCellID" id="8YP-zk-Ego" customClass="RankingWeeklyTableViewCell" customModule="Bdc" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="234" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -415,7 +392,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Ranking" largeTitleDisplayMode="always" id="pIm-98-xbW"/>
                     <connections>
+                        <outlet property="allTimeLabel" destination="khM-Xz-exi" id="MI4-H6-knI"/>
+                        <outlet property="calendarHeightConstraint" destination="WqN-ld-wWd" id="NYe-m4-YqJ"/>
+                        <outlet property="calendarView" destination="Wvp-Yo-ljY" id="dPX-By-619"/>
+                        <outlet property="containerPeriodView" destination="9M9-dQ-J12" id="6jG-Cj-IDQ"/>
+                        <outlet property="containerSlotView" destination="8cK-vi-MmN" id="1PR-zR-GDg"/>
+                        <outlet property="monthYearDatePicker" destination="54j-7B-VTN" id="6f9-fG-DjW"/>
+                        <outlet property="slotLabel" destination="yh1-gT-PuI" id="tmH-kC-sPd"/>
                         <outlet property="tableView" destination="Py9-kz-7il" id="WtN-nF-kgj"/>
+                        <outlet property="yearDatePicker" destination="c1Y-SV-Dlj" id="Qv8-KZ-TUf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37D-BQ-28C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -38,6 +38,9 @@
 		DD1A1C65274908AB006FC676 /* UIView - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1A1C64274908AB006FC676 /* UIView - Ext.swift */; };
 		DD1EAF3A2726DDD100EF1455 /* CommonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EAF392726DDD100EF1455 /* CommonUtility.swift */; };
 		DD27CAB1277368810020BE4D /* RankingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD27CAB0277368810020BE4D /* RankingType.swift */; };
+		DD30A8AF2913DB97007DC8F3 /* RankingViewController + HandlePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD30A8AE2913DB97007DC8F3 /* RankingViewController + HandlePeriod.swift */; };
+		DD30A8B12913DC1E007DC8F3 /* RankingViewController + HandleSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD30A8B02913DC1E007DC8F3 /* RankingViewController + HandleSlot.swift */; };
+		DD30A8B32913DE42007DC8F3 /* RankingViewController + HandlePeriodCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD30A8B22913DE42007DC8F3 /* RankingViewController + HandlePeriodCalendar.swift */; };
 		DD368F4E2774BE4F000F0A84 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */; };
 		DD368F522774D415000F0A84 /* YearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD368F512774D415000F0A84 /* YearPickerView.swift */; };
 		DD413379274FC94C0038B4C6 /* RankingViewController + TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */; };
@@ -178,6 +181,9 @@
 		DD1A1C64274908AB006FC676 /* UIView - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView - Ext.swift"; sourceTree = "<group>"; };
 		DD1EAF392726DDD100EF1455 /* CommonUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtility.swift; sourceTree = "<group>"; };
 		DD27CAB0277368810020BE4D /* RankingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingType.swift; sourceTree = "<group>"; };
+		DD30A8AE2913DB97007DC8F3 /* RankingViewController + HandlePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + HandlePeriod.swift"; sourceTree = "<group>"; };
+		DD30A8B02913DC1E007DC8F3 /* RankingViewController + HandleSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + HandleSlot.swift"; sourceTree = "<group>"; };
+		DD30A8B22913DE42007DC8F3 /* RankingViewController + HandlePeriodCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + HandlePeriodCalendar.swift"; sourceTree = "<group>"; };
 		DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		DD368F512774D415000F0A84 /* YearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPickerView.swift; sourceTree = "<group>"; };
 		DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + TableView.swift"; sourceTree = "<group>"; };
@@ -501,13 +507,6 @@
 			path = RankingTypeTableViewCell;
 			sourceTree = "<group>";
 		};
-		DD6ED5E7277CFBC500F44D6F /* RankingHeaderTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RankingHeaderTableViewCell;
-			sourceTree = "<group>";
-		};
 		DD6ED5E8277CFBE500F44D6F /* RankingWeeklyTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,7 +532,6 @@
 				DDE9D76D28BE3EE8008463CD /* RankingSlotTypeTableViewCell */,
 				DD47EEBF278B2C1F0081388D /* RankingTableViewCell */,
 				DD6ED5E8277CFBE500F44D6F /* RankingWeeklyTableViewCell */,
-				DD6ED5E7277CFBC500F44D6F /* RankingHeaderTableViewCell */,
 				DD6ED5E6277CFB9700F44D6F /* RankingTypeTableViewCell */,
 			);
 			path = RankingVC;
@@ -563,6 +561,9 @@
 				DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */,
 				DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */,
 				DD717D4E2772411C0003CB16 /* RankingViewController + HandleFilters.swift */,
+				DD30A8AE2913DB97007DC8F3 /* RankingViewController + HandlePeriod.swift */,
+				DD30A8B02913DC1E007DC8F3 /* RankingViewController + HandleSlot.swift */,
+				DD30A8B22913DE42007DC8F3 /* RankingViewController + HandlePeriodCalendar.swift */,
 			);
 			path = RankingVC;
 			sourceTree = "<group>";
@@ -1131,6 +1132,7 @@
 				DD47EEC3278B3CBF0081388D /* Label - Ext.swift in Sources */,
 				DD03AC19274811B8004C4819 /* CalendarViewController + CollectionView.swift in Sources */,
 				DD0CAB532728108600EA42B1 /* DayType.swift in Sources */,
+				DD30A8AF2913DB97007DC8F3 /* RankingViewController + HandlePeriod.swift in Sources */,
 				DD709C852773612C00D20C6A /* FilterBottomSheetTableViewCell.swift in Sources */,
 				DD27CAB1277368810020BE4D /* RankingType.swift in Sources */,
 				DD03AC1B27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift in Sources */,
@@ -1146,9 +1148,11 @@
 				DDC51A4F27564191004A836B /* SortingPositionAndType.swift in Sources */,
 				DD0E35BF277BB7F50082D32C /* AddChangePersonViewController.swift in Sources */,
 				DDB292622721A90500D96E67 /* RankingSectionHeaderView.swift in Sources */,
+				DD30A8B12913DC1E007DC8F3 /* RankingViewController + HandleSlot.swift in Sources */,
 				DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */,
 				DDA9CD24277CFEBA00EDC2BE /* RankingTypeTableViewCell + FSCalendar.swift in Sources */,
 				DDC9EB6B275031CD00653138 /* PersonsList+CoreDataProperties.swift in Sources */,
+				DD30A8B32913DE42007DC8F3 /* RankingViewController + HandlePeriodCalendar.swift in Sources */,
 				DDF9B58327786BC400E2FEE2 /* SettingsArrowTableViewCell.swift in Sources */,
 				DD368F522774D415000F0A84 /* YearPickerView.swift in Sources */,
 				DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */,

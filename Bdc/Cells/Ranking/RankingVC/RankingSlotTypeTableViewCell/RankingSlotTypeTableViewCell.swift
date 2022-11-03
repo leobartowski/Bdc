@@ -24,6 +24,8 @@ class RankingSlotTypeTableViewCell: UITableViewCell {
     }
     
     func setupShadowContainerView() {
+        self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: 8).cgPath
+        
         let cornerRadius: CGFloat = 8
         self.containerView.cornerRadius = cornerRadius
         self.containerView.layer.masksToBounds = true
