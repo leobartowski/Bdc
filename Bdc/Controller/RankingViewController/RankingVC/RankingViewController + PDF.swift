@@ -34,7 +34,6 @@ extension RankingViewController {
         return data
     }
     
-    // TODO: This if can be removed using two for in createPDF method
     func getStringOfAttendanceLabel(_ rankingAttendance: RankingPersonAttendance, _ isWeightedAttendance: Bool) -> String {
         if isWeightedAttendance && self.rankingType == .allTime {
             let number = Float(rankingAttendance.attendanceNumber) * rankingAttendance.person.difficultyCoefficient

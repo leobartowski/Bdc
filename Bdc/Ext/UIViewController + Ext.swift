@@ -22,11 +22,11 @@ extension UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func presentActionSheet(title: String, message: String? = nil, mainAction: @escaping (UIAlertAction) -> Void, mainActionTitle: String,  cancelAction: @escaping (UIAlertAction) -> Void, cancelActionTitle: String = "Annulla") {
+    func presentActionSheet(title: String, message: String? = nil, mainAction: @escaping (UIAlertAction) -> Void, mainActionTitle: String, cancelAction: @escaping (UIAlertAction) -> Void, cancelActionTitle: String = "Annulla") {
         
         let actionSheet = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         let mainAction = UIAlertAction(title: mainActionTitle, style: .destructive, handler: mainAction)
-        let cancelAction = UIAlertAction(title: cancelActionTitle, style: .cancel,  handler: cancelAction)
+        let cancelAction = UIAlertAction(title: cancelActionTitle, style: .cancel, handler: cancelAction)
         cancelAction.setValue(Theme.FSCalendarStandardSelectionColor, forKey: "titleTextColor")
         actionSheet.addAction(mainAction)
         actionSheet.addAction(cancelAction)

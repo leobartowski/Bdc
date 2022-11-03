@@ -9,10 +9,10 @@ import Foundation
 
 enum SettingsType: String {
     
-    case modifyOldDays = "modifyOldDays"
-    case showStatistics = "showStatistics"
-    case handlePersonList = "handlePersonList"
-    case showRegulation = "showRegulation"
-    case showConfetti = "showConfetti"
-    case weightedAttendance = "weightedAttendance"
+    case modifyOldDays
+    case showStatistics
+    case handlePersonList
+    case showRegulation
+    case showConfetti
+    case weightedAttendance
 }

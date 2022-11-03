@@ -31,7 +31,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         if indexPath.section == 0 { return false }
         // Check to avoid the modification of day older than today
-        if ((Date().days(from: calendarView.selectedDate ?? Date()) > 0) && !self.canModifyOldDays) {
+        let selectedDate = Date().days(from: calendarView.selectedDate ?? Date())
+        if selectedDate > 0 && !self.canModifyOldDays {
             return false
         }
         return true
@@ -102,7 +103,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     func mainCell(_: CalendarCollectionViewCell, didSelectRowAt indexPath: IndexPath) {
         
         // Check to avoid the modification of day older than today
-        if ((Date().days(from: self.calendarView.selectedDate ?? Date()) > 0) && !self.canModifyOldDays) { return }
+        let selectedDate = Date().days(from: self.calendarView.selectedDate ?? Date())
+        if selectedDate > 0 && !self.canModifyOldDays { return }
         let personToHandle = self.filteredPerson[indexPath.row]
         // I need to amonish this person if is not amonished or I need to remove the amonishment otherwise
         if let index = self.personsAdmonished.firstIndex(where: { $0.name == personToHandle.name }) {

@@ -11,7 +11,6 @@ import UIKit
 
 extension RankingViewController {
     
-    
     func calculateIfShowConfetti(_ rankingAttendace: RankingPersonAttendance) -> Bool {
         
         guard let lastDayCurrentPeriod = self.daysCurrentPeriod.last else { return false }
@@ -30,13 +29,11 @@ extension RankingViewController {
             return true
         }
         // Show confetti if the week is the current and it's saturday or sunday
-        if (dateToCheck.getDayNumberOfWeek() == 1 || dateToCheck.getDayNumberOfWeek() == 7) {
+        if dateToCheck.getDayNumberOfWeek() == 1 || dateToCheck.getDayNumberOfWeek() == 7 {
             return true
         }
         return false
     }
-    
-    
     
     func setupConfettiView() {
         self.confettiView = SwiftConfettiView(frame: self.view.bounds)

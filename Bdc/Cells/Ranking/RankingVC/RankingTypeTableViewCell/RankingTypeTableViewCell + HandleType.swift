@@ -20,7 +20,7 @@ extension RankingTypeTableViewCell {
         self.monthYearDatePicker.locale = Locale(identifier: "it")
         self.monthYearDatePicker.minimumDate = Constant.startingDateBdC
         self.monthYearDatePicker.maximumDate = Date.now
-        self.monthYearDatePicker.addTarget(self, action: #selector(monthtYearDatePickerDateChanged(_:)), for: .valueChanged)
+        self.monthYearDatePicker.addTarget(self, action: #selector(self.monthtYearDatePickerDateChanged(_:)), for: .valueChanged)
     }
     
     func yearDatePickerSetup() {
@@ -28,7 +28,7 @@ extension RankingTypeTableViewCell {
         self.yearDatePicker.locale = Locale(identifier: "it")
         self.yearDatePicker.minimumDate = Constant.startingDateBdC
         self.yearDatePicker.maximumDate = Date.now
-        self.yearDatePicker.addTarget(self, action: #selector(yearDatePickerDateChanged(_:)), for: .valueChanged)
+        self.yearDatePicker.addTarget(self, action: #selector(self.yearDatePickerDateChanged(_:)), for: .valueChanged)
     }
     
     @objc func monthtYearDatePickerDateChanged(_ sender: Any) {

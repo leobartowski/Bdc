@@ -25,35 +25,35 @@ public enum Country: String, CaseIterable, CountryProtocol {
     
     /// SwiftyHolidays: The 2 digit ISO 3166 country code.
     public var iso2Code: String {
-        return type(of: model).iso2Code
+        return type(of: self.model).iso2Code
     }
     
     /// SwiftyHolidays: The 3 digit ISO 3166 country code.
     public var iso3Code: String {
-        return type(of: model).iso3Code
+        return type(of: self.model).iso3Code
     }
     
     /// SwiftyHolidays: The country's default time zone.
     public var defaultTimeZone: TimeZone {
-        return model.defaultTimeZone
+        return self.model.defaultTimeZone
     }
     
     /// SwiftyHolidays: Returns a localized display string for the country.
     ///
     /// - Parameter locale: The locale to use for localizing the country's name.
     public func displayString(locale: Locale = .current) -> String {
-        return locale.localizedString(forRegionCode: iso2Code) ?? ""
+        return locale.localizedString(forRegionCode: self.iso2Code) ?? ""
     }
     
     /// SwiftyHolidays: Returns all holidays of the country in a given year.
     public func allHolidays(in year: Int) -> [Holiday] {
-        return model.allHolidays(in: year)
+        return self.model.allHolidays(in: year)
     }
     
     /// Holidays:  Returns all holidays of the country in a given year as [Date]
     public func allHolidaysAsDates(in year: Int) -> [Date] {
         var dates: [Date] = []
-        for holiday in model.allHolidays(in: year) {
+        for holiday in self.model.allHolidays(in: year) {
             let date = holiday.date.asDate()
             dates.append(date)
         }
