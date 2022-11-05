@@ -70,4 +70,4 @@ nice things to implement, take a look if you want. Suggestions and constructive 
 <br><br>
 
 # License
-This project is licensed under the terms of the <a href="https://choosealicense.com/licenses/mit/">MIT</a> license.
+This project is licensed under the terms of the <a href="https://github.com/leobartowski/Bdc/blob/main/LICENSE">MIT</a> license.
