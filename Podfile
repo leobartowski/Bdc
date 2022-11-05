@@ -10,6 +10,7 @@ target 'Bdc' do
   pod 'FittedSheets'
   pod 'SwiftConfettiView'
   pod 'SwiftLint'
+  pod 'AcknowList'
   
   # ignore all warnings from all pods
   inhibit_all_warnings!

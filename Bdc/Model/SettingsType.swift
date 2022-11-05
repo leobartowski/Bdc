@@ -15,4 +15,5 @@ enum SettingsType: String {
     case showRegulation
     case showConfetti
     case weightedAttendance
+    case acknowledgmentThirdPartSoftware
 }

@@ -89,6 +89,11 @@
 		DDCBBDB4274D44B4002B60DA /* MySegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */; };
 		DDCBBDB6274D5288002B60DA /* RankingWeeklyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCBBDB5274D5288002B60DA /* RankingWeeklyTableViewCell.swift */; };
 		DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DDD5051B27220FB000508F60 /* Bdc.xcdatamodeld */; };
+		DDDC44402916BE4500BEC4F0 /* LicenseSwiftFormat.txt in Resources */ = {isa = PBXBuildFile; fileRef = DDDC443F2916BE4500BEC4F0 /* LicenseSwiftFormat.txt */; };
+		DDDC444A2916BF9400BEC4F0 /* Pods-Bdc-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDDC44492916BF9400BEC4F0 /* Pods-Bdc-acknowledgements.plist */; };
+		DDDC444E2916C05400BEC4F0 /* LicenseSwiftHoliday.txt in Resources */ = {isa = PBXBuildFile; fileRef = DDDC444B2916C05400BEC4F0 /* LicenseSwiftHoliday.txt */; };
+		DDDC444F2916C05400BEC4F0 /* LicenseCocoaPods.txt in Resources */ = {isa = PBXBuildFile; fileRef = DDDC444C2916C05400BEC4F0 /* LicenseCocoaPods.txt */; };
+		DDDC44502916C05400BEC4F0 /* LicenseLTHRadioButton.txt in Resources */ = {isa = PBXBuildFile; fileRef = DDDC444D2916C05400BEC4F0 /* LicenseLTHRadioButton.txt */; };
 		DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */; };
 		DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */; };
 		DDE9D76A28BE1B7C008463CD /* SlotTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE9D76928BE1B7C008463CD /* SlotTypeViewController.swift */; };
@@ -232,6 +237,11 @@
 		DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySegmentedControl.swift; sourceTree = "<group>"; };
 		DDCBBDB5274D5288002B60DA /* RankingWeeklyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingWeeklyTableViewCell.swift; sourceTree = "<group>"; };
 		DDD5051C27220FB000508F60 /* Bdc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bdc.xcdatamodel; sourceTree = "<group>"; };
+		DDDC443F2916BE4500BEC4F0 /* LicenseSwiftFormat.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LicenseSwiftFormat.txt; sourceTree = "<group>"; };
+		DDDC44492916BF9400BEC4F0 /* Pods-Bdc-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-Bdc-acknowledgements.plist"; path = "Pods/Target Support Files/Pods-Bdc/Pods-Bdc-acknowledgements.plist"; sourceTree = "<group>"; };
+		DDDC444B2916C05400BEC4F0 /* LicenseSwiftHoliday.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LicenseSwiftHoliday.txt; sourceTree = "<group>"; };
+		DDDC444C2916C05400BEC4F0 /* LicenseCocoaPods.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LicenseCocoaPods.txt; sourceTree = "<group>"; };
+		DDDC444D2916C05400BEC4F0 /* LicenseLTHRadioButton.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LicenseLTHRadioButton.txt; sourceTree = "<group>"; };
 		DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter - Ext.swift"; sourceTree = "<group>"; };
 		DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListUtility.swift; sourceTree = "<group>"; };
 		DDE9D76928BE1B7C008463CD /* SlotTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotTypeViewController.swift; sourceTree = "<group>"; };
@@ -587,6 +597,7 @@
 				DD171B8427864B2C002ACF4F /* SwiftHoliday */,
 				DD8543EC27219D4A004D38F0 /* Products */,
 				49A7EE23B1DBA698B5539C0D /* Pods */,
+				DDDC44492916BF9400BEC4F0 /* Pods-Bdc-acknowledgements.plist */,
 				F29ADA14CAED47AAAD651460 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -614,6 +625,7 @@
 				DD18C7F4272207270086BB6C /* Storyboard */,
 				DD18C7F3272207050086BB6C /* Controller */,
 				DD18C80427220D0F0086BB6C /* CoreData */,
+				DDDC443E2916BDCB00BEC4F0 /* CustomLicenseFile */,
 				DDE3B1732722D3B000BFEFF0 /* Utility */,
 				DD8543FA27219D4C004D38F0 /* Assets.xcassets */,
 				DD8543FC27219D4C004D38F0 /* LaunchScreen.storyboard */,
@@ -661,6 +673,17 @@
 				DD18C7FA27220B890086BB6C /* CoreDateContainer.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		DDDC443E2916BDCB00BEC4F0 /* CustomLicenseFile */ = {
+			isa = PBXGroup;
+			children = (
+				DDDC444C2916C05400BEC4F0 /* LicenseCocoaPods.txt */,
+				DDDC444D2916C05400BEC4F0 /* LicenseLTHRadioButton.txt */,
+				DDDC444B2916C05400BEC4F0 /* LicenseSwiftHoliday.txt */,
+				DDDC443F2916BE4500BEC4F0 /* LicenseSwiftFormat.txt */,
+			);
+			path = CustomLicenseFile;
 			sourceTree = "<group>";
 		};
 		DDE3B1702722CD3400BFEFF0 /* Ext */ = {
@@ -897,11 +920,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDDC44502916C05400BEC4F0 /* LicenseLTHRadioButton.txt in Resources */,
 				DDB292602721A8D400D96E67 /* RankingSectionHeaderView.xib in Resources */,
+				DDDC444E2916C05400BEC4F0 /* LicenseSwiftHoliday.txt in Resources */,
+				DDDC444A2916BF9400BEC4F0 /* Pods-Bdc-acknowledgements.plist in Resources */,
 				DD8543FE27219D4C004D38F0 /* LaunchScreen.storyboard in Resources */,
 				DD717D54277244D70003CB16 /* BottomSheet.storyboard in Resources */,
+				DDDC44402916BE4500BEC4F0 /* LicenseSwiftFormat.txt in Resources */,
 				DDF9B5852778715000E2FEE2 /* Settings.storyboard in Resources */,
 				DDF9B5892778726700E2FEE2 /* Calendar.storyboard in Resources */,
+				DDDC444F2916C05400BEC4F0 /* LicenseCocoaPods.txt in Resources */,
 				DDF9B5872778721700E2FEE2 /* Ranking.storyboard in Resources */,
 				DD8543FB27219D4C004D38F0 /* Assets.xcassets in Resources */,
 				DD8543F627219D4A004D38F0 /* Main.storyboard in Resources */,

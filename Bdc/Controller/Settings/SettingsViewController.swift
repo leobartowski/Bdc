@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SafariServices
+import AcknowList
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -17,11 +18,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
         self.setupTableViewShadow()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
+
     func setupTableViewShadow() {
         self.tableView.layer.masksToBounds = false
         self.tableView.layer.shadowColor = UIColor.gray.cgColor // any value you want
@@ -38,13 +35,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             return 1
         case 2:
             return 1
+        case 3:
+            return 1
         default:
             return 0
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,6 +80,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = tableView.dequeueReusableCell(withIdentifier: "arrowCellID", for: indexPath) as? SettingsArrowTableViewCell
             cell?.setup(text: "Regolamento", settingsType: .showRegulation)
             return cell ?? UITableViewCell()
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "arrowCellID", for: indexPath) as? SettingsArrowTableViewCell
+            cell?.setup(text: "Software terze parti", settingsType: .acknowledgmentThirdPartSoftware)
+            return cell ?? UITableViewCell()
+            
         default:
             return UITableViewCell()
         }
@@ -108,9 +112,39 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 self.present(safariVC, animated: true, completion: nil)
                 self.tableView.deselectRow(at: indexPath, animated: false)
             }
+        case 3:
+            let viewController = AcknowListViewController()
+            viewController.acknowledgements.append(contentsOf: self.createCustomLicenseToAcknowVC())
+            viewController.title = "Riconoscimenti"
+            viewController.acknowledgements.sort(by: { $0.title < $1.title })
+            viewController.headerText = "Ecco una lista di software gratuiti e open-source che sono stati usati per creare l'app BdC:"
+            viewController.footerText = ""
+            self.navigationController?.pushViewController(viewController, animated: true)
+            self.tableView.deselectRow(at: indexPath, animated: false)
         default:
             return
         }
     }
-
+    
+    private func createCustomLicenseToAcknowVC() -> [Acknow] {
+        var acknows: [Acknow] = []
+        acknows.append(Acknow(title: "SwiftFormat", text: self.readFromFile("LicenseSwiftFormat")))
+        acknows.append(Acknow(title: "SwiftHoliday", text: self.readFromFile("LicenseSwiftHoliday")))
+        acknows.append(Acknow(title: "LTHRadioButton", text: self.readFromFile("LicenseLTHRadioButton")))
+        acknows.append(Acknow(title: "CocoaPods", text: self.readFromFile("LicenseCocoaPods")))
+        return acknows
+    }
+    
+    private func readFromFile(_ fileName: String) -> String {
+        if let filepath = Bundle.main.path(forResource: fileName, ofType: "txt") {
+            do {
+                let contents = try String(contentsOfFile: filepath)
+                return contents
+            } catch {
+                return ""
+            }
+        } else {
+            return ""
+        }
+    }
 }
