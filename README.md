@@ -1,4 +1,4 @@
-# BdC app
+# BdC
 
 **Bdc** is an app created to take the attendance of a group of friends who meet on daily basis in a common place.<br> 
 <br><br>
@@ -51,7 +51,7 @@ After the user has chosen the time frame and the slot he is interested in, he ca
   <div align="center">
     <img src="https://user-images.githubusercontent.com/28431608/200118095-9718ef17-cc45-45b3-9532-5f78cc0f2db8.png" width="600"/>
   </div>
-<br><br>
+<br>
 
 ## Settings
 The settings allow the user to customize different things around all the app such as: avoid modification old days, show percentage of attendance in chosen time frame,  show/hidden confetti it a person complete a perfect period (100 % attendance) and the possibility of multiplying the all-time attendance by a difficulty coefficient based on the distance between the chosen location and the person's residence. 
@@ -71,5 +71,3 @@ nice things to implement, take a look if you want. Suggestions and constructive 
 
 # License
 This project is licensed under the terms of the <a href="https://choosealicense.com/licenses/mit/">MIT</a> license.
-
-
