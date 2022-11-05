@@ -1,10 +1,12 @@
 PODS:
+  - AcknowList (3.0.0)
   - FittedSheets (2.4.2)
   - FSCalendar (2.8.4)
   - SwiftConfettiView (0.1.0)
   - SwiftLint (0.47.1)
 
 DEPENDENCIES:
+  - AcknowList
   - FittedSheets
   - FSCalendar
   - SwiftConfettiView
@@ -12,17 +14,19 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AcknowList
     - FittedSheets
     - FSCalendar
     - SwiftConfettiView
     - SwiftLint
 
 SPEC CHECKSUMS:
+  AcknowList: 931531a3e9d66f202ae8e04819a62c50b818b03e
   FittedSheets: 661408776eb4ff514a31da75b3600bd7222b2b3d
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   SwiftConfettiView: 1bdbc2e6913b6b1c76d8070802b212508ad5c352
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
 
-PODFILE CHECKSUM: f8ee681f7b7c47b96099514f3d03f2053a736efc
+PODFILE CHECKSUM: 3807f8e8fbbe63fc4319beaeb44eda573a434840
 
 COCOAPODS: 1.11.3
