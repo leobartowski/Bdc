@@ -1,17 +1,28 @@
-# BdC app
+# BdC
 
 **Bdc** is an app created to take the attendance of a group of friends who meet on daily basis in a common place.<br> 
-It was born as a way to avoid using excel files, time sheets or things like that.
-The app is designed to be used by a single administrator who manages the attendance of all users and shares them with others, via a pdf that can be filtered by time frame.<br>
-Over time, many specific features have been added, many of which are still in the works, such as attendance difficulties, confetti to celebrate 100% attendance in a given period and the inability to register attendance on holidays.<br>
-The app is fully developed in **Swift (UIKit)**, it doesn't have any networking and all the attendance are saved using **CoreData**. All the design is made entirely by me using Figma.
 <br><br>
   <div align="center">
     <img src="https://user-images.githubusercontent.com/28431608/200068483-343f0a2f-5e7e-455c-97b6-ceba9bccda02.svg" width="180"/>
   </div>
 <br><br>
 
-## Calendar View
+### Why
+It was born as a way to avoid using excel files, time sheets or things like that.
+The app is designed to be used by a single administrator who manages the attendance of all users and shares them with others, via a pdf that can be filtered by time frame.<br>
+Over time, many specific features have been added, many of which are still in the works, such as attendance difficulties, confetti to celebrate 100% attendance in a given period and the inability to register attendance on holidays.<br>
+I created this project for **personal use** and not for commercial distribution so many features have not been created in the best way possible but only with the purpose of being functional
+### How
+The app is fully developed in **Swift (UIKit)**, it doesn't have any networking and all the attendance are saved using **CoreData**. All the design is made entirely by me using Figma.
+<br><br>
+
+# Detail
+The app is divided in three main section: 
+- [Calendar](#Calendar)  
+- [Ranking](#Ranking)  
+- [Settings](#Settings)   
+
+## Calendar
 It's the view displayed when the app starts and it's used to take attendances or to view the attendees of a past day.
 <br>
   <div align="center">
@@ -22,7 +33,7 @@ The calendar is displayed weekly by default but with a scroll it can become mont
 The collection view used to display the persons has a search bar, visible only when scrolling down, that can be used to filter elements. 
 <br><br>
 
-## Ranking View
+## Ranking
 The main purpose of this section is to display the number of appearances made in a given period. By default, the display is weekly, so using a horizontal scroll you can move from week to week. By clicking on a specific person, the cell expands showing on which days of the week the attendance or warnings were made.
 <br>
   <div align="center">
@@ -42,9 +53,7 @@ After the user has chosen the time frame and the slot he is interested in, he ca
   </div>
 <br>
 
-<br><br>
-
-## Settings View
+## Settings
 The settings allow the user to customize different things around all the app such as: avoid modification old days, show percentage of attendance in chosen time frame,  show/hidden confetti it a person complete a perfect period (100 % attendance) and the possibility of multiplying the all-time attendance by a difficulty coefficient based on the distance between the chosen location and the person's residence. 
 <br>
   <div align="center">
@@ -55,5 +64,10 @@ As you can see, the people list is dynamic and people can be added / removed at 
 
 <br><br>
 
-## Future development
+# Development
+I use <a href="https://trello.com/b/8DADGcxG/bdc">this Trello board</a> to keep track of bugs and 
+nice things to implement, take a look if you want. Suggestions and constructive criticisms are always welcome so feel to leave a comment!
+<br><br>
 
+# License
+This project is licensed under the terms of the <a href="https://choosealicense.com/licenses/mit/">MIT</a> license.
