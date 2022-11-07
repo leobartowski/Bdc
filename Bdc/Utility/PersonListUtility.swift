@@ -38,7 +38,7 @@ class PersonListUtility {
         mary.iconString = "mary_icon"
         mary.difficultyCoefficient = DifficultyCoefficient.medium.rawValue
         let genny = Person(context: context)
-        genny.name = "Genny"
+        genny.name = "Gennaro"
         genny.iconString = "genny_icon"
         genny.difficultyCoefficient = DifficultyCoefficient.medium.rawValue
         let raff = Person(context: context)
@@ -49,8 +49,6 @@ class PersonListUtility {
         giannetta.name = "Giannetta"
         giannetta.iconString = "giannetta_icon"
         giannetta.difficultyCoefficient = DifficultyCoefficient.easy.rawValue
-        let nero = Person(context: context)
-        nero.name = "Nero"
         let cataldo = Person(context: context)
         cataldo.name = "Roberto"
         cataldo.iconString = "cataldo_icon"
@@ -61,22 +59,23 @@ class PersonListUtility {
         enzo.difficultyCoefficient = DifficultyCoefficient.easy.rawValue
         let savio = Person(context: context)
         savio.name = "Savio Dj"
+        savio.iconString = "dj_icon"
         savio.difficultyCoefficient = DifficultyCoefficient.easy.rawValue
         let gigi = Person(context: context)
         gigi.name = "Gigi"
         gigi.iconString = "gigi_icon"
         gigi.difficultyCoefficient = DifficultyCoefficient.easy.rawValue
-        let moda = Person(context: context)
-        moda.name = "Moda"
-        moda.difficultyCoefficient = DifficultyCoefficient.easy.rawValue
         let pacokh = Person(context: context)
         pacokh.name = "Paco KH"
+        pacokh.iconString = "paco_icon"
         pacokh.difficultyCoefficient = DifficultyCoefficient.hard.rawValue
         let mattia = Person(context: context)
         mattia.name = "Mattia"
+        mattia.iconString = "mattia_icon"
         mattia.difficultyCoefficient = DifficultyCoefficient.medium.rawValue
         let franzese = Person(context: context)
         franzese.name = "Franzese"
+        franzese.iconString = "franzese_icon"
         franzese.difficultyCoefficient = DifficultyCoefficient.medium.rawValue
         let lisa = Person(context: context)
         lisa.name = "Lisa"
@@ -94,26 +93,35 @@ class PersonListUtility {
         conte.iconString = "conte_icon"
         let alessia = Person(context: context)
         alessia.name = "Alessia"
+        alessia.iconString = "alessia_icon"
         alessia.difficultyCoefficient = DifficultyCoefficient.easy.rawValue
         let michelep = Person(context: context)
         michelep.name = "Michele P"
+        michelep.iconString = "michele_p_icon"
         michelep.difficultyCoefficient = DifficultyCoefficient.easy.rawValue
-        let angelo = Person(context: context)
-        angelo.name = "Angelo"
         let francescoe = Person(context: context)
         francescoe.name = "Francesco E"
-        francescoe.difficultyCoefficient = DifficultyCoefficient.easy.rawValue
-
+        francescoe.difficultyCoefficient = DifficultyCoefficient.medium.rawValue
+        francescoe.iconString = "francesco_e_icon"
+        let marika = Person(context: context)
+        marika.name = "Marika"
+        marika.difficultyCoefficient = DifficultyCoefficient.medium.rawValue
+        marika.iconString = "marika_icon"
+        let totore = Person(context: context)
+        totore.name = "Marika"
+        totore.difficultyCoefficient = DifficultyCoefficient.easy.rawValue
+        totore.iconString = "totore_icon"
+        
         let persons = [
             franco, fiore, mary, raff, genny, gigi, giovannir, giannetta, enzo, cataldo, lisa, danieled,
-            savio, sossio, francescoe, nero, mattia, conte, pacokh, moda, alessia, michelep, franzese, angelo
+            savio, sossio, francescoe, mattia, conte, pacokh, alessia, michelep, franzese, marika, totore
         ]
         return persons
     }
     
     public static func getDifficultyCoefficient(_ person: Person) -> Float {
         switch person.name {
-        case "Lisa", "Daniele D", "Mary", "Gennaro", "Raff N", "Roberto", "Francesco E", "Francesca T", "Conte", "Marika", "Giuseppe T", "Mattia", "Franzese":
+        case "Lisa", "Daniele D", "Mary", "Gennaro", "Raff N", "Roberto", "Francesco E", "Francesca T", "Conte", "Marika", "Giuseppe T", "Mattia", "Franzese", "Gaetano B", "Pasquale B":
             return 1.3
         case "Paco KH", "Sossio": return 1.5
         default: return 1
