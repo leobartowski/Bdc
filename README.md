@@ -52,17 +52,23 @@ After the user has chosen the time frame and the slot he is interested in, he ca
     <img src="https://user-images.githubusercontent.com/28431608/200118095-9718ef17-cc45-45b3-9532-5f78cc0f2db8.png" width="600"/>
   </div>
 <br>
+![Settings1](https://user-images.githubusercontent.com/28431608/200301717-419a1f22-e454-4469-aa4b-754e4029382f.png)
 
 ## Settings
 The settings allow the user to customize different things around all the app such as: avoid modification old days, show percentage of attendance in chosen time frame,  show/hidden confetti it a person complete a perfect period (100 % attendance) and the possibility of multiplying the all-time attendance by a difficulty coefficient based on the distance between the chosen location and the person's residence. 
 <br>
   <div align="center">
-    <img src="https://user-images.githubusercontent.com/28431608/200118826-3e960423-a437-4fd1-a9a4-178ea705d592.png" width="730"/>
+    <img src="https://user-images.githubusercontent.com/28431608/200301717-419a1f22-e454-4469-aa4b-754e4029382f.png" width="730"/>
   </div>
 <br>
-As you can see, the people list is dynamic and people can be added / removed at any time.
-
-<br><br>
+As you can see, the people list is dynamic and people can be added / removed at any time.<br>
+In the settings app it's possible to see all the **amazing open-source project** that helped the creation of this app. ❤️
+<br>
+  <div align="center">
+    <img src="https://user-images.githubusercontent.com/28431608/200301997-2bf369ab-ed0c-4d84-a6c5-7c670380bf1f.png" width="730"/>
+  </div>
+<br>
+<br>
 
 # Development
 I use <a href="https://trello.com/b/8DADGcxG/bdc">this Trello board</a> to keep track of bugs and 
