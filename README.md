@@ -62,7 +62,7 @@ The settings allow the user to customize different things around all the app suc
   </div>
 <br>
 As you can see, the people list is dynamic and people can be added / removed at any time.<br>
-In the settings app it's possible to see all the **amazing open-source project** that helped the creation of this app. ❤️
+In the settings app it's possible to see all the <b>amazing open-source projects</b> that helped the creation of this app. ❤️
 <br>
   <div align="center">
     <img src="https://user-images.githubusercontent.com/28431608/200301997-2bf369ab-ed0c-4d84-a6c5-7c670380bf1f.png" width="730"/>
