@@ -2,6 +2,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/swift,cocoapods,objective-c,xcode
 # Edit at https://www.toptal.com/developers/gitignore?templates=swift,cocoapods,objective-c,xcode
 
+### Removed personal icons from git
+Bdc/Assets.xcassets/personIcon
+
 ### CocoaPods ###
 ## CocoaPods GitIgnore Template
 
@@ -17,6 +20,7 @@ Pods/
 
 ## User settings
 xcuserdata/
+
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
