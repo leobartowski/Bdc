@@ -93,7 +93,7 @@ iOS Deployment Target | Xcode Version | Swift Language Version
 
 ### Configure Signing
 1. Open `Bdc.xcworkspace` with Xcode.
-2. In Xcode navigate to the [Signing & Capabilities pane](https://developer.apple.com/documentation/xcode/adding_capabilities_to_your_app) of the project editor.
+2. In Xcode navigate to the [Signing & Capabilities panel](https://developer.apple.com/documentation/xcode/adding_capabilities_to_your_app) of the project editor.
 3. Change `Team` to your team.
 4. Change `Bundle identifier` to something unique.
 
