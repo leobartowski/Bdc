@@ -25,7 +25,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         if self.rankingType == .weekly {
             let cell = tableView.dequeueReusableCell(withIdentifier: "weeklyCellID", for: indexPath) as? RankingWeeklyTableViewCell
             let rankingAttendance = rankingPersonsAttendaces[indexPath.row]
-            if self.calculateIfShowConfetti(rankingAttendance) { self.confettiView?.startConfetti() }
+            if self.calculateIfShowConfetti(rankingAttendance) { self.startConfetti() }
             cell?.setUp(rankingAttendance, indexPath, self.rankingType, self.holidaysNumbers)
             cell?.setupLabelDesign(sorting.sortingPosition.rawValue)
             cell?.handleShadowOnFriday(self.daysCurrentPeriod.last?.getWeekNumber())
@@ -194,8 +194,10 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     
     ///  Used to reload the table view section 1 to update the attendance
     func customReloadTableView() {
+        if let confettiView, confettiView.isActive() {
+            confettiView.stopConfetti()
+        }
         // We need this temp var because to avoid a graphic glitch we need to use animation if there was a selected cell
-        self.confettiView?.stopConfetti()
         let previousSelectedRow = self.selectedCellRow
         self.selectedCellRow = -1
         DispatchQueue.main.async {
