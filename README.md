@@ -1,20 +1,26 @@
 # BdC
 
-**Bdc** is an app created to take the attendance of a group of friends who meet on daily basis in a common place.<br> 
-<br><br>
   <div align="center">
-    <img src="https://user-images.githubusercontent.com/28431608/200068483-343f0a2f-5e7e-455c-97b6-ceba9bccda02.svg" width="180"/>
+    <img src="https://user-images.githubusercontent.com/28431608/200335594-d8603f8b-dbc1-4492-a65a-7814897dce3f.png"/>
   </div>
-<br><br>
+  <br>
+
+**Bdc** is an app created to take the attendance of a group of friends who meet on daily basis in a common place.
+<br>
+<br>
 
 ### Why
 It was born as a way to avoid using excel files, time sheets or things like that.
 The app is designed to be used by a single administrator who manages the attendance of all users and shares them with others, via a pdf that can be filtered by time frame.<br>
 Over time, many specific features have been added, many of which are still in the works, such as attendance difficulties, confetti to celebrate 100% attendance in a given period and the inability to register attendance on holidays.<br>
 I created this project for **personal use** and not for commercial distribution so many features have not been created in the best way possible but only with the purpose of being functional
-### How
-The app is fully developed in **Swift (UIKit)**, it doesn't have any networking and all the attendance are saved using **CoreData**. All the design is made entirely by me using Figma.
 <br><br>
+
+<br>
+  <div align="center">
+    <img src="https://user-images.githubusercontent.com/28431608/200068483-343f0a2f-5e7e-455c-97b6-ceba9bccda02.svg" width="180"/>
+  </div>
+<br>
 
 # Detail
 The app is divided in three main section: 
@@ -61,7 +67,7 @@ The settings allow the user to customize different things around all the app suc
   </div>
 <br>
 As you can see, the people list is dynamic and people can be added / removed at any time.<br>
-In the settings app it's possible to see all the <b>amazing open-source projects</b> that helped the creation of this app. ❤️
+In the settings it's possible to see all the <b>amazing open-source projects (❤️)</b> that helped the creation of this app. 
 <br>
   <div align="center">
     <img src="https://user-images.githubusercontent.com/28431608/200301997-2bf369ab-ed0c-4d84-a6c5-7c670380bf1f.png" width="730"/>
@@ -70,8 +76,30 @@ In the settings app it's possible to see all the <b>amazing open-source projects
 <br>
 
 # Development
+### How
+The app is fully developed in **Swift (UIKit)**, it doesn't have any networking and all the attendance are saved using **CoreData**. All the design is made entirely by me using Figma.<br><br>
 I use <a href="https://trello.com/b/8DADGcxG/bdc">this Trello board</a> to keep track of bugs and 
 nice things to implement, take a look if you want. Suggestions and constructive criticisms are always welcome so feel to leave a comment!
+
+## Requirements
+
+iOS Deployment Target | Xcode Version | Swift Language Version
+------------ | ------------- | -------------
+15.0 | 14.0 | Swift 5
+
+### Installation
+1. Install [CocoaPods](https://cocoapods.org).
+2. Go to the project directory in terminal and execute `pod install`.
+
+### Configure Signing
+1. Open `Bdc.xcworkspace` with Xcode.
+2. In Xcode navigate to the [Signing & Capabilities pane](https://developer.apple.com/documentation/xcode/adding_capabilities_to_your_app) of the project editor.
+3. Change `Team` to your team.
+4. Change `Bundle identifier` to something unique.
+
+### Run
+1. In Xcode use the Scheme menu to select the Bdc scheme.
+2. Run  the app.
 <br><br>
 
 # License
