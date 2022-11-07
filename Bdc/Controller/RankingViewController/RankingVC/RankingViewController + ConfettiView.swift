@@ -36,10 +36,12 @@ extension RankingViewController {
     }
     
     func setupConfettiView() {
-        self.confettiView = SwiftConfettiView(frame: self.view.bounds)
-        self.confettiView?.intensity = 0.5
-        self.confettiView?.isUserInteractionEnabled = false
-        self.view.addSubview(self.confettiView ?? UIView())
+        if self.confettiView == nil {
+            self.confettiView = SwiftConfettiView(frame: self.view.bounds)
+            self.confettiView?.intensity = 0.5
+            self.confettiView?.isUserInteractionEnabled = false
+            self.view.addSubview(self.confettiView ?? UIView())
+        }
         self.confettiView?.isHidden = !UserDefaults.standard.bool(forKey: "showConfetti")
     }
     
