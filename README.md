@@ -1,9 +1,9 @@
-# BdC
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/28431608/200335594-d8603f8b-dbc1-4492-a65a-7814897dce3f.png"/>
+</div>
+<br>
 
-  <div align="center">
-    <img src="https://user-images.githubusercontent.com/28431608/200335594-d8603f8b-dbc1-4492-a65a-7814897dce3f.png"/>
-  </div>
-  <br>
+# BdC
 
 **Bdc** is an app created to take the attendance of a group of friends who meet on daily basis in a common place.
 <br>
