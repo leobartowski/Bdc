@@ -121,7 +121,7 @@ class PersonListUtility {
     
     public static func getDifficultyCoefficient(_ person: Person) -> Float {
         switch person.name {
-        case "Lisa", "Daniele D", "Mary", "Gennaro", "Raff N", "Roberto", "Francesco E", "Francesca T", "Conte", "Marika", "Giuseppe T", "Mattia", "Franzese", "Gaetano B", "Pasquale B":
+        case "Lisa", "Daniele D", "Mary", "Gennaro", "Raff N", "Roberto", "Francesco E", "Francesca T", "Conte", "Marika", "Giuseppe T", "Mattia", "Franzese", "Gaetano B", "Pasquale B", "Pasqualo", "Rossella", "Serena":
             return 1.3
         case "Paco KH", "Sossio": return 1.5
         default: return 1

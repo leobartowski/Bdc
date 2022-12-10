@@ -63,6 +63,12 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        section == 0
+        ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        : UIEdgeInsets(top: 0, left: 20, bottom: 20, right: 20)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if indexPath.section == 1 { return UICollectionReusableView() }
         if kind == UICollectionView.elementKindSectionHeader {
