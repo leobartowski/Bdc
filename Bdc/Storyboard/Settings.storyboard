@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cby-in-Fq9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cby-in-Fq9">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,7 +16,7 @@
                     <tabBarItem key="tabBarItem" title="Impostazioni" image="gearshape.fill" catalog="system" id="uJE-R8-vSC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="bc6-GG-1Lk">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
@@ -40,7 +41,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="2Px-fD-JjK">
-                                    <rect key="frame" x="0.0" y="142" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="148" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creata col ❤️ da leobartowski" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MLe-ZQ-Yti">
@@ -55,7 +56,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="switchCellID" id="fzI-ki-7zR" customClass="SettingsSwitchTableViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="32" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="38" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fzI-ki-7zR" id="yP3-DK-Enb">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -91,7 +92,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="arrowCellID" id="v8w-BL-ZAH" customClass="SettingsArrowTableViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="82" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="88" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v8w-BL-ZAH" id="ZJG-VG-CA1">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -164,7 +165,7 @@
                                 <inset key="separatorInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" id="Bak-OZ-I8M" customClass="HandlePersonTableViewCell" customModule="Bdc" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="32" width="374" height="51"/>
+                                        <rect key="frame" x="20" y="38" width="374" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bak-OZ-I8M" id="fbW-hV-Yc6">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="51"/>
@@ -232,20 +233,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man_placeholder_icon" translatesAutoresizingMaskIntoConstraints="NO" id="plV-kK-c83">
-                                <rect key="frame" x="157" y="84" width="100" height="100"/>
+                                <rect key="frame" x="157" y="88" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="2bG-a3-SBK"/>
                                     <constraint firstAttribute="width" constant="100" id="Oty-Pd-jQ9"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qDz-pQ-IP0">
-                                <rect key="frame" x="20" y="214" width="374" height="40"/>
+                                <rect key="frame" x="20" y="218" width="374" height="40"/>
                                 <color key="tintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCp-u5-0RZ">
-                                <rect key="frame" x="327" y="44" width="67" height="31"/>
+                                <rect key="frame" x="319" y="48" width="75" height="34.5"/>
                                 <color key="tintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
@@ -254,7 +255,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBj-xO-ct5">
-                                <rect key="frame" x="20" y="44" width="67" height="31"/>
+                                <rect key="frame" x="20" y="48" width="75" height="34.5"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
@@ -290,8 +291,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.right" catalog="system" width="96" height="128"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="man_placeholder_icon" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
