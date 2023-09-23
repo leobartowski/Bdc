@@ -77,8 +77,7 @@ open class MonthYearPickerView: UIControl {
     
     lazy private var pickerView: UIPickerView = {
         let pickerView = UIPickerView()
-        // swiftlint:disable legacy_constructor
-        pickerView.frame = CGRectMake(0, 0, self.bounds.width, self.bounds.height)
+        pickerView.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
         pickerView.dataSource = self
         pickerView.delegate = self
         pickerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
