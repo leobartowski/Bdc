@@ -453,6 +453,7 @@
 		DD18C80427220D0F0086BB6C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				DD5EF52F2CA707D800988CA5 /* SQLFileBackup */,
 				DDD5051B27220FB000508F60 /* Bdc.xcdatamodeld */,
 				DDD5051227220E2A00508F60 /* Service */,
 				DDD5051127220E0300508F60 /* Class */,
@@ -497,6 +498,13 @@
 				DD717D502772413D0003CB16 /* RankingTypeController */,
 			);
 			path = RankingViewController;
+			sourceTree = "<group>";
+		};
+		DD5EF52F2CA707D800988CA5 /* SQLFileBackup */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SQLFileBackup;
 			sourceTree = "<group>";
 		};
 		DD6ED5E8277CFBE500F44D6F /* RankingWeeklyTableViewCell */ = {

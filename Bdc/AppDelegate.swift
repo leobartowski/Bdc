@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        self.loadFileFromBackUpIfNeeded()
         self.disableDarkMode()
         self.fixTableViewBugGloabally()
         return true
@@ -33,8 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: My Methods
-
-    func disableDarkMode() {
+    private func disableDarkMode() {
         if #available(iOS 13.0, *) {
             self.window?.overrideUserInterfaceStyle = .light
         }
@@ -43,6 +43,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func fixTableViewBugGloabally() {
         if #available(iOS 15.0, *) {
             UITableView.appearance().sectionHeaderTopPadding = CGFloat(0)
+        }
+    }
+    
+// MARK: Way to upload data the first installation
+//    https://gist.github.com/xavierchia/ef43abb270003ae63e5bbb7eb5404645
+    func loadFileFromBackUpIfNeeded() {
+        let isPreloaded = UserDefaults.standard.bool(forKey: "isPreloaded")
+        if !isPreloaded {
+            preloadDataFromSQFiles()
+            UserDefaults.standard.set(true, forKey: "isPreloaded")
+        }
+    }
+    
+    func preloadDataFromSQFiles() {
+        let sourceSqliteURLs = [
+            Bundle.main.url(forResource: "Bdc", withExtension: "sqlite"),
+            Bundle.main.url(forResource: "Bdc", withExtension: "sqlite-wal"),
+            Bundle.main.url(forResource: "Bdc", withExtension: "sqlite-shm")
+        ]
+        let destSqliteURLs = [
+            URL(fileURLWithPath: NSPersistentContainer.defaultDirectoryURL().relativePath + "/Bdc.sqlite"),
+            URL(fileURLWithPath: NSPersistentContainer.defaultDirectoryURL().relativePath + "/Bdc.sqlite-wal"),
+            URL(fileURLWithPath: NSPersistentContainer.defaultDirectoryURL().relativePath + "/Bdc.sqlite-shm")]
+        
+        for index in 0...sourceSqliteURLs.count - 1 {
+            do {
+                try FileManager.default.copyItem(at: sourceSqliteURLs[index]!, to: destSqliteURLs[index])
+            } catch {
+                print("Could not preload data")
+            }
         }
     }
 }
