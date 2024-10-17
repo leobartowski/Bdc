@@ -88,11 +88,10 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         let leftSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(self.tableViewSwiped))
         leftSwipeGR.direction = .left
         self.tableView.addGestureRecognizer(leftSwipeGR)
-        
         let rightSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(self.tableViewSwiped))
         rightSwipeGR.direction = .right
         self.tableView.addGestureRecognizer(rightSwipeGR)
-        
+    
         self.header = self.headerBasic
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 10))
     }
@@ -206,16 +205,15 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
     
     // MARK: Handle left or right swipe
-    
     @objc func tableViewSwiped(sender: UISwipeGestureRecognizer) {
         if self.rankingType != .weekly { return }
         let selectedDate = self.calendarView.selectedDate ?? Date.now
-        if sender.direction == .right { // Right
+        if sender.direction == .right {
             self.calendarView.setCurrentPage(selectedDate.previousWeek, animated: true)
-        } else { // Left
+        } else if sender.direction == .left { 
             self.calendarView.setCurrentPage(selectedDate.nextWeek, animated: true)
         }
-        let feedbackGenerator = UIImpactFeedbackGenerator(style: .rigid)
-        feedbackGenerator.impactOccurred(intensity: 0.9)
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+        feedbackGenerator.impactOccurred(intensity: 0.5)
     }
 }

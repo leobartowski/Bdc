@@ -14,10 +14,6 @@ class SettingsSwitchTableViewCell: UITableViewCell {
     
     var settingsType: SettingsType!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     func setup(text: String, settingsType: SettingsType) {
         self.settingsType = settingsType
         self.mainLabel.text = text
