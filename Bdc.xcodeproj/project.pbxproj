@@ -49,7 +49,7 @@
 		DD47EEC3278B3CBF0081388D /* Label - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47EEC2278B3CBF0081388D /* Label - Ext.swift */; };
 		DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */; };
 		DD60B5552753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */; };
-		DD611B5B2910412C00D8063C /* CalendarViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD611B5A2910412C00D8063C /* CalendarViewController+SearchBar.swift */; };
+		DD611B5B2910412C00D8063C /* CalendarViewController + SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD611B5A2910412C00D8063C /* CalendarViewController + SearchBar.swift */; };
 		DD617CEB2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */; };
 		DD617CED2753C3AE002AD5E7 /* RankingWeeklyTableViewCell + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD617CEC2753C3AE002AD5E7 /* RankingWeeklyTableViewCell + CollectionView.swift */; };
 		DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968227221A40009E455F /* Person+CoreDataClass.swift */; };
@@ -193,7 +193,7 @@
 		DD47EEC2278B3CBF0081388D /* Label - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label - Ext.swift"; sourceTree = "<group>"; };
 		DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + FSCalendar.swift"; sourceTree = "<group>"; };
 		DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDayHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
-		DD611B5A2910412C00D8063C /* CalendarViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		DD611B5A2910412C00D8063C /* CalendarViewController + SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + SearchBar.swift"; sourceTree = "<group>"; };
 		DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSingleDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD617CEC2753C3AE002AD5E7 /* RankingWeeklyTableViewCell + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingWeeklyTableViewCell + CollectionView.swift"; sourceTree = "<group>"; };
 		DD64968227221A40009E455F /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -485,7 +485,7 @@
 				DD8543F227219D4A004D38F0 /* CalendarViewController.swift */,
 				DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */,
 				DD03AC18274811B8004C4819 /* CalendarViewController + CollectionView.swift */,
-				DD611B5A2910412C00D8063C /* CalendarViewController+SearchBar.swift */,
+				DD611B5A2910412C00D8063C /* CalendarViewController + SearchBar.swift */,
 			);
 			path = CalendarViewController;
 			sourceTree = "<group>";
@@ -1152,7 +1152,7 @@
 				DDF9B58327786BC400E2FEE2 /* SettingsArrowTableViewCell.swift in Sources */,
 				DD368F522774D415000F0A84 /* YearPickerView.swift in Sources */,
 				DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */,
-				DD611B5B2910412C00D8063C /* CalendarViewController+SearchBar.swift in Sources */,
+				DD611B5B2910412C00D8063C /* CalendarViewController + SearchBar.swift in Sources */,
 				DD1A1C65274908AB006FC676 /* UIView - Ext.swift in Sources */,
 				DD717D522772428C0003CB16 /* RankingTypeViewController.swift in Sources */,
 				DD717D56277249B90003CB16 /* CheckBox.swift in Sources */,

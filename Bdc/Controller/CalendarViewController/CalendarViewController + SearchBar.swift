@@ -17,7 +17,7 @@ extension CalendarViewController: UISearchBarDelegate {
             return person.name!.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         UIView.performWithoutAnimation {
-            self.collectionView.reloadSections(IndexSet(integer: 1))
+            self.collectionView.reloadData()
         }
     }
     
@@ -34,7 +34,7 @@ extension CalendarViewController: UISearchBarDelegate {
         searchBar.text = ""
         self.filteredPerson = self.allPersons
         UIView.performWithoutAnimation {
-            self.collectionView.reloadSections(IndexSet(integer: 1))
+            self.collectionView.reloadData()
         }
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.showsCancelButton = false
