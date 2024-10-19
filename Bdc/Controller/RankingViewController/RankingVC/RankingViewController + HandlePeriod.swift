@@ -83,11 +83,10 @@ extension RankingViewController {
     
     // MARK: Handle change of type
     func handleChangeRankingType(_ oldRankingType: RankingType) {
+        self.showLoader()
         self.daysCurrentPeriod.removeAll()
-        
         switch self.rankingType {
         case .weekly:
-            
             self.calendarView.hideViewWithTransition(hidden: false)
             self.monthYearDatePicker.isHidden = true
             self.yearDatePicker.isHidden = true
@@ -95,7 +94,6 @@ extension RankingViewController {
             self.tableView.allowsSelection = true
             self.daysCurrentPeriod = self.calendarView.selectedDates
         case .monthly:
-            
             self.calendarView.isHidden = true
             self.monthYearDatePicker.hideViewWithTransition(hidden: false)
             self.yearDatePicker.isHidden = true
@@ -104,8 +102,7 @@ extension RankingViewController {
             self.tableView.allowsSelection = false
             self.daysCurrentPeriod = self.yearDatePicker.date.getAllSelectableDatesOfTheMonth()
             self.daysCurrentPeriod.removeAll(where: { $0 < Constant.startingDateBdC || $0 > Date.tomorrow })
-        case .yearly:
-            
+        case .yearly:         
             self.calendarView.isHidden = true
             self.monthYearDatePicker.isHidden = true
             self.allTimeLabel.isHidden = true

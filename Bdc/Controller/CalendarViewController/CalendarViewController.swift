@@ -37,10 +37,10 @@ class CalendarViewController: UIViewController {
         self.designBottomCalendarHandleView()
         self.updateGoToTodayButton()
         self.addObservers()
+        self.addSwipeGestureRecognizerToCollectionView()
         self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
     }
     
-    //   Get called when the app is become active
     @objc func willBecomeActive() {
         self.updateDayTypeBasedOnTime()
     }
@@ -50,7 +50,6 @@ class CalendarViewController: UIViewController {
     }
     
     // MARK: Utils and Design
-    
     /// Add shadow and corner radius to bottom Calendar Handle View
     func designBottomCalendarHandleView() {
         self.bottomCalendarHandleView.layer.shadowColor = UIColor.gray.cgColor
@@ -106,28 +105,6 @@ class CalendarViewController: UIViewController {
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .normal)
     }
     
-    // MARK: Morning and Evening Selector
-    
-    func updateDayTypeBasedOnTime() {
-        let todayString = DateFormatter.basicFormatter.string(from: Date.now)
-        let currentDayString = DateFormatter.basicFormatter.string(from: self.calendarView.selectedDate ?? Date())
-        if todayString == currentDayString {
-            var calendar = Calendar.current
-            calendar.locale = .current
-            let hour = calendar.component(.hour, from: Date.now)
-            let oldDayType = self.dayType
-            if hour < 16, hour > 8 { // morning
-                self.dayType = .morning
-                self.segmentedControl.selectedSegmentIndex = 0
-            } else { // evening
-                self.dayType = .evening
-                self.segmentedControl.selectedSegmentIndex = 1
-            }
-            // We reload data from CoreData only if dayType is changed
-            if oldDayType != self.dayType { self.getDataFromCoreDataAndReloadViews() }
-        }
-    }
-    
     func reloadCalendarDateIfNeeded() {
         if self.calendarView.maximumDate < Date.now {
             self.updateGoToTodayButton()
@@ -147,14 +124,14 @@ class CalendarViewController: UIViewController {
         self.personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
         self.allPersons = PersonListUtility.persons
         self.filteredPerson = self.allPersons
-        self.sortPersonPresentAndNot()
+        self.sortPersons()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
-            self.collectionView.setContentOffset(CGPoint(x: 0, y: 53), animated: true)
+            self.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         }
     }
     
-    func sortPersonPresentAndNot() {
+    func sortPersons() {
         self.allPersons = self.allPersons.sorted { $0.name ?? "" < $1.name ?? "" }
     }
     
@@ -171,7 +148,6 @@ class CalendarViewController: UIViewController {
     // MARK: IBActions
     
     @IBAction func segmentedControlValueChanged(_: Any) {
-        //        self.saveCurrentDataInCoreData()
         switch self.segmentedControl.selectedSegmentIndex {
         case 0: self.dayType = .morning
         case 1: self.dayType = .evening
@@ -206,12 +182,58 @@ class CalendarViewController: UIViewController {
 
         let keyboardScreenEndFrame = keyboardValue.cgRectValue
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-
         if notification.name == UIResponder.keyboardWillHideNotification {
             self.collectionView.contentInset = .zero
         } else {
             self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
         }
         self.collectionView.scrollIndicatorInsets = self.collectionView.contentInset
+    }
+    
+    // MARK: Selected Control
+    func addSwipeGestureRecognizerToCollectionView() {
+        let leftSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(self.collectionViewSwiped))
+        leftSwipeGR.direction = .left
+        self.collectionView.addGestureRecognizer(leftSwipeGR)
+        
+        let rightSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(self.collectionViewSwiped))
+        rightSwipeGR.direction = .right
+        self.collectionView.addGestureRecognizer(rightSwipeGR)
+    }
+    
+    @objc private func collectionViewSwiped(sender: UISwipeGestureRecognizer) {
+        let oldDayType = self.dayType
+        if sender.direction == .right {
+            self.dayType = .morning
+            self.segmentedControl.selectedSegmentIndex = 0
+        } else {
+            self.dayType = .evening
+            self.segmentedControl.selectedSegmentIndex = 1
+        }
+        if oldDayType != self.dayType {
+            self.getDataFromCoreDataAndReloadViews()
+            let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+            feedbackGenerator.impactOccurred(intensity: 0.5)
+        }
+    }
+    
+    func updateDayTypeBasedOnTime() {
+        let todayString = DateFormatter.basicFormatter.string(from: Date.now)
+        let currentDayString = DateFormatter.basicFormatter.string(from: self.calendarView.selectedDate ?? Date())
+        if todayString == currentDayString {
+            var calendar = Calendar.current
+            calendar.locale = .current
+            let hour = calendar.component(.hour, from: Date.now)
+            let oldDayType = self.dayType
+            if hour < 16, hour > 8 {
+                self.dayType = .morning
+                self.segmentedControl.selectedSegmentIndex = 0
+            } else {
+                self.dayType = .evening
+                self.segmentedControl.selectedSegmentIndex = 1
+            }
+            // We reload data from CoreData only if dayType is changed
+            if oldDayType != self.dayType { self.getDataFromCoreDataAndReloadViews() }
+        }
     }
 }
