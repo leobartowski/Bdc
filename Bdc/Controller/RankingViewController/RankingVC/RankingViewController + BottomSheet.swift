@@ -23,14 +23,16 @@ extension RankingViewController {
                 options: SheetOptions(shrinkPresentingViewController: false)
             )
             sheetController.gripSize = CGSize(width: 35, height: 6)
-            
             sheetController.shouldDismiss = { _ in
-                // Update rankingType based on user's choice
+                self.showLoader()
+                return true
+            }
+            sheetController.didDismiss = { _ in
                 let oldRankingType = self.rankingType
                 self.rankingType = vc.selectedType
                 self.handleChangeRankingType(oldRankingType)
-                return true
             }
+            
             self.present(sheetController, animated: true, completion: nil)
             // I have no idea where this -143 came from but it works
             self.tableView.setContentOffset(CGPoint(x: 0, y: -143), animated: true)
@@ -49,17 +51,19 @@ extension RankingViewController {
                 options: SheetOptions(shrinkPresentingViewController: false)
             )
             sheetController.gripSize = CGSize(width: 35, height: 6)
-            
             sheetController.shouldDismiss = { _ in
+                self.showLoader()
+                return true
+            }
+            sheetController.didDismiss = { _ in
                 // Update slotType based on user's choice
                 self.slotType = vc.selectedSlot
                 self.setupSlotLabel()
                 self.populateAttendance()
-                return true
             }
             self.present(sheetController, animated: true, completion: nil)
             self.tableView.setContentOffset(CGPoint(x: 0, y: -143), animated: true)
         }
     }
-
+    
 }
