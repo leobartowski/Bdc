@@ -124,14 +124,14 @@ class CalendarViewController: UIViewController {
         self.personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
         self.allPersons = PersonListUtility.persons
         self.filteredPerson = self.allPersons
-        self.sortPersonPresentAndNot()
+        self.sortPersons()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
             self.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         }
     }
     
-    func sortPersonPresentAndNot() {
+    func sortPersons() {
         self.allPersons = self.allPersons.sorted { $0.name ?? "" < $1.name ?? "" }
     }
     

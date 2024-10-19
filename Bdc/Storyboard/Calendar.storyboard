@@ -108,11 +108,18 @@
                                                                 <constraint firstAttribute="width" constant="55" id="yNe-tl-f2r"/>
                                                             </constraints>
                                                         </imageView>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="6eH-LZ-Sd6">
+                                                            <rect key="frame" x="19" y="19" width="36" height="37"/>
+                                                        </activityIndicatorView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="V0C-1s-mca" firstAttribute="top" secondItem="0cd-NS-jnS" secondAttribute="bottom" constant="5" id="0U1-op-hwR"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6eH-LZ-Sd6" secondAttribute="trailing" constant="19" id="38Q-P0-ZSh"/>
                                                         <constraint firstItem="V0C-1s-mca" firstAttribute="leading" secondItem="CZj-F8-2Of" secondAttribute="leading" constant="5" id="8sh-va-ZLf"/>
+                                                        <constraint firstItem="6eH-LZ-Sd6" firstAttribute="top" secondItem="CZj-F8-2Of" secondAttribute="top" constant="19" id="HrL-kK-lmh"/>
                                                         <constraint firstAttribute="bottom" secondItem="V0C-1s-mca" secondAttribute="bottom" constant="3" id="Wdp-Lu-Z4f"/>
+                                                        <constraint firstItem="6eH-LZ-Sd6" firstAttribute="leading" secondItem="CZj-F8-2Of" secondAttribute="leading" constant="19" id="Xh7-PU-nvZ"/>
                                                         <constraint firstItem="V0C-1s-mca" firstAttribute="top" secondItem="0cd-NS-jnS" secondAttribute="bottom" constant="5" id="db7-TR-VFK"/>
                                                         <constraint firstAttribute="trailing" secondItem="V0C-1s-mca" secondAttribute="trailing" constant="5" id="hpX-sy-wSF"/>
                                                         <constraint firstItem="0cd-NS-jnS" firstAttribute="centerX" secondItem="CZj-F8-2Of" secondAttribute="centerX" id="lSl-P0-EaD"/>
@@ -130,6 +137,7 @@
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="6eH-LZ-Sd6" id="luK-qa-gCH"/>
                                             <outlet property="customBackgroundView" destination="CZj-F8-2Of" id="p4g-rp-XXS"/>
                                             <outlet property="mainImageView" destination="0cd-NS-jnS" id="9ZF-1M-p37"/>
                                             <outlet property="nameLabel" destination="V0C-1s-mca" id="Y5e-EI-ajL"/>
@@ -204,7 +212,7 @@
                                         <rect key="frame" x="2" y="0.0" width="410" height="56"/>
                                         <color key="tintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="barTintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                         <scopeButtonTitles>
                                             <string>Title</string>
                                             <string>Title</string>

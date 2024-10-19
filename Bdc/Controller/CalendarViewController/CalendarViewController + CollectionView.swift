@@ -37,54 +37,29 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell
+        cell?.isUpdating = true
         let person = self.filteredPerson[indexPath.row]
         let isPresent = self.personsPresent.contains(where: { $0.name == person.name })
         if isPresent {
             self.personsPresent.removeAll(where: { $0.name == person.name })
         } else {
             if self.personsAdmonished.contains(where: { $0.name == person.name }) {
-                self.presentAlert(alertText: "Errore", alertMessage: "Una persona ammonita non pùo risultare presente, rimuovi l'ammonizione se vuoi mettere la presenza a \(person.name ?? "")")
+                self.presentAlert(alertText: "Errore", alertMessage: "Una persona ammonita non può risultare presente, rimuovi l'ammonizione per dare la presenza a \(person.name ?? "")")
+                cell?.isUpdating = false
                 return
             }
             self.personsPresent.append(person)
         }
         DispatchQueue.main.async {
+            let feedbackGenerator = UIImpactFeedbackGenerator(style: .soft)
+            feedbackGenerator.impactOccurred(intensity: 0.6)
             CoreDataService.shared.saveAttendance(self.calendarView.selectedDate ?? Date(), self.dayType, self.personsPresent)
-        }
-        let feedbackGenerator = UIImpactFeedbackGenerator(style: .soft)
-        feedbackGenerator.impactOccurred(intensity: 0.6)
-        self.sortPersonPresentAndNot()
-        DispatchQueue.main.async {
-            self.collectionView.reloadItems(at: [indexPath])
             self.postNotificationUpdateAttendance()
+            self.collectionView.reloadItems(at: [indexPath])
+
         }
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        section == 0
-//        ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        : UIEdgeInsets(top: 0, left: 20, bottom: 20, right: 20)
-//    }
-    
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        if indexPath.section == 1 { return UICollectionReusableView() }
-//        if kind == UICollectionView.elementKindSectionHeader {
-//            let headerView = collectionView.dequeueReusableSupplementaryView(
-//                ofKind: kind,
-//                withReuseIdentifier: "sectionHeaderID",
-//                for: indexPath
-//            )
-//            guard let typedHeaderView = headerView as? CalendarHeaderCollectionReusableView else { return headerView }
-//            typedHeaderView.searchBar.delegate = self
-//            return typedHeaderView
-//        }
-//        return UICollectionReusableView()
-//    }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        if section == 1 { return CGSize.zero }
-//        return CGSize(width: collectionView.frame.width, height: 60)
-//    }
     
     func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 80, height: 100)
@@ -95,33 +70,38 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
            self.calendarView.scope == .month,
            self.collectionView.contentSize.height > 0,
            (self.collectionView.contentOffset.y + self.collectionView.safeAreaInsets.top) <= 0 {
-            
             self.handleMonthlyToWeeklyCalendar()
         }
     }
     
     // MARK: CalendarViewControllerCellDelegate
-
     func mainCell(_: CalendarCollectionViewCell, didSelectRowAt indexPath: IndexPath) {
         
         // Check to avoid the modification of day older than today
         let selectedDate = Date().days(from: self.calendarView.selectedDate ?? Date())
         if selectedDate > 0 && !self.canModifyOldDays { return }
+        let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell
+        cell?.isUpdating = true
         let personToHandle = self.filteredPerson[indexPath.row]
-        // I need to amonish this person if is not amonished or I need to remove the amonishment otherwise
+        // I need to amonish this person if is not amonished or I need toz remove the amonishment otherwise
         if let index = self.personsAdmonished.firstIndex(where: { $0.name == personToHandle.name }) {
             self.personsAdmonished.remove(at: index)
         } else {
-            self.personsAdmonished.append(personToHandle)
+            if !self.personsPresent.contains(where: { $0.name == personToHandle.name }) {
+                self.personsAdmonished.append(personToHandle)
+            } else {
+                self.presentAlert(alertText: "Errore", alertMessage: "Una persona presente non può essere ammonita, rimuovi la presenza per ammonire \(personToHandle.name ?? "") ")
+                cell?.isUpdating = false
+                return
+            }
         }
         DispatchQueue.main.async {
+            let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+            feedbackGenerator.impactOccurred()
             CoreDataService.shared.saveAdmonishedAttendance(self.calendarView.selectedDate ?? Date(), self.dayType, self.personsAdmonished)
-        }
-        let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
-        feedbackGenerator.impactOccurred()
-        DispatchQueue.main.async {
-            self.collectionView.reloadItems(at: [indexPath])
             self.postNotificationUpdateAttendance()
+            self.collectionView.reloadItems(at: [indexPath])
+
         }
     }
 }
