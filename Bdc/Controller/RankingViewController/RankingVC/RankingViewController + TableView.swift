@@ -98,9 +98,8 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     
     func sortDescendingAttendanceFirstTime() {
         self.sorting = SortingPositionAndType(.attendance, .descending)
-        let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
         self.rankingPersonsAttendaces = self.rankingPersonsAttendaces.sorted {
-            if isWeightedAttendance && self.rankingType == .allTime {
+            if self.rankingType == .allTimePonderate {
                 let weightedAttendance0 = Float($0.attendanceNumber) * $0.person.difficultyCoefficient
                 let weightedAttendance1 = Float($1.attendanceNumber) * $1.person.difficultyCoefficient
                 return weightedAttendance0 > weightedAttendance1
@@ -146,10 +145,9 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             self.header[2] = self.headerBasic[2]
             self.sorting.sortingPosition = .name
         case 1: // Attendacne
-            let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
             if oldSorting.sortingType == .descending {
                 self.rankingPersonsAttendaces = self.rankingPersonsAttendaces.sorted {
-                    if isWeightedAttendance && self.rankingType == .allTime {
+                    if self.rankingType == .allTimePonderate {
                         let weightedAttendance0 = Float($0.attendanceNumber) * $0.person.difficultyCoefficient
                         let weightedAttendance1 = Float($1.attendanceNumber) * $1.person.difficultyCoefficient
                         return weightedAttendance0 < weightedAttendance1
@@ -160,7 +158,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
                 self.sorting.sortingType = .ascending
             } else {
                 self.rankingPersonsAttendaces = self.rankingPersonsAttendaces.sorted {
-                    if isWeightedAttendance && self.rankingType == .allTime {
+                    if self.rankingType == .allTimePonderate {
                         let weightedAttendance0 = Float($0.attendanceNumber) * $0.person.difficultyCoefficient
                         let weightedAttendance1 = Float($1.attendanceNumber) * $1.person.difficultyCoefficient
                         return weightedAttendance0 > weightedAttendance1

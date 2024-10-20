@@ -15,8 +15,8 @@ extension RankingViewController {
         self.calendarSetup()
         self.monthYearDatePickerSetup()
         self.yearDatePickerSetup()
-        self.setupAllTimeLabel()
         self.setupObserver()
+        self.allTimeLabel.isHidden = true
     }
     
     func setupShadowContainerPeriodView() {
@@ -33,7 +33,6 @@ extension RankingViewController {
     
     func setupObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.systemTimeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeWeightedAttendance(_:)), name: .didChangeweightedAttendance, object: nil)
     }
     
     @objc func systemTimeChanged() {
@@ -41,12 +40,6 @@ extension RankingViewController {
     }
     
     // MARK: Handle Period Change
-    func setupAllTimeLabel() {
-        let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
-        self.allTimeLabel.text = isWeightedAttendance ? "All-Time ponderate" : "All-Time"
-        self.allTimeLabel.isHidden = true
-    }
-    
     func monthYearDatePickerSetup() {
         self.monthYearDatePicker.isHidden = true
         self.monthYearDatePicker.locale = Locale(identifier: "it")
@@ -118,6 +111,15 @@ extension RankingViewController {
             self.calendarView.isHidden = true
             self.monthYearDatePicker.isHidden = true
             self.yearDatePicker.isHidden = true
+            self.allTimeLabel.text = "All-Time"
+            self.allTimeLabel.hideViewWithTransition(hidden: false)
+            self.tableView.allowsSelection = false
+            self.daysCurrentPeriod = Date().getAllDatesFrom(startingDate: Constant.startingDateBdC)
+        case .allTimePonderate:
+            self.calendarView.isHidden = true
+            self.monthYearDatePicker.isHidden = true
+            self.yearDatePicker.isHidden = true
+            self.allTimeLabel.text = "All-Time ponderate"
             self.allTimeLabel.hideViewWithTransition(hidden: false)
             self.tableView.allowsSelection = false
             self.daysCurrentPeriod = Date().getAllDatesFrom(startingDate: Constant.startingDateBdC)

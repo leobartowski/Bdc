@@ -14,6 +14,5 @@ enum SettingsType: String {
     case handlePersonList
     case showRegulation
     case showConfetti
-    case weightedAttendance
     case acknowledgmentThirdPartSoftware
 }

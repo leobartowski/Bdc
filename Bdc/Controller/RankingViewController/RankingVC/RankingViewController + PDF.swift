@@ -12,13 +12,12 @@ extension RankingViewController {
     
     func createPDF(_ pdfTitle: String) -> Data {
         
-        let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
         var tableDataItems = [PDFTableDataItem]()
         
         for personAttendances in self.rankingPersonsAttendaces {
             tableDataItems.append(PDFTableDataItem(
                 name: personAttendances.person.name ?? "---",
-                attendanceNumber: self.getStringOfAttendanceLabel(personAttendances, isWeightedAttendance),
+                attendanceNumber: self.getStringOfAttendanceLabel(personAttendances),
                 admonishmentNumber: String(personAttendances.admonishmentNumber)
             ))
         }
@@ -34,8 +33,8 @@ extension RankingViewController {
         return data
     }
     
-    func getStringOfAttendanceLabel(_ rankingAttendance: RankingPersonAttendance, _ isWeightedAttendance: Bool) -> String {
-        if isWeightedAttendance && self.rankingType == .allTime {
+    func getStringOfAttendanceLabel(_ rankingAttendance: RankingPersonAttendance) -> String {
+        if self.rankingType == .allTimePonderate {
             let number = Float(rankingAttendance.attendanceNumber) * rankingAttendance.person.difficultyCoefficient
             return String(format: "%.1f", number)
         } else {

@@ -19,7 +19,7 @@ extension RankingViewController {
             vc.selectedType = self.rankingType
             let sheetController = SheetViewController(
                 controller: vc,
-                sizes: [.fixed(370)],
+                sizes: [.fixed(431)],
                 options: SheetOptions(shrinkPresentingViewController: false)
             )
             sheetController.gripSize = CGSize(width: 35, height: 6)

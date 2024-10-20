@@ -72,7 +72,6 @@ class RankingViewController: UIViewController {
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowConfetti(_:)), name: .didChangeShowConfetti, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeWeightedAttendance(_:)), name: .didChangeweightedAttendance, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didUpdateAttendance(_:)), name: .didUpdateAttendance, object: nil)
     }
     
@@ -150,13 +149,7 @@ class RankingViewController: UIViewController {
         self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
         self.populateAttendance()
     }
-    
-    @objc func didChangeWeightedAttendance(_: Notification) {
-        let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
-        self.allTimeLabel.text = isWeightedAttendance ? "All-Time ponderate" : "All-Time"
-        self.populateAttendance()
-    }
-    
+    
     @objc func didUpdateAttendance(_: Notification) {
         self.populateAttendance()
     }

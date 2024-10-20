@@ -379,18 +379,14 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wey-vi-kJt">
-                                <rect key="frame" x="0.0" y="0.0" width="440" height="922"/>
+                                <rect key="frame" x="0.0" y="106" width="440" height="816"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="99I-OG-Vfb">
-                                        <rect key="frame" x="195" y="221" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="D22-YF-Wnx"/>
-                                            <constraint firstAttribute="height" constant="50" id="uev-xc-VfP"/>
-                                        </constraints>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="99I-OG-Vfb">
+                                        <rect key="frame" x="210" y="50" width="20" height="20"/>
                                         <color key="color" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calcolo le presenze..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17F-qC-G4g">
-                                        <rect key="frame" x="10" y="281" width="420" height="21"/>
+                                        <rect key="frame" x="10" y="80" width="420" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -398,8 +394,8 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="99I-OG-Vfb" firstAttribute="top" secondItem="wey-vi-kJt" secondAttribute="top" constant="50" id="8Hq-5m-rCS"/>
                                     <constraint firstAttribute="trailing" secondItem="17F-qC-G4g" secondAttribute="trailing" constant="10" id="Gfv-v6-z5l"/>
-                                    <constraint firstItem="99I-OG-Vfb" firstAttribute="centerY" secondItem="wey-vi-kJt" secondAttribute="centerY" constant="-215" id="PiW-Bl-qGw"/>
                                     <constraint firstItem="17F-qC-G4g" firstAttribute="leading" secondItem="wey-vi-kJt" secondAttribute="leading" constant="10" id="Ziz-AR-MxB"/>
                                     <constraint firstItem="99I-OG-Vfb" firstAttribute="centerX" secondItem="wey-vi-kJt" secondAttribute="centerX" id="lTc-Gq-N5m"/>
                                     <constraint firstItem="17F-qC-G4g" firstAttribute="top" secondItem="99I-OG-Vfb" secondAttribute="bottom" constant="10" id="wfA-s9-quG"/>
@@ -412,11 +408,11 @@
                             <constraint firstItem="Gf7-0T-T5q" firstAttribute="bottom" secondItem="wey-vi-kJt" secondAttribute="bottom" id="217-lA-nP5"/>
                             <constraint firstItem="Gf7-0T-T5q" firstAttribute="trailing" secondItem="Py9-kz-7il" secondAttribute="trailing" id="6uy-vF-ou5"/>
                             <constraint firstItem="Gf7-0T-T5q" firstAttribute="bottom" secondItem="Py9-kz-7il" secondAttribute="bottom" id="aZ1-rw-bfI"/>
-                            <constraint firstItem="wey-vi-kJt" firstAttribute="top" secondItem="XG7-Ay-VBO" secondAttribute="top" id="bUJ-2t-Tps"/>
                             <constraint firstItem="Py9-kz-7il" firstAttribute="top" secondItem="XG7-Ay-VBO" secondAttribute="top" id="gtf-sw-O6t"/>
                             <constraint firstAttribute="trailing" secondItem="wey-vi-kJt" secondAttribute="trailing" id="n7G-Dn-KJv"/>
                             <constraint firstItem="Py9-kz-7il" firstAttribute="leading" secondItem="Gf7-0T-T5q" secondAttribute="leading" id="phY-Rm-xbV"/>
                             <constraint firstItem="wey-vi-kJt" firstAttribute="leading" secondItem="XG7-Ay-VBO" secondAttribute="leading" id="uhn-ha-4PY"/>
+                            <constraint firstItem="wey-vi-kJt" firstAttribute="top" secondItem="Gf7-0T-T5q" secondAttribute="top" id="v3b-jC-C0d"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Ranking" largeTitleDisplayMode="always" id="pIm-98-xbW"/>
@@ -436,7 +432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37D-BQ-28C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2755.072463768116" y="593.97321428571422"/>
+            <point key="canvasLocation" x="2754.545454545455" y="593.72384937238496"/>
         </scene>
         <!--Ranking-->
         <scene sceneID="ScZ-u7-hUz">
