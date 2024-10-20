@@ -160,12 +160,6 @@ class RankingViewController: UIViewController {
     @objc func didUpdateAttendance(_: Notification) {
         self.populateAttendance()
     }
-    
-    @objc func didChangeRankingType(_ notification: Notification) {
-        if let oldRankingType = notification.userInfo?["oldRankingType"] as? RankingType {
-            self.handleChangeRankingType(oldRankingType)
-            }
-    }
 
     // MARK: Share pdf current period
     @objc func shareButtonAction() {
@@ -191,7 +185,7 @@ class RankingViewController: UIViewController {
     
     // MARK: Loader
     func showLoader() {
-        if self.spinnerView.isHidden && !(self.rankingType == .weekly) {
+        if self.spinnerView.isHidden && !(self.rankingType == .weekly || self.rankingType == .monthly) {
             self.spinnerView.isHidden = false
             self.activityIndicatorView.startAnimating()
         }

@@ -10,18 +10,12 @@ import UIKit
 
 extension RankingViewController {
     
-     func setupHandlePeriodView() {
-        // Shadow container View
+    func setupHandlePeriodView() {
         self.setupShadowContainerPeriodView()
-        // Calendar Setup
         self.calendarSetup()
-        // Month and Year Date Picker
         self.monthYearDatePickerSetup()
-        // Year Date Picker
         self.yearDatePickerSetup()
-        // Setup Label
         self.setupAllTimeLabel()
-        // Setup Observer
         self.setupObserver()
     }
     
@@ -70,19 +64,28 @@ extension RankingViewController {
     }
     
     @objc func monthtYearDatePickerDateChanged(_ sender: Any) {
-        self.daysCurrentPeriod.removeAll()
-        self.daysCurrentPeriod = self.monthYearDatePicker.date.getAllSelectableDatesOfTheMonth()
-        self.populateAttendance()
+        let oldDaysCurrentPeriod = self.daysCurrentPeriod
+        let newDatesCurrentPeriod = self.monthYearDatePicker.date.getAllSelectableDatesOfTheMonth()
+        if newDatesCurrentPeriod != oldDaysCurrentPeriod {
+            self.daysCurrentPeriod.removeAll()
+            self.daysCurrentPeriod = newDatesCurrentPeriod
+            self.populateAttendance()
+        }
+        
     }
     
     @objc func yearDatePickerDateChanged(_ sender: Any) {
-        self.daysCurrentPeriod.removeAll()
-        self.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheYear()
-        self.populateAttendance()
+        let oldDaysCurrentPeriod = self.daysCurrentPeriod
+        let newDatesCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheYear()
+        if newDatesCurrentPeriod != oldDaysCurrentPeriod {
+            self.daysCurrentPeriod.removeAll()
+            self.daysCurrentPeriod = newDatesCurrentPeriod
+            self.populateAttendance()
+        }
     }
     
     // MARK: Handle change of type
-    func handleChangeRankingType(_ oldRankingType: RankingType) {
+    func handleChangeRankingType() {
         self.showLoader()
         self.daysCurrentPeriod.removeAll()
         switch self.rankingType {
@@ -102,7 +105,7 @@ extension RankingViewController {
             self.tableView.allowsSelection = false
             self.daysCurrentPeriod = self.yearDatePicker.date.getAllSelectableDatesOfTheMonth()
             self.daysCurrentPeriod.removeAll(where: { $0 < Constant.startingDateBdC || $0 > Date.tomorrow })
-        case .yearly:         
+        case .yearly:
             self.calendarView.isHidden = true
             self.monthYearDatePicker.isHidden = true
             self.allTimeLabel.isHidden = true
@@ -112,14 +115,12 @@ extension RankingViewController {
             self.daysCurrentPeriod = self.yearDatePicker.date.getAllDateOfTheYear()
             self.daysCurrentPeriod.removeAll(where: { $0 < Constant.startingDateBdC || $0 > Date.tomorrow })
         case .allTime:
-            
             self.calendarView.isHidden = true
             self.monthYearDatePicker.isHidden = true
             self.yearDatePicker.isHidden = true
             self.allTimeLabel.hideViewWithTransition(hidden: false)
             self.tableView.allowsSelection = false
             self.daysCurrentPeriod = Date().getAllDatesFrom(startingDate: Constant.startingDateBdC)
-            
         }
         self.populateAttendance()
     }

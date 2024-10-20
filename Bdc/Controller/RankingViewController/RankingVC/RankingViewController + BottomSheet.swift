@@ -24,13 +24,17 @@ extension RankingViewController {
             )
             sheetController.gripSize = CGSize(width: 35, height: 6)
             sheetController.shouldDismiss = { _ in
-                self.showLoader()
+                if vc.selectedType != self.rankingType {
+                    self.showLoader()
+                }
                 return true
             }
             sheetController.didDismiss = { _ in
-                let oldRankingType = self.rankingType
+                if vc.selectedType == self.rankingType {
+                    return
+                }
                 self.rankingType = vc.selectedType
-                self.handleChangeRankingType(oldRankingType)
+                self.handleChangeRankingType()
             }
             
             self.present(sheetController, animated: true, completion: nil)
@@ -52,11 +56,15 @@ extension RankingViewController {
             )
             sheetController.gripSize = CGSize(width: 35, height: 6)
             sheetController.shouldDismiss = { _ in
-                self.showLoader()
+                if vc.selectedSlot != self.slotType {
+                    self.showLoader()
+                }
                 return true
             }
             sheetController.didDismiss = { _ in
-                // Update slotType based on user's choice
+                if vc.selectedSlot == self.slotType {
+                    return
+                }
                 self.slotType = vc.selectedSlot
                 self.setupSlotLabel()
                 self.populateAttendance()

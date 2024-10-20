@@ -389,11 +389,20 @@
                                         </constraints>
                                         <color key="color" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calcolo le presenze..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17F-qC-G4g">
+                                        <rect key="frame" x="10" y="281" width="420" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.072126028793198724" alpha="0.79468218064466056" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="17F-qC-G4g" secondAttribute="trailing" constant="10" id="Gfv-v6-z5l"/>
                                     <constraint firstItem="99I-OG-Vfb" firstAttribute="centerY" secondItem="wey-vi-kJt" secondAttribute="centerY" constant="-215" id="PiW-Bl-qGw"/>
+                                    <constraint firstItem="17F-qC-G4g" firstAttribute="leading" secondItem="wey-vi-kJt" secondAttribute="leading" constant="10" id="Ziz-AR-MxB"/>
                                     <constraint firstItem="99I-OG-Vfb" firstAttribute="centerX" secondItem="wey-vi-kJt" secondAttribute="centerX" id="lTc-Gq-N5m"/>
+                                    <constraint firstItem="17F-qC-G4g" firstAttribute="top" secondItem="99I-OG-Vfb" secondAttribute="bottom" constant="10" id="wfA-s9-quG"/>
                                 </constraints>
                             </view>
                         </subviews>
