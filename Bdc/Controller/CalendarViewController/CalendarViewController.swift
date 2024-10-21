@@ -41,6 +41,11 @@ class CalendarViewController: UIViewController {
         self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
     }
     
+    override func viewWillLayoutSubviews() {
+        self.calendarView.layer.cornerRadius = 13
+        self.calendarView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+    }
+    
     @objc func willBecomeActive() {
         self.updateDayTypeBasedOnTime()
     }
@@ -57,10 +62,15 @@ class CalendarViewController: UIViewController {
             self.bottomCalendarHandleView.layer.shadowOffset = CGSize(width: 0.0, height: 4)
             self.bottomCalendarHandleView.layer.shadowOpacity = 0.3
             self.bottomCalendarHandleView.layer.shadowRadius = 2
+            self.bottomCalendarHandleView.layer.masksToBounds = false
+            self.bottomCalendarHandleView.layer.cornerRadius = 13
+            self.bottomCalendarHandleView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        } else {
+            self.bottomCalendarHandleView.layer.masksToBounds = true
+            self.bottomCalendarHandleView.layer.cornerRadius = 13
+            self.bottomCalendarHandleView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         }
-        self.bottomCalendarHandleView.layer.masksToBounds = false
-        self.bottomCalendarHandleView.layer.cornerRadius = 13
-        self.bottomCalendarHandleView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+
     }
     
     func addObservers() {
