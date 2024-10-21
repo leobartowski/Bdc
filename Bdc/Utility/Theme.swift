@@ -9,22 +9,176 @@ import UIKit
 
 enum Theme {
     
-    static let mainColor = UIColor(red: 0 / 255, green: 128 / 255, blue: 128 / 255, alpha: 1) // Green
-    static let customRed = UIColor(red: 255 / 255, green: 64 / 255, blue: 10 / 255, alpha: 1)
-    static let customYellow = UIColor(red: 255 / 255, green: 255 / 255, blue: 102 / 255, alpha: 0.75)
-    static let customGreen = UIColor(red: 17 / 255, green: 187 / 255, blue: 85 / 255, alpha: 1)
-    static let customLightRed = UIColor(red: 230 / 255, green: 64 / 255, blue: 10 / 255, alpha: 0.5)
-    static let customMediumRed = UIColor(red: 230 / 255, green: 64 / 255, blue: 10 / 255, alpha: 0.75)
-    static let customMediumGreen = UIColor(red: 17 / 255, green: 187 / 255, blue: 85 / 255, alpha: 0.75)
-    static let dirtyWhite = UIColor(named: "FAFAFA")
-    static let backgroundGrayRanking = UIColor(named: "9A9A9A")
-    static let pullbarGrey = UIColor(red: 193 / 255, green: 193 / 255, blue: 193 / 255, alpha: 1)
-    static let avatarRed = UIColor(red: 250 / 255, green: 53 / 255, blue: 78 / 255, alpha: 1)
-    static let avatarLightRed = UIColor(red: 250 / 255, green: 53 / 255, blue: 78 / 255, alpha: 0.2)
-    static let avatarBlack = UIColor(red: 51 / 255, green: 51 / 255, blue: 60 / 255, alpha: 1)
-    static let FSCalendarStandardSelectionColor = UIColor(red: 0 / 255, green: 128 / 255, blue: 128 / 255, alpha: 1.0)
-    static let FSCalendarStandardLightSelectionColor = UIColor(red: 0 / 255, green: 128 / 255, blue: 128 / 255, alpha: 0.2)
-    static let FSCalendarStandardTodayColor = Theme.avatarRed
-    static let FSCalendarStandardTitleTextColor = UIColor(red: 14 / 255, green: 69 / 255, blue: 221 / 255, alpha: 1.0)
-    static let FSCalendarStandardEventDotColor = UIColor(red: 31 / 255, green: 119 / 255, blue: 219 / 255, alpha: 0.75)
+    static let black: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1) :
+            UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1)
+        }
+    }()
+    
+    static let white: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1) :  // Slightly softer red for dark mode
+            UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1)   // Vivid red in light mode
+        }
+    }()
+    
+    // Main Color (Green in Light Mode, Adjusted for Dark Mode)
+    static let mainColor = UIColor(red: 0 / 255, green: 128 / 255, blue: 128 / 255, alpha: 0.75)
+//    static let mainColor: UIColor = {
+//        return UIColor { traitCollection in
+//            traitCollection.userInterfaceStyle == .dark ?
+//            UIColor(red: 0 / 255, green: 204 / 255, blue: 204 / 255, alpha: 1) :  // Lighter green in dark mode
+//            UIColor(red: 0 / 255, green: 128 / 255, blue: 128 / 255, alpha: 1)  // Original teal green in light mode
+//        }
+//    }()
+    
+    // Custom Red
+    static let customRed: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 255 / 255, green: 94 / 255, blue: 50 / 255, alpha: 1) :  // Slightly softer red for dark mode
+            UIColor(red: 255 / 255, green: 64 / 255, blue: 10 / 255, alpha: 1)   // Vivid red in light mode
+        }
+    }()
+    
+    // Custom Yellow
+    static let customYellow: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 255 / 255, green: 255 / 255, blue: 140 / 255, alpha: 0.75) :  // Brighter yellow for dark mode
+            UIColor(red: 255 / 255, green: 255 / 255, blue: 102 / 255, alpha: 0.75)   // Regular yellow in light mode
+        }
+    }()
+    
+    // Custom Green
+    static let customGreen: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 50 / 255, green: 230 / 255, blue: 140 / 255, alpha: 1) :   // Lighter green in dark mode
+            UIColor(red: 17 / 255, green: 187 / 255, blue: 85 / 255, alpha: 1)    // Original green in light mode
+        }
+    }()
+    
+    // Custom Light Red
+    static let customLightRed: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 255 / 255, green: 94 / 255, blue: 50 / 255, alpha: 0.5) :   // Softer light red for dark mode
+            UIColor(red: 230 / 255, green: 64 / 255, blue: 10 / 255, alpha: 0.5)    // Original light red
+        }
+    }()
+    
+    // Custom Medium Red
+    static let customMediumRed: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 255 / 255, green: 94 / 255, blue: 50 / 255, alpha: 0.75) :   // Medium red for dark mode
+            UIColor(red: 230 / 255, green: 64 / 255, blue: 10 / 255, alpha: 0.75)    // Original medium red
+        }
+    }()
+    
+    // Custom Medium Green
+    static let customMediumGreen: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 50 / 255, green: 230 / 255, blue: 140 / 255, alpha: 0.75) :  // Lighter green for dark mode
+            UIColor(red: 17 / 255, green: 187 / 255, blue: 85 / 255, alpha: 0.75)     // Original medium green
+        }
+    }()
+    
+    // Dirty White
+    static let dirtyWhite: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(named: "1A1A1A") ?? UIColor(white: 30 / 255, alpha: 1) :  // Dark gray for dark mode
+            UIColor(named: "FAFAFA") ?? UIColor(white: 250 / 255, alpha: 1)  // Regular dirty white in light mode
+        }
+    }()
+    
+    // Background Gray for Ranking
+    static let backgroundGrayRanking: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(named: "4A4A4A") ?? UIColor(white: 74 / 255, alpha: 1) :   // Darker gray for dark mode
+            UIColor(named: "9A9A9A") ?? UIColor(white: 154 / 255, alpha: 1)   // Original light gray
+        }
+    }()
+    
+    // Pullbar Grey
+    static let pullbarGrey: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 100 / 255, green: 100 / 255, blue: 100 / 255, alpha: 1) :   // Darker pullbar grey for dark mode
+            UIColor(red: 193 / 255, green: 193 / 255, blue: 193 / 255, alpha: 1)    // Original pullbar grey
+        }
+    }()
+    
+    // Avatar Red
+    static let avatarRed: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 255 / 255, green: 100 / 255, blue: 130 / 255, alpha: 1) :   // Softer red for dark mode
+            UIColor(red: 250 / 255, green: 53 / 255, blue: 78 / 255, alpha: 1)      // Original avatar red
+        }
+    }()
+    
+    // Avatar Light Red
+    static let avatarLightRed: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 255 / 255, green: 100 / 255, blue: 130 / 255, alpha: 0.2) :  // Softer light red for dark mode
+            UIColor(red: 250 / 255, green: 53 / 255, blue: 78 / 255, alpha: 0.2)     // Original light red
+        }
+    }()
+    
+    // Avatar Black
+    static let avatarBlack: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 200 / 255, green: 200 / 255, blue: 205 / 255, alpha: 1) :   // Softer black in dark mode
+            UIColor(red: 51 / 255, green: 51 / 255, blue: 60 / 255, alpha: 1)       // Original avatar black
+        }
+    }()
+    
+    // FSCalendar Standard Selection Color
+    static let FSCalendarStandardSelectionColor: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 0 / 255, green: 204 / 255, blue: 204 / 255, alpha: 1.0) :  // Adjusted for dark mode
+            UIColor(red: 0 / 255, green: 128 / 255, blue: 128 / 255, alpha: 1.0)   // Original selection color
+        }
+    }()
+    
+    // FSCalendar Standard Light Selection Color
+    static let FSCalendarStandardLightSelectionColor: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 0 / 255, green: 204 / 255, blue: 204 / 255, alpha: 0.2) :   // Adjusted for dark mode
+            UIColor(red: 0 / 255, green: 128 / 255, blue: 128 / 255, alpha: 0.2)    // Original light selection color
+        }
+    }()
+    
+    // FSCalendar Standard Today Color (Reuses avatarRed)
+    static let FSCalendarStandardTodayColor = avatarRed
+    
+    // FSCalendar Standard Title Text Color
+    static let FSCalendarStandardTitleTextColor: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 100 / 255, green: 160 / 255, blue: 255 / 255, alpha: 1.0) :  // Lighter text for dark mode
+            UIColor(red: 14 / 255, green: 69 / 255, blue: 221 / 255, alpha: 1.0)     // Original title text color
+        }
+    }()
+    
+    // FSCalendar Standard Event Dot Color
+    static let FSCalendarStandardEventDotColor: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 100 / 255, green: 180 / 255, blue: 255 / 255, alpha: 0.75) :  // Adjusted for dark mode
+            UIColor(red: 31 / 255, green: 119 / 255, blue: 219 / 255, alpha: 0.75)    // Original event dot color
+        }
+    }()
 }

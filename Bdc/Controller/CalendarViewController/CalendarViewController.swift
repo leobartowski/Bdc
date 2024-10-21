@@ -52,10 +52,12 @@ class CalendarViewController: UIViewController {
     // MARK: Utils and Design
     /// Add shadow and corner radius to bottom Calendar Handle View
     func designBottomCalendarHandleView() {
-        self.bottomCalendarHandleView.layer.shadowColor = UIColor.gray.cgColor
-        self.bottomCalendarHandleView.layer.shadowOffset = CGSize(width: 0.0, height: 4)
-        self.bottomCalendarHandleView.layer.shadowOpacity = 0.3
-        self.bottomCalendarHandleView.layer.shadowRadius = 2
+        if self.traitCollection.userInterfaceStyle != .dark {
+            self.bottomCalendarHandleView.layer.shadowColor = UIColor.systemGray.cgColor
+            self.bottomCalendarHandleView.layer.shadowOffset = CGSize(width: 0.0, height: 4)
+            self.bottomCalendarHandleView.layer.shadowOpacity = 0.3
+            self.bottomCalendarHandleView.layer.shadowRadius = 2
+        }
         self.bottomCalendarHandleView.layer.masksToBounds = false
         self.bottomCalendarHandleView.layer.cornerRadius = 13
         self.bottomCalendarHandleView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
@@ -90,18 +92,18 @@ class CalendarViewController: UIViewController {
     }
     
     func setupSegmentedControl() {
-        self.segmentedControl.backgroundColor = .white
-        self.segmentedControl.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
+        self.segmentedControl.backgroundColor = Theme.dirtyWhite
+        self.segmentedControl.layer.shadowColor = UIColor.systemGray3.cgColor
         self.segmentedControl.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         self.segmentedControl.layer.shadowOpacity = 0.5
-        self.segmentedControl.layer.shadowRadius = 3
+        self.segmentedControl.layer.shadowRadius = 1
         self.segmentedControl.layer.masksToBounds = false
         self.segmentedControl.borderColor = Theme.FSCalendarStandardSelectionColor
         self.segmentedControl.selectedSegmentTintColor = Theme.FSCalendarStandardSelectionColor
-        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.white]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
         
-        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: Theme.black]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .normal)
     }
     
