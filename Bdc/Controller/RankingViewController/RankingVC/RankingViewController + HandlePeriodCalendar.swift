@@ -60,9 +60,9 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
 
     func calendar(_ calendar: FSCalendar, appearance _: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
         if LocalDate(date: calendar.today ?? .now) == LocalDate(date: date) { // isToday
-            return date.isThisDaySelectable() ? .white : Theme.customLightRed
+            return date.isThisDaySelectable() ? Theme.white : Theme.customLightRed
         }
-        return (date > Date.now || !date.isThisDaySelectable()) ? .lightGray : .white
+        return (date > Date.now || !date.isThisDaySelectable()) ? .systemGray3 : Theme.white
     }
     
     func calendar(_ calendar: FSCalendar, appearance _: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
@@ -86,12 +86,12 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         self.calendarView.appearance.titleFont = .boldSystemFont(ofSize: 15)
         self.calendarView.appearance.weekdayFont = .systemFont(ofSize: 17, weight: .light)
         self.calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 19)
-        self.calendarView.appearance.titleWeekendColor = .lightGray
+        self.calendarView.appearance.titleWeekendColor = .systemGray3
         self.calendarView.appearance.todayColor = .clear
         self.calendarView.appearance.titleDefaultColor = Theme.avatarBlack
         self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
         self.calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
-        self.calendarView.appearance.weekdayTextColor = .black
+        self.calendarView.appearance.weekdayTextColor = Theme.black
     }
 
     func selectedAllDateOfTheWeek(_ date: Date) {
@@ -115,7 +115,6 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
                 self.calendarView.reloadData()
                 self.calendarView.today = Date()
                 self.calendarView.appearance.calendar.reloadData()
-//                self.rankingViewController?.tableView.reloadData()
             }
         }
     }

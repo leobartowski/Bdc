@@ -91,7 +91,6 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         let rightSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(self.tableViewSwiped))
         rightSwipeGR.direction = .right
         self.tableView.addGestureRecognizer(rightSwipeGR)
-    
         self.header = self.headerBasic
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 10))
     }

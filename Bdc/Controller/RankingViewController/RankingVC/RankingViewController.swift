@@ -42,6 +42,7 @@ class RankingViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         self.containerPeriodView.layer.shadowPath = UIBezierPath(roundedRect: self.containerPeriodView.bounds, cornerRadius: 15).cgPath
         self.containerSlotView.layer.shadowPath = UIBezierPath(roundedRect: self.containerSlotView.bounds, cornerRadius: 8).cgPath
+        
     }
     
     override func viewDidLoad() {

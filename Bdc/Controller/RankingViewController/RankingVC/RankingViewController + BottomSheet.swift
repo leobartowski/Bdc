@@ -22,6 +22,7 @@ extension RankingViewController {
                 sizes: [.fixed(431)],
                 options: SheetOptions(shrinkPresentingViewController: false)
             )
+            sheetController.gripColor = .systemGray
             sheetController.gripSize = CGSize(width: 35, height: 6)
             sheetController.shouldDismiss = { _ in
                 if vc.selectedType != self.rankingType {
@@ -54,6 +55,7 @@ extension RankingViewController {
                 sizes: [.fixed(310)],
                 options: SheetOptions(shrinkPresentingViewController: false)
             )
+            sheetController.gripColor = .systemGray
             sheetController.gripSize = CGSize(width: 35, height: 6)
             sheetController.shouldDismiss = { _ in
                 if vc.selectedSlot != self.slotType {
