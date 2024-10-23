@@ -1,5 +1,8 @@
 PODS:
   - AcknowList (3.0.0)
+  - DGCharts (5.1.0):
+    - DGCharts/Core (= 5.1.0)
+  - DGCharts/Core (5.1.0)
   - FittedSheets (2.6.1)
   - FSCalendar (2.8.4)
   - SwiftConfettiView (0.1.0)
@@ -7,6 +10,7 @@ PODS:
 
 DEPENDENCIES:
   - AcknowList
+  - DGCharts
   - FittedSheets (= 2.6.1)
   - FSCalendar
   - SwiftConfettiView
@@ -15,6 +19,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AcknowList
+    - DGCharts
     - FittedSheets
     - FSCalendar
     - SwiftConfettiView
@@ -22,11 +27,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AcknowList: 931531a3e9d66f202ae8e04819a62c50b818b03e
+  DGCharts: 1c6daf585b6cfc78807af44ea690d357c410627f
   FittedSheets: 37e35f105c531f3845075f1788dd8517a35315c4
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   SwiftConfettiView: 1bdbc2e6913b6b1c76d8070802b212508ad5c352
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
 
-PODFILE CHECKSUM: 8428ec6eb08cffc525a18a50a2ae23de1ca7b3e0
+PODFILE CHECKSUM: 9c29803ae74aee8f83b5f3b41550c390fb9396ab
 
 COCOAPODS: 1.15.2

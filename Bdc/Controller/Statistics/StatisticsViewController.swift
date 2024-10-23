@@ -5,13 +5,15 @@
 //  Created by leobartowski on 23/10/24.
 //
 import UIKit
+import DGCharts
 
 class StatisticsViewController: UITableViewController {
     
-    override func viewDidLoad() {
-    }
+    @IBOutlet weak var segmentedControl: MySegmentedControl!
+    @IBOutlet weak var lineChartView: LineChartView!
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+    override func viewDidLoad() {
+        self.createWeeklyChart()
     }
+
 }

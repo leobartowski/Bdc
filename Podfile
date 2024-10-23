@@ -11,6 +11,7 @@ target 'Bdc' do
   pod 'SwiftConfettiView'
   pod 'SwiftLint'
   pod 'AcknowList'
+  pod 'DGCharts'
   
   # ignore all warnings from all pods
   inhibit_all_warnings!

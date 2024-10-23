@@ -46,6 +46,8 @@
 		DD41092F2CC6D34900551761 /* SearchBar - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41092E2CC6D34000551761 /* SearchBar - Ext.swift */; };
 		DD4109312CC944C000551761 /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD4109302CC944C000551761 /* Statistics.storyboard */; };
 		DD4109342CC94DD100551761 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109332CC94DCB00551761 /* StatisticsViewController.swift */; };
+		DD4109362CC9580900551761 /* StatisticsViewController - TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109352CC957FB00551761 /* StatisticsViewController - TableView.swift */; };
+		DD4109382CC95B3A00551761 /* StatisticsViewController + Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109372CC95B3000551761 /* StatisticsViewController + Chart.swift */; };
 		DD413379274FC94C0038B4C6 /* RankingViewController + TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */; };
 		DD4667CF284E0E4E003954D5 /* RankingViewController + ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4667CE284E0E4E003954D5 /* RankingViewController + ConfettiView.swift */; };
 		DD47EEC1278B2C4F0081388D /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */; };
@@ -193,6 +195,8 @@
 		DD41092E2CC6D34000551761 /* SearchBar - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchBar - Ext.swift"; sourceTree = "<group>"; };
 		DD4109302CC944C000551761 /* Statistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
 		DD4109332CC94DCB00551761 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		DD4109352CC957FB00551761 /* StatisticsViewController - TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsViewController - TableView.swift"; sourceTree = "<group>"; };
+		DD4109372CC95B3000551761 /* StatisticsViewController + Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsViewController + Chart.swift"; sourceTree = "<group>"; };
 		DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + TableView.swift"; sourceTree = "<group>"; };
 		DD4667CE284E0E4E003954D5 /* RankingViewController + ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + ConfettiView.swift"; sourceTree = "<group>"; };
 		DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
@@ -472,6 +476,8 @@
 		DD4109322CC94D8700551761 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
+				DD4109372CC95B3000551761 /* StatisticsViewController + Chart.swift */,
+				DD4109352CC957FB00551761 /* StatisticsViewController - TableView.swift */,
 				DD4109332CC94DCB00551761 /* StatisticsViewController.swift */,
 			);
 			path = Statistics;
@@ -1154,6 +1160,7 @@
 				DD60B5552753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift in Sources */,
 				DD617CEB2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift in Sources */,
 				DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */,
+				DD4109362CC9580900551761 /* StatisticsViewController - TableView.swift in Sources */,
 				DD84830F277786D600E7F179 /* NotificationName.swift in Sources */,
 				DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */,
 				DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */,
@@ -1182,6 +1189,7 @@
 				DD84831127778D1500E7F179 /* SettingsType.swift in Sources */,
 				DD84830D27772FC200E7F179 /* SettingsSwitchTableViewCell.swift in Sources */,
 				DD41092F2CC6D34900551761 /* SearchBar - Ext.swift in Sources */,
+				DD4109382CC95B3A00551761 /* StatisticsViewController + Chart.swift in Sources */,
 				DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */,
 				DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */,
 				DD368F4E2774BE4F000F0A84 /* MonthYearPickerView.swift in Sources */,
@@ -1453,6 +1461,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1487,6 +1496,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
