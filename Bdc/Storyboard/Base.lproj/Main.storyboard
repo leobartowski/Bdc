@@ -22,6 +22,7 @@
                     <connections>
                         <segue destination="EH9-WG-xBB" kind="relationship" relationship="viewControllers" id="i6K-AF-YlQ"/>
                         <segue destination="QFB-4I-wZo" kind="relationship" relationship="viewControllers" id="gde-FF-gjd"/>
+                        <segue destination="Hu5-Ug-syM" kind="relationship" relationship="viewControllers" id="yFl-a0-Nfi"/>
                         <segue destination="AyQ-tM-Cgb" kind="relationship" relationship="viewControllers" id="TYo-RN-mPH"/>
                     </connections>
                 </tabBarController>
@@ -37,7 +38,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="05h-eN-bZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28" y="710"/>
+            <point key="canvasLocation" x="114" y="653"/>
         </scene>
         <!--Settings-->
         <scene sceneID="B3T-9S-RJI">
@@ -47,7 +48,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ox-Hs-btC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-27" y="881"/>
+            <point key="canvasLocation" x="114" y="765"/>
+        </scene>
+        <!--Statistics-->
+        <scene sceneID="FnG-eH-7ls">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Statistics" id="Hu5-Ug-syM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Statistiche" id="gKO-Ij-WNa"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ys9-Vo-zVn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28" y="887"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="REz-DH-cMV">
@@ -57,12 +68,12 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XvN-Oc-rtl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28" y="556"/>
+            <point key="canvasLocation" x="-30" y="523"/>
         </scene>
     </scenes>
     <resources>
         <namedColor name="main">
-            <color red="0.0" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.50199997425079346" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

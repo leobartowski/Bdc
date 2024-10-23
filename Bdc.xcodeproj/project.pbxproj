@@ -44,6 +44,8 @@
 		DD368F4E2774BE4F000F0A84 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */; };
 		DD368F522774D415000F0A84 /* YearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD368F512774D415000F0A84 /* YearPickerView.swift */; };
 		DD41092F2CC6D34900551761 /* SearchBar - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41092E2CC6D34000551761 /* SearchBar - Ext.swift */; };
+		DD4109312CC944C000551761 /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD4109302CC944C000551761 /* Statistics.storyboard */; };
+		DD4109342CC94DD100551761 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109332CC94DCB00551761 /* StatisticsViewController.swift */; };
 		DD413379274FC94C0038B4C6 /* RankingViewController + TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */; };
 		DD4667CF284E0E4E003954D5 /* RankingViewController + ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4667CE284E0E4E003954D5 /* RankingViewController + ConfettiView.swift */; };
 		DD47EEC1278B2C4F0081388D /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */; };
@@ -189,6 +191,8 @@
 		DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		DD368F512774D415000F0A84 /* YearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPickerView.swift; sourceTree = "<group>"; };
 		DD41092E2CC6D34000551761 /* SearchBar - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchBar - Ext.swift"; sourceTree = "<group>"; };
+		DD4109302CC944C000551761 /* Statistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
+		DD4109332CC94DCB00551761 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + TableView.swift"; sourceTree = "<group>"; };
 		DD4667CE284E0E4E003954D5 /* RankingViewController + ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + ConfettiView.swift"; sourceTree = "<group>"; };
 		DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
@@ -408,6 +412,7 @@
 		DD18C7F3272207050086BB6C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DD4109322CC94D8700551761 /* Statistics */,
 				DD84830827772AE700E7F179 /* Settings */,
 				DD5542DE2724563C000D9F48 /* CalendarViewController */,
 				DD5542E327245875000D9F48 /* RankingViewController */,
@@ -423,6 +428,7 @@
 				DDF9B5842778715000E2FEE2 /* Settings.storyboard */,
 				DDF9B5862778721700E2FEE2 /* Ranking.storyboard */,
 				DDF9B5882778726700E2FEE2 /* Calendar.storyboard */,
+				DD4109302CC944C000551761 /* Statistics.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -461,6 +467,14 @@
 				DDD5051127220E0300508F60 /* Class */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		DD4109322CC94D8700551761 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				DD4109332CC94DCB00551761 /* StatisticsViewController.swift */,
+			);
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 		DD47EEBF278B2C1F0081388D /* RankingTableViewCell */ = {
@@ -936,6 +950,7 @@
 				DDDC444E2916C05400BEC4F0 /* LicenseSwiftHoliday.txt in Resources */,
 				DDDC444A2916BF9400BEC4F0 /* Pods-Bdc-acknowledgements.plist in Resources */,
 				DD8543FE27219D4C004D38F0 /* LaunchScreen.storyboard in Resources */,
+				DD4109312CC944C000551761 /* Statistics.storyboard in Resources */,
 				DD717D54277244D70003CB16 /* BottomSheet.storyboard in Resources */,
 				DDDC44402916BE4500BEC4F0 /* LicenseSwiftFormat.txt in Resources */,
 				DDF9B5852778715000E2FEE2 /* Settings.storyboard in Resources */,
@@ -1144,6 +1159,7 @@
 				DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */,
 				DD4667CF284E0E4E003954D5 /* RankingViewController + ConfettiView.swift in Sources */,
 				DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */,
+				DD4109342CC94DD100551761 /* StatisticsViewController.swift in Sources */,
 				DD617CED2753C3AE002AD5E7 /* RankingWeeklyTableViewCell + CollectionView.swift in Sources */,
 				DDC51A4F27564191004A836B /* SortingPositionAndType.swift in Sources */,
 				DD0E35BF277BB7F50082D32C /* AddChangePersonViewController.swift in Sources */,
