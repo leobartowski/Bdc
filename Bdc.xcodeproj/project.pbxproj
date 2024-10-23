@@ -432,7 +432,6 @@
 			children = (
 				DD18C7F7272208B00086BB6C /* Class */,
 				DD18C7F6272208A50086BB6C /* View */,
-				DDB2925F2721A8D400D96E67 /* RankingSectionHeaderView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -440,6 +439,7 @@
 		DD18C7F6272208A50086BB6C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DDB2925F2721A8D400D96E67 /* RankingSectionHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";

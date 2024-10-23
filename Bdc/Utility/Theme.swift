@@ -26,14 +26,13 @@ enum Theme {
     }()
     
     // Main Color (Green in Light Mode, Adjusted for Dark Mode)
-    static let mainColor = UIColor(red: 0 / 255, green: 128 / 255, blue: 128 / 255, alpha: 0.75)
-//    static let mainColor: UIColor = {
-//        return UIColor { traitCollection in
-//            traitCollection.userInterfaceStyle == .dark ?
-//            UIColor(red: 0 / 255, green: 204 / 255, blue: 204 / 255, alpha: 1) :  // Lighter green in dark mode
-//            UIColor(red: 0 / 255, green: 128 / 255, blue: 128 / 255, alpha: 1)  // Original teal green in light mode
-//        }
-//    }()
+    static let mainColor: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 0 / 255, green: 204 / 255, blue: 204 / 255, alpha: 1) :  // Lighter green in dark mode
+            UIColor(red: 0 / 255, green: 128 / 255, blue: 128 / 255, alpha: 1)  // Original teal green in light mode
+        }
+    }()
     
     // Custom Red
     static let customRed: UIColor = {

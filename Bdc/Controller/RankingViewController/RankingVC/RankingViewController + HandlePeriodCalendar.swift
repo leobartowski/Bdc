@@ -92,6 +92,8 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
         self.calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
         self.calendarView.appearance.weekdayTextColor = Theme.black
+        self.calendarView.appearance.titleSelectionColor = Theme.white
+
     }
 
     func selectedAllDateOfTheWeek(_ date: Date) {
