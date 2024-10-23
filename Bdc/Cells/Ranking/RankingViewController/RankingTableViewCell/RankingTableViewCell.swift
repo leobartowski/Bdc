@@ -62,7 +62,7 @@ class RankingTableViewCell: UITableViewCell {
         self.containerView.cornerRadius = cornerRadius
         if self.traitCollection.userInterfaceStyle != .dark {
             self.containerView.layer.masksToBounds = true
-            self.containerView.layer.shadowColor = UIColor.gray.cgColor
+            self.containerView.layer.shadowColor = UIColor.systemGray.cgColor
             self.containerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
             self.containerView.layer.shadowOpacity = 0.3
             self.containerView.layer.shadowRadius = 2

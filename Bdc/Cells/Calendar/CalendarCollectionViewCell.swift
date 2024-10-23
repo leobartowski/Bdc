@@ -65,6 +65,8 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
             self.customBackgroundView.layer.shadowRadius = 2
             self.customBackgroundView.layer.shadowPath = UIBezierPath(roundedRect: self.customBackgroundView.bounds, cornerRadius: 10).cgPath
             self.customBackgroundView.layer.masksToBounds = false
+        } else {
+            self.customBackgroundView.removeShadow()
         }
     }
     

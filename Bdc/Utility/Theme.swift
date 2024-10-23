@@ -93,8 +93,8 @@ enum Theme {
     static let dirtyWhite: UIColor = {
         return UIColor { traitCollection in
             traitCollection.userInterfaceStyle == .dark ?
-            UIColor(named: "1A1A1A") ?? UIColor(white: 30 / 255, alpha: 1) :  // Dark gray for dark mode
-            UIColor(named: "FAFAFA") ?? UIColor(white: 250 / 255, alpha: 1)  // Regular dirty white in light mode
+            UIColor(red: 41 / 255, green: 41 / 255, blue: 41 / 255, alpha: 1) :  // Dark gray for dark mode
+            UIColor(red: 250 / 255, green: 250 / 255, blue: 250 / 255, alpha: 1) // Regular dirty white in light mode
         }
     }()
     

@@ -20,11 +20,13 @@ class HandlePersonsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func setupTableViewShadow() {
-        self.tableView.layer.masksToBounds = false
-        self.tableView.layer.shadowColor = UIColor.gray.cgColor
-        self.tableView.layer.shadowOpacity = 0.3
-        self.tableView.layer.shadowRadius = 2 
-        self.tableView.layer.shadowOffset = .init(width: 0, height: 0)
+        if self.traitCollection.userInterfaceStyle != .dark {
+            self.tableView.layer.masksToBounds = false
+            self.tableView.layer.shadowColor = UIColor.systemGray.cgColor
+            self.tableView.layer.shadowOpacity = 0.3
+            self.tableView.layer.shadowRadius = 2
+            self.tableView.layer.shadowOffset = .init(width: 0, height: 0)
+        }
     }
     
     func addObservers() {

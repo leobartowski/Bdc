@@ -71,4 +71,24 @@ extension UIView {
             self.isHidden = hidden
         })
     }
+    
+    func addShadow(_ color: UIColor = .systemGray,
+                   height: Double = 4,
+                   opacity: Float = 0.2,
+                   shadowRadius: CGFloat = 2) {
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOffset = CGSize(width: 0.0, height: height)
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowRadius = shadowRadius
+        self.layer.masksToBounds = false
+    }
+    
+    func removeShadow() {
+        if self.layer.shadowOpacity != 0 {
+            self.layer.shadowOffset = CGSize(width: 0.0, height: 0)
+            self.layer.shadowOpacity = 0
+            self.layer.shadowRadius = 0
+            self.layer.masksToBounds = true
+        }
+    }
 }

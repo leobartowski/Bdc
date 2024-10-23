@@ -23,12 +23,13 @@ extension RankingViewController {
         let cornerRadius: CGFloat = 15
         self.containerPeriodView.cornerRadius = cornerRadius
         self.containerPeriodView.layer.masksToBounds = true
-        self.containerPeriodView.layer.shadowColor = UIColor.gray.cgColor
-        self.containerPeriodView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        self.containerPeriodView.layer.shadowOpacity = 0.3
-        self.containerPeriodView.layer.shadowRadius = 2
-        self.containerPeriodView.layer.shadowPath = UIBezierPath(roundedRect: self.containerPeriodView.bounds, cornerRadius: cornerRadius).cgPath
-        self.containerPeriodView.layer.masksToBounds = false
+        if self.traitCollection.userInterfaceStyle != .dark {        self.containerPeriodView.layer.shadowColor = UIColor.gray.cgColor
+            self.containerPeriodView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+            self.containerPeriodView.layer.shadowOpacity = 0.3
+            self.containerPeriodView.layer.shadowRadius = 2
+            self.containerPeriodView.layer.shadowPath = UIBezierPath(roundedRect: self.containerPeriodView.bounds, cornerRadius: cornerRadius).cgPath
+            self.containerPeriodView.layer.masksToBounds = false
+        }
     }
     
     func setupObserver() {

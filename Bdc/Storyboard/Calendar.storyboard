@@ -81,7 +81,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8BC-gB-gVj" userLabel="SearchBar">
                                 <rect key="frame" x="0.0" y="469" width="414" height="56"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Cerca..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SiX-PR-bfc">
+                                    <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Cerca..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SiX-PR-bfc">
                                         <rect key="frame" x="2" y="0.0" width="410" height="56"/>
                                         <color key="backgroundColor" name="white"/>
                                         <color key="tintColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -266,6 +266,7 @@
                         <outlet property="calendarViewHeightConstraint" destination="2gA-Wd-I2j" id="Zkn-mg-dZB"/>
                         <outlet property="collectionView" destination="cUb-iM-sZp" id="KZ0-fg-IaV"/>
                         <outlet property="goToTodayButton" destination="bRY-LI-Fg4" id="t3n-TA-p5L"/>
+                        <outlet property="searchBar" destination="SiX-PR-bfc" id="Sed-kL-fNf"/>
                         <outlet property="segmentedControl" destination="81Y-SL-qSW" id="6yI-TR-2U9"/>
                         <outlet property="segmentedControlContainerView" destination="QOu-As-8fU" id="Oy2-Il-36A"/>
                     </connections>
