@@ -127,7 +127,6 @@ class RankingViewController: UIViewController {
                        self.slotType == .morningAndEvening || self.slotType == .evening {
                         self.rankingPersonsAttendaces[index].admonishmentNumber += 1
                         self.rankingPersonsAttendaces[index].eveningAdmonishmentDate.append(day)
-
                     }
                 }
             }
