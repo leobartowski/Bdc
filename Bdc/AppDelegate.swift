@@ -13,8 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        self.loadFileFromBackUpIfNeeded()
-        self.disableDarkMode()
+        // self.loadFileFromBackUpIfNeeded()
         self.fixTableViewBugGloabally()
         return true
     }
@@ -34,12 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: My Methods
-    private func disableDarkMode() {
-        if #available(iOS 13.0, *) {
-            self.window?.overrideUserInterfaceStyle = .light
-        }
-    }
-
     func fixTableViewBugGloabally() {
         if #available(iOS 15.0, *) {
             UITableView.appearance().sectionHeaderTopPadding = CGFloat(0)

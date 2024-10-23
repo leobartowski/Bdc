@@ -17,14 +17,22 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
         self.setupTableViewShadow()
+        if #available(iOS 17.0, *) { self.handleTraitChange() }
     }
 
     func setupTableViewShadow() {
-        self.tableView.layer.masksToBounds = false
-        self.tableView.layer.shadowColor = UIColor.gray.cgColor // any value you want
-        self.tableView.layer.shadowOpacity = 0.3 // any value you want
-        self.tableView.layer.shadowRadius = 2 // any value you want
-        self.tableView.layer.shadowOffset = .init(width: 0, height: 0)
+        if self.traitCollection.userInterfaceStyle != .dark {
+            self.tableView.addShadow(height: 0, opacity: 0.3)
+        } else {
+            self.tableView.removeShadow()
+        }
+    }
+    
+    @available(iOS 17.0, *)
+    func handleTraitChange() {
+        self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
+            self.setupTableViewShadow()
+        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -101,8 +109,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 2: // 
             if let url = URL(string: "https://drive.google.com/file/d/1fvKB4Tbz4FOWQvNWF4ncY0XhpRdPdDB-/view?usp=sharing") {
                 let safariVC = SFSafariViewController(url: url)
-                safariVC.preferredBarTintColor = .white
-                safariVC.preferredControlTintColor = Theme.FSCalendarStandardSelectionColor
+                safariVC.preferredBarTintColor = Theme.white
+                safariVC.preferredControlTintColor = Theme.mainColor
                 self.present(safariVC, animated: true, completion: nil)
                 self.tableView.deselectRow(at: indexPath, animated: false)
             }

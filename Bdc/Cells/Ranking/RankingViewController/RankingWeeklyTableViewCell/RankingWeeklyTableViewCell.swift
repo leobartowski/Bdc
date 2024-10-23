@@ -102,14 +102,11 @@ class RankingWeeklyTableViewCell: UITableViewCell {
     }
 
     func setUpShadow() {
-        let cornerRadius: CGFloat = 15
-        self.containerView.cornerRadius = cornerRadius
+        self.containerView.cornerRadius = 15
         self.containerView.layer.masksToBounds = true
-        self.containerView.layer.shadowColor = UIColor.gray.cgColor
-        self.containerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        self.containerView.layer.shadowOpacity = 0.3
-        self.containerView.layer.shadowRadius = 2
-        self.containerView.layer.masksToBounds = false
+        if self.traitCollection.userInterfaceStyle != .dark {
+            self.containerView.addShadow(height: 0, opacity: 0.3)
+        }
     }
     
     func setupLabelDesign(_ labelNumber: Int) {
@@ -139,7 +136,7 @@ class RankingWeeklyTableViewCell: UITableViewCell {
             let admonishment: Int = Int(admonishmentLabel.text ?? "") ?? 0
             self.containerView.layer.shadowOpacity = 0.3
             self.containerView.layer.shadowColor = attendance < 2 || admonishment >= 3
-            ? UIColor.red.cgColor
+            ? UIColor.systemRed.cgColor
             : Theme.customGreen.cgColor
         }
     }

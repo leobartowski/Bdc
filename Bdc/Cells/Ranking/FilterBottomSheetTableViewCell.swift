@@ -25,7 +25,7 @@ class FilterBottomSheetTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         self.checkBox.isUserInteractionEnabled = false
-        self.checkBox.selectedColor = Theme.FSCalendarStandardSelectionColor
+        self.checkBox.selectedColor = Theme.mainColor
     }
     
     func setupRankingType(_ title: String, _ selectedRankingType: RankingType, _ indexPath: IndexPath) {

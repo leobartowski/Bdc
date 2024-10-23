@@ -17,7 +17,7 @@ extension UIViewController {
     func presentAlert(alertText: String, alertMessage: String, actionTitle: String = "Ok!") {
         let alert = UIAlertController(title: alertText, message: alertMessage, preferredStyle: .alert)
         let action = UIAlertAction(title: actionTitle, style: .default, handler: nil)
-        action.setValue(Theme.FSCalendarStandardSelectionColor, forKey: "titleTextColor")
+        action.setValue(Theme.mainColor, forKey: "titleTextColor")
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
@@ -27,7 +27,7 @@ extension UIViewController {
         let actionSheet = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         let mainAction = UIAlertAction(title: mainActionTitle, style: .destructive, handler: mainAction)
         let cancelAction = UIAlertAction(title: cancelActionTitle, style: .cancel, handler: cancelAction)
-        cancelAction.setValue(Theme.FSCalendarStandardSelectionColor, forKey: "titleTextColor")
+        cancelAction.setValue(Theme.mainColor, forKey: "titleTextColor")
         actionSheet.addAction(mainAction)
         actionSheet.addAction(cancelAction)
         self.present(actionSheet, animated: true, completion: nil)

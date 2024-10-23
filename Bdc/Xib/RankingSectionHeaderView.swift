@@ -44,7 +44,6 @@ class RankingSectionHeaderView: UIView {
         addSubview(self.contentView)
         self.contentView.frame = bounds
         self.contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
         self.setupLabelTap()
     }
 

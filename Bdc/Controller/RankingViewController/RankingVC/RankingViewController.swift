@@ -52,6 +52,7 @@ class RankingViewController: UIViewController {
         self.setupSlotView()
         self.addObservers()
         self.loadCurrentWeekData()
+        if #available(iOS 17.0, *) { self.handleTraitChange() }
     }
     
     func viewSetUp() {
@@ -67,6 +68,18 @@ class RankingViewController: UIViewController {
             UIBarButtonItem(title: "Periodo", style: .done, target: self, action: #selector(self.chooseRankingTypePeriod)),
             UIBarButtonItem(title: "Slot", style: .done, target: self, action: #selector(self.chooseSlotTypePeriod))
             ]
+    }
+    
+    @available(iOS 17.0, *)
+    func handleTraitChange() {
+        self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
+            self.setupShadowContainerPeriodView()
+            self.setupShadowContainerSlotView()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.calendarView.reloadData()
+            }      
+        })
     }
     
     func addObservers() {

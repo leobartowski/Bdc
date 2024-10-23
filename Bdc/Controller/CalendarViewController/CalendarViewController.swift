@@ -18,6 +18,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet var goToTodayButton: UIButton!
     @IBOutlet var segmentedControlContainerView: UIView!
     @IBOutlet var calendarViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var dayType = DayType.evening
     var allPersons = PersonListUtility.persons
@@ -39,6 +40,13 @@ class CalendarViewController: UIViewController {
         self.addObservers()
         self.addSwipeGestureRecognizerToCollectionView()
         self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
+        if #available(iOS 17.0, *) { self.handleTraitChange() }
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.searchBar.setValue("Annulla", forKey: "cancelButtonText")
+        self.searchBar.searchTextField.backgroundColor = Theme.dirtyWhite
     }
     
     @objc func willBecomeActive() {
@@ -49,23 +57,34 @@ class CalendarViewController: UIViewController {
         self.updateCalendarIfNeeded()
     }
     
+    @available(iOS 17.0, *)
+    func handleTraitChange() {
+        self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
+            self.designBottomCalendarHandleView()
+            self.setupSegmentedControl()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.calendarView.reloadData()
+            }
+        })
+    }
+    
     // MARK: Utils and Design
     /// Add shadow and corner radius to bottom Calendar Handle View
     func designBottomCalendarHandleView() {
-        self.bottomCalendarHandleView.layer.shadowColor = UIColor.gray.cgColor
-        self.bottomCalendarHandleView.layer.shadowOffset = CGSize(width: 0.0, height: 4)
-        self.bottomCalendarHandleView.layer.shadowOpacity = 0.3
-        self.bottomCalendarHandleView.layer.shadowRadius = 2
-        self.bottomCalendarHandleView.layer.masksToBounds = false
+        if self.traitCollection.userInterfaceStyle != .dark {
+            self.bottomCalendarHandleView.addShadow()
+        } else {
+            self.bottomCalendarHandleView.removeShadow()
+        }
         self.bottomCalendarHandleView.layer.cornerRadius = 13
         self.bottomCalendarHandleView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+
     }
     
     func addObservers() {
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.willBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.systemTimeChanged), name: UIApplication.significantTimeChangeNotification, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeModifyStatus(_:)), name: .didChangeModifyStatus, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -90,18 +109,18 @@ class CalendarViewController: UIViewController {
     }
     
     func setupSegmentedControl() {
-        self.segmentedControl.backgroundColor = .white
-        self.segmentedControl.layer.shadowColor = Theme.FSCalendarStandardLightSelectionColor.cgColor
-        self.segmentedControl.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        self.segmentedControl.layer.shadowOpacity = 0.5
-        self.segmentedControl.layer.shadowRadius = 3
-        self.segmentedControl.layer.masksToBounds = false
-        self.segmentedControl.borderColor = Theme.FSCalendarStandardSelectionColor
-        self.segmentedControl.selectedSegmentTintColor = Theme.FSCalendarStandardSelectionColor
-        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.segmentedControl.backgroundColor = Theme.dirtyWhite
+        if self.traitCollection.userInterfaceStyle != .dark {
+            self.segmentedControl.addShadow(UIColor.systemGray3, height: 2, opacity: 0.5, shadowRadius: 1)
+        } else {
+            self.segmentedControl.removeShadow()
+        }
+        self.segmentedControl.borderColor = Theme.mainColor
+        self.segmentedControl.selectedSegmentTintColor = Theme.mainColor
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.white]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
         
-        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: Theme.black]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .normal)
     }
     
