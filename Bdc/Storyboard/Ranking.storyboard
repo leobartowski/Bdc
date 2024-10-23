@@ -417,11 +417,6 @@
                             <constraint firstItem="wey-vi-kJt" firstAttribute="leading" secondItem="XG7-Ay-VBO" secondAttribute="leading" id="uhn-ha-4PY"/>
                             <constraint firstItem="wey-vi-kJt" firstAttribute="top" secondItem="Gf7-0T-T5q" secondAttribute="top" id="v3b-jC-C0d"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="wey-vi-kJt"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Ranking" largeTitleDisplayMode="always" id="pIm-98-xbW"/>
                     <connections>

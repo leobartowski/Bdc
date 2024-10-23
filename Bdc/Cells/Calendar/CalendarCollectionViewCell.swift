@@ -47,7 +47,7 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
         let imageString = CommonUtility.getProfileImageString(person)
         self.mainImageView.image = UIImage(named: imageString)
         if isPresent {
-            self.customBackgroundView.borderColor = Theme.FSCalendarStandardSelectionColor
+            self.customBackgroundView.borderColor = Theme.mainColor
             self.customBackgroundView.borderWidth = 2
         }
         self.customBackgroundView.backgroundColor = isAdmonished ? Theme.customYellow : Theme.dirtyWhite

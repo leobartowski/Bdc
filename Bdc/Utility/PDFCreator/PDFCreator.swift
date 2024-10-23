@@ -114,7 +114,7 @@ class PDFCreator: NSObject {
         // 2
         let titleAttributes: [NSAttributedString.Key: Any] =
             [NSAttributedString.Key.font: titleFont,
-             NSAttributedString.Key.foregroundColor: Theme.FSCalendarStandardSelectionColor]
+             NSAttributedString.Key.foregroundColor: Theme.mainColor]
         // 3
         let attributedTitle = NSAttributedString(
             string: pdfTitle,
@@ -163,7 +163,7 @@ class PDFCreator: NSObject {
 // Drawings
 extension PDFCreator {
     func drawTableHeaderRect(drawContext: CGContext, pageRect: CGRect) {
-        drawContext.setStrokeColor(Theme.FSCalendarStandardSelectionColor.cgColor)
+        drawContext.setStrokeColor(Theme.mainColor.cgColor)
         drawContext.saveGState()
         drawContext.setLineWidth(3.0)
 

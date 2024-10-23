@@ -61,7 +61,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         if LocalDate(date: calendar.today ?? .now) == LocalDate(date: date) {
             return Theme.FSCalendarStandardTodayColor
         }
-        return Theme.FSCalendarStandardSelectionColor
+        return Theme.mainColor
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
@@ -154,7 +154,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         self.calendarView.appearance.todayColor = .clear
         self.calendarView.appearance.titleDefaultColor = Theme.avatarBlack
         self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
-        self.calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
+        self.calendarView.appearance.headerTitleColor = Theme.mainColor
         self.calendarView.appearance.weekdayTextColor = Theme.black
         self.calendarView.appearance.titleSelectionColor = Theme.white
     }

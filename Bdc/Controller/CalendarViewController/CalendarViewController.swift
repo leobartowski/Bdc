@@ -115,8 +115,8 @@ class CalendarViewController: UIViewController {
         } else {
             self.segmentedControl.removeShadow()
         }
-        self.segmentedControl.borderColor = Theme.FSCalendarStandardSelectionColor
-        self.segmentedControl.selectedSegmentTintColor = Theme.FSCalendarStandardSelectionColor
+        self.segmentedControl.borderColor = Theme.mainColor
+        self.segmentedControl.selectedSegmentTintColor = Theme.mainColor
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.white]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
         
