@@ -26,6 +26,8 @@ extension RankingViewController {
             self.containerSlotView.layer.shadowRadius = 2
             self.containerSlotView.layer.shadowPath = UIBezierPath(roundedRect: self.containerSlotView.bounds, cornerRadius: cornerRadius).cgPath
             self.containerSlotView.layer.masksToBounds = false
+        } else {
+            self.containerSlotView.removeShadow()
         }
     }
     

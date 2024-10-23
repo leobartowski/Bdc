@@ -55,7 +55,6 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
     }
     
     private func setUpShadow() {
-        
         self.customBackgroundView.layer.cornerRadius = 10
         self.customBackgroundView.layer.masksToBounds = true
         if self.traitCollection.userInterfaceStyle != .dark {
@@ -65,8 +64,6 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
             self.customBackgroundView.layer.shadowRadius = 2
             self.customBackgroundView.layer.shadowPath = UIBezierPath(roundedRect: self.customBackgroundView.bounds, cornerRadius: 10).cgPath
             self.customBackgroundView.layer.masksToBounds = false
-        } else {
-            self.customBackgroundView.removeShadow()
         }
     }
     

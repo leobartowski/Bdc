@@ -40,9 +40,8 @@ class CalendarViewController: UIViewController {
         self.addObservers()
         self.addSwipeGestureRecognizerToCollectionView()
         self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
-        if #available(iOS 17.0, *) {
-            self.handleTraitChange()
-        }
+        if #available(iOS 17.0, *) { self.handleTraitChange() }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,7 +62,10 @@ class CalendarViewController: UIViewController {
         self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
             self.designBottomCalendarHandleView()
             self.setupSegmentedControl()
-            self.collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.calendarView.reloadData()
+            }
         })
     }
     
