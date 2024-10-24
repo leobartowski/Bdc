@@ -58,6 +58,7 @@ extension Date {
     func getStartOfMonth() -> Date {
         return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self))) ?? Date()
     }
+    
     /// Get last day of the month
     func getEndOfMonth() -> Date {
         return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.getStartOfMonth()) ?? Date()
@@ -74,33 +75,28 @@ extension Date {
 
     /// Get the month number and the year
     func getMonthAndYearNumber() -> (monthNumber: Int, yearNumber: Int) {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.firstWeekday = 2
-        calendar.locale = .current
-        calendar.minimumDaysInFirstWeek = 4
-        let monthNumber = calendar.component(.month, from: self)
-        let yearNumber = calendar.component(.year, from: self)
+        let monthNumber = Calendar.itBasic.component(.month, from: self)
+        let yearNumber = Calendar.itBasic.component(.year, from: self)
         return (monthNumber, yearNumber)
     }
     
     /// Get the month number and the year
     func getWeekNumberAndYearNumber() -> (weekNumber: Int, yearNumber: Int) {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.firstWeekday = 2
-        calendar.locale = .current
-        calendar.minimumDaysInFirstWeek = 4
-        let weekNumber = calendar.component(.weekOfYear, from: self)
-        let yearNumber = calendar.component(.year, from: self)
+        let weekNumber = Calendar.itBasic.component(.weekOfYear, from: self)
+        let yearNumber = Calendar.itBasic.component(.year, from: self)
+        return (weekNumber, yearNumber)
+    }
+    
+    /// Get the month number and the year
+    func getWeekNumberAndYearForWeekOfYearNumber() -> (w: Int, y: Int) {
+        let weekNumber = Calendar.itBasic.component(.weekOfYear, from: self)
+        let yearNumber = Calendar.itBasic.component(.yearForWeekOfYear, from: self)
         return (weekNumber, yearNumber)
     }
 
     /// Get the Week Number in the year
     func getWeekNumber() -> Int {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.firstWeekday = 2
-        calendar.locale = .current
-        calendar.minimumDaysInFirstWeek = 4
-        return calendar.component(.weekOfYear, from: self)
+        return Calendar.itBasic.component(.weekOfYear, from: self)
     }
 
     /// Get Specific day of the week of the given day (1: Sunday, 2: Monday, ..., 7: Saturday)

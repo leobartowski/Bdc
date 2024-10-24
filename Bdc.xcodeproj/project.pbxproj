@@ -48,6 +48,9 @@
 		DD4109342CC94DD100551761 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109332CC94DCB00551761 /* StatisticsViewController.swift */; };
 		DD4109362CC9580900551761 /* StatisticsViewController - TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109352CC957FB00551761 /* StatisticsViewController - TableView.swift */; };
 		DD4109382CC95B3A00551761 /* StatisticsViewController + Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109372CC95B3000551761 /* StatisticsViewController + Chart.swift */; };
+		DD41093D2CCA6ECD00551761 /* WeeklyAttendanceMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41093C2CCA6EC000551761 /* WeeklyAttendanceMarkerView.swift */; };
+		DD41093F2CCA820500551761 /* DateComponents - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41093E2CCA81FD00551761 /* DateComponents - Ext.swift */; };
+		DD4109412CCA852C00551761 /* Calendar - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109402CCA852600551761 /* Calendar - Ext.swift */; };
 		DD413379274FC94C0038B4C6 /* RankingViewController + TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */; };
 		DD4667CF284E0E4E003954D5 /* RankingViewController + ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4667CE284E0E4E003954D5 /* RankingViewController + ConfettiView.swift */; };
 		DD47EEC1278B2C4F0081388D /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */; };
@@ -197,6 +200,9 @@
 		DD4109332CC94DCB00551761 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		DD4109352CC957FB00551761 /* StatisticsViewController - TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsViewController - TableView.swift"; sourceTree = "<group>"; };
 		DD4109372CC95B3000551761 /* StatisticsViewController + Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsViewController + Chart.swift"; sourceTree = "<group>"; };
+		DD41093C2CCA6EC000551761 /* WeeklyAttendanceMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyAttendanceMarkerView.swift; sourceTree = "<group>"; };
+		DD41093E2CCA81FD00551761 /* DateComponents - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponents - Ext.swift"; sourceTree = "<group>"; };
+		DD4109402CCA852600551761 /* Calendar - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar - Ext.swift"; sourceTree = "<group>"; };
 		DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + TableView.swift"; sourceTree = "<group>"; };
 		DD4667CE284E0E4E003954D5 /* RankingViewController + ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + ConfettiView.swift"; sourceTree = "<group>"; };
 		DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
@@ -483,6 +489,14 @@
 			path = Statistics;
 			sourceTree = "<group>";
 		};
+		DD4109392CCA4C4800551761 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				DD41093C2CCA6EC000551761 /* WeeklyAttendanceMarkerView.swift */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
 		DD47EEBF278B2C1F0081388D /* RankingTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +606,7 @@
 		DD8483052774DD4A00E7F179 /* Custom Component */ = {
 			isa = PBXGroup;
 			children = (
+				DD4109392CCA4C4800551761 /* Chart */,
 				DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */,
 				DD717D55277249B90003CB16 /* CheckBox.swift */,
 				DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */,
@@ -719,6 +734,8 @@
 		DDE3B1702722CD3400BFEFF0 /* Ext */ = {
 			isa = PBXGroup;
 			children = (
+				DD4109402CCA852600551761 /* Calendar - Ext.swift */,
+				DD41093E2CCA81FD00551761 /* DateComponents - Ext.swift */,
 				DD41092E2CC6D34000551761 /* SearchBar - Ext.swift */,
 				DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */,
 				DDC337A527240CAE0028E49B /* Date - Ext.swift */,
@@ -1148,11 +1165,13 @@
 				DD7B258327567AA100E663AC /* PDFCreator.swift in Sources */,
 				DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */,
 				DD7B258527567B0600E663AC /* RankingViewController + PDF.swift in Sources */,
+				DD4109412CCA852C00551761 /* Calendar - Ext.swift in Sources */,
 				DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */,
 				DDE9D76C28BE1CC3008463CD /* SlotType.swift in Sources */,
 				DD47EEC3278B3CBF0081388D /* Label - Ext.swift in Sources */,
 				DD03AC19274811B8004C4819 /* CalendarViewController + CollectionView.swift in Sources */,
 				DD0CAB532728108600EA42B1 /* DayType.swift in Sources */,
+				DD41093D2CCA6ECD00551761 /* WeeklyAttendanceMarkerView.swift in Sources */,
 				DD30A8AF2913DB97007DC8F3 /* RankingViewController + HandlePeriod.swift in Sources */,
 				DD709C852773612C00D20C6A /* FilterBottomSheetTableViewCell.swift in Sources */,
 				DD27CAB1277368810020BE4D /* RankingType.swift in Sources */,
@@ -1164,6 +1183,7 @@
 				DD84830F277786D600E7F179 /* NotificationName.swift in Sources */,
 				DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */,
 				DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */,
+				DD41093F2CCA820500551761 /* DateComponents - Ext.swift in Sources */,
 				DD4667CF284E0E4E003954D5 /* RankingViewController + ConfettiView.swift in Sources */,
 				DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */,
 				DD4109342CC94DD100551761 /* StatisticsViewController.swift in Sources */,

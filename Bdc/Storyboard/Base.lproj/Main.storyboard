@@ -20,9 +20,9 @@
                         <color key="selectedImageTintColor" name="main"/>
                     </tabBar>
                     <connections>
+                        <segue destination="Hu5-Ug-syM" kind="relationship" relationship="viewControllers" id="yFl-a0-Nfi"/>
                         <segue destination="EH9-WG-xBB" kind="relationship" relationship="viewControllers" id="i6K-AF-YlQ"/>
                         <segue destination="QFB-4I-wZo" kind="relationship" relationship="viewControllers" id="gde-FF-gjd"/>
-                        <segue destination="Hu5-Ug-syM" kind="relationship" relationship="viewControllers" id="yFl-a0-Nfi"/>
                         <segue destination="AyQ-tM-Cgb" kind="relationship" relationship="viewControllers" id="TYo-RN-mPH"/>
                     </connections>
                 </tabBarController>
