@@ -19,18 +19,25 @@ extension RankingViewController {
             vc.selectedType = self.rankingType
             let sheetController = SheetViewController(
                 controller: vc,
-                sizes: [.fixed(370)],
+                sizes: [.fixed(431)],
                 options: SheetOptions(shrinkPresentingViewController: false)
             )
+            sheetController.gripColor = .systemGray
             sheetController.gripSize = CGSize(width: 35, height: 6)
-            
             sheetController.shouldDismiss = { _ in
-                // Update rankingType based on user's choice
-                let oldRankingType = self.rankingType
-                self.rankingType = vc.selectedType
-                self.handleChangeRankingType(oldRankingType)
+                if vc.selectedType != self.rankingType {
+                    self.showLoader()
+                }
                 return true
             }
+            sheetController.didDismiss = { _ in
+                if vc.selectedType == self.rankingType {
+                    return
+                }
+                self.rankingType = vc.selectedType
+                self.handleChangeRankingType()
+            }
+            
             self.present(sheetController, animated: true, completion: nil)
             // I have no idea where this -143 came from but it works
             self.tableView.setContentOffset(CGPoint(x: 0, y: -143), animated: true)
@@ -48,18 +55,25 @@ extension RankingViewController {
                 sizes: [.fixed(310)],
                 options: SheetOptions(shrinkPresentingViewController: false)
             )
+            sheetController.gripColor = .systemGray
             sheetController.gripSize = CGSize(width: 35, height: 6)
-            
             sheetController.shouldDismiss = { _ in
-                // Update slotType based on user's choice
+                if vc.selectedSlot != self.slotType {
+                    self.showLoader()
+                }
+                return true
+            }
+            sheetController.didDismiss = { _ in
+                if vc.selectedSlot == self.slotType {
+                    return
+                }
                 self.slotType = vc.selectedSlot
                 self.setupSlotLabel()
                 self.populateAttendance()
-                return true
             }
             self.present(sheetController, animated: true, completion: nil)
             self.tableView.setContentOffset(CGPoint(x: 0, y: -143), animated: true)
         }
     }
-
+    
 }

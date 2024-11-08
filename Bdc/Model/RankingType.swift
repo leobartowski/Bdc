@@ -13,4 +13,5 @@ enum RankingType: Int {
     case monthly = 1
     case yearly = 2
     case allTime = 3
+    case allTimePonderate = 4
 }

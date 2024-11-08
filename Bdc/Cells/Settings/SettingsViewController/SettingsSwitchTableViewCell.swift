@@ -14,10 +14,6 @@ class SettingsSwitchTableViewCell: UITableViewCell {
     
     var settingsType: SettingsType!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     func setup(text: String, settingsType: SettingsType) {
         self.settingsType = settingsType
         self.mainLabel.text = text
@@ -36,9 +32,6 @@ class SettingsSwitchTableViewCell: UITableViewCell {
             NotificationCenter.default.post(notification)
         case .showConfetti:
             let notification = Notification(name: .didChangeShowConfetti, object: nil, userInfo: nil)
-            NotificationCenter.default.post(notification)
-        case .weightedAttendance:
-            let notification = Notification(name: .didChangeweightedAttendance, object: nil, userInfo: nil)
             NotificationCenter.default.post(notification)
         default:
             break

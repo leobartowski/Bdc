@@ -36,7 +36,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     
     func maximumDate(for calendar: FSCalendar) -> Date {
         self.calendarView.scope == .month
-        ? self.safeSelectDate(Date(), isForward: Date().getComponent(.day) == 1 ? true : false )
+        ? self.safeSelectDate(Date(), isForward: (Date().getComponent(.day) == 1 && Date().isThisDaySelectable()) ? true : false )
         : Date()
     }
 
@@ -46,9 +46,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             let mondayOfThisWeek = calendar.currentPage.getSpecificDayOfThisWeek(2)
             calendar.select(self.safeSelectDate(mondayOfThisWeek, isForward: true))
             self.getDataFromCoreDataAndReloadViews()
-
         } else {
-
             let startOfTheMonth = calendar.currentPage.getStartOfMonth()
             calendar.select(self.safeSelectDate(startOfTheMonth, isForward: true))
             self.getDataFromCoreDataAndReloadViews()
@@ -61,14 +59,14 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         if LocalDate(date: calendar.today ?? .now) == LocalDate(date: date) {
             return Theme.FSCalendarStandardTodayColor
         }
-        return Theme.FSCalendarStandardSelectionColor
+        return Theme.mainColor
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         let dateIsToday = LocalDate(date: Date()) == LocalDate(date: date)
         
         if !date.isThisDaySelectable() || date > calendar.maximumDate || date < calendar.minimumDate {
-            return dateIsToday ? Theme.customLightRed : .lightGray
+            return dateIsToday ? Theme.customLightRed : .systemGray3
             
         } else if dateIsToday {
             return Theme.FSCalendarStandardTodayColor
@@ -131,9 +129,11 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         
         if startingDate.isThisDaySelectable() { return startingDate }
         var date = startingDate
+        var count = 0 // var to escape condition
         repeat {
+            count += 1
             date = isForward ? date.dayAfter : date.dayBefore
-        } while(!date.isThisDaySelectable())
+        } while(!date.isThisDaySelectable() && count < 5)
         return date
     }
 
@@ -143,17 +143,19 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         self.calendarView.locale = Locale(identifier: "it")
         self.calendarView.scope = .week // Needed to show the weekly at start! (BUG IN THE SYSTEM)
         self.calendarView.placeholderType = .none
-        self.calendarView.select(self.safeSelectDate(Date()))
+        self.calendarView.select(self.safeSelectDate(Date(), isForward: false))
         // Appearance
         self.calendarView.appearance.caseOptions = .headerUsesCapitalized
         self.calendarView.appearance.titleFont = .boldSystemFont(ofSize: 15)
         self.calendarView.appearance.weekdayFont = .systemFont(ofSize: 17, weight: .light)
         self.calendarView.appearance.headerTitleFont = .boldSystemFont(ofSize: 19)
-        self.calendarView.appearance.titleWeekendColor = .lightGray
+        // Color
+        self.calendarView.appearance.titleWeekendColor = .systemGray3
         self.calendarView.appearance.todayColor = .clear
         self.calendarView.appearance.titleDefaultColor = Theme.avatarBlack
         self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
-        self.calendarView.appearance.headerTitleColor = Theme.FSCalendarStandardSelectionColor
-        self.calendarView.appearance.weekdayTextColor = .black
+        self.calendarView.appearance.headerTitleColor = Theme.mainColor
+        self.calendarView.appearance.weekdayTextColor = Theme.black
+        self.calendarView.appearance.titleSelectionColor = Theme.white
     }
 }

@@ -35,10 +35,6 @@ class RankingSectionHeaderView: UIView {
         self.commonInit()
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     override func layoutSubviews() {
         self.containerView.layer.cornerRadius = self.containerView.frame.height / 4
     }
@@ -48,7 +44,6 @@ class RankingSectionHeaderView: UIView {
         addSubview(self.contentView)
         self.contentView.frame = bounds
         self.contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
         self.setupLabelTap()
     }
 

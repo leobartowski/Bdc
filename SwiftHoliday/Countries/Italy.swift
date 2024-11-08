@@ -9,9 +9,10 @@ import Foundation
 
 // https://en.wikipedia.org/wiki/Public_holidays_in_Italy
 final class Italy: CountryBase {
-    
+    // swiftlint:disable static_over_final_class
     override class var iso2Code: String { "IT" }
     override class var iso3Code: String { "ITA" }
+    // swiftlint:enable static_over_final_class
 
     override var defaultTimeZone: TimeZone { TimeZone(abbreviation: "CET")! }
 
@@ -30,7 +31,7 @@ final class Italy: CountryBase {
             Holiday(name: "Festa Della Repubblica", date: (year, .june, 2)),
             Holiday(name: "Ferragosto", date: (year, .august, 15)),
             Holiday(name: "San Sossio", date: (year, .september, 23)),
-            Holiday(name: "Ognissanti", date: (year, .november, 1)), // IT BREAKS THE APP IF IT'S TODAY
+            Holiday(name: "Tutti i santi", date: (year, .november, 1)),
             Holiday(name: "Immacolata", date: (year, .december, 8)),
             Holiday(name: "Vigilia di Natale", date: (year, .december, 24)),
             Holiday(name: "Natale", date: (year, .december, 25)),

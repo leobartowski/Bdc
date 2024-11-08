@@ -17,20 +17,28 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
         self.setupTableViewShadow()
+        if #available(iOS 17.0, *) { self.handleTraitChange() }
     }
 
     func setupTableViewShadow() {
-        self.tableView.layer.masksToBounds = false
-        self.tableView.layer.shadowColor = UIColor.gray.cgColor // any value you want
-        self.tableView.layer.shadowOpacity = 0.3 // any value you want
-        self.tableView.layer.shadowRadius = 2 // any value you want
-        self.tableView.layer.shadowOffset = .init(width: 0, height: 0)
+        if self.traitCollection.userInterfaceStyle != .dark {
+            self.tableView.addShadow(height: 0, opacity: 0.3)
+        } else {
+            self.tableView.removeShadow()
+        }
+    }
+    
+    @available(iOS 17.0, *)
+    func handleTraitChange() {
+        self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
+            self.setupTableViewShadow()
+        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 4
+            return 3
         case 1:
             return 1
         case 2:
@@ -64,11 +72,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
                 cell?.setup(text: "Mostra coriandoli periodo perfetto", settingsType: .showConfetti)
                 return cell ?? UITableViewCell()
-            case 3: //  Weighted Attendance
-                let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
-                cell?.setup(text: "Calcola presenze All-Time ponderate", settingsType: .weightedAttendance)
-                return cell ?? UITableViewCell()
-
             default:
                 return UITableViewCell()
             }
@@ -98,7 +101,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             case 0: return // Modify Old Element
             case 1: return // Show Statistics
             case 2: return // Show confetti
-            case 3: return // Weighted Attendance
             default: return
             }
         case 1: // Handle Person list
@@ -107,8 +109,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 2: // 
             if let url = URL(string: "https://drive.google.com/file/d/1fvKB4Tbz4FOWQvNWF4ncY0XhpRdPdDB-/view?usp=sharing") {
                 let safariVC = SFSafariViewController(url: url)
-                safariVC.preferredBarTintColor = .white
-                safariVC.preferredControlTintColor = Theme.FSCalendarStandardSelectionColor
+                safariVC.preferredBarTintColor = Theme.white
+                safariVC.preferredControlTintColor = Theme.mainColor
                 self.present(safariVC, animated: true, completion: nil)
                 self.tableView.deselectRow(at: indexPath, animated: false)
             }

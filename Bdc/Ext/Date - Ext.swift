@@ -58,6 +58,7 @@ extension Date {
     func getStartOfMonth() -> Date {
         return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self))) ?? Date()
     }
+    
     /// Get last day of the month
     func getEndOfMonth() -> Date {
         return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.getStartOfMonth()) ?? Date()
@@ -73,34 +74,34 @@ extension Date {
     }
 
     /// Get the month number and the year
-    func getMonthAndYearNumber() -> (monthNumber: Int, yearNumber: Int) {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.firstWeekday = 2
-        calendar.locale = .current
-        calendar.minimumDaysInFirstWeek = 4
-        let monthNumber = calendar.component(.month, from: self)
-        let yearNumber = calendar.component(.year, from: self)
-        return (monthNumber, yearNumber)
+    func getMonthAndYearNumber() -> (m: Int, y: Int) {
+        let month = Calendar.itBasic.component(.month, from: self)
+        let year = Calendar.itBasic.component(.year, from: self)
+        return (month, year)
     }
     
     /// Get the month number and the year
     func getWeekNumberAndYearNumber() -> (weekNumber: Int, yearNumber: Int) {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.firstWeekday = 2
-        calendar.locale = .current
-        calendar.minimumDaysInFirstWeek = 4
-        let weekNumber = calendar.component(.weekOfYear, from: self)
-        let yearNumber = calendar.component(.year, from: self)
+        let weekNumber = Calendar.itBasic.component(.weekOfYear, from: self)
+        let yearNumber = Calendar.itBasic.component(.year, from: self)
+        return (weekNumber, yearNumber)
+    }
+    
+    /// Get the month number and the year
+    func getYearNumber() -> Int {
+        return Calendar.itBasic.component(.year, from: self)
+    }
+    
+    /// Get the month number and the year
+    func getWeekNumberAndYearForWeekOfYearNumber() -> (w: Int, y: Int) {
+        let weekNumber = Calendar.itBasic.component(.weekOfYear, from: self)
+        let yearNumber = Calendar.itBasic.component(.yearForWeekOfYear, from: self)
         return (weekNumber, yearNumber)
     }
 
     /// Get the Week Number in the year
     func getWeekNumber() -> Int {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.firstWeekday = 2
-        calendar.locale = .current
-        calendar.minimumDaysInFirstWeek = 4
-        return calendar.component(.weekOfYear, from: self)
+        return Calendar.itBasic.component(.weekOfYear, from: self)
     }
 
     /// Get Specific day of the week of the given day (1: Sunday, 2: Monday, ..., 7: Saturday)
@@ -114,19 +115,19 @@ extension Date {
 
     /// Returns an integer from 1 - 7, with 1 being Sunday and 7 being Saturday
     func getDayNumberOfWeek() -> Int? {
-
         return Calendar.current.dateComponents([.weekday], from: self).weekday
     }
 
-    func getAllSelectableDateOfTheWeek() -> [Date] {
+    func getAllSelectableDatesOfWeek(weeksOffset: Int = 0) -> [Date] {
         var calendar = Calendar.autoupdatingCurrent
-        calendar.firstWeekday = 2 // / Week start on Monday (or 1 for Sunday)
+        calendar.firstWeekday = 2 // Start week on Monday
         let today = calendar.startOfDay(for: self)
         var week = [Date]()
-        if let weekInterval = calendar.dateInterval(of: .weekOfYear, for: today) {
+        if let weekInterval = calendar.dateInterval(of: .weekOfYear, for: today),
+           let targetWeekStart = calendar.date(byAdding: .weekOfYear, value: weeksOffset, to: weekInterval.start) {
             for i in 0 ... 6 {
-                if let day = calendar.date(byAdding: .day, value: i, to: weekInterval.start), day.isThisDaySelectable() {
-                    week += [day]
+                if let day = calendar.date(byAdding: .day, value: i, to: targetWeekStart), day.isThisDaySelectable() {
+                    week.append(day)
                 }
             }
         }
@@ -148,25 +149,31 @@ extension Date {
         return week
     }
     
-    /// Get all Selectable dates of the month given specifc date
-    func getAllSelectableDatesOfTheMonth() -> [Date] {
+    /// Get all Selectable dates of months ago, no param means current month
+    func getAllSelectableDatesOfMonth(ofMonthsAgo monthOffset: Int = 0) -> [Date] {
         var dates: [Date] = []
-        var date = self.getStartOfMonth()
-         
-        while date <= self.getEndOfMonth() {
-            if date.isThisDaySelectable() { dates.append(date) }
-             guard let newDate = Calendar.current.date(byAdding: .day, value: 1, to: date) else { break }
-             date = newDate
-         }
-         return dates
+        guard let monthStart = Calendar.current.date(byAdding: .month, value: monthOffset, to: self.getStartOfMonth())
+        else { return dates }
+        let monthEnd = monthStart.getEndOfMonth()
+        var date = monthStart
+        while date <= monthEnd {
+            if date.isThisDaySelectable() {
+                dates.append(date)
+            }
+            guard let nextDate = Calendar.current.date(byAdding: .day, value: 1, to: date) else { break }
+            date = nextDate
+        }
+        return dates
     }
     
-    /// Get all Dates of the year
-    func getAllDateOfTheYear() -> [Date] {
+    /// Get all selectable dates of  years ago, no param means current year
+    func getAllSelectableDateOfTheYear(ofYearsAgo yearOffset: Int = 0) -> [Date] {
         var dates: [Date] = []
-        var date = self.getStartOfYear()
-         
-        while date <= self.getEndOfYear() {
+        guard let yearStart = Calendar.current.date(byAdding: .year, value: yearOffset, to: self.getStartOfYear())
+        else { return dates}
+        let yearEnd = yearStart.getEndOfYear()
+        var date = yearStart
+        while date <= yearEnd {
             if date.isThisDaySelectable() { dates.append(date) }
              guard let newDate = Calendar.current.date(byAdding: .day, value: 1, to: date) else { break }
              date = newDate
@@ -224,8 +231,13 @@ extension Date {
     
     // MARK: Utilis specific
     func isThisDaySelectable() -> Bool {
-        return self.getDayNumberOfWeek() == 1 || self.getDayNumberOfWeek() == 7 || self.isHoliday(in: .italy) || self < Constant.startingDateBdC || self > Date()
-        ? false
-        : true
+        if self.getDayNumberOfWeek() == 1 ||
+            self.getDayNumberOfWeek() == 7 ||
+            self.isHoliday(in: .italy) ||
+            self < Constant.startingDateBdC ||
+            self > Date() {
+            return false
+        }
+        return true
     }
 }

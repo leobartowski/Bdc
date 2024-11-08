@@ -43,13 +43,27 @@
 		DD30A8B32913DE42007DC8F3 /* RankingViewController + HandlePeriodCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD30A8B22913DE42007DC8F3 /* RankingViewController + HandlePeriodCalendar.swift */; };
 		DD368F4E2774BE4F000F0A84 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */; };
 		DD368F522774D415000F0A84 /* YearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD368F512774D415000F0A84 /* YearPickerView.swift */; };
+		DD41092F2CC6D34900551761 /* SearchBar - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41092E2CC6D34000551761 /* SearchBar - Ext.swift */; };
+		DD4109312CC944C000551761 /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD4109302CC944C000551761 /* Statistics.storyboard */; };
+		DD4109342CC94DD100551761 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109332CC94DCB00551761 /* StatisticsViewController.swift */; };
+		DD4109362CC9580900551761 /* StatisticsViewController + TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109352CC957FB00551761 /* StatisticsViewController + TableView.swift */; };
+		DD4109382CC95B3A00551761 /* StatisticsViewController + CreateLineCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109372CC95B3000551761 /* StatisticsViewController + CreateLineCharts.swift */; };
+		DD41093D2CCA6ECD00551761 /* LinearMarkerViewForPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41093C2CCA6EC000551761 /* LinearMarkerViewForPoint.swift */; };
+		DD4109412CCA852C00551761 /* Calendar - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109402CCA852600551761 /* Calendar - Ext.swift */; };
+		DD4109452CCB7FA300551761 /* EfficientLabelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109442CCB7FA200551761 /* EfficientLabelHandler.swift */; };
+		DD4109472CCBA00D00551761 /* MonthYearXAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109462CCBA00600551761 /* MonthYearXAxisFormatter.swift */; };
+		DD4109492CCBB00D00551761 /* StringChartUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109482CCBAFFE00551761 /* StringChartUtility.swift */; };
+		DD41094B2CCBD8F300551761 /* LineChartCachedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41094A2CCBD8E900551761 /* LineChartCachedData.swift */; };
+		DD41094D2CCF8E3100551761 /* StatisticsViewController + BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41094C2CCF8E2000551761 /* StatisticsViewController + BarChart.swift */; };
+		DD41094F2CCFA01E00551761 /* BarChartAttendanceMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD41094E2CCFA01C00551761 /* BarChartAttendanceMarkerView.swift */; };
+		DD4109592CCFFDE000551761 /* LinearMarkerViewForDoublePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4109582CCFFDE000551761 /* LinearMarkerViewForDoublePoint.swift */; };
 		DD413379274FC94C0038B4C6 /* RankingViewController + TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */; };
 		DD4667CF284E0E4E003954D5 /* RankingViewController + ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4667CE284E0E4E003954D5 /* RankingViewController + ConfettiView.swift */; };
 		DD47EEC1278B2C4F0081388D /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */; };
 		DD47EEC3278B3CBF0081388D /* Label - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47EEC2278B3CBF0081388D /* Label - Ext.swift */; };
 		DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */; };
 		DD60B5552753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */; };
-		DD611B5B2910412C00D8063C /* CalendarViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD611B5A2910412C00D8063C /* CalendarViewController+SearchBar.swift */; };
+		DD611B5B2910412C00D8063C /* CalendarViewController + SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD611B5A2910412C00D8063C /* CalendarViewController + SearchBar.swift */; };
 		DD617CEB2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */; };
 		DD617CED2753C3AE002AD5E7 /* RankingWeeklyTableViewCell + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD617CEC2753C3AE002AD5E7 /* RankingWeeklyTableViewCell + CollectionView.swift */; };
 		DD64968627221A40009E455F /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64968227221A40009E455F /* Person+CoreDataClass.swift */; };
@@ -77,18 +91,24 @@
 		DD85440927219D4D004D38F0 /* BdcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD85440827219D4D004D38F0 /* BdcTests.swift */; };
 		DD85441327219D4D004D38F0 /* BdcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD85441227219D4D004D38F0 /* BdcUITests.swift */; };
 		DD85441527219D4D004D38F0 /* BdcUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD85441427219D4D004D38F0 /* BdcUITestsLaunchTests.swift */; };
+		DDAB69DC2CD68A91005FFFA6 /* TimeInterval - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAB69DB2CD68A89005FFFA6 /* TimeInterval - Ext.swift */; };
 		DDB292602721A8D400D96E67 /* RankingSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB2925F2721A8D400D96E67 /* RankingSectionHeaderView.xib */; };
 		DDB292622721A90500D96E67 /* RankingSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB292612721A90500D96E67 /* RankingSectionHeaderView.swift */; };
 		DDB69F5928D5DC9C0006C9F8 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB69F5828D5DC9C0006C9F8 /* Person+CoreDataProperties.swift */; };
 		DDC1E5CE2752966E00C2BF2C /* Attendance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC1E5CC2752966E00C2BF2C /* Attendance+CoreDataProperties.swift */; };
 		DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A32724065A0028E49B /* RankingViewController.swift */; };
 		DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC337A527240CAE0028E49B /* Date - Ext.swift */; };
+		DDC4A6CF2CD7E3B100EDAC96 /* BarChartCachedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC4A6CE2CD7E3B100EDAC96 /* BarChartCachedData.swift */; };
 		DDC51A4F27564191004A836B /* SortingPositionAndType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC51A4E27564191004A836B /* SortingPositionAndType.swift */; };
 		DDC9EB6A275031CD00653138 /* PersonsList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC9EB68275031CD00653138 /* PersonsList+CoreDataClass.swift */; };
 		DDC9EB6B275031CD00653138 /* PersonsList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC9EB69275031CD00653138 /* PersonsList+CoreDataProperties.swift */; };
 		DDCBBDB4274D44B4002B60DA /* MySegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */; };
 		DDCBBDB6274D5288002B60DA /* RankingWeeklyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCBBDB5274D5288002B60DA /* RankingWeeklyTableViewCell.swift */; };
 		DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DDD5051B27220FB000508F60 /* Bdc.xcdatamodeld */; };
+		DDD882BD2CD2A76100E6D47A /* StatisticsViewController + Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD882BC2CD2A75F00E6D47A /* StatisticsViewController + Labels.swift */; };
+		DDD882C12CD3DB6500E6D47A /* IncrementableLabelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD882C02CD3DB5700E6D47A /* IncrementableLabelHelper.swift */; };
+		DDD882C32CD3DE5F00E6D47A /* StatsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD882C22CD3DE5B00E6D47A /* StatsData.swift */; };
+		DDD882C52CD3EFEC00E6D47A /* AttendanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD882C42CD3EFE200E6D47A /* AttendanceHelper.swift */; };
 		DDDC44402916BE4500BEC4F0 /* LicenseSwiftFormat.txt in Resources */ = {isa = PBXBuildFile; fileRef = DDDC443F2916BE4500BEC4F0 /* LicenseSwiftFormat.txt */; };
 		DDDC444A2916BF9400BEC4F0 /* Pods-Bdc-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDDC44492916BF9400BEC4F0 /* Pods-Bdc-acknowledgements.plist */; };
 		DDDC444E2916C05400BEC4F0 /* LicenseSwiftHoliday.txt in Resources */ = {isa = PBXBuildFile; fileRef = DDDC444B2916C05400BEC4F0 /* LicenseSwiftHoliday.txt */; };
@@ -105,6 +125,9 @@
 		DDF9B5892778726700E2FEE2 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF9B5882778726700E2FEE2 /* Calendar.storyboard */; };
 		DDF9B58B2778740900E2FEE2 /* HandlePersonsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF9B58A2778740900E2FEE2 /* HandlePersonsTableViewController.swift */; };
 		DDF9B58F277878F900E2FEE2 /* HandlePersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF9B58E277878F900E2FEE2 /* HandlePersonTableViewCell.swift */; };
+		DDFCFFB52CD14A2B00052BD8 /* StatisticsViewController + RecognizerCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFCFFB42CD14A2900052BD8 /* StatisticsViewController + RecognizerCharts.swift */; };
+		DDFCFFB72CD159F300052BD8 /* ChartPeriodHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFCFFB62CD159EF00052BD8 /* ChartPeriodHelper.swift */; };
+		DDFCFFB92CD161B900052BD8 /* StatisticsViewController + SetUpLineCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFCFFB82CD161B700052BD8 /* StatisticsViewController + SetUpLineCharts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,13 +210,27 @@
 		DD30A8B22913DE42007DC8F3 /* RankingViewController + HandlePeriodCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + HandlePeriodCalendar.swift"; sourceTree = "<group>"; };
 		DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		DD368F512774D415000F0A84 /* YearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPickerView.swift; sourceTree = "<group>"; };
+		DD41092E2CC6D34000551761 /* SearchBar - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchBar - Ext.swift"; sourceTree = "<group>"; };
+		DD4109302CC944C000551761 /* Statistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
+		DD4109332CC94DCB00551761 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		DD4109352CC957FB00551761 /* StatisticsViewController + TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsViewController + TableView.swift"; sourceTree = "<group>"; };
+		DD4109372CC95B3000551761 /* StatisticsViewController + CreateLineCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsViewController + CreateLineCharts.swift"; sourceTree = "<group>"; };
+		DD41093C2CCA6EC000551761 /* LinearMarkerViewForPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearMarkerViewForPoint.swift; sourceTree = "<group>"; };
+		DD4109402CCA852600551761 /* Calendar - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar - Ext.swift"; sourceTree = "<group>"; };
+		DD4109442CCB7FA200551761 /* EfficientLabelHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EfficientLabelHandler.swift; sourceTree = "<group>"; };
+		DD4109462CCBA00600551761 /* MonthYearXAxisFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearXAxisFormatter.swift; sourceTree = "<group>"; };
+		DD4109482CCBAFFE00551761 /* StringChartUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringChartUtility.swift; sourceTree = "<group>"; };
+		DD41094A2CCBD8E900551761 /* LineChartCachedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartCachedData.swift; sourceTree = "<group>"; };
+		DD41094C2CCF8E2000551761 /* StatisticsViewController + BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsViewController + BarChart.swift"; sourceTree = "<group>"; };
+		DD41094E2CCFA01C00551761 /* BarChartAttendanceMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartAttendanceMarkerView.swift; sourceTree = "<group>"; };
+		DD4109582CCFFDE000551761 /* LinearMarkerViewForDoublePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearMarkerViewForDoublePoint.swift; sourceTree = "<group>"; };
 		DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + TableView.swift"; sourceTree = "<group>"; };
 		DD4667CE284E0E4E003954D5 /* RankingViewController + ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + ConfettiView.swift"; sourceTree = "<group>"; };
 		DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		DD47EEC2278B3CBF0081388D /* Label - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label - Ext.swift"; sourceTree = "<group>"; };
 		DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + FSCalendar.swift"; sourceTree = "<group>"; };
 		DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDayHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
-		DD611B5A2910412C00D8063C /* CalendarViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController+SearchBar.swift"; sourceTree = "<group>"; };
+		DD611B5A2910412C00D8063C /* CalendarViewController + SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + SearchBar.swift"; sourceTree = "<group>"; };
 		DD617CEA2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSingleDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD617CEC2753C3AE002AD5E7 /* RankingWeeklyTableViewCell + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingWeeklyTableViewCell + CollectionView.swift"; sourceTree = "<group>"; };
 		DD64968227221A40009E455F /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -225,18 +262,24 @@
 		DD85440E27219D4D004D38F0 /* BdcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BdcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD85441227219D4D004D38F0 /* BdcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BdcUITests.swift; sourceTree = "<group>"; };
 		DD85441427219D4D004D38F0 /* BdcUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BdcUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DDAB69DB2CD68A89005FFFA6 /* TimeInterval - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval - Ext.swift"; sourceTree = "<group>"; };
 		DDB2925F2721A8D400D96E67 /* RankingSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankingSectionHeaderView.xib; sourceTree = "<group>"; };
 		DDB292612721A90500D96E67 /* RankingSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSectionHeaderView.swift; sourceTree = "<group>"; };
 		DDB69F5828D5DC9C0006C9F8 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Person+CoreDataProperties.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/Person+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		DDC1E5CC2752966E00C2BF2C /* Attendance+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Attendance+CoreDataProperties.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/Attendance+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		DDC337A32724065A0028E49B /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		DDC337A527240CAE0028E49B /* Date - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date - Ext.swift"; sourceTree = "<group>"; };
+		DDC4A6CE2CD7E3B100EDAC96 /* BarChartCachedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartCachedData.swift; sourceTree = "<group>"; };
 		DDC51A4E27564191004A836B /* SortingPositionAndType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingPositionAndType.swift; sourceTree = "<group>"; };
 		DDC9EB68275031CD00653138 /* PersonsList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PersonsList+CoreDataClass.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/PersonsList+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		DDC9EB69275031CD00653138 /* PersonsList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PersonsList+CoreDataProperties.swift"; path = "/Users/leobartowski/Documents/My xCode Projects/Bdc/Bdc/CoreData/Class/PersonsList+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySegmentedControl.swift; sourceTree = "<group>"; };
 		DDCBBDB5274D5288002B60DA /* RankingWeeklyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingWeeklyTableViewCell.swift; sourceTree = "<group>"; };
 		DDD5051C27220FB000508F60 /* Bdc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bdc.xcdatamodel; sourceTree = "<group>"; };
+		DDD882BC2CD2A75F00E6D47A /* StatisticsViewController + Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsViewController + Labels.swift"; sourceTree = "<group>"; };
+		DDD882C02CD3DB5700E6D47A /* IncrementableLabelHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncrementableLabelHelper.swift; sourceTree = "<group>"; };
+		DDD882C22CD3DE5B00E6D47A /* StatsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsData.swift; sourceTree = "<group>"; };
+		DDD882C42CD3EFE200E6D47A /* AttendanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceHelper.swift; sourceTree = "<group>"; };
 		DDDC443F2916BE4500BEC4F0 /* LicenseSwiftFormat.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LicenseSwiftFormat.txt; sourceTree = "<group>"; };
 		DDDC44492916BF9400BEC4F0 /* Pods-Bdc-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-Bdc-acknowledgements.plist"; path = "Pods/Target Support Files/Pods-Bdc/Pods-Bdc-acknowledgements.plist"; sourceTree = "<group>"; };
 		DDDC444B2916C05400BEC4F0 /* LicenseSwiftHoliday.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LicenseSwiftHoliday.txt; sourceTree = "<group>"; };
@@ -253,6 +296,9 @@
 		DDF9B5882778726700E2FEE2 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		DDF9B58A2778740900E2FEE2 /* HandlePersonsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlePersonsTableViewController.swift; sourceTree = "<group>"; };
 		DDF9B58E277878F900E2FEE2 /* HandlePersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlePersonTableViewCell.swift; sourceTree = "<group>"; };
+		DDFCFFB42CD14A2900052BD8 /* StatisticsViewController + RecognizerCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsViewController + RecognizerCharts.swift"; sourceTree = "<group>"; };
+		DDFCFFB62CD159EF00052BD8 /* ChartPeriodHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPeriodHelper.swift; sourceTree = "<group>"; };
+		DDFCFFB82CD161B700052BD8 /* StatisticsViewController + SetUpLineCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsViewController + SetUpLineCharts.swift"; sourceTree = "<group>"; };
 		E9119FA55433DC0831BDC2B0 /* Pods_Bdc_BdcUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bdc_BdcUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -308,6 +354,10 @@
 		DD0CAB512728107500EA42B1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DDD882C22CD3DE5B00E6D47A /* StatsData.swift */,
+				DDFCFFB62CD159EF00052BD8 /* ChartPeriodHelper.swift */,
+				DD41094A2CCBD8E900551761 /* LineChartCachedData.swift */,
+				DDC4A6CE2CD7E3B100EDAC96 /* BarChartCachedData.swift */,
 				DD0CAB522728108600EA42B1 /* DayType.swift */,
 				DDC51A4E27564191004A836B /* SortingPositionAndType.swift */,
 				DD27CAB0277368810020BE4D /* RankingType.swift */,
@@ -406,6 +456,7 @@
 		DD18C7F3272207050086BB6C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DD4109322CC94D8700551761 /* Statistics */,
 				DD84830827772AE700E7F179 /* Settings */,
 				DD5542DE2724563C000D9F48 /* CalendarViewController */,
 				DD5542E327245875000D9F48 /* RankingViewController */,
@@ -421,6 +472,7 @@
 				DDF9B5842778715000E2FEE2 /* Settings.storyboard */,
 				DDF9B5862778721700E2FEE2 /* Ranking.storyboard */,
 				DDF9B5882778726700E2FEE2 /* Calendar.storyboard */,
+				DD4109302CC944C000551761 /* Statistics.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -430,7 +482,6 @@
 			children = (
 				DD18C7F7272208B00086BB6C /* Class */,
 				DD18C7F6272208A50086BB6C /* View */,
-				DDB2925F2721A8D400D96E67 /* RankingSectionHeaderView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -438,6 +489,7 @@
 		DD18C7F6272208A50086BB6C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DDB2925F2721A8D400D96E67 /* RankingSectionHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -453,11 +505,37 @@
 		DD18C80427220D0F0086BB6C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				DD5EF52F2CA707D800988CA5 /* SQLFileBackup */,
 				DDD5051B27220FB000508F60 /* Bdc.xcdatamodeld */,
 				DDD5051227220E2A00508F60 /* Service */,
 				DDD5051127220E0300508F60 /* Class */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		DD4109322CC94D8700551761 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				DD4109332CC94DCB00551761 /* StatisticsViewController.swift */,
+				DDD882BC2CD2A75F00E6D47A /* StatisticsViewController + Labels.swift */,
+				DDFCFFB82CD161B700052BD8 /* StatisticsViewController + SetUpLineCharts.swift */,
+				DD4109372CC95B3000551761 /* StatisticsViewController + CreateLineCharts.swift */,
+				DDFCFFB42CD14A2900052BD8 /* StatisticsViewController + RecognizerCharts.swift */,
+				DD41094C2CCF8E2000551761 /* StatisticsViewController + BarChart.swift */,
+				DD4109352CC957FB00551761 /* StatisticsViewController + TableView.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		DD4109392CCA4C4800551761 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				DD4109582CCFFDE000551761 /* LinearMarkerViewForDoublePoint.swift */,
+				DD41094E2CCFA01C00551761 /* BarChartAttendanceMarkerView.swift */,
+				DD4109462CCBA00600551761 /* MonthYearXAxisFormatter.swift */,
+				DD41093C2CCA6EC000551761 /* LinearMarkerViewForPoint.swift */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		DD47EEBF278B2C1F0081388D /* RankingTableViewCell */ = {
@@ -484,7 +562,7 @@
 				DD8543F227219D4A004D38F0 /* CalendarViewController.swift */,
 				DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */,
 				DD03AC18274811B8004C4819 /* CalendarViewController + CollectionView.swift */,
-				DD611B5A2910412C00D8063C /* CalendarViewController+SearchBar.swift */,
+				DD611B5A2910412C00D8063C /* CalendarViewController + SearchBar.swift */,
 			);
 			path = CalendarViewController;
 			sourceTree = "<group>";
@@ -497,6 +575,13 @@
 				DD717D502772413D0003CB16 /* RankingTypeController */,
 			);
 			path = RankingViewController;
+			sourceTree = "<group>";
+		};
+		DD5EF52F2CA707D800988CA5 /* SQLFileBackup */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SQLFileBackup;
 			sourceTree = "<group>";
 		};
 		DD6ED5E8277CFBE500F44D6F /* RankingWeeklyTableViewCell */ = {
@@ -562,6 +647,8 @@
 		DD8483052774DD4A00E7F179 /* Custom Component */ = {
 			isa = PBXGroup;
 			children = (
+				DD4109392CCA4C4800551761 /* Chart */,
+				DD4109442CCB7FA200551761 /* EfficientLabelHandler.swift */,
 				DDCBBDB3274D44B4002B60DA /* MySegmentedControl.swift */,
 				DD717D55277249B90003CB16 /* CheckBox.swift */,
 				DD368F4D2774BE4F000F0A84 /* MonthYearPickerView.swift */,
@@ -689,6 +776,9 @@
 		DDE3B1702722CD3400BFEFF0 /* Ext */ = {
 			isa = PBXGroup;
 			children = (
+				DDAB69DB2CD68A89005FFFA6 /* TimeInterval - Ext.swift */,
+				DD4109402CCA852600551761 /* Calendar - Ext.swift */,
+				DD41092E2CC6D34000551761 /* SearchBar - Ext.swift */,
 				DDE3B1712722CD4200BFEFF0 /* Formatter - Ext.swift */,
 				DDC337A527240CAE0028E49B /* Date - Ext.swift */,
 				DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */,
@@ -703,6 +793,9 @@
 		DDE3B1732722D3B000BFEFF0 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				DDD882C42CD3EFE200E6D47A /* AttendanceHelper.swift */,
+				DDD882C02CD3DB5700E6D47A /* IncrementableLabelHelper.swift */,
+				DD4109482CCBAFFE00551761 /* StringChartUtility.swift */,
 				DD7B258127567A9500E663AC /* PDFCreator */,
 				DDE3B1742722D3C200BFEFF0 /* PersonListUtility.swift */,
 				DD1EAF392726DDD100EF1455 /* CommonUtility.swift */,
@@ -925,6 +1018,7 @@
 				DDDC444E2916C05400BEC4F0 /* LicenseSwiftHoliday.txt in Resources */,
 				DDDC444A2916BF9400BEC4F0 /* Pods-Bdc-acknowledgements.plist in Resources */,
 				DD8543FE27219D4C004D38F0 /* LaunchScreen.storyboard in Resources */,
+				DD4109312CC944C000551761 /* Statistics.storyboard in Resources */,
 				DD717D54277244D70003CB16 /* BottomSheet.storyboard in Resources */,
 				DDDC44402916BE4500BEC4F0 /* LicenseSwiftFormat.txt in Resources */,
 				DDF9B5852778715000E2FEE2 /* Settings.storyboard in Resources */,
@@ -1097,10 +1191,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFCFFB52CD14A2B00052BD8 /* StatisticsViewController + RecognizerCharts.swift in Sources */,
 				DD64968727221A40009E455F /* Attendance+CoreDataClass.swift in Sources */,
 				DD12B8CA29103C2A00C483D8 /* UIApplication - Ext.swift in Sources */,
 				DD18C7FB27220B890086BB6C /* CoreDateContainer.swift in Sources */,
 				DD47EEC1278B2C4F0081388D /* RankingTableViewCell.swift in Sources */,
+				DDD882C32CD3DE5F00E6D47A /* StatsData.swift in Sources */,
 				DD8483072774DE9E00E7F179 /* Constant.swift in Sources */,
 				DDCBBDB6274D5288002B60DA /* RankingWeeklyTableViewCell.swift in Sources */,
 				DDF9B58F277878F900E2FEE2 /* HandlePersonTableViewCell.swift in Sources */,
@@ -1113,14 +1209,19 @@
 				DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */,
 				DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */,
 				DDF9B58B2778740900E2FEE2 /* HandlePersonsTableViewController.swift in Sources */,
+				DDD882C12CD3DB6500E6D47A /* IncrementableLabelHelper.swift in Sources */,
 				DD7B258327567AA100E663AC /* PDFCreator.swift in Sources */,
 				DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */,
 				DD7B258527567B0600E663AC /* RankingViewController + PDF.swift in Sources */,
+				DD41094F2CCFA01E00551761 /* BarChartAttendanceMarkerView.swift in Sources */,
+				DD4109412CCA852C00551761 /* Calendar - Ext.swift in Sources */,
 				DDC337A627240CAE0028E49B /* Date - Ext.swift in Sources */,
 				DDE9D76C28BE1CC3008463CD /* SlotType.swift in Sources */,
 				DD47EEC3278B3CBF0081388D /* Label - Ext.swift in Sources */,
 				DD03AC19274811B8004C4819 /* CalendarViewController + CollectionView.swift in Sources */,
 				DD0CAB532728108600EA42B1 /* DayType.swift in Sources */,
+				DDFCFFB92CD161B900052BD8 /* StatisticsViewController + SetUpLineCharts.swift in Sources */,
+				DD41093D2CCA6ECD00551761 /* LinearMarkerViewForPoint.swift in Sources */,
 				DD30A8AF2913DB97007DC8F3 /* RankingViewController + HandlePeriod.swift in Sources */,
 				DD709C852773612C00D20C6A /* FilterBottomSheetTableViewCell.swift in Sources */,
 				DD27CAB1277368810020BE4D /* RankingType.swift in Sources */,
@@ -1128,11 +1229,16 @@
 				DD60B5552753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift in Sources */,
 				DD617CEB2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift in Sources */,
 				DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */,
+				DD4109362CC9580900551761 /* StatisticsViewController + TableView.swift in Sources */,
 				DD84830F277786D600E7F179 /* NotificationName.swift in Sources */,
 				DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */,
+				DD4109592CCFFDE000551761 /* LinearMarkerViewForDoublePoint.swift in Sources */,
 				DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */,
+				DDD882C52CD3EFEC00E6D47A /* AttendanceHelper.swift in Sources */,
 				DD4667CF284E0E4E003954D5 /* RankingViewController + ConfettiView.swift in Sources */,
 				DDD5051D27220FB000508F60 /* Bdc.xcdatamodeld in Sources */,
+				DD4109342CC94DD100551761 /* StatisticsViewController.swift in Sources */,
+				DDFCFFB72CD159F300052BD8 /* ChartPeriodHelper.swift in Sources */,
 				DD617CED2753C3AE002AD5E7 /* RankingWeeklyTableViewCell + CollectionView.swift in Sources */,
 				DDC51A4F27564191004A836B /* SortingPositionAndType.swift in Sources */,
 				DD0E35BF277BB7F50082D32C /* AddChangePersonViewController.swift in Sources */,
@@ -1142,18 +1248,28 @@
 				DDC9EB6B275031CD00653138 /* PersonsList+CoreDataProperties.swift in Sources */,
 				DD30A8B32913DE42007DC8F3 /* RankingViewController + HandlePeriodCalendar.swift in Sources */,
 				DDF9B58327786BC400E2FEE2 /* SettingsArrowTableViewCell.swift in Sources */,
+				DDAB69DC2CD68A91005FFFA6 /* TimeInterval - Ext.swift in Sources */,
 				DD368F522774D415000F0A84 /* YearPickerView.swift in Sources */,
+				DD41094D2CCF8E3100551761 /* StatisticsViewController + BarChart.swift in Sources */,
 				DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */,
-				DD611B5B2910412C00D8063C /* CalendarViewController+SearchBar.swift in Sources */,
+				DD611B5B2910412C00D8063C /* CalendarViewController + SearchBar.swift in Sources */,
 				DD1A1C65274908AB006FC676 /* UIView - Ext.swift in Sources */,
 				DD717D522772428C0003CB16 /* RankingTypeViewController.swift in Sources */,
 				DD717D56277249B90003CB16 /* CheckBox.swift in Sources */,
 				DD1EAF3A2726DDD100EF1455 /* CommonUtility.swift in Sources */,
+				DDC4A6CF2CD7E3B100EDAC96 /* BarChartCachedData.swift in Sources */,
 				DDF1DE4D272C50CE006B7DFD /* Theme.swift in Sources */,
 				DD717D4F2772411C0003CB16 /* RankingViewController + BottomSheet.swift in Sources */,
 				DDCBBDB4274D44B4002B60DA /* MySegmentedControl.swift in Sources */,
 				DD84831127778D1500E7F179 /* SettingsType.swift in Sources */,
+				DDD882BD2CD2A76100E6D47A /* StatisticsViewController + Labels.swift in Sources */,
 				DD84830D27772FC200E7F179 /* SettingsSwitchTableViewCell.swift in Sources */,
+				DD4109452CCB7FA300551761 /* EfficientLabelHandler.swift in Sources */,
+				DD41092F2CC6D34900551761 /* SearchBar - Ext.swift in Sources */,
+				DD41094B2CCBD8F300551761 /* LineChartCachedData.swift in Sources */,
+				DD4109382CC95B3A00551761 /* StatisticsViewController + CreateLineCharts.swift in Sources */,
+				DD4109492CCBB00D00551761 /* StringChartUtility.swift in Sources */,
+				DD4109472CCBA00D00551761 /* MonthYearXAxisFormatter.swift in Sources */,
 				DD8543EF27219D4A004D38F0 /* AppDelegate.swift in Sources */,
 				DD18C7F927220B0A0086BB6C /* CoreDataService.swift in Sources */,
 				DD368F4E2774BE4F000F0A84 /* MonthYearPickerView.swift in Sources */,
@@ -1424,7 +1540,8 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1458,7 +1575,8 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
