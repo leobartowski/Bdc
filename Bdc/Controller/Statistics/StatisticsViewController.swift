@@ -40,7 +40,7 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     var statsData =  StatsData([])
     
     var lineChartlabelHandler = EfficientLabelHandler()
-    let incrementaLabelAnimationDuration: Double = 1
+    let incrementaLabelAnimationDuration: Double = 1.5
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     
     override func viewDidLoad() {
@@ -58,9 +58,14 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         self.setupSegmentedControl()
         self.setUpRecognizer()
         self.setTextDividerLabels()
-        self.createRatioMornignEveningLabel()
+        self.createLabels()
         self.tableView.reloadData()
         if #available(iOS 17.0, *) { self.handleTraitChange() }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.animateIncrementalLabels()
+        self.createAndAnimateGrowthLabel()
     }
     
     override func viewDidLayoutSubviews() {
@@ -116,14 +121,7 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
             self.ratioMorningEveningCellContainerView.removeShadow()
         }
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        self.createMaxNumberOfAttendanceLabel()
-        self.createTotalAttendanceLabel()
-        self.createGrowthLabel()
-    }
-    
-    
+        
     @available(iOS 17.0, *)
     func handleTraitChange() {
         self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
@@ -186,7 +184,7 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
             self.createYearlyChart()
         default: break
         }
-        self.createGrowthLabel()
+        self.createAndAnimateGrowthLabel()
         self.setTextDividerLabels()
         self.tableView.reloadData()
     }
