@@ -59,9 +59,11 @@ class PDFCreator: NSObject {
             let dateString = DateFormatter.verboseYear.string(from: date)
             return "Presenze annuali del " + dateString
         case .allTime:
-            
             let dateString = DateFormatter.basicFormatter.string(from: Date())
             return "Presenze dal 25/10/21 al " + dateString
+        case .allTimePonderate:
+            let dateString = DateFormatter.basicFormatter.string(from: Date())
+            return "Presenze ponderate dal 25/10/21 al " + dateString
         }
     }
 
@@ -112,7 +114,7 @@ class PDFCreator: NSObject {
         // 2
         let titleAttributes: [NSAttributedString.Key: Any] =
             [NSAttributedString.Key.font: titleFont,
-             NSAttributedString.Key.foregroundColor: Theme.FSCalendarStandardSelectionColor]
+             NSAttributedString.Key.foregroundColor: Theme.mainColor]
         // 3
         let attributedTitle = NSAttributedString(
             string: pdfTitle,
@@ -124,33 +126,6 @@ class PDFCreator: NSObject {
         let titleStringRect = CGRect(
             x: (pageRect.width - titleStringSize.width) / 2.0,
             y: 15,
-            width: titleStringSize.width,
-            height: titleStringSize.height
-        )
-        // 6
-        attributedTitle.draw(in: titleStringRect)
-        self.addWeightedAttendanceTitleIfNeeded(pageRect)
-    }
-    
-    func addWeightedAttendanceTitleIfNeeded(_ pageRect: CGRect) {
-        let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
-        if !isWeightedAttendance || self.rankingType != .allTime { return }
-        let titleFont = UIFont.systemFont(ofSize: 16.0, weight: .regular)
-        // 2
-        let titleAttributes: [NSAttributedString.Key: Any] =
-            [NSAttributedString.Key.font: titleFont,
-             NSAttributedString.Key.foregroundColor: UIColor.black]
-        // 3
-        let attributedTitle = NSAttributedString(
-            string: "(Presenze ponderate)",
-            attributes: titleAttributes
-        )
-        // 4
-        let titleStringSize = attributedTitle.size()
-        // 5
-        let titleStringRect = CGRect(
-            x: (pageRect.width - titleStringSize.width) / 2.0,
-            y: 40,
             width: titleStringSize.width,
             height: titleStringSize.height
         )
@@ -188,7 +163,7 @@ class PDFCreator: NSObject {
 // Drawings
 extension PDFCreator {
     func drawTableHeaderRect(drawContext: CGContext, pageRect: CGRect) {
-        drawContext.setStrokeColor(Theme.FSCalendarStandardSelectionColor.cgColor)
+        drawContext.setStrokeColor(Theme.mainColor.cgColor)
         drawContext.saveGState()
         drawContext.setLineWidth(3.0)
 

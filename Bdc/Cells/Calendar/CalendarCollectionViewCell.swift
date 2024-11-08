@@ -19,8 +19,15 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
     @IBOutlet var mainImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var customBackgroundView: UIView!
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var indexPath = IndexPath()
+
+    var isUpdating: Bool = false {
+        didSet {
+            self.isUpdating ? self.showLoader() : self.hideLoader()
+        }
+    }
     
     override func prepareForReuse() {
         self.customBackgroundView.borderWidth = 0
@@ -35,6 +42,7 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
     func setUp(_ person: Person, _ isPresent: Bool = false, _ isAdmonished: Bool = false, _ indexPath: IndexPath, _ delegate: CalendarCollectionViewCellDelegate) {
         self.delegate = delegate
         self.indexPath = indexPath
+        self.isUpdating = false
         self.nameLabel.text = person.name
         let imageString = CommonUtility.getProfileImageString(person)
         self.mainImageView.image = UIImage(named: imageString)
@@ -42,22 +50,30 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
             self.customBackgroundView.borderColor = Theme.mainColor
             self.customBackgroundView.borderWidth = 2
         }
-        self.customBackgroundView.backgroundColor = isAdmonished ? Theme.customYellow : .white
-//        self.customBackgroundView.backgroundColor = isPresent
-//        ? Theme.selectionGreen
-//        : (isAdmonished ? Theme.customYellow : .white)
+        self.customBackgroundView.backgroundColor = isAdmonished ? Theme.customYellow : Theme.dirtyWhite
         self.setUpShadow()
     }
-
+    
     private func setUpShadow() {
         self.customBackgroundView.layer.cornerRadius = 10
         self.customBackgroundView.layer.masksToBounds = true
-        self.customBackgroundView.layer.shadowColor = UIColor.gray.cgColor
-        self.customBackgroundView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        self.customBackgroundView.layer.shadowOpacity = 0.3
-        self.customBackgroundView.layer.shadowRadius = 2
-        self.customBackgroundView.layer.shadowPath = UIBezierPath(roundedRect: self.customBackgroundView.bounds, cornerRadius: 10).cgPath
-        self.customBackgroundView.layer.masksToBounds = false
+        if self.traitCollection.userInterfaceStyle != .dark {
+            self.customBackgroundView.layer.shadowColor = UIColor.systemGray.cgColor
+            self.customBackgroundView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+            self.customBackgroundView.layer.shadowOpacity = 0.3
+            self.customBackgroundView.layer.shadowRadius = 2
+            self.customBackgroundView.layer.shadowPath = UIBezierPath(roundedRect: self.customBackgroundView.bounds, cornerRadius: 10).cgPath
+            self.customBackgroundView.layer.masksToBounds = false
+        }
+    }
+    
+    func showLoader() {
+        self.mainImageView.isHidden = true
+        self.activityIndicator.startAnimating()
+    }
+    func hideLoader() {
+        self.mainImageView.isHidden = false
+        self.activityIndicator.stopAnimating()
     }
 
     private func setupLongGestureRecognizer() {
@@ -68,7 +84,6 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
     }
 
     @objc func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
-        
         if gestureReconizer.state == .began {
             self.delegate?.mainCell(self, didSelectRowAt: self.indexPath)
             return

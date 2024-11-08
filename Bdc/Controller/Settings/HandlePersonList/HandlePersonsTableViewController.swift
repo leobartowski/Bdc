@@ -17,14 +17,22 @@ class HandlePersonsViewController: UIViewController, UITableViewDelegate, UITabl
         self.setupTableViewShadow()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addPerson))
         self.addObservers()
+        if #available(iOS 17.0, *) { self.handleTraitChange() }
     }
     
     func setupTableViewShadow() {
-        self.tableView.layer.masksToBounds = false
-        self.tableView.layer.shadowColor = UIColor.gray.cgColor
-        self.tableView.layer.shadowOpacity = 0.3
-        self.tableView.layer.shadowRadius = 2 
-        self.tableView.layer.shadowOffset = .init(width: 0, height: 0)
+        if self.traitCollection.userInterfaceStyle != .dark {
+            self.tableView.addShadow(height: 0, opacity: 0.3)
+        } else {
+            self.tableView.removeShadow()
+        }
+    }
+    
+    @available(iOS 17.0, *)
+    func handleTraitChange() {
+        self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
+            self.setupTableViewShadow()
+        })
     }
     
     func addObservers() {

@@ -21,7 +21,6 @@ class RankingTableViewCell: UITableViewCell {
     var rankingAttendance: RankingPersonAttendance?
     var rankingType: RankingType?
     var showStatistics = false
-    var showWeightedAttendance = false
     
     override func layoutSubviews() {
         self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: 15).cgPath
@@ -30,9 +29,7 @@ class RankingTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
-        self.showWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowStatistics(_:)), name: .didChangeShowStatistics, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeWeightedAttendance(_:)), name: .didChangeweightedAttendance, object: nil)
         // Design
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
     }
@@ -52,9 +49,8 @@ class RankingTableViewCell: UITableViewCell {
     }
     
     func getStringOfAttendanceLabel(_ rankingAttendance: RankingPersonAttendance, _ rankingType: RankingType) -> String {
-        if self.showWeightedAttendance && rankingType == .allTime {
+        if rankingType == .allTimePonderate {
             let number = Float(rankingAttendance.attendanceNumber) * rankingAttendance.person.difficultyCoefficient
-            
             return String(format: "%.1f", number)
         } else {
             return String(rankingAttendance.attendanceNumber)
@@ -62,14 +58,11 @@ class RankingTableViewCell: UITableViewCell {
     }
     
     func setUpShadow() {
-        let cornerRadius: CGFloat = 15
-        self.containerView.cornerRadius = cornerRadius
+        self.containerView.cornerRadius = 15
         self.containerView.layer.masksToBounds = true
-        self.containerView.layer.shadowColor = UIColor.gray.cgColor
-        self.containerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        self.containerView.layer.shadowOpacity = 0.3
-        self.containerView.layer.shadowRadius = 2
-        self.containerView.layer.masksToBounds = false
+        if self.traitCollection.userInterfaceStyle != .dark {
+            self.containerView.addShadow(height: 0, opacity: 0.3)
+        }
     }
     
     func setupLabelDesign(_ labelNumber: Int) {
@@ -93,8 +86,8 @@ class RankingTableViewCell: UITableViewCell {
     
     func handleStatistics() {
         
-        self.percentualAdmonishmentLabel.isHidden = !self.showStatistics || (self.showWeightedAttendance && self.rankingType == .allTime)
-        self.percentualAttendanceLabel.isHidden = !self.showStatistics || (self.showWeightedAttendance && self.rankingType == .allTime)
+        self.percentualAdmonishmentLabel.isHidden = !self.showStatistics || self.rankingType == .allTimePonderate
+        self.percentualAttendanceLabel.isHidden = !self.showStatistics || self.rankingType == .allTimePonderate
         if let rankingAttendance = self.rankingAttendance, self.showStatistics {
             DispatchQueue.main.async {
                 self.percentualAttendanceLabel.text = self.createAttendancePercentagesString(
@@ -123,14 +116,5 @@ class RankingTableViewCell: UITableViewCell {
     @objc func didChangeShowStatistics(_: Notification) {
         self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
         self.handleStatistics()
-    }
-    
-    @objc func didChangeWeightedAttendance(_: Notification) {
-        self.showWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
-        if self.rankingAttendance != nil, self.rankingType != nil {
-            self.attendanceLabel.text = self.getStringOfAttendanceLabel(self.rankingAttendance!, self.rankingType!)
-        }
-        self.percentualAdmonishmentLabel.isHidden = self.showWeightedAttendance ? true : false
-        self.percentualAttendanceLabel.isHidden = self.showWeightedAttendance ? true : false
     }
 }

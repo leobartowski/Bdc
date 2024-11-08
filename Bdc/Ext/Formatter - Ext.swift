@@ -22,7 +22,14 @@ extension Formatter {
         dateFormatter.dateFormat = "dd/MM"
         return dateFormatter
     }()
-
+    
+    static let monthAndYearVerboseFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = .current
+        dateFormatter.dateFormat = "MMM yyyy"
+        return dateFormatter
+    }()
+    
     static let creationDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = .current
@@ -43,4 +50,12 @@ extension Formatter {
         dateFormatter.setLocalizedDateFormatFromTemplate("yyyy")
         return dateFormatter
     }()
+    
+    static let smallYear: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = .current
+        dateFormatter.dateFormat = "yy"
+        return dateFormatter
+    }()
+
 }

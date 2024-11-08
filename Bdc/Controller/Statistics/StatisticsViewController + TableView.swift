@@ -1,0 +1,46 @@
+//
+//  StatisticsViewController - TableView.swift
+//  Bdc
+//
+//  Created by leobartowski on 23/10/24.
+//
+ 
+import UIKit
+
+extension StatisticsViewController {
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case 0: // First Label Cell
+                return 103 // 10 + 10 + 10 + 10 + 21 + 42
+            case 1: // Segmented control
+                return 53 // 10 + 10 + 33
+            case 2: // Divider Label Bar Chart
+                return UITableView.automaticDimension
+            case 3: // Line chart
+                return 285 // 10 + 15 + 10 + 250
+            case 4: // Period Growth Label cell
+                return 82 // 10 + 10 + 10 + 10 + 42
+            case 5: // Divider Label Bar Chart
+//                return 41 // 10 + 10 + 21
+                return UITableView.automaticDimension // 10 + 10 + 21
+            case 6: // Slot Line chart
+                return 305 // 10 + 35 + 10 + 250
+            case 7: // Ratio Morning Label cell
+                return 82 //  10 + 10 + 10 + 10 + 42
+            case 8: // Divider Label Bar Chart
+                return self.chartPeriodType == .yearly ? 0 : UITableView.automaticDimension
+            case 9: // Bar Chart weekly
+                return self.chartPeriodType == .yearly ? 0 : 220 // 200 + 10 + 10
+            default:
+                return 0
+            }
+        }
+        return 0
+    }
+}

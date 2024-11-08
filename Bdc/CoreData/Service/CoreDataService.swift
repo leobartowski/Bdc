@@ -71,6 +71,18 @@ class CoreDataService {
         }
         return nil
     }
+    
+    func getAllAttendaces() -> [Attendance]? {
+        let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
+        do {
+            let attendances = try context.fetch(fetchRequest)
+            return attendances
+
+        } catch let error as NSError {
+            print("Could not list. \(error), \(error.userInfo)")
+        }
+        return nil
+    }
 
     /// Get  persons that were present in a specif day and dayType
     func getPersonsPresent(_ date: Date, type: DayType) -> [Person] {

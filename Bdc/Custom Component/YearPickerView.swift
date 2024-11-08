@@ -177,10 +177,10 @@ extension YearPickerView: UIPickerViewDataSource {
         
         if self.isValidDate(date) {
             label.font = .systemFont(ofSize: 25, weight: .medium)
-            label.textColor = .black
+            label.textColor = .label
         } else {
             label.font = .systemFont(ofSize: 25, weight: .light)
-            label.textColor = .lightGray
+            label.textColor = .systemGray3
         }
 
         return label

@@ -88,20 +88,17 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
         let leftSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(self.tableViewSwiped))
         leftSwipeGR.direction = .left
         self.tableView.addGestureRecognizer(leftSwipeGR)
-        
         let rightSwipeGR = UISwipeGestureRecognizer(target: self, action: #selector(self.tableViewSwiped))
         rightSwipeGR.direction = .right
         self.tableView.addGestureRecognizer(rightSwipeGR)
-        
         self.header = self.headerBasic
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 10))
     }
     
     func sortDescendingAttendanceFirstTime() {
         self.sorting = SortingPositionAndType(.attendance, .descending)
-        let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
         self.rankingPersonsAttendaces = self.rankingPersonsAttendaces.sorted {
-            if isWeightedAttendance && self.rankingType == .allTime {
+            if self.rankingType == .allTimePonderate {
                 let weightedAttendance0 = Float($0.attendanceNumber) * $0.person.difficultyCoefficient
                 let weightedAttendance1 = Float($1.attendanceNumber) * $1.person.difficultyCoefficient
                 return weightedAttendance0 > weightedAttendance1
@@ -125,8 +122,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
     
     func rankingSectionHeaderView(_: RankingSectionHeaderView, didSelectLabel number: Int) {
-        let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
-        feedbackGenerator.impactOccurred()
+        self.feedbackGenerator.impactOccurred()
         self.handleSorting(column: number)
     }
     
@@ -147,10 +143,9 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             self.header[2] = self.headerBasic[2]
             self.sorting.sortingPosition = .name
         case 1: // Attendacne
-            let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
             if oldSorting.sortingType == .descending {
                 self.rankingPersonsAttendaces = self.rankingPersonsAttendaces.sorted {
-                    if isWeightedAttendance && self.rankingType == .allTime {
+                    if self.rankingType == .allTimePonderate {
                         let weightedAttendance0 = Float($0.attendanceNumber) * $0.person.difficultyCoefficient
                         let weightedAttendance1 = Float($1.attendanceNumber) * $1.person.difficultyCoefficient
                         return weightedAttendance0 < weightedAttendance1
@@ -161,7 +156,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
                 self.sorting.sortingType = .ascending
             } else {
                 self.rankingPersonsAttendaces = self.rankingPersonsAttendaces.sorted {
-                    if isWeightedAttendance && self.rankingType == .allTime {
+                    if self.rankingType == .allTimePonderate {
                         let weightedAttendance0 = Float($0.attendanceNumber) * $0.person.difficultyCoefficient
                         let weightedAttendance1 = Float($1.attendanceNumber) * $1.person.difficultyCoefficient
                         return weightedAttendance0 > weightedAttendance1
@@ -206,16 +201,14 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
     }
     
     // MARK: Handle left or right swipe
-    
     @objc func tableViewSwiped(sender: UISwipeGestureRecognizer) {
         if self.rankingType != .weekly { return }
         let selectedDate = self.calendarView.selectedDate ?? Date.now
-        if sender.direction == .right { // Right
+        if sender.direction == .right {
             self.calendarView.setCurrentPage(selectedDate.previousWeek, animated: true)
-        } else { // Left
+        } else if sender.direction == .left { 
             self.calendarView.setCurrentPage(selectedDate.nextWeek, animated: true)
         }
-        let feedbackGenerator = UIImpactFeedbackGenerator(style: .rigid)
-        feedbackGenerator.impactOccurred(intensity: 0.9)
+        self.feedbackGenerator.impactOccurred(intensity: 0.5)
     }
 }

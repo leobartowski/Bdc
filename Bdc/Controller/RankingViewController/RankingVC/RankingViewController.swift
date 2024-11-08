@@ -12,6 +12,8 @@ import SwiftConfettiView
 
 class RankingViewController: UIViewController {
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var spinnerView: UIView!
     @IBOutlet var tableView: UITableView!
     // Handle Period
     @IBOutlet var containerPeriodView: UIView!
@@ -34,6 +36,7 @@ class RankingViewController: UIViewController {
     var rankingType: RankingType = .weekly
     var slotType: SlotType = .morningAndEvening
     var confettiView: SwiftConfettiView?
+    let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     
     // MARK: Lifecycle
     
@@ -50,6 +53,7 @@ class RankingViewController: UIViewController {
         self.setupSlotView()
         self.addObservers()
         self.loadCurrentWeekData()
+        if #available(iOS 17.0, *) { self.handleTraitChange() }
     }
     
     func viewSetUp() {
@@ -67,56 +71,70 @@ class RankingViewController: UIViewController {
             ]
     }
     
+    @available(iOS 17.0, *)
+    func handleTraitChange() {
+        self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
+            self.setupShadowContainerPeriodView()
+            self.setupShadowContainerSlotView()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.calendarView.reloadData()
+            }      
+        })
+    }
+    
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangePersonList(_:)), name: .didChangePersonList, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowConfetti(_:)), name: .didChangeShowConfetti, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeWeightedAttendance(_:)), name: .didChangeweightedAttendance, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didUpdateAttendance(_:)), name: .didUpdateAttendance, object: nil)
     }
     
     /// Retrive attendance from CoreData
     func populateAttendance() {
-        self.cleanValuesAttendance()
-        for day in self.daysCurrentPeriod {
-            let morningAttendance = CoreDataService.shared.getAttendace(day, type: .morning)
-            let eveningAttendance = CoreDataService.shared.getAttendace(day, type: .evening)
-            let morningPersons = morningAttendance?.persons?.allObjects as? [Person] ?? []
-            let eveningPersons = eveningAttendance?.persons?.allObjects as? [Person] ?? []
-            let morningPersonsAdmonished = morningAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
-            let eveningPersonsAdmonished = eveningAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
-            
-            for person in morningPersons {
-                if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
-                (self.slotType == .morningAndEvening || self.slotType == .morning) {
-                    self.rankingPersonsAttendaces[index].attendanceNumber += 1
-                    self.rankingPersonsAttendaces[index].morningDate.append(day)
+        self.showLoader()
+        DispatchQueue.main.async {
+            self.cleanValuesAttendance()
+            for day in self.daysCurrentPeriod {
+                let morningAttendance = CoreDataService.shared.getAttendace(day, type: .morning)
+                let eveningAttendance = CoreDataService.shared.getAttendace(day, type: .evening)
+                let morningPersons = morningAttendance?.persons?.allObjects as? [Person] ?? []
+                let eveningPersons = eveningAttendance?.persons?.allObjects as? [Person] ?? []
+                let morningPersonsAdmonished = morningAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
+                let eveningPersonsAdmonished = eveningAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
+                
+                for person in morningPersons {
+                    if let index = self.rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
+                    self.slotType == .morningAndEvening || self.slotType == .morning {
+                        self.rankingPersonsAttendaces[index].attendanceNumber += 1
+                        self.rankingPersonsAttendaces[index].morningDate.append(day)
+                    }
+                }
+                for person in eveningPersons {
+                    if let index = self.rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
+                        self.slotType == .morningAndEvening || self.slotType == .evening {
+                        self.rankingPersonsAttendaces[index].attendanceNumber += 1
+                        self.rankingPersonsAttendaces[index].eveningDate.append(day)
+                    }
+                }
+                for person in morningPersonsAdmonished {
+                    if let index = self.rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
+                        self.slotType == .morningAndEvening || self.slotType == .morning {
+                        self.rankingPersonsAttendaces[index].admonishmentNumber += 1
+                        self.rankingPersonsAttendaces[index].morningAdmonishmentDate.append(day)
+                    }
+                }
+                for person in eveningPersonsAdmonished {
+                    if let index = self.rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
+                       self.slotType == .morningAndEvening || self.slotType == .evening {
+                        self.rankingPersonsAttendaces[index].admonishmentNumber += 1
+                        self.rankingPersonsAttendaces[index].eveningAdmonishmentDate.append(day)
+                    }
                 }
             }
-            for person in eveningPersons {
-                if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
-                    (self.slotType == .morningAndEvening || self.slotType == .evening) {
-                    self.rankingPersonsAttendaces[index].attendanceNumber += 1
-                    self.rankingPersonsAttendaces[index].eveningDate.append(day)
-                }
-            }
-            for person in morningPersonsAdmonished {
-                if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
-                    (self.slotType == .morningAndEvening || self.slotType == .morning) {
-                    self.rankingPersonsAttendaces[index].admonishmentNumber += 1
-                    self.rankingPersonsAttendaces[index].morningAdmonishmentDate.append(day)
-                }
-            }
-            for person in eveningPersonsAdmonished {
-                if let index = rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
-                   (self.slotType == .morningAndEvening || self.slotType == .evening) {
-                    self.rankingPersonsAttendaces[index].admonishmentNumber += 1
-                    self.rankingPersonsAttendaces[index].eveningAdmonishmentDate.append(day)
-
-                }
-            }
+            self.createHoldayDatesNumberArrayIfNeeded()
+            self.sortDescendingAttendanceFirstTime()
+            self.hideLoader()
         }
-        self.createHoldayDatesNumberArrayIfNeeded()
-        self.sortDescendingAttendanceFirstTime()
     }
     
     func cleanValuesAttendance() {
@@ -144,13 +162,7 @@ class RankingViewController: UIViewController {
         self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
         self.populateAttendance()
     }
-    
-    @objc func didChangeWeightedAttendance(_: Notification) {
-        let isWeightedAttendance = UserDefaults.standard.bool(forKey: "weightedAttendance")
-        self.allTimeLabel.text = isWeightedAttendance ? "All-Time ponderate" : "All-Time"
-        self.populateAttendance()
-    }
-    
+    
     @objc func didUpdateAttendance(_: Notification) {
         self.populateAttendance()
     }
@@ -170,9 +182,25 @@ class RankingViewController: UIViewController {
             let vc = UIActivityViewController(activityItems: [temporaryFileURL], applicationActivities: [])
             DispatchQueue.main.async {
                 self.present(vc, animated: true, completion: nil)
+                self.present(vc, animated: true, completion: nil)
             }
         } catch {
             print(error)
+        }
+    }
+    
+    // MARK: Loader
+    func showLoader() {
+        if self.spinnerView.isHidden && !(self.rankingType == .weekly || self.rankingType == .monthly) {
+            self.spinnerView.isHidden = false
+            self.activityIndicatorView.startAnimating()
+        }
+    }
+    
+    func hideLoader() {
+        if !self.spinnerView.isHidden {
+            self.activityIndicatorView.stopAnimating()
+            self.spinnerView.isHidden = true
         }
     }
     
