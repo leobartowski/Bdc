@@ -75,9 +75,7 @@ class CoreDataService {
     func getAllAttendaces() -> [Attendance]? {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
         do {
-            let attendances = try context.fetch(fetchRequest)
-            return attendances
-
+            return try context.fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
         }

@@ -28,6 +28,9 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     @IBOutlet weak var dividerLineChartLabel: UILabel!
     @IBOutlet weak var ratioMorningEveningLabel: IncrementableLabel!
     
+    var person: Person?
+    var isIndividualStats = false
+    
     var attendances: [Attendance] = []
     var weeklyChartData: LineChartCachedData?
     var monthlyChartData: LineChartCachedData?
@@ -45,7 +48,18 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     
     override func viewDidLoad() {
         self.attendances = CoreDataService.shared.getAllAttendaces() ?? []
-        self.statsData = StatsData(self.attendances)
+        self.person = CoreDataService.shared.getPersonsList().first { $0.name == "Mary" }
+        if self.person != nil {
+            self.isIndividualStats = true
+            self.attendances =  self.attendances.filter { att in
+                let persons = att.persons?.allObjects as? [Person]
+                return persons!.contains { person in
+                    person.name == self.person!.name
+                }
+            }
+        }
+
+        self.statsData = StatsData(self.attendances, isIndividualStats)
         self.statsData.calculateAllStats()
         self.setupShadowFirstLabelsCellContainerView()
         self.setupShadowPeriodGrowthCellContainerView()

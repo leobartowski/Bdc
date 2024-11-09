@@ -61,11 +61,15 @@ extension StatisticsViewController {
         var allAttendances: [DateComponents: Int] = [:]
         var morningAttendances: [DateComponents: Int] = [:]
         var eveningAttendances: [DateComponents: Int] = [:]
-        
+        for key in period.generateAllKeys() {
+            allAttendances[key] = 0
+            morningAttendances[key] = 0
+            eveningAttendances[key] = 0
+        }
         for attendance in attendances {
             if let dateString = attendance.dateString, let date = DateFormatter.basicFormatter.date(from: dateString) {
                 let key = period.dateComponents(for: date)
-                let personCount = attendance.persons?.count ?? 0
+                let personCount = self.isIndividualStats ? 1 : attendance.persons?.count ?? 0
                 if attendance.type == DayType.morning.rawValue {
                     morningAttendances[key, default: 0] += personCount
                 } else {

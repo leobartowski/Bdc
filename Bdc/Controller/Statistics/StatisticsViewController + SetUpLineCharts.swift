@@ -14,7 +14,7 @@ extension StatisticsViewController {
         lineDS.drawCirclesEnabled = false
         lineDS.drawValuesEnabled = false
         lineDS.drawFilledEnabled = true
-        lineDS.mode = .cubicBezier
+        lineDS.mode = .horizontalBezier
         lineDS.fillAlpha = 1
         lineDS.lineWidth = 1.0
         lineDS.drawHorizontalHighlightIndicatorEnabled = false
@@ -33,7 +33,7 @@ extension StatisticsViewController {
         lineDS.drawCirclesEnabled = false
         lineDS.drawValuesEnabled = false
         lineDS.lineWidth = 1
-        lineDS.mode = .cubicBezier
+        lineDS.mode = .horizontalBezier
         lineDS.drawHorizontalHighlightIndicatorEnabled = false
         lineDS.drawVerticalHighlightIndicatorEnabled = true
         lineDS.highlightColor = UIColor.systemGray4
@@ -47,6 +47,7 @@ extension StatisticsViewController {
         self.lineChartView.highlightPerDragEnabled = false
         self.lineChartView.leftAxis.drawAxisLineEnabled = false
         self.lineChartView.leftAxis.drawGridLinesEnabled = false
+        self.lineChartView.leftAxis.axisMinimum = 0
         self.lineChartView.leftAxis.granularity = 30
         self.lineChartView.rightAxis.drawGridLinesEnabled = false
         self.lineChartView.rightAxis.enabled = false
@@ -69,6 +70,7 @@ extension StatisticsViewController {
         self.slotLineChartView.highlightPerDragEnabled = false
         self.slotLineChartView.leftAxis.drawAxisLineEnabled = false
         self.slotLineChartView.leftAxis.drawGridLinesEnabled = false
+        self.lineChartView.leftAxis.axisMinimum = 0
         self.slotLineChartView.leftAxis.granularity = 15
         self.slotLineChartView.rightAxis.drawGridLinesEnabled = false
         self.slotLineChartView.rightAxis.enabled = false

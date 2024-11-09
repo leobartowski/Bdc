@@ -9,6 +9,7 @@ import Foundation
 class StatsData {
     
     var attHelper: AttendanceHelper
+    let isIndividual: Bool
     var totalAttendance: Int = 0
     var totalAttendanceMorning: Int = 0
     var totalAttendanceEvening: Int = 0
@@ -17,7 +18,8 @@ class StatsData {
     var yearlyGrowth: Double = 0
     var maxDay: (dateString: String, nOfAtt: Int) = ("", 0)
     
-    init(_ totalAttendance: [Attendance]) {
+    init(_ totalAttendance: [Attendance], _ isIndividual: Bool = false) {
+        self.isIndividual = isIndividual
         self.attHelper = AttendanceHelper(total: totalAttendance)
     }
     
@@ -58,21 +60,20 @@ class StatsData {
     }
     
     private func calculateNumberOfAttendance(_ records: [Attendance]) -> Int {
-        return records.reduce(into: 0) { $0 += ($1.persons?.count ?? 0) }
+        return records.reduce(into: 0) { $0 += (isIndividual ? 1 : $1.persons?.count ?? 0) }
     }
     
     private func calculateNumberOfAttendanceMorning(_ records: [Attendance]) -> Int {
         return records
             .filter { $0.type == DayType.morning.rawValue }
-            .reduce(into: 0) { $0 += ($1.persons?.count ?? 0) }
+            .reduce(into: 0) { $0 += (isIndividual ? 1 : $1.persons?.count ?? 0) }
     }
-    
     
     private func getDayandCountMaxNumberOfAttendance() -> (dateString: String, nOfAtt: Int) {
         var allAttendances: [String: Int] = [:]
         for attendance in self.attHelper.total {
             if let dateString = attendance.dateString {
-                let personCount = attendance.persons?.count ?? 0
+                let personCount = isIndividual ? 1 : attendance.persons?.count ?? 0
                 allAttendances[dateString, default: 0] += personCount
             }
         }
