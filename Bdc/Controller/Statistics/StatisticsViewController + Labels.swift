@@ -57,13 +57,13 @@ extension StatisticsViewController {
     }
     
     fileprivate func createTotalAttendanceLabel() {
-        IncrementableLabelHelper.createWithValueInTheMiddle(for: self.totalAttendanceLabel, startText: "Siamo scesi ", endText: " volte", formatValue: "%.0f")
+        IncrementableLabelHelper.createWithValueInTheMiddle(for: self.totalAttendanceLabel, startText: "Siamo scesi ", endText: " volte!", formatValue: "%.0f")
 
     }
     
     fileprivate func createMaxNumberOfAttendanceLabel() {
         IncrementableLabelHelper.createWithValueInTheMiddleCustom(for: self.dayMaxNumberOfAttendanceLabel,
-                                                                  startText: "Il giorno con il maggior numero di presenze è stato il ",
+                                                                  startText: "Il nostro miglior giorno è stato il ",
                                                                   endText: " presenze",
                                                                   dateText: self.statsData.maxDay.dateString)
 

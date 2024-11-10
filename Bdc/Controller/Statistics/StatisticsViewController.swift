@@ -10,6 +10,8 @@ import IncrementableLabel
 
 class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var personImageView: UIImageView!
+    @IBOutlet weak var personNameLabel: UILabel!
     @IBOutlet weak var barGraphCell: UITableViewCell!
     @IBOutlet weak var segmentedControl: MySegmentedControl!
     @IBOutlet weak var lineChartView: LineChartView!
@@ -47,9 +49,11 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     
     override func viewDidLoad() {
-        self.getAttendance()
+        self.isIndividualStats = self.person != nil
+        self.attendances = self.getAttendance() ?? []
         self.statsData = StatsData(self.attendances, isIndividualStats)
         self.statsData.calculateAllStats()
+        self.setUpForIndividualStats()
         self.setupShadowFirstLabelsCellContainerView()
         self.setupShadowPeriodGrowthCellContainerView()
         self.setupShadowRatioMorningEveningContainerView()
@@ -77,12 +81,18 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         self.ratioMorningEveningCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.ratioMorningEveningCellContainerView.bounds, cornerRadius: 15).cgPath
     }
     
-    private func getAttendance() {
+    private func getAttendance() -> [Attendance]? {
+        return self.isIndividualStats
+        ? CoreDataService.shared.getAllAttendaces(for: self.person!)
+        : CoreDataService.shared.getAllAttendaces()
+    }
+    
+    func setUpForIndividualStats() {
         if let person = self.person {
-            self.attendances = CoreDataService.shared.getAllAttendaces(for: person) ?? []
-            self.isIndividualStats = true
-        } else {
-            self.attendances = CoreDataService.shared.getAllAttendaces() ?? []
+            self.personImageView.layer.cornerRadius = self.personImageView.frame.height / 2
+            let imageString = CommonUtility.getProfileImageString(person)
+            self.personImageView.image = UIImage(named: imageString)
+            self.personNameLabel.text = person.name
         }
     }
     
