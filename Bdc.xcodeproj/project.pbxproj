@@ -61,6 +61,8 @@
 		DD4667CF284E0E4E003954D5 /* RankingViewController + ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4667CE284E0E4E003954D5 /* RankingViewController + ConfettiView.swift */; };
 		DD47EEC1278B2C4F0081388D /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */; };
 		DD47EEC3278B3CBF0081388D /* Label - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47EEC2278B3CBF0081388D /* Label - Ext.swift */; };
+		DD4C954D2CDFA5C900415288 /* RankingViewController + CellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4C954C2CDFA5BD00415288 /* RankingViewController + CellDelegate.swift */; };
+		DD4C954F2CE0FE4F00415288 /* UIButton - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4C954E2CE0FE4800415288 /* UIButton - Ext.swift */; };
 		DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */; };
 		DD60B5552753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */; };
 		DD611B5B2910412C00D8063C /* CalendarViewController + SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD611B5A2910412C00D8063C /* CalendarViewController + SearchBar.swift */; };
@@ -228,6 +230,8 @@
 		DD4667CE284E0E4E003954D5 /* RankingViewController + ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + ConfettiView.swift"; sourceTree = "<group>"; };
 		DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		DD47EEC2278B3CBF0081388D /* Label - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label - Ext.swift"; sourceTree = "<group>"; };
+		DD4C954C2CDFA5BD00415288 /* RankingViewController + CellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + CellDelegate.swift"; sourceTree = "<group>"; };
+		DD4C954E2CE0FE4800415288 /* UIButton - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton - Ext.swift"; sourceTree = "<group>"; };
 		DD5542DF27245656000D9F48 /* CalendarViewController + FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + FSCalendar.swift"; sourceTree = "<group>"; };
 		DD60B5542753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDayHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		DD611B5A2910412C00D8063C /* CalendarViewController + SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + SearchBar.swift"; sourceTree = "<group>"; };
@@ -541,7 +545,6 @@
 		DD47EEBF278B2C1F0081388D /* RankingTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */,
 			);
 			path = RankingTableViewCell;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 			isa = PBXGroup;
 			children = (
 				DDC337A32724065A0028E49B /* RankingViewController.swift */,
+				DD4C954C2CDFA5BD00415288 /* RankingViewController + CellDelegate.swift */,
 				DD4667CE284E0E4E003954D5 /* RankingViewController + ConfettiView.swift */,
 				DD413378274FC94C0038B4C6 /* RankingViewController + TableView.swift */,
 				DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */,
@@ -776,6 +780,7 @@
 		DDE3B1702722CD3400BFEFF0 /* Ext */ = {
 			isa = PBXGroup;
 			children = (
+				DD4C954E2CE0FE4800415288 /* UIButton - Ext.swift */,
 				DDAB69DB2CD68A89005FFFA6 /* TimeInterval - Ext.swift */,
 				DD4109402CCA852600551761 /* Calendar - Ext.swift */,
 				DD41092E2CC6D34000551761 /* SearchBar - Ext.swift */,
@@ -834,6 +839,7 @@
 		DDFE30C2275443140025BA19 /* Ranking */ = {
 			isa = PBXGroup;
 			children = (
+				DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */,
 				DD709C822773610300D20C6A /* RankingViewController */,
 				DD709C842773612C00D20C6A /* FilterBottomSheetTableViewCell.swift */,
 			);
@@ -1219,6 +1225,7 @@
 				DDE9D76C28BE1CC3008463CD /* SlotType.swift in Sources */,
 				DD47EEC3278B3CBF0081388D /* Label - Ext.swift in Sources */,
 				DD03AC19274811B8004C4819 /* CalendarViewController + CollectionView.swift in Sources */,
+				DD4C954F2CE0FE4F00415288 /* UIButton - Ext.swift in Sources */,
 				DD0CAB532728108600EA42B1 /* DayType.swift in Sources */,
 				DDFCFFB92CD161B900052BD8 /* StatisticsViewController + SetUpLineCharts.swift in Sources */,
 				DD41093D2CCA6ECD00551761 /* LinearMarkerViewForPoint.swift in Sources */,
@@ -1231,6 +1238,7 @@
 				DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */,
 				DD4109362CC9580900551761 /* StatisticsViewController + TableView.swift in Sources */,
 				DD84830F277786D600E7F179 /* NotificationName.swift in Sources */,
+				DD4C954D2CDFA5C900415288 /* RankingViewController + CellDelegate.swift in Sources */,
 				DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */,
 				DD4109592CCFFDE000551761 /* LinearMarkerViewForDoublePoint.swift in Sources */,
 				DDE3B1752722D3C200BFEFF0 /* PersonListUtility.swift in Sources */,

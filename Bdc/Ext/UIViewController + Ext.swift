@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIViewController {
+    
     /// Instantiate a view controller with a given identifier
     func getViewController(fromStoryboard storyboard: String, withIdentifier identifier: String) -> UIViewController {
         return UIStoryboard(name: storyboard, bundle: nil).instantiateViewController(withIdentifier: identifier)

@@ -47,18 +47,7 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     
     override func viewDidLoad() {
-        self.attendances = CoreDataService.shared.getAllAttendaces() ?? []
-        self.person = CoreDataService.shared.getPersonsList().first { $0.name == "Mary" }
-        if self.person != nil {
-            self.isIndividualStats = true
-            self.attendances =  self.attendances.filter { att in
-                let persons = att.persons?.allObjects as? [Person]
-                return persons!.contains { person in
-                    person.name == self.person!.name
-                }
-            }
-        }
-
+        self.getAttendance()
         self.statsData = StatsData(self.attendances, isIndividualStats)
         self.statsData.calculateAllStats()
         self.setupShadowFirstLabelsCellContainerView()
@@ -86,6 +75,15 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         self.firstLabelsCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.firstLabelsCellContainerView.bounds, cornerRadius: 15).cgPath
         self.periodGrowthLabelCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.periodGrowthLabelCellContainerView.bounds, cornerRadius: 15).cgPath
         self.ratioMorningEveningCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.ratioMorningEveningCellContainerView.bounds, cornerRadius: 15).cgPath
+    }
+    
+    private func getAttendance() {
+        if let person = self.person {
+            self.attendances = CoreDataService.shared.getAllAttendaces(for: person) ?? []
+            self.isIndividualStats = true
+        } else {
+            self.attendances = CoreDataService.shared.getAllAttendaces() ?? []
+        }
     }
     
     func setupShadowFirstLabelsCellContainerView() {

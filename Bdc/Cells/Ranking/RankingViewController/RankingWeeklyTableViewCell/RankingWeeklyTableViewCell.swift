@@ -8,10 +8,15 @@
 import Foundation
 import UIKit
 
+protocol RankingWeeklyTableViewCellDelegate: AnyObject {
+    
+    func cell(_ cell: RankingWeeklyTableViewCell, didSelectNameLabelAt indexPath: IndexPath)
+}
+
 class RankingWeeklyTableViewCell: UITableViewCell {
     
     @IBOutlet var containerView: UIView!
-    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var nameButton: UIButton!
     @IBOutlet var mainImageView: UIImageView!
     @IBOutlet var attendanceLabel: UILabel!
     @IBOutlet var admonishmentLabel: UILabel!
@@ -19,6 +24,8 @@ class RankingWeeklyTableViewCell: UITableViewCell {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var percentualAdmonishmentLabel: UILabel!
     
+    weak var delegate: RankingWeeklyTableViewCellDelegate?
+
     var indexPath = IndexPath()
     var rankingAttendance: RankingPersonAttendance?
     var showStatistics = false
@@ -62,11 +69,13 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         return layout
     }
     
-    func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath, _ rankingType: RankingType, _ holidaysNumbers: [Int]) {
+    func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath, _ rankingType: RankingType, _ holidaysNumbers: [Int], _ delegate: RankingWeeklyTableViewCellDelegate) {
+        self.delegate = delegate
         self.indexPath = indexPath
         self.rankingAttendance = rankingAttendance
         self.setUpShadow()
-        self.nameLabel.text = rankingAttendance.person.name
+        self.nameButton.setUnderlinedTitle(rankingAttendance.person.name ?? "")
+        self.nameButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.attendanceLabel.text = String(rankingAttendance.attendanceNumber)
         self.admonishmentLabel.text = String(rankingAttendance.admonishmentNumber)
         self.morningDaysAdmonishmentNumbers = self.createNumbersArray(rankingAttendance.morningAdmonishmentDate)
@@ -95,6 +104,10 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         setNeedsLayout()
     }
     
+    @IBAction func clickNameButton(_ sender: Any) {
+        self.delegate?.cell(self, didSelectNameLabelAt: indexPath)
+    }
+    
     // MARK: Handle Show Statistics
     @objc func didChangeShowStatistics(_: Notification) {
         self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
@@ -112,15 +125,16 @@ class RankingWeeklyTableViewCell: UITableViewCell {
     func setupLabelDesign(_ labelNumber: Int) {
         switch labelNumber {
         case 0:
-            self.nameLabel.font = .systemFont(ofSize: 19, weight: .medium)
+            self.nameButton.setUnderlinedTitle(self.rankingAttendance?.person.name ?? "",
+                                               font: .systemFont(ofSize: 19, weight: .medium))
             self.attendanceLabel.font = .systemFont(ofSize: 19, weight: .light)
             self.admonishmentLabel.font = .systemFont(ofSize: 19, weight: .light)
         case 1:
-            self.nameLabel.font = .systemFont(ofSize: 19, weight: .light)
+            self.nameButton.setUnderlinedTitle(self.rankingAttendance?.person.name ?? "")
             self.attendanceLabel.font = .systemFont(ofSize: 19, weight: .medium)
             self.admonishmentLabel.font = .systemFont(ofSize: 19, weight: .light)
         case 2:
-            self.nameLabel.font = .systemFont(ofSize: 19, weight: .light)
+            self.nameButton.setUnderlinedTitle(self.rankingAttendance?.person.name ?? "")
             self.attendanceLabel.font = .systemFont(ofSize: 19, weight: .light)
             self.admonishmentLabel.font = .systemFont(ofSize: 19, weight: .medium)
         default:
