@@ -115,7 +115,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kxA-Om-m52" customClass="MySegmentedControl" customModule="Bdc" customModuleProvider="target">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="kxA-Om-m52" customClass="MySegmentedControl" customModule="Bdc" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="10" width="353" height="33"/>
                                                     <color key="backgroundColor" name="dirtWhite"/>
                                                     <segments>

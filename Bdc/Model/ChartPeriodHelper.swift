@@ -14,7 +14,7 @@ public enum ChartPeriodType {
 
 public struct ChartPeriodHelper {
     
-    let chartPeriodType: ChartPeriodType
+    var chartPeriodType: ChartPeriodType
     
     public init(_ chartPeriodType: ChartPeriodType) {
         self.chartPeriodType = chartPeriodType
@@ -56,7 +56,7 @@ public struct ChartPeriodHelper {
         }
     }
     
-    func getMaxNumbersOfSloyAttandanceIndividual() -> Double {
+    func getMaxNumbersOfSlotAttandanceIndividual() -> Double {
         switch self.chartPeriodType {
         case .weekly:
             return Constant.maxAttWeeklySlotIndividual
@@ -82,17 +82,17 @@ public struct ChartPeriodHelper {
                 currentDate = calendar.date(byAdding: .weekOfYear, value: 1, to: currentDate) ?? today
             }
         case .monthly:
+            currentDate = currentDate.getStartOfMonth()
             while currentDate <= today {
                 let monthComponents = dateComponents(for: currentDate)
                 keys.append(monthComponents)
                 currentDate = calendar.date(byAdding: .month, value: 1, to: currentDate) ?? today
             }
         case .yearly:
+            currentDate = currentDate.getStartOfYear()
             while currentDate <= today {
                 let yearComponents = dateComponents(for: currentDate)
                 keys.append(yearComponents)
-                
-                // Move to the next year
                 currentDate = calendar.date(byAdding: .year, value: 1, to: currentDate) ?? today
             }
         }

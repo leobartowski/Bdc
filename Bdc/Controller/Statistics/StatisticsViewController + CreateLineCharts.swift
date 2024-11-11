@@ -16,6 +16,10 @@ extension StatisticsViewController {
             self.setUpSlotLineChartDataSetAppearance(self.weeklyChartData!.lineChartMorningDS, isMorning: true)
             self.setUpSlotLineChartDataSetAppearance(self.weeklyChartData!.lineChartEveningDS, isMorning: false)
         }
+        if self.isIndividualStats {
+            self.lineChartView.leftAxis.axisMaximum = self.chartPeriodHelper.getMaxNumbersOfAttandanceIndividual()
+            self.slotLineChartView.leftAxis.axisMaximum = self.chartPeriodHelper.getMaxNumbersOfSlotAttandanceIndividual()
+        }
         self.lineChartView.xAxis.granularity = 10
         self.lineChartView.xAxis.avoidFirstLastClippingEnabled = false
         self.lineChartView.xAxis.valueFormatter = MonthYearXAxisFormatter(sortedWeeks: self.weeklyChartData?.sortedData ?? [])
@@ -33,12 +37,16 @@ extension StatisticsViewController {
         
     }
     
-    func createMonthlyCharts() {
+    func createMonthlyLineCharts() {
         if self.monthlyChartData == nil {
             self.monthlyChartData = self.createChartCachedData(for: ChartPeriodType.monthly, attendances: self.attendances)
             self.setUpLineChartDataSetAppearance(self.monthlyChartData!.lineChartDS)
             self.setUpSlotLineChartDataSetAppearance(self.monthlyChartData!.lineChartMorningDS, isMorning: true)
             self.setUpSlotLineChartDataSetAppearance(self.monthlyChartData!.lineChartEveningDS, isMorning: false)
+        }
+        if self.isIndividualStats {
+            self.lineChartView.leftAxis.axisMaximum = self.chartPeriodHelper.getMaxNumbersOfAttandanceIndividual()
+            self.slotLineChartView.leftAxis.axisMaximum = self.chartPeriodHelper.getMaxNumbersOfSlotAttandanceIndividual()
         }
         self.lineChartView.xAxis.granularity = 5
         self.lineChartView.xAxis.avoidFirstLastClippingEnabled = false
@@ -56,12 +64,16 @@ extension StatisticsViewController {
         self.slotLineChartView.notifyDataSetChanged()
     }
     
-    func createYearlyCharts() {
+    func createYearlyLineCharts() {
         if self.yearlyChartData == nil {
             self.yearlyChartData = self.createChartCachedData(for: ChartPeriodType.yearly, attendances: self.attendances)
             self.setUpLineChartDataSetAppearance(self.yearlyChartData!.lineChartDS)
             self.setUpSlotLineChartDataSetAppearance(self.yearlyChartData!.lineChartMorningDS, isMorning: true)
             self.setUpSlotLineChartDataSetAppearance(self.yearlyChartData!.lineChartEveningDS, isMorning: false)
+        }
+        if self.isIndividualStats {
+            self.lineChartView.leftAxis.axisMaximum = self.chartPeriodHelper.getMaxNumbersOfAttandanceIndividual()
+            self.slotLineChartView.leftAxis.axisMaximum = self.chartPeriodHelper.getMaxNumbersOfSlotAttandanceIndividual()
         }
         self.lineChartView.xAxis.granularity = 1
         self.lineChartView.xAxis.avoidFirstLastClippingEnabled = true
@@ -80,18 +92,17 @@ extension StatisticsViewController {
     }
     
     private func createChartCachedData(for chartPeriodType: ChartPeriodType, attendances: [Attendance]) -> LineChartCachedData {
-        let period = ChartPeriodHelper(chartPeriodType)
         var allAttendances: [DateComponents: Int] = [:]
         var morningAttendances: [DateComponents: Int] = [:]
         var eveningAttendances: [DateComponents: Int] = [:]
-        for key in period.generateAllKeys() {
+        for key in self.chartPeriodHelper.generateAllKeys() {
             allAttendances[key] = 0
             morningAttendances[key] = 0
             eveningAttendances[key] = 0
         }
         for attendance in attendances {
             if let dateString = attendance.dateString, let date = DateFormatter.basicFormatter.date(from: dateString) {
-                let key = period.dateComponents(for: date)
+                let key = self.chartPeriodHelper.dateComponents(for: date)
                 let personCount = self.isIndividualStats ? 1 : attendance.persons?.count ?? 0
                 if attendance.type == DayType.morning.rawValue {
                     morningAttendances[key, default: 0] += personCount
@@ -101,13 +112,13 @@ extension StatisticsViewController {
                 allAttendances[key, default: 0] += personCount
             }
         }
-        let sortedKeys = period.sortKeys(Array(allAttendances.keys))
-        let sortedMorningKeys = period.sortKeys(Array(morningAttendances.keys))
-        let sortedEveningKeys = period.sortKeys(Array(eveningAttendances.keys))
+        let sortedKeys = self.chartPeriodHelper.sortKeys(Array(allAttendances.keys))
+        let sortedMorningKeys = self.chartPeriodHelper.sortKeys(Array(morningAttendances.keys))
+        let sortedEveningKeys = self.chartPeriodHelper.sortKeys(Array(eveningAttendances.keys))
         
-        let allEntries = createChartDataEntries(from: sortedKeys, with: allAttendances, labelProvider: period.label)
-        let morningEntries = createChartDataEntries(from: sortedMorningKeys, with: morningAttendances, labelProvider: period.label)
-        let eveningEntries = createChartDataEntries(from: sortedEveningKeys, with: eveningAttendances, labelProvider: period.label)
+        let allEntries = createChartDataEntries(from: sortedKeys, with: allAttendances, labelProvider: self.chartPeriodHelper.label)
+        let morningEntries = createChartDataEntries(from: sortedMorningKeys, with: morningAttendances, labelProvider: self.chartPeriodHelper.label)
+        let eveningEntries = createChartDataEntries(from: sortedEveningKeys, with: eveningAttendances, labelProvider: self.chartPeriodHelper.label)
         
         return LineChartCachedData(LineChartDataSet(entries: allEntries),
                                    sortedKeys,

@@ -42,7 +42,8 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     var monthlyBarChartData: BarChartCachedData?
     var morningCountForSlotChart: Int = 0
     var eveningCountForSlotChart: Int = 0
-    var chartPeriodType: ChartPeriodType = .weekly
+    var chartPeriodType: ChartPeriodType = .monthly
+    var chartPeriodHelper = ChartPeriodHelper(.monthly)
     var statsData =  StatsData([])
     
     var lineChartlabelHandler = EfficientLabelHandler()
@@ -58,12 +59,12 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         self.setupShadowFirstLabelsCellContainerView()
         self.setupShadowPeriodGrowthCellContainerView()
         self.setupShadowRatioMorningEveningContainerView()
+        self.setupSegmentedControl()
         self.setUpLineChart()
         self.setUpSlotLineChart()
         self.setupBarChartView()
-        self.createWeeklyAttendanceBarChart()
-        self.createWeeklyLineCharts()
-        self.setupSegmentedControl()
+        self.createMonthlyLineCharts()
+        self.createMonthlyAttendanceBarChart()
         self.setUpRecognizer()
         self.setTextDividerLabels()
         self.createLabels()
@@ -94,7 +95,7 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
             let imageString = CommonUtility.getProfileImageString(person)
             self.personImageView.image = UIImage(named: imageString)
             self.personNameLabel.text = person.name
-            self.personDescriptionLabel.text = "Prima presenza il: " + self.statsData.firstDateIndividual
+            self.personDescriptionLabel.text = "Prima presenza: " + self.statsData.firstDateIndividual
         }
     }
     
@@ -197,15 +198,18 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         switch self.segmentedControl.selectedSegmentIndex {
         case 0:
             self.chartPeriodType = .weekly
+            self.chartPeriodHelper.chartPeriodType = .weekly
             self.createWeeklyLineCharts()
             self.createWeeklyAttendanceBarChart()
         case 1:
             self.chartPeriodType = .monthly
-            self.createMonthlyCharts()
+            self.chartPeriodHelper.chartPeriodType = .monthly
+            self.createMonthlyLineCharts()
             self.createMonthlyAttendanceBarChart()
         case 2:
+            self.chartPeriodHelper.chartPeriodType = .yearly
             self.chartPeriodType = .yearly
-            self.createYearlyCharts()
+            self.createYearlyLineCharts()
         default: break
         }
         self.createAndAnimateGrowthLabel()
