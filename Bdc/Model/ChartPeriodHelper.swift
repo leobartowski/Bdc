@@ -45,6 +45,28 @@ public struct ChartPeriodHelper {
         }
     }
     
+    func getMaxNumbersOfAttandanceIndividual() -> Double {
+        switch self.chartPeriodType {
+        case .weekly:
+            return Constant.maxAttWeeklyIndividual
+        case .monthly:
+            return Constant.maxAttMonthlyIndividual
+        case .yearly:
+            return Constant.maxAttYearlyIndividual
+        }
+    }
+    
+    func getMaxNumbersOfSloyAttandanceIndividual() -> Double {
+        switch self.chartPeriodType {
+        case .weekly:
+            return Constant.maxAttWeeklySlotIndividual
+        case .monthly:
+            return Constant.maxAttMonthlyIndividual
+        case .yearly:
+            return Constant.maxAttYearlySlotIndividual
+        }
+    }
+    
     /// Generates all keys (as `DateComponents`) starting from a specific date until today.
     func generateAllKeys() -> [DateComponents] {
         var keys: [DateComponents] = []

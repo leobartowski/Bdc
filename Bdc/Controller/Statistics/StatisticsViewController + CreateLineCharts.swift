@@ -33,7 +33,7 @@ extension StatisticsViewController {
         
     }
     
-    func createMonthlyChart() {
+    func createMonthlyCharts() {
         if self.monthlyChartData == nil {
             self.monthlyChartData = self.createChartCachedData(for: ChartPeriodType.monthly, attendances: self.attendances)
             self.setUpLineChartDataSetAppearance(self.monthlyChartData!.lineChartDS)
@@ -51,6 +51,29 @@ extension StatisticsViewController {
         self.slotLineChartView.xAxis.valueFormatter = MonthYearXAxisFormatter(sortedWeeks: self.monthlyChartData?.sortedData ?? [])
         
         let dataSets: [ChartDataSetProtocol] = [self.monthlyChartData!.lineChartMorningDS, self.monthlyChartData!.lineChartEveningDS]
+        let lineData = LineChartData(dataSets: dataSets)
+        self.slotLineChartView.data = lineData
+        self.slotLineChartView.notifyDataSetChanged()
+    }
+    
+    func createYearlyCharts() {
+        if self.yearlyChartData == nil {
+            self.yearlyChartData = self.createChartCachedData(for: ChartPeriodType.yearly, attendances: self.attendances)
+            self.setUpLineChartDataSetAppearance(self.yearlyChartData!.lineChartDS)
+            self.setUpSlotLineChartDataSetAppearance(self.yearlyChartData!.lineChartMorningDS, isMorning: true)
+            self.setUpSlotLineChartDataSetAppearance(self.yearlyChartData!.lineChartEveningDS, isMorning: false)
+        }
+        self.lineChartView.xAxis.granularity = 1
+        self.lineChartView.xAxis.avoidFirstLastClippingEnabled = true
+        self.lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: self.yearlyChartData!.sortedData.map { String($0.year!) })
+        self.lineChartView.data = LineChartData(dataSet: self.yearlyChartData!.lineChartDS)
+        self.lineChartView.notifyDataSetChanged()
+        
+        self.slotLineChartView.xAxis.granularity = 1
+        self.slotLineChartView.xAxis.avoidFirstLastClippingEnabled = true
+        self.slotLineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: self.yearlyChartData!.sortedData.map { String($0.year!) })
+        
+        let dataSets: [ChartDataSetProtocol] = [self.yearlyChartData!.lineChartMorningDS, self.yearlyChartData!.lineChartEveningDS]
         let lineData = LineChartData(dataSets: dataSets)
         self.slotLineChartView.data = lineData
         self.slotLineChartView.notifyDataSetChanged()
@@ -101,28 +124,5 @@ extension StatisticsViewController {
             entry.data = labelProvider(key) as AnyObject
             return entry
         }
-    }
-    
-    func createYearlyChart() {
-        if self.yearlyChartData == nil {
-            self.yearlyChartData = self.createChartCachedData(for: ChartPeriodType.yearly, attendances: self.attendances)
-            self.setUpLineChartDataSetAppearance(self.yearlyChartData!.lineChartDS)
-            self.setUpSlotLineChartDataSetAppearance(self.yearlyChartData!.lineChartMorningDS, isMorning: true)
-            self.setUpSlotLineChartDataSetAppearance(self.yearlyChartData!.lineChartEveningDS, isMorning: false)
-        }
-        self.lineChartView.xAxis.granularity = 1
-        self.lineChartView.xAxis.avoidFirstLastClippingEnabled = true
-        self.lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: self.yearlyChartData!.sortedData.map { String($0.year!) })
-        self.lineChartView.data = LineChartData(dataSet: self.yearlyChartData!.lineChartDS)
-        self.lineChartView.notifyDataSetChanged()
-        
-        self.slotLineChartView.xAxis.granularity = 1
-        self.slotLineChartView.xAxis.avoidFirstLastClippingEnabled = true
-        self.slotLineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: self.yearlyChartData!.sortedData.map { String($0.year!) })
-        
-        let dataSets: [ChartDataSetProtocol] = [self.yearlyChartData!.lineChartMorningDS, self.yearlyChartData!.lineChartEveningDS]
-        let lineData = LineChartData(dataSets: dataSets)
-        self.slotLineChartView.data = lineData
-        self.slotLineChartView.notifyDataSetChanged()
     }
 }

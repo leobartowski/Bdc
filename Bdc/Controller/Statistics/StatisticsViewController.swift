@@ -201,11 +201,11 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
             self.createWeeklyAttendanceBarChart()
         case 1:
             self.chartPeriodType = .monthly
-            self.createMonthlyChart()
+            self.createMonthlyCharts()
             self.createMonthlyAttendanceBarChart()
         case 2:
             self.chartPeriodType = .yearly
-            self.createYearlyChart()
+            self.createYearlyCharts()
         default: break
         }
         self.createAndAnimateGrowthLabel()

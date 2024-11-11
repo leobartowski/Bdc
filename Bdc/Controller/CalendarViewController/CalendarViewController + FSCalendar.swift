@@ -41,7 +41,6 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
 
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-
         if calendar.scope == .week {
             let mondayOfThisWeek = calendar.currentPage.getSpecificDayOfThisWeek(2)
             calendar.select(self.safeSelectDate(mondayOfThisWeek, isForward: true))
@@ -126,14 +125,13 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
     
     func safeSelectDate(_ startingDate: Date, isForward: Bool = false) -> Date {
-        
         if startingDate.isThisDaySelectable() { return startingDate }
         var date = startingDate
-        var count = 0 // var to escape condition
+        var count = 0
         repeat {
             count += 1
             date = isForward ? date.dayAfter : date.dayBefore
-        } while(!date.isThisDaySelectable() && count < 5)
+        } while(!date.isThisDaySelectable() && count < 30)
         return date
     }
 

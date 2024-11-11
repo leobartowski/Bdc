@@ -48,7 +48,11 @@ extension StatisticsViewController {
         self.lineChartView.leftAxis.drawAxisLineEnabled = false
         self.lineChartView.leftAxis.drawGridLinesEnabled = false
         self.lineChartView.leftAxis.axisMinimum = 0
-        self.lineChartView.leftAxis.granularity = 30
+        if self.isIndividualStats {
+            let chartPeriod = ChartPeriodHelper(self.chartPeriodType)
+            self.lineChartView.leftAxis.axisMaximum = chartPeriod.getMaxNumbersOfAttandanceIndividual()
+        }
+        self.lineChartView.leftAxis.granularity = self.isIndividualStats ? 1 : 30
         self.lineChartView.rightAxis.drawGridLinesEnabled = false
         self.lineChartView.rightAxis.enabled = false
         self.lineChartView.xAxis.drawAxisLineEnabled = false
