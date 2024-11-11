@@ -12,6 +12,7 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     
     @IBOutlet weak var personImageView: UIImageView!
     @IBOutlet weak var personNameLabel: UILabel!
+    @IBOutlet weak var personDescriptionLabel: UILabel!
     @IBOutlet weak var barGraphCell: UITableViewCell!
     @IBOutlet weak var segmentedControl: MySegmentedControl!
     @IBOutlet weak var lineChartView: LineChartView!
@@ -93,6 +94,7 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
             let imageString = CommonUtility.getProfileImageString(person)
             self.personImageView.image = UIImage(named: imageString)
             self.personNameLabel.text = person.name
+            self.personDescriptionLabel.text = "Prima presenza il: " + self.statsData.firstDateIndividual
         }
     }
     

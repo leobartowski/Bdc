@@ -17,7 +17,7 @@ extension StatisticsViewController {
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0: // Profile Pic Cell Individual
-                return self.isIndividualStats ? 180 : 0
+                return self.isIndividualStats ? UITableView.automaticDimension : 0
             case 1: // First Label Cell
 //                return 103
                 return self.isIndividualStats ? 0 : 103 // 10 + 10 + 10 + 10 + 21 + 42

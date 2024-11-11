@@ -98,7 +98,7 @@ extension StatisticsViewController {
         return keys.enumerated().compactMap { index, key in
             guard let value = values[key] else { return nil }
             let entry = ChartDataEntry(x: Double(index), y: Double(value))
-            entry.data = labelProvider(key) as AnyObject // Label for x-axis
+            entry.data = labelProvider(key) as AnyObject
             return entry
         }
     }

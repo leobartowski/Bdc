@@ -9,9 +9,11 @@ import Foundation
 class AttendanceHelper {
     
     let total: [Attendance]
+    let person: Person?
     
-    init(total: [Attendance]) {
+    init(total: [Attendance], _ person: Person? = nil) {
         self.total = total
+        self.person = person
     }
     
     func getAttendance(ofWeeksAgo weeksOffset: Int) -> [Attendance] {

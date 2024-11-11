@@ -74,8 +74,8 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         self.indexPath = indexPath
         self.rankingAttendance = rankingAttendance
         self.setUpShadow()
-        self.nameButton.setUnderlinedTitle(rankingAttendance.person.name ?? "")
         self.nameButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.nameButton.setUnderlinedTitle(rankingAttendance.person.name ?? "")
         self.attendanceLabel.text = String(rankingAttendance.attendanceNumber)
         self.admonishmentLabel.text = String(rankingAttendance.admonishmentNumber)
         self.morningDaysAdmonishmentNumbers = self.createNumbersArray(rankingAttendance.morningAdmonishmentDate)

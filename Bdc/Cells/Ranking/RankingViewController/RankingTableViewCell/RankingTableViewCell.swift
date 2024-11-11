@@ -48,6 +48,7 @@ class RankingTableViewCell: UITableViewCell {
         self.rankingAttendance = rankingAttendance
         self.rankingType = rankingType
         self.setUpShadow()
+        self.nameButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.nameButton.setUnderlinedTitle(rankingAttendance.person.name ?? "")
         self.attendanceLabel.text = self.getStringOfAttendanceLabel(rankingAttendance, rankingType)
         self.admonishmentLabel.text = String(rankingAttendance.admonishmentNumber)

@@ -545,6 +545,7 @@
 		DD47EEBF278B2C1F0081388D /* RankingTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */,
 			);
 			path = RankingTableViewCell;
 			sourceTree = "<group>";
@@ -839,7 +840,6 @@
 		DDFE30C2275443140025BA19 /* Ranking */ = {
 			isa = PBXGroup;
 			children = (
-				DD47EEC0278B2C4F0081388D /* RankingTableViewCell.swift */,
 				DD709C822773610300D20C6A /* RankingViewController */,
 				DD709C842773612C00D20C6A /* FilterBottomSheetTableViewCell.swift */,
 			);

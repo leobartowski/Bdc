@@ -17,6 +17,7 @@ class StatsData {
     var monthlyGrowth: Double = 0
     var yearlyGrowth: Double = 0
     var maxDay: (dateString: String, nOfAtt: Int) = ("", 0)
+    var firstDateIndividual: String = ""
     
     init(_ totalAttendance: [Attendance], _ isIndividual: Bool = false) {
         self.isIndividual = isIndividual
@@ -30,7 +31,9 @@ class StatsData {
         self.weeklyGrowth = self.calculateWeeklyGrowth()
         self.monthlyGrowth = self.calculateMonthlyGrowth()
         self.yearlyGrowth = self.calculateYearlyGrowth()
-        self.maxDay = self.getDayandCountMaxNumberOfAttendance()
+        let firstAndMax = self.getFirstAndMaxDayAttendance()
+        self.maxDay = (firstAndMax.maxDateString, firstAndMax.maxCount)
+        self.firstDateIndividual = firstAndMax.firstDayString
     }
     
     private func calculateWeeklyGrowth() -> Double {
@@ -69,18 +72,23 @@ class StatsData {
             .reduce(into: 0) { $0 += (isIndividual ? 1 : $1.persons?.count ?? 0) }
     }
     
-    private func getDayandCountMaxNumberOfAttendance() -> (dateString: String, nOfAtt: Int) {
+    private func getFirstAndMaxDayAttendance() -> (maxDateString: String, maxCount: Int, firstDayString: String) {
         var allAttendances: [String: Int] = [:]
+        var currentMin = Date()
         for attendance in self.attHelper.total {
             if let dateString = attendance.dateString {
                 let personCount = isIndividual ? 1 : attendance.persons?.count ?? 0
                 allAttendances[dateString, default: 0] += personCount
+                if self.isIndividual && personCount == 1 {
+                    let date = DateFormatter.basicFormatter.date(from: dateString) ?? Date()
+                    if currentMin > date { currentMin = date }
+                }
             }
         }
+        let firstDayString = DateFormatter.basicFormatter.string(from: currentMin)
         if let maxDay = allAttendances.max(by: {$0.value < $1.value}) {
-            return (maxDay.key, maxDay.value)
+            return (maxDay.key, maxDay.value, firstDayString)
         }
-        return ("", 0)
+        return ("", 0, firstDayString)
     }
-    
 }
