@@ -61,7 +61,7 @@ public struct ChartPeriodHelper {
         case .weekly:
             return Constant.maxAttWeeklySlotIndividual
         case .monthly:
-            return Constant.maxAttMonthlyIndividual
+            return Constant.maxAttMonthlySlotIndividual
         case .yearly:
             return Constant.maxAttYearlySlotIndividual
         }
