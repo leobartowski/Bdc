@@ -24,13 +24,11 @@ class CoreDataService {
     func saveAttendance(_ date: Date, _ type: DayType, _ persons: [Person]) {
         var attendence = self.getAttendace(date, type: type)
         if attendence == nil {
-            // Se è vuoto ne creo uno nuovo
             attendence = Attendance(context: self.context)
             attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
             attendence?.type = type.rawValue
         }
         attendence?.persons = NSSet(array: persons)
-
         do {
             try self.context.save()
         } catch let error as NSError {
@@ -41,14 +39,11 @@ class CoreDataService {
     func saveAdmonishedAttendance(_ date: Date, _ type: DayType, _ personsAdmonished: [Person]) {
         var attendence = self.getAttendace(date, type: type)
         if attendence == nil {
-            // Se è vuoto ne creo uno nuovo
             attendence = Attendance(context: self.context)
             attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
             attendence?.type = type.rawValue
         }
-
         attendence?.personsAdmonished = NSSet(array: personsAdmonished)
-
         do {
             try self.context.save()
         } catch let error as NSError {
@@ -63,7 +58,8 @@ class CoreDataService {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
         let dateString = DateFormatter.basicFormatter.string(from: date)
         do {
-            let attendances = try context.fetch(fetchRequest).filter { $0.dateString == dateString && $0.type == type.rawValue }
+            fetchRequest.predicate = NSPredicate(format: "dateString == %@ AND type == %@", dateString, type.rawValue)
+            let attendances = try context.fetch(fetchRequest)
             return attendances.first
 
         } catch let error as NSError {
@@ -98,7 +94,8 @@ class CoreDataService {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
         let dateString = DateFormatter.basicFormatter.string(from: date)
         do {
-            let attendances = try context.fetch(fetchRequest).filter { $0.dateString == dateString && $0.type == type.rawValue }
+            fetchRequest.predicate = NSPredicate(format: "dateString == %@ AND type == %@", dateString, type.rawValue)
+            let attendances = try context.fetch(fetchRequest)
             return attendances.first?.persons?.allObjects as? [Person] ?? []
 
         } catch let error as NSError {
@@ -112,7 +109,8 @@ class CoreDataService {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
         let dateString = DateFormatter.basicFormatter.string(from: date)
         do {
-            let attendances = try context.fetch(fetchRequest).filter { $0.dateString == dateString && $0.type == type.rawValue }
+            fetchRequest.predicate = NSPredicate(format: "dateString == %@ AND type == %@", dateString, type.rawValue)
+            let attendances = try context.fetch(fetchRequest)
             return attendances.first?.personsAdmonished?.allObjects as? [Person] ?? []
 
         } catch let error as NSError {
