@@ -53,7 +53,6 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
 
     // MARK: Appearance Delegate
-
     func calendar(_ calendar: FSCalendar, appearance _: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
         if LocalDate(date: calendar.today ?? .now) == LocalDate(date: date) {
             return Theme.FSCalendarStandardTodayColor

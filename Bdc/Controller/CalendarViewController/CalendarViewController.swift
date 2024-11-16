@@ -22,6 +22,7 @@ class CalendarViewController: UIViewController {
     
     var dayType = DayType.evening
     var allPersons = PersonListUtility.persons
+    var selectedAttendance: Attendance?
     var filteredPerson: [Person] = []
     var personsAdmonished: [Person] = []
     var personsPresent: [Person] = []
@@ -137,9 +138,9 @@ class CalendarViewController: UIViewController {
         self.filteredPerson.removeAll()
         self.personsAdmonished.removeAll()
         self.personsPresent.removeAll()
-        let attendance = CoreDataService.shared.getAttendace(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
-        self.personsPresent = attendance?.persons?.allObjects as? [Person] ?? []
-        self.personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
+        self.selectedAttendance =  CoreDataService.shared.getAttendace(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
+        self.personsPresent = self.selectedAttendance?.persons?.allObjects as? [Person] ?? []
+        self.personsAdmonished = self.selectedAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
         self.allPersons = PersonListUtility.persons
         self.filteredPerson = self.allPersons
         self.sortPersons()

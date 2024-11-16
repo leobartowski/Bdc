@@ -53,7 +53,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         }
         DispatchQueue.main.async {
             self.feedbackGenerator.impactOccurred(intensity: 0.6)
-            CoreDataService.shared.saveAttendance(self.calendarView.selectedDate ?? Date(), self.dayType, self.personsPresent)
+            CoreDataService.shared.saveAttendance(&self.selectedAttendance, self.calendarView.selectedDate ?? Date(), self.dayType, self.personsPresent)
             self.postNotificationUpdateAttendance()
             self.collectionView.reloadItems(at: [indexPath])
 
@@ -96,7 +96,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         }
         DispatchQueue.main.async {
             self.feedbackGenerator.impactOccurred()
-            CoreDataService.shared.saveAdmonishedAttendance(self.calendarView.selectedDate ?? Date(), self.dayType, self.personsAdmonished)
+            CoreDataService.shared.saveAdmonishedAttendance(&self.selectedAttendance, self.calendarView.selectedDate ?? Date(), self.dayType, self.personsAdmonished)
             self.postNotificationUpdateAttendance()
             self.collectionView.reloadItems(at: [indexPath])
 
