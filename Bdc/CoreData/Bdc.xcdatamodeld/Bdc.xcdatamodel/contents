@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23507" systemVersion="24A335" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Attendance" representedClassName="Attendance" syncable="YES">
         <attribute name="dateString" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="persons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="attendance" inverseEntity="Person"/>
         <relationship name="personsAdmonished" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="attendanceAdmonishment" inverseEntity="Person"/>
+        <fetchIndex name="dateAndTypeIndex">
+            <fetchIndexElement property="dateString" type="Binary" order="ascending"/>
+            <fetchIndexElement property="type" type="Binary" order="ascending"/>
+        </fetchIndex>
     </entity>
     <entity name="Person" representedClassName="Person" syncable="YES">
         <attribute name="difficultyCoefficient" optional="YES" attributeType="Float" defaultValueString="1" usesScalarValueType="YES"/>
