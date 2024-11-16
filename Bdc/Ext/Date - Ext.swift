@@ -240,4 +240,14 @@ extension Date {
         }
         return true
     }
+    
+    func getNextSelectableDate() -> Date {
+        var count = 0
+        var date = self.dayAfter
+        while !date.isThisDaySelectable() && count < 30 {
+            date = date.dayAfter
+            count += 1
+        }
+        return date
+    }
 }

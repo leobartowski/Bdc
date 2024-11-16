@@ -72,17 +72,14 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Xx-dd-V06">
                                                     <rect key="frame" x="20" y="5" width="353" height="90"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qk8-F6-MkP" customClass="IncrementableLabel" customModule="IncrementableLabel">
-                                                            <rect key="frame" x="10" y="10" width="333" height="21"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="21" id="eug-41-vFM"/>
-                                                            </constraints>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qk8-F6-MkP" customClass="IncrementableLabel" customModule="IncrementableLabel">
+                                                            <rect key="frame" x="10" y="9.9999999999999982" width="333" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bRU-8y-1To" customClass="IncrementableLabel" customModule="IncrementableLabel">
-                                                            <rect key="frame" x="10" y="41" width="333" height="39"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bRU-8y-1To" customClass="IncrementableLabel" customModule="IncrementableLabel">
+                                                            <rect key="frame" x="10" y="59.666666666666679" width="333" height="20.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -94,7 +91,6 @@
                                                         <constraint firstAttribute="trailing" secondItem="bRU-8y-1To" secondAttribute="trailing" constant="10" id="DAS-Jz-zAC"/>
                                                         <constraint firstItem="qk8-F6-MkP" firstAttribute="top" secondItem="8Xx-dd-V06" secondAttribute="top" constant="10" id="Jj2-07-dpE"/>
                                                         <constraint firstItem="bRU-8y-1To" firstAttribute="leading" secondItem="8Xx-dd-V06" secondAttribute="leading" constant="10" id="gYY-hc-Anl"/>
-                                                        <constraint firstItem="bRU-8y-1To" firstAttribute="top" secondItem="qk8-F6-MkP" secondAttribute="bottom" constant="10" id="pPl-VL-u5P"/>
                                                         <constraint firstItem="qk8-F6-MkP" firstAttribute="leading" secondItem="8Xx-dd-V06" secondAttribute="leading" constant="10" id="z4O-da-UbA"/>
                                                         <constraint firstAttribute="trailing" secondItem="qk8-F6-MkP" secondAttribute="trailing" constant="10" id="zA3-Wx-hHZ"/>
                                                     </constraints>
@@ -376,7 +372,6 @@
                     <connections>
                         <outlet property="barChartView" destination="mUy-Wy-Y8X" id="tH1-l9-hmN"/>
                         <outlet property="barGraphCell" destination="zyi-of-T81" id="Wq8-EK-Gdd"/>
-                        <outlet property="dayMaxNumberOfAttendanceLabel" destination="bRU-8y-1To" id="Cg2-Iw-QWt"/>
                         <outlet property="dividerBarChartLabel" destination="nyS-oZ-pxw" id="J23-rD-Rws"/>
                         <outlet property="dividerLineChartLabel" destination="zNG-we-PzP" id="aZc-9p-xhG"/>
                         <outlet property="dividerSlotLineChartLabel" destination="nXY-8b-N5Y" id="rbi-Nf-rlt"/>
@@ -390,6 +385,7 @@
                         <outlet property="personNameLabel" destination="BPC-bc-Sok" id="3kJ-a5-cgH"/>
                         <outlet property="ratioMorningEveningCellContainerView" destination="5Wo-pL-OSE" id="Ck8-n8-6hO"/>
                         <outlet property="ratioMorningEveningLabel" destination="Ji7-Eh-5zf" id="5ED-5p-bd7"/>
+                        <outlet property="secondStatsLabel" destination="bRU-8y-1To" id="Cg2-Iw-QWt"/>
                         <outlet property="segmentedControl" destination="kxA-Om-m52" id="26x-RQ-AhR"/>
                         <outlet property="slotLineChartView" destination="778-vJ-hJM" id="bW7-FA-lNx"/>
                         <outlet property="slotLineChartViewLabel" destination="hKz-9p-3iQ" id="ZXh-Ek-Szt"/>

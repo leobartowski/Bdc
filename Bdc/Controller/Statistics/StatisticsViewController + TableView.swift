@@ -20,7 +20,7 @@ extension StatisticsViewController {
                 return self.isIndividualStats ? UITableView.automaticDimension : 0
             case 1: // First Label Cell
 //                return 103
-                return self.isIndividualStats ? 0 : 103 // 10 + 10 + 10 + 10 + 21 + 42
+                return self.isIndividualStats ? 124 : 103 // 10 + 10 + 10 + 10 + 21 (42) + 42
             case 2: // Segmented control
                 return 53 // 10 + 10 + 33
             case 3: // Divider Label Bar Chart

@@ -22,7 +22,7 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     @IBOutlet weak var slotLineChartViewLabel: UILabel!
     @IBOutlet weak var totalAttendanceLabel: IncrementableLabel!
     @IBOutlet weak var periodGrowthLabel: IncrementableLabel!
-    @IBOutlet weak var dayMaxNumberOfAttendanceLabel: IncrementableLabel!
+    @IBOutlet weak var secondStatsLabel: IncrementableLabel!
     @IBOutlet weak var firstLabelsCellContainerView: UIView!
     @IBOutlet weak var periodGrowthLabelCellContainerView: UIView!
     @IBOutlet weak var ratioMorningEveningCellContainerView: UIView!
@@ -33,6 +33,7 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     
     var person: Person?
     var isIndividualStats = false
+    var hasViewAppearedOnce = false
     
     var attendances: [Attendance] = []
     var weeklyChartData: LineChartCachedData?
@@ -73,8 +74,11 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.animateIncrementalLabels()
-        self.createAndAnimateGrowthLabel()
+        if !self.hasViewAppearedOnce {
+            self.animateIncrementalLabels()
+            self.createAndAnimateGrowthLabel()
+            self.hasViewAppearedOnce = true
+        }
     }
     
     override func viewDidLayoutSubviews() {

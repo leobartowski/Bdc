@@ -28,15 +28,20 @@ extension StatisticsViewController {
     
     func createLabels() {
         self.createTotalAttendanceLabel()
-        self.createMaxNumberOfAttendanceLabel()
         self.createRatioMornignEveningLabel()
+        if self.isIndividualStats {
+            self.createBestStreakLabel()
+        } else {
+            self.createMaxNumberOfAttendanceLabel()
+        }
     }
     
     func animateIncrementalLabels() {
         self.totalAttendanceLabel.incrementFromZero(toValue: Double(self.statsData.totalAttendance),
                                                     duration: incrementaLabelAnimationDuration)
-        self.dayMaxNumberOfAttendanceLabel.incrementFromZero(toValue:
-                                                                Double(self.statsData.maxDay.nOfAtt),
+        self.secondStatsLabel.incrementFromZero(toValue: self.isIndividualStats
+                                                             ? Double(self.statsData.bestStreak.count)
+                                                             :  Double(self.statsData.maxDay.nOfAtt),
                                                              duration: incrementaLabelAnimationDuration)
     }
     
@@ -53,16 +58,32 @@ extension StatisticsViewController {
     }
     
     fileprivate func createTotalAttendanceLabel() {
-        IncrementableLabelHelper.createWithValueInTheMiddle(for: self.totalAttendanceLabel, startText: "Siamo scesi ", endText: " volte!", formatValue: "%.0f")
-
+        if self.isIndividualStats {
+            IncrementableLabelHelper.createWithValueInTheMiddle(for: self.totalAttendanceLabel,
+                                                                startText: "Ha ",
+                                                                endText: " presenze, \(self.statsData.totalAttendanceMorning) la mattina e \(self.statsData.totalAttendanceEvening) \nil pomeriggio",
+                                                                formatValue: "%.0f")
+        } else {
+            IncrementableLabelHelper.createWithValueInTheMiddle(for: self.totalAttendanceLabel,
+                                                                startText: "Siamo scesi ",
+                                                                endText: " volte!",
+                                                                formatValue: "%.0f")
+        }
+    }
+    
+    fileprivate func createBestStreakLabel() {
+        IncrementableLabelHelper.createWithValueInTheMiddle(for: self.secondStatsLabel,
+                                                            startText: "Miglior serie di giorni con almeno una presenza: ",
+                                                            endText: " dal \(self.statsData.bestStreak.beginDate) al \(self.statsData.bestStreak.endDate)",
+                                                            formatValue: "%.0f")
     }
     
     fileprivate func createMaxNumberOfAttendanceLabel() {
-        IncrementableLabelHelper.createWithValueInTheMiddleCustom(for: self.dayMaxNumberOfAttendanceLabel,
+        IncrementableLabelHelper.createWithValueInTheMiddleCustom(for: self.secondStatsLabel,
                                                                   startText: "Il nostro miglior giorno è stato il ",
                                                                   endText: " presenze",
                                                                   dateText: self.statsData.maxDay.dateString)
-
+        
     }
     
     fileprivate func createRatioMornignEveningLabel() {

@@ -18,6 +18,7 @@ class StatsData {
     var yearlyGrowth: Double = 0
     var maxDay: (dateString: String, nOfAtt: Int) = ("", 0)
     var firstDateIndividual: String = ""
+    var bestStreak: (beginDate: String, endDate: String, count: Int) = ("", "", 0)
     
     init(_ totalAttendance: [Attendance], _ isIndividual: Bool = false) {
         self.isIndividual = isIndividual
@@ -33,7 +34,12 @@ class StatsData {
         self.yearlyGrowth = self.calculateYearlyGrowth()
         let firstAndMax = self.getFirstAndMaxDayAttendance()
         self.maxDay = (firstAndMax.maxDateString, firstAndMax.maxCount)
-        self.firstDateIndividual = firstAndMax.firstDayString
+        if isIndividual {
+            self.firstDateIndividual = firstAndMax.firstDayString
+            let start = Date().timeIntervalSince1970
+            self.bestStreak =  self.getBestStreakIndividual()
+            print((Date().timeIntervalSince1970 - start).getString())
+        }
     }
     
     private func calculateWeeklyGrowth() -> Double {
@@ -90,5 +96,35 @@ class StatsData {
             return (maxDay.key, maxDay.value, firstDayString)
         }
         return ("", 0, firstDayString)
+    }
+    
+    private func getBestStreakIndividual() -> (beginDate: String, endDate: String, count: Int) {
+        let sortedAttendanceDates = Set(
+            self.attHelper.total.compactMap { DateFormatter.basicFormatter.date(from: $0.dateString ?? "")
+            }).sorted()
+        var bestStreak = 0, currentStreak = 1
+        var bestStreakStartDate: Date?, bestStreakEndDate: Date?, currentStreakStartDate: Date?, currentStreakEndDate: Date?
+        
+        for i in 0..<sortedAttendanceDates.count - 1 {
+            let currentDate = sortedAttendanceDates[i]
+            let nextDate = sortedAttendanceDates[i + 1]
+            if Calendar.current.isDate(nextDate, inSameDayAs: currentDate.getNextSelectableDate()) {
+                currentStreak += 1
+                currentStreakEndDate = nextDate
+                if currentStreakStartDate == nil { currentStreakStartDate = currentDate }
+            } else {
+                currentStreak = 1
+                currentStreakStartDate = nil
+                currentStreakEndDate = nil
+            }
+            if currentStreak >= bestStreak {
+                bestStreak = currentStreak
+                bestStreakStartDate = currentStreakStartDate ?? currentDate
+                bestStreakEndDate = currentStreakEndDate ?? currentDate
+            }
+        }
+        let beginDate = bestStreakStartDate != nil ? DateFormatter.basicFormatter.string(from: bestStreakStartDate!) : ""
+        let endDate = bestStreakEndDate != nil ? DateFormatter.basicFormatter.string(from: bestStreakEndDate!) : ""
+        return (beginDate, endDate, bestStreak)
     }
 }
