@@ -128,6 +128,9 @@ extension RankingViewController {
             self.tableView.allowsSelection = false
             self.daysCurrentPeriod = Date().getAllDatesFrom(startingDate: Constant.startingDateBdC)
         }
-        self.populateAttendance()
+        if self.rankingType != .monthly && self.rankingType != .yearly {
+            self.populateAttendance()
+        }
     }
+
 }

@@ -32,7 +32,7 @@ class CoreDataService {
         attendence?.persons = NSSet(array: persons)
         do {
             try self.context.save()
-            print("SaveTimeEx: ", (Date().timeIntervalSince1970 - start).getString())
+//            print("SaveTimeEx: ", (Date().timeIntervalSince1970 - start).getString())
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
