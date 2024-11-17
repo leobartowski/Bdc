@@ -55,7 +55,7 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         } else if !date.isThisDaySelectable() || date > Date() {
             return .clear
         }
-        return Theme.mainColor
+        return Theme.main
     }
 
     func calendar(_ calendar: FSCalendar, appearance _: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
@@ -90,7 +90,7 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         self.calendarView.appearance.todayColor = .clear
         self.calendarView.appearance.titleDefaultColor = Theme.avatarBlack
         self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
-        self.calendarView.appearance.headerTitleColor = Theme.mainColor
+        self.calendarView.appearance.headerTitleColor = Theme.main
         self.calendarView.appearance.weekdayTextColor = Theme.black
         self.calendarView.appearance.titleSelectionColor = Theme.white
 

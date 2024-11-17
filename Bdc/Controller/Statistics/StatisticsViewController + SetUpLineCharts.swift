@@ -21,12 +21,12 @@ extension StatisticsViewController {
         lineDS.drawVerticalHighlightIndicatorEnabled = true
         lineDS.highlightColor = UIColor.systemGray4
         lineDS.highlightLineWidth = 1.0
-        let gradientColors = [Theme.white.cgColor, Theme.mainColor.cgColor] as CFArray
+        let gradientColors = [Theme.white.cgColor, Theme.main.cgColor] as CFArray
         let colorLocations: [CGFloat] = [0.0, 1.0]
         if let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) {
             lineDS.fill = LinearGradientFill(gradient: gradient, angle: 90.0)
         }
-        lineDS.colors = [Theme.mainColor]
+        lineDS.colors = [Theme.main]
     }
     
     func setUpSlotLineChartDataSetAppearance(_ lineDS: LineChartDataSet, isMorning: Bool) {

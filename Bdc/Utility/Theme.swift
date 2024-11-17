@@ -26,7 +26,7 @@ enum Theme {
     }()
     
     // Main Color (Green in Light Mode, Adjusted for Dark Mode)
-    static let mainColor: UIColor = {
+    static let main: UIColor = {
         return UIColor { traitCollection in
             traitCollection.userInterfaceStyle == .dark ?
             UIColor(red: 0 / 255, green: 204 / 255, blue: 204 / 255, alpha: 1) :
@@ -97,39 +97,12 @@ enum Theme {
         }
     }()
     
-    // Background Gray for Ranking
-    static let backgroundGrayRanking: UIColor = {
-        return UIColor { traitCollection in
-            traitCollection.userInterfaceStyle == .dark ?
-            UIColor(named: "4A4A4A") ?? UIColor(white: 74 / 255, alpha: 1) :
-            UIColor(named: "9A9A9A") ?? UIColor(white: 154 / 255, alpha: 1)
-        }
-    }()
-    
-    // Pullbar Grey
-    static let pullbarGrey: UIColor = {
-        return UIColor { traitCollection in
-            traitCollection.userInterfaceStyle == .dark ?
-            UIColor(red: 100 / 255, green: 100 / 255, blue: 100 / 255, alpha: 1) :
-            UIColor(red: 193 / 255, green: 193 / 255, blue: 193 / 255, alpha: 1)
-        }
-    }()
-    
     // Avatar Red
     static let avatarRed: UIColor = {
         return UIColor { traitCollection in
             traitCollection.userInterfaceStyle == .dark ?
             UIColor(red: 255 / 255, green: 100 / 255, blue: 130 / 255, alpha: 1) :
             UIColor(red: 250 / 255, green: 53 / 255, blue: 78 / 255, alpha: 1)
-        }
-    }()
-    
-    // Avatar Light Red
-    static let avatarLightRed: UIColor = {
-        return UIColor { traitCollection in
-            traitCollection.userInterfaceStyle == .dark ?
-            UIColor(red: 255 / 255, green: 100 / 255, blue: 130 / 255, alpha: 0.2) :
-            UIColor(red: 250 / 255, green: 53 / 255, blue: 78 / 255, alpha: 0.2)
         }
     }()
     

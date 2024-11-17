@@ -11,7 +11,7 @@ class IncrementableLabelHelper {
     
     static func createWithValueAtEnd(for label: IncrementableLabel,
                                      baseText: String,
-                                     numberFontColor: UIColor = Theme.mainColor,
+                                     numberFontColor: UIColor = Theme.main,
                                      numberFontSize: CGFloat = 17,
                                      numberFontWeight: UIFont.Weight = .heavy) {
         label.attributedTextFormatter = { value in
@@ -33,7 +33,7 @@ class IncrementableLabelHelper {
                                            startText: String,
                                            endText: String,
                                            formatValue: String = "%.0f%%",
-                                           numberFontColor: UIColor = Theme.mainColor,
+                                           numberFontColor: UIColor = Theme.main,
                                            numberFontSize: CGFloat = 17,
                                            numberFontWeight: UIFont.Weight = .heavy) {
         label.attributedTextFormatter = { value in
@@ -57,7 +57,7 @@ class IncrementableLabelHelper {
                                                  startText: String,
                                                  endText: String,
                                                  dateText: String,
-                                                 numberFontColor: UIColor = Theme.mainColor,
+                                                 numberFontColor: UIColor = Theme.main,
                                                  numberFontSize: CGFloat = 17,
                                                  numberFontWeight: UIFont.Weight = .heavy) {
         label.attributedTextFormatter = { value in

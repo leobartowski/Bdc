@@ -46,7 +46,7 @@ extension StatisticsViewController {
                 BarChartDataEntry(x: Double(index), y: Double(count))
             }
             let dataSet = BarChartDataSet(entries: barChartEntries)
-            dataSet.colors = [Theme.mainColor]
+            dataSet.colors = [Theme.main]
             dataSet.drawValuesEnabled = false
             dataSet.highlightAlpha = 0.9
             dataSet.highlightColor = Theme.avatarRed
@@ -77,7 +77,7 @@ extension StatisticsViewController {
                 BarChartDataEntry(x: Double(index), y: Double(count))
             }
             let dataSet = BarChartDataSet(entries: barChartEntries)
-            dataSet.colors = [Theme.mainColor]
+            dataSet.colors = [Theme.main]
             dataSet.drawValuesEnabled = false
             dataSet.highlightAlpha = 0.9
             dataSet.highlightColor = Theme.avatarRed

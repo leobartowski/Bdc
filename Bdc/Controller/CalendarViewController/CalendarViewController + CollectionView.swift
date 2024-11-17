@@ -96,7 +96,10 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         }
         DispatchQueue.main.async {
             self.feedbackGenerator.impactOccurred()
-            CoreDataService.shared.saveAdmonishedAttendance(&self.selectedAttendance, self.calendarView.selectedDate ?? Date(), self.dayType, self.personsAdmonished)
+            CoreDataService.shared.saveAdmonishedAttendance(&self.selectedAttendance,
+                                                            self.calendarView.selectedDate ?? Date(),
+                                                            self.dayType,
+                                                            self.personsAdmonished)
             self.postNotificationUpdateAttendance()
             self.collectionView.reloadItems(at: [indexPath])
 
