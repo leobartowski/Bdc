@@ -26,22 +26,25 @@ enum Theme {
         }
     }()
     
-    static let background: UIColor = {
-        return UIColor { traitCollection in
-            traitCollection.userInterfaceStyle == .dark ?
-            UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1) :
-            UIColor(red: 242 / 255, green: 242 / 255, blue: 247 / 255, alpha: 1)
-        }
-    }()
+    static let background: UIColor = .systemGroupedBackground
+//        static let background: UIColor = {
+//        return UIColor { traitCollection in
+//            traitCollection.userInterfaceStyle == .dark ?
+//            UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1) :
+//            UIColor(red: 242 / 255, green: 242 / 255, blue: 247 / 255, alpha: 1)
+//        }
+//    }()
     
+    static let contentBackground: UIColor = .secondarySystemGroupedBackground
+
     // Dirty Background
-    static let contentBackground: UIColor = {
-        return UIColor { traitCollection in
-            traitCollection.userInterfaceStyle == .dark ?
-            UIColor(red: 41 / 255, green: 41 / 255, blue: 41 / 255, alpha: 1) :
-            UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1)
-        }
-    }()
+//    static let contentBackground: UIColor = {
+//        return UIColor { traitCollection in
+//            traitCollection.userInterfaceStyle == .dark ?
+//            UIColor(red: 41 / 255, green: 41 / 255, blue: 41 / 255, alpha: 1) :
+//            UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1)
+//        }
+//    }()
     
     // Main Color (Green in Light Mode, Adjusted for Dark Mode)
     static let main: UIColor = {

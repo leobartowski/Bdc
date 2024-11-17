@@ -2,7 +2,7 @@
   "colors" : [
     {
       "color" : {
-        "color-space" : "srgb",
+        "color-space" : "extended-srgb",
         "components" : {
           "alpha" : "1.000",
           "blue" : "0.969",
@@ -20,11 +20,8 @@
         }
       ],
       "color" : {
-        "color-space" : "gray-gamma-22",
-        "components" : {
-          "alpha" : "1.000",
-          "white" : "0.000"
-        }
+        "platform" : "ios",
+        "reference" : "systemGroupedBackgroundColor"
       },
       "idiom" : "universal"
     }
