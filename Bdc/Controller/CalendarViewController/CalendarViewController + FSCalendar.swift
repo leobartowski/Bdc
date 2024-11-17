@@ -152,7 +152,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         self.calendarView.appearance.titleDefaultColor = Theme.avatarBlack
         self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
         self.calendarView.appearance.headerTitleColor = Theme.main
-        self.calendarView.appearance.weekdayTextColor = Theme.black
-        self.calendarView.appearance.titleSelectionColor = Theme.white
+        self.calendarView.appearance.weekdayTextColor = Theme.label
+        self.calendarView.appearance.titleSelectionColor = Theme.neutral
     }
 }

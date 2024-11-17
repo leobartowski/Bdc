@@ -37,7 +37,7 @@ class LinearMarkerViewForDoublePoint: MarkerView {
                 context.addArc(center: CGPoint(x: point.x, y: yPosition), radius: 6.0, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
                 context.fillPath()
                 
-                context.setStrokeColor(Theme.black.cgColor)
+                context.setStrokeColor(Theme.label.cgColor)
                 context.setLineWidth(2.0) // Change to desired border width
                 context.addArc(center: CGPoint(x: point.x, y: yPosition), radius: 6.0, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
                 context.strokePath()

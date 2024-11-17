@@ -50,7 +50,7 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
             self.customBackgroundView.borderColor = Theme.main
             self.customBackgroundView.borderWidth = 2
         }
-        self.customBackgroundView.backgroundColor = isAdmonished ? Theme.customYellow : Theme.dirtyWhite
+        self.customBackgroundView.backgroundColor = isAdmonished ? Theme.customYellow : Theme.contentBackground
         self.setUpShadow()
     }
     

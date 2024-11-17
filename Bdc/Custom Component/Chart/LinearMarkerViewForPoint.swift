@@ -23,7 +23,7 @@ class LinearMarkerViewForPoint: MarkerView {
         context.addArc(center: point, radius: 6.0, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
         context.fillPath()
         
-        context.setStrokeColor(Theme.black.cgColor)
+        context.setStrokeColor(Theme.label.cgColor)
         context.setLineWidth(2.0) // Change to desired border width
         context.addArc(center: point, radius: 6.0, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
         context.strokePath()

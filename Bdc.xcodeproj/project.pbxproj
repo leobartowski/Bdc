@@ -125,7 +125,7 @@
 		DDF9B5852778715000E2FEE2 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF9B5842778715000E2FEE2 /* Settings.storyboard */; };
 		DDF9B5872778721700E2FEE2 /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF9B5862778721700E2FEE2 /* Ranking.storyboard */; };
 		DDF9B5892778726700E2FEE2 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF9B5882778726700E2FEE2 /* Calendar.storyboard */; };
-		DDF9B58B2778740900E2FEE2 /* HandlePersonsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF9B58A2778740900E2FEE2 /* HandlePersonsTableViewController.swift */; };
+		DDF9B58B2778740900E2FEE2 /* HandlePersonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF9B58A2778740900E2FEE2 /* HandlePersonsViewController.swift */; };
 		DDF9B58F277878F900E2FEE2 /* HandlePersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF9B58E277878F900E2FEE2 /* HandlePersonTableViewCell.swift */; };
 		DDFCFFB52CD14A2B00052BD8 /* StatisticsViewController + RecognizerCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFCFFB42CD14A2900052BD8 /* StatisticsViewController + RecognizerCharts.swift */; };
 		DDFCFFB72CD159F300052BD8 /* ChartPeriodHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFCFFB62CD159EF00052BD8 /* ChartPeriodHelper.swift */; };
@@ -298,7 +298,7 @@
 		DDF9B5842778715000E2FEE2 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		DDF9B5862778721700E2FEE2 /* Ranking.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ranking.storyboard; sourceTree = "<group>"; };
 		DDF9B5882778726700E2FEE2 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
-		DDF9B58A2778740900E2FEE2 /* HandlePersonsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlePersonsTableViewController.swift; sourceTree = "<group>"; };
+		DDF9B58A2778740900E2FEE2 /* HandlePersonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlePersonsViewController.swift; sourceTree = "<group>"; };
 		DDF9B58E277878F900E2FEE2 /* HandlePersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlePersonTableViewCell.swift; sourceTree = "<group>"; };
 		DDFCFFB42CD14A2900052BD8 /* StatisticsViewController + RecognizerCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsViewController + RecognizerCharts.swift"; sourceTree = "<group>"; };
 		DDFCFFB62CD159EF00052BD8 /* ChartPeriodHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPeriodHelper.swift; sourceTree = "<group>"; };
@@ -374,7 +374,7 @@
 		DD0E35BD277BB7D40082D32C /* HandlePersonList */ = {
 			isa = PBXGroup;
 			children = (
-				DDF9B58A2778740900E2FEE2 /* HandlePersonsTableViewController.swift */,
+				DDF9B58A2778740900E2FEE2 /* HandlePersonsViewController.swift */,
 				DD0E35BE277BB7F50082D32C /* AddChangePersonViewController.swift */,
 			);
 			path = HandlePersonList;
@@ -1214,7 +1214,7 @@
 				DDC9EB6A275031CD00653138 /* PersonsList+CoreDataClass.swift in Sources */,
 				DDC337A42724065A0028E49B /* RankingViewController.swift in Sources */,
 				DD8543F327219D4A004D38F0 /* CalendarViewController.swift in Sources */,
-				DDF9B58B2778740900E2FEE2 /* HandlePersonsTableViewController.swift in Sources */,
+				DDF9B58B2778740900E2FEE2 /* HandlePersonsViewController.swift in Sources */,
 				DDD882C12CD3DB6500E6D47A /* IncrementableLabelHelper.swift in Sources */,
 				DD7B258327567AA100E663AC /* PDFCreator.swift in Sources */,
 				DD5542E027245656000D9F48 /* CalendarViewController + FSCalendar.swift in Sources */,

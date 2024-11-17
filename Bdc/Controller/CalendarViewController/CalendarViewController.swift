@@ -41,12 +41,8 @@ class CalendarViewController: UIViewController {
         self.addObservers()
         self.addSwipeGestureRecognizerToCollectionView()
         self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
-        if #available(iOS 17.0, *) { self.handleTraitChange() }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
         self.searchBar.setValue("Annulla", forKey: "cancelButtonText")
-        self.searchBar.searchTextField.backgroundColor = Theme.dirtyWhite
+        if #available(iOS 17.0, *) { self.handleTraitChange() }
     }
     
     @objc func willBecomeActive() {
@@ -109,7 +105,7 @@ class CalendarViewController: UIViewController {
     }
     
     func setupSegmentedControl() {
-        self.segmentedControl.backgroundColor = Theme.dirtyWhite
+        self.segmentedControl.backgroundColor = Theme.contentBackground
         if self.traitCollection.userInterfaceStyle != .dark {
             self.segmentedControl.addShadow(UIColor.systemGray3, height: 2, opacity: 0.5, shadowRadius: 1)
         } else {
@@ -117,10 +113,10 @@ class CalendarViewController: UIViewController {
         }
         self.segmentedControl.borderColor = Theme.main
         self.segmentedControl.selectedSegmentTintColor = Theme.main
-        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.white]
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.neutral]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
         
-        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: Theme.black]
+        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: Theme.label]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .normal)
     }
     

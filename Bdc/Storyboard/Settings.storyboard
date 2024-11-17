@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cby-in-Fq9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cby-in-Fq9">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -79,7 +79,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" name="dirtWhite"/>
+                                            <color key="backgroundColor" name="contentBackground"/>
                                             <constraints>
                                                 <constraint firstItem="M1b-sZ-KPn" firstAttribute="centerY" secondItem="yP3-DK-Enb" secondAttribute="centerY" id="8h9-mc-zTm"/>
                                                 <constraint firstAttribute="trailing" secondItem="M1b-sZ-KPn" secondAttribute="trailing" constant="20" id="NZq-jd-8GM"/>
@@ -116,7 +116,7 @@
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" name="dirtWhite"/>
+                                            <color key="backgroundColor" name="contentBackground"/>
                                             <constraints>
                                                 <constraint firstItem="YzA-2t-jgQ" firstAttribute="centerY" secondItem="ZJG-VG-CA1" secondAttribute="centerY" id="3wg-6o-Qcp"/>
                                                 <constraint firstItem="YzA-2t-jgQ" firstAttribute="leading" secondItem="ZJG-VG-CA1" secondAttribute="leading" constant="20" id="OKN-Cn-caW"/>
@@ -136,7 +136,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="frH-xc-q2I"/>
-                        <color key="backgroundColor" name="white"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="frH-xc-q2I" firstAttribute="bottom" secondItem="lBu-9o-IQ3" secondAttribute="bottom" id="1jg-Dr-sZK"/>
                             <constraint firstItem="lBu-9o-IQ3" firstAttribute="top" secondItem="C7m-uj-OfP" secondAttribute="top" id="acU-DN-rvx"/>
@@ -190,7 +190,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
-                                            <color key="backgroundColor" name="dirtWhite"/>
+                                            <color key="backgroundColor" name="contentBackground"/>
                                             <constraints>
                                                 <constraint firstItem="33K-Me-lLQ" firstAttribute="leading" secondItem="fbW-hV-Yc6" secondAttribute="leadingMargin" id="4zs-c1-Q5T"/>
                                                 <constraint firstItem="PQC-MF-RPi" firstAttribute="leading" secondItem="33K-Me-lLQ" secondAttribute="trailing" constant="20" id="6wz-yc-rRZ"/>
@@ -211,7 +211,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5Z4-j5-lne"/>
-                        <color key="backgroundColor" name="white"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="QvJ-fU-qhx" firstAttribute="top" secondItem="Mrk-IU-XGp" secondAttribute="top" id="XvP-7I-tV5"/>
                             <constraint firstItem="5Z4-j5-lne" firstAttribute="trailing" secondItem="QvJ-fU-qhx" secondAttribute="trailing" id="g6N-y5-h2e"/>
@@ -269,7 +269,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xFb-U0-Ryh"/>
-                        <color key="backgroundColor" name="white"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="xFb-U0-Ryh" firstAttribute="trailing" secondItem="qDz-pQ-IP0" secondAttribute="trailing" constant="20" id="8YL-l5-p5z"/>
                             <constraint firstItem="plV-kK-c83" firstAttribute="centerX" secondItem="p9f-9i-8Qs" secondAttribute="centerX" id="FwC-hB-v6l"/>
@@ -298,20 +298,23 @@
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="man_placeholder_icon" width="512" height="512"/>
-        <namedColor name="dirtWhite">
-            <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="background">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="main">
-            <color red="0.0" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="white">
+        <namedColor name="contentBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="main">
+            <color red="0.0" green="0.50199997425079346" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

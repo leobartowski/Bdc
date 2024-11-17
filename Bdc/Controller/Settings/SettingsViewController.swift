@@ -109,7 +109,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 2: // 
             if let url = URL(string: "https://drive.google.com/file/d/1fvKB4Tbz4FOWQvNWF4ncY0XhpRdPdDB-/view?usp=sharing") {
                 let safariVC = SFSafariViewController(url: url)
-                safariVC.preferredBarTintColor = Theme.white
+                safariVC.preferredBarTintColor = Theme.neutral
                 safariVC.preferredControlTintColor = Theme.main
                 self.present(safariVC, animated: true, completion: nil)
                 self.tableView.deselectRow(at: indexPath, animated: false)

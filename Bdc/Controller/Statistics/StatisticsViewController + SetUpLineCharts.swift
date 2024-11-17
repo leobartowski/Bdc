@@ -21,7 +21,7 @@ extension StatisticsViewController {
         lineDS.drawVerticalHighlightIndicatorEnabled = true
         lineDS.highlightColor = UIColor.systemGray4
         lineDS.highlightLineWidth = 1.0
-        let gradientColors = [Theme.white.cgColor, Theme.main.cgColor] as CFArray
+        let gradientColors = [Theme.background.cgColor, Theme.main.cgColor] as CFArray
         let colorLocations: [CGFloat] = [0.0, 1.0]
         if let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) {
             lineDS.fill = LinearGradientFill(gradient: gradient, angle: 90.0)

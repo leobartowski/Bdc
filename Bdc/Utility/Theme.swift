@@ -8,19 +8,37 @@
 import UIKit
 
 enum Theme {
-    
-    static let black: UIColor = {
+//    
+//    
+    static let label: UIColor = {
         return UIColor { traitCollection in
             traitCollection.userInterfaceStyle == .dark ?
-            UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1) :
-            UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1)
+            UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1) : // bianco
+            UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1) // nero
         }
     }()
-    
-    static let white: UIColor = {
+//    
+    static let neutral: UIColor = {
         return UIColor { traitCollection in
             traitCollection.userInterfaceStyle == .dark ?
             UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1) :
+            UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1)
+        }
+    }()
+    
+    static let background: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1) :
+            UIColor(red: 242 / 255, green: 242 / 255, blue: 247 / 255, alpha: 1)
+        }
+    }()
+    
+    // Dirty Background
+    static let contentBackground: UIColor = {
+        return UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ?
+            UIColor(red: 41 / 255, green: 41 / 255, blue: 41 / 255, alpha: 1) :
             UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1)
         }
     }()
@@ -85,15 +103,6 @@ enum Theme {
             traitCollection.userInterfaceStyle == .dark ?
             UIColor(red: 50 / 255, green: 230 / 255, blue: 140 / 255, alpha: 0.75) :
             UIColor(red: 17 / 255, green: 187 / 255, blue: 85 / 255, alpha: 0.75)
-        }
-    }()
-    
-    // Dirty White
-    static let dirtyWhite: UIColor = {
-        return UIColor { traitCollection in
-            traitCollection.userInterfaceStyle == .dark ?
-            UIColor(red: 41 / 255, green: 41 / 255, blue: 41 / 255, alpha: 1) :
-            UIColor(red: 250 / 255, green: 250 / 255, blue: 250 / 255, alpha: 1)
         }
     }()
     

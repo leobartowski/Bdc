@@ -16,7 +16,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" id="xZl-Kz-vYT">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="white"/>
+                        <color key="backgroundColor" name="background"/>
                         <sections>
                             <tableViewSection headerTitle="First Section" id="N1K-FZ-e38">
                                 <cells>
@@ -60,7 +60,7 @@
                                                 <constraint firstItem="BPC-bc-Sok" firstAttribute="centerY" secondItem="AUb-OZ-Nlg" secondAttribute="centerY" constant="-15" id="umH-Mc-sje"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="white"/>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="VuF-9c-spu" userLabel="First Labels Cell">
                                         <rect key="frame" x="0.0" y="190" width="393" height="100"/>
@@ -85,7 +85,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" name="dirtWhite"/>
+                                                    <color key="backgroundColor" name="contentBackground"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="bRU-8y-1To" secondAttribute="bottom" constant="10" id="CDG-YY-cV2"/>
                                                         <constraint firstAttribute="trailing" secondItem="bRU-8y-1To" secondAttribute="trailing" constant="10" id="DAS-Jz-zAC"/>
@@ -104,7 +104,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="8Xx-dd-V06" secondAttribute="bottom" constant="5" id="xRg-eo-uWv"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="white"/>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="52" id="ER1-ib-d4f" userLabel="Segmented Control">
                                         <rect key="frame" x="0.0" y="290" width="393" height="52"/>
@@ -115,13 +115,13 @@
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="kxA-Om-m52" customClass="MySegmentedControl" customModule="Bdc" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="10" width="353" height="33"/>
-                                                    <color key="backgroundColor" name="dirtWhite"/>
+                                                    <color key="backgroundColor" name="contentBackground"/>
                                                     <segments>
                                                         <segment title="Settimanale"/>
                                                         <segment title="Mensile"/>
                                                         <segment title="Annuale"/>
                                                     </segments>
-                                                    <color key="tintColor" name="dirtWhite"/>
+                                                    <color key="tintColor" name="contentBackground"/>
                                                     <color key="selectedSegmentTintColor" name="main"/>
                                                     <connections>
                                                         <action selector="segmentedControlValueChanged:" destination="AdN-lp-lCs" eventType="valueChanged" id="vy2-H3-fse"/>
@@ -135,7 +135,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="kxA-Om-m52" secondAttribute="trailing" constant="20" id="yyQ-4o-bS1"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="white"/>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="41" id="unH-Vj-gAV" userLabel="Divider Line Graph Cell">
                                         <rect key="frame" x="0.0" y="342" width="393" height="41"/>
@@ -158,7 +158,7 @@
                                                 <constraint firstItem="zNG-we-PzP" firstAttribute="top" secondItem="Naz-sz-POv" secondAttribute="top" constant="10" id="d1R-2P-tRb"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="white"/>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="315" id="g4r-GL-0FP" userLabel="Line Graph Cell">
                                         <rect key="frame" x="0.0" y="383" width="393" height="315"/>
@@ -188,7 +188,7 @@
                                                 <constraint firstItem="lga-KS-rts" firstAttribute="leading" secondItem="4sf-1N-8iV" secondAttribute="leading" constant="20" id="gii-Px-QgC"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="white"/>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="82" id="l8Z-XF-nmU" userLabel="Period Growth Label Cell">
                                         <rect key="frame" x="0.0" y="698" width="393" height="82"/>
@@ -207,7 +207,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" name="dirtWhite"/>
+                                                    <color key="backgroundColor" name="contentBackground"/>
                                                     <constraints>
                                                         <constraint firstItem="iOF-Ds-IaW" firstAttribute="top" secondItem="0pZ-Eq-enR" secondAttribute="top" constant="10" id="3KP-73-iOP"/>
                                                         <constraint firstItem="iOF-Ds-IaW" firstAttribute="leading" secondItem="0pZ-Eq-enR" secondAttribute="leading" constant="10" id="Vbp-Xl-ib9"/>
@@ -223,7 +223,7 @@
                                                 <constraint firstItem="0pZ-Eq-enR" firstAttribute="leading" secondItem="jtq-BO-i3r" secondAttribute="leading" constant="20" id="ne9-Jw-ewm"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="white"/>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="41" id="ePe-0o-acU" userLabel="Divider Period Graph Cell">
                                         <rect key="frame" x="0.0" y="780" width="393" height="41"/>
@@ -246,7 +246,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="nXY-8b-N5Y" secondAttribute="trailing" constant="20" id="ttU-N6-zvg"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="white"/>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="335" id="wba-Y0-FMD" userLabel="Slots Line Graph Cell">
                                         <rect key="frame" x="0.0" y="821" width="393" height="335"/>
@@ -276,7 +276,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="778-vJ-hJM" secondAttribute="trailing" constant="20" id="r57-GI-ngX"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="white"/>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="82" id="Fz5-xI-W5G" userLabel="Ratio Morning Evening Label Cell">
                                         <rect key="frame" x="0.0" y="1156" width="393" height="82"/>
@@ -295,7 +295,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" name="dirtWhite"/>
+                                                    <color key="backgroundColor" name="contentBackground"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="Ji7-Eh-5zf" secondAttribute="trailing" constant="10" id="BpA-G4-rDc"/>
                                                         <constraint firstItem="Ji7-Eh-5zf" firstAttribute="top" secondItem="5Wo-pL-OSE" secondAttribute="top" constant="10" id="WmL-h2-lG7"/>
@@ -311,7 +311,7 @@
                                                 <constraint firstItem="5Wo-pL-OSE" firstAttribute="top" secondItem="0cS-Cy-yP3" secondAttribute="top" constant="10" id="sDR-Ig-rlc"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="white"/>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="41" id="Kdv-3j-UYC" userLabel="Divider Bar Graph Cell">
                                         <rect key="frame" x="0.0" y="1238" width="393" height="41"/>
@@ -334,7 +334,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="nyS-oZ-pxw" secondAttribute="bottom" constant="10" id="pKo-Ls-4vb"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="white"/>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="zyi-of-T81" userLabel="Bar Graph Cell">
                                         <rect key="frame" x="0.0" y="1279" width="393" height="300"/>
@@ -355,7 +355,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="mUy-Wy-Y8X" secondAttribute="bottom" constant="10" id="kEE-YM-XzQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="white"/>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -406,7 +406,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="7Mn-mv-gQK">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" name="white"/>
+                        <color key="backgroundColor" name="background"/>
                         <color key="tintColor" name="main"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -421,13 +421,13 @@
     </scenes>
     <resources>
         <image name="chart.xyaxis.line" catalog="system" width="128" height="102"/>
-        <namedColor name="dirtWhite">
+        <namedColor name="contentBackground">
             <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="main">
             <color red="0.0" green="0.50199997425079346" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="white">
+        <namedColor name="background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">

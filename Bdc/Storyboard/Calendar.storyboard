@@ -22,7 +22,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Uk-SP-eJW" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="48" width="414" height="350"/>
-                                <color key="backgroundColor" name="dirtWhite"/>
+                                <color key="backgroundColor" name="contentBackground"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="350" id="2gA-Wd-I2j"/>
@@ -43,12 +43,12 @@
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="81Y-SL-qSW" customClass="MySegmentedControl" customModule="Bdc" customModuleProvider="target">
                                         <rect key="frame" x="10" y="35" width="342" height="32"/>
-                                        <color key="backgroundColor" name="dirtWhite"/>
+                                        <color key="backgroundColor" name="contentBackground"/>
                                         <segments>
                                             <segment title="Mattina"/>
                                             <segment title="Sera"/>
                                         </segments>
-                                        <color key="tintColor" name="dirtWhite"/>
+                                        <color key="tintColor" name="contentBackground"/>
                                         <color key="selectedSegmentTintColor" name="main"/>
                                         <connections>
                                             <action selector="segmentedControlValueChanged:" destination="lFF-gd-bBU" eventType="valueChanged" id="oVO-OR-wCj"/>
@@ -68,7 +68,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" name="white"/>
+                                <color key="backgroundColor" name="background"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="71" id="O9c-qU-WSa"/>
                                     <constraint firstItem="bRY-LI-Fg4" firstAttribute="leading" secondItem="81Y-SL-qSW" secondAttribute="trailing" constant="20" id="PBA-jP-kel"/>
@@ -83,7 +83,7 @@
                                 <subviews>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Cerca..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SiX-PR-bfc">
                                         <rect key="frame" x="2" y="0.0" width="410" height="56"/>
-                                        <color key="backgroundColor" name="white"/>
+                                        <color key="backgroundColor" name="background"/>
                                         <color key="tintColor" name="main"/>
                                         <color key="barTintColor" name="main"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
@@ -96,7 +96,7 @@
                                         </connections>
                                     </searchBar>
                                 </subviews>
-                                <color key="backgroundColor" name="white"/>
+                                <color key="backgroundColor" name="background"/>
                                 <constraints>
                                     <constraint firstItem="SiX-PR-bfc" firstAttribute="leading" secondItem="8BC-gB-gVj" secondAttribute="leading" constant="2" id="GHv-5T-Gj2"/>
                                     <constraint firstAttribute="trailing" secondItem="SiX-PR-bfc" secondAttribute="trailing" constant="2" id="GSw-ax-71K"/>
@@ -107,7 +107,7 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cUb-iM-sZp">
                                 <rect key="frame" x="0.0" y="525" width="414" height="441"/>
-                                <color key="backgroundColor" name="white"/>
+                                <color key="backgroundColor" name="background"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="N9c-Su-oep">
                                     <size key="itemSize" width="80" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -141,7 +141,7 @@
                                                             <rect key="frame" x="19" y="19" width="36" height="37"/>
                                                         </activityIndicatorView>
                                                     </subviews>
-                                                    <color key="backgroundColor" name="dirtWhite"/>
+                                                    <color key="backgroundColor" name="contentBackground"/>
                                                     <constraints>
                                                         <constraint firstItem="V0C-1s-mca" firstAttribute="top" secondItem="0cd-NS-jnS" secondAttribute="bottom" constant="5" id="0U1-op-hwR"/>
                                                         <constraint firstAttribute="trailing" secondItem="6eH-LZ-Sd6" secondAttribute="trailing" constant="19" id="38Q-P0-ZSh"/>
@@ -227,7 +227,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="dirtWhite"/>
+                                <color key="backgroundColor" name="contentBackground"/>
                                 <constraints>
                                     <constraint firstItem="C7v-4R-0Cy" firstAttribute="centerY" secondItem="5fq-Gp-qQo" secondAttribute="centerY" constant="-2" id="9I8-E4-wF6"/>
                                     <constraint firstAttribute="height" constant="20" id="GfW-sV-iid"/>
@@ -236,7 +236,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Csh-zm-cYX"/>
-                        <color key="backgroundColor" name="dirtWhite"/>
+                        <color key="backgroundColor" name="contentBackground"/>
                         <constraints>
                             <constraint firstItem="cUb-iM-sZp" firstAttribute="top" secondItem="8BC-gB-gVj" secondAttribute="bottom" id="4u6-wV-AfJ"/>
                             <constraint firstItem="8BC-gB-gVj" firstAttribute="leading" secondItem="Csh-zm-cYX" secondAttribute="leading" id="8Dt-04-5cN"/>
@@ -279,13 +279,13 @@
     <resources>
         <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="empty_placeholder" width="283" height="220"/>
-        <namedColor name="dirtWhite">
+        <namedColor name="contentBackground">
             <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="main">
             <color red="0.0" green="0.50199997425079346" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="white">
+        <namedColor name="background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemGrayColor">

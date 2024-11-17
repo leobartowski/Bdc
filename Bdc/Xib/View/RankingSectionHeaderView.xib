@@ -25,7 +25,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iyd-KA-71P">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="15"/>
-                    <color key="backgroundColor" name="white"/>
+                    <color key="backgroundColor" name="background"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="BMo-Pl-7vF"/>
                     </constraints>
@@ -39,19 +39,19 @@
                                 <constraint firstAttribute="width" constant="120" id="th8-Ur-Yz6"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                            <color key="textColor" name="white"/>
+                            <color key="textColor" name="background"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6z-Ta-oH4">
                             <rect key="frame" x="180" y="10" width="62.5" height="24"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                            <color key="textColor" name="white"/>
+                            <color key="textColor" name="background"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mur-eO-Yxb">
                             <rect key="frame" x="262.5" y="10" width="62.5" height="24"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                            <color key="textColor" name="white"/>
+                            <color key="textColor" name="background"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -88,7 +88,7 @@
         <namedColor name="main">
             <color red="0.0" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="white">
+        <namedColor name="background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

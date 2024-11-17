@@ -21,7 +21,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Py9-kz-7il">
                                 <rect key="frame" x="0.0" y="0.0" width="440" height="922"/>
-                                <color key="backgroundColor" name="white"/>
+                                <color key="backgroundColor" name="background"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="eJL-en-YG4">
                                     <rect key="frame" x="0.0" y="0.0" width="440" height="190"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -31,7 +31,7 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wvp-Yo-ljY" customClass="FSCalendar">
                                                     <rect key="frame" x="5" y="5" width="390" height="110"/>
-                                                    <color key="backgroundColor" name="dirtWhite"/>
+                                                    <color key="backgroundColor" name="contentBackground"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="110" id="WqN-ld-wWd"/>
                                                     </constraints>
@@ -68,7 +68,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" name="dirtWhite"/>
+                                            <color key="backgroundColor" name="contentBackground"/>
                                             <constraints>
                                                 <constraint firstItem="c1Y-SV-Dlj" firstAttribute="leading" secondItem="9M9-dQ-J12" secondAttribute="leading" constant="30" id="6lc-TS-Td0"/>
                                                 <constraint firstItem="Wvp-Yo-ljY" firstAttribute="top" secondItem="9M9-dQ-J12" secondAttribute="top" constant="5" id="8DU-nR-1jd"/>
@@ -95,14 +95,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" name="dirtWhite"/>
+                                            <color key="backgroundColor" name="contentBackground"/>
                                             <constraints>
                                                 <constraint firstItem="yh1-gT-PuI" firstAttribute="centerY" secondItem="8cK-vi-MmN" secondAttribute="centerY" id="MTQ-qf-4Wl"/>
                                                 <constraint firstItem="yh1-gT-PuI" firstAttribute="centerX" secondItem="8cK-vi-MmN" secondAttribute="centerX" id="NH3-Bk-yWk"/>
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" name="white"/>
+                                    <color key="backgroundColor" name="background"/>
                                     <constraints>
                                         <constraint firstItem="9M9-dQ-J12" firstAttribute="top" secondItem="eJL-en-YG4" secondAttribute="top" constant="12" id="5El-N5-wkv"/>
                                         <constraint firstAttribute="bottom" secondItem="8cK-vi-MmN" secondAttribute="bottom" constant="8" id="5T5-77-QFy"/>
@@ -179,7 +179,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" name="dirtWhite"/>
+                                                    <color key="backgroundColor" name="contentBackground"/>
                                                     <constraints>
                                                         <constraint firstItem="FGZ-Ha-R4h" firstAttribute="centerX" secondItem="S3o-dz-id4" secondAttribute="centerX" id="Chl-nQ-St5"/>
                                                         <constraint firstAttribute="trailing" secondItem="S3o-dz-id4" secondAttribute="trailing" constant="10" id="CiT-y1-n0d"/>
@@ -350,7 +350,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" name="dirtWhite"/>
+                                                    <color key="backgroundColor" name="contentBackground"/>
                                                     <constraints>
                                                         <constraint firstItem="JtR-tJ-PeP" firstAttribute="leading" secondItem="IhU-fX-Gts" secondAttribute="trailing" constant="20" id="0xW-n3-I40"/>
                                                         <constraint firstItem="8lc-Xa-3Ir" firstAttribute="centerY" secondItem="ySq-oh-ZgU" secondAttribute="centerY" id="7ew-ie-tIa"/>
@@ -408,7 +408,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" name="white"/>
+                                <color key="backgroundColor" name="background"/>
                                 <constraints>
                                     <constraint firstItem="99I-OG-Vfb" firstAttribute="top" secondItem="wey-vi-kJt" secondAttribute="top" constant="50" id="8Hq-5m-rCS"/>
                                     <constraint firstAttribute="trailing" secondItem="17F-qC-G4g" secondAttribute="trailing" constant="10" id="Gfv-v6-z5l"/>
@@ -419,7 +419,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gf7-0T-T5q"/>
-                        <color key="backgroundColor" name="white"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="Gf7-0T-T5q" firstAttribute="bottom" secondItem="wey-vi-kJt" secondAttribute="bottom" id="217-lA-nP5"/>
                             <constraint firstItem="Gf7-0T-T5q" firstAttribute="trailing" secondItem="Py9-kz-7il" secondAttribute="trailing" id="6uy-vF-ou5"/>
@@ -473,13 +473,13 @@
     </scenes>
     <resources>
         <image name="person.3.fill" catalog="system" width="128" height="66"/>
-        <namedColor name="dirtWhite">
+        <namedColor name="contentBackground">
             <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="main">
             <color red="0.0" green="0.50199997425079346" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="white">
+        <namedColor name="background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
