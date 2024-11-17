@@ -42,7 +42,7 @@ class RankingWeeklyTableViewCell: UITableViewCell {
     }
     
     override func layoutSubviews() {
-        self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: 15).cgPath
+//        self.containerView.layer.shadowPath = UIBezierPath(roundedRect: self.containerView.bounds, cornerRadius: 15).cgPath
     }
     
     override func awakeFromNib() {
@@ -73,7 +73,7 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         self.delegate = delegate
         self.indexPath = indexPath
         self.rankingAttendance = rankingAttendance
-        self.setUpShadow()
+        self.setUpDesign()
         self.nameButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.nameButton.setUnderlinedTitle(rankingAttendance.person.name ?? "")
         self.attendanceLabel.text = String(rankingAttendance.attendanceNumber)
@@ -114,12 +114,10 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         self.handleStatistics()
     }
 
-    func setUpShadow() {
+    func setUpDesign() {
+        self.containerView.layer.borderWidth = 0
         self.containerView.cornerRadius = 15
         self.containerView.layer.masksToBounds = true
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.containerView.addShadow(height: 0, opacity: 0.3)
-        }
     }
     
     func setupLabelDesign(_ labelNumber: Int) {
@@ -141,18 +139,15 @@ class RankingWeeklyTableViewCell: UITableViewCell {
             break
         }
     }
-    
-    func handleShadowOnFriday(_ weekNumber: Int? = 0) {
-        // Show red and green cell only on friday and only if the week on focus is the current week
-        if Date().getDayNumberOfWeek() == 6, weekNumber == Date.now.getWeekNumber() {
-            // Check if the user has at least two presence or more than 2 admonishment
-            let attendance: Int = Int(attendanceLabel.text ?? "") ?? 0
-            let admonishment: Int = Int(admonishmentLabel.text ?? "") ?? 0
-            self.containerView.layer.shadowOpacity = 0.3
-            self.containerView.layer.shadowColor = attendance < 2 || admonishment >= 3
-            ? UIColor.systemRed.cgColor
-            : Theme.customGreen.cgColor
-        }
+    /// Show red and green cell only on friday, saturday and sunday and only if the week on focus is the current week
+    func handleBorderColorForHighlight() {
+        let attendance = self.rankingAttendance?.attendanceNumber ?? 0
+        let admonishment = self.rankingAttendance?.admonishmentNumber ?? 0
+        self.containerView.layer.borderWidth = 1
+        self.containerView.layer.borderColor = attendance < 2 || admonishment >= 3
+        ? UIColor.systemRed.cgColor
+        : Theme.customGreen.cgColor
+        
     }
     
     // Given an array of date create an array of Int that represents the specifc number of the day in the weel

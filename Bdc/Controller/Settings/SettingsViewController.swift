@@ -16,23 +16,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
-        self.setupTableViewShadow()
-        if #available(iOS 17.0, *) { self.handleTraitChange() }
-    }
-
-    func setupTableViewShadow() {
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.tableView.addShadow(height: 0, opacity: 0.3)
-        } else {
-            self.tableView.removeShadow()
-        }
-    }
-    
-    @available(iOS 17.0, *)
-    func handleTraitChange() {
-        self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
-            self.setupTableViewShadow()
-        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -106,7 +89,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 1: // Handle Person list
             self.performSegue(withIdentifier: "segueToHandlePersons", sender: self)
             self.tableView.deselectRow(at: indexPath, animated: false)
-        case 2: // 
+        case 2: //
             if let url = URL(string: "https://drive.google.com/file/d/1fvKB4Tbz4FOWQvNWF4ncY0XhpRdPdDB-/view?usp=sharing") {
                 let safariVC = SFSafariViewController(url: url)
                 safariVC.preferredBarTintColor = Theme.neutral

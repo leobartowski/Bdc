@@ -36,6 +36,7 @@ class RankingViewController: UIViewController {
     var rankingType: RankingType = .weekly
     var slotType: SlotType = .morningAndEvening
     var confettiView: SwiftConfettiView?
+    var showBorderForHighlithCell = false
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     
     // MARK: Lifecycle
@@ -74,8 +75,6 @@ class RankingViewController: UIViewController {
     @available(iOS 17.0, *)
     func handleTraitChange() {
         self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
-            self.setupShadowContainerPeriodView()
-            self.setupShadowContainerSlotView()
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.calendarView.reloadData()
@@ -154,8 +153,17 @@ class RankingViewController: UIViewController {
         }
     }
     
+    func calculateShowBorderForHighlighthCell() -> Bool {
+        guard let lastDay = self.daysCurrentPeriod.last else { return false }
+        let dayOfWeek = Date().getDayNumberOfWeek()
+        let weekNumber = dayOfWeek == 1 ? Date().twoDayBefore.getWeekNumber() : Date().getWeekNumber()
+        return (lastDay.getWeekNumber() == weekNumber && (dayOfWeek == 6 || dayOfWeek == 5)) ||
+        (lastDay.getWeekNumber() == weekNumber && dayOfWeek == 1)
+    }
+    
     private func loadCurrentWeekData( ) {
         self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Date.now)
+        self.showBorderForHighlithCell = self.calculateShowBorderForHighlighthCell()
         self.populateAttendance()
     }
 

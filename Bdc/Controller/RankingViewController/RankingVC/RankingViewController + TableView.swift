@@ -28,7 +28,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             if self.calculateIfShowConfetti(rankingAttendance) { self.startConfetti() }
             cell?.setUp(rankingAttendance, indexPath, self.rankingType, self.holidaysNumbers, self)
             cell?.setupLabelDesign(sorting.sortingPosition.rawValue)
-            cell?.handleShadowOnFriday(self.daysCurrentPeriod.last?.getWeekNumber())
+            if self.showBorderForHighlithCell { cell?.handleBorderColorForHighlight() }
             cell?.setNeedsLayout()
             return cell ?? UITableViewCell()
         } else {

@@ -56,8 +56,6 @@ class CalendarViewController: UIViewController {
     @available(iOS 17.0, *)
     func handleTraitChange() {
         self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
-            self.designBottomCalendarHandleView()
-            self.setupSegmentedControl()
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 self.calendarView.reloadData()
@@ -68,11 +66,6 @@ class CalendarViewController: UIViewController {
     // MARK: Utils and Design
     /// Add shadow and corner radius to bottom Calendar Handle View
     func designBottomCalendarHandleView() {
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.bottomCalendarHandleView.addShadow()
-        } else {
-            self.bottomCalendarHandleView.removeShadow()
-        }
         self.bottomCalendarHandleView.layer.cornerRadius = 13
         self.bottomCalendarHandleView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
 
@@ -106,11 +99,6 @@ class CalendarViewController: UIViewController {
     
     func setupSegmentedControl() {
         self.segmentedControl.backgroundColor = Theme.contentBackground
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.segmentedControl.addShadow(UIColor.systemGray3, height: 2, opacity: 0.5, shadowRadius: 1)
-        } else {
-            self.segmentedControl.removeShadow()
-        }
         self.segmentedControl.borderColor = Theme.main
         self.segmentedControl.selectedSegmentTintColor = Theme.main
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.neutral]

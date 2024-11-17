@@ -47,7 +47,7 @@ class RankingTableViewCell: UITableViewCell {
         self.indexPath = indexPath
         self.rankingAttendance = rankingAttendance
         self.rankingType = rankingType
-        self.setUpShadow()
+        self.setUpDesign()
         self.nameButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.nameButton.setUnderlinedTitle(rankingAttendance.person.name ?? "")
         self.attendanceLabel.text = self.getStringOfAttendanceLabel(rankingAttendance, rankingType)
@@ -66,12 +66,9 @@ class RankingTableViewCell: UITableViewCell {
         }
     }
     
-    func setUpShadow() {
+    func setUpDesign() {
         self.containerView.cornerRadius = 15
         self.containerView.layer.masksToBounds = true
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.containerView.addShadow(height: 0, opacity: 0.3)
-        }
     }
     
     func setupLabelDesign(_ labelNumber: Int) {

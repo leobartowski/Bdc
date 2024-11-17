@@ -51,20 +51,12 @@ class CalendarCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDeleg
             self.customBackgroundView.borderWidth = 2
         }
         self.customBackgroundView.backgroundColor = isAdmonished ? Theme.customYellow : Theme.contentBackground
-        self.setUpShadow()
+        self.setUpDesign()
     }
     
-    private func setUpShadow() {
+    private func setUpDesign() {
         self.customBackgroundView.layer.cornerRadius = 10
         self.customBackgroundView.layer.masksToBounds = true
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.customBackgroundView.layer.shadowColor = UIColor.systemGray.cgColor
-            self.customBackgroundView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-            self.customBackgroundView.layer.shadowOpacity = 0.3
-            self.customBackgroundView.layer.shadowRadius = 2
-            self.customBackgroundView.layer.shadowPath = UIBezierPath(roundedRect: self.customBackgroundView.bounds, cornerRadius: 10).cgPath
-            self.customBackgroundView.layer.masksToBounds = false
-        }
     }
     
     func showLoader() {

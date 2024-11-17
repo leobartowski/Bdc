@@ -57,10 +57,10 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         self.statsData = StatsData(self.attendances, isIndividualStats)
         self.statsData.calculateAllStats()
         self.setUpForIndividualStats()
-        self.setupShadowFirstLabelsCellContainerView()
-        self.setupShadowPeriodGrowthCellContainerView()
-        self.setupShadowRatioMorningEveningContainerView()
-        self.setupSegmentedControl()
+        self.setUpFirstLabelsCellContainerView()
+        self.setUpPeriodGrowthCellContainerView()
+        self.setUpRatioMorningEveningContainerView()
+        self.setUpSegmentedControl()
         self.setUpLineChart()
         self.setUpSlotLineChart()
         self.setupBarChartView()
@@ -103,61 +103,28 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         }
     }
     
-    func setupShadowFirstLabelsCellContainerView() {
+    func setUpFirstLabelsCellContainerView() {
         let cornerRadius: CGFloat = 15
         self.firstLabelsCellContainerView.cornerRadius = cornerRadius
         self.firstLabelsCellContainerView.layer.masksToBounds = true
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.firstLabelsCellContainerView.layer.shadowColor = UIColor.systemGray.cgColor
-            self.firstLabelsCellContainerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-            self.firstLabelsCellContainerView.layer.shadowOpacity = 0.3
-            self.firstLabelsCellContainerView.layer.shadowRadius = 2
-            self.firstLabelsCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.firstLabelsCellContainerView.bounds, cornerRadius: cornerRadius).cgPath
-            self.firstLabelsCellContainerView.layer.masksToBounds = false
-        } else {
-            self.firstLabelsCellContainerView.removeShadow()
-        }
     }
     
-    func setupShadowPeriodGrowthCellContainerView() {
+    func setUpPeriodGrowthCellContainerView() {
         let cornerRadius: CGFloat = 15
         self.periodGrowthLabelCellContainerView.cornerRadius = cornerRadius
         self.periodGrowthLabelCellContainerView.layer.masksToBounds = true
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.periodGrowthLabelCellContainerView.layer.shadowColor = UIColor.systemGray.cgColor
-            self.periodGrowthLabelCellContainerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-            self.periodGrowthLabelCellContainerView.layer.shadowOpacity = 0.3
-            self.periodGrowthLabelCellContainerView.layer.shadowRadius = 2
-            self.periodGrowthLabelCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.periodGrowthLabelCellContainerView.bounds, cornerRadius: cornerRadius).cgPath
-            self.periodGrowthLabelCellContainerView.layer.masksToBounds = false
-        } else {
-            self.periodGrowthLabelCellContainerView.removeShadow()
-        }
+
     }
     
-    func setupShadowRatioMorningEveningContainerView() {
+    func setUpRatioMorningEveningContainerView() {
         let cornerRadius: CGFloat = 15
         self.ratioMorningEveningCellContainerView.cornerRadius = cornerRadius
         self.ratioMorningEveningCellContainerView.layer.masksToBounds = true
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.ratioMorningEveningCellContainerView.layer.shadowColor = UIColor.systemGray.cgColor
-            self.ratioMorningEveningCellContainerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-            self.ratioMorningEveningCellContainerView.layer.shadowOpacity = 0.3
-            self.ratioMorningEveningCellContainerView.layer.shadowRadius = 2
-            self.ratioMorningEveningCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.ratioMorningEveningCellContainerView.bounds, cornerRadius: cornerRadius).cgPath
-            self.ratioMorningEveningCellContainerView.layer.masksToBounds = false
-        } else {
-            self.ratioMorningEveningCellContainerView.removeShadow()
-        }
     }
         
     @available(iOS 17.0, *)
     func handleTraitChange() {
         self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
-            self.setupShadowFirstLabelsCellContainerView()
-            self.setupShadowPeriodGrowthCellContainerView()
-            self.setupShadowRatioMorningEveningContainerView()
-            self.setupSegmentedControl()
             self.setUpLineChart()
             self.setupBarChartView()
             if self.weeklyChartData != nil {
@@ -182,13 +149,8 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     }
     
     // MARK: Segmented control
-    func setupSegmentedControl() {
+    func setUpSegmentedControl() {
         self.segmentedControl.backgroundColor = Theme.contentBackground
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.segmentedControl.addShadow(UIColor.systemGray3, height: 2, opacity: 0.5, shadowRadius: 1)
-        } else {
-            self.segmentedControl.removeShadow()
-        }
         self.segmentedControl.borderColor = Theme.main
         self.segmentedControl.selectedSegmentTintColor = Theme.main
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.neutral]
