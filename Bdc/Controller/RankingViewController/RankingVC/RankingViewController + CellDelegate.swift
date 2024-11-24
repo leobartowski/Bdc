@@ -23,3 +23,4 @@ extension RankingViewController: RankingWeeklyTableViewCellDelegate, RankingTabl
         }
     }
 }
+

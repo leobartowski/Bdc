@@ -155,10 +155,10 @@ class RankingViewController: UIViewController {
     
     func calculateShowBorderForHighlighthCell() -> Bool {
         guard let lastDay = self.daysCurrentPeriod.last else { return false }
-        let dayOfWeek = Date().getDayNumberOfWeek()
-        let weekNumber = dayOfWeek == 1 ? Date().twoDayBefore.getWeekNumber() : Date().getWeekNumber()
-        return (lastDay.getWeekNumber() == weekNumber && (dayOfWeek == 6 || dayOfWeek == 5)) ||
-        (lastDay.getWeekNumber() == weekNumber && dayOfWeek == 1)
+        let today = Date()
+        let dayOfWeek = today.getDayNumberOfWeek()
+        let weekNumber = dayOfWeek == 1 ? today.twoDayBefore.getWeekNumber() : today.getWeekNumber()
+        return lastDay.getWeekNumber() == weekNumber && (dayOfWeek == 7 || dayOfWeek == 1)
     }
     
     private func loadCurrentWeekData( ) {
