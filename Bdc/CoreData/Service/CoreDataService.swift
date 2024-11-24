@@ -22,7 +22,6 @@ class CoreDataService {
 
     /// Save  Person Admonished Attendence in Core Data for a specif date and daytype
     func saveAttendance(_ attendence: inout Attendance?, _ date: Date, _ type: DayType, _ persons: [Person]) {
-        let start = Date().timeIntervalSince1970
         if attendence == nil {
             attendence = Attendance(context: self.context)
             attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
@@ -31,7 +30,6 @@ class CoreDataService {
         attendence?.persons = NSSet(array: persons)
         do {
             try self.context.save()
-            print("SaveTimeEx: ", (Date().timeIntervalSince1970 - start).getString())
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }

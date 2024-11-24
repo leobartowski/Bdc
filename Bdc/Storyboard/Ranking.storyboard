@@ -132,9 +132,9 @@
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAy-0V-eWc">
-                                                            <rect key="frame" x="70" y="12.666666666666668" width="100" height="35"/>
+                                                            <rect key="frame" x="70" y="12.666666666666668" width="46" height="35"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="100" id="hWq-sH-xi3"/>
+                                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="Es4-XI-tad"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                                             <color key="tintColor" systemColor="labelColor"/>
@@ -181,6 +181,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" name="contentBackground"/>
                                                     <constraints>
+                                                        <constraint firstItem="AKf-rO-L3T" firstAttribute="leading" secondItem="7w3-3f-xet" secondAttribute="trailing" constant="120" id="89Q-fn-Rlg"/>
                                                         <constraint firstItem="FGZ-Ha-R4h" firstAttribute="centerX" secondItem="S3o-dz-id4" secondAttribute="centerX" id="Chl-nQ-St5"/>
                                                         <constraint firstAttribute="trailing" secondItem="S3o-dz-id4" secondAttribute="trailing" constant="10" id="CiT-y1-n0d"/>
                                                         <constraint firstItem="S3o-dz-id4" firstAttribute="centerY" secondItem="7w3-3f-xet" secondAttribute="centerY" id="JzL-0b-DNb"/>
@@ -192,7 +193,6 @@
                                                         <constraint firstAttribute="height" constant="60" id="WtV-n1-6he"/>
                                                         <constraint firstItem="kbP-iy-k2m" firstAttribute="top" secondItem="AKf-rO-L3T" secondAttribute="bottom" constant="-3" id="XG2-Xz-TNd"/>
                                                         <constraint firstItem="KAy-0V-eWc" firstAttribute="centerY" secondItem="7w3-3f-xet" secondAttribute="centerY" id="f1F-Pq-7ll"/>
-                                                        <constraint firstItem="AKf-rO-L3T" firstAttribute="leading" secondItem="KAy-0V-eWc" secondAttribute="trailing" constant="10" id="jz1-5i-uXF"/>
                                                         <constraint firstItem="7w3-3f-xet" firstAttribute="leading" secondItem="17H-UD-YIz" secondAttribute="leading" constant="20" id="r5D-27-a8M"/>
                                                         <constraint firstItem="AKf-rO-L3T" firstAttribute="centerY" secondItem="7w3-3f-xet" secondAttribute="centerY" id="sb4-6s-VQG"/>
                                                         <constraint firstItem="FGZ-Ha-R4h" firstAttribute="top" secondItem="S3o-dz-id4" secondAttribute="bottom" constant="-3" id="uTb-p5-M3n"/>
@@ -303,9 +303,9 @@
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwF-1V-nQE">
-                                                            <rect key="frame" x="70" y="12.666666666666668" width="100" height="35"/>
+                                                            <rect key="frame" x="70" y="12.666666666666668" width="46" height="35"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="100" id="qU1-My-403"/>
+                                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="qU1-My-403"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                                             <color key="tintColor" systemColor="labelColor"/>
@@ -358,11 +358,11 @@
                                                         <constraint firstItem="JtR-tJ-PeP" firstAttribute="centerY" secondItem="8lc-Xa-3Ir" secondAttribute="centerY" id="8iI-VN-z3f"/>
                                                         <constraint firstItem="rQe-zd-l2c" firstAttribute="top" secondItem="IhU-fX-Gts" secondAttribute="bottom" constant="-3" id="Brx-fE-7Wg"/>
                                                         <constraint firstItem="WgS-hc-LMk" firstAttribute="top" secondItem="JtR-tJ-PeP" secondAttribute="bottom" constant="-3" id="Ezl-FF-u9q"/>
+                                                        <constraint firstItem="IhU-fX-Gts" firstAttribute="leading" secondItem="8lc-Xa-3Ir" secondAttribute="trailing" constant="120" id="LYg-TL-PXZ"/>
                                                         <constraint firstAttribute="height" constant="60" id="R58-DE-duX"/>
                                                         <constraint firstItem="8lc-Xa-3Ir" firstAttribute="top" secondItem="ySq-oh-ZgU" secondAttribute="top" constant="10" id="VvF-SA-ayK"/>
                                                         <constraint firstItem="vwF-1V-nQE" firstAttribute="leading" secondItem="8lc-Xa-3Ir" secondAttribute="trailing" constant="10" id="Xqt-5W-XZb"/>
                                                         <constraint firstItem="rQe-zd-l2c" firstAttribute="centerX" secondItem="IhU-fX-Gts" secondAttribute="centerX" id="bSF-Yc-tVU"/>
-                                                        <constraint firstItem="IhU-fX-Gts" firstAttribute="leading" secondItem="vwF-1V-nQE" secondAttribute="trailing" constant="10" id="hqm-Ol-iDZ"/>
                                                         <constraint firstItem="IhU-fX-Gts" firstAttribute="centerY" secondItem="8lc-Xa-3Ir" secondAttribute="centerY" id="tJF-7m-BGL"/>
                                                         <constraint firstItem="vwF-1V-nQE" firstAttribute="centerY" secondItem="ySq-oh-ZgU" secondAttribute="centerY" id="vej-nE-Lw1"/>
                                                         <constraint firstItem="8lc-Xa-3Ir" firstAttribute="leading" secondItem="ySq-oh-ZgU" secondAttribute="leading" constant="20" id="wdk-Qo-6cQ"/>
@@ -472,24 +472,24 @@
         </scene>
     </scenes>
     <resources>
-        <image name="person.3.fill" catalog="system" width="128" height="66"/>
+        <image name="person.3.fill" catalog="system" width="32" height="32"/>
+        <namedColor name="background">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="contentBackground">
-            <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="main">
             <color red="0.0" green="0.50199997425079346" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="background">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

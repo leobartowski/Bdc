@@ -17,10 +17,10 @@ extension RankingViewController: RankingWeeklyTableViewCellDelegate, RankingTabl
     }
     
     fileprivate func openStatisticsVC(_ indexPath: IndexPath) {
+        self.feedbackGenerator.impactOccurred(intensity: 0.7)
         if let vc = self.getViewController(fromStoryboard: "Statistics", withIdentifier: "statisticsId") as? StatisticsViewController {
             vc.person = self.rankingPersonsAttendaces[indexPath.row].person
             self.present(vc, animated: true)
         }
     }
 }
-

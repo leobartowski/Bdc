@@ -36,9 +36,7 @@ class StatsData {
         self.maxDay = (firstAndMax.maxDateString, firstAndMax.maxCount)
         if isIndividual {
             self.firstDateIndividual = firstAndMax.firstDayString
-            let start = Date().timeIntervalSince1970
             self.bestStreak =  self.getBestStreakIndividual()
-            print((Date().timeIntervalSince1970 - start).getString())
         }
     }
     

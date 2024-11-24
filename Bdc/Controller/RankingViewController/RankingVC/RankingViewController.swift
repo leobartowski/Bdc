@@ -92,7 +92,6 @@ class RankingViewController: UIViewController {
     func populateAttendance() {
         self.showLoader()
         DispatchQueue.main.async {
-            let start = Date().timeIntervalSince1970
             self.cleanValuesAttendance()
             for day in self.daysCurrentPeriod {
                 let morningAttendance = CoreDataService.shared.getAttendace(day, type: .morning)
@@ -131,7 +130,6 @@ class RankingViewController: UIViewController {
                     }
                 }
             }
-            print("Diff Populate Att", (Date().timeIntervalSince1970 - start).getString())
             self.createHoldayDatesNumberArrayIfNeeded()
             self.sortDescendingAttendanceFirstTime()
             self.hideLoader()
