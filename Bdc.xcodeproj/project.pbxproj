@@ -12,7 +12,7 @@
 		CFDB48D8A7E962B77C7B952B /* Pods_Bdc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3652EAF5B75E35B222818918 /* Pods_Bdc.framework */; };
 		DD03AC1727481092004C4819 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */; };
 		DD03AC19274811B8004C4819 /* CalendarViewController + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC18274811B8004C4819 /* CalendarViewController + CollectionView.swift */; };
-		DD03AC1B27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */; };
+		DD03AC1B27481CBB004C4819 /* CalendarFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03AC1A27481CBB004C4819 /* CalendarFooterCollectionReusableView.swift */; };
 		DD0CAB532728108600EA42B1 /* DayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB522728108600EA42B1 /* DayType.swift */; };
 		DD0CAB552729493F00EA42B1 /* UIViewController + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */; };
 		DD0E35BF277BB7F50082D32C /* AddChangePersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E35BE277BB7F50082D32C /* AddChangePersonViewController.swift */; };
@@ -181,7 +181,7 @@
 		9BFA4AC8C666FA34A5B36127 /* Pods-BdcTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BdcTests.release.xcconfig"; path = "Target Support Files/Pods-BdcTests/Pods-BdcTests.release.xcconfig"; sourceTree = "<group>"; };
 		DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD03AC18274811B8004C4819 /* CalendarViewController + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController + CollectionView.swift"; sourceTree = "<group>"; };
-		DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		DD03AC1A27481CBB004C4819 /* CalendarFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		DD0CAB4F27280FB200EA42B1 /* Attendance+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attendance+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DD0CAB522728108600EA42B1 /* DayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayType.swift; sourceTree = "<group>"; };
 		DD0CAB542729493F00EA42B1 /* UIViewController + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ext.swift"; sourceTree = "<group>"; };
@@ -850,7 +850,7 @@
 			isa = PBXGroup;
 			children = (
 				DD03AC1627481092004C4819 /* CalendarCollectionViewCell.swift */,
-				DD03AC1A27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift */,
+				DD03AC1A27481CBB004C4819 /* CalendarFooterCollectionReusableView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -1232,7 +1232,7 @@
 				DD30A8AF2913DB97007DC8F3 /* RankingViewController + HandlePeriod.swift in Sources */,
 				DD709C852773612C00D20C6A /* FilterBottomSheetTableViewCell.swift in Sources */,
 				DD27CAB1277368810020BE4D /* RankingType.swift in Sources */,
-				DD03AC1B27481CBB004C4819 /* CalendarHeaderCollectionReusableView.swift in Sources */,
+				DD03AC1B27481CBB004C4819 /* CalendarFooterCollectionReusableView.swift in Sources */,
 				DD60B5552753C72600D776CC /* RankingDayHeaderCollectionReusableView.swift in Sources */,
 				DD617CEB2753C2F9002AD5E7 /* RankingSingleDayCollectionViewCell.swift in Sources */,
 				DDE3B1722722CD4200BFEFF0 /* Formatter - Ext.swift in Sources */,

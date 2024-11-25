@@ -20,6 +20,9 @@ class CalendarViewController: UIViewController {
     @IBOutlet var calendarViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var footerView: CalendarFooterCollectionReusableView!
+    
+    
     var dayType = DayType.evening
     var allPersons = PersonListUtility.persons
     var selectedAttendance: Attendance?

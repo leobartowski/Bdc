@@ -324,4 +324,31 @@ class CoreDataService {
             print("Error:  \(error), \(error.userInfo)")
         }
     }
+
+    func deleteSpecificAttendance(_ dateString: String) -> Bool {
+        let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
+        fetchRequest.predicate = NSPredicate(format: "dateString == %@", dateString)
+        do {
+            let attendances = try context.fetch(fetchRequest)
+            for attendance in attendances {
+                context.delete(attendance)
+            }
+            try context.save()
+        } catch let error as NSError {
+            print("Could not delete attendance. \(error), \(error.userInfo)")
+            return false
+        }
+        return true
+    }
+    
+    /// Prints all the days with more than 2 att objects (SHOULD BE ZERO)
+    func checkIfThereAreMultipleAttendanceForASlot() {
+        let atts = self.getAllAttendaces() ?? []
+        var dict: [String: Int] = [:]
+        for att in atts {
+            dict[att.dateString ?? "", default: 0] += 1
+        }
+        let filtered = dict.filter { $0.value > 2}
+        print(filtered)
+    }
 }

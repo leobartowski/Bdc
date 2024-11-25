@@ -83,6 +83,10 @@ class StatsData {
             if let dateString = attendance.dateString {
                 let personCount = isIndividual ? 1 : attendance.persons?.count ?? 0
                 allAttendances[dateString, default: 0] += personCount
+                if dateString == "15/11/2024"{
+                    let persons = attendance.persons?.allObjects as? [Person] ?? []
+                    print("persone 15/11", persons.map { $0.name })
+                }
                 if self.isIndividual && personCount == 1 {
                     let date = DateFormatter.basicFormatter.date(from: dateString) ?? Date()
                     if currentMin > date { currentMin = date }

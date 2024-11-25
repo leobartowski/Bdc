@@ -56,12 +56,25 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             CoreDataService.shared.saveAttendance(&self.selectedAttendance, self.calendarView.selectedDate ?? Date(), self.dayType, self.personsPresent)
             self.postNotificationUpdateAttendance()
             self.collectionView.reloadItems(at: [indexPath])
-
+            self.updateFooter()
         }
     }
     
     func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 80, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionFooter:
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                             withReuseIdentifier: "footerID",
+                                                                             for: indexPath) as? CalendarFooterCollectionReusableView
+            footerView?.updateLabel(self.personsPresent.count, self.personsAdmonished.count)
+            return footerView ?? UICollectionReusableView()
+            
+        default: return UICollectionReusableView()
+        }
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -102,7 +115,15 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
                                                             self.personsAdmonished)
             self.postNotificationUpdateAttendance()
             self.collectionView.reloadItems(at: [indexPath])
-
+            self.updateFooter()
+        }
+    }
+    
+    private func updateFooter() {
+        if let footer = self.collectionView
+            .visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionFooter)
+            .first as? CalendarFooterCollectionReusableView {
+            footer.updateLabel(self.personsPresent.count, self.personsAdmonished.count)
         }
     }
 }
