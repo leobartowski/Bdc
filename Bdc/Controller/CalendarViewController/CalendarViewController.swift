@@ -18,11 +18,8 @@ class CalendarViewController: UIViewController {
     @IBOutlet var goToTodayButton: UIButton!
     @IBOutlet var segmentedControlContainerView: UIView!
     @IBOutlet var calendarViewHeightConstraint: NSLayoutConstraint!
-
     @IBOutlet weak var searchBar: UISearchBar!
 
-    
-    
     var dayType = DayType.evening
     var allPersons = PersonListUtility.persons
     var selectedAttendance: Attendance?

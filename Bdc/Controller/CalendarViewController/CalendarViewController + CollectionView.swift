@@ -18,6 +18,12 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         return filteredPerson.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return self.allPersons.count == self.filteredPerson.count
+        ? CGSize(width: self.view.frame.width, height: 40)
+        : .zero
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "presentCellID", for: indexPath) as? CalendarCollectionViewCell
         let person = filteredPerson[indexPath.row]
@@ -28,7 +34,6 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        // Check to avoid the modification of day older than today
         let selectedDate = Date().days(from: calendarView.selectedDate ?? Date())
         if selectedDate > 0 && !self.canModifyOldDays {
             return false
@@ -65,16 +70,13 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionView.elementKindSectionFooter:
-            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                             withReuseIdentifier: "footerID",
-                                                                             for: indexPath) as? CalendarFooterCollectionReusableView
+        if kind == UICollectionView.elementKindSectionFooter {
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footerID", for: indexPath) as? CalendarFooterCollectionReusableView
             footerView?.updateLabel(self.personsPresent.count, self.personsAdmonished.count)
             return footerView ?? UICollectionReusableView()
             
-        default: return UICollectionReusableView()
         }
+        return UICollectionReusableView()
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -126,4 +128,5 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             footer.updateLabel(self.personsPresent.count, self.personsAdmonished.count)
         }
     }
+
 }
