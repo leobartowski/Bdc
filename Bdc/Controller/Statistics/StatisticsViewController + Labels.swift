@@ -31,6 +31,7 @@ extension StatisticsViewController {
         self.createRatioMornignEveningLabel()
         if self.isIndividualStats {
             self.createBestStreakLabel()
+            self.createBestPalsLabels()
         } else {
             self.createMaxNumberOfAttendanceLabel()
         }
@@ -55,6 +56,14 @@ extension StatisticsViewController {
                                                             endText: basicText.end,
                                                             numberFontColor: color)
         self.periodGrowthLabel.incrementFromZero(toValue: abs(growth), duration: incrementaLabelAnimationDuration)
+    }
+    
+    fileprivate func createBestPalsLabels() {
+        if self.statsData.bestPals.count >= 2 {
+            self.firstPalLabel.text = self.statsData.bestPals[0].key + " con \(self.statsData.bestPals[0].value) presenze"
+            self.secondPalLabel.text = self.statsData.bestPals[1].key + " con \(self.statsData.bestPals[1].value) presenze"
+            self.thirdPalLabel.text = self.statsData.bestPals[2].key + " con \(self.statsData.bestPals[2].value) presenze"
+        }
     }
     
     fileprivate func createTotalAttendanceLabel() {

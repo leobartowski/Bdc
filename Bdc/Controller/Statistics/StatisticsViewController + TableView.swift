@@ -18,27 +18,28 @@ extension StatisticsViewController {
             switch indexPath.row {
             case 0: // Profile Pic Cell Individual
                 return self.isIndividualStats ? UITableView.automaticDimension : 0
-            case 1: // First Label Cell
-//                return 103
+            case 1: // First Labels Cell
                 return self.isIndividualStats ? 124 : 103 // 10 + 10 + 10 + 10 + 21 (42) + 42
-            case 2: // Segmented control
+            case 2: // Best Pal Labels Cell
+                return self.isIndividualStats ? UITableView.automaticDimension : 0
+            case 3: // Segmented control
                 return 53 // 10 + 10 + 33
-            case 3: // Divider Label Bar Chart
+            case 4: // Divider Label Bar Chart
                 return UITableView.automaticDimension
-            case 4: // Line chart
+            case 5: // Line chart
                 return 285 // 10 + 15 + 10 + 250
-            case 5: // Period Growth Label cell
+            case 6: // Period Growth Label cell
                 return 82 // 10 + 10 + 10 + 10 + 42
-            case 6: // Divider Label Bar Chart
+            case 7: // Divider Label Bar Chart
 //                return 41 // 10 + 10 + 21
                 return UITableView.automaticDimension // 10 + 10 + 21
-            case 7: // Slot Line chart
+            case 8: // Slot Line chart
                 return 305 // 10 + 35 + 10 + 250
-            case 8: // Ratio Morning Label cell
+            case 9: // Ratio Morning Label cell
                 return 82 //  10 + 10 + 10 + 10 + 42
-            case 9: // Divider Label Bar Chart
+            case 10: // Divider Label Bar Chart
                 return self.chartPeriodType == .yearly ? 0 : UITableView.automaticDimension
-            case 10: // Bar Chart weekly
+            case 11: // Bar Chart weekly
                 return self.chartPeriodType == .yearly ? 0 : 220 // 200 + 10 + 10
             default:
                 return 0

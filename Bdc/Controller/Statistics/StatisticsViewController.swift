@@ -26,6 +26,10 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     @IBOutlet weak var firstLabelsCellContainerView: UIView!
     @IBOutlet weak var periodGrowthLabelCellContainerView: UIView!
     @IBOutlet weak var ratioMorningEveningCellContainerView: UIView!
+    @IBOutlet weak var thirdPalLabel: UILabel!
+    @IBOutlet weak var secondPalLabel: UILabel!
+    @IBOutlet weak var firstPalLabel: UILabel!
+    @IBOutlet weak var bestPalsCellContainerView: UIView!
     @IBOutlet weak var dividerBarChartLabel: UILabel!
     @IBOutlet weak var dividerSlotLineChartLabel: UILabel!
     @IBOutlet weak var dividerLineChartLabel: UILabel!
@@ -46,7 +50,6 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     var chartPeriodType: ChartPeriodType = .monthly
     var chartPeriodHelper = ChartPeriodHelper(.monthly)
     var statsData =  StatsData([])
-    
     var lineChartlabelHandler = EfficientLabelHandler()
     let incrementaLabelAnimationDuration: Double = 1.5
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
@@ -54,7 +57,7 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     override func viewDidLoad() {
         self.isIndividualStats = self.person != nil
         self.attendances = self.getAttendance() ?? []
-        self.statsData = StatsData(self.attendances, isIndividualStats)
+        self.statsData = StatsData(self.attendances, self.person)
         self.statsData.calculateAllStats()
         self.setUpForIndividualStats()
         self.setUpFirstLabelsCellContainerView()

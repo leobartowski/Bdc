@@ -74,7 +74,6 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footerID", for: indexPath) as? CalendarFooterCollectionReusableView
             footerView?.updateLabel(self.personsPresent.count, self.personsAdmonished.count)
             return footerView ?? UICollectionReusableView()
-            
         }
         return UICollectionReusableView()
     }

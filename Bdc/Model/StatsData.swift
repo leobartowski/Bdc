@@ -9,6 +9,7 @@ import Foundation
 class StatsData {
     
     var attHelper: AttendanceHelper
+    let personIfIndividual: Person?
     let isIndividual: Bool
     var totalAttendance: Int = 0
     var totalAttendanceMorning: Int = 0
@@ -19,9 +20,11 @@ class StatsData {
     var maxDay: (dateString: String, nOfAtt: Int) = ("", 0)
     var firstDateIndividual: String = ""
     var bestStreak: (beginDate: String, endDate: String, count: Int) = ("", "", 0)
+    var bestPals: [Dictionary<String, Int>.Element] = []
     
-    init(_ totalAttendance: [Attendance], _ isIndividual: Bool = false) {
-        self.isIndividual = isIndividual
+    init(_ totalAttendance: [Attendance], _ person: Person? = nil) {
+        self.personIfIndividual = person
+        self.isIndividual = person != nil
         self.attHelper = AttendanceHelper(total: totalAttendance)
     }
     
@@ -32,11 +35,12 @@ class StatsData {
         self.weeklyGrowth = self.calculateWeeklyGrowth()
         self.monthlyGrowth = self.calculateMonthlyGrowth()
         self.yearlyGrowth = self.calculateYearlyGrowth()
-        let firstAndMax = self.getFirstAndMaxDayAttendance()
-        self.maxDay = (firstAndMax.maxDateString, firstAndMax.maxCount)
+        let firstMaxBestPals = self.getFirstMaxDayAndBestPals()
+        self.maxDay = (firstMaxBestPals.maxDateString, firstMaxBestPals.maxCount)
         if isIndividual {
-            self.firstDateIndividual = firstAndMax.firstDayString
+            self.firstDateIndividual = firstMaxBestPals.firstDayString
             self.bestStreak =  self.getBestStreakIndividual()
+            self.bestPals = firstMaxBestPals.bestPals
         }
     }
     
@@ -76,28 +80,32 @@ class StatsData {
             .reduce(into: 0) { $0 += (isIndividual ? 1 : $1.persons?.count ?? 0) }
     }
     
-    private func getFirstAndMaxDayAttendance() -> (maxDateString: String, maxCount: Int, firstDayString: String) {
+    private func getFirstMaxDayAndBestPals() -> (maxDateString: String, maxCount: Int, firstDayString: String, bestPals: [Dictionary<String, Int>.Element]) {
         var allAttendances: [String: Int] = [:]
+        var countAttedancesPal: [String: Int] = [:]
         var currentMin = Date()
         for attendance in self.attHelper.total {
             if let dateString = attendance.dateString {
                 let personCount = isIndividual ? 1 : attendance.persons?.count ?? 0
-                allAttendances[dateString, default: 0] += personCount
-                if dateString == "15/11/2024"{
+                if self.isIndividual {
                     let persons = attendance.persons?.allObjects as? [Person] ?? []
-                    print("persone 15/11", persons.map { $0.name })
+                    for pal in persons where pal.name != self.personIfIndividual?.name {
+                        countAttedancesPal[pal.name ?? "", default: 0] += 1
+                    }
                 }
+                allAttendances[dateString, default: 0] += personCount
                 if self.isIndividual && personCount == 1 {
                     let date = DateFormatter.basicFormatter.date(from: dateString) ?? Date()
                     if currentMin > date { currentMin = date }
                 }
             }
         }
+        let bestPalsSorted = countAttedancesPal.sorted { $0.value > $1.value }
         let firstDayString = DateFormatter.basicFormatter.string(from: currentMin)
         if let maxDay = allAttendances.max(by: {$0.value < $1.value}) {
-            return (maxDay.key, maxDay.value, firstDayString)
+            return (maxDay.key, maxDay.value, firstDayString, bestPalsSorted)
         }
-        return ("", 0, firstDayString)
+        return ("", 0, firstDayString, bestPalsSorted)
     }
     
     private func getBestStreakIndividual() -> (beginDate: String, endDate: String, count: Int) {
