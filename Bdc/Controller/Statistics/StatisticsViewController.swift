@@ -63,6 +63,7 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         self.setUpFirstLabelsCellContainerView()
         self.setUpPeriodGrowthCellContainerView()
         self.setUpRatioMorningEveningContainerView()
+        self.setUpBestPalsContainerView()
         self.setUpSegmentedControl()
         self.setUpLineChart()
         self.setUpSlotLineChart()
@@ -82,12 +83,6 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
             self.createAndAnimateGrowthLabel()
             self.hasViewAppearedOnce = true
         }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        self.firstLabelsCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.firstLabelsCellContainerView.bounds, cornerRadius: 15).cgPath
-        self.periodGrowthLabelCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.periodGrowthLabelCellContainerView.bounds, cornerRadius: 15).cgPath
-        self.ratioMorningEveningCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.ratioMorningEveningCellContainerView.bounds, cornerRadius: 15).cgPath
     }
     
     private func getAttendance() -> [Attendance]? {
@@ -123,6 +118,11 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         let cornerRadius: CGFloat = 15
         self.ratioMorningEveningCellContainerView.cornerRadius = cornerRadius
         self.ratioMorningEveningCellContainerView.layer.masksToBounds = true
+    }
+    func setUpBestPalsContainerView() {
+        let cornerRadius: CGFloat = 15
+        self.bestPalsCellContainerView.cornerRadius = cornerRadius
+        self.bestPalsCellContainerView.layer.masksToBounds = true
     }
         
     @available(iOS 17.0, *)

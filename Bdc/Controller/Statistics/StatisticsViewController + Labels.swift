@@ -60,9 +60,10 @@ extension StatisticsViewController {
     
     fileprivate func createBestPalsLabels() {
         if self.statsData.bestPals.count >= 2 {
-            self.firstPalLabel.text = self.statsData.bestPals[0].key + " con \(self.statsData.bestPals[0].value) presenze"
-            self.secondPalLabel.text = self.statsData.bestPals[1].key + " con \(self.statsData.bestPals[1].value) presenze"
-            self.thirdPalLabel.text = self.statsData.bestPals[2].key + " con \(self.statsData.bestPals[2].value) presenze"
+            let palsEmojis = ["🥇", "🥈", "🥉"]
+            self.firstPalLabel.text = "\(palsEmojis[0]) " + self.statsData.bestPals[0].key + " con \(self.statsData.bestPals[0].value) presenze"
+            self.secondPalLabel.text = "\(palsEmojis[1]) " + self.statsData.bestPals[1].key + " con \(self.statsData.bestPals[1].value) presenze"
+            self.thirdPalLabel.text = "\(palsEmojis[2]) " + self.statsData.bestPals[2].key + " con \(self.statsData.bestPals[2].value) presenze"
         }
     }
     
