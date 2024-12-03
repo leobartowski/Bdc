@@ -34,6 +34,13 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     @IBOutlet weak var dividerSlotLineChartLabel: UILabel!
     @IBOutlet weak var dividerLineChartLabel: UILabel!
     @IBOutlet weak var ratioMorningEveningLabel: IncrementableLabel!
+    // Podium
+    @IBOutlet weak var podiumFirstImageView: UIImageView!
+    @IBOutlet weak var podiumSecondImageView: UIImageView!
+    @IBOutlet weak var podiumThirdImageView: UIImageView!
+    @IBOutlet weak var podiumFirstLabel: UILabel!
+    @IBOutlet weak var podiumSecondLabel: UILabel!
+    @IBOutlet weak var podiumThirdLabel: UILabel!
     
     var person: Person?
     var isIndividualStats = false
@@ -73,6 +80,7 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         self.setUpRecognizer()
         self.setTextDividerLabels()
         self.createLabels()
+        self.createPodium()
         self.tableView.reloadData()
         if #available(iOS 17.0, *) { self.handleTraitChange() }
     }

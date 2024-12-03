@@ -79,6 +79,7 @@
 		DD7B258527567B0600E663AC /* RankingViewController + PDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */; };
 		DD7B2587275680BD00E663AC /* PDFTableDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */; };
 		DD7B2589275680DE00E663AC /* Array - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B2588275680DE00E663AC /* Array - Ext.swift */; };
+		DD8082F62CFF5BD70039BA26 /* StatisticsViewController + Podium.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8082F52CFF5BCC0039BA26 /* StatisticsViewController + Podium.swift */; };
 		DD8483072774DE9E00E7F179 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8483062774DE9E00E7F179 /* Constant.swift */; };
 		DD84830A27772AFA00E7F179 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84830927772AFA00E7F179 /* SettingsViewController.swift */; };
 		DD84830D27772FC200E7F179 /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */; };
@@ -248,6 +249,7 @@
 		DD7B258427567B0600E663AC /* RankingViewController + PDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingViewController + PDF.swift"; sourceTree = "<group>"; };
 		DD7B2586275680BD00E663AC /* PDFTableDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFTableDataItem.swift; sourceTree = "<group>"; };
 		DD7B2588275680DE00E663AC /* Array - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array - Ext.swift"; sourceTree = "<group>"; };
+		DD8082F52CFF5BCC0039BA26 /* StatisticsViewController + Podium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsViewController + Podium.swift"; sourceTree = "<group>"; };
 		DD8483062774DE9E00E7F179 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		DD84830927772AFA00E7F179 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DD84830C27772FC200E7F179 /* SettingsSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 			isa = PBXGroup;
 			children = (
 				DD4109332CC94DCB00551761 /* StatisticsViewController.swift */,
+				DD8082F52CFF5BCC0039BA26 /* StatisticsViewController + Podium.swift */,
 				DDD882BC2CD2A75F00E6D47A /* StatisticsViewController + Labels.swift */,
 				DDFCFFB82CD161B700052BD8 /* StatisticsViewController + SetUpLineCharts.swift */,
 				DD4109372CC95B3000551761 /* StatisticsViewController + CreateLineCharts.swift */,
@@ -1226,6 +1229,7 @@
 				DD47EEC3278B3CBF0081388D /* Label - Ext.swift in Sources */,
 				DD03AC19274811B8004C4819 /* CalendarViewController + CollectionView.swift in Sources */,
 				DD4C954F2CE0FE4F00415288 /* UIButton - Ext.swift in Sources */,
+				DD8082F62CFF5BD70039BA26 /* StatisticsViewController + Podium.swift in Sources */,
 				DD0CAB532728108600EA42B1 /* DayType.swift in Sources */,
 				DDFCFFB92CD161B900052BD8 /* StatisticsViewController + SetUpLineCharts.swift in Sources */,
 				DD41093D2CCA6ECD00551761 /* LinearMarkerViewForPoint.swift in Sources */,

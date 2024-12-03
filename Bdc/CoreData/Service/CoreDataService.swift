@@ -134,6 +134,20 @@ class CoreDataService {
         }
         return []
     }
+    
+    func getPersonIconString(for personName: String) -> String {
+        let fetchRequest = NSFetchRequest<Person>(entityName: "Person")
+        fetchRequest.predicate = NSPredicate(format: "name == %@", personName)
+        fetchRequest.fetchLimit = 1
+        do {
+            if let person = try context.fetch(fetchRequest).first {
+                return person.iconString ?? ""
+            }
+        } catch let error as NSError {
+            print("Could not fetch person. \(error), \(error.userInfo)")
+        }
+        return ""
+    }
 
     func deletePersonFromPersonsList(name: String? = "") {
         
