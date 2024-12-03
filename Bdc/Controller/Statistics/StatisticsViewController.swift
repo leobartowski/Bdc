@@ -26,10 +26,6 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     @IBOutlet weak var firstLabelsCellContainerView: UIView!
     @IBOutlet weak var periodGrowthLabelCellContainerView: UIView!
     @IBOutlet weak var ratioMorningEveningCellContainerView: UIView!
-    @IBOutlet weak var thirdPalLabel: UILabel!
-    @IBOutlet weak var secondPalLabel: UILabel!
-    @IBOutlet weak var firstPalLabel: UILabel!
-    @IBOutlet weak var bestPalsCellContainerView: UIView!
     @IBOutlet weak var dividerBarChartLabel: UILabel!
     @IBOutlet weak var dividerSlotLineChartLabel: UILabel!
     @IBOutlet weak var dividerLineChartLabel: UILabel!
@@ -70,7 +66,6 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         self.setUpFirstLabelsCellContainerView()
         self.setUpPeriodGrowthCellContainerView()
         self.setUpRatioMorningEveningContainerView()
-        self.setUpBestPalsContainerView()
         self.setUpSegmentedControl()
         self.setUpLineChart()
         self.setUpSlotLineChart()
@@ -80,7 +75,6 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         self.setUpRecognizer()
         self.setTextDividerLabels()
         self.createLabels()
-        self.createPodium()
         self.tableView.reloadData()
         if #available(iOS 17.0, *) { self.handleTraitChange() }
     }
@@ -126,11 +120,6 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         let cornerRadius: CGFloat = 15
         self.ratioMorningEveningCellContainerView.cornerRadius = cornerRadius
         self.ratioMorningEveningCellContainerView.layer.masksToBounds = true
-    }
-    func setUpBestPalsContainerView() {
-        let cornerRadius: CGFloat = 15
-        self.bestPalsCellContainerView.cornerRadius = cornerRadius
-        self.bestPalsCellContainerView.layer.masksToBounds = true
     }
         
     @available(iOS 17.0, *)

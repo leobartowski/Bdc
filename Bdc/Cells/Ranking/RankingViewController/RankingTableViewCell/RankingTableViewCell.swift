@@ -117,8 +117,7 @@ class RankingTableViewCell: UITableViewCell {
         if numberOfPossibleAttendance != 0 {
             let percental = (numberOfPresenceDouble / numberOfPossibleAttendanceDouble) * 100
             let percentalString = String(format: "%.0f", percental)
-            
-            return "\(percentalString)%"
+            return percentalString + "%"
         }
         return ""
     }
