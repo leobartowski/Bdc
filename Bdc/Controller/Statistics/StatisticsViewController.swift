@@ -10,6 +10,9 @@ import IncrementableLabel
 
 class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var personImageView: UIImageView!
+    @IBOutlet weak var personNameLabel: UILabel!
+    @IBOutlet weak var personDescriptionLabel: UILabel!
     @IBOutlet weak var barGraphCell: UITableViewCell!
     @IBOutlet weak var segmentedControl: MySegmentedControl!
     @IBOutlet weak var lineChartView: LineChartView!
@@ -19,7 +22,7 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     @IBOutlet weak var slotLineChartViewLabel: UILabel!
     @IBOutlet weak var totalAttendanceLabel: IncrementableLabel!
     @IBOutlet weak var periodGrowthLabel: IncrementableLabel!
-    @IBOutlet weak var dayMaxNumberOfAttendanceLabel: IncrementableLabel!
+    @IBOutlet weak var secondStatsLabel: IncrementableLabel!
     @IBOutlet weak var firstLabelsCellContainerView: UIView!
     @IBOutlet weak var periodGrowthLabelCellContainerView: UIView!
     @IBOutlet weak var ratioMorningEveningCellContainerView: UIView!
@@ -27,6 +30,17 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     @IBOutlet weak var dividerSlotLineChartLabel: UILabel!
     @IBOutlet weak var dividerLineChartLabel: UILabel!
     @IBOutlet weak var ratioMorningEveningLabel: IncrementableLabel!
+    // Podium
+    @IBOutlet weak var podiumFirstImageView: UIImageView!
+    @IBOutlet weak var podiumSecondImageView: UIImageView!
+    @IBOutlet weak var podiumThirdImageView: UIImageView!
+    @IBOutlet weak var podiumFirstLabel: UILabel!
+    @IBOutlet weak var podiumSecondLabel: UILabel!
+    @IBOutlet weak var podiumThirdLabel: UILabel!
+    
+    var person: Person?
+    var isIndividualStats = false
+    var hasViewAppearedOnce = false
     
     var attendances: [Attendance] = []
     var weeklyChartData: LineChartCachedData?
@@ -36,26 +50,28 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     var monthlyBarChartData: BarChartCachedData?
     var morningCountForSlotChart: Int = 0
     var eveningCountForSlotChart: Int = 0
-    var chartPeriodType: ChartPeriodType = .weekly
+    var chartPeriodType: ChartPeriodType = .monthly
+    var chartPeriodHelper = ChartPeriodHelper(.monthly)
     var statsData =  StatsData([])
-    
     var lineChartlabelHandler = EfficientLabelHandler()
     let incrementaLabelAnimationDuration: Double = 1.5
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     
     override func viewDidLoad() {
-        self.attendances = CoreDataService.shared.getAllAttendaces() ?? []
-        self.statsData = StatsData(self.attendances)
+        self.isIndividualStats = self.person != nil
+        self.attendances = self.getAttendance() ?? []
+        self.statsData = StatsData(self.attendances, self.person)
         self.statsData.calculateAllStats()
-        self.setupShadowFirstLabelsCellContainerView()
-        self.setupShadowPeriodGrowthCellContainerView()
-        self.setupShadowRatioMorningEveningContainerView()
+        self.setUpForIndividualStats()
+        self.setUpFirstLabelsCellContainerView()
+        self.setUpPeriodGrowthCellContainerView()
+        self.setUpRatioMorningEveningContainerView()
+        self.setUpSegmentedControl()
         self.setUpLineChart()
         self.setUpSlotLineChart()
         self.setupBarChartView()
-        self.createWeeklyAttendanceBarChart()
-        self.createWeeklyLineCharts()
-        self.setupSegmentedControl()
+        self.createMonthlyLineCharts()
+        self.createMonthlyAttendanceBarChart()
         self.setUpRecognizer()
         self.setTextDividerLabels()
         self.createLabels()
@@ -64,71 +80,51 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.animateIncrementalLabels()
-        self.createAndAnimateGrowthLabel()
+        if !self.hasViewAppearedOnce {
+            self.animateIncrementalLabels()
+            self.createAndAnimateGrowthLabel()
+            self.hasViewAppearedOnce = true
+        }
     }
     
-    override func viewDidLayoutSubviews() {
-        self.firstLabelsCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.firstLabelsCellContainerView.bounds, cornerRadius: 15).cgPath
-        self.periodGrowthLabelCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.periodGrowthLabelCellContainerView.bounds, cornerRadius: 15).cgPath
-        self.ratioMorningEveningCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.ratioMorningEveningCellContainerView.bounds, cornerRadius: 15).cgPath
+    private func getAttendance() -> [Attendance]? {
+        return self.isIndividualStats
+        ? CoreDataService.shared.getAllAttendaces(for: self.person!)
+        : CoreDataService.shared.getAllAttendaces()
     }
     
-    func setupShadowFirstLabelsCellContainerView() {
+    func setUpForIndividualStats() {
+        if let person = self.person {
+            self.personImageView.layer.cornerRadius = self.personImageView.frame.height / 2
+            let imageString = CommonUtility.getProfileImageString(person)
+            self.personImageView.image = UIImage(named: imageString)
+            self.personNameLabel.text = person.name
+            self.personDescriptionLabel.text = "Prima presenza: " + self.statsData.firstDateIndividual
+        }
+    }
+    
+    func setUpFirstLabelsCellContainerView() {
         let cornerRadius: CGFloat = 15
         self.firstLabelsCellContainerView.cornerRadius = cornerRadius
         self.firstLabelsCellContainerView.layer.masksToBounds = true
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.firstLabelsCellContainerView.layer.shadowColor = UIColor.systemGray.cgColor
-            self.firstLabelsCellContainerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-            self.firstLabelsCellContainerView.layer.shadowOpacity = 0.3
-            self.firstLabelsCellContainerView.layer.shadowRadius = 2
-            self.firstLabelsCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.firstLabelsCellContainerView.bounds, cornerRadius: cornerRadius).cgPath
-            self.firstLabelsCellContainerView.layer.masksToBounds = false
-        } else {
-            self.firstLabelsCellContainerView.removeShadow()
-        }
     }
     
-    func setupShadowPeriodGrowthCellContainerView() {
+    func setUpPeriodGrowthCellContainerView() {
         let cornerRadius: CGFloat = 15
         self.periodGrowthLabelCellContainerView.cornerRadius = cornerRadius
         self.periodGrowthLabelCellContainerView.layer.masksToBounds = true
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.periodGrowthLabelCellContainerView.layer.shadowColor = UIColor.systemGray.cgColor
-            self.periodGrowthLabelCellContainerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-            self.periodGrowthLabelCellContainerView.layer.shadowOpacity = 0.3
-            self.periodGrowthLabelCellContainerView.layer.shadowRadius = 2
-            self.periodGrowthLabelCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.periodGrowthLabelCellContainerView.bounds, cornerRadius: cornerRadius).cgPath
-            self.periodGrowthLabelCellContainerView.layer.masksToBounds = false
-        } else {
-            self.periodGrowthLabelCellContainerView.removeShadow()
-        }
+
     }
     
-    func setupShadowRatioMorningEveningContainerView() {
+    func setUpRatioMorningEveningContainerView() {
         let cornerRadius: CGFloat = 15
         self.ratioMorningEveningCellContainerView.cornerRadius = cornerRadius
         self.ratioMorningEveningCellContainerView.layer.masksToBounds = true
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.ratioMorningEveningCellContainerView.layer.shadowColor = UIColor.systemGray.cgColor
-            self.ratioMorningEveningCellContainerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-            self.ratioMorningEveningCellContainerView.layer.shadowOpacity = 0.3
-            self.ratioMorningEveningCellContainerView.layer.shadowRadius = 2
-            self.ratioMorningEveningCellContainerView.layer.shadowPath = UIBezierPath(roundedRect: self.ratioMorningEveningCellContainerView.bounds, cornerRadius: cornerRadius).cgPath
-            self.ratioMorningEveningCellContainerView.layer.masksToBounds = false
-        } else {
-            self.ratioMorningEveningCellContainerView.removeShadow()
-        }
     }
         
     @available(iOS 17.0, *)
     func handleTraitChange() {
         self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
-            self.setupShadowFirstLabelsCellContainerView()
-            self.setupShadowPeriodGrowthCellContainerView()
-            self.setupShadowRatioMorningEveningContainerView()
-            self.setupSegmentedControl()
             self.setUpLineChart()
             self.setupBarChartView()
             if self.weeklyChartData != nil {
@@ -153,19 +149,14 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     }
     
     // MARK: Segmented control
-    func setupSegmentedControl() {
-        self.segmentedControl.backgroundColor = Theme.dirtyWhite
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.segmentedControl.addShadow(UIColor.systemGray3, height: 2, opacity: 0.5, shadowRadius: 1)
-        } else {
-            self.segmentedControl.removeShadow()
-        }
-        self.segmentedControl.borderColor = Theme.mainColor
-        self.segmentedControl.selectedSegmentTintColor = Theme.mainColor
-        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.white]
+    func setUpSegmentedControl() {
+        self.segmentedControl.backgroundColor = Theme.contentBackground
+        self.segmentedControl.borderColor = Theme.main
+        self.segmentedControl.selectedSegmentTintColor = Theme.main
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.neutral]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
         
-        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: Theme.black]
+        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: Theme.label]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .normal)
     }
     
@@ -173,15 +164,18 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         switch self.segmentedControl.selectedSegmentIndex {
         case 0:
             self.chartPeriodType = .weekly
+            self.chartPeriodHelper.chartPeriodType = .weekly
             self.createWeeklyLineCharts()
             self.createWeeklyAttendanceBarChart()
         case 1:
             self.chartPeriodType = .monthly
-            self.createMonthlyChart()
+            self.chartPeriodHelper.chartPeriodType = .monthly
+            self.createMonthlyLineCharts()
             self.createMonthlyAttendanceBarChart()
         case 2:
+            self.chartPeriodHelper.chartPeriodType = .yearly
             self.chartPeriodType = .yearly
-            self.createYearlyChart()
+            self.createYearlyLineCharts()
         default: break
         }
         self.createAndAnimateGrowthLabel()

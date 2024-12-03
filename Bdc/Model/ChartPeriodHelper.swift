@@ -14,12 +14,12 @@ public enum ChartPeriodType {
 
 public struct ChartPeriodHelper {
     
-    let chartPeriodType: ChartPeriodType
+    var chartPeriodType: ChartPeriodType
     
     public init(_ chartPeriodType: ChartPeriodType) {
         self.chartPeriodType = chartPeriodType
     }
-
+    
     /// Generates the appropriate `DateComponents` key for each period type.
     public func dateComponents(for date: Date) -> DateComponents {
         switch self.chartPeriodType {
@@ -44,7 +44,61 @@ public struct ChartPeriodHelper {
             return statsData.yearlyGrowth
         }
     }
-
+    
+    func getMaxNumbersOfAttandanceIndividual() -> Double {
+        switch self.chartPeriodType {
+        case .weekly:
+            return Constant.maxAttWeeklyIndividual
+        case .monthly:
+            return Constant.maxAttMonthlyIndividual
+        case .yearly:
+            return Constant.maxAttYearlyIndividual
+        }
+    }
+    
+    func getMaxNumbersOfSlotAttandanceIndividual() -> Double {
+        switch self.chartPeriodType {
+        case .weekly:
+            return Constant.maxAttWeeklySlotIndividual
+        case .monthly:
+            return Constant.maxAttMonthlySlotIndividual
+        case .yearly:
+            return Constant.maxAttYearlySlotIndividual
+        }
+    }
+    
+    /// Generates all keys (as `DateComponents`) starting from a specific date until today.
+    func generateAllKeys() -> [DateComponents] {
+        var keys: [DateComponents] = []
+        let calendar = Calendar.current
+        let today = Date()
+        var currentDate = Constant.startingDateBdC
+        
+        switch self.chartPeriodType {
+        case .weekly:
+            while currentDate <= today {
+                let weekComponents = dateComponents(for: currentDate)
+                keys.append(weekComponents)
+                currentDate = calendar.date(byAdding: .weekOfYear, value: 1, to: currentDate) ?? today
+            }
+        case .monthly:
+            currentDate = currentDate.getStartOfMonth()
+            while currentDate <= today {
+                let monthComponents = dateComponents(for: currentDate)
+                keys.append(monthComponents)
+                currentDate = calendar.date(byAdding: .month, value: 1, to: currentDate) ?? today
+            }
+        case .yearly:
+            currentDate = currentDate.getStartOfYear()
+            while currentDate <= today {
+                let yearComponents = dateComponents(for: currentDate)
+                keys.append(yearComponents)
+                currentDate = calendar.date(byAdding: .year, value: 1, to: currentDate) ?? today
+            }
+        }
+        return keys
+    }
+    
     /// Sorts keys based on the period type.
     public func sortKeys(_ keys: [DateComponents]) -> [DateComponents] {
         // swiftlint:disable identifier_name
@@ -52,10 +106,10 @@ public struct ChartPeriodHelper {
             switch self.chartPeriodType {
             case .weekly:
                 if (x.yearForWeekOfYear ?? 0) != (y.yearForWeekOfYear ?? 0) {
-                     return (x.yearForWeekOfYear ?? 0) < (y.yearForWeekOfYear ?? 0)
-                 } else {
-                     return (x.weekOfYear ?? 0) < (y.weekOfYear ?? 0)
-                 }
+                    return (x.yearForWeekOfYear ?? 0) < (y.yearForWeekOfYear ?? 0)
+                } else {
+                    return (x.weekOfYear ?? 0) < (y.weekOfYear ?? 0)
+                }
             case .monthly:
                 if (x.year ?? 0) != (y.year ?? 0) {
                     return (x.year ?? 0) < (y.year ?? 0)
@@ -69,7 +123,7 @@ public struct ChartPeriodHelper {
         }
         // swiftlint:enable identifier_name
     }
-
+    
     /// Creates a label for chart entries based on the period type.
     public func label(for dateComponent: DateComponents) -> String {
         switch self.chartPeriodType {

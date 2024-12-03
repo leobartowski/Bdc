@@ -38,7 +38,7 @@ extension StatisticsViewController {
                    let dayOfWeek = Calendar.current.dateComponents([.weekday], from: date).weekday {
                     if (2...6).contains(dayOfWeek) {
                         let index = dayOfWeek - 2
-                        weekdayAttendanceCount[index] += attendance.persons?.count ?? 0
+                        weekdayAttendanceCount[index] += self.isIndividualStats ? 1 : attendance.persons?.count ?? 0
                     }
                 }
             }
@@ -46,7 +46,7 @@ extension StatisticsViewController {
                 BarChartDataEntry(x: Double(index), y: Double(count))
             }
             let dataSet = BarChartDataSet(entries: barChartEntries)
-            dataSet.colors = [Theme.mainColor]
+            dataSet.colors = [Theme.main]
             dataSet.drawValuesEnabled = false
             dataSet.highlightAlpha = 0.9
             dataSet.highlightColor = Theme.avatarRed
@@ -70,14 +70,14 @@ extension StatisticsViewController {
                 if let dateString = attendance.dateString,
                    let date = DateFormatter.basicFormatter.date(from: dateString),
                    let month = Calendar.current.dateComponents([.month], from: date).month {
-                    monthlyAttendanceCount[month - 1] += attendance.persons?.count ?? 0
+                    monthlyAttendanceCount[month - 1] += self.isIndividualStats ? 1 : attendance.persons?.count ?? 0
                 }
             }
             let barChartEntries = monthlyAttendanceCount.enumerated().map { index, count in
                 BarChartDataEntry(x: Double(index), y: Double(count))
             }
             let dataSet = BarChartDataSet(entries: barChartEntries)
-            dataSet.colors = [Theme.mainColor]
+            dataSet.colors = [Theme.main]
             dataSet.drawValuesEnabled = false
             dataSet.highlightAlpha = 0.9
             dataSet.highlightColor = Theme.avatarRed

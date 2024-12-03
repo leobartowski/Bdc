@@ -11,7 +11,7 @@ import UIKit
 extension RankingViewController {
     
     func setupHandlePeriodView() {
-        self.setupShadowContainerPeriodView()
+        self.setUpContainerPeriodView()
         self.calendarSetup()
         self.monthYearDatePickerSetup()
         self.yearDatePickerSetup()
@@ -19,20 +19,10 @@ extension RankingViewController {
         self.allTimeLabel.isHidden = true
     }
     
-    func setupShadowContainerPeriodView() {
+    func setUpContainerPeriodView() {
         let cornerRadius: CGFloat = 15
         self.containerPeriodView.cornerRadius = cornerRadius
         self.containerPeriodView.layer.masksToBounds = true
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.containerPeriodView.layer.shadowColor = UIColor.systemGray.cgColor
-            self.containerPeriodView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-            self.containerPeriodView.layer.shadowOpacity = 0.3
-            self.containerPeriodView.layer.shadowRadius = 2
-            self.containerPeriodView.layer.shadowPath = UIBezierPath(roundedRect: self.containerPeriodView.bounds, cornerRadius: cornerRadius).cgPath
-            self.containerPeriodView.layer.masksToBounds = false
-        } else {
-            self.containerPeriodView.removeShadow()
-        }
     }
     
     func setupObserver() {
@@ -128,6 +118,9 @@ extension RankingViewController {
             self.tableView.allowsSelection = false
             self.daysCurrentPeriod = Date().getAllDatesFrom(startingDate: Constant.startingDateBdC)
         }
-        self.populateAttendance()
+        if self.rankingType != .monthly && self.rankingType != .yearly {
+            self.populateAttendance()
+        }
     }
+
 }

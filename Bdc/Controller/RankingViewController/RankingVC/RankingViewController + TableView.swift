@@ -26,15 +26,15 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource, Ran
             let cell = tableView.dequeueReusableCell(withIdentifier: "weeklyCellID", for: indexPath) as? RankingWeeklyTableViewCell
             let rankingAttendance = rankingPersonsAttendaces[indexPath.row]
             if self.calculateIfShowConfetti(rankingAttendance) { self.startConfetti() }
-            cell?.setUp(rankingAttendance, indexPath, self.rankingType, self.holidaysNumbers)
+            cell?.setUp(rankingAttendance, indexPath, self.rankingType, self.holidaysNumbers, self)
             cell?.setupLabelDesign(sorting.sortingPosition.rawValue)
-            cell?.handleShadowOnFriday(self.daysCurrentPeriod.last?.getWeekNumber())
+            if self.showBorderForHighlithCell { cell?.handleBorderColorForHighlight() }
             cell?.setNeedsLayout()
             return cell ?? UITableViewCell()
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? RankingTableViewCell
             let rankingAttendance = rankingPersonsAttendaces[indexPath.row]
-            cell?.setUp(rankingAttendance, indexPath, self.rankingType)
+            cell?.setUp(rankingAttendance, indexPath, self.rankingType, self)
             cell?.setupLabelDesign(sorting.sortingPosition.rawValue)
             cell?.setNeedsLayout()
             return cell ?? UITableViewCell()

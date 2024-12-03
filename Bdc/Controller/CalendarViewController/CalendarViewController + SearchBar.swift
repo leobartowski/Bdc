@@ -13,8 +13,7 @@ extension CalendarViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         self.filteredPerson = searchText.isEmpty ? self.allPersons : self.allPersons.filter { (person: Person) -> Bool in
-            // If dataItem matches the searchText, return true to include it
-            return person.name!.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            return person.name?.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         UIView.performWithoutAnimation {
             self.collectionView.reloadData()
@@ -22,10 +21,6 @@ extension CalendarViewController: UISearchBarDelegate {
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        
-        if let cvLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            cvLayout.sectionHeadersPinToVisibleBounds = true
-        }
         searchBar.setShowsCancelButton(true, animated: true)
         searchBar.showsCancelButton = true
     }

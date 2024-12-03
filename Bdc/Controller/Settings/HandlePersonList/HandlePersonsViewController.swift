@@ -14,25 +14,8 @@ class HandlePersonsViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
-        self.setupTableViewShadow()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addPerson))
         self.addObservers()
-        if #available(iOS 17.0, *) { self.handleTraitChange() }
-    }
-    
-    func setupTableViewShadow() {
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.tableView.addShadow(height: 0, opacity: 0.3)
-        } else {
-            self.tableView.removeShadow()
-        }
-    }
-    
-    @available(iOS 17.0, *)
-    func handleTraitChange() {
-        self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
-            self.setupTableViewShadow()
-        })
     }
     
     func addObservers() {

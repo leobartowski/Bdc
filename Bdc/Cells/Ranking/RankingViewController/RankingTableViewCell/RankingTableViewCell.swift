@@ -7,16 +7,23 @@
 
 import UIKit
 
+protocol RankingTableViewCellDelegate: AnyObject {
+    
+    func cell(_ cell: RankingTableViewCell, didSelectNameLabelAt indexPath: IndexPath)
+}
+
 class RankingTableViewCell: UITableViewCell {
     
     @IBOutlet var containerView: UIView!
-    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var nameButton: UIButton!
     @IBOutlet var mainImageView: UIImageView!
     @IBOutlet var attendanceLabel: UILabel!
     @IBOutlet var admonishmentLabel: UILabel!
     @IBOutlet var percentualAttendanceLabel: UILabel!
     @IBOutlet var percentualAdmonishmentLabel: UILabel!
     
+    weak var delegate: RankingTableViewCellDelegate?
+        
     var indexPath = IndexPath()
     var rankingAttendance: RankingPersonAttendance?
     var rankingType: RankingType?
@@ -35,12 +42,14 @@ class RankingTableViewCell: UITableViewCell {
     }
     
     // MARK: SetUp
-    func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath, _ rankingType: RankingType) {
+    func setUp(_ rankingAttendance: RankingPersonAttendance, _ indexPath: IndexPath, _ rankingType: RankingType, _ delegate: RankingTableViewCellDelegate) {
+        self.delegate = delegate
         self.indexPath = indexPath
         self.rankingAttendance = rankingAttendance
         self.rankingType = rankingType
-        self.setUpShadow()
-        self.nameLabel.text = rankingAttendance.person.name
+        self.setUpDesign()
+        self.nameButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.nameButton.setUnderlinedTitle(rankingAttendance.person.name ?? "")
         self.attendanceLabel.text = self.getStringOfAttendanceLabel(rankingAttendance, rankingType)
         self.admonishmentLabel.text = String(rankingAttendance.admonishmentNumber)
         self.handleStatistics()
@@ -57,31 +66,33 @@ class RankingTableViewCell: UITableViewCell {
         }
     }
     
-    func setUpShadow() {
+    func setUpDesign() {
         self.containerView.cornerRadius = 15
         self.containerView.layer.masksToBounds = true
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.containerView.addShadow(height: 0, opacity: 0.3)
-        }
     }
     
     func setupLabelDesign(_ labelNumber: Int) {
         switch labelNumber {
         case 0:
-            self.nameLabel.font = .systemFont(ofSize: 19, weight: .medium)
+            self.nameButton.setUnderlinedTitle(self.rankingAttendance?.person.name ?? "",
+                                               font: .systemFont(ofSize: 19, weight: .medium))
             self.attendanceLabel.font = .systemFont(ofSize: 19, weight: .light)
             self.admonishmentLabel.font = .systemFont(ofSize: 19, weight: .light)
         case 1:
-            self.nameLabel.font = .systemFont(ofSize: 19, weight: .light)
+            self.nameButton.setUnderlinedTitle(self.rankingAttendance?.person.name ?? "")
             self.attendanceLabel.font = .systemFont(ofSize: 19, weight: .medium)
             self.admonishmentLabel.font = .systemFont(ofSize: 19, weight: .light)
         case 2:
-            self.nameLabel.font = .systemFont(ofSize: 19, weight: .light)
+            self.nameButton.setUnderlinedTitle(self.rankingAttendance?.person.name ?? "")
             self.attendanceLabel.font = .systemFont(ofSize: 19, weight: .light)
             self.admonishmentLabel.font = .systemFont(ofSize: 19, weight: .medium)
         default:
             break
         }
+    }
+
+    @IBAction func clickNameButton(_ sender: Any) {
+        self.delegate?.cell(self, didSelectNameLabelAt: indexPath)
     }
     
     func handleStatistics() {
@@ -106,8 +117,7 @@ class RankingTableViewCell: UITableViewCell {
         if numberOfPossibleAttendance != 0 {
             let percental = (numberOfPresenceDouble / numberOfPossibleAttendanceDouble) * 100
             let percentalString = String(format: "%.0f", percental)
-            
-            return "\(percentalString)%"
+            return percentalString + "%"
         }
         return ""
     }

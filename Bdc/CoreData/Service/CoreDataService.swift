@@ -21,16 +21,13 @@ class CoreDataService {
     // MARK: Method to save
 
     /// Save  Person Admonished Attendence in Core Data for a specif date and daytype
-    func saveAttendance(_ date: Date, _ type: DayType, _ persons: [Person]) {
-        var attendence = self.getAttendace(date, type: type)
+    func saveAttendance(_ attendence: inout Attendance?, _ date: Date, _ type: DayType, _ persons: [Person]) {
         if attendence == nil {
-            // Se è vuoto ne creo uno nuovo
             attendence = Attendance(context: self.context)
             attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
             attendence?.type = type.rawValue
         }
         attendence?.persons = NSSet(array: persons)
-
         do {
             try self.context.save()
         } catch let error as NSError {
@@ -38,17 +35,13 @@ class CoreDataService {
         }
     }
 
-    func saveAdmonishedAttendance(_ date: Date, _ type: DayType, _ personsAdmonished: [Person]) {
-        var attendence = self.getAttendace(date, type: type)
+    func saveAdmonishedAttendance(_ attendence: inout Attendance?, _ date: Date, _ type: DayType, _ personsAdmonished: [Person]) {
         if attendence == nil {
-            // Se è vuoto ne creo uno nuovo
             attendence = Attendance(context: self.context)
             attendence?.dateString = DateFormatter.basicFormatter.string(from: date)
             attendence?.type = type.rawValue
         }
-
         attendence?.personsAdmonished = NSSet(array: personsAdmonished)
-
         do {
             try self.context.save()
         } catch let error as NSError {
@@ -63,7 +56,8 @@ class CoreDataService {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
         let dateString = DateFormatter.basicFormatter.string(from: date)
         do {
-            let attendances = try context.fetch(fetchRequest).filter { $0.dateString == dateString && $0.type == type.rawValue }
+            fetchRequest.predicate = NSPredicate(format: "dateString == %@ AND type == %@", dateString, type.rawValue)
+            let attendances = try context.fetch(fetchRequest)
             return attendances.first
 
         } catch let error as NSError {
@@ -75,9 +69,18 @@ class CoreDataService {
     func getAllAttendaces() -> [Attendance]? {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
         do {
-            let attendances = try context.fetch(fetchRequest)
-            return attendances
-
+            return try context.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not list. \(error), \(error.userInfo)")
+        }
+        return nil
+    }
+    
+    func getAllAttendaces(for person: Person) -> [Attendance]? {
+        let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
+        fetchRequest.predicate = NSPredicate(format: "ANY persons.name == %@", person.name ?? "")
+        do {
+            return try context.fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
         }
@@ -89,7 +92,8 @@ class CoreDataService {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
         let dateString = DateFormatter.basicFormatter.string(from: date)
         do {
-            let attendances = try context.fetch(fetchRequest).filter { $0.dateString == dateString && $0.type == type.rawValue }
+            fetchRequest.predicate = NSPredicate(format: "dateString == %@ AND type == %@", dateString, type.rawValue)
+            let attendances = try context.fetch(fetchRequest)
             return attendances.first?.persons?.allObjects as? [Person] ?? []
 
         } catch let error as NSError {
@@ -103,7 +107,8 @@ class CoreDataService {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
         let dateString = DateFormatter.basicFormatter.string(from: date)
         do {
-            let attendances = try context.fetch(fetchRequest).filter { $0.dateString == dateString && $0.type == type.rawValue }
+            fetchRequest.predicate = NSPredicate(format: "dateString == %@ AND type == %@", dateString, type.rawValue)
+            let attendances = try context.fetch(fetchRequest)
             return attendances.first?.personsAdmonished?.allObjects as? [Person] ?? []
 
         } catch let error as NSError {
@@ -128,6 +133,18 @@ class CoreDataService {
             print("Could not list. \(error), \(error.userInfo)")
         }
         return []
+    }
+    
+    func getPerson(for personName: String) -> Person? {
+        let fetchRequest = NSFetchRequest<Person>(entityName: "Person")
+        fetchRequest.predicate = NSPredicate(format: "name == %@", personName)
+        fetchRequest.fetchLimit = 1
+        do {
+            return try context.fetch(fetchRequest).first
+        } catch let error as NSError {
+            print("Could not fetch person. \(error), \(error.userInfo)")
+        }
+        return nil
     }
 
     func deletePersonFromPersonsList(name: String? = "") {
@@ -318,5 +335,32 @@ class CoreDataService {
         } catch let error as NSError {
             print("Error:  \(error), \(error.userInfo)")
         }
+    }
+
+    func deleteSpecificAttendance(_ dateString: String) -> Bool {
+        let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
+        fetchRequest.predicate = NSPredicate(format: "dateString == %@", dateString)
+        do {
+            let attendances = try context.fetch(fetchRequest)
+            for attendance in attendances {
+                context.delete(attendance)
+            }
+            try context.save()
+        } catch let error as NSError {
+            print("Could not delete attendance. \(error), \(error.userInfo)")
+            return false
+        }
+        return true
+    }
+    
+    /// Prints all the days with more than 2 att objects (SHOULD BE ZERO)
+    func checkIfThereAreMultipleAttendanceForASlot() {
+        let atts = self.getAllAttendaces() ?? []
+        var dict: [String: Int] = [:]
+        for att in atts {
+            dict[att.dateString ?? "", default: 0] += 1
+        }
+        let filtered = dict.filter { $0.value > 2}
+        print(filtered)
     }
 }

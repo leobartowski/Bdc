@@ -19,9 +19,10 @@ class CalendarViewController: UIViewController {
     @IBOutlet var segmentedControlContainerView: UIView!
     @IBOutlet var calendarViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var searchBar: UISearchBar!
-    
+
     var dayType = DayType.evening
     var allPersons = PersonListUtility.persons
+    var selectedAttendance: Attendance?
     var filteredPerson: [Person] = []
     var personsAdmonished: [Person] = []
     var personsPresent: [Person] = []
@@ -40,12 +41,8 @@ class CalendarViewController: UIViewController {
         self.addObservers()
         self.addSwipeGestureRecognizerToCollectionView()
         self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
-        if #available(iOS 17.0, *) { self.handleTraitChange() }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
         self.searchBar.setValue("Annulla", forKey: "cancelButtonText")
-        self.searchBar.searchTextField.backgroundColor = Theme.dirtyWhite
+        if #available(iOS 17.0, *) { self.handleTraitChange() }
     }
     
     @objc func willBecomeActive() {
@@ -59,8 +56,6 @@ class CalendarViewController: UIViewController {
     @available(iOS 17.0, *)
     func handleTraitChange() {
         self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
-            self.designBottomCalendarHandleView()
-            self.setupSegmentedControl()
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 self.calendarView.reloadData()
@@ -71,11 +66,6 @@ class CalendarViewController: UIViewController {
     // MARK: Utils and Design
     /// Add shadow and corner radius to bottom Calendar Handle View
     func designBottomCalendarHandleView() {
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.bottomCalendarHandleView.addShadow()
-        } else {
-            self.bottomCalendarHandleView.removeShadow()
-        }
         self.bottomCalendarHandleView.layer.cornerRadius = 13
         self.bottomCalendarHandleView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
 
@@ -108,18 +98,13 @@ class CalendarViewController: UIViewController {
     }
     
     func setupSegmentedControl() {
-        self.segmentedControl.backgroundColor = Theme.dirtyWhite
-        if self.traitCollection.userInterfaceStyle != .dark {
-            self.segmentedControl.addShadow(UIColor.systemGray3, height: 2, opacity: 0.5, shadowRadius: 1)
-        } else {
-            self.segmentedControl.removeShadow()
-        }
-        self.segmentedControl.borderColor = Theme.mainColor
-        self.segmentedControl.selectedSegmentTintColor = Theme.mainColor
-        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.white]
+        self.segmentedControl.backgroundColor = Theme.contentBackground
+        self.segmentedControl.borderColor = Theme.main
+        self.segmentedControl.selectedSegmentTintColor = Theme.main
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.neutral]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
         
-        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: Theme.black]
+        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: Theme.label]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .normal)
     }
     
@@ -137,9 +122,9 @@ class CalendarViewController: UIViewController {
         self.filteredPerson.removeAll()
         self.personsAdmonished.removeAll()
         self.personsPresent.removeAll()
-        let attendance = CoreDataService.shared.getAttendace(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
-        self.personsPresent = attendance?.persons?.allObjects as? [Person] ?? []
-        self.personsAdmonished = attendance?.personsAdmonished?.allObjects as? [Person] ?? []
+        self.selectedAttendance =  CoreDataService.shared.getAttendace(self.calendarView.selectedDate ?? Date.now, type: self.dayType)
+        self.personsPresent = self.selectedAttendance?.persons?.allObjects as? [Person] ?? []
+        self.personsAdmonished = self.selectedAttendance?.personsAdmonished?.allObjects as? [Person] ?? []
         self.allPersons = PersonListUtility.persons
         self.filteredPerson = self.allPersons
         self.sortPersons()

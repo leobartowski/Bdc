@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIViewController {
+    
     /// Instantiate a view controller with a given identifier
     func getViewController(fromStoryboard storyboard: String, withIdentifier identifier: String) -> UIViewController {
         return UIStoryboard(name: storyboard, bundle: nil).instantiateViewController(withIdentifier: identifier)
@@ -17,7 +18,7 @@ extension UIViewController {
     func presentAlert(alertText: String, alertMessage: String, actionTitle: String = "Ok!") {
         let alert = UIAlertController(title: alertText, message: alertMessage, preferredStyle: .alert)
         let action = UIAlertAction(title: actionTitle, style: .default, handler: nil)
-        action.setValue(Theme.mainColor, forKey: "titleTextColor")
+        action.setValue(Theme.main, forKey: "titleTextColor")
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
@@ -27,7 +28,7 @@ extension UIViewController {
         let actionSheet = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         let mainAction = UIAlertAction(title: mainActionTitle, style: .destructive, handler: mainAction)
         let cancelAction = UIAlertAction(title: cancelActionTitle, style: .cancel, handler: cancelAction)
-        cancelAction.setValue(Theme.mainColor, forKey: "titleTextColor")
+        cancelAction.setValue(Theme.main, forKey: "titleTextColor")
         actionSheet.addAction(mainAction)
         actionSheet.addAction(cancelAction)
         self.present(actionSheet, animated: true, completion: nil)

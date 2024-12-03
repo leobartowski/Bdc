@@ -41,7 +41,6 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
 
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-
         if calendar.scope == .week {
             let mondayOfThisWeek = calendar.currentPage.getSpecificDayOfThisWeek(2)
             calendar.select(self.safeSelectDate(mondayOfThisWeek, isForward: true))
@@ -54,12 +53,11 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
 
     // MARK: Appearance Delegate
-
     func calendar(_ calendar: FSCalendar, appearance _: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
         if LocalDate(date: calendar.today ?? .now) == LocalDate(date: date) {
             return Theme.FSCalendarStandardTodayColor
         }
-        return Theme.mainColor
+        return Theme.main
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
@@ -126,14 +124,13 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
     
     func safeSelectDate(_ startingDate: Date, isForward: Bool = false) -> Date {
-        
         if startingDate.isThisDaySelectable() { return startingDate }
         var date = startingDate
-        var count = 0 // var to escape condition
+        var count = 0
         repeat {
             count += 1
             date = isForward ? date.dayAfter : date.dayBefore
-        } while(!date.isThisDaySelectable() && count < 5)
+        } while(!date.isThisDaySelectable() && count < 30)
         return date
     }
 
@@ -154,8 +151,8 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         self.calendarView.appearance.todayColor = .clear
         self.calendarView.appearance.titleDefaultColor = Theme.avatarBlack
         self.calendarView.appearance.titleTodayColor = Theme.FSCalendarStandardTodayColor
-        self.calendarView.appearance.headerTitleColor = Theme.mainColor
-        self.calendarView.appearance.weekdayTextColor = Theme.black
-        self.calendarView.appearance.titleSelectionColor = Theme.white
+        self.calendarView.appearance.headerTitleColor = Theme.main
+        self.calendarView.appearance.weekdayTextColor = Theme.label
+        self.calendarView.appearance.titleSelectionColor = Theme.neutral
     }
 }

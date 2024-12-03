@@ -28,27 +28,29 @@ extension StatisticsViewController {
     
     func createLabels() {
         self.createTotalAttendanceLabel()
-        self.createMaxNumberOfAttendanceLabel()
         self.createRatioMornignEveningLabel()
+        if self.isIndividualStats {
+            self.createBestStreakLabel()
+            self.createPodium()
+        } else {
+            self.createMaxNumberOfAttendanceLabel()
+        }
     }
     
     func animateIncrementalLabels() {
         self.totalAttendanceLabel.incrementFromZero(toValue: Double(self.statsData.totalAttendance),
                                                     duration: incrementaLabelAnimationDuration)
-        self.dayMaxNumberOfAttendanceLabel.incrementFromZero(toValue:
-                                                                Double(self.statsData.maxDay.nOfAtt),
+        self.secondStatsLabel.incrementFromZero(toValue: self.isIndividualStats
+                                                             ? Double(self.statsData.bestStreak.count)
+                                                             :  Double(self.statsData.maxDay.nOfAtt),
                                                              duration: incrementaLabelAnimationDuration)
-        let ratioText = self.createRatioMornignEveningLabelText()
-        self.ratioMorningEveningLabel.incrementFromZero(toValue: ratioText.ratio,
-                                                        duration: incrementaLabelAnimationDuration)
     }
     
     func createAndAnimateGrowthLabel() {
-        let chartPeriod = ChartPeriodHelper(self.chartPeriodType)
-        let growth = chartPeriod.getStats(with: self.statsData)
+        let growth = self.chartPeriodHelper.getStats(with: self.statsData)
         let isGrowthPositive = growth >= 0
         let color: UIColor = isGrowthPositive ? .systemGreen : .systemRed
-        let basicText = chartPeriod.labelsForGrowrth(isGrowthPositive)
+        let basicText = self.chartPeriodHelper.labelsForGrowrth(isGrowthPositive)
         IncrementableLabelHelper.createWithValueInTheMiddle(for: self.periodGrowthLabel,
                                                             startText: basicText.start,
                                                             endText: basicText.end,
@@ -57,16 +59,32 @@ extension StatisticsViewController {
     }
     
     fileprivate func createTotalAttendanceLabel() {
-        IncrementableLabelHelper.createWithValueInTheMiddle(for: self.totalAttendanceLabel, startText: "Siamo scesi ", endText: " volte", formatValue: "%.0f")
-
+        if self.isIndividualStats {
+            IncrementableLabelHelper.createWithValueInTheMiddle(for: self.totalAttendanceLabel,
+                                                                startText: "Ha ",
+                                                                endText: " presenze, \(self.statsData.totalAttendanceMorning) la mattina e \(self.statsData.totalAttendanceEvening) \nil pomeriggio",
+                                                                formatValue: "%.0f")
+        } else {
+            IncrementableLabelHelper.createWithValueInTheMiddle(for: self.totalAttendanceLabel,
+                                                                startText: "Siamo scesi ",
+                                                                endText: " volte!",
+                                                                formatValue: "%.0f")
+        }
+    }
+    
+    fileprivate func createBestStreakLabel() {
+        IncrementableLabelHelper.createWithValueInTheMiddle(for: self.secondStatsLabel,
+                                                            startText: "Miglior serie di giorni con almeno una presenza: ",
+                                                            endText: " dal \(self.statsData.bestStreak.beginDate) al \(self.statsData.bestStreak.endDate)",
+                                                            formatValue: "%.0f")
     }
     
     fileprivate func createMaxNumberOfAttendanceLabel() {
-        IncrementableLabelHelper.createWithValueInTheMiddleCustom(for: self.dayMaxNumberOfAttendanceLabel,
-                                                                  startText: "Il giorno con il maggior numero di presenze è stato il ",
+        IncrementableLabelHelper.createWithValueInTheMiddleCustom(for: self.secondStatsLabel,
+                                                                  startText: "Il nostro miglior giorno è stato il ",
                                                                   endText: " presenze",
                                                                   dateText: self.statsData.maxDay.dateString)
-
+        
     }
     
     fileprivate func createRatioMornignEveningLabel() {
@@ -84,15 +102,18 @@ extension StatisticsViewController {
     }
     
     fileprivate func createRatioMornignEveningLabelText() -> (startText: String, endText: String, ratio: Double) {
-        if self.statsData.totalAttendanceEvening == 0 || self.statsData.totalAttendanceMorning == 0 {
-            return ("", "", 0)
+        if self.statsData.totalAttendanceEvening == 0 {
+            return ("Non ci sono presenze di pomeriggio, impossibile confrontare", "", 0)
+        }
+        if self.statsData.totalAttendanceMorning == 0 {
+            return ("Non ci sono presenze di mattina, impossibile confrontare", "", 0)
         }
         let ratio = Double(self.statsData.totalAttendanceEvening) / Double(self.statsData.totalAttendanceMorning)
         if ratio > 1 {
             return ("Il numero di presenze di pomeriggio è circa ", " volte superiore a quelle di mattina", ratio)
         } else if ratio < 1 {
             let invertedRatio = pow(ratio, -1)
-            return ("Il numero di presenze di mattina è circa ", " volte superiore a quelle di mattina", invertedRatio)
+            return ("Il numero di presenze di mattina è circa ", " volte superiore a quelle di pomeriggio", invertedRatio)
         } else {
             return ("Il numero di presenze di mattina è ugale a quelle del pomeriggio", "", 0)
         }
