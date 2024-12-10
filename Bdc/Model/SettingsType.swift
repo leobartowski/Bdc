@@ -10,8 +10,9 @@ import Foundation
 enum SettingsType: String {
     
     case modifyOldDays
-    case showStatistics
+    case showPercentageInRanking
     case handlePersonList
+    case showCurrentPeriodStatistics
     case showRegulation
     case showConfetti
     case acknowledgmentThirdPartSoftware

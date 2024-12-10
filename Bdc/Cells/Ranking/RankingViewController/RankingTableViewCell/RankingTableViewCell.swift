@@ -35,8 +35,8 @@ class RankingTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowStatistics(_:)), name: .didChangeShowStatistics, object: nil)
+        self.showStatistics = UserDefaults.standard.bool(forKey: SettingsType.showPercentageInRanking.rawValue)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowStatistics(_:)), name: .didChangeShowPercentageInRanking, object: nil)
         // Design
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
     }
@@ -124,7 +124,7 @@ class RankingTableViewCell: UITableViewCell {
     
     // MARK: Handle Notification Center method
     @objc func didChangeShowStatistics(_: Notification) {
-        self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
+        self.showStatistics = UserDefaults.standard.bool(forKey: SettingsType.showPercentageInRanking.rawValue)
         self.handleStatistics()
     }
 }

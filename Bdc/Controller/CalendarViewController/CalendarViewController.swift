@@ -40,9 +40,9 @@ class CalendarViewController: UIViewController {
         self.updateGoToTodayButton()
         self.addObservers()
         self.addSwipeGestureRecognizerToCollectionView()
-        self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
+        self.canModifyOldDays = UserDefaults.standard.bool(forKey: SettingsType.modifyOldDays.rawValue)
         self.searchBar.setValue("Annulla", forKey: "cancelButtonText")
-        if #available(iOS 17.0, *) { self.handleTraitChange() }
+        self.handleTraitChange()
     }
     
     @objc func willBecomeActive() {
@@ -53,7 +53,6 @@ class CalendarViewController: UIViewController {
         self.updateCalendarIfNeeded()
     }
     
-    @available(iOS 17.0, *)
     func handleTraitChange() {
         self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
             DispatchQueue.main.async {
@@ -140,7 +139,7 @@ class CalendarViewController: UIViewController {
     
     // MARK: Handle settings
     @objc func didChangeModifyStatus(_: Notification) {
-        self.canModifyOldDays = UserDefaults.standard.bool(forKey: "modifyOldDays")
+        self.canModifyOldDays = UserDefaults.standard.bool(forKey: SettingsType.modifyOldDays.rawValue)
     }
     
     // MARK: Handle settings

@@ -21,7 +21,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 3
+            return 4
         case 1:
             return 1
         case 2:
@@ -37,6 +37,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return 4
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.section {
@@ -47,11 +51,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
                 cell?.setup(text: "Abilita modifica giorni passati", settingsType: .modifyOldDays)
                 return cell ?? UITableViewCell()
-            case 1: // S
+            case 1: // Show percentage
                 let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
-                cell?.setup(text: "Mostra statistiche ranking", settingsType: .showStatistics)
+                cell?.setup(text: "Mostra percentuali di presenza nel ranking", settingsType: .showPercentageInRanking)
                 return cell ?? UITableViewCell()
-            case 2: // Show confetti view
+            case 2: // Show current period statistics
+                let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
+                cell?.setup(text: "Mostra il periodo in corso (settimana/mese/anno) nei grafici delle statistiche ", settingsType: .showCurrentPeriodStatistics)
+                return cell ?? UITableViewCell()
+            case 3: // Show confetti view
                 let cell = tableView.dequeueReusableCell(withIdentifier: "switchCellID", for: indexPath) as? SettingsSwitchTableViewCell
                 cell?.setup(text: "Mostra coriandoli periodo perfetto", settingsType: .showConfetti)
                 return cell ?? UITableViewCell()
@@ -83,7 +91,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             switch indexPath.row {
             case 0: return // Modify Old Element
             case 1: return // Show Statistics
-            case 2: return // Show confetti
+            case 2: return // Show Current period statistics
+            case 3: return // Show confetti
             default: return
             }
         case 1: // Handle Person list

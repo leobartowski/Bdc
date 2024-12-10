@@ -53,8 +53,8 @@ class RankingWeeklyTableViewCell: UITableViewCell {
         self.collectionView.isHidden = true
         self.collectionView.collectionViewLayout = self.setupCollectionViewLayout()
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.height / 2
-        self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowStatistics(_:)), name: .didChangeShowStatistics, object: nil)
+        self.showStatistics = UserDefaults.standard.bool(forKey: SettingsType.showPercentageInRanking.rawValue)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowStatistics(_:)), name: .didChangeShowPercentageInRanking, object: nil)
     }
     
     private func setupCollectionViewLayout() -> UICollectionViewFlowLayout {
@@ -110,7 +110,7 @@ class RankingWeeklyTableViewCell: UITableViewCell {
     
     // MARK: Handle Show Statistics
     @objc func didChangeShowStatistics(_: Notification) {
-        self.showStatistics = UserDefaults.standard.bool(forKey: "showStatistics")
+        self.showStatistics = UserDefaults.standard.bool(forKey: SettingsType.showPercentageInRanking.rawValue)
         self.handleStatistics()
     }
 

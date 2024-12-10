@@ -112,10 +112,17 @@ extension StatisticsViewController {
                 allAttendances[key, default: 0] += personCount
             }
         }
-        let sortedKeys = self.chartPeriodHelper.sortKeys(Array(allAttendances.keys))
-        let sortedMorningKeys = self.chartPeriodHelper.sortKeys(Array(morningAttendances.keys))
-        let sortedEveningKeys = self.chartPeriodHelper.sortKeys(Array(eveningAttendances.keys))
-        
+        var sortedKeys = self.chartPeriodHelper.sortKeys(Array(allAttendances.keys))
+        var sortedMorningKeys = self.chartPeriodHelper.sortKeys(Array(morningAttendances.keys))
+        var sortedEveningKeys = self.chartPeriodHelper.sortKeys(Array(eveningAttendances.keys))
+        // Remove all keys current period if it's not over
+        if !self.showCurrentPeriodInCharts, let dateComponents = sortedKeys.last, let date = Calendar.itBasic.date(from: dateComponents) {
+            if !self.chartPeriodHelper.isCurrentPeriodOver(date: date) {
+                sortedKeys.removeLast()
+                sortedMorningKeys.removeLast()
+                sortedEveningKeys.removeLast()
+            }
+        }
         let allEntries = createChartDataEntries(from: sortedKeys, with: allAttendances, labelProvider: self.chartPeriodHelper.label)
         let morningEntries = createChartDataEntries(from: sortedMorningKeys, with: morningAttendances, labelProvider: self.chartPeriodHelper.label)
         let eveningEntries = createChartDataEntries(from: sortedEveningKeys, with: eveningAttendances, labelProvider: self.chartPeriodHelper.label)

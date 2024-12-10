@@ -32,7 +32,5 @@ extension StatisticsViewController {
             self.podiumSecondLabel.text = "\(self.statsData.bestPals[1].value) - \(String(format: "%.0f", percentage1))%"
             self.podiumThirdLabel.text = "\(self.statsData.bestPals[2].value) - \(String(format: "%.0f", percentage2))%"
         }
-
     }
-    
 }

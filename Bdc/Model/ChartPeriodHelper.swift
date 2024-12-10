@@ -34,6 +34,19 @@ public struct ChartPeriodHelper {
         }
     }
     
+    public func isCurrentPeriodOver(date: Date) -> Bool {
+        switch self.chartPeriodType {
+        case .weekly:
+            let dayNumber = date.getDayNumberOfWeek()
+            return dayNumber == 1 || dayNumber == 7
+        case .monthly:
+            let endOfMonth = date.getEndOfMonth()
+            return date.getDayNumber() == endOfMonth.getDayNumber()
+        case .yearly:
+            return date.getYearNumber() != Date().getYearNumber()
+        }
+    }
+    
     func getStats(with statsData: StatsData) -> Double {
         switch self.chartPeriodType {
         case .weekly:

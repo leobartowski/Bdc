@@ -87,7 +87,7 @@ extension Date {
         return (weekNumber, yearNumber)
     }
     
-    /// Get the month number and the year
+    /// Get the year number and the year
     func getYearNumber() -> Int {
         return Calendar.itBasic.component(.year, from: self)
     }
@@ -102,6 +102,11 @@ extension Date {
     /// Get the Week Number in the year
     func getWeekNumber() -> Int {
         return Calendar.itBasic.component(.weekOfYear, from: self)
+    }
+    
+    /// Get the day number of the month
+    func getDayNumber() -> Int {
+        return Calendar.itBasic.component(.day, from: self)
     }
 
     /// Get Specific day of the week of the given day (1: Sunday, 2: Monday, ..., 7: Saturday)

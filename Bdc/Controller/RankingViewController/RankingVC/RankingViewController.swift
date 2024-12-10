@@ -25,7 +25,7 @@ class RankingViewController: UIViewController {
     // Handle Slot
     @IBOutlet weak var slotLabel: UILabel!
     @IBOutlet var containerSlotView: UIView!
-
+    
     var rankingPersonsAttendaces: [RankingPersonAttendance] = []
     let headerBasic = ["Nome", "P", "A"]
     var header: [String] = []
@@ -54,7 +54,7 @@ class RankingViewController: UIViewController {
         self.setupSlotView()
         self.addObservers()
         self.loadCurrentWeekData()
-        if #available(iOS 17.0, *) { self.handleTraitChange() }
+        self.handleTraitChange()
     }
     
     func viewSetUp() {
@@ -69,16 +69,15 @@ class RankingViewController: UIViewController {
         self.navigationItem.leftBarButtonItems = [
             UIBarButtonItem(title: "Periodo", style: .done, target: self, action: #selector(self.chooseRankingTypePeriod)),
             UIBarButtonItem(title: "Slot", style: .done, target: self, action: #selector(self.chooseSlotTypePeriod))
-            ]
+        ]
     }
     
-    @available(iOS 17.0, *)
     func handleTraitChange() {
         self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.calendarView.reloadData()
-            }      
+            }
         })
     }
     
@@ -103,21 +102,21 @@ class RankingViewController: UIViewController {
                 
                 for person in morningPersons {
                     if let index = self.rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
-                    self.slotType == .morningAndEvening || self.slotType == .morning {
+                       self.slotType == .morningAndEvening || self.slotType == .morning {
                         self.rankingPersonsAttendaces[index].attendanceNumber += 1
                         self.rankingPersonsAttendaces[index].morningDate.append(day)
                     }
                 }
                 for person in eveningPersons {
                     if let index = self.rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
-                        self.slotType == .morningAndEvening || self.slotType == .evening {
+                       self.slotType == .morningAndEvening || self.slotType == .evening {
                         self.rankingPersonsAttendaces[index].attendanceNumber += 1
                         self.rankingPersonsAttendaces[index].eveningDate.append(day)
                     }
                 }
                 for person in morningPersonsAdmonished {
                     if let index = self.rankingPersonsAttendaces.firstIndex(where: { $0.person.name == person.name }),
-                        self.slotType == .morningAndEvening || self.slotType == .morning {
+                       self.slotType == .morningAndEvening || self.slotType == .morning {
                         self.rankingPersonsAttendaces[index].admonishmentNumber += 1
                         self.rankingPersonsAttendaces[index].morningAdmonishmentDate.append(day)
                     }
@@ -164,7 +163,7 @@ class RankingViewController: UIViewController {
         self.showBorderForHighlithCell = self.calculateShowBorderForHighlighthCell()
         self.populateAttendance()
     }
-
+    
     @objc func didChangePersonList(_: Notification) {
         self.rankingPersonsAttendaces.removeAll()
         self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
@@ -174,7 +173,7 @@ class RankingViewController: UIViewController {
     @objc func didUpdateAttendance(_: Notification) {
         self.populateAttendance()
     }
-
+    
     // MARK: Share pdf current period
     @objc func shareButtonAction() {
         

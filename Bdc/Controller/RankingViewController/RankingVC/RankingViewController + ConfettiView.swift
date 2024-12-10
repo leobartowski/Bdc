@@ -42,7 +42,7 @@ extension RankingViewController {
             self.confettiView?.isUserInteractionEnabled = false
             self.view.addSubview(self.confettiView ?? UIView())
         }
-        self.confettiView?.isHidden = !UserDefaults.standard.bool(forKey: "showConfetti")
+        self.confettiView?.isHidden = !UserDefaults.standard.bool(forKey: SettingsType.showConfetti.rawValue)
     }
     
     func startConfetti() {
@@ -54,7 +54,7 @@ extension RankingViewController {
     
     // MARK: Handle Show Statistics
     @objc func didChangeShowConfetti(_: Notification) {
-        self.confettiView?.isHidden = !UserDefaults.standard.bool(forKey: "showConfetti")
+        self.confettiView?.isHidden = !UserDefaults.standard.bool(forKey: SettingsType.showConfetti.rawValue)
     }
     
 }

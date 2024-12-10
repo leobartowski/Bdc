@@ -5,6 +5,7 @@
 //  Created by leobartowski on 23/10/24.
 //
 import UIKit
+import TipKit
 import DGCharts
 import IncrementableLabel
 
@@ -41,6 +42,7 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     var person: Person?
     var isIndividualStats = false
     var hasViewAppearedOnce = false
+    var showCurrentPeriodInCharts = false
     
     var attendances: [Attendance] = []
     var weeklyChartData: LineChartCachedData?
@@ -61,6 +63,8 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         self.isIndividualStats = self.person != nil
         self.attendances = self.getAttendance() ?? []
         self.statsData = StatsData(self.attendances, self.person)
+        self.showCurrentPeriodInCharts = UserDefaults.standard.bool(forKey: SettingsType.showCurrentPeriodStatistics.rawValue)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didChangeShowCurrentPeriodStatistics(_:)), name: .didChangeShowCurrentPeriodStatistics, object: nil)
         self.statsData.calculateAllStats()
         self.setUpForIndividualStats()
         self.setUpFirstLabelsCellContainerView()
@@ -76,7 +80,7 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         self.setTextDividerLabels()
         self.createLabels()
         self.tableView.reloadData()
-        if #available(iOS 17.0, *) { self.handleTraitChange() }
+        self.handleTraitChange()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,8 +89,8 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
             self.createAndAnimateGrowthLabel()
             self.hasViewAppearedOnce = true
         }
-    }
-    
+    }    
+                
     private func getAttendance() -> [Attendance]? {
         return self.isIndividualStats
         ? CoreDataService.shared.getAllAttendaces(for: self.person!)
@@ -122,7 +126,6 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         self.ratioMorningEveningCellContainerView.layer.masksToBounds = true
     }
         
-    @available(iOS 17.0, *)
     func handleTraitChange() {
         self.registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
             self.setUpLineChart()
@@ -148,6 +151,14 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         })
     }
     
+    @objc func didChangeShowCurrentPeriodStatistics(_: Notification) {
+        self.showCurrentPeriodInCharts = UserDefaults.standard.bool(forKey: SettingsType.showCurrentPeriodStatistics.rawValue)
+        self.weeklyChartData = nil
+        self.monthlyChartData = nil
+        self.yearlyChartData = nil
+        self.handleChangeChart()
+    }
+    
     // MARK: Segmented control
     func setUpSegmentedControl() {
         self.segmentedControl.backgroundColor = Theme.contentBackground
@@ -155,12 +166,15 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         self.segmentedControl.selectedSegmentTintColor = Theme.main
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.neutral]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
-        
         let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: Theme.label]
         self.segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .normal)
     }
-    
+
     @IBAction func segmentedControlValueChanged(_ sender: Any) {
+        self.handleChangeChart()
+    }
+    
+    private func handleChangeChart() {
         switch self.segmentedControl.selectedSegmentIndex {
         case 0:
             self.chartPeriodType = .weekly
@@ -182,4 +196,5 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
         self.setTextDividerLabels()
         self.tableView.reloadData()
     }
+
 }

@@ -7,6 +7,7 @@
 
 import CoreData
 import UIKit
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -33,9 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: My Methods
     func fixTableViewBugGloabally() {
-        if #available(iOS 15.0, *) {
-            UITableView.appearance().sectionHeaderTopPadding = CGFloat(0)
-        }
+        UITableView.appearance().sectionHeaderTopPadding = CGFloat(0)
     }
     
 // MARK: Way to upload data the first installation
