@@ -15,7 +15,7 @@
 ### Why
 
 This app was created as a solution to replace traditional methods like Excel files, time sheets, or similar tools for managing attendance. It is designed for a single administrator to track attendance for all users and share the data via PDF, with options to filter by time frame.<br>
-The app includes a dedicated section for detailed attendance statistics, offering insights on both individual and group data.<br>
+The app features a dedicated section for detailed attendance statistics, offering insights on both individual and group data.<br>
 Over time, many specific features have been added, many of which are still in the works, such as attendance difficulties, confetti to celebrate 100% attendance in a given period and the inability to register attendance on holidays.<br>
 I created this project for **personal use** and not for commercial distribution so many features have not been created in the best way possible but only with the purpose of being functional to my needs.
 <br><br>
@@ -70,9 +70,16 @@ After the user has chosen the time frame and the slot he is interested in, he ca
 <br>
 
 ## Statistics
+The Statistics section of the app provides detailed insights into attendance data, catering to both group-level and individual-level analysis. While both modes share the same view controller for a consistent user experience, each mode includes sections tailored to its specific focus.
 
+- **Group Statistics**: Accessible via an item in the tab bar, this mode provides an overview of attendance data for the entire group. It offers aggregated insights and trends that help identify patterns across all users.
+- **Individual Statistics**: To view the statistics of a specific person, navigate to the Ranking tab and click on their name. This action opens the individual statistics view, which highlights the attendance history and trends of the selected person.
 
-
+<br>
+  <div align="center">
+    <img src="https://github.com/user-attachments/assets/41e1eb5f-5ccf-4438-b8eb-4e91e282a489" width="730"/>
+  </div>
+<br>
 
 ## Settings
 The settings allow the user to customize different things around all the app such as: avoid modification old days, show percentage of attendance in chosen time frame,  show/hidden confetti it a person complete a perfect period (100 % attendance) and the possibility of multiplying the all-time attendance by a difficulty coefficient based on the distance between the chosen location and the person's residence. 
