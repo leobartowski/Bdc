@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/28431608/200340518-a4e22218-6bea-4395-992d-9c9f210e882e.png"/>
+  <img src="https://github.com/user-attachments/assets/d0e9b840-aeb4-4802-bd13-0f2ad8355242"/>
 </div>
 <br>
 
@@ -7,13 +7,17 @@
 
 **Bdc** is an app created to take the attendance of a group of friends who meet on daily basis in a common place.
 <br>
+  <div align="center">
+    <img src="https://github.com/user-attachments/assets/97679415-be0e-49e9-9912-361cd6971079" width="730"/>
+  </div>
 <br>
 
 ### Why
-It was born as a way to avoid using excel files, time sheets or things like that.
-The app is designed to be used by a single administrator who manages the attendance of all users and shares them with others, via a pdf that can be filtered by time frame.<br>
+
+This app was created as a solution to replace traditional methods like Excel files, time sheets, or similar tools for managing attendance. It is designed for a single administrator to track attendance for all users and share the data via PDF, with options to filter by time frame.<br>
+The app includes a dedicated section for detailed attendance statistics, offering insights on both individual and group data.<br>
 Over time, many specific features have been added, many of which are still in the works, such as attendance difficulties, confetti to celebrate 100% attendance in a given period and the inability to register attendance on holidays.<br>
-I created this project for **personal use** and not for commercial distribution so many features have not been created in the best way possible but only with the purpose of being functional
+I created this project for **personal use** and not for commercial distribution so many features have not been created in the best way possible but only with the purpose of being functional to my needs.
 <br><br>
 
 <br>
@@ -23,9 +27,10 @@ I created this project for **personal use** and not for commercial distribution 
 <br>
 
 # Detail
-The app is divided in three main section: 
+The app is divided in four main section: 
 - [Calendar](#Calendar)  
-- [Ranking](#Ranking)  
+- [Ranking](#Ranking)
+- [Statistics](#Statistics)  
 - [Settings](#Settings)   
 
 ## Calendar
@@ -35,12 +40,17 @@ It's the view displayed when the app starts and it's used to take attendances or
     <img src="https://user-images.githubusercontent.com/28431608/200119111-82973029-d9f6-409b-a76a-9af46a7f6ad7.png" width="730"/>
   </div>
 <br>
+
 The calendar is displayed weekly by default but with a scroll it can become monthly. Clicking on a specific person's card makes them present for that day in that specific slot (morning or afternoon) while the long press gives them a warning (system created to avoid unfulfilled reservations).
-The collection view used to display the persons has a search bar, visible only when scrolling down, that can be used to filter elements. 
-<br><br>
+At the bottom of the collection view, a counter displays the number of people present and those admonished.
+<br>
+  <div align="center">
+    <img src="https://github.com/user-attachments/assets/3b9d1931-69e0-4bdd-9f2c-df60180ffaa2" width="343"/>
+  </div>
+<br>
 
 ## Ranking
-The main purpose of this section is to display the number of appearances made in a given period. By default, the display is weekly, so using a horizontal scroll you can move from week to week. By clicking on a specific person, the cell expands showing on which days of the week the attendance or warnings were made.
+The primary purpose of this section is to display the number of appearances made during a specific period. By default, the display shows weekly data, which can be navigated using horizontal scrolling to move between weeks. Clicking on a person's name opens a modal with their individual statistics ([Statistics](#Statistics) for details), while clicking elsewhere on the cell expands it to reveal detailed information about the specific days of the week when attendance or warnings were recorded.
 <br>
   <div align="center">
     <img src="https://user-images.githubusercontent.com/28431608/200119232-0c385900-fe36-4de0-bf3e-9e3058559920.png" width="730"/>
@@ -59,21 +69,26 @@ After the user has chosen the time frame and the slot he is interested in, he ca
   </div>
 <br>
 
+## Statistics
+
+
+
+
 ## Settings
 The settings allow the user to customize different things around all the app such as: avoid modification old days, show percentage of attendance in chosen time frame,  show/hidden confetti it a person complete a perfect period (100 % attendance) and the possibility of multiplying the all-time attendance by a difficulty coefficient based on the distance between the chosen location and the person's residence. 
 <br>
   <div align="center">
-    <img src="https://user-images.githubusercontent.com/28431608/200301717-419a1f22-e454-4469-aa4b-754e4029382f.png" width="730"/>
+    <img src="https://github.com/user-attachments/assets/30ff3024-4a15-4b6e-a745-bdbdfad3d6ce" width="730"/>
   </div>
 <br>
+
 As you can see, the people list is dynamic and people can be added / removed at any time.<br>
 In the settings it's possible to see all the <b>amazing open-source projects (❤️)</b> that helped the creation of this app. 
 <br>
   <div align="center">
-    <img src="https://user-images.githubusercontent.com/28431608/200301997-2bf369ab-ed0c-4d84-a6c5-7c670380bf1f.png" width="730"/>
+    <img src="https://github.com/user-attachments/assets/d2b70c22-23af-47b5-96e6-a54ba1be02e2" width="730"/>
   </div>
-<br>
-<br>
+<br><br>
 
 # Development
 ### How
@@ -85,7 +100,7 @@ nice things to implement, take a look if you want. Suggestions and constructive 
 
 iOS Deployment Target | Xcode Version | Swift Language Version
 ------------ | ------------- | -------------
-15.0 | 14.0 | Swift 5
+17.0 | 16.0 | Swift 5
 
 ### Installation
 1. Install [CocoaPods](https://cocoapods.org).
