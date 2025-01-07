@@ -16,7 +16,7 @@
 
 This app was created as a solution to replace traditional methods like Excel files, time sheets, or similar tools for managing attendance. It is designed for a single administrator to track attendance for all users and share the data via PDF, with options to filter by time frame.<br>
 The app features a dedicated section for detailed attendance statistics, offering insights on both individual and group data.<br>
-Over time, many specific features have been added, many of which are still in the works, such as attendance difficulties, confetti to celebrate 100% attendance in a given period and the inability to register attendance on holidays.<br>
+Over time, many specific features have been added, such as attendance difficulties, confetti to celebrate 100% attendance in a given period, automatic dark mode, the inability to register attendance on holidays, and many more. <br>
 I created this project for **personal use** and not for commercial distribution so many features have not been created in the best way possible but only with the purpose of being functional to my needs.
 <br><br>
 
@@ -77,7 +77,70 @@ The Statistics section of the app provides detailed insights into attendance dat
 
 <br>
   <div align="center">
-    <img src="https://github.com/user-attachments/assets/41e1eb5f-5ccf-4438-b8eb-4e91e282a489" width="730"/>
+    <img src="https://github.com/user-attachments/assets/41e1eb5f-5ccf-4438-b8eb-4e91e282a489" width="600"/>
+  </div>
+<br>
+
+
+### Group Statistics
+The group statistics view provides an overview of attendance trends for all participants. At the top of the screen, you’ll find key information, including the total number of recorded attendances and the day with the highest attendance.<br>
+
+Below this summary, data is organized by specific time periods:
+- Weekly
+- Monthly
+- Yearly
+This categorization allows you to explore a series of charts and statistics tailored to the selected time frame. Specifically, the section includes three distinct charts:
+
+#### Dynamic Line Chart:
+This chart displays attendance trends over the chosen period. With a light press on any part of the chart, you can drill down into attendance data for the selected time-frame, enabling a deeper analysis of trends and patterns.<br>
+
+<br>
+  <div align="center">
+    <img src="https://github.com/user-attachments/assets/5e37bbfc-3ad5-4fca-91af-7778f3edfac5" width="730"/>
+  </div>
+<br>
+
+Below this chart, there is an animated label that highlights how attendance in the recently completed period has changed compared to the immediately preceding one. This calculation is dynamic and adjusts based on the time frame currently being viewed, providing real-time insights into attendance trends.
+
+#### Dynamic Dual-Line Chart:
+This chart provides the same information as the previous one but separates the data into two lines: one representing morning attendances and the other representing afternoon attendances. This distinction allows for a clearer comparison of attendance trends across different times of the day.<br>
+This section also includes a label that indicates how much higher the attendance for a specific time slot (morning or afternoon) is compared to the other. 
+
+#### Bar Chart:
+Lastly, the bar chart is available exclusively in the weekly and monthly views, but not in the annual view.
+
+  - Weekly View: The chart displays the number of attendances for each day of the week (Monday, Tuesday, etc.).
+  - Monthly View: The chart shows the number of attendances for each month (January, February, etc.).
+
+
+<br>
+  <div align="center">
+    <img src="https://github.com/user-attachments/assets/8ba6e152-06d0-4ec9-855b-2e08125a5908" width="730"/>
+  </div>
+<br>
+
+### Individual Statistics
+
+In the individual statistics view, the three previously explained charts are customized to display data for a specific person rather than the group. <br>
+Unlike the group charts, line individual charts have a fixed y-axis scale based on the maximum possible attendance within the selected period. For example:
+
+- Weekly View: Capped at 10 (5 working days, with morning and afternoon sessions).
+- Monthly View: Capped at 46 (23 working days, with morning and afternoon sessions).
+- Annual View: Capped at 510 (255 working days, with morning and afternoon sessions).<br> <br>
+
+In addition to the customized charts, the individual statistics include the following additional information:
+
+- First Attendance Date: displays the date of the first recorded attendance for the selected person.
+- Total Attendances (Morning and Afternoon): provides a breakdown of the total attendances into morning and afternoon sessions, offering a clearer view of their participation pattern.
+- Longest Consecutive Attendance Streak: highlights the longest streak of consecutive days in which the person recorded at least one attendance. The start and end dates of this streak are also displayed.
+- Best Friends Podium: a fun visualization that shows the top three people with whom the individual has shared the most attendances. The podium displays:
+  - The picture of the friends on top of the podium
+  - The number of shared attendances
+  - The percentage of times these people attended together with the individual in question
+
+<br>
+  <div align="center">
+    <img src="https://github.com/user-attachments/assets/153a1fe8-23cb-40b4-9e7f-ae8bd993cfb3" width="600"/>
   </div>
 <br>
 
