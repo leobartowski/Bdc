@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gmv-0t-foL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24128" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gmv-0t-foL">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -136,7 +136,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ex7-RV-oWS" userLabel="2 View">
-                                                    <rect key="frame" x="20" y="95" width="111" height="170"/>
+                                                    <rect key="frame" x="20" y="91" width="111" height="170"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rD4-Im-u13">
                                                             <rect key="frame" x="61.666666666666679" y="64" width="65.333333333333314" height="110"/>
@@ -169,7 +169,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5iS-iC-Cs8" userLabel="1 View">
-                                                    <rect key="frame" x="141" y="65" width="111" height="200"/>
+                                                    <rect key="frame" x="141" y="61" width="111" height="200"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCn-x3-mNu">
                                                             <rect key="frame" x="69" y="94" width="50" height="110"/>
@@ -202,7 +202,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aja-xw-jmT" userLabel="3 View">
-                                                    <rect key="frame" x="262" y="115" width="111" height="150"/>
+                                                    <rect key="frame" x="262" y="111" width="111" height="150"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obd-wq-18d">
                                                             <rect key="frame" x="61" y="42" width="69" height="110"/>
@@ -235,7 +235,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qz2-RI-FHU">
-                                                    <rect key="frame" x="171.66666666666666" y="10" width="50" height="50"/>
+                                                    <rect key="frame" x="171.66666666666666" y="6" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="21p-vT-7j7"/>
                                                         <constraint firstAttribute="height" constant="50" id="8SF-Po-oHF"/>
@@ -253,7 +253,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jsM-Q0-nhc">
-                                                    <rect key="frame" x="50.666666666666657" y="40" width="50" height="50"/>
+                                                    <rect key="frame" x="50.666666666666657" y="36" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="ssd-gc-5fC"/>
                                                         <constraint firstAttribute="width" constant="50" id="upq-g4-H9R"/>
@@ -271,7 +271,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IJw-qt-6zZ">
-                                                    <rect key="frame" x="292.66666666666669" y="60" width="50" height="50"/>
+                                                    <rect key="frame" x="292.66666666666669" y="56" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="Xqc-mT-UC4"/>
                                                         <constraint firstAttribute="width" constant="50" id="gUG-1Y-Aka"/>
@@ -615,8 +615,8 @@
                     <tabBarItem key="tabBarItem" title="Statistiche" image="chart.xyaxis.line" catalog="system" id="D3S-HP-b84"/>
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="7Mn-mv-gQK">
-                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" largeTitles="YES" id="7Mn-mv-gQK">
+                        <rect key="frame" x="0.0" y="118" width="393" height="106"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="background"/>
                         <color key="tintColor" name="main"/>
@@ -646,13 +646,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

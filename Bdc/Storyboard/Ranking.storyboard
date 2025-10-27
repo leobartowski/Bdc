@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UgY-xa-Obx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24128" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UgY-xa-Obx">
     <device id="retina6_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -20,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Py9-kz-7il">
-                                <rect key="frame" x="0.0" y="0.0" width="440" height="922"/>
+                                <rect key="frame" x="0.0" y="0.0" width="440" height="888"/>
                                 <color key="backgroundColor" name="background"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="eJL-en-YG4">
                                     <rect key="frame" x="0.0" y="0.0" width="440" height="190"/>
@@ -396,7 +395,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wey-vi-kJt">
-                                <rect key="frame" x="0.0" y="106" width="440" height="816"/>
+                                <rect key="frame" x="0.0" y="178" width="440" height="710"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="99I-OG-Vfb">
                                         <rect key="frame" x="210" y="50" width="20" height="20"/>
@@ -456,8 +455,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UgY-xa-Obx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Ranking" image="person.3.fill" catalog="system" id="WCo-hh-nEI"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="CMb-OD-Yxf">
-                        <rect key="frame" x="0.0" y="62" width="440" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" largeTitles="YES" id="CMb-OD-Yxf">
+                        <rect key="frame" x="0.0" y="124" width="440" height="106"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="main"/>
                     </navigationBar>
@@ -472,7 +471,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="person.3.fill" catalog="system" width="32" height="32"/>
+        <image name="person.3.fill" catalog="system" width="128" height="66"/>
         <namedColor name="background">
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
