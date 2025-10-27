@@ -11,15 +11,15 @@ import Foundation
 class CoreDataService {
     
     static var shared = CoreDataService()
-
-     var context: NSManagedObjectContext
-
+    
+    var context: NSManagedObjectContext
+    
     private init() {
         self.context = CoreDataContainer.context
     }
-
+    
     // MARK: Method to save
-
+    
     /// Save  Person Admonished Attendence in Core Data for a specif date and daytype
     func saveAttendance(_ attendence: inout Attendance?, _ date: Date, _ type: DayType, _ persons: [Person]) {
         if attendence == nil {
@@ -34,7 +34,7 @@ class CoreDataService {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
-
+    
     func saveAdmonishedAttendance(_ attendence: inout Attendance?, _ date: Date, _ type: DayType, _ personsAdmonished: [Person]) {
         if attendence == nil {
             attendence = Attendance(context: self.context)
@@ -48,9 +48,9 @@ class CoreDataService {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
-
+    
     // MARK: Methods to fetch from Core Data
-
+    
     /// Get Attendance for a specif day and daytype
     func getAttendace(_ date: Date, type: DayType) -> Attendance? {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
@@ -59,7 +59,7 @@ class CoreDataService {
             fetchRequest.predicate = NSPredicate(format: "dateString == %@ AND type == %@", dateString, type.rawValue)
             let attendances = try context.fetch(fetchRequest)
             return attendances.first
-
+            
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
         }
@@ -86,7 +86,7 @@ class CoreDataService {
         }
         return nil
     }
-
+    
     /// Get  persons that were present in a specif day and dayType
     func getPersonsPresent(_ date: Date, type: DayType) -> [Person] {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
@@ -95,13 +95,13 @@ class CoreDataService {
             fetchRequest.predicate = NSPredicate(format: "dateString == %@ AND type == %@", dateString, type.rawValue)
             let attendances = try context.fetch(fetchRequest)
             return attendances.first?.persons?.allObjects as? [Person] ?? []
-
+            
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
         }
         return []
     }
-
+    
     /// Get  amonished persons in a specif day and dayType
     func getPersonsAmmonished(_ date: Date, type: DayType) -> [Person] {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
@@ -110,15 +110,15 @@ class CoreDataService {
             fetchRequest.predicate = NSPredicate(format: "dateString == %@ AND type == %@", dateString, type.rawValue)
             let attendances = try context.fetch(fetchRequest)
             return attendances.first?.personsAdmonished?.allObjects as? [Person] ?? []
-
+            
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
         }
         return []
     }
-
+    
     // MARK: HandlePersons CoreData
-
+    
     /// Retive all persons
     func getPersonsList() -> [Person] {
         
@@ -146,7 +146,7 @@ class CoreDataService {
         }
         return nil
     }
-
+    
     func deletePersonFromPersonsList(name: String? = "") {
         
         let fetchRequest = NSFetchRequest<PersonsList>(entityName: "PersonsList")
@@ -165,11 +165,11 @@ class CoreDataService {
     }
     
     // MARK: Methods to update Person Properties
-
+    
     /// Use this string to update/add imageString to a person
     func updateImageStringSpecificPerson(name: String, iconString: String) {
         let persons = self.getPersonsList()
-
+        
         if let index = persons.firstIndex(where: { $0.name == name }) {
             persons[index].iconString = iconString
         }
@@ -180,16 +180,16 @@ class CoreDataService {
                 
                 try self.context.save()
             }
-
+            
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
         }
     }
-
+    
     /// Use this method to change persons name in PersonsList and to change all the previous records (the id of the person is name)
     func updateNameSpecificPerson(oldName: String, newName: String) {
         let persons = self.getPersonsList()
-
+        
         if let index = persons.firstIndex(where: { $0.name == oldName }) {
             persons[index].name = newName
         }
@@ -200,7 +200,7 @@ class CoreDataService {
                 try self.context.save()
                 CoreDataService.shared.updateNameInOldRecords(oldName: oldName, newName: newName)
             }
-
+            
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
         }
@@ -218,12 +218,12 @@ class CoreDataService {
                 personsList.persons = NSSet(array: persons)
                 try self.context.save()
             }
-
+            
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
         }
     }
-
+    
     /// Search all the old records of the database and updates the name
     func updateNameInOldRecords(oldName: String, newName: String) {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
@@ -238,12 +238,12 @@ class CoreDataService {
             }
             try self.context.save()
             PersonListUtility.persons = self.getPersonsList()
-
+            
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
         }
     }
-
+    
     func removeAllAdmonishment() {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
         do {
@@ -252,29 +252,42 @@ class CoreDataService {
                 attendance.personsAdmonished = nil
             }
             try self.context.save()
-
+            
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
         }
     }
     
-//    func removeAllPresenceOf(name: String) {
-//        let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
-//        do {
-//            let attendances = try context.fetch(fetchRequest)
-//            for attendance in attendances {
-//                for person in attendance.persons where person.name == name {
-//
-//                }
-//                attendance.personsAdmonished = nil
-//            }
-//            try self.context.save()
-//
-//        } catch let error as NSError {
-//            print("Could not list. \(error), \(error.userInfo)")
-//        }
-//    }
-
+    //    func removeAllPresenceOf(name: String) {
+    //        let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
+    //        do {
+    //            let attendances = try context.fetch(fetchRequest)
+    //            for attendance in attendances {
+    //                for person in attendance.persons where person.name == name {
+    //
+    //                }
+    //                attendance.personsAdmonished = nil
+    //            }
+    //            try self.context.save()
+    //
+    //        } catch let error as NSError {
+    //            print("Could not list. \(error), \(error.userInfo)")
+    //        }
+    //    }
+    
+    func removeAllPresenceAfter251025() {
+        let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
+        do {
+            let attendances = try context.fetch(fetchRequest)
+            for attendance in attendances where DateFormatter.basicFormatter.date(from: attendance.dateString ?? "") ?? Date.distantPast > Constant.endingDateBdC  {
+                context.delete(attendance)
+            }
+            try context.save()
+        } catch let error as NSError {
+            print("Could not list. \(error), \(error.userInfo)")
+        }
+    }
+    
     /// Use this  just one time to create the persons List on a new device!
     func createPersonsListIfNeeded(_ persons: [Person] = []) {
         let currentPersons = CoreDataService.shared.getPersonsList()
@@ -301,22 +314,22 @@ class CoreDataService {
                 try self.context.save()
                 PersonListUtility.persons = self.getPersonsList()
             }
-
+            
         } catch let error as NSError {
             print("Could not list. \(error), \(error.userInfo)")
         }
     }
-
+    
     // MARK: WARNING
-
+    
     /// Use this method when you want to DELETE EVERYTHING from the Database
     func cleanCoreDataDataBase() {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Attendance")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-
+        
         let fetchRequest2: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Person")
         let deleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
-
+        
         do {
             try self.context.execute(deleteRequest)
             try self.context.execute(deleteRequest2)
@@ -324,19 +337,19 @@ class CoreDataService {
             print("Error:  \(error), \(error.userInfo)")
         }
     }
-
+    
     func clearPersonList() {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "PersonsList")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-
+        
         do {
             try self.context.execute(deleteRequest)
-
+            
         } catch let error as NSError {
             print("Error:  \(error), \(error.userInfo)")
         }
     }
-
+    
     func deleteSpecificAttendance(_ dateString: String) -> Bool {
         let fetchRequest = NSFetchRequest<Attendance>(entityName: "Attendance")
         fetchRequest.predicate = NSPredicate(format: "dateString == %@", dateString)
@@ -361,6 +374,5 @@ class CoreDataService {
             dict[att.dateString ?? "", default: 0] += 1
         }
         let filtered = dict.filter { $0.value > 2}
-        print(filtered)
     }
 }

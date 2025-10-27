@@ -159,7 +159,8 @@ class RankingViewController: UIViewController {
     }
     
     private func loadCurrentWeekData( ) {
-        self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Date.now)
+        self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Constant.endingDateBdC)
+//        self.selectedAllDateOfTheWeek(self.calendarView.selectedDate ?? Date.now)
         self.showBorderForHighlithCell = self.calculateShowBorderForHighlighthCell()
         self.populateAttendance()
     }
@@ -169,7 +170,7 @@ class RankingViewController: UIViewController {
         self.rankingPersonsAttendaces = PersonListUtility.rankingPersonsAttendance
         self.populateAttendance()
     }
-    
+
     @objc func didUpdateAttendance(_: Notification) {
         self.populateAttendance()
     }

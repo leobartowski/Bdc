@@ -10,6 +10,7 @@ import Foundation
 enum Constant {
     
     static let startingDateBdC = DateFormatter.basicFormatter.date(from: "25/10/2021") ?? Date.now
+    static let endingDateBdC = DateFormatter.basicFormatter.date(from: "25/10/2025") ?? Date.now
     static let maxAttWeeklyIndividual: Double = 10
     static let maxAttMonthlyIndividual: Double = 46
     static let maxAttYearlyIndividual: Double = 510

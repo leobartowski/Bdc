@@ -14,11 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // self.loadFileFromBackUpIfNeeded()
-        self.fixTableViewBugGloabally()
+//        self.loadFileFromBackUpIfNeeded()
+        self.globalUIFix()
         return true
     }
-    
+     
     // MARK: UISceneSession Lifecycle
     func application(_: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options _: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: My Methods
-    func fixTableViewBugGloabally() {
+    func globalUIFix() {
         UITableView.appearance().sectionHeaderTopPadding = CGFloat(0)
     }
     

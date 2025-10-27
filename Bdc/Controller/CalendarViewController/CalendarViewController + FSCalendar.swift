@@ -35,9 +35,10 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
     
     func maximumDate(for calendar: FSCalendar) -> Date {
-        self.calendarView.scope == .month
-        ? self.safeSelectDate(Date(), isForward: (Date().getComponent(.day) == 1 && Date().isThisDaySelectable()) ? true : false )
-        : Date()
+//        self.calendarView.scope == .month
+//        ? self.safeSelectDate(Date(), isForward: (Date().getComponent(.day) == 1 && Date().isThisDaySelectable()) ? true : false )
+//        : Date()
+        return Constant.endingDateBdC
     }
 
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
@@ -130,7 +131,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         repeat {
             count += 1
             date = isForward ? date.dayAfter : date.dayBefore
-        } while(!date.isThisDaySelectable() && count < 30)
+        } while(!date.isThisDaySelectable())
         return date
     }
 
@@ -140,7 +141,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         self.calendarView.locale = Locale(identifier: "it")
         self.calendarView.scope = .week // Needed to show the weekly at start! (BUG IN THE SYSTEM)
         self.calendarView.placeholderType = .none
-        self.calendarView.select(self.safeSelectDate(Date(), isForward: false))
+        self.calendarView.select(self.safeSelectDate(Date()))
         // Appearance
         self.calendarView.appearance.caseOptions = .headerUsesCapitalized
         self.calendarView.appearance.titleFont = .boldSystemFont(ofSize: 15)

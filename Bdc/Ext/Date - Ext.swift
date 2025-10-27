@@ -240,7 +240,7 @@ extension Date {
             self.getDayNumberOfWeek() == 7 ||
             self.isHoliday(in: .italy) ||
             self < Constant.startingDateBdC ||
-            self > Date() {
+            self > Constant.endingDateBdC {
             return false
         }
         return true
@@ -249,7 +249,7 @@ extension Date {
     func getNextSelectableDate() -> Date {
         var count = 0
         var date = self.dayAfter
-        while !date.isThisDaySelectable() && count < 30 {
+        while !date.isThisDaySelectable() {
             date = date.dayAfter
             count += 1
         }

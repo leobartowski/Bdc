@@ -84,29 +84,29 @@ public struct ChartPeriodHelper {
     func generateAllKeys() -> [DateComponents] {
         var keys: [DateComponents] = []
         let calendar = Calendar.current
-        let today = Date()
+        let endDate = Constant.endingDateBdC
         var currentDate = Constant.startingDateBdC
         
         switch self.chartPeriodType {
         case .weekly:
-            while currentDate <= today {
+            while currentDate <= endDate {
                 let weekComponents = dateComponents(for: currentDate)
                 keys.append(weekComponents)
-                currentDate = calendar.date(byAdding: .weekOfYear, value: 1, to: currentDate) ?? today
+                currentDate = calendar.date(byAdding: .weekOfYear, value: 1, to: currentDate) ?? endDate
             }
         case .monthly:
             currentDate = currentDate.getStartOfMonth()
-            while currentDate <= today {
+            while currentDate <= endDate {
                 let monthComponents = dateComponents(for: currentDate)
                 keys.append(monthComponents)
-                currentDate = calendar.date(byAdding: .month, value: 1, to: currentDate) ?? today
+                currentDate = calendar.date(byAdding: .month, value: 1, to: currentDate) ?? endDate
             }
         case .yearly:
             currentDate = currentDate.getStartOfYear()
-            while currentDate <= today {
+            while currentDate <= endDate {
                 let yearComponents = dateComponents(for: currentDate)
                 keys.append(yearComponents)
-                currentDate = calendar.date(byAdding: .year, value: 1, to: currentDate) ?? today
+                currentDate = calendar.date(byAdding: .year, value: 1, to: currentDate) ?? endDate
             }
         }
         return keys
