@@ -18,7 +18,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet var goToTodayButton: UIButton!
     @IBOutlet var segmentedControlContainerView: UIView!
     @IBOutlet var calendarViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet var searchBar: UISearchBar! // Strong: it's a top level object in the storyboard, added to the collectionView in code
 
     var dayType = DayType.evening
     var allPersons = PersonListUtility.persons
@@ -28,15 +28,22 @@ class CalendarViewController: UIViewController {
     var personsPresent: [Person] = []
     var canModifyOldDays = false
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .soft)
+    let searchBarHeight: CGFloat = 56
+    /// Content offset that keeps the search bar hidden above the first row of the collectionView
+    var searchBarHiddenOffset: CGPoint {
+        return CGPoint(x: 0, y: self.searchBarHeight - self.collectionView.adjustedContentInset.top)
+    }
     
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpCalendarAppearance()
         self.setupSegmentedControl()
+        self.setupSearchBarInCollectionView()
         self.getDataFromCoreDataAndReloadViews()
         self.addCalendarGestureRecognizer()
         self.designBottomCalendarHandleView()
+        self.setupGoToTodayButton()
         self.updateGoToTodayButton()
         self.addObservers()
         self.addSwipeGestureRecognizerToCollectionView()
@@ -79,6 +86,23 @@ class CalendarViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
+    /// The search bar lives above the first row of the collectionView: hidden at rest, revealed pulling the list down
+    func setupSearchBarInCollectionView() {
+        self.searchBar.frame = CGRect(x: 5, y: 0, width: self.collectionView.bounds.width - 10, height: self.searchBarHeight)
+        self.searchBar.autoresizingMask = [.flexibleWidth]
+        self.collectionView.addSubview(self.searchBar)
+        let firstRowTopSpacing: CGFloat = 10
+        (self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset.top += self.searchBarHeight + firstRowTopSpacing
+    }
+
+    func setupGoToTodayButton() {
+        if #available(iOS 26, *) {
+            var configuration = UIButton.Configuration.glass()
+            configuration.image = UIImage(systemName: "calendar")?.withTintColor(Theme.main, renderingMode: .alwaysOriginal)
+            self.goToTodayButton.configuration = configuration
+        }
+    }
+
     func updateGoToTodayButton() {
         self.goToTodayButton.alpha = Date().isThisDaySelectable() ? 1 : 0.3
     }
@@ -99,6 +123,10 @@ class CalendarViewController: UIViewController {
     }
     
     func setupSegmentedControl() {
+        if #available(iOS 26, *) {
+            self.segmentedControl.applyLiquidGlassStyle()
+            return
+        }
         self.segmentedControl.backgroundColor = Theme.contentBackground
         self.segmentedControl.borderColor = Theme.main
         self.segmentedControl.selectedSegmentTintColor = Theme.main
@@ -131,7 +159,11 @@ class CalendarViewController: UIViewController {
         self.sortPersons()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
-            self.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            if !self.searchBar.isFirstResponder {
+                // Content size must be ready, otherwise the collectionView clamps the offset back to the top
+                self.collectionView.layoutIfNeeded()
+                self.collectionView.setContentOffset(self.searchBarHiddenOffset, animated: true)
+            }
         }
     }
     

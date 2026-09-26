@@ -230,50 +230,20 @@
                                     <outlet property="delegate" destination="U53-3a-rL3" id="WjV-iO-if2"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjP-Uv-6Uv" userLabel="SearchBar View">
-                                <rect key="frame" x="0.0" y="469" width="414" height="56"/>
-                                <subviews>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Cerca..." translatesAutoresizingMaskIntoConstraints="NO" id="Ojt-Vj-bas">
-                                        <rect key="frame" x="5" y="0.0" width="404" height="56"/>
-                                        <color key="backgroundColor" name="background"/>
-                                        <color key="tintColor" name="main"/>
-                                        <color key="barTintColor" name="main"/>
-                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                        <scopeButtonTitles>
-                                            <string>Title</string>
-                                            <string>Title</string>
-                                        </scopeButtonTitles>
-                                        <connections>
-                                            <outlet property="delegate" destination="U53-3a-rL3" id="j1H-4d-tNr"/>
-                                        </connections>
-                                    </searchBar>
-                                </subviews>
-                                <color key="backgroundColor" name="background"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Ojt-Vj-bas" secondAttribute="trailing" constant="5" id="6HX-EE-PUv"/>
-                                    <constraint firstItem="Ojt-Vj-bas" firstAttribute="centerX" secondItem="tjP-Uv-6Uv" secondAttribute="centerX" id="Rup-fK-uwA"/>
-                                    <constraint firstAttribute="height" constant="56" id="YbR-lO-G9g"/>
-                                    <constraint firstItem="Ojt-Vj-bas" firstAttribute="leading" secondItem="tjP-Uv-6Uv" secondAttribute="leading" constant="5" id="hfr-uj-23x"/>
-                                    <constraint firstItem="Ojt-Vj-bas" firstAttribute="centerY" secondItem="tjP-Uv-6Uv" secondAttribute="centerY" id="mSo-Nb-nne"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BT8-7b-hyt"/>
                         <color key="backgroundColor" name="contentBackground"/>
                         <constraints>
-                            <constraint firstItem="tjP-Uv-6Uv" firstAttribute="trailing" secondItem="BT8-7b-hyt" secondAttribute="trailing" id="5m5-sI-7dN"/>
                             <constraint firstItem="Njj-cD-0ak" firstAttribute="top" secondItem="YCa-qH-8Lu" secondAttribute="bottom" id="6e0-yF-7Bh"/>
-                            <constraint firstItem="tjP-Uv-6Uv" firstAttribute="leading" secondItem="BT8-7b-hyt" secondAttribute="leading" id="C4f-wq-2lc"/>
                             <constraint firstItem="YCa-qH-8Lu" firstAttribute="top" secondItem="BT8-7b-hyt" secondAttribute="top" id="EwE-IC-72k"/>
                             <constraint firstItem="YCa-qH-8Lu" firstAttribute="leading" secondItem="BT8-7b-hyt" secondAttribute="leading" id="IlO-K7-GMZ"/>
                             <constraint firstItem="4Lh-IB-12Q" firstAttribute="trailing" secondItem="BT8-7b-hyt" secondAttribute="trailing" id="YKa-DC-XUG"/>
                             <constraint firstItem="4Lh-IB-12Q" firstAttribute="leading" secondItem="BT8-7b-hyt" secondAttribute="leading" id="kvk-bl-wTW"/>
                             <constraint firstItem="YCa-qH-8Lu" firstAttribute="trailing" secondItem="BT8-7b-hyt" secondAttribute="trailing" id="l2W-e0-fpe"/>
-                            <constraint firstItem="4Lh-IB-12Q" firstAttribute="top" secondItem="tjP-Uv-6Uv" secondAttribute="bottom" id="pDL-xY-uyg"/>
+                            <constraint firstItem="4Lh-IB-12Q" firstAttribute="top" secondItem="Njj-cD-0ak" secondAttribute="bottom" id="pDL-xY-uyg"/>
                             <constraint firstItem="Njj-cD-0ak" firstAttribute="leading" secondItem="BT8-7b-hyt" secondAttribute="leading" id="pKw-jD-1f5"/>
                             <constraint firstItem="Njj-cD-0ak" firstAttribute="trailing" secondItem="BT8-7b-hyt" secondAttribute="trailing" id="tw4-zZ-hyF"/>
-                            <constraint firstItem="tjP-Uv-6Uv" firstAttribute="top" secondItem="Njj-cD-0ak" secondAttribute="bottom" id="wpO-hG-ABq"/>
-                            <constraint firstItem="BT8-7b-hyt" firstAttribute="bottom" secondItem="4Lh-IB-12Q" secondAttribute="bottom" id="zIu-SP-BZa"/>
+                            <constraint firstAttribute="bottom" secondItem="4Lh-IB-12Q" secondAttribute="bottom" id="zIu-SP-BZa"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calendario" image="calendar" catalog="system" id="BRR-mX-MnD"/>
@@ -289,6 +259,21 @@
                         <outlet property="segmentedControlContainerView" destination="Njj-cD-0ak" id="WKa-Vs-qGH"/>
                     </connections>
                 </viewController>
+                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Cerca..." id="Ojt-Vj-bas">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" name="background"/>
+                    <color key="tintColor" name="main"/>
+                    <color key="barTintColor" name="main"/>
+                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                    <scopeButtonTitles>
+                        <string>Title</string>
+                        <string>Title</string>
+                    </scopeButtonTitles>
+                    <connections>
+                        <outlet property="delegate" destination="U53-3a-rL3" id="j1H-4d-tNr"/>
+                    </connections>
+                </searchBar>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OX5-Q2-OES" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1044.9275362318842" y="2.6785714285714284"/>

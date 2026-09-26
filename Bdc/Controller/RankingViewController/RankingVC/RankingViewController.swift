@@ -66,10 +66,18 @@ class RankingViewController: UIViewController {
     func navigationBarSetup() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.shareButtonAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(self.shareButtonAction))
+        // On iOS 26 .done renders as a prominent (filled) glass button, we want the standard one
+        let leftItemsStyle: UIBarButtonItem.Style
+        if #available(iOS 26, *) { leftItemsStyle = .plain } else { leftItemsStyle = .done }
         self.navigationItem.leftBarButtonItems = [
-            UIBarButtonItem(title: "Periodo", style: .done, target: self, action: #selector(self.chooseRankingTypePeriod)),
-            UIBarButtonItem(title: "Slot", style: .done, target: self, action: #selector(self.chooseSlotTypePeriod))
+            UIBarButtonItem(title: "Periodo", style: leftItemsStyle, target: self, action: #selector(self.chooseRankingTypePeriod)),
+            UIBarButtonItem(title: "Slot", style: leftItemsStyle, target: self, action: #selector(self.chooseSlotTypePeriod))
         ]
+        if #available(iOS 26, *) {
+            for item in (self.navigationItem.leftBarButtonItems ?? []) + [self.navigationItem.rightBarButtonItem].compactMap({ $0 }) {
+                item.tintColor = Theme.main
+            }
+        }
     }
     
     func handleTraitChange() {

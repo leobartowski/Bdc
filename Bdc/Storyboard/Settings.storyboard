@@ -145,7 +145,7 @@
                         <viewLayoutGuide key="safeArea" id="frH-xc-q2I"/>
                         <color key="backgroundColor" name="background"/>
                         <constraints>
-                            <constraint firstItem="frH-xc-q2I" firstAttribute="bottom" secondItem="lBu-9o-IQ3" secondAttribute="bottom" id="1jg-Dr-sZK"/>
+                            <constraint firstAttribute="bottom" secondItem="lBu-9o-IQ3" secondAttribute="bottom" id="1jg-Dr-sZK"/>
                             <constraint firstItem="lBu-9o-IQ3" firstAttribute="top" secondItem="C7m-uj-OfP" secondAttribute="top" id="acU-DN-rvx"/>
                             <constraint firstItem="lBu-9o-IQ3" firstAttribute="leading" secondItem="frH-xc-q2I" secondAttribute="leading" id="cJd-An-4vO"/>
                             <constraint firstItem="frH-xc-q2I" firstAttribute="trailing" secondItem="lBu-9o-IQ3" secondAttribute="trailing" id="vq4-mL-HDd"/>
@@ -222,7 +222,7 @@
                         <constraints>
                             <constraint firstItem="QvJ-fU-qhx" firstAttribute="top" secondItem="Mrk-IU-XGp" secondAttribute="top" id="XvP-7I-tV5"/>
                             <constraint firstItem="5Z4-j5-lne" firstAttribute="trailing" secondItem="QvJ-fU-qhx" secondAttribute="trailing" id="g6N-y5-h2e"/>
-                            <constraint firstItem="5Z4-j5-lne" firstAttribute="bottom" secondItem="QvJ-fU-qhx" secondAttribute="bottom" id="kSf-Fv-pSv"/>
+                            <constraint firstAttribute="bottom" secondItem="QvJ-fU-qhx" secondAttribute="bottom" id="kSf-Fv-pSv"/>
                             <constraint firstItem="QvJ-fU-qhx" firstAttribute="leading" secondItem="5Z4-j5-lne" secondAttribute="leading" id="udh-PC-8eh"/>
                         </constraints>
                     </view>

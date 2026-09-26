@@ -161,6 +161,10 @@ class StatisticsViewController: UITableViewController, ChartViewDelegate, UIGest
     
     // MARK: Segmented control
     func setUpSegmentedControl() {
+        if #available(iOS 26, *) {
+            self.segmentedControl.applyLiquidGlassStyle()
+            return
+        }
         self.segmentedControl.backgroundColor = Theme.contentBackground
         self.segmentedControl.borderColor = Theme.main
         self.segmentedControl.selectedSegmentTintColor = Theme.main

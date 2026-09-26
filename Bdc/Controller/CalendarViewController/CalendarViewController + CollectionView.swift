@@ -82,8 +82,26 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         if scrollView == self.collectionView,
            self.calendarView.scope == .month,
            self.collectionView.contentSize.height > 0,
-           (self.collectionView.contentOffset.y + self.collectionView.safeAreaInsets.top) <= 0 {
+           self.collectionView.contentOffset.y <= self.searchBarHiddenOffset.y {
             self.handleMonthlyToWeeklyCalendar()
+        }
+    }
+
+    /// Fade the search bar while it scrolls away, otherwise its shadow shows a band on top of the collectionView when hidden
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView == self.collectionView else { return }
+        let revealed = (self.searchBarHiddenOffset.y - scrollView.contentOffset.y) / self.searchBarHeight
+        self.searchBar.alpha = min(max(revealed, 0), 1)
+    }
+
+    /// Avoid leaving the search bar half visible: snap it fully open or fully hidden
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard scrollView == self.collectionView else { return }
+        let topY = -scrollView.adjustedContentInset.top
+        let hiddenY = self.searchBarHiddenOffset.y
+        let targetY = targetContentOffset.pointee.y
+        if targetY > topY, targetY < hiddenY {
+            targetContentOffset.pointee.y = targetY < (topY + hiddenY) / 2 ? topY : hiddenY
         }
     }
     

@@ -618,7 +618,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" largeTitles="YES" id="7Mn-mv-gQK">
                         <rect key="frame" x="0.0" y="118" width="393" height="106"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" name="background"/>
                         <color key="tintColor" name="main"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
