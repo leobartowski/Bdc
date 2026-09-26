@@ -17,6 +17,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        // Set in code: the storyboard tint is ignored on iOS 26 and the old selectedImageTintColor didn't follow dark/light changes
+        if let tabBar = (self.window?.rootViewController as? UITabBarController)?.tabBar {
+            tabBar.tintColor = Theme.main
+            // iOS 26 doesn't redraw the selected icon on dark/light change (the title is fine):
+            // setting the already resolved color changes the value and forces the redraw
+            tabBar.registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (tabBar: UITabBar, _) in
+                tabBar.tintColor = Theme.main.resolvedColor(with: tabBar.traitCollection)
+            }
+        }
     }
 
     func sceneDidDisconnect(_: UIScene) {
