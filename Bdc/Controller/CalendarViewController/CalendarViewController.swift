@@ -85,8 +85,10 @@ class CalendarViewController: UIViewController {
     
     func automaticScrollToToday() {
         DispatchQueue.main.async {
-            self.calendarView.setCurrentPage(Date.now, animated: true)
-            self.calendarView.select(Date.now)
+            self.calendarView.setCurrentPage(Constant.endingDateBdC, animated: true)
+//            self.calendarView.setCurrentPage(Date.now, animated: true)
+            self.calendarView.select(Constant.endingDateBdC)
+//            self.calendarView.select(Date.now)
             self.getDataFromCoreDataAndReloadViews()
         }
     }
@@ -108,7 +110,7 @@ class CalendarViewController: UIViewController {
     }
     
     func reloadCalendarDateIfNeeded() {
-        if self.calendarView.maximumDate < Date.now {
+        if self.calendarView.maximumDate < Constant.endingDateBdC {
             self.updateGoToTodayButton()
             self.calendarView.reloadData()
         }

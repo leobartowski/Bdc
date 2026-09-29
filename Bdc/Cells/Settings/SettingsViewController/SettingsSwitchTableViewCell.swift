@@ -18,6 +18,14 @@ class SettingsSwitchTableViewCell: UITableViewCell {
         self.settingsType = settingsType
         self.mainLabel.text = text
         self.mainSwitch.isOn = UserDefaults.standard.bool(forKey: self.settingsType.rawValue)
+        if settingsType == .modifyOldDays {
+            if self.mainSwitch.isOn {
+                self.mainSwitch.isOn = false
+                UserDefaults.standard.set(false, forKey: self.settingsType.rawValue)
+            }
+            self.mainSwitch.isEnabled = false
+            self.mainLabel.isEnabled = false
+        }
     }
 
     @IBAction func mainSwitchValueChanged(_ sender: Any) {

@@ -35,11 +35,12 @@ extension RankingViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
 
     /// Uded for avoid  crash on the simulator!
     func maximumDate(for _: FSCalendar) -> Date {
-        #if targetEnvironment(simulator)
-            return Date.distantFuture
-        #else
-            return Date().getSpecificDayOfThisWeek(1) // Maximum date should be sunday of the current week!
-        #endif
+        return Constant.endingDateBdC
+//        #if targetEnvironment(simulator)
+//            return Date.distantFuture
+//        #else
+//            return Date().getSpecificDayOfThisWeek(1) // Maximum date should be sunday of the current week!
+//        #endif
     }
 
     func minimumDate(for _: FSCalendar) -> Date {
